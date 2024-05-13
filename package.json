@@ -10,8 +10,10 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^4.8.2",
     "@astrojs/check": "^0.6.0",
+    "aos": "^2.3.4",
+    "astro": "^4.8.2",
+    "flatpickr": "^4.6.13",
     "typescript": "^5.4.5"
   }
 }

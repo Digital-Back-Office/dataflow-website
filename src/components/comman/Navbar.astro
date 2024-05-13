@@ -1,0 +1,76 @@
+---
+
+---
+
+<style>
+    .navbar{
+        background-color: #28282E;
+    }
+    .nav-link{
+        color:rgba(255, 255, 255, 0.90);
+        font-size:1.2rem;
+        font-weight: 500;
+        line-height: 150%;
+        font-family: 'Inter';
+    }
+    .buyNow-btn{
+        padding: 0.5rem 2.25rem;
+        font-size: 1rem !important;
+        border-radius: 7px;
+        background-color: #2FB7B8;
+    }
+</style>
+
+<header class="navbar navbar-expand-lg fixed-top">
+  <div class="container">
+    <!-- Navbar brand (Logo) -->
+    <a class="navbar-brand pe-sm-3" href="/">
+      <span class="text-primary flex-shrink-0 me-2">
+        <img src="/assets/images/logo.svg" height="55"/>
+      </span>
+    </a>
+
+    <a
+      class="btn btn-primary btn-sm fs-sm order-lg-3 d-none d-sm-inline-flex buyNow-btn"
+      href="/book-demo"
+      target="_blank"
+      rel="noopener"
+    >
+      Book a demo
+    </a>
+
+    <!-- Navbar collapse (Main navigation) -->
+    <nav class="collapse navbar-collapse" id="navbarNav">
+      <ul
+        class="navbar-nav navbar-nav-scroll me-auto"
+        style="--ar-scroll-height: 520px;"
+      >
+        <li class="nav-item">
+            <a class="nav-link" href="/why-dataflow">Why Dataflow?</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/pricing">Pricing</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/community">Community</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/company">Company</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/blog">Blog</a>
+        </li>
+      </ul>
+      <div class="d-sm-none p-3 mt-n3">
+        <a
+          class="btn btn-primary w-100 mb-1 buyNow-btn"
+          href="/book-demo"
+          target="_blank"
+          rel="noopener"
+        >
+          Book a demo
+        </a>
+      </div>
+    </nav>
+  </div>
+</header>

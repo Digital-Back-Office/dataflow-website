@@ -1,16 +1,298 @@
 ---
-
+import ConsulationForm from "../components/comman/ConsultationForm.astro";
+import Hero from "../components/home/Hero.astro";
+import Layout from "../layouts/Layout.astro";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout>
+  <Hero/>
+
+  <section
+    class="container py-5 my-lg-3 my-xl-4 my-xxl-5"
+    data-aos="fade-up"
+    data-aos-duration="600"
+    data-aos-offset="280"
+    data-disable-parallax-down="md"
+  >
+    <div class="row align-items-xl-center py-2 py-sm-3 my-md-3 mb-lg-4 mb-xl-5">
+      <div class="col-md-6 pb-4 pb-md-0 mb-3 mb-md-0">
+        <img
+          class="rounded-4"
+          src="/assets/images/home/features.jpg"
+          alt="Influencer"
+        />
+      </div>
+      <div
+        class="col-md-6 col-xl-5 offset-xl-1"
+        data-aos="fade-up"
+        data-aos-duration="850"
+        data-aos-offset="180"
+        data-disable-parallax-down="md"
+      >
+        <div class="ps-md-4 ps-xl-0">
+          <h2 class="h1 pb-3 mb-2 mb-md-3 mb-xl-4">Why training with me?</h2>
+          <ul class="list-unstyled pb-1 pb-xl-2">
+            <li class="d-flex fs-lg pb-1 mb-3">
+              <i class="ai-fruit text-primary fs-4 mt-n1 me-3"></i>
+              Nutrition guides for the best overall results.
+            </li>
+            <li class="d-flex fs-lg pb-1 mb-3">
+              <i class="ai-drop text-primary fs-4 mt-n1 me-3"></i>
+              Individually designed programs and workout plans.
+            </li>
+            <li class="d-flex fs-lg pb-1 mb-3">
+              <i class="ai-stones text-primary fs-4 mt-n1 me-3"></i>
+              Stretching routines.
+            </li>
+            <li class="d-flex fs-lg pb-1 mb-3">
+              <i class="ai-weight text-primary fs-4 mt-n1 me-3"></i>
+              Workouts designed for optimal results.
+            </li>
+            <li class="d-flex fs-lg pb-1 mb-3">
+              <i class="ai-heart-alt text-primary fs-4 mt-n1 me-3"></i>
+              Bonus features like weight history, gratitude journal, ect.
+            </li>
+            <li class="d-flex fs-lg pb-1 mb-3">
+              <i class="ai-chat text-primary fs-4 mt-n1 me-3"></i>
+              Direct coaching and 24/7 access to support community.
+            </li>
+          </ul>
+          <h3 class="h5 text-body mb-lg-4">My achievements:</h3>
+          <img
+            class="d-dark-mode-none"
+            src="/assets/images/home/achievements-dark.svg"
+            alt="Achievements"
+          />
+          <img
+            class="d-none d-dark-mode-block"
+            src="/assets/images/home/achievements-dark.svg"
+            alt="Achievements"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services: Car insurance -->
+  <section class="overflow-hidden pb-5">
+    <div class="container pb-sm-3 mb-md-2 mb-lg-3">
+      <div class="row g-4">
+        <div
+          class="col-md-7"
+          data-aos="fade-right"
+          data-aos-duration="600"
+          data-aos-offset="280"
+          data-disable-parallax-down="md"
+        >
+          <img
+            class="object-fit-cover w-100 h-100 rounded-3"
+            src="assets/img/03.jpg"
+            alt="Image"
+          />
+        </div>
+        <div
+          class="col-md-5"
+          data-aos="fade-left"
+          data-aos-duration="600"
+          data-aos-offset="280"
+          data-disable-parallax-down="md"
+        >
+          <div
+            class="d-flex flex-column h-100 bg-secondary rounded-3 py-5 px-4 px-lg-5"
+          >
+            <h2 class="mb-xl-4">Car insurance</h2>
+            <p class="mb-4 mb-xl-5">
+              Explore our car insurance plans designed to give you peace of mind
+              on the road. Whether you're a daily commuter, a weekend
+              adventurer, or a family driver, we've got you covered. With
+              competitive rates, customizable coverage options, and a commitment
+              to your safety, our car insurance is your trusted driving
+              companion. Get a quote today and experience the ease of driving
+              with confidence.
+            </p>
+            <ul class="list-unstyled mb-4 mb-xl-5">
+              <li class="d-flex pb-2 mb-1">
+                <span
+                  class="bg-primary mt-2 me-2"
+                  style="width: 10px; height: 10px; border-radius: 2px;"></span>
+                Comprehensive coverage
+              </li>
+              <li class="d-flex pb-2 mb-1">
+                <span
+                  class="bg-primary mt-2 me-2"
+                  style="width: 10px; height: 10px; border-radius: 2px;"></span>
+                Customizable plans
+              </li>
+              <li class="d-flex pb-2 mb-1">
+                <span
+                  class="bg-primary mt-2 me-2"
+                  style="width: 10px; height: 10px; border-radius: 2px;"></span>
+                Financial security
+              </li>
+              <li class="d-flex pb-2 mb-1">
+                <span
+                  class="bg-primary mt-2 me-2"
+                  style="width: 10px; height: 10px; border-radius: 2px;"></span>
+                Car insurance discounts
+              </li>
+            </ul>
+            <div class="mt-auto">
+              <a class="btn btn-outline-primary" href="#">Learn more</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services: Travel insurance -->
+  <section class="overflow-hidden pb-5">
+    <div class="container pb-sm-3 mb-md-2 mb-lg-3">
+      <div class="row g-4">
+        <div
+          class="col-md-7 order-md-2"
+          data-aos="fade-left"
+          data-aos-duration="600"
+          data-aos-offset="280"
+          data-disable-parallax-down="md"
+        >
+          <img
+            class="object-fit-cover w-100 h-100 rounded-3"
+            src="assets/img/03.jpg"
+            alt="Image"
+          />
+        </div>
+        <div
+          class="col-md-5 order-md-1"
+          data-aos="fade-right"
+          data-aos-duration="600"
+          data-aos-offset="280"
+          data-disable-parallax-down="md"
+        >
+          <div
+            class="d-flex flex-column h-100 bg-secondary rounded-3 py-5 px-4 px-lg-5"
+          >
+            <h2 class="mb-xl-4">Travel insurance</h2>
+            <p class="mb-4 mb-xl-5">
+              Explore the world with confidence, knowing you're protected
+              wherever you go. Discover our travel insurance plans designed to
+              keep you safe on your journeys. From solo escapades to family
+              getaways, we offer a range of travel insurance options to match
+              your travel style and needs.
+            </p>
+            <ul class="list-unstyled mb-4 mb-xl-5">
+              <li class="d-flex pb-2 mb-1">
+                <span
+                  class="bg-primary mt-2 me-2"
+                  style="width: 10px; height: 10px; border-radius: 2px;"></span>
+                Comprehensive protection
+              </li>
+              <li class="d-flex pb-2 mb-1">
+                <span
+                  class="bg-primary mt-2 me-2"
+                  style="width: 10px; height: 10px; border-radius: 2px;"></span>
+                Tailored plans
+              </li>
+              <li class="d-flex pb-2 mb-1">
+                <span
+                  class="bg-primary mt-2 me-2"
+                  style="width: 10px; height: 10px; border-radius: 2px;"></span>
+                Emergency medical assistance
+              </li>
+            </ul>
+            <div class="mt-auto">
+              <a class="btn btn-outline-primary" href="#">Learn more</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services: Health insurance -->
+  <section class="overflow-hidden pb-5">
+    <div class="container pb-sm-3 mb-md-2 mb-lg-3">
+      <div class="row g-4">
+        <div
+          class="col-md-7"
+          data-aos="fade-right"
+          data-aos-duration="600"
+          data-aos-offset="280"
+          data-disable-parallax-down="md"
+        >
+          <img
+            class="object-fit-cover w-100 h-100 rounded-3"
+            src="assets/img/03.jpg"
+            alt="Image"
+          />
+        </div>
+        <div
+          class="col-md-5"
+          data-aos="fade-left"
+          data-aos-duration="600"
+          data-aos-offset="280"
+          data-disable-parallax-down="md"
+        >
+          <div
+            class="d-flex flex-column h-100 bg-secondary rounded-3 py-5 px-4 px-lg-5"
+          >
+            <h2 class="mb-xl-4">Health insurance</h2>
+            <p class="mb-4 mb-xl-5">
+              Your health and well-being are our top priorities. We're more than
+              just insurance; we're your partner in good health. We offer a
+              range of health insurance options to suit your unique healthcare
+              needs.
+            </p>
+            <ul class="list-unstyled mb-4 mb-xl-5">
+              <li class="d-flex pb-2 mb-1">
+                <span
+                  class="bg-primary mt-2 me-2"
+                  style="width: 10px; height: 10px; border-radius: 2px;"></span>
+                Manage your policy online - anywhere, anytime
+              </li>
+              <li class="d-flex pb-2 mb-1">
+                <span
+                  class="bg-primary mt-2 me-2"
+                  style="width: 10px; height: 10px; border-radius: 2px;"></span>
+                International coverage
+              </li>
+              <li class="d-flex pb-2 mb-1">
+                <span
+                  class="bg-primary mt-2 me-2"
+                  style="width: 10px; height: 10px; border-radius: 2px;"></span>
+                Fast access to treatment
+              </li>
+              <li class="d-flex pb-2 mb-1">
+                <span
+                  class="bg-primary mt-2 me-2"
+                  style="width: 10px; height: 10px; border-radius: 2px;"></span>
+                Fast, simple claiming
+              </li>
+            </ul>
+            <div class="mt-auto">
+              <a class="btn btn-outline-primary" href="#">Learn more</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Get a quote CTA -->
+  <section class="container pt-lg-4 pt-xl-5 mt-lg-2 mt-xxl-4">
+    <div
+      class="position-relative bg-size-cover bg-position-center rounded-3 py-5"
+      style="background-image: url(assets/img/cta-bg.jpg);"
+    >
+      <span
+        class="position-absolute top-0 start-0 w-100 h-100 bg-dark opacity-25 rounded-3"
+      ></span>
+      <div class="row position-relative z-2 py-md-4 py-lg-5 my-2">
+        <div class="col-8 col-sm-6 col-md-5 col-lg-4 col-xxl-3 offset-1">
+          <h2 class="h1 text-white pb-2 pb-sm-3">See how much you can save</h2>
+          <a class="btn btn-primary" href="#">Get a quote now</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

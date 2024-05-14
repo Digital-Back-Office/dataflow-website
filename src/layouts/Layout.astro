@@ -1,5 +1,6 @@
 ---
 import Navbar from '../components/comman/Navbar.astro';
+import Footer from '../components/comman/Footer.astro';
 
 export interface Props {
   title?: string;
@@ -15,7 +16,7 @@ const {
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/x-icon" href="/favicon.svg" />
+    <link rel="icon" type="image/x-icon" href="/favicon.png" />
     <link rel="stylesheet" href="/assets/css/theme.min.css" />
     <link rel="stylesheet" href="/assets/icons/around-icons.min.css" />
     <!-- Import Google font (Inter) -->
@@ -26,10 +27,11 @@ const {
     <title>{title}</title>
   </head>
   <body>
-    <main class="page-wrapper" style="background-color: ##28282E;">
+    <main class="page-wrapper" style="background-color: #28282E;">
         <Navbar/>
         <div style="height:5.9375rem;"></div>
         <slot/>
+        <Footer/>
     </main>
   </body>
 

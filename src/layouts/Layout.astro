@@ -1,7 +1,7 @@
 ---
 import Navbar from '../components/comman/Navbar.astro';
 import Footer from '../components/comman/Footer.astro';
-
+import "../styles/global.css"
 export interface Props {
   title?: string;
 }
@@ -10,7 +10,8 @@ const {
   title = "Dataflow"
 } = Astro.props;
 ---
-<script src="../scripts/aos-init.js"/>
+<script src="/src/scripts/aos-init.js"/>
+<script src="/src/scripts/cookie-consent.js"></script>
 
 <html lang="en" data-bs-theme="dark">
   <head>
@@ -19,12 +20,31 @@ const {
     <link rel="icon" type="image/x-icon" href="/favicon.png" />
     <link rel="stylesheet" href="/assets/css/theme.min.css" />
     <link rel="stylesheet" href="/assets/icons/around-icons.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orestbida/cookieconsent@3.0.1/dist/cookieconsent.css">
     <!-- Import Google font (Inter) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet" id="google-font">
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
+    <style>
+      .cm__body{
+          background-color: black !important;
+          width: 100%;
+          max-width: 100% !important;
+          display: flex;
+          flex-direction: row !important;
+          align-items: center !important;
+          padding: 0 !important;
+      }
+      .cm__texts{
+          padding: 0 !important;
+      }
+
+      .cm__title{
+          color: white !important;
+      }
+    </style>
   </head>
   <body>
     <main class="page-wrapper" style="background-color: #28282E;">

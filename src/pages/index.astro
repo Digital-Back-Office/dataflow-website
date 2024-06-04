@@ -1,440 +1,85 @@
 ---
 import ConsulationForm from "../components/comman/ConsultationForm.astro";
 import Hero from "../components/home/Hero.astro";
+import Spinner from "../components/home/Spinner.astro";
 import Layout from "../layouts/Layout.astro";
 ---
+
+<style>
+  .teal-dark-heading{
+    color: var(--secondary-dark);
+    font-size: 2.5rem;
+    font-weight: 700;
+  }
+  .neutral-dark-text{
+    color: var(--neutral-dark);
+    font-weight: 400;
+    font-size: 1.125rem;
+  }
+  .teal-primary-btn{
+    color: var(--primary);
+    text-decoration: none;
+    font-size: 1.125rem;
+    font-weight: 400;
+  }
+</style>
 
 <Layout>
   <Hero/>
 
-  <section
-    class="container py-5 my-lg-3 my-xl-4 my-xxl-5"
-    data-aos="fade-up"
-    data-aos-duration="600"
-    data-aos-offset="280"
-    data-disable-parallax-down="md"
-  >
-    <div class="row align-items-xl-center py-2 py-sm-3 my-md-3 mb-lg-4 mb-xl-5">
-      <div class="col-md-6 pb-4 pb-md-0 mb-3 mb-md-0">
-        <img
-          class="rounded-4"
-          src="/assets/images/home/features.jpg"
-          alt="Influencer"
-        />
-      </div>
-      <div
-        class="col-md-6 col-xl-5 offset-xl-1"
-        data-aos="fade-up"
-        data-aos-duration="850"
-        data-aos-offset="180"
-        data-disable-parallax-down="md"
-      >
-        <div class="ps-md-4 ps-xl-0">
-          <h2 class="h1 pb-3 mb-2 mb-md-3 mb-xl-4">Why training with me?</h2>
-          <ul class="list-unstyled pb-1 pb-xl-2">
-            <li class="d-flex fs-lg pb-1 mb-3">
-              <i class="ai-fruit text-primary fs-4 mt-n1 me-3"></i>
-              Nutrition guides for the best overall results.
-            </li>
-            <li class="d-flex fs-lg pb-1 mb-3">
-              <i class="ai-drop text-primary fs-4 mt-n1 me-3"></i>
-              Individually designed programs and workout plans.
-            </li>
-            <li class="d-flex fs-lg pb-1 mb-3">
-              <i class="ai-stones text-primary fs-4 mt-n1 me-3"></i>
-              Stretching routines.
-            </li>
-            <li class="d-flex fs-lg pb-1 mb-3">
-              <i class="ai-weight text-primary fs-4 mt-n1 me-3"></i>
-              Workouts designed for optimal results.
-            </li>
-            <li class="d-flex fs-lg pb-1 mb-3">
-              <i class="ai-heart-alt text-primary fs-4 mt-n1 me-3"></i>
-              Bonus features like weight history, gratitude journal, ect.
-            </li>
-            <li class="d-flex fs-lg pb-1 mb-3">
-              <i class="ai-chat text-primary fs-4 mt-n1 me-3"></i>
-              Direct coaching and 24/7 access to support community.
-            </li>
-          </ul>
-          <h3 class="h5 text-body mb-lg-4">My achievements:</h3>
-          <img
-            class="d-dark-mode-none"
-            src="/assets/images/home/achievements-dark.svg"
-            alt="Achievements"
-          />
-          <img
-            class="d-none d-dark-mode-block"
-            src="/assets/images/home/achievements-dark.svg"
-            alt="Achievements"
-          />
-        </div>
-      </div>
-    </div>
-  </section>
+  <Spinner/>
 
-  <!-- Services: Car insurance -->
-  <section class="overflow-hidden pb-5">
-    <div class="container pb-sm-3 mb-md-2 mb-lg-3">
-      <div class="row g-4">
-        <div
-          class="col-md-7"
-          data-aos="fade-right"
-          data-aos-duration="600"
-          data-aos-offset="280"
-          data-disable-parallax-down="md"
-        >
-          <img
-            class="object-fit-cover w-100 h-100 rounded-3"
-            src="assets/img/03.jpg"
-            alt="Image"
-          />
+  <!-- How it works (Steps) -->
+  <section class="overflow-hidden pt-5 pb-5" style="background-color: white;">
+    <div class="container pt-2 pt-sm-4 pt-lg-5">
+
+      <!-- Step -->
+      <div class="row align-items-center position-relative pb-5 pb-lg-0 mb-1 mb-sm-2 mb-md-4 mb-lg-0">
+        <div class="col-md-6 col-xl-5 offset-lg-1 order-md-2 pb-2 pb-md-0 mb-4 mb-md-0" data-aos="fade-left" data-aos-duration="500" data-aos-offset="250" data-disable-parallax-down="md">
+          <img class="d-dark-mode-none" src="assets/img/landing/saas-2/steps/01-light.png" width="525" alt="Image">
+          <img class="d-none d-dark-mode-block" src="assets/img/landing/saas-2/steps/01-dark.png" width="525" alt="Image">
         </div>
-        <div
-          class="col-md-5"
-          data-aos="fade-left"
-          data-aos-duration="600"
-          data-aos-offset="280"
-          data-disable-parallax-down="md"
-        >
-          <div
-            class="d-flex flex-column h-100 bg-secondary rounded-3 py-5 px-4 px-lg-5"
-          >
-            <h2 class="mb-xl-4">Car insurance</h2>
-            <p class="mb-4 mb-xl-5">
-              Explore our car insurance plans designed to give you peace of mind
-              on the road. Whether you're a daily commuter, a weekend
-              adventurer, or a family driver, we've got you covered. With
-              competitive rates, customizable coverage options, and a commitment
-              to your safety, our car insurance is your trusted driving
-              companion. Get a quote today and experience the ease of driving
-              with confidence.
-            </p>
-            <ul class="list-unstyled mb-4 mb-xl-5">
-              <li class="d-flex pb-2 mb-1">
-                <span
-                  class="bg-primary mt-2 me-2"
-                  style="width: 10px; height: 10px; border-radius: 2px;"></span>
-                Comprehensive coverage
-              </li>
-              <li class="d-flex pb-2 mb-1">
-                <span
-                  class="bg-primary mt-2 me-2"
-                  style="width: 10px; height: 10px; border-radius: 2px;"></span>
-                Customizable plans
-              </li>
-              <li class="d-flex pb-2 mb-1">
-                <span
-                  class="bg-primary mt-2 me-2"
-                  style="width: 10px; height: 10px; border-radius: 2px;"></span>
-                Financial security
-              </li>
-              <li class="d-flex pb-2 mb-1">
-                <span
-                  class="bg-primary mt-2 me-2"
-                  style="width: 10px; height: 10px; border-radius: 2px;"></span>
-                Car insurance discounts
-              </li>
-            </ul>
-            <div class="mt-auto">
-              <a class="btn btn-outline-primary" href="#">Learn more</a>
-            </div>
+        <div class="col-md-6 col-lg-5 col-xl-4 offset-xl-1 order-md-1" data-aos="fade-right" data-aos-duration="500" data-aos-offset="250" data-disable-parallax-down="md">
+          <div class="pe-md-4 pe-lg-0">
+            <h3 class="h2 mb-3 mb-lg-4 teal-dark-heading">Say goodbye to Python dependency hell</h3>
+            <p class="pb-1 pb-lg-0 mb-4 mb-lg-5 neutral-dark-text">Thanks to our platform, developed using advanced data management methods, data quality reaches 100%, which is 20% better than other platforms.</p>
+            <a class="teal-primary-btn" href="#">Get connected<i class="ai-arrow-right ms-2"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step -->
+      <div class="row align-items-center position-relative pb-5 pb-lg-0 mb-1 mb-sm-2 mb-md-4 mb-lg-0">
+        <div class="col-md-6 col-xl-5 offset-xl-1 pb-2 pb-md-0 mb-4 mb-md-0" data-aos="fade-right" data-aos-duration="500" data-aos-offset="250" data-disable-parallax-down="md">
+          <img class="d-dark-mode-none" src="assets/img/landing/saas-2/steps/02-light.png" width="473" alt="Image">
+          <img class="d-none d-dark-mode-block" src="assets/img/landing/saas-2/steps/02-dark.png" width="473" alt="Image">
+        </div>
+        <div class="col-md-6 col-lg-5 col-xl-4 offset-lg-1" data-aos="fade-left" data-aos-duration="500" data-aos-offset="250" data-disable-parallax-down="md">
+          <div class="ps-md-4 ps-lg-0">
+            <h3 class="h2 mb-3 mb-lg-4 teal-dark-heading">Run Dataflow on any cloud</h3>
+            <p class="pb-1 pb-lg-0 mb-4 mb-lg-5 neutral-dark-text">Thanks to our platform, developed using advanced data management methods, data quality reaches 100%, which is 20% better than other platforms.</p>
+            <a class="teal-primary-btn" href="#">Get connected<i class="ai-arrow-right ms-2"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step -->
+      <div class="row align-items-center position-relative">
+        <div class="col-md-6 col-xl-5 offset-lg-1 order-md-2 d-md-flex justify-content-end pb-2 pb-md-0 mb-4 mb-md-0" data-aos="fade-left" data-aos-duration="500" data-aos-offset="250" data-disable-parallax-down="md">
+          <img class="d-dark-mode-none" src="assets/img/landing/saas-2/steps/03-light.png" width="473" alt="Image">
+          <img class="d-none d-dark-mode-block" src="assets/img/landing/saas-2/steps/03-dark.png" width="473" alt="Image">
+        </div>
+        <div class="col-md-6 col-lg-5 col-xl-4 offset-xl-1 order-md-1" data-aos="fade-right" data-aos-duration="500" data-aos-offset="250" data-disable-parallax-down="md">
+          <div class="pe-md-4 pe-lg-0">
+            <h3 class="h2 mb-3 mb-lg-4 teal-dark-heading">Manage your data connection across tools</h3>
+            <p class="pb-1 pb-lg-0 mb-4 mb-lg-5 neutral-dark-text">Thanks to our platform, developed using advanced data management methods, data quality reaches 100%, which is 20% better than other platforms.</p>
+            <a class="teal-primary-btn" href="#">Get connected<i class="ai-arrow-right ms-2"></i></a>
           </div>
         </div>
       </div>
     </div>
   </section>
-
-  <!-- Services: Travel insurance -->
-  <section class="overflow-hidden pb-5">
-    <div class="container pb-sm-3 mb-md-2 mb-lg-3">
-      <div class="row g-4">
-        <div
-          class="col-md-7 order-md-2"
-          data-aos="fade-left"
-          data-aos-duration="600"
-          data-aos-offset="280"
-          data-disable-parallax-down="md"
-        >
-          <img
-            class="object-fit-cover w-100 h-100 rounded-3"
-            src="assets/img/03.jpg"
-            alt="Image"
-          />
-        </div>
-        <div
-          class="col-md-5 order-md-1"
-          data-aos="fade-right"
-          data-aos-duration="600"
-          data-aos-offset="280"
-          data-disable-parallax-down="md"
-        >
-          <div
-            class="d-flex flex-column h-100 bg-secondary rounded-3 py-5 px-4 px-lg-5"
-          >
-            <h2 class="mb-xl-4">Travel insurance</h2>
-            <p class="mb-4 mb-xl-5">
-              Explore the world with confidence, knowing you're protected
-              wherever you go. Discover our travel insurance plans designed to
-              keep you safe on your journeys. From solo escapades to family
-              getaways, we offer a range of travel insurance options to match
-              your travel style and needs.
-            </p>
-            <ul class="list-unstyled mb-4 mb-xl-5">
-              <li class="d-flex pb-2 mb-1">
-                <span
-                  class="bg-primary mt-2 me-2"
-                  style="width: 10px; height: 10px; border-radius: 2px;"></span>
-                Comprehensive protection
-              </li>
-              <li class="d-flex pb-2 mb-1">
-                <span
-                  class="bg-primary mt-2 me-2"
-                  style="width: 10px; height: 10px; border-radius: 2px;"></span>
-                Tailored plans
-              </li>
-              <li class="d-flex pb-2 mb-1">
-                <span
-                  class="bg-primary mt-2 me-2"
-                  style="width: 10px; height: 10px; border-radius: 2px;"></span>
-                Emergency medical assistance
-              </li>
-            </ul>
-            <div class="mt-auto">
-              <a class="btn btn-outline-primary" href="#">Learn more</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Services: Health insurance -->
-  <section class="overflow-hidden pb-5">
-    <div class="container pb-sm-3 mb-md-2 mb-lg-3">
-      <div class="row g-4">
-        <div
-          class="col-md-7"
-          data-aos="fade-right"
-          data-aos-duration="600"
-          data-aos-offset="280"
-          data-disable-parallax-down="md"
-        >
-          <img
-            class="object-fit-cover w-100 h-100 rounded-3"
-            src="assets/img/03.jpg"
-            alt="Image"
-          />
-        </div>
-        <div
-          class="col-md-5"
-          data-aos="fade-left"
-          data-aos-duration="600"
-          data-aos-offset="280"
-          data-disable-parallax-down="md"
-        >
-          <div
-            class="d-flex flex-column h-100 bg-secondary rounded-3 py-5 px-4 px-lg-5"
-          >
-            <h2 class="mb-xl-4">Health insurance</h2>
-            <p class="mb-4 mb-xl-5">
-              Your health and well-being are our top priorities. We're more than
-              just insurance; we're your partner in good health. We offer a
-              range of health insurance options to suit your unique healthcare
-              needs.
-            </p>
-            <ul class="list-unstyled mb-4 mb-xl-5">
-              <li class="d-flex pb-2 mb-1">
-                <span
-                  class="bg-primary mt-2 me-2"
-                  style="width: 10px; height: 10px; border-radius: 2px;"></span>
-                Manage your policy online - anywhere, anytime
-              </li>
-              <li class="d-flex pb-2 mb-1">
-                <span
-                  class="bg-primary mt-2 me-2"
-                  style="width: 10px; height: 10px; border-radius: 2px;"></span>
-                International coverage
-              </li>
-              <li class="d-flex pb-2 mb-1">
-                <span
-                  class="bg-primary mt-2 me-2"
-                  style="width: 10px; height: 10px; border-radius: 2px;"></span>
-                Fast access to treatment
-              </li>
-              <li class="d-flex pb-2 mb-1">
-                <span
-                  class="bg-primary mt-2 me-2"
-                  style="width: 10px; height: 10px; border-radius: 2px;"></span>
-                Fast, simple claiming
-              </li>
-            </ul>
-            <div class="mt-auto">
-              <a class="btn btn-outline-primary" href="#">Learn more</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Get a quote CTA -->
-  <section class="container pt-lg-4 pt-xl-5 mt-lg-2 mt-xxl-4 pb-5">
-    <div
-      class="position-relative bg-size-cover bg-position-center rounded-3 py-5"
-      style="background-image: url(assets/img/cta-bg.jpg);"
-    >
-      <span
-        class="position-absolute top-0 start-0 w-100 h-100 bg-dark opacity-25 rounded-3"
-      ></span>
-      <div class="row position-relative z-2 py-md-4 py-lg-5 my-2">
-        <div class="col-8 col-sm-6 col-md-5 col-lg-4 col-xxl-3 offset-1">
-          <h2 class="h1 text-white pb-2 pb-sm-3">See how much you can save</h2>
-          <a class="btn btn-primary" href="#">Get a quote now</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Blog -->
-  <section class="container py-5 mb-sm-2 mb-md-0 my-lg-3 my-xl-4 my-xxl-5">
-    <h2 class="h1 text-center text-sm-start pb-3 pt-2 pt-sm-3 pt-md-4 pt-xl-5 mt-lg-2 mb-3 mb-lg-4">Our blog</h2>
-    <div class="row">
-      <div class="col-lg-6 pb-3 mb-2 mb-sm-3">
-
-        <!-- Featured article -->
-        <a class="card h-100 border-0 rounded-1 overflow-hidden text-decoration-none bg-size-cover bg-position-center" href="#" style="max-width: 600px; min-height: 300px; background-image: url(assets/img/landing/corporate/blog-img.jpg);">
-          <div class="bg-dark position-absolute top-0 start-0 w-100 h-100 opacity-50"></div>
-          <div class="card-body d-flex flex-column justify-content-end h-100 position-relative z-2" data-bs-theme="dark">
-            <h3>New business strategies for 2022</h3>
-            <p class="text-body mb-0">Leo vitae sem eget eget at in vivamus placerat sodales tristique risusiis senectusic quisque faucibus est justo egetert lobortis ultrices eu dignissim. Dapibus est ac risus maximus...</p>
-          </div>
-        </a>
-
-      </div>
-      <div class="col-lg-6">
-        <div class="row row-cols-1 row-cols-sm-2 g-4">
-
-          <!-- Article -->
-          <article class="col">
-            <div class="pb-4 pt-2 pt-xl-3 ms-md-3 border-bottom">
-              <h3 class="h4">
-                <a href="#">Promotion from scratch to the first sales</a>
-              </h3>
-              <p class="mb-4">Suscipit consectetur nam hac in enim, adipiscing aenean tortor ac commodo eu nibh a tempus sed...</p>
-              <div class="d-flex align-items-center">
-                <span class="fs-sm text-body-secondary">August 13, 2022</span>
-                <span class="fs-xs opacity-20 mx-3">|</span>
-                <a class="badge text-nav fs-xs border" href="#">Strategy</a>
-              </div>
-            </div>
-          </article>
-
-          <!-- Article -->
-          <article class="col">
-            <div class="pb-4 pt-2 pt-xl-3 ms-md-3 border-bottom">
-              <h3 class="h4">
-                <a href="#">New business strategies for 2022</a>
-              </h3>
-              <p class="mb-4">Orci massa sapien varius odio et vel egestas ultricies commodo tristique ullamcorper sit vitae cursus...</p>
-              <div class="d-flex align-items-center">
-                <span class="fs-sm text-body-secondary">August 2, 2022</span>
-                <span class="fs-xs opacity-20 mx-3">|</span>
-                <a class="badge text-nav fs-xs border" href="#">Business</a>
-              </div>
-            </div>
-          </article>
-
-          <!-- Article -->
-          <article class="col">
-            <div class="pb-4 pt-2 pt-xl-3 ms-md-3 border-bottom">
-              <h3 class="h4">
-                <a href="#">Outgoing year results, the main news</a>
-              </h3>
-              <p class="mb-4">Mauris suscipit in tempor, platea lobortis mollis rutrum aliquam pulvinar ultricies orci augue libero...</p>
-              <div class="d-flex align-items-center">
-                <span class="fs-sm text-body-secondary">July 27, 2022</span>
-                <span class="fs-xs opacity-20 mx-3">|</span>
-                <a class="badge text-nav fs-xs border" href="#">Analytics</a>
-              </div>
-            </div>
-          </article>
-
-          <!-- Article -->
-          <article class="col">
-            <div class="pb-4 pt-2 pt-xl-3 ms-md-3 border-bottom">
-              <h3 class="h4">
-                <a href="#">How to define goals and objectives</a>
-              </h3>
-              <p class="mb-4">Sed convallis integer egestas sapien sapien purus enim massa porttitor vulputate metus purus in fringilla...</p>
-              <div class="d-flex align-items-center">
-                <span class="fs-sm text-body-secondary">July 19, 2022</span>
-                <span class="fs-xs opacity-20 mx-3">|</span>
-                <a class="badge text-nav fs-xs border" href="#">Strategy</a>
-              </div>
-            </div>
-          </article>
-        </div>
-      </div>
-    </div>
-
-    <!-- All articles link -->
-    <div class="text-end pb-md-4 pt-3 mt-2 mt-sm-3 mt-lg-4">
-      <a class="d-inline-flex align-items-center fw-semibold text-decoration-none" href="#">
-        All articles
-        <i class="ai-arrow-right fs-4 ms-2"></i>
-      </a>
-    </div>
-  </section>
-
-  <!-- Contact CTA -->
-  <section class="position-relative mt-n5 mt-lg-0">
-    <div class="bg-secondary position-absolute bottom-0 start-0 w-100" style="height: calc(100% - 3rem);"></div>
-    <div class="container position-relative z-2">
-      <div class="row">
-        <div class="col-lg-6 py-5 pb-lg-0 mb-sm-2 mb-md-3 mb-lg-0 mt-3 mt-sm-4 mt-md-5">
-          <h2 class="h1 text-center text-lg-start pt-3 mt-3 mb-4">Become part <br class="d-none d-lg-inline">of our team</h2>
-          <div class="d-flex justify-content-between mx-auto mx-lg-0" style="max-width: 370px;">
-            <ul class="ps-4 me-3">
-              <li class="mt-2">Financial analyst</li>
-              <li class="mt-2">Business analyst</li>
-              <li class="mt-2">Software tester</li>
-            </ul>
-            <ul class="ps-4">
-              <li class="mt-2">Head of marketing</li>
-              <li class="mt-2">Strategy advisor</li>
-              <li class="mt-2">Lead UX designer</li>
-            </ul>
-          </div>
-          <div class="text-center text-lg-start pt-4">
-            <a class="btn btn-outline-dark" href="#">Apply for a job</a>
-          </div>
-          <div class="d-none d-lg-flex justify-content-end mt-n4 me-n4">
-            <div data-aos="fade-left" data-aos-duration="700" data-aos-anchor-placement="bottom-bottom">
-              <svg class="text-danger" width="117" height="117" viewBox="0 0 117 117" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                <path d="M-2.51516e-06 58.5C-3.52666e-06 70.0702 3.43096 81.3806 9.85902 91.0008C16.2871 100.621 25.4235 108.119 36.113 112.547C46.8025 116.975 58.5649 118.133 69.9128 115.876C81.2607 113.619 91.6844 108.047 99.8657 99.8657C108.047 91.6844 113.619 81.2607 115.876 69.9128C118.133 58.5649 116.975 46.8025 112.547 36.113C108.119 25.4235 100.621 16.2871 91.0009 9.85903C81.3806 3.43096 70.0702 -4.24071e-06 58.5 -5.11423e-06L58.5 58.5L-2.51516e-06 58.5Z"></path>
-              </svg>
-            </div>
-            <div data-aos="fade-right" data-aos-duration="700" data-aos-anchor-placement="bottom-bottom">  
-              <svg class="text-info" width="117" height="117" viewBox="0 0 117 117" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="58.5" cy="58.5" r="58.5"></circle>
-              </svg>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-6">
-          <div class="bg-primary d-flex flex-column align-items-center justify-content-center position-relative h-100 rounded-1 rounded-bottom-0 p-5">
-            <div class="position-relative z-2 py-sm-3 py-md-4" style="max-width: 360px;" data-bs-theme="dark">
-              <h2 class="h1">Ready to discuss your project?</h2>
-              <p class="text-body mb-0">We are a team that creates business strategies for B2B and B2C companies.</p>
-              <div class="d-flex flex-column flex-sm-row align-items-center pt-3 mt-3 mt-lg-4">
-                <a class="btn btn-light w-100 w-sm-auto me-sm-4 mb-2 mb-sm-0" href="contacts-v1.html">Contact us</a>
-                <a class="d-inline-block text-white fw-medium p-2" href="mailto:email@example.com">email@example.com</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+  
 </Layout>
+
+

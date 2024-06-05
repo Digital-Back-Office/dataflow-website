@@ -29,12 +29,11 @@ const {
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
   </head>
-  <body>
+  <body id="body">
     <main class="page-wrapper" style="background-color: #28282E;">
         <Navbar/>
-        <div style="height:5.9375rem;"></div>
         <slot/>
-        <Footer/>
+        <!-- <Footer/> -->
     </main>
   </body>
 

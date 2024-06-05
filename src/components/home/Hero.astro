@@ -66,9 +66,23 @@ import Consultation_form from "../comman/ConsultationForm.astro";
             
             <!--Spinner -->
             <div class="spinner">
-                <img style="width:100%" src="/assets/images/home/hour-glass.svg"/>
+                <img id="spinner" style="width:100%" src="/assets/images/home/hour-glass.svg"/>
             </div>
         </div>
         
     </div>
 </section>
+
+<script>
+    const img = document.getElementById("spinner") as HTMLImageElement;
+    let i = 1;
+    function switchImage(){
+        img.src = "/assets/images/home/hour-glass/img"+i+".png";
+        i++;
+        if (i===5) i = 1;
+        setTimeout(()=>{
+            switchImage();
+        },110)
+    }
+    switchImage();
+</script>

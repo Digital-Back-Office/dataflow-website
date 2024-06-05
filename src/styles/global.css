@@ -6,6 +6,11 @@
     --secondary-very-light: #C0FFFF;
     --neutral-light: #F5F5F5;
     --neutral-dark: #404040;
+    --dark-gray: 
+}
+
+html{
+    font-size: 16px;
 }
 
 .cm__body{

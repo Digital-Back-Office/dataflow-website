@@ -1,8 +1,10 @@
 ---
-import ConsulationForm from "../components/comman/ConsultationForm.astro";
 import Hero from "../components/home/Hero.astro";
 import Spinner from "../components/home/Spinner.astro";
 import Layout from "../layouts/Layout.astro";
+import Section1 from "../components/home/Section1.astro";
+import Section2 from "../components/home/Section2.astro";
+import Section3 from "../components/home/Section3.astro";
 ---
 
 <style>
@@ -22,6 +24,16 @@ import Layout from "../layouts/Layout.astro";
     font-size: 1.125rem;
     font-weight: 400;
   }
+  .colored-heading{
+    background-image: url("assets/images/home/text-bg.png");
+    background-repeat: repeat;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-position: center center;
+    font-size: 16rem;
+    width: fit-content;
+    margin: auto auto;
+}
 </style>
 
 <Layout>
@@ -29,56 +41,20 @@ import Layout from "../layouts/Layout.astro";
 
   <Spinner/>
 
-  <!-- How it works (Steps) -->
-  <section class="overflow-hidden pt-5 pb-5" style="background-color: white;">
-    <div class="container pt-2 pt-sm-4 pt-lg-5">
+  <Section1/>
 
-      <!-- Step -->
-      <div class="row align-items-center position-relative pb-5 pb-lg-0 mb-1 mb-sm-2 mb-md-4 mb-lg-0">
-        <div class="col-md-6 col-xl-5 offset-lg-1 order-md-2 pb-2 pb-md-0 mb-4 mb-md-0" data-aos="fade-left" data-aos-duration="500" data-aos-offset="250" data-disable-parallax-down="md">
-          <img class="d-dark-mode-none" src="assets/img/landing/saas-2/steps/01-light.png" width="525" alt="Image">
-          <img class="d-none d-dark-mode-block" src="assets/img/landing/saas-2/steps/01-dark.png" width="525" alt="Image">
-        </div>
-        <div class="col-md-6 col-lg-5 col-xl-4 offset-xl-1 order-md-1" data-aos="fade-right" data-aos-duration="500" data-aos-offset="250" data-disable-parallax-down="md">
-          <div class="pe-md-4 pe-lg-0">
-            <h3 class="h2 mb-3 mb-lg-4 teal-dark-heading">Say goodbye to Python dependency hell</h3>
-            <p class="pb-1 pb-lg-0 mb-4 mb-lg-5 neutral-dark-text">Thanks to our platform, developed using advanced data management methods, data quality reaches 100%, which is 20% better than other platforms.</p>
-            <a class="teal-primary-btn" href="#">Get connected<i class="ai-arrow-right ms-2"></i></a>
-          </div>
-        </div>
-      </div>
+  <Section2/>
 
-      <!-- Step -->
-      <div class="row align-items-center position-relative pb-5 pb-lg-0 mb-1 mb-sm-2 mb-md-4 mb-lg-0">
-        <div class="col-md-6 col-xl-5 offset-xl-1 pb-2 pb-md-0 mb-4 mb-md-0" data-aos="fade-right" data-aos-duration="500" data-aos-offset="250" data-disable-parallax-down="md">
-          <img class="d-dark-mode-none" src="assets/img/landing/saas-2/steps/02-light.png" width="473" alt="Image">
-          <img class="d-none d-dark-mode-block" src="assets/img/landing/saas-2/steps/02-dark.png" width="473" alt="Image">
-        </div>
-        <div class="col-md-6 col-lg-5 col-xl-4 offset-lg-1" data-aos="fade-left" data-aos-duration="500" data-aos-offset="250" data-disable-parallax-down="md">
-          <div class="ps-md-4 ps-lg-0">
-            <h3 class="h2 mb-3 mb-lg-4 teal-dark-heading">Run Dataflow on any cloud</h3>
-            <p class="pb-1 pb-lg-0 mb-4 mb-lg-5 neutral-dark-text">Thanks to our platform, developed using advanced data management methods, data quality reaches 100%, which is 20% better than other platforms.</p>
-            <a class="teal-primary-btn" href="#">Get connected<i class="ai-arrow-right ms-2"></i></a>
-          </div>
-        </div>
-      </div>
+  <Section3/>
 
-      <!-- Step -->
-      <div class="row align-items-center position-relative">
-        <div class="col-md-6 col-xl-5 offset-lg-1 order-md-2 d-md-flex justify-content-end pb-2 pb-md-0 mb-4 mb-md-0" data-aos="fade-left" data-aos-duration="500" data-aos-offset="250" data-disable-parallax-down="md">
-          <img class="d-dark-mode-none" src="assets/img/landing/saas-2/steps/03-light.png" width="473" alt="Image">
-          <img class="d-none d-dark-mode-block" src="assets/img/landing/saas-2/steps/03-dark.png" width="473" alt="Image">
-        </div>
-        <div class="col-md-6 col-lg-5 col-xl-4 offset-xl-1 order-md-1" data-aos="fade-right" data-aos-duration="500" data-aos-offset="250" data-disable-parallax-down="md">
-          <div class="pe-md-4 pe-lg-0">
-            <h3 class="h2 mb-3 mb-lg-4 teal-dark-heading">Manage your data connection across tools</h3>
-            <p class="pb-1 pb-lg-0 mb-4 mb-lg-5 neutral-dark-text">Thanks to our platform, developed using advanced data management methods, data quality reaches 100%, which is 20% better than other platforms.</p>
-            <a class="teal-primary-btn" href="#">Get connected<i class="ai-arrow-right ms-2"></i></a>
-          </div>
-        </div>
-      </div>
-    </div>
+  <section class="overflow-hidden pt-5 pb-5"
+  style="background-color:white; height: 100vh; display:flex; align-items:center;;">
+    <h2 class="colored-heading">
+      70% increase
+    </h2>
   </section>
+
+  
   
 </Layout>
 

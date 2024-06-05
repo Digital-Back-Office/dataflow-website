@@ -1,0 +1,123 @@
+---
+
+---
+
+<style>
+  .hello {
+    transform-origin: left;
+  }
+  .cont {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .cont-text {
+    width: fit-content;
+    max-width: 450px;
+    display: flex;
+    flex-direction: column;
+    gap:2.5rem;
+  }
+  .cont-heading {
+    font-size: 2.8125rem;
+    color: #303030;
+    font-weight: 700;
+    line-height: 130%;
+    transition: all 0.1s ease-in;
+  }
+  .cont-para {
+    font-size: 1.375rem;
+    font-weight: 400;
+    line-height: 142%;
+    color: var(--neutral-dark);
+    transition: all 0.25s ease-in;
+
+  }
+  .cont-hover{
+    background-color: #D40F7D !important;
+  }
+  .cont-heading-hover{
+    color: white !important;
+    font-size: 3.125rem;
+    transition: all 0.25s ease-in;
+
+  }
+  .cont-para-hover{
+    color: white !important;
+    font-size: 1.5625rem;
+    transform-origin: left;
+  }
+  .section{
+    transition: all 0.25s ease-in;
+  }
+  .cont-text-hover{
+    gap: 3.125rem;
+    transition: all 0.25s ease-in;
+
+  }
+  .learn-btn{
+    background-color: #FBE2F0;
+    width: fit-content;
+    border-radius: 10px;
+    padding: 10px;
+    text-decoration: none;
+  }
+  .learn-btn:hover{
+    background-color: white;
+  }
+</style>
+
+<!-- How it works (Steps) -->
+<section
+  id="cont11"
+  class="overflow-hidden pt-5 pb-5 section"
+  style="background-color: #FBE2F0;"
+>
+  <div class="container">
+    <div class="cont">
+      <!--Text-->
+      <div id="cont-text" class="cont-text">
+        <h4 id="cont-heading" class="cont-heading">Run Dataflow on any cloud</h4>
+        <p id="cont-para" class="cont-para">
+          Thanks to our platform, developed using advanced data management
+          methods, data quality reaches 100%, which is 20% better than other
+          platforms.
+        </p>
+        <a href="#" class="learn-btn">
+          Learn More<i class="ai-arrow-right ms-2"></i>
+        </a>
+      </div>
+
+      <!--Image-->
+      <div>
+        <img id="cont-img" src="/assets/images/home/img1.svg" width="687" 
+        style="transition: all 0.25s ease-in;"/>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+    const cont = document.getElementById("cont11") as HTMLElement;
+    const contHeading = document.getElementById("cont-heading") as HTMLElement;
+    const contPara = document.getElementById("cont-para") as HTMLElement;
+    const contText = document.getElementById("cont-text") as HTMLElement;
+    const contImage = document.getElementById("cont-img") as HTMLImageElement;
+    
+    cont.addEventListener("mouseover", ()=>{
+      cont.classList.add("cont-hover");
+      contHeading.classList.add("cont-heading-hover");
+      contPara.classList.add("cont-para-hover");
+      contText.classList.add("cont-text-hover");
+      contImage.width = 800;
+    })
+
+    cont.addEventListener("mouseleave", ()=>{
+      cont.classList.remove("cont-hover");
+      contHeading.classList.remove("cont-heading-hover");
+      contPara.classList.remove("cont-para-hover");
+      contText.classList.remove("cont-text-hover");
+      contImage.width = 687;
+
+    })
+</script>

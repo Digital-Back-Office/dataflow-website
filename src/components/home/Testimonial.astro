@@ -1,0 +1,196 @@
+---
+
+---
+
+<style>
+    .test-section{
+        height: 100vh;
+        background-color: #F9F9F9;
+        display: flex;
+        align-items: center;
+        
+    }
+    .review-bg{
+      height:90vh;
+      
+      background-image: url("assets/images/home/review-bg.svg");
+        background-repeat: no-repeat;
+        background-position: center right;
+        background-size: 90vh;
+    }
+</style>
+
+<script>
+  import Swiper from "swiper/bundle";
+  import "swiper/css/navigation";
+  import "swiper/css/pagination";
+  import "swiper/css/bundle";
+
+  const carousels = Array.from(document.querySelectorAll(".swiper"));
+
+  carousels.forEach((value) => {
+    let options;
+    const htmlValueElement = value as HTMLElement;
+    if (htmlValueElement.dataset.swiperOptions != undefined)
+      options = JSON.parse(htmlValueElement.dataset.swiperOptions);
+
+    const swiper = new Swiper(htmlValueElement, options); // eslint-disable-line no-undef
+
+    // Binded content
+    if (options.bindedContent) {
+      swiper.on("activeIndexChange", (e: any) => {
+        const targetItem = document.querySelector(
+          e.slides[e.activeIndex].dataset.swiperBinded
+        );
+        const previousItem = document.querySelector(
+          e.slides[e.previousIndex].dataset.swiperBinded
+        );
+
+        previousItem.classList.remove("active");
+        targetItem.classList.add("active");
+      });
+    }
+  });
+</script>
+
+<!-- Testimonials -->
+<section class="pt-5 test-section">
+    <div class="container review-bg">
+        <div class="row" style="height:100%; align-items: center;">
+          <div class="col-md-9 col-lg-7 order-md-2">
+            <!-- Swiper slider -->
+            <div
+              class="swiper"
+              data-swiper-options='{
+                "spaceBetween": 40,
+                "loop": true,
+                "bindedContent": true,
+                "autoHeight": true,
+                "pagination": {
+                  "el": ".testimonials-count",
+                  "type": "fraction"
+                },
+                "navigation": {
+                  "prevEl": "#prev-testimonial",
+                  "nextEl": "#next-testimonial"
+                }
+              }'
+            >
+              <div class="swiper-wrapper">
+                <!-- Item -->
+                <div class="swiper-slide" data-swiper-binded="#testimonial-1">
+                  <div class="d-flex d-md-none pt-3 mb-3">
+                    <i class="ai-quotes d-md-none text-primary display-3 mt-n2"></i>
+                    <div class="ps-3">
+                      <h3 class="h5 mb-0" style="color:#28282E !important;">Lilia Bocouse</h3>
+                      <p class="text-body-secondary mb-0" style="color:#858C97 !important;">Head of Marketing</p>
+                    </div>
+                  </div>
+                  <h2 class="mb-lg-4" style="color:#28282E !important;">
+                    Thanks to your talented team for the strategy we dreamed about!
+                  </h2>
+                  <p class="lead mb-0" style="color:#576071 !important;">
+                    Suspendisse mauris elit, pellentesque nec purus sed, finibus
+                    finibus ipsum. Proin posuere, metus sed porttitor pellentesque,
+                    ante magna tincidunt mi, nec fermentum dui ligula vel massa.
+                    Praesent ultrices iaculis arcu iaculis ultrices. Maecenas vitae
+                    nulla odio. In laoreet, lectus in tempus ultricies.
+                  </p>
+                </div>
+      
+                <!-- Item -->
+                <div class="swiper-slide" data-swiper-binded="#testimonial-2">
+                  <div class="d-flex d-md-none pt-3 mb-3">
+                    <i class="ai-quotes d-md-none text-primary display-3 mt-n2"></i>
+                    <div class="ps-3">
+                      <h3 class="h5 mb-0" style="color:#28282E !important;">Robert Fox</h3>
+                      <p class="text-body-secondary mb-0" style="color:#858C97 !important;">Marketing Coordinator</p>
+                    </div>
+                  </div>
+                  <h2 class="mb-lg-4" style="color:#28282E !important;">
+                    Exceptional work, delivery and flexibility. An excellent result.
+                  </h2>
+                  <p class="lead mb-0" style="color:#576071 !important;">
+                    Leo vitae sem eget eget at in vivamus placerat sodales tristique
+                    risusiis senectusic quisque faucibus est justo egetert lobortis
+                    ultrices eu dignissim etiamier turpis tincidunt eget placerat
+                    feugiat senectusic quisque faucibus placerat sodales vitae tempor
+                    morbi tellus pulvinar tristique in turpis.
+                  </p>
+                </div>
+      
+                <!-- Item -->
+                <div class="swiper-slide" data-swiper-binded="#testimonial-3">
+                  <div class="d-flex d-md-none pt-3 mb-3">
+                    <i class="ai-quotes d-md-none text-primary display-3 mt-n2"></i>
+                    <div class="ps-3">
+                      <h3 class="h5 mb-0" style="color:#28282E !important;">Jenny Wilson</h3>
+                      <p class="text-body-secondary mb-0" style="color:#858C97 !important;">CEO, Co-Founder</p>
+                    </div>
+                  </div>
+                  <h2 class="mb-lg-4" style="color:#28282E !important;">
+                    Thanks to you, we have created a unique branding that is our
+                    pride!
+                  </h2>
+                  <p class="lead mb-0" style="color:#576071 !important;">
+                    Duis sapien velit, rutrum ac rutrum dapibus, auctor ut lacus.
+                    Aenean sit amet erat augue. Aenean finibus, nibh sed malesuada
+                    maximus, nisi tellus iaculis quam, eget egestas mi felis eu urna.
+                    Quisque id nisl commodo, egestas eros ac, cursus odio. Ut nec
+                    rutrum magna, vel tempor erat. Vivamus nec tempus purus.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="col-md-3  order-md-1 mt-n3">
+            <i
+              class="ai-quotes d-none d-md-block text-primary ms-n2 mb-1"
+              style="font-size: 150px;"></i>
+      
+            <!-- Contnetn binded to slider (on screens > 768px) -->
+            <div class="binded-content h-auto d-none d-md-block">
+              <div class="binded-item h-auto active" id="testimonial-1">
+                <h3 class="h5 mb-1" style="color:#28282E !important;">Lilia Bocouse</h3>
+                <p class="text-body-secondary mb-0"  style="color:#858C97 !important;">Head of Marketing</p>
+              </div>
+              <div class="binded-item h-auto" id="testimonial-2">
+                <h3 class="h5 mb-1" style="color:#28282E !important;">Robert Fox</h3>
+                <p class="text-body-secondary mb-0"  style="color:#858C97 !important;">Marketing Coordinator</p>
+              </div>
+              <div class="binded-item h-auto" id="testimonial-3">
+                <h3 class="h5 mb-1" style="color:#28282E !important;">Jenny Wilson</h3>
+                <p class="text-body-secondary mb-0" style="color:#858C97 !important;">CEO, Co-Founder</p>
+              </div>
+            </div>
+      
+            <!-- Swiper controls (Prev / Next) -->
+            <div class="d-flex align-items-center pb-2 pb-md-0 pt-4 mt-3">
+              <button
+                class="btn btn-icon btn-sm btn-outline-primary rounded-circle me-3"
+                type="button"
+                id="prev-testimonial"
+                aria-label="Prev"
+              >
+                <i class="ai-arrow-left"></i>
+              </button>
+              <div
+                class="testimonials-count fw-medium flex-shrink-0 text-center"
+                style="width: 2.5rem; color:#576071 !important;"
+              >
+              </div>
+              <button
+                class="btn btn-icon btn-sm btn-outline-primary rounded-circle ms-3"
+                type="button"
+                id="next-testimonial"
+                aria-label="Next"
+              >
+                <i class="ai-arrow-right"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+    </div>
+  
+</section>

@@ -7,6 +7,7 @@ import Section2 from "../components/home/Section2.astro";
 import Section3 from "../components/home/Section3.astro";
 import Testimonial from "../components/home/Testimonial.astro";
 import Cta from "../components/home/Cta.astro";
+import Seventy from "../components/home/Seventy.astro";
 
 ---
 
@@ -27,36 +28,20 @@ import Cta from "../components/home/Cta.astro";
     font-size: 1.125rem;
     font-weight: 400;
   }
-  .colored-heading{
-    background-image: url(/assets/images/home/text-bg.png);
-    background-repeat: repeat;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-position: center center;
-    font-size: 13rem;
-    text-align: center;
-    width: fit-content;
-    margin: auto auto;
-}
 </style>
 
 <Layout>
   <Hero/>
-
+  
   <Spinner/>
-
+  
   <Section1/>
-
+  
   <Section2/>
-
+ 
   <Section3/>
-
-  <section class="overflow-hidden pt-5 pb-5"
-  style="background-color:white; height: 100vh; display:flex; align-items:center;;">
-    <h2 class="colored-heading">
-      70% increase
-    </h2>
-  </section>
+  
+  <Seventy/>
 
   <Testimonial/>
 

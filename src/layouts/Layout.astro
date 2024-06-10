@@ -13,6 +13,7 @@ const {
 <script src="/src/scripts/aos-init.js"/>
 <script src="/src/scripts/cookie-consent.js"></script>
 <script src="/src/scripts/chat-bot.js"></script>
+<script src="/assets/js/theme.min.js" is:inline></script>
 
 <html lang="en" data-bs-theme="dark">
   <head>
@@ -30,7 +31,7 @@ const {
     <title>{title}</title>
   </head>
   <body id="body">
-    <main class="page-wrapper" style="background-color: #28282E;">
+    <main class="page-wrapper" style="background-color: var(--primary);">
         <Navbar/>
         <slot/>
         <Footer/>

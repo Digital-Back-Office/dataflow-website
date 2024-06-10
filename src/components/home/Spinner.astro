@@ -16,7 +16,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
-    gap: 4.25rem;
+    gap: 3.5rem;
     width: 50%;
   }
   .spinner-heading {
@@ -63,12 +63,93 @@
   .switch-text {
     transition: all 1s;
   }
+  .learn-btn{
+    background-color:white;
+    width: fit-content;
+    border-radius: 10px;
+    padding: 10px;
+    text-decoration: none;
+    box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.25);
+  }
+  .spinner-gif{
+    width: 45%;
+  }
+  @media (max-width:1330px){
+    .spinner-heading{
+      font-size: 5.75rem;
+    }
+  }
+  @media (max-width:1330px){
+    .spinner-heading{
+      font-size: 5rem;
+    }
+    .spinner-text{
+      gap: 3rem;
+    }
+  }
+  @media (max-width:1056px){
+    .spinner-heading{
+      font-size: 4.4rem;
+    }
+    .spinner-text{
+      gap: 2rem;
+    }
+    .switch-text{
+      font-size: 6.5rem !important;
+    }
+    .switch-text1{
+      font-size: 6.5rem !important;
+    }
+  }
+  @media (max-width: 950px){
+    .cont{
+      flex-direction: column-reverse;
+      gap: 3rem;
+    }
+    .spinner-text{
+      align-items: center;
+      width: 100%;
+      text-align: center;
+    }
+    .switch-text{
+      text-align: center;
+    }
+    .switch-text1{
+      text-align: center;
+    }
+    .spinner-gif{
+      width: 70%;
+    }
+  }
+  @media (max-width: 680px){
+    .spinner-heading{
+      font-size: 3.8rem;
+    }
+  }
+
+  @media (max-width: 450px){
+    .switch-text{
+      font-size: 4.4rem !important;
+    }
+    .switch-text1{
+      font-size: 4.4rem !important;
+    }
+    .spinner-heading{
+      font-size: 3rem;
+    }
+    .spinner-gif{
+      width: 90%;
+    }
+    .spinner-section{
+      padding: 3rem 0;
+    }
+  }
 </style>
 
 <section class="spinner-section">
   <div class="container">
     <div class="cont">
-      <div style="width:45%">
+      <div class="spinner-gif">
         <img src="/assets/images/home/logo-spinner.svg" />
       </div>
 
@@ -78,21 +159,25 @@
         </h4>
 
         <div style="position: relative; width:100%; overflow-y:hidden;">
-          <h3 style="font-size: 8rem; opacity:0">Airflow</h3>
+          <h3 class="switch-text1" style="font-size: 8rem; opacity:0">Airflow</h3>
           <h3
             id="text1"
             class="switch-text"
-            style="font-size: 8rem; position:absolute; top:0"
+            style="font-size: 8rem; position:absolute; top:0; left:0; right:0; width:100%;"
           >
             Airflow
           </h3>
           <h3
             id="text2"
             class="inactive switch-text"
-            style="font-size: 8rem;  position:absolute; top:0"
+            style="font-size: 8rem;  position:absolute; top:0; left:0; right:0; width:100%;"
           >
           </h3>
         </div>
+
+        <a href="#" class="learn-btn">
+          Learn More<i class="ai-arrow-right ms-2"></i>
+        </a>
       </div>
     </div>
   </div>

@@ -48,6 +48,85 @@ import Consultation_form from "../comman/ConsultationForm.astro";
     .spinner{
         width: 34.75%;
     }
+
+    @media (max-width: 1235px){
+        .hero-text1{
+            font-size: 5rem;
+        }
+        .hero-text2{
+            font-size: 9rem;
+        }
+    }
+
+    @media (max-width: 1185px){
+        .hero-text1{
+            font-size: 4.5rem;
+        }
+        .hero-text2{
+            font-size: 8.8rem;
+        }
+    }
+
+    @media (max-width: 1070px){
+        .hero-text1{
+            font-size: 4rem;
+        }
+        .hero-text2{
+            font-size: 8.5rem;
+        }
+    }
+
+    @media (max-width: 950px){
+        .cont{
+            flex-direction: column;
+        }
+        .hero-text{
+            width: 100%;
+            text-align: center;
+        }
+        .spinner{
+            width:50%;
+        }
+        .hero-section{
+            padding-top: 2rem;
+        }
+    }
+
+    @media (max-width: 550px){
+        .hero-text1{
+            font-size: 3rem;
+        }
+        .hero-text2{
+            font-size: 7rem;
+        }
+        .hero-text{
+            gap:1.5rem;
+        }
+        .hero-section{
+            padding-top: 1.5rem;
+        }
+        .spinner{
+            width: 70%;
+        }
+        .cont{
+            
+        }
+    }
+
+    @media (max-width: 450px){
+        .hero-text1{
+            font-size: 2.5rem;
+        }
+        .hero-text2{
+            font-size: 5rem;
+        }
+        .hero-text{
+            gap:1rem;
+        }
+        .hero-section{
+            padding-top: 0rem;
+        }
+    }
 </style>
 
 <section class="hero-section d-flex align-items-center">

@@ -1,9 +1,10 @@
 ---
+import ConsultationForm from "../comman/ConsultationForm.astro";
+
 
 ---
 <style>
     .cta-section{
-        padding-top: 513px !important;
         background-color: white;
     }
 </style>
@@ -55,19 +56,8 @@
         </div>
       </div>
     </div>
-    <div class="position-relative z-2 px-md-5">
-      <img
-        class="d-block d-dark-mode-none mx-auto"
-        src="assets/img/landing/saas-2/dash-light.png"
-        width="1076"
-        alt="Image"
-      />
-      <img
-        class="d-none d-dark-mode-block mx-auto"
-        src="assets/img/landing/saas-2/dash-dark.png"
-        width="1076"
-        alt="Image"
-      />
+    <div class="position-relative z-2 px-md-5 pb-2" style="display: flex; justify-content: center;">
+      <ConsultationForm/>
     </div>
   </div>
 </section>

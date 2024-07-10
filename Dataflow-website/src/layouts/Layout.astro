@@ -13,39 +13,33 @@ const { title } = Astro.props;
 		<meta name="description" content="Astro description" />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
+		<link href="https://fonts.googleapis.com/css2?family=Helvetica+Neue:wght@400;700&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
 		<title>{title}</title>
 	</head>
 	<body>
+		<header class="h-20 w-full  flex items-center justify-evenly bg-[#30BABA]">
+          
+			<img src="logoheader.png" class="h-10"/>
+		  
+		   <div class="h-20 w-1/2  flex items-center justify-center">
+			<nav class=" h-20 w-4/5 flex items-center justify-between">
+				<a href=""> <p class=" text-white text-base font-medium"  style="font-family:Helvetica Neue">Why Dataflow?</p> </a>
+				<a href=""> <p class=" text-white text-base font-medium"  style="font-family:Helvetica Neue">Pricing</p> </a>
+				<a href=""> <p class=" text-white text-base font-medium"  style="font-family:Helvetica Neue">Community</p> </a>
+				<a href=""> <p class=" text-white text-base font-medium"  style="font-family:Helvetica Neue">Company</p> </a>
+				<a href=""> <p class=" text-white text-base font-medium"  style="font-family:Helvetica Neue">Blog</p> </a>
+			</nav>
+		   </div>
+		   
+			<button class="px-5 py-2 bg-white rounded-md  text-base font-medium border shadow-md text-[#30BABA] ml-10"  style="font-family:Helvetica Neue">Book a demo</button>
+		
+		</header>
 		<slot />
+		<footer></footer>
 	</body>
 </html>
-<style is:global>
-	:root {
-		--accent: 136, 58, 234;
-		--accent-light: 224, 204, 250;
-		--accent-dark: 49, 10, 101;
-		--accent-gradient: linear-gradient(
-			45deg,
-			rgb(var(--accent)),
-			rgb(var(--accent-light)) 30%,
-			white 60%
-		);
-	}
-	html {
-		font-family: system-ui, sans-serif;
-		background:#1fb8a9;
-		background-size: 224px;
-	}
-	code {
-		font-family:
-			Menlo,
-			Monaco,
-			Lucida Console,
-			Liberation Mono,
-			DejaVu Sans Mono,
-			Bitstream Vera Sans Mono,
-			Courier New,
-			monospace;
-	}
+<style >
+
 </style>

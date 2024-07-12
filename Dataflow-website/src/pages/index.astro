@@ -2,35 +2,35 @@
 import Animationsandclock from "../components/Animationsandclock.astro";
 import Layout from "../layouts/Layout.astro";
 import Arrowright from '../../public/arrowright.svg';
-
+import Testimonial from "../components/Testimonial";
 ---
 
 <Layout title="helloworld">
   <div
     class="2xl:h-[700px] flex items-center bg-[#30BABA] xl:h-[650px] lg:h-[600px]"
   >
-    <div class="w-3/5 pl-32 2xl:pl-24 xl:pl-20">
+    <div class="w-3/5 pl-[12%]">
       <p
-        class="2xl:text-[90px] text-[#C0FFFF] font-bold leading-none xl:text-[80px] lg:text-[70px]"
+        class=" text-[#C0FFFF] font-bold leading-none text-5calc mb-[10%]"
         style="font-family:Helvetica Neue"
         >Get data platform <br /> ready in less than<br /></p>
       <p
-        class="2xl:text-[210px] text-[#0B7474] font-bold leading-none lg:text-[150px] xl:[180px]"
+        class="text-6calc text-[#0B7474] font-bold leading-none"
         style="font-family:Helvetica Neue">Thirty<br />Minutes</p>
     </div>
-    <div class="absolute right-24 pr-24 overflow-hidden">
+    <div class="absolute right-[5%] pr-24 overflow-hidden">
       <Animationsandclock />
     </div>
   </div>
   <div class="h-[100vh] w-full flex justify-center">
-    <div class="h-full w-6/12  overflow-hidden flex items-center justify-center">
+    <div class="h-full w-7/12  overflow-hidden flex items-center justify-center">
       <div class="w-[500px] h-[500px] border rounded-full border-gray-300 z-0 border-dashed border-2 relative">
-        <div class="h-[75px] w-[75px] bg-white rounded-full absolute top-[80px] left-2 z-20 shadow-md circle1"> <img src="/theia-ide.png"/></div>
-        <div class="h-[75px] w-[75px] bg-white rounded-full absolute bottom-[80px] left-2 z-10 shadow-md circle2 p-4"> <img src="/star.png"/></div>
-        <div class="h-[75px] w-[75px] bg-white rounded-full absolute top-[80px] right-2 z-10 shadow-md circle5 py-5 px-1"> <img src="/miflow.png"/></div>
-        <div class="h-[75px] w-[75px] bg-white rounded-full absolute bottom-[80px] right-2 z-10 shadow-md circle4 p-5"> <img src="/dbt.png"/></div>
-        <div class="h-[75px] w-[75px] bg-white rounded-full absolute left-[210px] bottom-[460px] shadow-md z-10 circle6"> <img src="/dashapps.png"/></div>
-        <div class="h-[75px] w-[75px] bg-white rounded-full absolute right-[210px] top-[460px] z-10 shadow-md circle3 p-5 pb-6"> <img src="/pytorch.png"/></div>
+        <div class="h-[75px] w-[75px] bg-[#C0FFFF] rounded-full absolute top-[80px] left-2 z-20 shadow-md circle1"> <img src="/theia-ide.png"/></div>
+        <div class="h-[75px] w-[75px] bg-[#C0FFFF] rounded-full absolute bottom-[80px] left-2 z-10 shadow-md circle2 p-4"> <img src="/star.png"/></div>
+        <div class="h-[75px] w-[75px] bg-[#C0FFFF] rounded-full absolute top-[80px] right-2 z-10 shadow-md circle5 py-5 px-1"> <img src="/miflow.png"/></div>
+        <div class="h-[75px] w-[75px] bg-[#C0FFFF] rounded-full absolute bottom-[80px] right-2 z-10 shadow-md circle4 p-5"> <img src="/dbt.png"/></div>
+        <div class="h-[75px] w-[75px] bg-[#C0FFFF] rounded-full absolute left-[210px] bottom-[460px] shadow-md z-10 circle6"> <img src="/dashapps.png"/></div>
+        <div class="h-[75px] w-[75px] bg-[#C0FFFF] rounded-full absolute right-[210px] top-[460px] z-10 shadow-md circle3 p-5 pb-6"> <img src="/pytorch.png"/></div>
 
         <div class="h-full w-full rounded-full  outerspin ">
            <div class="h-8 w-8 bg-white rounded-full z-10 absolute top-10 left-[75px] drop-shadow-lg"></div>
@@ -49,42 +49,87 @@ import Arrowright from '../../public/arrowright.svg';
     
     </div>
     <div class="h-full w-5/12  flex flex-col justify-center items-start">
-      <p class="font-bold text-black text-[80px] leading-none mb-20" style="font-family: Roboto;">
+      <p class="font-bold text-black text-4calc leading-none mb-20" style="font-family: Roboto;">
         Best in class<br />tools in one<br />platform like
       </p>
     <div class="scroller">
-      <div class="text">  <p class="font-bold text-[100px] leading-none italic text-[#30BABA]" style="font-family: Roboto;">
+      <div class="text">  <p class="font-bold text-5calc leading-none italic text-[#30BABA]" style="font-family: Roboto;">
         Airflow
       </p></div>
-      <div class="text">  <p class="font-bold text-[100px] leading-none italic text-[#FFA500]" style="font-family: Roboto;">
-        Miflow
+      <div class="text">  <p class="font-bold text-5calc leading-none italic text-[#FFA500]" style="font-family: Roboto;">
+        Mlflow
       </p></div>
-       <div class="text">  <p class="font-bold text-[100px] leading-none italic text-[#4169E1] " style="font-family: Roboto;">
+       <div class="text">  <p class="font-bold text-5calc leading-none italic text-[#4169E1] " style="font-family: Roboto;">
         Theia IDE
       </p></div>
-      <div class="text">  <p class="font-bold text-[100px] leading-none italic text-[#32CD32] " style="font-family: Roboto;">
+      <div class="text">  <p class="font-bold text-5calc leading-none italic text-[#32CD32] " style="font-family: Roboto;">
         Jupyter
       </p></div>
-      <div class="text">  <p class="font-bold text-[100px] leading-none italic text-[#FFD700] " style="font-family: Roboto;">
+      <div class="text">  <p class="font-bold text-5calc leading-none italic text-[#FFD700] " style="font-family: Roboto;">
         DBT
       </p></div>
     </div>
 
 
 
-      <button class="bg-white px-3 py-2 text-[#30BABA] rounded-lg shadow-md flex text-lg items-center gap-x-2 mt-14" style="font-family: Roboto;">Learn more <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <g id="arrow_upward" clip-path="url(#clip0_2446_31566)">
-          <path id="Vector" d="M12 4L10.59 5.41L16.17 11L4 11V13L16.17 13L10.58 18.58L12 20L20 12L12 4Z" fill="#30BABA"/>
-        </g>
-        <defs>
-          <clipPath id="clip0_2446_31566">
-            <rect width="24" height="24" fill="white" transform="matrix(0 1 -1 0 24 0)"/>
-          </clipPath>
-        </defs>
-      </svg> </button>
+      <button class="bg-white px-3 py-2 text-[#30BABA] rounded-lg shadow-md flex text-base items-center gap-x-2 mt-14" style="font-family: Roboto;">Learn more <img src="/arrowright.svg">   </button>
     </div>
   </div>
-  
+  <div class="transition-all duration-700 ease-in-out  h-screen w-full bg-[#FBE2F0] flex items-center justify-center group hover:bg-[#D40F7D]">
+      <div class="h-[60vh] w-2/6 flex flex-col justify-center">
+        <h3 class="transition-all duration-700 ease-in-out text-calc text-black font-bold  mb-[5%] group-hover:text-white group-hover:text-2calc " style=" font-family: Arimo;">Run Dataflow on any<br>cloud</h3>
+        <p class="transition-all duration-700 ease-in-out text-black text-base group-hover:text-white group-hover:text-lg"  style=" font-family: Arimo;">Thanks to our platform, developed using<br>advanced data management methods, data<br>quality reaches 100%, which is 20% better<br>than other platforms.</p>
+        <button class="transition-all duration-700 ease-in-out  text-[#30BABA] flex items-center justify-center text-base items-center gap-x-1 mt-14 h-10 w-32 group-hover:bg-white group-hover:shadow-md group-hover:rounded-lg" style="font-family: Roboto;">Learn more<img src="/arrowright.svg" height="20px" width='20px'></button>
+      </div>
+      <div class="h-[60vh] w-2/6 flex flex-col justify-start items-end">
+        <img src="/runanycloud.png" class="h-[90%] w-[90%] transition-all duration-700 ease-in-out group-hover:scale-125"/>
+      </div>
+  </div>
+  <div class="transition-all duration-700 ease-in-out  h-screen w-full bg-[#FCF5DE] flex items-center justify-center group hover:bg-[#FBBC05]">
+    <div class="h-[60vh] w-2/6 flex flex-col justify-start items-center">
+      <img src="/rundata3.png" class="h-[90%]  w-[90%] transition-all duration-700 ease-in-out group-hover:scale-125"/>
+    </div>
+    <div class="h-[60vh] w-2/6 flex flex-col justify-center items-end">
+      <div class="flex-col justify-center items-start">
+      <h3 class="transition-all duration-700 ease-in-out text-calc text-black text-start font-bold  mb-[5%] group-hover:text-white group-hover:text-2calc " style=" font-family: Arimo;">Manage your data,<br>connection across<br>tools</h3>
+      <p class="transition-all duration-700 ease-in-out text-black text-base text-start group-hover:text-white group-hover:text-lg"  style=" font-family: Arimo;">Thanks to our platform, developed using<br>advanced data management methods, data<br>quality reaches 100%, which is 20%<br>better than other platforms.</p>
+      <button class="transition-all duration-700 ease-in-out  text-[#30BABA] flex items-center justify-center text-base items-center gap-x-1 mt-14 h-10 w-32 group-hover:bg-white group-hover:shadow-md group-hover:rounded-lg" style="font-family: Roboto;">Learn more<img src="/arrowright.svg" height="20px" width='20px'></button>
+    </div>
+  </div>
+</div>
+<div class="transition-all duration-700 ease-in-out  h-screen w-full bg-[#E1E6FA] flex items-center justify-center group hover:bg-[#0089D6]">
+  <div class="h-[60vh] w-2/6 flex flex-col justify-center">
+    <h3 class="transition-all duration-700 ease-in-out text-calc text-black font-bold  mb-[5%] group-hover:text-white group-hover:text-2calc " style=" font-family: Arimo;">Say goodbye to<br>Python dependency<br>hell</h3>
+    <p class="transition-all duration-700 ease-in-out text-black text-base group-hover:text-white group-hover:text-lg"  style=" font-family: Arimo;">Thanks to our platform, developed using<br>advanced data management methods, data<br>quality reaches 100%, which is 20% better<br>than other platforms.</p>
+    <button class="transition-all duration-700 ease-in-out  text-[#30BABA] flex items-center justify-center text-base items-center gap-x-1 mt-14 h-10 w-32 group-hover:bg-white group-hover:shadow-md group-hover:rounded-lg" style="font-family: Roboto;">Learn more<img src="/arrowright.svg" height="20px" width='20px'></button>
+  </div>
+  <div class="h-[60vh] w-2/6 flex flex-col justify-start items-end">
+    <img src="/rundata2.png" class="h-[90%] w-[90%] transition-all duration-700 ease-in-out group-hover:scale-125"/>
+  </div>
+</div>
+  <div class="w-full h-screen flex flex-col items-center justify-center">
+        <p class="text-3calc font-bold leading-none bg-clip-text text-transparent" style=" font-family: Arimo; background-image: url('Malhotra.png'); background-size: cover; background-position: center;">70% increase</p>
+        <p class="text-2calc font-bold text-[#153D67]" style=" font-family: Arimo;">In Data team efficiency with Dataflow</p>
+  </div>
+
+
+ 
+  <Testimonial client:load></Testimonial>
+
+
+ <div class="h-screen w-full flex justify-center items-end">
+    <div id="animatedDiv" class="h-[80vh] w-[70%] bg-[#2FB7B8] rounded-t-[60px] animate-slide-up  flex flex-col items-center justify-end">
+      <p class="text-4calc font-bold text-center text-white" style=" font-family: Arimo;">New life for data<br>begins today</p>
+      <p class="text-lg text-center text-white mt-5 font-thin" style=" font-family: Archivo Narrow;">Using basic data skills you can analysis and improve your business indicators with<br>Around</p>
+      <div class="flex w-full justify-center gap-x-10 mt-8">
+        <button class="px-5 py-2 bg-[#FFE073] text-base text-white rounded-full font-semibold">Start free 14-day trial</button>
+        <button class="px-5 py-2 border-[#FFE073] text-base text-[#FFE073] border-2 rounded-full font-semibold ">Request a demo</button>
+      </div>
+      <button class="w-2/4 bg-white h-16 rounded-t-2xl mt-20 flex items-end justify-center pb-2"  style=" font-family: Arimo;" ><p class=" text-2xl font-bold bg-gradient-to-r from-teal-500 to-teal-300 text-transparent bg-clip-text">30 mins FREE Consultation</p></button>
+    </div>
+  </div>
+<div class="h-16 w-full flex items-center justify-center bg-[#2FB7B8] "><p class="text-base font-normal text-white decoration-white">Our dedicated team is prepared to assist you.<span class=" underline underline-offset-8 text-[17px]"> Talk to our finance agent</span></p></div>
+
 </Layout>
 <style>
 
@@ -194,12 +239,34 @@ import Arrowright from '../../public/arrowright.svg';
 }
 @keyframes colorchange {
   5% {
-    background-color: rgba(106, 244, 244, 0.9);
+    background-color: rgba(255, 255, 255, 0.9);
    }
   70%{
-    background-color: rgba(249, 249, 249, 0.9);
+    background-color: #C0FFFF;
   }
   
 }
 
+    .show-slide-up {
+      transition: fadeInDown 1s ease-in-out, opacity 1s ease-in-out;
+    }
+    @keyframes fadeInDown {
+   0% {
+      opacity: 0;
+      transform: translateY(-20px);
+   }
+   100% {
+      opacity: 1;
+      transform: translateY(0);
+   }
+} 
+
+
 </style>
+<script>
+  window.addEventListener('scroll', () => {
+    const animatedDiv = document.getElementById('animatedDiv');
+    animatedDiv.classList.add('show-slide-up');
+  });
+</script>
+

@@ -15,6 +15,8 @@ const { title } = Astro.props;
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<link href="https://fonts.googleapis.com/css2?family=Helvetica+Neue:wght@400;700&display=swap" rel="stylesheet">
 		<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css2?family=Arimo&display=swap" rel="stylesheet">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@400;700&display=swap">
 
 		<title>{title}</title>
 	</head>
@@ -37,7 +39,52 @@ const { title } = Astro.props;
 		
 		</header>
 		<slot />
-		<footer></footer>
+		<footer>
+			<div class="w-full h-[400px] flex  px-[15%]">
+				<div class="w-full h-[400px] bg-white flex pt-[50px]">
+				  <div class="w-[30%] h-full flex flex-col flex flex-col items-start justify-start">
+					<img src="greenlogo.png" class="h-12"/>
+					<p class="text-xs text-[#858C97] mt-5 w-5/6">Morbi et massa fames ac scelerisque sit commodo dignissim faucibus vel quisque proin lectus laoreet sem adipiscing sollicitudin erat massa tellus lorem enim aenean phasellus in hendrerit </p>
+					<div class=" w-4/5  mt-6">
+					<button class="h-7 w-7 rounded-full bg-[#F6F0E1] p-2"><img src="instagram.png"/></button>
+					<button class="h-7 w-7 rounded-full bg-[#F6F0E1] ml-3 p-2"><img src="facebook.png" /></button>
+					<button class="h-7 w-7 rounded-full bg-[#F6F0E1] ml-3 p-2"><img src="linkedin.png" /></button>
+					</div>
+					<p class="text-[#858C97] text-xs mt-10">© All rights reserved.</p>
+				  </div>
+				  <div class="w-[20%] h-full flex flex-col">
+					<div class="w-full h-[50%]">
+					<h6 class="text-base font-bold text-[#434A57]" style=" font-family: Archivo Narrow;" >Why Dataflow</h6>
+					<button class="text-base font-thin text-[#434A57]"  style=" font-family: Archivo Narrow;" >Our team</button>
+					</div>
+					<h6 class="text-base font-bold text-[#434A57]" style=" font-family: Archivo Narrow;" >Pricing</h6>
+					<p class="text-base font-thin text-[#434A57]"  style=" font-family: Archivo Narrow;" >privacy policy</p>
+					<p class="text-base font-thin text-[#434A57]"  style=" font-family: Archivo Narrow;" >Terms of use</p>
+				  </div>
+				  <div class="w-[25%] h-full flex flex-col">
+					<div class="w-full h-[50%]">
+					<h6 class="text-base font-bold text-[#434A57]" style=" font-family: Archivo Narrow;" >Community</h6>
+					<p class="text-base font-thin text-[#434A57]"  style=" font-family: Archivo Narrow;" >privacy policy</p>
+					<p class="text-base font-thin text-[#434A57]"  style=" font-family: Archivo Narrow;" >Terms of use</p>
+				  </div>
+					<h6 class="text-base font-bold text-[#434A57] " style=" font-family: Archivo Narrow;" >Company</h6>
+					<p class="text-base font-thin text-[#434A57]"  style=" font-family: Archivo Narrow;" >communtiy</p>
+					<p class="text-base font-thin text-[#434A57]"  style=" font-family: Archivo Narrow;" >Blog</p>
+				  </div>
+				  <div class="w-[25%] h-full flex flex-col  items-end">
+					<div >
+					<p class="text-base font-thin text-[#434A57]"  style=" font-family: Archivo Narrow;" >+ 1 526 220 0444</p>
+					<p class="text-base font-thin text-[#434A57]"  style=" font-family: Archivo Narrow;" >+ 1 526 220 0444</p>
+					<p class="text-base font-thin text-[#434A57]"  style=" font-family: Archivo Narrow;" >email@example.com</p>
+				  </div>
+				  </div>
+				  <div></div>
+				  <div></div>
+				</div>
+				<div></div>
+				<div></div>
+				</div>
+		</footer>
 	</body>
 </html>
 <style >

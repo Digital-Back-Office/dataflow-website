@@ -1,0 +1,26 @@
+---
+import { getEntry } from "astro:content";
+const Data = await getEntry("comman", "footerheader");
+ const header = Data.data.header;
+
+---
+
+<header class="h-20 w-full  flex items-center justify-evenly bg-[#30BABA]">
+          
+  <img src="/assets/images/logoheader.png" class="h-10"/>
+  
+   <div class="h-20 w-1/2  flex items-center justify-center">
+  <nav class=" h-20 w-4/5 flex items-center justify-between">
+    <a href=""> <p class=" text-white text-base font-medium hover:border-b-2 border-white"  style="font-family:Helvetica Neue">{header.nav1}</p> </a>
+    <a href=""> <p class=" text-white text-base font-medium hover:border-b-2 border-white"  style="font-family:Helvetica Neue">{header.nav2}</p> </a>
+    <a href=""> <p class=" text-white text-base font-medium hover:border-b-2 border-white"  style="font-family:Helvetica Neue">{header.nav3}</p> </a>
+    <a href=""> <p class=" text-white text-base font-medium hover:border-b-2 border-white"  style="font-family:Helvetica Neue">{header.nav4}</p> </a>
+    <a href=""> <p class=" text-white text-base font-medium hover:border-b-2 border-white"  style="font-family:Helvetica Neue">{header.nav5}</p> </a>
+  </nav>
+   </div>
+   
+  <button class="ease-in duration-300 px-5 py-2 bg-white rounded-md  text-base font-medium border-2 shadow-md text-[#30BABA] ml-10 hover:bg-[#30BABA] hover:text-white hover:translate-y-1"  style="font-family:Helvetica Neue">{header.button}</button>
+
+</header>
+
+

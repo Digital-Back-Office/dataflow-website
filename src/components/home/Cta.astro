@@ -1,63 +1,81 @@
 ---
-import ConsultationForm from "../comman/ConsultationForm.astro";
 
+import { getEntry } from "astro:content";
 
+const Data = await getEntry("Home", "home");
+const data = Data.data.cta;
 ---
-<style>
-    .cta-section{
-        background-color: white;
-    }
-</style>
-
-<!-- CTA -->
-<section class="pt-2 pt-md-0 cta-section" >
-  <div class="position-relative pt-lg-3 pt-xl-4 pt-xxl-5">
-    <div
-      class="bg-primary position-absolute top-0 start-0 w-100 h-100 rounded-5 d-md-none"
-      data-aos="zoom-in"
-      data-aos-duration="700"
-      data-aos-offset="300"
-    >
+<div id="animatedouterdiv" class="h-screen w-full flex justify-center items-end">
+  <div id="animatedDiv" class="  h-[80vh] w-[70%] bg-[#2FB7B8] rounded-t-[60px]   flex flex-col items-center justify-end">
+    <p class="text-4calc font-bold text-center text-white w-3/5" style=" font-family: Arimo;">{data.title}</p>
+    <p class="text-lg text-center text-white mt-5 font-thin w-3/6" style=" font-family: Archivo Narrow;">{data.description}</p>
+    <div class="flex w-full justify-center gap-x-10 mt-8">
+      <button class=" transition-all duration-500 ease-in-out px-5 py-2 bg-[#FFE073] text-base text-white border-2 border-[#FFE073] rounded-full font-semibold  hover:bg-[#30BABA] hover:text-[#FFE073] ">Start free 14-day trial</button>
+      <button class="transition-all duration-500 ease-in-out px-5 py-2 border-[#FFE073] text-base text-[#FFE073] border-2 rounded-full font-semibold hover:bg-[#FFE073] hover:text-white ">Request a demo</button>
     </div>
-    <div
-      class="bg-primary position-absolute top-0 start-0 w-100 h-100 d-none d-md-block"
-      style="border-radius: 5rem 5rem 0 0;"
-      data-aos="zoom-in"
-      data-aos-duration="700"
-      data-aos-offset="300"
-    >
-    </div>
-    <div
-      class="container px-4 px-sm-5 px-md-0 position-relative z-2 pt-md-4 pt-lg-5 pb-sm-2 pb-md-3 pb-xl-4 pb-xxl-5"
-      data-bs-theme="dark"
-    >
-      <div
-        class="row justify-content-center"
-        data-aos="fade-up"
-        data-aos-duration="500"
-        data-aos-offset="300"
-      >
-        <div class="col-md-10 col-lg-8 col-xl-7 col-xxl-6 text-center py-5">
-          <h2 class="display-1 mb-4">New life for data begins today</h2>
-          <p class="text-body fs-xl pb-3 mb-3 mb-lg-4">
-            Using basic data skills you can analysis and improve your business
-            indicators with Around.
-          </p>
-          <div class="d-sm-flex justify-content-center">
-            <a
-              class="btn btn-lg btn-warning rounded-pill w-100 w-sm-auto me-sm-4 mb-3 mb-sm-0"
-              href="#">Start free 14-day trial</a
-            >
-            <a
-              class="btn btn-lg btn-outline-warning rounded-pill w-100 w-sm-auto"
-              href="#">Request a demo</a
-            >
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="position-relative z-2 px-md-5 pb-2" style="display: flex; justify-content: center;">
-      <ConsultationForm/>
-    </div>
+    <button class=" transition-all duration-300 ease-in-out w-2/4 bg-white h-16 rounded-t-2xl mt-20 flex items-end justify-center pb-2 hover:rounded-2xl hover:-translate-y-2 hover:pb-4"  style=" font-family: Arimo;" ><p class=" text-2xl font-bold bg-gradient-to-r from-teal-500 to-teal-300 text-transparent bg-clip-text">{data.button}</p></button>
   </div>
-</section>
+</div>
+<style>
+    
+
+    @keyframes fadeInUp {
+      0% {
+        height: 10vh;
+        width: 100px;
+        opacity: 0;
+      }
+      100% {
+        height: 80vh;
+        width: 70%;
+        transform: translateY(0%);
+        opacity: 1;
+      }
+    }
+
+    @keyframes fadeOutDown {
+      0% {
+        height: 80vh;
+        width: 70%;
+        opacity: 1;
+      }
+      100% {
+        height: 0vh;
+        width: 1px;
+        opacity: 0;
+      }
+    }
+
+    .fadeInUp-animation {
+      animation: fadeInUp 1s forwards;
+    }
+
+    .fadeOutDown-animation {
+      animation: fadeOutDown 1s forwards;
+    }
+
+
+</style>
+<script>
+ document.addEventListener('DOMContentLoaded', () => {
+  const animatedouterdiv = document.getElementById('animatedouterdiv');
+      const animatedDiv = document.getElementById('animatedDiv');
+
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            animatedDiv.classList.remove('fadeOutDown-animation');
+            animatedDiv.classList.add('fadeInUp-animation');
+          } else {
+            animatedDiv.classList.remove('fadeInUp-animation');
+            animatedDiv.classList.add('fadeOutDown-animation');
+          }
+        });
+      }, {
+        threshold: 0.15 
+      });
+
+      observer.observe(animatedouterdiv);
+    });
+</script>
+

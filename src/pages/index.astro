@@ -1,52 +1,22 @@
 ---
-import Hero from "../components/home/Hero.astro";
-import Spinner from "../components/home/Spinner.astro";
 import Layout from "../layouts/Layout.astro";
+import Testimonial from "../components/comman/Testimonial";
+import Hero from "../components/home/Hero.astro";
+import LearnSection from "../components/home/LearnSection.astro";
 import Section1 from "../components/home/Section1.astro";
 import Section2 from "../components/home/Section2.astro";
 import Section3 from "../components/home/Section3.astro";
-import Testimonial from "../components/home/Testimonial.astro";
-import Cta from "../components/home/Cta.astro";
 import Seventy from "../components/home/Seventy.astro";
-
+import Cta from "../components/home/Cta.astro";
 ---
 
-<style>
-  .teal-dark-heading{
-    color: var(--secondary-dark);
-    font-size: 2.5rem;
-    font-weight: 700;
-  }
-  .neutral-dark-text{
-    color: var(--neutral-dark);
-    font-weight: 400;
-    font-size: 1.125rem;
-  }
-  .teal-primary-btn{
-    color: var(--primary);
-    text-decoration: none;
-    font-size: 1.125rem;
-    font-weight: 400;
-  }
-</style>
-
-<Layout>
-  <Hero/>
-  
-  <Spinner/>
-  
-  <Section1/>
-  
-  <Section2/>
- 
-  <Section3/>
-  
-  <Seventy/>
-
-  <Testimonial/>
-
-  <Cta/>
-  
+<Layout title="DataFlow">
+ <Hero/>
+ <LearnSection/>
+ <Section1/>
+ <Section2/>
+ <Section3/>
+ <Seventy/>
+ <Testimonial client:load></Testimonial>
+ <Cta/>
 </Layout>
-
-

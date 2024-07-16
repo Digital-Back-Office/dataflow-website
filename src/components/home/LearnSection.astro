@@ -1,0 +1,111 @@
+---
+import RingAnimation from "../comman/RingAnimation.astro";
+
+import { getEntry } from "astro:content";
+
+const Data = await getEntry("Home", "home");
+const data = Data.data.LearnSection;
+---
+<div class="h-[100vh] w-full flex justify-center">
+  <div class="h-full w-7/12  overflow-hidden flex items-center justify-center">
+ <RingAnimation/>
+  </div>
+  <div class="h-full w-5/12  flex flex-col justify-center items-start">
+    <p class="font-bold text-black text-4calc leading-none mb-20 w-3/4" style="font-family: Roboto;">
+      {data.title}
+    </p>
+  <div class="scroller">
+    <div class="text">  <p class="font-bold text-7calc leading-none italic text-[#30BABA]" style="font-family: Roboto;">
+      {data.features[0]}
+    </p></div>
+    <div class="text">  <p class="font-bold text-7calc leading-none italic text-[#FFA500]" style="font-family: Roboto;">
+      {data.features[1]}
+    </p></div>
+     <div class="text">  <p class="font-bold text-7calc leading-none italic text-[#4169E1] " style="font-family: Roboto;">
+      {data.features[2]}
+    </p></div>
+    <div class="text">  <p class="font-bold text-7calc leading-none italic text-[#32CD32] " style="font-family: Roboto;">
+      {data.features[4]}
+    </p></div>
+    <div class="text">  <p class="font-bold text-7calc leading-none italic text-[#FFD700] " style="font-family: Roboto;">
+      {data.features[5]}
+    </p></div>
+  </div>
+
+
+
+  <a href="learn"> <button class=" custom-button bg-white px-3 py-2 duration-700 text-[#30BABA] rounded-lg shadow-md flex text-base items-center gap-x-2 mt-14 hover:-translate-y-1 " style="font-family: Roboto;">{Data.data.LearnMoreBtn}<img class="button-img"  src="/assets/images/arrowright.svg">   </button></a> 
+  </div>
+</div>
+<style>
+  
+.scroller {
+  overflow: hidden;
+  position: relative;
+  width: 500px;
+  height: 120px;
+}
+
+.text {
+  position: absolute;
+  width: 100%;
+  top: 100%;
+  animation: scroll 10s infinite;
+}
+
+.text:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.text:nth-child(2) {
+  animation-delay: 2s;
+}
+
+.text:nth-child(3) {
+  animation-delay: 4s;
+}
+
+.text:nth-child(4) {
+  animation-delay: 6s;
+}
+
+.text:nth-child(5) {
+  animation-delay: 8s;
+}
+
+@keyframes scroll {
+  0% {
+    top: 100%;
+    opacity: 0;
+    
+  }
+  10% {
+    top: 10%;
+    opacity: 1;
+  }
+  30% {
+    top: 10%;
+    opacity: 0;
+  }
+  40% {
+    top: 0%;
+    opacity: 0;
+  }
+  100% {
+    top: 0%;
+    opacity: 0;
+  }
+}
+
+.custom-button:hover {
+    background-color: #30BABA; /* Change button background color */
+    color: white; /* Change text color */
+    
+}
+
+.custom-button:hover .button-img {
+    filter: brightness(0) invert(1); 
+}
+
+
+</style>

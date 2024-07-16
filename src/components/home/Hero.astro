@@ -1,167 +1,26 @@
 ---
-import Consultation_form from "../comman/ConsultationForm.astro";
+import Animationsandclock from "../comman/Animationsandclock.astro";
+import { getEntry } from "astro:content";
+
+const Data = await getEntry("Home", "home");
+const hero = Data.data.hero;
 ---
-
+<div
+class="2xl:h-[700px] flex items-center bg-[#30BABA] xl:h-[650px] lg:h-[600px]"
+>
+<div class="w-3/5 pl-[12%]">
+  <p
+    class=" text-[#C0FFFF] font-bold leading-none text-5calc mb-[5%]"
+    style="font-family:Helvetica Neue"
+    >{hero.title1}</p>
+  <p
+    class="text-6calc text-[#0B7474] font-bold leading-none"
+    style="font-family:Helvetica Neue">{hero.title2}</p>
+</div>
+<div class="absolute right-[18%] lg:right-[5%] xl:right-[10%] overflow-hidden">
+  <Animationsandclock />
+</div>
+</div>
 <style>
-    .hero-section {
-        background-color: var(--primary);
-        width:100%;
-        min-height: calc(100vh - 5.9375rem);
-        height:fit-content;
-        padding-top: 2rem;
-        padding-bottom: 2rem;
-    }
 
-    @media (max-width: 1024px) {
-        .hero-section {
-            padding-top: 4rem;
-        }
-    }
-    .cont{
-        width:100%;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-
-    .hero-text{
-        width: 61.96%;
-        display: flex;
-        flex-direction: column;
-        gap: 2.5rem;
-    }
-
-    .hero-text1{
-        color:var(--secondary-very-light);
-        font-size:5.225rem;
-        font-weight: 700;
-        line-height:108%;
-        font-feature-settings: "clig" off, "liga" off;
-    }
-    .hero-text2{
-        color:var(--secondary-dark);
-        font-size:9.125rem;
-        font-weight:700;
-        line-height: 108%;
-        font-feature-settings: 'clig' off, 'liga' off;
-    }
-    .spinner{
-        width: 34.75%;
-    }
-
-    @media (max-width: 1235px){
-        .hero-text1{
-            font-size: 5rem;
-        }
-        .hero-text2{
-            font-size: 9rem;
-        }
-    }
-
-    @media (max-width: 1185px){
-        .hero-text1{
-            font-size: 4.5rem;
-        }
-        .hero-text2{
-            font-size: 8.8rem;
-        }
-    }
-
-    @media (max-width: 1070px){
-        .hero-text1{
-            font-size: 4rem;
-        }
-        .hero-text2{
-            font-size: 8.5rem;
-        }
-    }
-
-    @media (max-width: 950px){
-        .cont{
-            flex-direction: column;
-        }
-        .hero-text{
-            width: 100%;
-            text-align: center;
-        }
-        .spinner{
-            width:50%;
-        }
-        .hero-section{
-            padding-top: 2rem;
-        }
-    }
-
-    @media (max-width: 550px){
-        .hero-text1{
-            font-size: 3rem;
-        }
-        .hero-text2{
-            font-size: 7rem;
-        }
-        .hero-text{
-            gap:1.5rem;
-        }
-        .hero-section{
-            padding-top: 1.5rem;
-        }
-        .spinner{
-            width: 70%;
-        }
-        .cont{
-            
-        }
-    }
-
-    @media (max-width: 450px){
-        .hero-text1{
-            font-size: 2.5rem;
-        }
-        .hero-text2{
-            font-size: 5rem;
-        }
-        .hero-text{
-            gap:1rem;
-        }
-        .hero-section{
-            padding-top: 0rem;
-        }
-    }
 </style>
-
-<section class="hero-section d-flex align-items-center">
-    <div class="container my-auto">
-
-        <div class="cont">
-            <!--Hero text-->
-            <div class="hero-text">
-                <h4 class="hero-text1">
-                    Get data platform<br/> ready in less than
-                </h4>
-                <h3 class="hero-text2">
-                    Thirty<br/> Minutes
-                </h3>
-            </div>
-            
-            <!--Spinner -->
-            <div class="spinner">
-                <img id="spinner" style="width:100%" src="/assets/images/home/hour-glass.svg"/>
-            </div>
-        </div>
-        
-    </div>
-</section>
-
-<script>
-    const img = document.getElementById("spinner") as HTMLImageElement;
-    let i = 1;
-    function switchImage(){
-        img.src = "/assets/images/home/hour-glass/img"+i+".png";
-        i++;
-        if (i===5) i = 1;
-        setTimeout(()=>{
-            switchImage();
-        },110)
-    }
-    switchImage();
-</script>

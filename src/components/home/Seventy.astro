@@ -1,88 +1,21 @@
+---
 
+import { getEntry } from "astro:content";
+
+const Data = await getEntry("Home", "home");
+const data = Data.data.Seventy;
+---
+<div class="w-full h-screen flex flex-col items-center justify-center">
+    <p class="text-3calc font-bold leading-none bg-fixed-text" style="font-family: Arimo;">{data.title}</p>
+    <p class="text-2calc font-bold text-[#153D67]" style="font-family: Arimo;">{data.description}</p>
+  </div>
 <style>
-    .colored-heading{
-        background-image: url(/assets/images/home/text-bg.png);
-        background-repeat: repeat;
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-position: center center;
-        font-size: 15rem;
-        text-align: center;
-        width: fit-content;
-        margin: auto auto;
-    }
-
-    @media (max-width: 1600px){
-        .colored-heading{
-            font-size: 15rem;
-        }
-    }
-    @media (max-width: 1521px){
-        .colored-heading{
-            font-size: 14rem;
-        }
-    }
-    @media (max-width: 1421px){
-        .colored-heading{
-            font-size: 13rem;
-        }
-    }
-    @media (max-width: 1321px){
-        .colored-heading{
-            font-size: 12rem;
-        }
-    }
-    @media (max-width: 1221px){
-        .colored-heading{
-            font-size: 11rem;
-        }
-    }
-    @media (max-width: 1121px){
-        .colored-heading{
-            font-size: 10rem;
-        }
-    }
-    @media (max-width: 1021px){
-        .colored-heading{
-            font-size: 9rem;
-        }
-    }
-    @media (max-width: 921px){
-        .colored-heading{
-            font-size: 8rem;
-        }
-    }
-    @media (max-width: 621px){
-        .colored-heading{
-            font-size: 7rem;
-        }
-    }
-    @media (max-width: 521px){
-        .colored-heading{
-            font-size: 6rem;
-        }
-    }
-    @media (max-width: 421px){
-        .colored-heading{
-            font-size: 5.5rem;
-        }
-    }
-    @media (max-width: 350px){
-        .colored-heading{
-            font-size: 5rem;
-        }
-    }
-    @media (max-width: 335px){
-        .colored-heading{
-            font-size: 4.5rem;
-        }
+    .bg-fixed-text {
+      background-attachment: fixed;
+      background-image: url('/assets/images/Malhotra.png');
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      background-repeat: repeat;
     }
 </style>
-
-
-<section class="overflow-hidden pt-5 pb-5"
-  style="background-color:white; height: 100vh; display:flex; align-items:center;;">
-    <h2 class="colored-heading">
-      70% increase
-    </h2>
-  </section>

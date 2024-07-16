@@ -1,0 +1,174 @@
+---
+export interface Props {
+  title: string;
+  image1: string;
+  image2: string;
+  logo: string;
+}
+
+const { title, image1, image2, logo } = Astro.props;
+import { getEntry } from "astro:content";
+
+const Data = await getEntry("learn", "learn");
+const data1 = Data.data.section1.title;
+const data2 = Data.data.section2.title;
+const data3 = Data.data.section3.title;
+const data4 = Data.data.section4.title;
+const data5 = Data.data.section5.title;
+const data6 = Data.data.section6.title;
+const data7 = Data.data.section7.title;
+const data8 = Data.data.section8.title;
+const button = Data.data.button
+
+---
+
+<div class="h-screen w-full bg-white flex items-center card">
+    <div class="w-2/5 h-full flex flex-col items-start justify-center pl-[11%] ">
+        
+        <div class="toplogo w-[40%] mb-10 opacity-0">
+            <img src={logo} alt="Logo" />
+        </div>
+        <p class="centertitle text-calc font-bold text-start text-[#303030] w-4/5 mb-10 opacity-0" style="font-family: Arimo;">
+            {title}
+        </p>
+        <a href="learn">
+            <button class="bottombutton custom-button bg-white px-3 py-2 duration-300 text-[#30BABA] opacity-0 rounded-lg shadow-md flex text-base items-center gap-x-2 hover:-translate-y-1" style="font-family: Roboto;">
+                {button} <img class="button-img" src="/assets/images/arrowright.svg" alt="Arrow Right" />
+            </button>
+        </a>
+   
+    </div>
+    <div class="imageanimateouter w-3/5 h-[60vh] flex justify-start pl-10 overflow-hidden">
+        <div class="w-4/5 h-full bg-[#FBE2F0] rounded-3xl relative">
+            <div class="image1animate w-[70%] h-[50%] absolute right-[5%] top-[9%] rounded-2xl opacity-0">
+                <img src={image1} class="h-full w-full" alt="Image 1" />
+            </div>
+            <div class="image2animate w-[48%] h-[52%] absolute left-[5%] bottom-[9%] rounded-2xl opacity-0">
+                <img src={image2} class="h-full w-full" alt="Image 2" />
+            </div>
+        </div>
+    </div>
+   
+</div>
+
+
+<style>
+    .custom-button:hover {
+background-color: #30BABA; /* Change button background color */
+color: white; /* Change text color */
+
+}
+
+.custom-button:hover .button-img {
+filter: brightness(0) invert(1); 
+}
+.image1 {
+animation: fadeLeft 1s;
+opacity: 1;
+}
+.image2 {
+animation: fadeRight 1s;
+opacity: 1;
+}
+
+@keyframes fadeLeft {
+0% {
+    transform: translate(100%, -100%);
+    opacity: 0;
+}
+100% {
+    transform: translate(0, 0);
+    opacity: 1;
+}
+}
+
+@keyframes fadeRight {
+0% {
+    transform: translate(-100%, 100%);
+    opacity: 0;
+}
+100% {
+    transform: translate(0, 0);
+    opacity: 1;
+}
+}
+
+.fadetoplogo {
+    animation: fadetoplogo 1s;
+    opacity: 1;
+}
+
+.fadeCentertitle {
+    animation: fadeCentertitle 1s;
+    opacity: 1;
+}
+
+.fadebottombutton {
+    animation: fadebottombutton 1s;
+    opacity: 1;
+}
+
+@keyframes fadetoplogo {
+    0% {
+        transform: translateY(-200%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeCentertitle {
+    0% {
+        transform: translateX(-200%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes fadebottombutton {
+    0% {
+        transform: translateY(200%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+const cards = document.querySelectorAll('.card');
+
+cards.forEach(card => {
+    const animatedOuterDiv = card.querySelector('.imageanimateouter');
+    const animatedDiv1 = card.querySelector('.image1animate');
+    const animatedDiv2 = card.querySelector('.image2animate');
+    const animatelogo = card.querySelector('.toplogo');
+    const animatetitle = card.querySelector('.centertitle');
+    const animatebutton = card.querySelector('.bottombutton');
+
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                animatedDiv1.classList.add('image1');
+                animatedDiv2.classList.add('image2');
+                animatelogo.classList.add('fadetoplogo');
+                animatetitle.classList.add('fadeCentertitle');
+                animatebutton.classList.add('fadebottombutton');
+            }
+        });
+    }, {
+        threshold: 0.5
+    });
+
+    observer.observe(animatedOuterDiv);
+});
+});
+</script>

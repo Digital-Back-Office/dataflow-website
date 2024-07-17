@@ -17,7 +17,12 @@ export default {
 				'6calc': 'calc(3.5rem + 8vw)',
 				'7calc': 'calc(3.5rem + 3vw)',
 				'8calc': 'calc(2rem + 1vw)',
+				'9calc': 'calc(1rem + 2vw)',
 				
+			  },
+			  colors: {
+				primary:"#30BABA",
+				secondary:"#1DD0D5",
 			  },
 			  keyframes: {
 				fadeIn: {

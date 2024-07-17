@@ -1,0 +1,29 @@
+---
+import Layout from "../layouts/Layout.astro";
+import TopSection from "../components/RunDataAnyCloud/TopSection.astro";
+import Section1 from "../components/RunDataAnyCloud/Section1.astro";
+import Section2 from "../components/RunDataAnyCloud/Section2.astro";
+import Section6 from "../components/RunDataAnyCloud/Section6.astro";
+import Leftsection  from "../components/RunDataAnyCloud/Leftsection.astro";
+import Rightsection  from "../components/RunDataAnyCloud/Rightsection.astro";
+import { getEntry } from "astro:content";
+const Data = await getEntry("RunDataAnyCloud", "data");
+const data1 = Data.data.Section3
+const data2 = Data.data.Section4
+const data3 = Data.data.Section5
+
+
+
+---
+<Layout title="Run Data on any cloud">
+    <TopSection/>
+    <Section1/>
+    <Section2/>
+    <Leftsection logo="/assets/images/azurelogo.png" title={data1.title} image="/assets/images/macbookazure.png" />
+    <Rightsection logo="/assets/images/googlecloudlogo.png" title={data2.title} image="/assets/images/macbookgooglecloud.png"  />
+    <Leftsection logo="/assets/images/awslogo.png" title={data3.title} image="/assets/images/macbookaws.png" />
+    <Section6 />
+
+
+    
+</Layout>

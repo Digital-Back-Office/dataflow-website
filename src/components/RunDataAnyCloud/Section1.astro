@@ -1,0 +1,24 @@
+---
+import { getEntry } from "astro:content";
+import Card from "./Card.astro";
+
+const Data = await getEntry("RunDataAnyCloud", "data");
+const data = Data.data.Section1
+---
+<div class="w-full h-[90vh] bg-[#F6F6F6] px-[7%] pb-[2%] flex flex-col items-center justify-center">
+    <h2 class="text-calc font-bold pb-[2%]" style="font-family: Arimo;">{data.title}</h2>
+    <p class="2xl:text-lg 2xl:w-3/4 lg:w-4/5 lg:text-base text-center pb-[7%]" style="font-family:Arimo;">{data.description}</p>
+    <div class="w-11/12 h-[300px]  flex justify-between">
+       <Card image="/assets/images/flexibilityrundataanycloud.png" title={data.feature1.title} description={data.feature1.description}></Card>
+       <Card image="/assets/images/scalability.png" title={data.feature2.title} description={data.feature2.description}></Card>
+       <Card image="/assets/images/Interoperability.png" title={data.feature3.title} description={data.feature3.description}></Card>
+       <Card image="/assets/images/cost-efficiency.png" title={data.feature4.title} description={data.feature4.description}></Card>
+    </div>
+</div>
+<style>
+.card:hover .image-container {
+    filter: brightness(0) invert(1);
+}
+
+  
+</style>

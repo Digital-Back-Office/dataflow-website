@@ -1,0 +1,33 @@
+---
+const{logo,title,image} = Astro.props
+import { getEntry } from "astro:content";
+import Card from "./Card.astro";
+const Data = await getEntry("RunDataAnyCloud", "data");
+const data = Data.data.Section6
+const button = Data.data.button2
+---
+<div class="w-full h-screen bg-[#F6F6F6] flex justify-center items-center">
+    <div class="w-2/5 h-full flex items-center justify-center">
+        <img class="w-[30vw] h-[30vw]" src="/assets/images/privatecloud.png"/>
+    </div>
+    <div class="w-2/5 h-4/5  flex flex-col items-start justify-center  pr-[3%] overflow-hidden ">
+        <h2 class="text-calc font-bold pb-[2%]" style="font-family: Arimo;">{data.title}</h2>
+        <p class="text-lg  mb-10" style="font-family: Arimo;">
+            {data.description}
+        </p>
+       <div class="flex justify-between w-full ">
+        <Card image="/assets/images/flexibilityrundataanycloud.png" title={data.feature1.title} description={data.feature1.description}></Card>
+        <Card image="/assets/images/security.png" title={data.feature2.title} description={data.feature2.description}></Card>
+       </div>
+    </div>   
+</div>
+<style>
+    .custom-button:hover {
+    background-color: #30BABA; /* Change button background color */
+    color: white; /* Change text color */
+}
+
+.custom-button:hover .button-img {
+    filter: brightness(0) invert(1); 
+}
+</style>

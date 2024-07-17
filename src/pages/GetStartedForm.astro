@@ -1,0 +1,113 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { getEntry } from "astro:content";
+const Data = await getEntry("comman", "getstartedform");
+const data = Data.data;
+---
+<Layout title="Get Started">
+  <div class="w-full py-[10vh] flex justify-center items-center ">
+    <div class="w-2/6 h-[70vh]">
+      <h1 class="text-9calc font-black mb-10" style="font-family: Arimo;">{data.title1}<br>{data.title2}</h1>
+      <ul style="list-style-type: disc; padding-left: 1.5rem;">
+        <li class="text-base 2xl:text-lg mb-4" style="font-family: Arimo;">{data.description[0]}</li>
+        <li class="text-base 2xl:text-lg mb-4" style="font-family: Arimo;">{data.description[1]}</li>
+        <li class="text-base 2xl:text-lg mb-4" style="font-family: Arimo;">{data.description[2]}</li>
+        <li class="text-base 2xl:text-lg mb-4" style="font-family: Arimo;">{data.description[3]}</li>
+      </ul>
+    </div>
+    <div class="w-3/6 max-w-[600px] min-h-[450px] ml-10">
+      <form id="myForm" class="w-full border-2 border-solid border-primary rounded-3xl px-[5%] py-[7%]">
+        <div class="w-full h-20 flex items-center justify-between mb-[4%]">
+          <div class="h-full w-[47%] bg-white flex flex-col justify-evenly">
+            <label class="text-base 2xl:text-lg font-bold" style="font-family: Arimo;">{data.form.label1}</label>
+            <input required placeholder={data.form.placeholder1} class="custom-input border-[2px] border-primary rounded-2xl h-12 p-2" name="entry.1291198894" />
+          </div>
+          <div class="h-full w-[47%] bg-white flex flex-col justify-evenly">
+            <label class="text-base 2xl:text-lg font-bold" style="font-family: Arimo;">{data.form.label2}</label>
+            <input type="email" placeholder={data.form.placeholder2} class="custom-input border-[2px] border-primary rounded-2xl h-12 p-2" name="entry.59580764" />
+          </div>
+        </div>
+        <div class="w-full h-20 flex items-center justify-between mb-[4%]">
+          <div class="h-full w-[47%] bg-white flex flex-col justify-evenly">
+            <label class="text-base 2xl:text-lg font-bold" style="font-family: Arimo;">{data.form.label3}</label>
+            <input required placeholder={data.form.placeholder3} class="custom-input border-[2px] border-primary rounded-2xl h-12 p-2" name="entry.1637227755" />
+          </div>
+          <div class="h-full w-[47%] bg-white flex flex-col justify-evenly">
+            <label class="text-base 2xl:text-lg font-bold" style="font-family: Arimo;">{data.form.label4}</label>
+            <select required class="custom-input border-[2px] border-primary rounded-2xl h-12 p-2" name="entry.1061557718">
+              <option value="" disabled selected>Company Size</option>
+              <option value="1-10">1-10 employees</option>
+              <option value="11-50">11-50 employees</option>
+              <option value="51-200">51-200 employees</option>
+              <option value="201-500">201-500 employees</option>
+              <option value="501-1000">501-1000 employees</option>
+              <option value="1001-5000">1001-5000 employees</option>
+              <option value="5001-10000">5001-10,000 employees</option>
+              <option value="10001+">10,001+ employees</option>
+            </select>
+          </div>
+        </div>
+        <div class="w-full h-20 flex flex-col justify-between mb-[4%]">
+          <label class="text-base 2xl:text-lg font-bold" style="font-family: Arimo;">{data.form.label5}</label>
+          <select required class="custom-input border-[2px] border-primary rounded-2xl h-12 p-2" name="entry.154861476">
+            <option value="" disabled selected>{data.form.placeholder5}</option>
+            <option value="search Engine">Search Engine</option>
+            <option value="social Media">Social Media</option>
+            <option value="referral">Referral</option>
+            <option value="advertisement">Advertisement</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+        <div class="w-full h-32 flex flex-col justify-between mb-[4%]">
+          <label class="text-base 2xl:text-lg font-bold" style="font-family: Arimo;">{data.form.label6}</label>
+          <textarea required name="entry.1056515558" placeholder={data.form.placeholder6} class="custom-input border-[2px] border-primary rounded-2xl h-24 p-2" rows="10" cols="30" style="resize:none"></textarea>
+        </div>
+        <input  type="hidden" name="entry.664159867" value="Get Started">
+        <button type="submit" class="bottombutton custom-button text-lg bg-primary w-full h-12 flex items-center justify-center duration-300 text-white font-bold rounded-lg shadow-md flex text-base items-center gap-x-2 hover:-translate-y-1" style="font-family: Roboto;">
+          Get Started <img class="button-img" src="/assets/images/arrowright.svg" alt="Arrow Right" />
+        </button>
+      </form>
+      <p id="result" class="text-base text-center pt-2 text-primary"></p>
+    </div>
+  </div>
+</Layout>
+
+<script type="module">
+  document.getElementById("myForm").addEventListener("submit", async function(event) {
+    event.preventDefault(); 
+    
+    const formData = new FormData(this); 
+    const url = "https://docs.google.com/forms/u/0/d/e/1FAIpQLSeGjuyA_jjDmmT4jTY96s0CgCL_JKOJlNrTRqJ-9iqRmlEPKw/formResponse";
+    
+    try {
+      const response = await fetch(url, {
+        method: "POST",
+        mode: "no-cors",
+        body: formData
+      });
+        
+        let text = "Form submitted successfully. We'll be in touch shortly."
+        document.getElementById("result").innerHTML = text;  
+        document.getElementById("myForm").reset(); 
+    } catch (error) {
+    
+        let text = "Error in form Submission"
+        document.getElementById("result").style.color = "red";
+        document.getElementById("result").innerHTML = text;  
+    }
+  });
+</script>
+
+<style>
+  .custom-button:hover {
+    background-color: #1DD0D5;
+  }
+  
+  .button-img {
+    filter: brightness(0) invert(1);
+  }
+  .custom-input:focus {
+    border-color: #1DD0D5; /* Change this to your desired focus color */
+    outline: none; /* Remove the default outline */
+  }
+</style>

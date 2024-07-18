@@ -165,7 +165,6 @@ const url = Astro.url.pathname;
       try {
         const response = await fetch(url, { method: "POST" });
       } catch (error) {
-        //console.log(error);
       }
       const popUp = document.getElementById("pop-up") as HTMLElement;
       popUp.style.display = "block";

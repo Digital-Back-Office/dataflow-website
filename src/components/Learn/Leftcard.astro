@@ -10,14 +10,6 @@ const { title, image1, image2, logo } = Astro.props;
 import { getEntry } from "astro:content";
 
 const Data = await getEntry("learn", "learn");
-const data1 = Data.data.section1.title;
-const data2 = Data.data.section2.title;
-const data3 = Data.data.section3.title;
-const data4 = Data.data.section4.title;
-const data5 = Data.data.section5.title;
-const data6 = Data.data.section6.title;
-const data7 = Data.data.section7.title;
-const data8 = Data.data.section8.title;
 const button = Data.data.button
 
 ---

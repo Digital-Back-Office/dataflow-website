@@ -1,0 +1,108 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { getEntry } from "astro:content";
+const Data = await getEntry("comman", "contact"); 
+const data = Data.data;
+
+---
+
+<Layout title="Book a demo">
+  <div class="flex items-center justify-center h-[100vh]">
+     <div class=" w-3/4 h-[80vh] flex items-center justify-center 2xl:py-20 py-16 bg-[#F6F6F6] rounded-3xl p-[5%] shadow-lg">
+        <div class="h-[70vh]   flex flex-col items-start jusitify-start">
+            <h1 class="text-9calc font-black mb-10 w-4/5 " style="font-family: Arimo;">{data.title}</h1>
+            <p class="text-lg w-4/5 mb-10" style="font-family: Arimo; ">{data.description}</p>
+            <img src="assets/images/contactusimage.png" class=" w-[70%] "/>
+          
+            
+        </div>
+        <div class=" w-4/6 max-w-[600px]  flex flex-col items-center justify-center rounded-2xl  elevation-2  ">
+        <h3 class="text-0calc font-bold mb-[2%]" style="font-family: Arimo;">{data.form.title}</h3>
+        <form id="myForm" class="w-full items-center justify-between">
+            <div class="w-full  h-20 flex items-center justify-between mb-[4%]">
+              <div class="h-full w-[47%]  flex flex-col justify-evenly">
+                <label class="text-base 2xl:text-lg font-bold" style="font-family: Arimo;">{data.form.label1}</label>
+                <input required placeholder={data.form.placeholder1} class="custom-input border-[2px] border-primary rounded-2xl h-12 p-2" name="entry.1291198894" />
+              </div>
+              <div class="h-full w-[47%]  flex flex-col justify-evenly">
+                <label class="text-base 2xl:text-lg font-bold" style="font-family: Arimo;">{data.form.label2}</label>
+                <input required type="email" placeholder={data.form.placeholder2} class="custom-input border-[2px] border-primary rounded-2xl h-12 p-2" name="entry.59580764" />
+              </div>
+            </div>
+            <div class="w-full h-20 flex items-center justify-between mb-[2%]">
+              <div class="h-full w-[47%]  flex flex-col justify-evenly">
+                <label class="text-base 2xl:text-lg font-bold" style="font-family: Arimo;">{data.form.label4}</label>
+                <input required placeholder={data.form.placeholder4} class="custom-input border-[2px] border-primary rounded-2xl h-12 p-2" name="entry.1637227755" />
+              </div>
+              <div class="h-full w-[47%]  flex flex-col justify-evenly">
+                <label class="text-base 2xl:text-lg font-bold" style="font-family: Arimo;">{data.form.label5}</label>
+                <select required class="custom-input border-[2px] border-primary rounded-2xl h-12 p-2" name="entry.1061557718">
+                  <option value="" disabled selected>Company Size</option>
+                  <option value="1-10">1-10 employees</option>
+                  <option value="11-50">11-50 employees</option>
+                  <option value="51-200">51-200 employees</option>
+                  <option value="201-500">201-500 employees</option>
+                  <option value="501-1000">501-1000 employees</option>
+                  <option value="1001-5000">1001-5000 employees</option>
+                  <option value="5001-10000">5001-10,000 employees</option>
+                  <option value="10001+">10,001+ employees</option>
+                </select>
+              </div>
+            </div>
+            <input  type="hidden" name="entry.664159867" value="Contact-us">
+            <div class="w-full  flex flex-col justify-between mb-[4%]">
+              <label class="text-base 2xl:text-lg font-bold mb-5" style="font-family: Arimo;">{data.form.label3}</label>
+              <input required name="entry.1056515558" placeholder={data.form.placeholder3} class="custom-input border-[2px] border-primary rounded-xl h-10 p-2"  style="resize:none"></textarea>
+            </div>
+            <div class="w-full flex items-center justify-start mb-5">
+                <input type="checkbox" required class="ml-3 border-primary"/>
+                <p class="text-gray-500 ml-3 my-3">{data.form.terms}<span><a href="" class=" ml-2 underline underline-offset-4">{data.form.link}</a></span></p>
+            </div>
+
+            <button type="submit" class="bottombutton custom-button text-lg bg-primary w-full h-12 flex items-center justify-center duration-300 text-white font-bold rounded-lg shadow-md flex text-base items-center gap-x-2 hover:-translate-y-1" style="font-family: Roboto;">
+              {data.form.button}<img class="button-img" src="/assets/images/arrowright.svg" alt="Arrow Right" />
+            </button>
+          </form>
+        </div>
+     </div>
+    </div>
+</Layout>
+<script type="module">
+    document.getElementById("myForm").addEventListener("submit", async function(event) {
+      event.preventDefault(); 
+      
+      const formData = new FormData(this); 
+      const url = "https://docs.google.com/forms/u/0/d/e/1FAIpQLSeGjuyA_jjDmmT4jTY96s0CgCL_JKOJlNrTRqJ-9iqRmlEPKw/formResponse";
+      
+      try {
+        const response = await fetch(url, {
+          method: "POST",
+          mode: "no-cors",
+          body: formData
+        });
+          
+
+          document.getElementById("myForm").reset(); 
+      } catch (error) {
+      
+          let text = "Error in form Submission"
+          document.getElementById("result").style.color = "red";
+          document.getElementById("result").innerHTML = text;  
+      }
+    });
+  </script>
+  
+  <style>
+    .custom-button:hover {
+      background-color: #1DD0D5;
+    }
+    
+    .button-img {
+      filter: brightness(0) invert(1);
+    }
+    .custom-input:focus {
+      border-color: #1DD0D5; 
+      outline: none; 
+    }
+  </style>
+  

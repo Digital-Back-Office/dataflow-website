@@ -4,16 +4,15 @@ const testimonials = [
   {
     name: "Lilia Bocouse",
     position: "Head of Innovation",
-    feedback: "Thanks to your talented team for the branding we dreamed about :)",
-    details: "Leo vitae sem eget eget at in vivamus placerat sodales tristique risusiis senectusic quisque faucibus est justo egetert lobortis ultrices eu dignissim etiamier turpis tincidunt eget placerat feugiat senectusic quisque faucibus placerat sodales vitae tempor morbi tellus pulvinar ut iaculis sit tristique in turpis volutpat quam nec."
+    feedback: "",
+    details: " Dataflow has significantly improved our data processing workflows. Its seamless integration with other Google Cloud services and support for Apache Beam has made our batch and streaming data pipelines more efficient"
   },
   {
     name: "John Doe",
     position: "Chief Executive Officer",
     feedback: "The service was exceptional and exceeded our expectations.",
-    details: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+    details: "Thanks to your talented team for the branding we dreamed about :) Its seamless integration with other Google Cloud services and support for Apache Beam has made our batch and streaming data pipelines more efficient"
   },
- 
 ];
 
 function Testimonial() {
@@ -29,66 +28,44 @@ function Testimonial() {
     setCurrentIndex((currentIndex - 1 + testimonials.length) % testimonials.length);
   };
 
+  const currentIndexset = (index) => {
+    setCurrentIndex(index);
+  };
+
   console.log("Current Index:", currentIndex);
 
   return (
-    <div className="h-screen w-full flex items-center justify-center" style={{
-      backgroundImage: "url('/assets/images/testimonialbackground.png')",
-      backgroundPositionX: "70%",
-      backgroundPositionY: "40%",
-      backgroundSize: "90vh",
-      backgroundRepeat: "no-repeat"
-    }}>
-      <div className="h-[50vh] w-3/5 flex">
-        <div className="h-[50vh] w-3/12 flex flex-col justify-center items-start">
-          <div className="h-[15vh]">
-            <img src="/assets/images/qoutes.png" alt="Quotes" />
-          </div>
-          <p className="w-full text-start text-lg mt-5" style={{ fontFamily: 'Arimo' }}>
-            {testimonials[currentIndex].name}
-          </p>
-          <p className="w-full text-start text-base text-gray-400 mb-5 font-normal" style={{ fontFamily: 'Arimo' }}>
-            {testimonials[currentIndex].position}
-          </p>
-          <div className="flex justify-between items-center">
-            <button className="nav-button ease-in h-10 w-10 rounded-full border border-[#2FB7B8] flex items-center justify-center hover:bg-[#30BABA]" onClick={prevTestimonial}>
-              <img className="button-img" src="/assets/images/arrowleft.png" alt="Previous" />
-            </button>
-            <p style={{ fontFamily: 'Arimo' }} className='mx-4'>{currentIndex + 1}/{testimonials.length}</p>
-            <button className="nav-button ease-in h-10 w-10 rounded-full border border-[#2FB7B8] flex items-center justify-center hover:bg-[#30BABA]" onClick={nextTestimonial}>
-              <img className="button-img" src="/assets/images/arrowright.png" alt="Next" />
-            </button>
-          </div>
+    <div className="py-28 w-full flex flex-col items-center justify-center bg-gradient-to-b from-[#1DD0D5] to-[#0F6C6F]">
+      <h3 className='w-full text-4xl md:text-6xl font-bold text-center text-white' style={{ fontFamily: 'Arimo' }}>What User Say About Us</h3>
+      <div className="w-11/12 md:w-4/5 flex flex-col items-center justify-center">
+        <div className='w-full flex justify-start'>
+          <img src='assets/images/qouteicontop.png' alt="quote icon top"/>
         </div>
-        <div className="w-9/12 h-full flex flex-col justify-center items-start transition-all duration-500 ease-in-out">
-          <div key={currentIndex} className="transition-opacity duration-500 ease-in-out animate-fadeIn">
-            <p className="text-xl font-bold w-full" style={{ fontFamily: 'Arimo' }}>
-              {testimonials[currentIndex].feedback}
-            </p>
-            <p className="text-lg text-gray-500 w-full mt-10" style={{ fontFamily: 'Arimo' }}>
-              {testimonials[currentIndex].details}
-            </p>
-          </div>
+        <div>
+          <p className='text-xl md:text-3xl text-white text-center px-4 md:px-[5%] font-bold leading-normal md:leading-[68px]' style={{ fontFamily: 'Arimo' }}>{testimonials[currentIndex].details}</p>
+        </div>
+        <div className='w-full flex justify-end'>
+          <img src='assets/images/qouteiconbottom.png' alt="quote icon bottom"/>
         </div>
       </div>
-      <style>
-        {`
-          .nav-button {
-            transition: all 0.3s ease-in-out;
-          }
-          .nav-button:hover {
-            background-color: #30BABA;
-          }
-          .button-img {
-            height: 20px;
-            width: 20px;
-            transition: filter 0.3s ease-in-out;
-          }
-          .nav-button:hover .button-img {
-            filter: brightness(0) invert(1);
-          }
-        `}
-      </style>
+      <div className='flex w-full items-center justify-center '>
+        <div className='w-11/12 md:w-4/5 flex flex-col items-center ml-2 md:ml-10 '>
+          <p className='text-lg md:text-2xl font-bold text-center text-white' style={{ fontFamily: "Arimo" }}>{testimonials[currentIndex].name}</p>
+          <p className='text-sm md:text-lg text-center text-white' style={{ fontFamily: "Arimo" }}>{testimonials[currentIndex].position}</p>
+        </div>
+        <button onClick={nextTestimonial} className='next-button w-8 h-8 md:w-10 md:h-10 bg-white rounded-full flex items-center justify-center p-2 md:p-[13px]'>
+          <img src='assets/images/testimonial.png' alt="testimonial"/>
+        </button>
+      </div>
+      <div className='w-full flex items-center justify-center mt-8 md:mt-14'>
+        {testimonials.map((_, index) => (
+          index === currentIndex ? (
+            <button key={index} onClick={() => currentIndexset(index)} className='w-3 h-3 bg-secondary rounded-full mx-1 md:mx-2'></button>
+          ) : (
+            <button key={index} onClick={() => currentIndexset(index)} className='w-3 h-3 bg-[#434343] rounded-full mx-1 md:mx-2'></button>
+          )
+        ))}
+      </div>
     </div>
   );
 }

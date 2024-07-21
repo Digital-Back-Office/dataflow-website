@@ -4,7 +4,6 @@ interface Props {
 }
 
 const { title } = Astro.props;
-import { getEntry } from "astro:content";
 import Footer from "../components/comman/Footer.astro";
 import Header from "../components/comman/Header.astro";
 
@@ -22,13 +21,18 @@ import Header from "../components/comman/Header.astro";
 		<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 		<link href="https://fonts.googleapis.com/css2?family=Arimo&display=swap" rel="stylesheet">
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@400;700&display=swap">
-
 		<title>{title}</title>
+
+
+		
+		
 	</head>
 	<body>
-      <Header/>
+		<Header/>
 		<slot />
-    <Footer/>
+       <Footer/>
+		
+    
 
 	</body>
 </html>

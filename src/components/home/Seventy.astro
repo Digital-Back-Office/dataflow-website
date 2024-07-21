@@ -5,9 +5,9 @@ import { getEntry } from "astro:content";
 const Data = await getEntry("Home", "home");
 const data = Data.data.Seventy;
 ---
-<div class="w-full h-screen flex flex-col items-center justify-center">
-    <p class="text-3calc font-bold leading-none bg-fixed-text" style="font-family: Arimo;">{data.title}</p>
-    <p class="text-2calc font-bold text-[#153D67]" style="font-family: Arimo;">{data.description}</p>
+<div class="w-full h-screen flex flex-col items-center justify-center ">
+    <p class="text-3calc font-bold leading-none bg-fixed-text text-center" style="font-family: Arimo;">{data.title}</p>
+    <p class="text-2calc font-bold text-[#153D67] text-center" style="font-family: Arimo;">{data.description}</p>
   </div>
 <style>
     .bg-fixed-text {

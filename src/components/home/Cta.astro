@@ -1,81 +1,143 @@
 ---
-
 import { getEntry } from "astro:content";
 
 const Data = await getEntry("Home", "home");
 const data = Data.data.cta;
 ---
+
 <div id="animatedouterdiv" class="h-screen w-full flex justify-center items-end">
-  <div id="animatedDiv" class="  h-[80vh] w-[70%] bg-[#2FB7B8] rounded-t-[60px]   flex flex-col items-center justify-end">
+  <div id="animatedDiv" class="responsive-container  h-[80vh] w-[70%] bg-[#2FB7B8] rounded-t-[60px] flex flex-col items-center justify-end">
     <p class="text-4calc font-bold text-center text-white w-3/5" style=" font-family: Arimo;">{data.title}</p>
     <p class="text-lg text-center text-white mt-5 font-thin w-3/6" style=" font-family: Archivo Narrow;">{data.description}</p>
-    <div class="flex w-full justify-center gap-x-10 mt-8">
-      <button class=" transition-all duration-500 ease-in-out px-5 py-2 bg-[#FFE073] text-base text-white border-2 border-[#FFE073] rounded-full font-semibold  hover:bg-[#30BABA] hover:text-[#FFE073] "><a href="GetStartedForm">Start free 14-day trial</a></button>
-      <button class="transition-all duration-500 ease-in-out px-5 py-2 border-[#FFE073] text-base text-[#FFE073] border-2 rounded-full font-semibold hover:bg-[#FFE073] hover:text-white ">Request a demo</button>
+    <div class="flex flex-wrap w-full justify-center gap-x-10 gap-y-10 mt-8">
+      <a class=" transition-all duration-500 ease-in-out px-5 py-2 bg-[#FFE073] text-base text-white border-2 border-[#FFE073] rounded-full font-semibold  hover:bg-[#30BABA] hover:text-[#FFE073]" href="GetStartedForm">Start free 14-day trial</a>
+      <a class="transition-all duration-500 ease-in-out px-5 py-2 border-[#FFE073] text-base text-[#FFE073] border-2 rounded-full font-semibold hover:bg-[#FFE073] hover:text-white " href="BookDemo">Request a demo</a>
     </div>
-    <button class=" transition-all duration-300 ease-in-out w-2/4 bg-white h-16 rounded-t-2xl mt-20 flex items-end justify-center pb-2 hover:rounded-2xl hover:-translate-y-2 hover:pb-4"  style=" font-family: Arimo;" ><p class=" text-2xl font-bold bg-gradient-to-r from-teal-500 to-teal-300 text-transparent bg-clip-text">{data.button}</p></button>
+    <a class="custom-button transition-all duration-300 ease-in-out w-2/4 bg-white h-16 rounded-t-2xl mt-20 flex items-end justify-center pb-2 hover:rounded-2xl hover:-translate-y-2 hover:pb-4 min-h-12 min-w-[310px]"  style=" font-family: Arimo;" href="Contact-us">
+      <p class=" text-2xl font-bold bg-gradient-to-r from-teal-500 to-teal-300 text-transparent bg-clip-text">{data.button}</p>
+    </a>
   </div>
 </div>
+
 <style>
-    
-
-    @keyframes fadeInUp {
-      0% {
-        height: 10vh;
-        width: 100px;
-        opacity: 0;
-      }
-      100% {
-        height: 80vh;
-        width: 70%;
-        transform: translateY(0%);
-        opacity: 1;
-      }
+  @media (max-width: 400px) {
+    .responsive-container {
+      height:650px;
+      width: 100%;
+      flex-direction: column;
+      padding-top: 20px;
+      padding-bottom: 20px;
     }
-
-    @keyframes fadeOutDown {
-      0% {
-        height: 80vh;
-        width: 70%;
-        opacity: 1;
-      }
-      100% {
-        height: 0vh;
-        width: 1px;
-        opacity: 0;
-      }
+    .custom-button {
+       width: 100%;
+       margin-top: 20px;
+      
     }
-
-    .fadeInUp-animation {
-      animation: fadeInUp 1s forwards;
+    p {
+      font-size: 20px;
     }
+  }
 
-    .fadeOutDown-animation {
-      animation: fadeOutDown 1s forwards;
+  @keyframes fadeInUp {
+    0% {
+      height: 10vh;
+      width: 100px;
+      opacity: 0;
     }
+    100% {
+      height: 80vh;
+      width: 70%;
+      transform: translateY(0%);
+      opacity: 1;
+    }
+  }
 
+  @keyframes fadeOutDown {
+    0% {
+      height: 80vh;
+      width: 70%;
+      opacity: 1;
+    }
+    100% {
+      height: 0vh;
+      width: 1px;
+      opacity: 0;
+    }
+  }
 
+  @keyframes fadeInUpSmall {
+    0% {
+      height: 10vh;
+      width: 100px;
+      opacity: 0;
+    }
+    100% {
+      height: 80vh;
+      width: 100%;
+      transform: translateY(0%);
+      opacity: 1;
+    }
+  }
+
+  @keyframes fadeOutDownSmall {
+    0% {
+      height: 600px;
+      width: 100%;
+      opacity: 1;
+    }
+    100% {
+      height: 0vh;
+      width: 1px;
+      opacity: 0;
+    }
+  }
+
+  .fadeInUp-animation {
+    animation: fadeInUp 1s forwards;
+  }
+
+  .fadeOutDown-animation {
+    animation: fadeOutDown 1s forwards;
+  }
+
+  .fadeInUpSmall-animation {
+    animation: fadeInUpSmall 1s forwards;
+  }
+
+  .fadeOutDownSmall-animation {
+    animation: fadeOutDownSmall 1s forwards;
+  }
 </style>
-<script>
- document.addEventListener('DOMContentLoaded', () => {
-  const animatedouterdiv = document.getElementById('animatedouterdiv');
-      const animatedDiv = document.getElementById('animatedDiv');
 
-      const observer = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const animatedouterdiv = document.getElementById('animatedouterdiv');
+    const animatedDiv = document.getElementById('animatedDiv');
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          if (window.innerWidth <= 400) {
+            animatedDiv.classList.remove('fadeOutDownSmall-animation');
+            animatedDiv.classList.add('fadeInUpSmall-animation');
+          } else {
             animatedDiv.classList.remove('fadeOutDown-animation');
             animatedDiv.classList.add('fadeInUp-animation');
+          }
+        } else {
+          if (window.innerWidth <= 400) {
+            animatedDiv.classList.remove('fadeInUpSmall-animation');
+            animatedDiv.classList.add('fadeOutDownSmall-animation');
           } else {
             animatedDiv.classList.remove('fadeInUp-animation');
             animatedDiv.classList.add('fadeOutDown-animation');
           }
-        });
-      }, {
-        threshold: 0.15 
+        }
       });
-
-      observer.observe(animatedouterdiv);
+    }, {
+      threshold: 0.30 
     });
-</script>
 
+    observer.observe(animatedouterdiv);
+  });
+</script>

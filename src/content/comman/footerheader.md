@@ -2,7 +2,7 @@
 header:
     nav1: Why Dataflow?
     nav2: Pricing
-    nav3: Community
+    nav3: Learn
     nav4: Company
     nav5: Blog
     button: Book a demo

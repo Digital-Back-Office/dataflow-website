@@ -5,22 +5,29 @@ import { getEntry } from "astro:content";
 const Data = await getEntry("Home", "home");
 const hero = Data.data.hero;
 ---
-<div
-class="2xl:h-[700px] flex items-center bg-[#30BABA] xl:h-[650px] lg:h-[600px]"
->
-<div class="w-3/5 pl-[12%]">
-  <p
-    class=" text-[#C0FFFF] font-bold leading-none text-5calc mb-[5%]"
-    style="font-family:Arial, Helvetica, sans-serif"
-    >{hero.title1}</p>
-  <p
-    class="text-6calc text-[#0B7474] font-bold leading-none"
-    style="font-family:Arial, Helvetica, sans-serif">{hero.title2}</p>
-</div>
-<div class="absolute right-[18%] lg:right-[5%] xl:right-[10%] overflow-hidden">
-  <Animationsandclock />
-</div>
+<div class="h-screen flex items-center bg-[#30BABA]  min-h-[300px] ">
+  <div class="w-full lg:w-3/5 lg:pl-[12%] text-center lg:text-left">
+    <p
+      class="text-[#C0FFFF] font-bold leading-none text-5calc mb-[5%]"
+      style="font-family: Arial, Helvetica, sans-serif"
+    >
+      {hero.title1}
+    </p>
+    <p
+      class="text-6calc text-[#0B7474] font-bold leading-none"
+      style="font-family: Arial, Helvetica, sans-serif"
+    >
+      {hero.title2}
+    </p>
+  </div>
+  <div class="animations-container absolute right-[18%] lg:right-[5%] xl:right-[10%] overflow-hidden">
+    <Animationsandclock />
+  </div>
 </div>
 <style>
-
+@media (max-width: 1059px) {
+  .animations-container {
+    display: none;
+  }
+}
 </style>

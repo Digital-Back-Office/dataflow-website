@@ -5,10 +5,10 @@ import Card from "./Card.astro";
 const Data = await getEntry("RunDataAnyCloud", "data");
 const data = Data.data.Section1
 ---
-<div class="w-full h-[90vh] bg-[#F6F6F6] px-[7%] pb-[2%] flex flex-col items-center justify-center">
-    <h2 class="text-calc font-bold pb-[2%]" style="font-family: Arimo;">{data.title}</h2>
-    <p class="2xl:text-lg 2xl:w-3/4 lg:w-4/5 lg:text-base text-center pb-[7%]" style="font-family:Arimo;">{data.description}</p>
-    <div class="w-11/12 h-[300px]  flex justify-between">
+<div class=" container-top w-full pt-16 pb-24 bg-[#F6F6F6] px-[7%] pb-[2%] flex flex-col items-center justify-center">
+    <h2 class="text-calc font-bold pb-[2%] text-textblack text-center" style="font-family: Arimo;">{data.title}</h2>
+    <p class="2xl:text-lg 2xl:w-3/4 lg:w-4/5 lg:text-base text-center pb-[7%] text-textblack" style="font-family:Arimo;">{data.description}</p>
+    <div class=" card-container w-11/12 min-h-[300px]  flex justify-between">
        <Card image="/assets/images/flexibilityrundataanycloud.png" title={data.feature1.title} description={data.feature1.description}></Card>
        <Card image="/assets/images/scalability.png" title={data.feature2.title} description={data.feature2.description}></Card>
        <Card image="/assets/images/Interoperability.png" title={data.feature3.title} description={data.feature3.description}></Card>
@@ -19,6 +19,21 @@ const data = Data.data.Section1
 .card:hover .image-container {
     filter: brightness(0) invert(1);
 }
-
+@media (max-width:440px) {
+     .container-top{
+      width: 100%;
+      padding-left: 15px;
+      padding-right: 15px;
+      padding-top: 30px;
+      padding-bottom: 30px;
+        flex-direction:column;
+        height: auto;
+     }
+    .card-container{
+      flex-direction: column;
+      align-items: center; 
+      row-gap: 15px;
+    }
+}
   
 </style>

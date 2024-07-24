@@ -3,123 +3,186 @@ import Layout from "../layouts/Layout.astro";
 import { getEntry } from "astro:content";
 const Data = await getEntry("comman", "bookdemo");
 const data = Data.data;
-
 ---
 
 <Layout title="Book a demo">
-     <div class=" w-full flex items-center justify-center 2xl:py-20 py-16" style="background: linear-gradient(180deg, rgba(29,208,213,1) 35%, rgb(255, 255, 255) 35%);">
-        <div class="h-full w-2/6  flex flex-col pt-[5vh] mr-5">
-            <h1 class="text-9calc font-black mb-10" style="font-family: Arimo;">{data.maintitle}</h1>
-
-            
-            <div class="w-full flex items-start mb-5">
-                <img src="assets/images/bookdemoimage1.png" width="50px" height="50px" class="mr-7"/>
-                <div>
-                  <h3 class="text-lg font-bold mb-3" style="font-family: Arimo;">{data.title1}</h3>
-                  <p class="text-lg" style="font-family: Arimo;">{data.description1}</p>
-                </div>
-            </div>
-            <div class="w-full flex items-start mb-5">
-                <img src="assets/images/bookdemoimage2.png" width="50px" height="50px" class="mr-7"/>
-                <div>
-                  <h3 class="text-lg font-bold mb-3" style="font-family: Arimo;">{data.title2}</h3>
-                  <p class="text-lg" style="font-family: Arimo;">{data.description2}</p>
-                </div>
-            </div>
-            <div class="w-full flex items-start mb-5">
-                <img src="assets/images/bookdemoimage3.png" width="50px" height="50px" class="mr-7"/>
-                <div>
-                  <h3 class="text-lg font-bold mb-3" style="font-family: Arimo;">{data.title3}</h3>
-                  <p class="text-lg" style="font-family: Arimo;">{data.description3}</p>
-                </div>
-            </div>
+  <div class="formcontainer w-full flex items-center justify-center py-24">
+    <div class="container-child-1 flex flex-col w-2/6">
+      <div class="h-[25vh] flex items-start">
+        <h1 class="text-9calc font-black text-white text-textblack" style="font-family: Arimo;">{data.maintitle}</h1>
+      </div>
+      <div class="h-full w-full flex flex-col pt-[5vh] mr-5">
+        <div class="w-full flex items-start mb-5">
+          <img src="/assets/images/bookdemoimage1.png" width="50px" height="50px" class="mr-7"/>
+          <div>
+            <h3 class="text-lg font-bold mb-3 text-textblack text-textblack" style="font-family: Arimo;">{data.title1}</h3>
+            <p class="text-base text-textblack" style="font-family: Arimo;">{data.description1}</p>
+          </div>
         </div>
-        <div class=" w-3/6 max-w-[600px]  border-2 border-primary flex flex-col items-center justify-center rounded-2xl p-[2%] bg-white elevation-2 shadow-lg ">
-        <h3 class="text-0calc font-bold mb-[2%]" style="font-family: Arimo;">{data.form.title}</h3>
-        <form id="myForm" class="w-full items-center justify-between">
-            <div class="w-full  h-20 flex items-center justify-between mb-[4%]">
-              <div class="h-full w-[47%]  flex flex-col justify-evenly">
-                <label class="text-base 2xl:text-lg font-bold" style="font-family: Arimo;">{data.form.label1}</label>
-                <input required placeholder={data.form.placeholder1} class="custom-input border-[2px] border-primary rounded-2xl h-12 p-2" name="entry.1291198894" />
-              </div>
-              <div class="h-full w-[47%]  flex flex-col justify-evenly">
-                <label class="text-base 2xl:text-lg font-bold" style="font-family: Arimo;">{data.form.label2}</label>
-                <input required type="email" placeholder={data.form.placeholder2} class="custom-input border-[2px] border-primary rounded-2xl h-12 p-2" name="entry.59580764" />
-              </div>
-            </div>
-            <div class="w-full h-32 flex flex-col justify-between mb-[4%]">
-                <label class="text-base 2xl:text-lg font-bold" style="font-family: Arimo;">{data.form.label3}</label>
-                <textarea required name="entry.1056515558" placeholder={data.form.placeholder3} class="custom-input border-[2px] border-primary rounded-2xl h-24 p-2" rows="10" cols="30" style="resize:none"></textarea>
-              </div>
-            <div class="w-full h-20 flex items-center justify-between mb-[2%]">
-              <div class="h-full w-[47%]  flex flex-col justify-evenly">
-                <label class="text-base 2xl:text-lg font-bold" style="font-family: Arimo;">{data.form.label4}</label>
-                <input required placeholder={data.form.placeholder4} class="custom-input border-[2px] border-primary rounded-2xl h-12 p-2" name="entry.1637227755" />
-              </div>
-              <div class="h-full w-[47%]  flex flex-col justify-evenly">
-                <label class="text-base 2xl:text-lg font-bold" style="font-family: Arimo;">{data.form.label5}</label>
-                <select required class="custom-input border-[2px] border-primary rounded-2xl h-12 p-2" name="entry.1061557718">
-                  <option value="" disabled selected>Company Size</option>
-                  <option value="1-10">1-10 employees</option>
-                  <option value="11-50">11-50 employees</option>
-                  <option value="51-200">51-200 employees</option>
-                  <option value="201-500">201-500 employees</option>
-                  <option value="501-1000">501-1000 employees</option>
-                  <option value="1001-5000">1001-5000 employees</option>
-                  <option value="5001-10000">5001-10,000 employees</option>
-                  <option value="10001+">10,001+ employees</option>
-                </select>
-              </div>
-            </div>
-            <input  type="hidden" name="entry.664159867" value="Book a demo">
-            <div class="w-full flex items-center justify-start mb-5">
-                <input type="checkbox" required class="ml-3 border-primary"/>
-                <p class="text-gray-500 ml-3 my-3">{data.form.terms}<span><a href="" class=" ml-2 underline underline-offset-4">{data.form.link}</a></span></p>
-            </div>
-
-            <button type="submit" class="bottombutton custom-button text-lg bg-primary w-full h-12 flex items-center justify-center duration-300 text-white font-bold rounded-lg shadow-md flex text-base items-center gap-x-2 hover:-translate-y-1" style="font-family: Roboto;">
-                {data.form.button} <img class="button-img" src="/assets/images/arrowright.svg" alt="Arrow Right" />
-            </button>
-          </form>
+        <div class="w-full flex items-start mb-5">
+          <img src="/assets/images/bookdemoimage2.png" width="50px" height="50px" class="mr-7"/>
+          <div>
+            <h3 class="text-lg font-bold mb-3 text-textblack" style="font-family: Arimo;">{data.title2}</h3>
+            <p class="text-base text-textblack" style="font-family: Arimo;">{data.description2}</p>
+          </div>
         </div>
-     </div>
+        <div class="w-full flex items-start mb-5">
+          <img src="/assets/images/bookdemoimage3.png" width="50px" height="50px" class="mr-7"/>
+          <div>
+            <h3 class="text-lg font-bold mb-3 text-textblack" style="font-family: Arimo;">{data.title3}</h3>
+            <p class="text-base text-textblack" style="font-family: Arimo;">{data.description3}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="formcontainer" class="container-child-2 w-3/6 max-w-[600px] min-h-[550px] ml-10 border-2 border-primary flex flex-col items-center justify-center rounded-2xl p-[2%] bg-white elevation-2 shadow-lg">
+      <h3 class="text-0calc font-bold mb-[2%] text-textblack" style="font-family: Arimo;">{data.form.title}</h3>
+      <form id="myForm" class="w-full items-center justify-between">
+        <div class="w-full colcontainer h-20 flex items-center justify-between mb-[4%]">
+          <div class="h-full w-[47%] colcontainerchild flex flex-col justify-evenly">
+            <label class="text-base 2xl:text-lg font-bold text-textblack" style="font-family: Arimo;">{data.form.label1}</label>
+            <input required placeholder={data.form.placeholder1} class="custom-input border-[2px] border-secondary rounded-lg h-10 p-2" name="entry.1291198894" />
+          </div>
+          <div class="h-full w-[47%] colcontainerchild flex flex-col justify-evenly">
+            <label class="text-base 2xl:text-lg font-bold text-textblack" style="font-family: Arimo;">{data.form.label2}</label>
+            <input required type="email" placeholder={data.form.placeholder2} class="custom-input border-[2px] border-secondary rounded-lg h-10 p-2" name="entry.59580764" />
+          </div>
+        </div>
+        <div class="w-full h-20 colcontainer flex items-center justify-between mb-[4%]">
+          <div class="h-full w-[47%] colcontainerchild flex flex-col justify-evenly">
+            <label class="text-base 2xl:text-lg font-bold text-textblack" style="font-family: Arimo;">{data.form.label4}</label>
+            <input required placeholder={data.form.placeholder4} class="custom-input border-[2px] border-secondary rounded-lg h-10 p-2" name="entry.1637227755" />
+          </div>
+          <div class="h-full w-[47%] colcontainerchild flex flex-col justify-evenly">
+            <label class="text-base 2xl:text-lg font-bold text-textblack" style="font-family: Arimo;">{data.form.label5}</label>
+            <select required class="custom-input border-[2px] border-secondary rounded-lg h-10 p-2 text-textblack" name="entry.1061557718">
+              <option value="" disabled selected>Company Size</option>
+              <option value="1-10">1-10 employees</option>
+              <option value="11-50">11-50 employees</option>
+              <option value="51-200">51-200 employees</option>
+              <option value="201-500">201-500 employees</option>
+              <option value="501-1000">501-1000 employees</option>
+              <option value="1001-5000">1001-5000 employees</option>
+              <option value="5001-10000">5001-10,000 employees</option>
+              <option value="10001+">10,001+ employees</option>
+            </select>
+          </div>
+        </div>
+        <input type="hidden" name="entry.664159867" value="Book a demo">
+        <div class="w-full h-32 flex flex-col justify-between mb-[2%]">
+          <label class="text-base 2xl:text-lg font-bold text-textblack" style="font-family: Arimo;">{data.form.label3}</label>
+          <textarea required name="entry.1056515558" placeholder={data.form.placeholder3} class="custom-input border-[2px] border-secondary rounded-lg p-2" rows="10" cols="30" style="resize:none"></textarea>
+        </div>
+        <div class="w-full flex items-center justify-start mb-3">
+          <input type="checkbox" required class="ml-3 w-4 h-4"/>
+          <p class="text-gray-500 ml-3 my-3">{data.form.terms}<span><a href="" class="ml-2 underline underline-offset-4">{data.form.link}</a></span></p>
+        </div>
+
+        <button type="submit" class="bottombutton custom-button text-lg bg-primary w-full h-12 flex items-center justify-center duration-300 text-white font-bold rounded-lg shadow-md flex text-base items-center gap-x-2 hover:-translate-y-1" style="font-family: Roboto;">
+          {data.form.button} <img class="button-img" src="/assets/images/arrowright.svg" alt="Arrow Right" />
+        </button>
+      </form>
+      <div id="thank-you-message" class="w-full h-full hidden text-center">
+        <img src="/assets/images/circle-tick.svg" alt="Success" class="mx-auto mb-4"/>
+        <p class="text-white text-xl font-bold" style="font-family: Arimo;">Thank You</p> 
+        <p class="text-white text-base" style="font-family: Arimo;">Form Submitted Successfully. We will reach you shortly.</p> 
+        <button id="submit-another-form" class="text-white text-lg text-center underline mt-5" style="font-family: Arimo;">Submit another form</button>
+      </div>
+    </div>
+  </div>
 </Layout>
 <script type="module">
-    document.getElementById("myForm").addEventListener("submit", async function(event) {
-      event.preventDefault(); 
+  document.getElementById("myForm").addEventListener("submit", async function(event) {
+    event.preventDefault(); 
+    
+    const formData = new FormData(this); 
+    const url = "https://docs.google.com/forms/u/0/d/e/1FAIpQLSeGjuyA_jjDmmT4jTY96s0CgCL_JKOJlNrTRqJ-9iqRmlEPKw/formResponse";
+    
+    try {
+      const response = await fetch(url, {
+        method: "POST",
+        mode: "no-cors",
+        body: formData
+      });
       
-      const formData = new FormData(this); 
-      const url = "https://docs.google.com/forms/u/0/d/e/1FAIpQLSeGjuyA_jjDmmT4jTY96s0CgCL_JKOJlNrTRqJ-9iqRmlEPKw/formResponse";
+      const formContainer = document.getElementById("formcontainer");
       
-      try {
-        const response = await fetch(url, {
-          method: "POST",
-          mode: "no-cors",
-          body: formData
-        });
-          
+      formContainer.style.border = '0'; 
+      
+      formContainer.innerHTML = `
+        <div class="w-full h-[500px] text-center bg-white flex flex-col items-center justify-center rounded-2xl">
+          <img src="/assets/images/circle-tickprimary.svg" alt="Success" class="mx-auto mb-4"/>
+          <p class="text-primary text-calc font-bold" style="font-family: Arimo;">Thank You</p> 
+          <p class="text-primary text-base" style="font-family: Arimo;">Form Submitted Successfully. We will reach you shortly.</p> 
+          <button id="submit-another-form" class="text-primary text-lg text-center underline mt-5" style="font-family: Arimo;">Submit another form</button>
+        </div>
+      `;
+      
+      document.getElementById("submit-another-form").addEventListener("click", function() {
+        location.reload(); 
+      });
+      
+     
+      document.getElementById("myForm").reset(); 
+    } catch (error) {
+      
+      let text = "Error in form Submission";
+      document.getElementById("result").style.color = "red";
+      document.getElementById("result").innerHTML = text;  
+    }
+  });
+</script>
 
-          document.getElementById("myForm").reset(); 
-      } catch (error) {
-      
-          let text = "Error in form Submission"
-          document.getElementById("result").style.color = "red";
-          document.getElementById("result").innerHTML = text;  
-      }
-    });
-  </script>
+
+
+<style>
+  .custom-button:hover {
+    background-color: #1DD0D5;
+  }
+
+  .button-img {
+    filter: brightness(0) invert(1);
+  }
   
-  <style>
-    .custom-button:hover {
-      background-color: #1DD0D5;
+  .custom-input:focus {
+    border-color: #1DD0D5;
+    outline: none;
+  }
+
+  .formcontainer {
+    background: linear-gradient(180deg, #30BABA 35%, rgb(255, 255, 255) 35%);
+  }
+  
+  @media(max-width:500px){
+    .formcontainer {
+      flex-direction: column;
+      padding-left:10px ;
+      padding-right:10px ;
+      background: linear-gradient(180deg, #30BABA 15%, rgb(255, 255, 255) 15%);
     }
     
-    .button-img {
-      filter: brightness(0) invert(1);
+    .container-child-1 {
+      width: 100%;
     }
-    .custom-input:focus {
-      border-color: #1DD0D5; /* Change this to your desired focus color */
-      outline: none; /* Remove the default outline */
+    
+    .container-child-2 {
+      width: 100%;
+      margin: 0%;
     }
-  </style>
-  
+    
+    .colcontainer {
+      flex-direction: column;
+      height: auto;
+      column-gap: 20px;
+    }
+    
+    .colcontainerchild {
+      width: 100%;
+      margin-top: 20px;
+    }
+    
+    .hidden {
+      display: none;
+    }
+  }
+</style>

@@ -35,7 +35,7 @@ function Testimonial() {
   console.log("Current Index:", currentIndex);
 
   return (
-    <div className="py-28 w-full flex flex-col items-center justify-center bg-gradient-to-b from-[#1DD0D5] to-[#0F6C6F]">
+    <div className="h-screen w-full flex flex-col items-center justify-center bg-primary">
       <h3 className='w-full text-4xl md:text-6xl font-bold text-center text-white' style={{ fontFamily: 'Arimo' }}>What User Say About Us</h3>
       <div className="w-11/12 md:w-4/5 flex flex-col items-center justify-center">
         <div className='w-full flex justify-start'>

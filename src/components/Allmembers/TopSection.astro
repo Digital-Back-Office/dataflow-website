@@ -1,0 +1,39 @@
+---
+import { getEntry } from "astro:content";
+
+const Data = await getEntry("Allmembers", "allmember");
+const data = Data.data.topsection;
+console.log(data)
+---
+<div class=" container-top w-full min-h-screen py-4 flex items-center justify-center">
+
+    <div class="text-container w-6/12">
+        <h1 class="text-2calc font-bold mb-[5%] text-textblack w-11/12" style="font-family: Arimo;">{data.title}</h1>
+        <p class="text-lg w-11/12 text-textblack" style="font-family: Arimo;">{data.description}</p>
+      </div>
+      <div class="w-[25%] img-container">
+        <img src="/assets/images/Allmembersimage1.png" class="img-container"/>
+        </div>
+</div>
+<style>
+
+  @media (max-width:440px) {
+     .container-top{
+      width: 100%;
+      height: auto;
+      padding-left: 15px;
+      padding-right: 15px;
+      padding-top: 30px;
+      padding-bottom: 30px;
+        flex-direction:column;
+     }
+    .text-container{
+        width: 100%;
+        margin-bottom: 20px;
+    }
+    .img-container{
+        width: 100%;
+        height:auto;
+    }
+  }
+</style>

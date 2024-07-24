@@ -5,12 +5,12 @@ const Data = await getEntry("Home", "home");
 const data = Data.data.Section1;
 ---
 
-<div class="responsive-container transition-all duration-700 ease-in-out h-screen w-full bg-[#FBE2F0] flex md:flex-row flex-col items-center justify-center group hover:bg-[#D40F7D]">
+<div class="responsive-container transition-all duration-700 h-screen w-full bg-[#FBE2F0] flex md:flex-row flex-col items-center justify-center group hover:bg-[#D40F7D]">
   <div class="content-container h-[80vh] md:w-2/6 w-full flex flex-col justify-center items-start px-3 py-4">
-    <h3 class="transition-all duration-700 ease-in-out text-calc text-black font-bold mb-[5%] group-hover:text-white group-hover:text-2calc w-4/5 " style="font-family: Arimo;">
+    <h3 class="transition-all duration-700 ease-in-out text-calc text-textblack font-bold mb-[5%] group-hover:text-white group-hover:text-2calc w-4/5 " style="font-family: Arimo;">
       {data.title}
     </h3>
-    <p class="transition-all duration-700 ease-in-out text-black text-base group-hover:text-white group-hover:text-lg w-3/4 " style="font-family: Arimo;">
+    <p class="transition-all duration-700 ease-in-out text-textblack text-base group-hover:text-white group-hover:text-lg w-3/4 " style="font-family: Arimo;">
       {data.description}
     </p>
     <a href="/RunDataAnyCloud">
@@ -33,7 +33,7 @@ const data = Data.data.Section1;
   @media (max-width: 400px) {
     .responsive-container {
       flex-direction: column;
-      padding-left: 20px;
+      
       padding-top: 20px;
       padding-bottom: 20px;
     }

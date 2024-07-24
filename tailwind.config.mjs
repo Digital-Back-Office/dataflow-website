@@ -21,6 +21,7 @@ export default {
 				'10calc': 'calc(1rem + 2vw)',
 				
 			  },
+
 			  colors: {
 				primary:"#30BABA",
 				secondary:"#1DD0D5",

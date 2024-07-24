@@ -2,17 +2,24 @@
 const { image, title, description } = Astro.props
 ---
 
-<div class="card transitions-all duration-700 ease-in-out min-w-[200px] min-h-[200px] w-[17vw] h-[17vw] bg-white p-[1.5vw] pb-[2vw] flex flex-col items-start justify-start shadow-xl rounded-md hover:bg-secondary hover:text-white hover:-translate-y-1">
-    <div class="image-container w-[3.3vw] h-[3.3vw] mb-[5%]">
+<div class="card transitions-all duration-700 ease-in-out min-w-[200px] min-h-[200px] w-[17vw] h-[17vw] bg-white p-[1.5vw] pb-[2vw] flex flex-col items-start justify-start shadow-xl rounded-md hover:bg-secondary hover:text-white hover:-translate-y-1 group">
+    <div class="image-container w-[3.3vw] h-[3.3vw] mb-[5%] min-w-[35px] min-h-[35px]">
         <img src={image} class="w-full h-full object-contain image-content" />
     </div>
-    <h3 class="2xl:text-lg xl:text-base font-bold mb-[5%] lg:text-base">{title}</h3>
-    <p class="2xl:text-sm xl:text-xs lg:text-xs md:text-xs">{description}</p>
+    <h3 class="2xl:text-lg xl:text-base font-bold md:text-base text-textblack mb-5 group-hover:text-white" style="font-family: Arimo;">{title}</h3>
+    <p class="2xl:text-base xl:text-sm lg:text-sm md:text-sm text-textblack group-hover:text-white"  style="font-family: Arimo;">{description}</p>
 </div>    
 
 <style>
 .card:hover .image-container {
     width: 0;
-    height: 0;
+    height: 10px;
+    display: none;
 }
+@media (max-width:440px) {
+     .card{
+      width: 90%;
+      height: auto;
+     }
+    }
 </style>

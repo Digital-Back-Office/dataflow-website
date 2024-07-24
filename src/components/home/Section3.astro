@@ -5,12 +5,12 @@ const Data = await getEntry("Home", "home");
 const data = Data.data.Section3;
 ---
 
-<div class="responsive-container transition-all duration-700 ease-in-out w-full bg-[#E1E6FA] flex md:flex-row flex-col items-center justify-center group hover:bg-[#4169E1] md:py-24 py-10">
+<div class="responsive-container transition-all duration-700 ease-in-out w-full bg-[#E1E6FA] h-screen flex md:flex-row flex-col items-center justify-center group hover:bg-[#4169E1] ">
   <div class="content-container h-[80vh] md:w-2/6 w-full flex flex-col justify-center items-start md:items-start md:mb-0 mb-8 px-4 md:px-0">
-    <h3 class="transition-all duration-700 ease-in-out text-calc text-black font-bold mb-[5%] group-hover:text-white group-hover:text-2calc w-full md:w-4/5" style="font-family: Arimo;">
+    <h3 class="transition-all duration-700 ease-in-out text-calc text-textblack font-bold mb-[5%] group-hover:text-white group-hover:text-2calc w-full md:w-4/5" style="font-family: Arimo;">
       {data.title}
     </h3>
-    <p class="transition-all duration-700 ease-in-out text-black text-base group-hover:text-white group-hover:text-lg w-full md:w-3/4" style="font-family: Arimo;">
+    <p class="transition-all duration-700 ease-in-out text-textblack text-base group-hover:text-white group-hover:text-lg w-full md:w-3/4" style="font-family: Arimo;">
       {data.description}
     </p>
     <a href="/pythondependency">
@@ -33,12 +33,13 @@ const data = Data.data.Section3;
   @media (max-width: 1059px) {
     .responsive-container {
       flex-direction: column;
-      padding-top: 10px;
-      padding-bottom: 10px;
+      padding-top: 20px;
+      padding-bottom: 20px;
+      height: auto;
     }
     .content-container {
       margin-bottom: 20px;
-      padding: 0 20px;
+  
     }
     .image-container {
       margin-top: 20px;

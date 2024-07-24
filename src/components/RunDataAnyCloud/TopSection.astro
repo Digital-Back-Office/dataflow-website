@@ -5,14 +5,14 @@ const Data = await getEntry("RunDataAnyCloud", "data");
 const data = Data.data.TopSection
 const button = Data.data.button1
 ---
-<div class="w-full h-[90vh] flex items-center justify-center ">
-<div class="w-2/5 ">
-<h1 class="text-calc font-bold mb-[5%]" style="font-family: Arimo;">{data.title}</h1>
-<p class="text-xl w-11/12" style="font-family: Arimo;" >{data.description}</p>
+<div class=" container-top w-full h-[90vh] flex items-center justify-center ">
+<div class="w-2/5 text-container">
+<h1 class="text-calc font-bold mb-[5%] text-textblack" style="font-family: Arimo;">{data.title}</h1>
+<p class="text-xl w-11/12 text-textblack" style="font-family: Arimo;" >{data.description}</p>
 <a href="/GetStartedForm"> <button class=" custom-button bg-secondary px-3 py-2 duration-700 text-white rounded-lg shadow-md flex text-base items-center gap-x-2 mt-14 hover:-translate-y-1 " style="font-family: Roboto;">{button}<img class="button-img"  src="/assets/images/arrowright.svg">   </button></a> 
 
 </div>
-<div class="w-2/5 bg-white h-1/2 mb-[10%]"><img src="/assets/images/runanycloud.png" class=" transition-all duration-700 ease-in-out group-hover:scale-125"/>
+<div class=" img-container w-2/5 bg-white h-1/2 mb-[10%]"><img src="/assets/images/runanycloud.png" class=" transition-all duration-700 ease-in-out group-hover:scale-125"/>
 </div>
 </div>
 <div class="h-[200px] w-full scroll-container flex justify-center items-center ">
@@ -50,6 +50,25 @@ const button = Data.data.button1
 
 
  <style>
+     @media (max-width:440px) {
+     .container-top{
+      width: 100%;
+      height: auto;
+      padding-left: 15px;
+      padding-right: 15px;
+      padding-top: 30px;
+      padding-bottom: 30px;
+        flex-direction:column;
+     }
+    .text-container{
+        width: 100%;
+        margin-bottom: 20px;
+    }
+    .img-container{
+        width: 100%;
+        height:auto;
+    }
+  }
   .custom-button:hover {
     background-color: #30BABA;
   }

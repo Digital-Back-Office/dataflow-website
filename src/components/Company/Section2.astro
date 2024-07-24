@@ -6,22 +6,45 @@ console.log(data)
 import Membercard from "./Memebercard.astro"
 ---
 
-<div class="py-24 w-full  flex items-start justify-center">
-   <div class="w-[25%]">
+<div class=" responsive-container py-24 w-full  flex items-start justify-center">
+   <div class="w-[25%] container1">
     <p class="text-8calc font-bold text-textblack" style="font-family: Arimo;">{data.title}</p>
-    <button class=" flex bg-white py-2 px-3 text-primary items-center mt-10 gap-x-2 shadow-md rounded-lg hover:-translate-y-1" style="font-family: Roboto;">
+    <a href="/AllMembers">
+    <button class="transition-all transition-700 custom-button flex bg-white py-2 px-3 text-primary items-center mt-10 gap-x-2 shadow-md rounded-lg hover:-translate-y-1" style="font-family: Roboto;">
         {data.button}
-        <img src="/assets/images/arrowright.svg" height="20px" width="20px">
+        <img src="/assets/images/arrowright.svg" height="20px" width="20px" class="button-img">
       </button>
+    </a>
    </div>
-   <div class=" flex flex-col itesm-between justity-between gap-y-14">
-    <div class="w-full flex flex-wrap gap-x-10">
+   <div class=" flex flex-col items-between justity-between gap-y-14">
+    <div class="w-full flex justify-center flex-wrap gap-x-10">
         <Membercard/>
         <Membercard/>
     </div>
-    <div class="w-full flex flex-wrap gap-x-10">
+    <div class="w-full flex justify-center flex-wrap gap-x-10">
         <Membercard/>
         <Membercard/>
     </div>
    </div>
 </div>
+<style>
+    .custom-button:hover {
+  background-color: #30BABA; /* Change button background color */
+  color: white; /* Change text color */
+}
+
+.custom-button:hover .button-img {
+  filter: brightness(0) invert(1); 
+}
+@media (max-width: 400px) {
+    .responsive-container {
+      flex-direction: column;
+      align-items: center;
+       padding: 10px;
+    }
+    .container1 {
+    width: 100%;
+    margin-bottom : 20px;
+    }
+  }
+</style>

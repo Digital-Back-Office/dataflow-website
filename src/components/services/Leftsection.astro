@@ -1,0 +1,158 @@
+---
+const { data, image } = Astro.props;
+---
+<div class="w-full min-h-screen flex items-center justify-center card overflow-hidden">
+  <div class="w-2/5 imageanimateouter">
+    <h1 class="textboxanimate font-bold text-calc text-textblack mb-8 opacity-0" style="font-family: Arimo;">
+      {data.maintitle}
+    </h1>
+    <ul style="list-style-type: disc; padding-left: 1.5rem; pr-10">
+      <li class="textboxanimate1 text-base 2xl:text-lg mb-4 text-textblack opacity-0" style="font-family: Roboto;">
+        <span class="font-semibold">{data.title1}: </span>{data.description1}
+      </li>
+      <li class="textboxanimate2 text-base 2xl:text-lg mb-4 text-textblack opacity-0" style="font-family: Roboto;">
+        <span class="font-semibold">{data.title2}: </span>{data.description2}
+      </li>
+      <li class="textboxanimate3 text-base 2xl:text-lg mb-4 text-textblack opacity-0" style="font-family: Roboto;">
+        <span class="font-semibold">{data.title3}: </span>{data.description3}
+      </li>
+      <li class="textboxanimate4 text-base 2xl:text-lg mb-4 text-textblack opacity-0" style="font-family: Roboto;">
+        <span class="font-semibold">{data.title4}: </span>{data.description4}
+      </li>
+    </ul>
+  </div>
+  <div class="w-2/5 min-h-[55vh] pl-10 rounded-xl overflow-hidden">
+    <img src={image} class="imageanimate h-full w-full opacity-0 rounded-xl" />
+  </div>
+</div>
+
+<style>
+  .animatedtext {
+    animation: fadeleft 1s forwards;
+  }
+
+  .image {
+    animation: faderight 1s forwards;
+  }
+
+  .animatedtext-delay-0 {
+    animation-delay: 0.2s;
+  }
+
+  .animatedtext-delay-1 {
+    animation-delay: 0.4s;
+  }
+
+  .animatedtext-delay-2 {
+    animation-delay: 0.6s;
+  }
+
+  .animatedtext-delay-3 {
+    animation-delay: 0.8s;
+  }
+
+  @keyframes fadeleft {
+    0% {
+      transform: translateX(-100%);
+      opacity: 0;
+    }
+    100% {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+
+  @keyframes faderight {
+    0% {
+      transform: translateX(100%);
+      opacity: 0;
+    }
+    100% {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const cards = document.querySelectorAll('.card');
+
+    cards.forEach(card => {
+      const animatedOuterDiv = card.querySelector('.imageanimateouter');
+      const animatedDiv1 = card.querySelector('.textboxanimate');
+      const animatedDiv2 = card.querySelector('.imageanimate');
+      const animatedDiv3 = card.querySelector('.textboxanimate1');
+      const animatedDiv4 = card.querySelector('.textboxanimate2');
+      const animatedDiv5 = card.querySelector('.textboxanimate3');
+      const animatedDiv6 = card.querySelector('.textboxanimate4');
+
+      const observer1 = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            animatedDiv1.classList.add('animatedtext');
+          }
+        });
+      }, {
+        threshold: 0.1
+      });
+
+      const observer2 = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            animatedDiv2.classList.add('image');
+          }
+        });
+      }, {
+        threshold: 0.1
+      });
+
+      const observer3 = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            animatedDiv3.classList.add('animatedtext', 'animatedtext-delay-0');
+          }
+        });
+      }, {
+        threshold: 0.4
+      });
+
+      const observer4 = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            animatedDiv4.classList.add('animatedtext', 'animatedtext-delay-1');
+          }
+        });
+      }, {
+        threshold: 0.5
+      });
+
+      const observer5 = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            animatedDiv5.classList.add('animatedtext', 'animatedtext-delay-2');
+          }
+        });
+      }, {
+        threshold: 0.6
+      });
+
+      const observer6 = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            animatedDiv6.classList.add('animatedtext', 'animatedtext-delay-3');
+          }
+        });
+      }, {
+        threshold: 0.7
+      });
+
+      observer1.observe(animatedOuterDiv);
+      observer2.observe(animatedOuterDiv);
+      observer3.observe(animatedOuterDiv);
+      observer4.observe(animatedOuterDiv);
+      observer5.observe(animatedOuterDiv);
+      observer6.observe(animatedOuterDiv);
+    });
+  });
+</script>

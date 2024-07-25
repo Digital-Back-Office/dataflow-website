@@ -464,11 +464,11 @@ const tabledata2 = Data.data.table2
 <script>
 
 document.addEventListener('DOMContentLoaded', function () {
-    const checkbox = document.querySelector('.toggle');
-    const price1 = document.querySelector('.price1');
-    const price2 = document.querySelector('.price2');
-    const pricetable1 = document.querySelector('.pricetable1');
-    const pricetable2 = document.querySelector('.pricetable2');
+  const checkbox = document.querySelector('.toggle') as HTMLInputElement;
+    const price1 = document.querySelector('.price1') as HTMLElement;
+    const price2 = document.querySelector('.price2') as HTMLElement;
+    const pricetable1 = document.querySelector('.pricetable1') as HTMLElement;
+    const pricetable2 = document.querySelector('.pricetable2') as HTMLElement;
 
     checkbox.addEventListener('change', function () {
         if (checkbox.checked === true){

@@ -207,8 +207,7 @@ let updatedposts = posts
                 link.addEventListener('click', function(event) {
                     event.preventDefault(); 
                     const pageNumber = this.textContent.trim();
-                    console.log('Clicked page number:', pageNumber);
-                    console.log(posts.length)
+
                     updatedPosts = posts.slice((pageNumber-1)*pagecapacity,(pageNumber-1)*pagecapacity+pagecapacity)
                     renderPosts(updatedPosts)
                     document.querySelectorAll('#setpage .page-item').forEach(item => item.classList.remove('active'));
@@ -305,9 +304,9 @@ let updatedposts = posts
             subscribeButton.addEventListener('click', () => {
                 const email = emailInput.value;
                 if (email) {
-                    console.log(`Subscribed with email: ${email}`);
+                   
                 } else {
-                    alert('Please enter a valid email address');
+                   
                 }
             });
         });

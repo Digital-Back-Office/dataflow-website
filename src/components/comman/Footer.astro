@@ -7,70 +7,66 @@ const footer = Data.data.footer;
 
 <footer>
   <div class="py-[20px] w-full flex items-center justify-center bg-[#2FB7B8]">
-    <p class="text-base text-center font-normal text-white decoration-white">
-      {footer.finance}
-      <span>
-        <button
-          class="duration-300 underline underline-offset-8 text-[17px] hover:text-lg"
-          >{footer.finance_underline}</button
-        >
-      </span>
-    </p>
+   
   </div>
   <div class="footer-container w-full flex px-[10%] py-[50px]">
     <div class="first-section w-[30%]  bg-white flex  flex-col items-start justify-start">
-      <img src="/assets/images/greenlogo.png" class="h-12" />
+      <a href="/"><img src="/assets/images/greenlogo.png" class="h-12" /></a>
       <p class="text-xs text-[#858C97] mt-[20px] w-5/6">{footer.description}</p>
-      <p class="text-[#858C97] text-xs mt-[64px]">{footer.copyrights}</p>
+      <div class=" w-4/5  mt-6">
+        <button class="h-7 w-7 rounded-full bg-[#F6F0E1] hover:bg-[#30BABA]  p-2"><img src="/assets/images/linkedin.png" /></button>
+        <button class="h-7 w-7 rounded-full bg-[#F6F0E1] hover:bg-[#30BABA] ml-3 p-2"><img src="/assets/images/xcom.svg" /></button>
+      </div>
+      <p class="text-[#858C97] text-xs mt-[40px]">{footer.copyrights}</p>
     </div>
     <div class="w-[20%] flex flex-col pt-[20px] gap-y-3">
       <a class="text-base text-textblack hover:text-primary" style="font-family: Arimo;" href="/"
-        ><p>why dataFlow</p></a
+        ><p>{footer.section1.link1}</p></a
       >
       <a class="text-base text-textblack hover:text-primary" style="font-family: Arimo;"  href="/Pricing"
-        ><p>Pricing</p></a
+        ><p>{footer.section1.link2}</p></a
       >
       <a class="text-base text-textblack hover:text-primary" style="font-family: Arimo;"  href="/learn"
-        ><p>Learn</p></a
+        ><p>{footer.section1.link3}</p></a
       >
       <a class="text-base text-textblack hover:text-primary" style="font-family: Arimo;"  href="/Company"
-        ><p>company</p></a
+        ><p>{footer.section1.link4}</p></a
       >
       <a class="text-base text-textblack hover:text-primary" style="font-family: Arimo;"  href="/blog"
-        ><p>Blog</p></a
+        ><p>{footer.section1.link5}</p></a
       >
     </div>
     <div class="w-[30%] flex flex-col pt-[20px] pr-[5%] gap-y-3">
       <a class="text-base text-textblack hover:text-primary" style="font-family: Arimo;"  href="/RunDataAnyCloud"
-        ><p>Run Dataflow on any cloud</p></a
+        ><p>{footer.section2.link1}</p></a
       >
       <a class="text-base text-textblack hover:text-primary" style="font-family: Arimo;"  href="/ManageYourData"
-        ><p>Manage your data connection across tools</p></a
+        ><p>{footer.section2.link2}</p></a
       >
       <a class="text-base text-textblack hover:text-primary" style="font-family: Arimo;"  href="/pythondependency"
-        ><p>Say goodbye to Python dependency</p></a
+        ><p>{footer.section2.link3}</p></a
       >
     </div>
     <div class="w-[30%] flex flex-col pt-[20px] gap-y-3">
       <a class="text-base text-textblack hover:text-primary" style="font-family: Arimo;"  href="/BookDemo"
-        ><p>Book Now</p></a
+        ><p>{footer.section3.link1}</p></a
       >
       <a class="text-base text-textblack hover:text-primary" style="font-family: Arimo;"  href="/Contact-us"
-        ><p>Contact us</p></a
+        ><p>{footer.section3.link2}</p></a
       >
       <a class="text-base text-textblack hover:text-primary" style="font-family: Arimo;"  href="/Termsandconditions"
-        ><p>Terms and Conditions</p></a
+        ><p>{footer.section3.link3}</p></a
       >
     </div>
     <div class="w-[20%] flex flex-col pt-[20px] gap-y-3">
       <a class="text-base text-textblack hover:text-primary" style="font-family: Arimo;"
-        ><p>+ 1 526 220 0444</p></a
+        ><p>{footer.section4.link1}</p></a
       >
       <a class="text-base text-textblack hover:text-primary" style="font-family: Arimo;"
-        ><p>+ 1 526 220 0444</p></a
+        ><p>{footer.section4.link2}</p></a
       >
       <a class="text-base text-textblack hover:text-primary" style="font-family: Arimo;"
-        ><p>Email@email.com</p></a
+        ><p>{footer.section4.link3}</p></a
       >
     </div>
   </div>

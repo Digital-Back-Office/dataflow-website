@@ -2,6 +2,8 @@
 import { getEntry } from "astro:content";
 const Data = await getEntry("comman", "footerheader");
 const footer = Data.data.footer;
+const docsUrl = import.meta.env.VITE_DOCS_URL 
+
 ---
 
 
@@ -26,7 +28,7 @@ const footer = Data.data.footer;
       <a class="text-base text-textblack hover:text-primary" style="font-family: Arimo;"  href="/Pricing"
         ><p>{footer.section1.link2}</p></a
       >
-      <a class="text-base text-textblack hover:text-primary" style="font-family: Arimo;"  href="/learn"
+      <a class="text-base text-textblack hover:text-primary" style="font-family: Arimo;"  href={docsUrl}
         ><p>{footer.section1.link3}</p></a
       >
       <a class="text-base text-textblack hover:text-primary" style="font-family: Arimo;"  href="/Company"

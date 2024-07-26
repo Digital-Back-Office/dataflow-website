@@ -4,6 +4,8 @@ import { getEntry } from "astro:content";
 
 const Data = await getEntry("Home", "home");
 const data = Data.data.LearnSection;
+const docsUrl = import.meta.env.VITE_DOCS_URL 
+
 ---
 <div class="h-[100vh] w-full flex justify-center">
   <div class="ring-animation-container h-full w-7/12 overflow-hidden flex items-center justify-center">
@@ -40,7 +42,7 @@ const data = Data.data.LearnSection;
         </p>
       </div>
     </div>
-    <a href="/learn">
+    <a href={docsUrl}>
       <button class="custom-button bg-white px-3 py-2 duration-700 text-[#30BABA] rounded-lg shadow-md flex text-base items-center gap-x-2 mt-14 hover:-translate-y-1" style="font-family: Roboto;">
         {Data.data.LearnMoreBtn}
         <img class="button-img" src="/assets/images/arrowright.svg">

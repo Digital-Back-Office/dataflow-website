@@ -1,12 +1,24 @@
 import { defineConfig } from 'astro/config';
-import tailwind from "@astrojs/tailwind";
+import tailwind from '@astrojs/tailwind';
+import react from '@astrojs/react';
+import dotenv from 'dotenv';
 
-import react from "@astrojs/react";
+dotenv.config();
 
-// https://astro.build/config
+const isProduction = process.env.BUILD_TYPE === 'production';
+
+const docsUrl = isProduction
+? 'https://docs.dataflow.site'
+: 'https://docs-dataflow.netlify.app';
+
 export default defineConfig({
   devToolbar: {
-    enabled: false
+    enabled: false,
   },
-  integrations: [tailwind(), react()]
+  integrations: [tailwind(), react()],
+  vite: {
+    define: {
+      'import.meta.env.VITE_DOCS_URL': JSON.stringify(docsUrl),
+    },
+  },
 });

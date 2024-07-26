@@ -3,6 +3,9 @@ import { getEntry } from "astro:content";
 const Data = await getEntry("comman", "footerheader");
 const header = Data.data.header;
 const { pagename } = Astro.props;
+const docsUrl = import.meta.env.VITE_DOCS_URL 
+console.log(docsUrl)
+
 ---
 
 <header class="h-20 w-full flex items-center justify-between bg-[#30BABA] px-[7%]">
@@ -12,7 +15,7 @@ const { pagename } = Astro.props;
     <div class="h-20 w-4/5 flex items-center justify-between">
       <a href="/" id="nav1"> <p class="DataFlow text-white text-base font-medium hover:border-b-2 border-white" style="font-family: Arial, Helvetica, sans-serif">{header.nav1}</p> </a>
       <a href="/Pricing" id="nav2"> <p class="Pricing text-white text-base font-medium hover:border-b-2 border-white" style="font-family: Arial, Helvetica, sans-serif">{header.nav2}</p> </a>
-      <a href="/learn" id="nav3"> <p class="LearnMore text-white text-base font-medium hover:border-b-2 border-white" style="font-family: Arial, Helvetica, sans-serif">{header.nav3}</p> </a>
+      <a href={docsUrl} target="_blank" id="nav3"> <p class="LearnMore text-white text-base font-medium hover:border-b-2 border-white" style="font-family: Arial, Helvetica, sans-serif">{header.nav3}</p> </a>
       <a href="/Company" id="nav4"> <p class="Company text-white text-base font-medium hover:border-b-2 border-white" style="font-family: Arial, Helvetica, sans-serif">{header.nav4}</p> </a>
       <a href="/blog" id="nav5"> <p class="text-white text-base font-medium hover:border-b-2 border-white" style="font-family: Arial, Helvetica, sans-serif">{header.nav5}</p> </a>
     </div>
@@ -43,7 +46,7 @@ const { pagename } = Astro.props;
   <nav class="flex flex-col items-center mt-10">
     <a href="/" class="text-white text-base font-medium py-2" id="nav1-mobile" style="font-family: Arial, Helvetica, sans-serif">{header.nav1}</a>
     <a href="/Pricing" class="text-white text-base font-medium py-2" id="nav2-mobile" style="font-family: Arial, Helvetica, sans-serif">{header.nav2}</a>
-    <a href="/learn" class="text-white text-base font-medium py-2" id="nav3-mobile" style="font-family: Arial, Helvetica, sans-serif">{header.nav3}</a>
+    <a href={docsUrl} class="text-white text-base font-medium py-2" id="nav3-mobile" style="font-family: Arial, Helvetica, sans-serif">{header.nav3}</a>
     <a href="/Company" class="text-white text-base font-medium py-2" id="nav4-mobile" style="font-family: Arial, Helvetica, sans-serif">{header.nav4}</a>
     <a href="/blog" class="text-white text-base font-medium py-2" id="nav5-mobile" style="font-family: Arial, Helvetica, sans-serif">{header.nav5}</a>
     <a href="/BookDemo">

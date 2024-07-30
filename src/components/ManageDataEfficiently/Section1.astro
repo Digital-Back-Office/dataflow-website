@@ -5,9 +5,9 @@ import Card from "../RunDataAnyCloud/Card.astro";
 const Data = await getEntry("ManageYourData", "manageyourdata");
 const data = Data.data.section1
 ---
-<div class=" container-top w-full min-h-screen bg-[#F6F6F6] px-[7%] py-5%  flex flex-col items-center justify-center">
-    <h2 class="text-calc font-bold pb-[2%] text-center text-textblack" style="font-family: Arimo;">{data.title}</h2>
-    <p class="2xl:text-lg 2xl:w-3/4 lg:w-4/5 lg:text-base text-center pb-[7%] text-textblack" style="font-family:Arimo;">{data.description}</p>
+<div class=" container-top w-full py-24 bg-[#F6F6F6] px-[7%]  flex flex-col items-center justify-center">
+    <h2 class="text-calc font-bold pb-8 text-center text-textblack" style="font-family: Arimo;">{data.title}</h2>
+    <p class="2xl:text-lg 2xl:w-3/4 lg:w-4/5 lg:text-base text-center pb-16 text-textblack" style="font-family:Arimo;">{data.description}</p>
     <div class=" card-container w-11/12   flex flex-wrap gap-y-3  justify-evenly">
        <Card image="/assets/images/manageyourdatafeature1.png" title={data.featuretitle1} description={data.featuredescription1}></Card>
        <Card image="/assets/images/manageyourdatafeature2.png" title={data.featuretitle2} description={data.featuredescription2}></Card>

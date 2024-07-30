@@ -6,7 +6,7 @@ const Data = await getEntry("Allmembers", "allmember");
 const data = Data.data;
 
 ---
-<div class=" responsive-container w-full h-screen flex justify-center items-center gap-x-[5%]">
+<div class=" responsive-container w-full py-20 flex justify-center items-center gap-x-[5%]">
   
     <Memebercard/>
     <div class="w-1/2 mb-5 container1">
@@ -14,7 +14,7 @@ const data = Data.data;
     </div>
 </div>
 <style>
-    @media (max-width: 400px) {
+    @media (max-width: 500px) {
     .responsive-container {
       flex-direction: column;
       height: auto;

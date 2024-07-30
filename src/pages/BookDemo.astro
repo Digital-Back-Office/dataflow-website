@@ -55,8 +55,8 @@ const data = Data.data;
           </div>
           <div class="h-full w-[47%] colcontainerchild flex flex-col justify-evenly">
             <label class="text-base 2xl:text-lg font-bold text-textblack" style="font-family: Arimo;">{data.form.label5}</label>
-            <select required class="custom-input border-[2px] border-secondary rounded-lg h-10 p-2 text-textblack" name="entry.1061557718">
-              <option value="" disabled selected>Company Size</option>
+            <select required id="options" class="custom-input border-[2px] border-secondary rounded-lg h-10 p-2 text-textblack" name="entry.1061557718" style="color: #9ca3b1;">
+              <option  value="" disabled selected>Company Size</option>
               <option value="1-10">1-10 employees</option>
               <option value="11-50">11-50 employees</option>
               <option value="51-200">51-200 employees</option>
@@ -131,6 +131,9 @@ const data = Data.data;
       document.getElementById("result").innerHTML = text;  
     }
   });
+  document.getElementById('options').addEventListener('change', function() {
+    this.style.color = '#303030';
+        });
 </script>
 
 

@@ -5,12 +5,12 @@ const Data = await getEntry("Home", "home");
 const data = Data.data.Section3;
 ---
 
-<div class="responsive-container transition-all duration-700 ease-in-out w-full bg-[#E1E6FA] h-screen flex md:flex-row flex-col items-center justify-center group hover:bg-[#4169E1] ">
-  <div class="content-container  md:w-2/6 w-full flex flex-col justify-center items-start md:items-start md:mb-0 mb-8 px-4 md:px-0">
-    <h3 class="transition-all duration-700 ease-in-out text-calc text-textblack font-bold mb-[5%] group-hover:text-white group-hover:text-2calc w-full md:w-4/5" style="font-family: Arimo;">
+<div class="responsive-container transition-all duration-1000 ease-in-out w-full bg-[#E1E6FA] py-20 flex md:flex-row flex-col items-center justify-center group hover:bg-[#4169E1] ">
+  <div class="content-container  md:w-2/6 w-full flex flex-col justify-center items-start md:items-start px-3  mb-5">
+    <h3 class="textphone transition-all duration-1000 ease-in-out text-textblack font-bold mb-[5%] group-hover:text-white text-2calc w-full md:w-4/5" style="font-family: Arimo;">
       {data.title}
     </h3>
-    <p class="transition-all duration-700 ease-in-out text-textblack text-base group-hover:text-white group-hover:text-lg w-full md:w-3/4" style="font-family: Arimo;">
+    <p class="textphone transition-all duration-1000 ease-in-out text-textblack group-hover:text-white text-lg w-full md:w-3/4" style="font-family: Arimo;">
       {data.description}
     </p>
     <a href="/pythondependency">
@@ -20,8 +20,8 @@ const data = Data.data.Section3;
       </button>
     </a>
   </div>
-  <div class="image-container h-[60vh] md:w-2/6 w-full flex flex-col justify-start items-center md:items-end">
-    <img src="/assets/images/rundata2.png" class="h-[90%] w-[90%] transition-all duration-700 ease-in-out group-hover:scale-125" />
+  <div class="image-container h-auto  py-20 md:w-2/6 w-full flex flex-col justify-start items-center md:items-end">
+    <img src="/assets/images/rundata2.png" class="h-[90%] w-[90%] transition-all duration-1000 ease-in-out group-hover:scale-125" />
   </div>
 </div>
 
@@ -32,7 +32,7 @@ const data = Data.data.Section3;
 
   @media (max-width: 1059px) {
     .responsive-container {
-      flex-direction: column;
+      flex-direction: column-reverse;
       padding-top: 90px;
       padding-bottom: 90px;
       height: auto;
@@ -42,7 +42,11 @@ const data = Data.data.Section3;
   
     }
     .image-container {
+      width: 80%;
       margin-top: 20px;
+    }
+    .textphone{
+      width: 95%;
     }
   }
 </style>

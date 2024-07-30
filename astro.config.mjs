@@ -8,7 +8,7 @@ dotenv.config();
 const isProduction = process.env.BUILD_TYPE === 'production';
 
 const docsUrl = isProduction
-? 'https://docs.dataflow.site'
+? 'https://docs.dataflow.zone'
 : 'https://docs-dataflow.netlify.app';
 
 export default defineConfig({

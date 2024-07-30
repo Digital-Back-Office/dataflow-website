@@ -4,15 +4,14 @@ import { getEntry } from "astro:content";
 
 const Data = await getEntry("Home", "home");
 const data = Data.data.LearnSection;
-const docsUrl = import.meta.env.VITE_DOCS_URL 
 
 ---
-<div class="h-[100vh] w-full flex justify-center">
-  <div class="ring-animation-container h-full w-7/12 overflow-hidden flex items-center justify-center">
+<div class=" w-full h-auto flex justify-center">
+  <div class="ring-animation-container  w-6/12 overflow-hidden flex items-center justify-center">
     <RingAnimation />
   </div>
-  <div class="responsive-container h-full w-5/12 flex flex-col justify-center items-start">
-    <p class="font-bold text-textblack text-4calc leading-none mb-20 w-3/4" style="font-family: Roboto;">
+  <div class="responsive-container  w-5/12 py-32 flex flex-col justify-center items-start">
+    <p class="font-bold text-textblack text-4calc leading-none mb-10 w-3/4"   style="font-family:Helvetica, sans-serif">
       {data.title}
     </p>
     <div class="scroller">
@@ -42,7 +41,7 @@ const docsUrl = import.meta.env.VITE_DOCS_URL
         </p>
       </div>
     </div>
-    <a href={docsUrl}>
+    <a href="/learn">
       <button class="custom-button bg-white px-3 py-2 duration-700 text-[#30BABA] rounded-lg shadow-md flex text-base items-center gap-x-2 mt-14 hover:-translate-y-1" style="font-family: Roboto;">
         {Data.data.LearnMoreBtn}
         <img class="button-img" src="/assets/images/arrowright.svg">

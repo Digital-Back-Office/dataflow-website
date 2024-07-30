@@ -6,7 +6,7 @@ const button = Data.data.button2
 const docsUrl = import.meta.env.VITE_DOCS_URL 
 
 ---
-<div class="container-top w-full h-screen bg-[#F6F6F6] flex justify-center items-center">
+<div class="container-top w-full py-24 bg-[#F6F6F6] flex justify-center items-start">
     <div class="img-container w-2/5 h-full flex items-center justify-center">
         <img class="image w-[30vw] h-[30vw]" src={image}/>
     </div>
@@ -18,7 +18,7 @@ const docsUrl = import.meta.env.VITE_DOCS_URL
             {title}
         </p>
         <a href={docsUrl}>
-            <button class="bottombutton custom-button  px-3 py-2 duration-300 text-[#30BABA] rounded-lg shadow-md flex text-base items-center gap-x-2 hover:-translate-y-1" style="font-family: Roboto;">
+            <button class="bottombutton custom-button  px-3 py-2 mb-3 duration-300 text-[#30BABA] rounded-lg shadow-md flex text-base items-center gap-x-2 hover:-translate-y-1" style="font-family: Roboto;">
                 {button} <img class="button-img" src="/assets/images/arrowright.svg" alt="Arrow Right" />
             </button>
         </a>

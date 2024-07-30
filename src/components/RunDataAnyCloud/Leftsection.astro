@@ -6,12 +6,12 @@ const button = Data.data.button2
 const docsUrl = import.meta.env.VITE_DOCS_URL 
 
 ---
-<div class=" container-top w-full min-h-screen  flex justify-center items-center">
-    <div class=" text-container w-2/5 h-4/5 bg-white flex flex-col items-start justify-start pl-10 pr-[3%] pt-20 overflow-hidden">
-        <div class="toplogo w-[40%] mb-1">
+<div class=" container-top w-full py-24  flex justify-center items-start">
+    <div class=" text-container w-2/5  bg-white flex flex-col items-start justify-start pl-10 pr-[3%]">
+        <div class="toplogo w-[40%] mb-1 ">
             <img src={logo} alt="Logo" />
         </div>
-        {logo === "/assets/images/awslogo.png" && <div class="h-8"></div>}
+         <div class="h-8"></div>
         <p class="centertitle text-calc font-bold text-start   mb-10 text-textblack" style="font-family: Arimo;">
             {title}
         </p>
@@ -21,7 +21,7 @@ const docsUrl = import.meta.env.VITE_DOCS_URL
             </button>
         </a>
     </div>
-    <div class=" img-container w-2/5 h-full flex items-center justify-center">
+    <div class=" img-container w-2/5  flex items-center justify-center">
         <img class="image w-[30vw] h-[30vw]" src={image}/>
     </div>
     

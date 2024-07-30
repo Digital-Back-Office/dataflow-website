@@ -13,7 +13,7 @@ const data = Data.data;
         <p class="text-lg w-4/5 mb-10 text-textblack" style="font-family: Arimo;">{data.description}</p>
         <img src="/assets/images/contactusimage.png" class="w-[70%]"/>
       </div>
-      <div class=" w-4/6 max-w-[600px] flex flex-col items-center justify-center rounded-2xl elevation-2">
+      <div class="colcontainer w-4/6 max-w-[600px] flex flex-col items-center justify-center rounded-2xl elevation-2">
         <h3 class="text-0calc font-bold mb-[2%] text-textblack" style="font-family: Arimo;">{data.form.title}</h3>
         <form id="myForm" class="w-full items-center justify-between">
           <div class="w-full colcontainer h-20 flex items-center justify-between mb-[4%]">
@@ -33,7 +33,7 @@ const data = Data.data;
             </div>
             <div class="h-full w-[47%] colcontainerchild flex flex-col justify-evenly">
               <label class="text-base 2xl:text-lg font-bold text-textblack" style="font-family: Arimo;">{data.form.label5}</label>
-              <select required class="custom-input border-[2px] border-secondary rounded-lg h-10 p-2" name="entry.1061557718">
+              <select required id="options" class="custom-input border-[2px] border-secondary rounded-lg h-10 p-2" name="entry.1061557718" style="color: #9ca3b1;">
                 <option value="" disabled selected>Company Size</option>
                 <option value="1-10">1-10 employees</option>
                 <option value="11-50">11-50 employees</option>
@@ -101,6 +101,9 @@ const data = Data.data;
       document.getElementById("result").innerHTML = text;  
     }
   });
+  document.getElementById('options').addEventListener('change', function() {
+    this.style.color = '#303030';
+        });
 </script>
 <style>
   .custom-button:hover {

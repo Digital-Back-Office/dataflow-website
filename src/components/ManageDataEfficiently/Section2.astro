@@ -5,12 +5,12 @@ const Data = await getEntry("ManageYourData", "manageyourdata");
 const data = Data.data.section2;
 const button = Data.data.button;
 ---
-<div class=" container-top w-full min-h-screen py-4 flex items-center justify-evenly">
+<div class=" container-top w-full py-24 flex items-center justify-evenly">
     <div class="w-[25%] img-container">
     <img src="/assets/images/manageyourdatasection2image.png" class="img-container"/>
     </div>
     <div class="text-container w-2/5 ">
-        <h1 class="text-2calc font-bold mb-[5%] text-textblack" style="font-family: Arimo;">{data.title}</h1>
+        <h1 class="text-2calc font-bold mb-10 text-textblack" style="font-family: Arimo;">{data.title}</h1>
         <p class="text-lg w-11/12 text-textblack" style="font-family: Arimo;">{data.description}</p>
         <a href="/GetStartedForm">
           <button class="custom-button bg-secondary px-3 py-2 duration-700 text-white rounded-lg shadow-md flex text-base items-center gap-x-2 mt-14 hover:-translate-y-1" style="font-family: Roboto;">

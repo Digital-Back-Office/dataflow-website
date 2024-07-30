@@ -35,7 +35,7 @@ function Testimonial() {
 
 
   return (
-    <div className="h-screen w-full flex flex-col items-center justify-center bg-primary">
+    <div className="py-24 w-full flex flex-col items-center justify-center bg-primary">
       <h3 className='w-full text-4xl md:text-5xl font-bold text-center text-white' style={{ fontFamily: 'Arimo' }}>What User Say About Us</h3>
       <div className="w-11/12 md:w-4/5 flex flex-col items-center justify-center">
         <div className='w-full flex justify-start'>

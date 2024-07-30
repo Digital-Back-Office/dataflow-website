@@ -5,16 +5,16 @@ import { getEntry } from "astro:content";
 const Data = await getEntry("Home", "home");
 const hero = Data.data.hero;
 ---
-<div class="h-[90vh] flex items-center bg-[#30BABA]  min-h-[300px] ">
+<div class="py-24 flex items-center bg-[#30BABA]  min-h-[300px] ">
   <div class="w-full lg:w-3/5 2xl:pl-[12%] xl:pl-[10%] lg:pl-[10%] text-center lg:text-left">
     <p
-      class="text-[#C0FFFF] font-bold leading-none text-5calc mb-[5%]"
+      class="text1 text-[#C0FFFF] font-bold leading-none text-5calc mb-[5%]"
       style="font-family: Arial, Helvetica, sans-serif"
     >
       {hero.title1}
     </p>
     <p
-      class="text-6calc text-[#0B7474] font-bold leading-none"
+      class="text2 text-6calc text-[#0B7474] font-bold leading-none"
       style="font-family: Arial, Helvetica, sans-serif"
     >
       {hero.title2}
@@ -28,6 +28,18 @@ const hero = Data.data.hero;
 @media (max-width: 1059px) {
   .animations-container {
     display: none;
+  }
+
+}
+@media (max-width: 500px) {
+  .animations-container {
+    display: none;
+  }
+  .text1{
+     font-size: 30px;
+  }
+  .text2{
+    font-size: 50px;
   }
 }
 </style>

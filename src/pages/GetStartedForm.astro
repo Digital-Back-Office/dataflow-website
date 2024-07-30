@@ -36,7 +36,7 @@ const data = Data.data;
                       </div>
                       <div class="h-full w-[47%] colcontainerchild bg-white flex flex-col justify-evenly">
                         <label class="text-base 2xl:text-lg font-bold text-textblack" style="font-family: Arimo;">{data.form.label4}</label>
-                        <select required class="custom-input border-[2px] border-secondary rounded-lg h-10 p-2 text-textblack" name="entry.1061557718">
+                        <select required id="option1" class="custom-input border-[2px] border-secondary rounded-lg h-10 p-2 text-textblack" name="entry.1061557718" style="color: #9ca3b1;">
                           <option value="" disabled selected>Company Size</option>
                           <option value="1-10">1-10 employees</option>
                           <option value="11-50">11-50 employees</option>
@@ -51,7 +51,7 @@ const data = Data.data;
                     </div>
                     <div class="w-full  flex flex-col justify-between mb-[4%] mb-8">
                       <label class="text-base 2xl:text-lg font-bold text-textblack" style="font-family: Arimo; ">{data.form.label5}</label>
-                      <select required class="custom-input border-[2px] border-secondary rounded-lg h-10 p-2 text-textblack" name="entry.154861476">
+                      <select required id="option2" class="custom-input border-[2px] border-secondary rounded-lg h-10 p-2 text-textblack" name="entry.154861476" style="color: #9ca3b1;">
                         <option  value="" disabled selected>{data.form.placeholder5}</option>
                         <option  value="search Engine">Search Engine</option>
                         <option value="social Media">Social Media</option>
@@ -113,6 +113,13 @@ const data = Data.data;
     document.getElementById("submit-another-form").addEventListener("click", function() {
     location.reload(); // Reload the page
   });
+
+  document.getElementById('option1').addEventListener('change', function() {
+    this.style.color = '#303030';
+        });
+        document.getElementById('option2').addEventListener('change', function() {
+    this.style.color = '#303030';
+        });
   </script>
   
 

@@ -5,23 +5,23 @@ const Data = await getEntry("Home", "home");
 const data = Data.data.Section1;
 ---
 
-<div class="responsive-container transition-all duration-700 h-screen w-full bg-[#FBE2F0] flex md:flex-row flex-col items-center justify-center group hover:bg-[#D40F7D]">
+<div class="responsive-container transition-all duration-1000 py-32 w-full bg-[#FBE2F0] flex md:flex-row flex-col items-center justify-center group hover:bg-[#D40F7D]">
   <div class="content-container  md:w-2/6 w-full flex flex-col justify-center items-start px-3 py-4">
-    <h3 class="transition-all duration-700 ease-in-out text-calc text-textblack font-bold mb-[5%] group-hover:text-white group-hover:text-2calc w-4/5 " style="font-family: Arimo;">
+    <h3 class="textphone transition-all duration-1000 ease-in-out text-2calc text-textblack font-bold mb-[5%] group-hover:text-white  w-4/5 " style="font-family: Arimo;">
       {data.title}
     </h3>
-    <p class="transition-all duration-700 ease-in-out text-textblack text-base group-hover:text-white group-hover:text-lg w-3/4 " style="font-family: Arimo;">
+    <p class="textphone transition-all duration-1000 ease-in-out text-textblack text-lg group-hover:text-white  w-3/4 " style="font-family: Arimo;">
       {data.description}
     </p>
     <a href="/RunDataAnyCloud">
-      <button class="custom-button2 transition-all duration-300 ease-in-out text-[#30BABA] flex items-center justify-center bg- text-base items-center gap-x-1 mt-14 h-10 w-32 group-hover:bg-[#feecec] group-hover:shadow-md group-hover:rounded-lg hover:-translate-y-1" style="font-family: Roboto;">
+      <button class="custom-button2 transition-all duration-400 ease-in-out text-[#30BABA] flex items-center justify-center bg- text-base items-center gap-x-1 mt-14 h-10 w-32 group-hover:bg-[#feecec] group-hover:shadow-md group-hover:rounded-lg hover:-translate-y-1" style="font-family: Roboto;">
         {Data.data.LearnMoreBtn}
         <img src="/assets/images/arrowright.svg" height="20px" width="20px">
       </button>
     </a>
   </div>
-  <div class="image-container h-[60vh] md:w-2/6 w-full flex flex-col justify-start items-center md:items-end">
-    <img src="/assets/images/runanycloud.png" class="h-[78%] w-[90%] transition-all duration-700 ease-in-out group-hover:scale-125" />
+  <div class="image-container  py-10 h-auto md:w-2/6 w-full flex flex-col justify-start items-center md:items-end">
+    <img src="/assets/images/runanycloud.png" class="h-[78%] w-[90%] transition-all duration-1000 ease-in-out group-hover:scale-125" />
   </div>
 </div>
 
@@ -30,9 +30,9 @@ const data = Data.data.Section1;
     background-color: #ffffff; /* Change button background color */
   }
 
-  @media (max-width: 400px) {
+  @media (max-width: 500px) {
     .responsive-container {
-      flex-direction: column;
+      flex-direction: column-reverse;
       
       padding-top: 90px;
       padding-bottom: 90px;
@@ -40,6 +40,13 @@ const data = Data.data.Section1;
     .content-container {
       padding-top: 10px;
       padding-bottom: 10px;
+    }
+    .image-container {
+      width: 80%;
+      margin-top: 20px;
+    }
+    .textphone{
+      width: 95%;
     }
   }
 </style>

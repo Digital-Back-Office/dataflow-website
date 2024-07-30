@@ -12,9 +12,9 @@ const docsUrl = import.meta.env.VITE_DOCS_URL
    
   </div>
   <div class="footer-container w-full flex px-[10%] py-[50px]">
-    <div class="first-section w-[30%]  bg-white flex  flex-col items-start justify-start">
+    <div class="first-section w-[30%] mt-2 bg-white flex  flex-col items-start justify-start">
       <a href="/"><img src="/assets/images/greenlogo.png" class="h-12" /></a>
-      <p class="text-xs text-[#858C97] mt-[20px] w-5/6">{footer.description}</p>
+      <p class="text-xs text-textblack mt-[20px] w-5/6">{footer.description}</p>
       <div class=" w-4/5  mt-6">
         <button class="h-7 w-7 rounded-full bg-[#F6F0E1] hover:bg-[#30BABA]  p-2"><img src="/assets/images/linkedin.png" /></button>
         <button class="h-7 w-7 rounded-full bg-[#F6F0E1] hover:bg-[#30BABA] ml-3 p-2"><img src="/assets/images/xcom.svg" /></button>
@@ -75,7 +75,7 @@ const docsUrl = import.meta.env.VITE_DOCS_URL
 </footer>
 
 <style>
-  @media (max-width: 440px) {
+  @media (max-width: 500px) {
   footer {
     flex-direction: column;
   }

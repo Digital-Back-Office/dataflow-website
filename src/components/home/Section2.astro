@@ -5,16 +5,16 @@ const Data = await getEntry("Home", "home");
 const data = Data.data.Section2;
 ---
 
-<div class="responsive-container transition-all duration-700 ease-in-out w-full bg-[#FCF5DE] h-screen flex md:flex-row flex-col items-center justify-center group hover:bg-[#FBBC05]  ">
+<div class="responsive-container transition-all duration-1000 ease-in-out w-full bg-[#FCF5DE] py-24 flex md:flex-row flex-col items-center justify-center group hover:bg-[#FBBC05]  ">
   <div class="image-container py-10  md:w-2/6 w-full flex flex-col justify-start items-center md:mr-[10%] mb-8 md:mb-0">
-    <img src="/assets/images/rundata3.png" class="h-[90%] w-[80%] transition-all duration-700 ease-in-out group-hover:scale-125"/>
+    <img src="/assets/images/rundata3.png" class="h-[90%] w-[80%] transition-all duration-1000 ease-in-out group-hover:scale-125"/>
   </div>
   <div class="content-container  md:w-2/6 w-full flex flex-col justify-center items-center md:items-end">
     <div class="flex-col justify-center items-start w-full md:w-auto px-4 md:px-0">
-      <h3 class="transition-all duration-700 ease-in-out text-calc text-textblack text-start font-bold mb-[5%] group-hover:text-2calc w-full md:w-4/5" style="font-family: Arimo;">
+      <h3 class="transition-all duration-1000 ease-in-out  text-textblack text-start font-bold mb-[5%] text-2calc w-full md:w-4/5" style="font-family: Arimo;">
         {data.title}
       </h3>
-      <p class="transition-all duration-700 ease-in-out text-textblack text-base text-start group-hover:text-lg w-full md:w-3/4" style="font-family: Arimo;">
+      <p class="transition-all duration-1000 ease-in-out text-textblack text-start text-lg w-full md:w-3/4" style="font-family: Arimo;">
         {data.description}
       </p>
       <a href="/ManageYourData">
@@ -32,7 +32,7 @@ const data = Data.data.Section2;
     background-color: #ffffff; /* Change button background color */
   }
 
-  @media (max-width: 400px) {
+  @media (max-width: 500px) {
     .responsive-container {
       flex-direction: column;
       padding-top: 96px;

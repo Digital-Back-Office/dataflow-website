@@ -1,11 +1,16 @@
 ---
-const{title,description,image}=Astro.props
+const { title, description, image } = Astro.props
 ---
 
-<div class="card transition-all duration-100 ease-in-out min-w-[250px] min-h-[270px] w-[20vw] h-[20vw]  p-5 pb-[2vw] flex flex-col items-start justify-evenly bg-white shadow-md rounded-3xl">
+<div class="card transition-all duration-500 ease-in-out min-w-[250px] min-h-[270px] w-[20vw] h-[20vw] p-5 pb-[2vw] flex flex-col items-start justify-evenly bg-white shadow-md rounded-3xl hover:bg-primary group">
   <div class="w-[3vw] h-[3vw] min-w-[25px] min-h-[25px]">
-    <img src={image} class="w-full h-full object-contain image-container" />
+    <img src={image} class="w-full h-full object-contain image-container " />
   </div>
-  <h3 class="text-lg text-textblack ">{title}</h3>
-  <p class="text-sm text-textblack">{description}</p>
-</div>    
+  <h3 class="text-lg text-textblack group-hover:text-white">{title}</h3>
+  <p class="text-sm text-textblack group-hover:text-white">{description}</p>
+</div>
+<style>
+  .group:hover .image-container {
+    filter: brightness(0) invert(1); 
+}
+</style>

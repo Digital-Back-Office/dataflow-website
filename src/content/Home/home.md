@@ -4,25 +4,27 @@ hero:
   title2: Thirty Minutes
 
 LearnSection:
-   title: Best in class tools in one platform like 
+   title: Best in class tools in one platform  
    features:
     - Airflow
-    - Mlflow
+    - mlflow
     - Theia IDE
+    - Dash App
+    - Superset
     - Jupyter
     - DBT
 
 Section1:
   title: Run Dataflow on any cloud
-  description: Thanks to our platform, developed using advanced data management methods, data quality reaches 100%, which is 20% better than other platforms.
+  description: Our product is designed for ultimate flexibility, allowing deployment on any cloud platform of your choice. Whether you prefer leading providers like AWS, Google Cloud, and Microsoft Azure, or need to operate within a private cloud environment, we've got you covered.
 
 Section2:
   title: Manage your data, connection across tools
-  description: Thanks to our platform, developed using advanced data management methods, data quality reaches 100%, which is 20% better than other platforms.
+  description: Create and reuse connections across all your tools and platforms with ease. You can quickly deploy them across multiple applications, reducing setup time and minimizing errors.  This streamlined approach enhances efficiency, allowing yoyou to focus on leveraging your data and systems to their fullest potential.
 
 Section3:
   title: Say goodbye to Python dependency hell
-  description: Thanks to our platform, developed using advanced data management methods, data quality reaches 100%, which is 20% better than other platforms.
+  description: No more struggling with conflicting libraries or version issues—just a smooth, hassle-free experience that lets you focus on coding and innovation..
 
 Seventy:
   title: 70% increase
@@ -30,7 +32,7 @@ Seventy:
 
 cta:
   title: New life for data begins today
-  description: Using basic data skills you can analysis and improve your business indicators with Around
+  description: Expect a data engineering expert to evaluate your data needs, followed by a live product demonstration. This session will provide insights into how you can supercharge your data operations, enhancing productivity and efficiency
   button: 30 mins FREE Consultation
 
 LearnMoreBtn: Learn More

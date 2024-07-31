@@ -13,10 +13,10 @@ footer:
     description: Morbi et massa fames ac scelerisque sit commodo dignissim faucibus vel quisque proin lectus laoreet sem adipiscing sollicitudin erat massa tellus lorem enim aenean phasellus in hendrerit
     copyrights: © All rights reserved.
     section1:
-        link1: why dataFlow
+        link1: Why Dataflow?
         link2: Pricing
         link3: Learn
-        link4: company
+        link4: Company
         link5: Blog
     section2:
         link1: Run Dataflow on any cloud
@@ -27,9 +27,8 @@ footer:
         link2: Contact us
         link3: Terms and Conditions
     section4:
-        link1: + 1 526 220 0444
-        link2: + 1 526 220 0444
-        link3: Email@email.com
+        link1: + 44 740 464 4039
+        link2: info@dataflow.zone
 
 
 ---

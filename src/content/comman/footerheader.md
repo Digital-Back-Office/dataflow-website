@@ -10,7 +10,7 @@ header:
 footer:
     finance: Our dedicated team is prepared to assist you.
     finance_underline: Talk to our finance agent
-    description: Morbi et massa fames ac scelerisque sit commodo dignissim faucibus vel quisque proin lectus laoreet sem adipiscing sollicitudin erat massa tellus lorem enim aenean phasellus in hendrerit
+    description: Discover how our love for data and dedication to customer can supercharge your data-driven decision making.
     copyrights: © All rights reserved.
     section1:
         link1: Why Dataflow?
@@ -21,7 +21,7 @@ footer:
     section2:
         link1: Run Dataflow on any cloud
         link2: Manage your data connection across tools
-        link3: Say goodbye to Python dependency
+        link3: Say goodbye to Python dependency hell
     section3:
         link1: Book Now
         link2: Contact us

@@ -6,15 +6,11 @@ interface Props {
 const { title } = Astro.props;
 import Footer from "../components/comman/Footer.astro";
 import Header from "../components/comman/Header.astro";
-
-
 ---
-
 <!doctype html>
 <html lang="en">
 	<head>
 		<script src="/src/scripts/cookie-consent.js"></script>
-
 		<meta charset="UTF-8" />
 		<meta name="description" content="Astro description" />
 		<meta name="viewport" content="width=device-width" />
@@ -25,20 +21,12 @@ import Header from "../components/comman/Header.astro";
 		<link href="https://fonts.googleapis.com/css2?family=Arimo&display=swap" rel="stylesheet">
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@400;700&display=swap">
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orestbida/cookieconsent@3.0.1/dist/cookieconsent.css">
-
-		<title>{title}</title>
-
-
-		
-		
+		<title>{title}</title>	
 	</head>
 	<body>
 		<Header pagename = {title}/>
 		<slot />
        <Footer/>
-		
-    
-
 	</body>
 </html>
 <style >

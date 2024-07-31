@@ -25,7 +25,7 @@ export default {
 			  colors: {
 				primary:"#30BABA",
 				secondary:"#1DD0D5",
-				textblack:"#303030"
+				textblack:"#262a38"
 			  },
 			  keyframes: {
 				fadeIn: {

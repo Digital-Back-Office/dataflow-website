@@ -1,9 +1,8 @@
 ---
-const{logo,title,image} = Astro.props
+const{logo,title,image,link} = Astro.props
 import { getEntry } from "astro:content";
 const Data = await getEntry("RunDataAnyCloud", "data");
 const button = Data.data.button2
-const docsUrl = import.meta.env.VITE_DOCS_URL 
 
 ---
 <div class=" container-top w-full py-24  flex justify-center items-start">
@@ -15,7 +14,7 @@ const docsUrl = import.meta.env.VITE_DOCS_URL
         <p class="centertitle text-calc font-bold text-start   mb-10 text-textblack" style="font-family: Arimo;">
             {title}
         </p>
-        <a href={docsUrl}>
+        <a href={link} target="_blank" >
             <button class="bottombutton custom-button bg-white px-3 py-2 duration-300 text-[#30BABA] rounded-lg shadow-md flex text-base items-center gap-x-2 mb-2 hover:-translate-y-1" style="font-family: Roboto;">
                 {button} <img class="button-img" src="/assets/images/arrowright.svg" alt="Arrow Right" />
             </button>

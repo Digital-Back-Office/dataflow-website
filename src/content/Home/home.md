@@ -30,8 +30,8 @@ Seventy:
 
 cta:
   title: New life for data begins today
-  description: Using basic data skills you can analysis and improve your business indicators with Around
-  button: 30 mins FREE Consultation
+  description: Book your free 30 minutes consultation now.
+  button: Book now
 
 LearnMoreBtn: Learn More
 ---

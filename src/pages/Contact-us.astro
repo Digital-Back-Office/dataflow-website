@@ -7,8 +7,8 @@ const data = Data.data;
 
 <Layout title="Book a demo">
   <div class="flex items-center justify-center py-24">
-    <div class="formcontainer w-3/4 h-[80vh] flex items-center justify-center 2xl:py-20 py-16 bg-[#F6F6F6] rounded-3xl p-[5%] shadow-lg">
-      <div class="h-[70vh] titlecontainer flex flex-col items-start justify-start">
+    <div class="formcontainer w-3/4  flex items-center justify-center 2xl:py-16 py-16 bg-[#F6F6F6] rounded-3xl p-[5%] shadow-lg">
+      <div class=" titlecontainer flex flex-col items-start justify-start">
         <h1 class="text-9calc font-bold text-textblack mb-10 w-4/5" style="font-family: Arimo;">{data.title}</h1>
         <p class="text-lg w-4/5 mb-10 text-textblack" style="font-family: Arimo;">{data.description}</p>
         <img src="/assets/images/contactusimage.png" class="w-[70%]"/>
@@ -82,7 +82,7 @@ const data = Data.data;
       formContainer.style.border = '1px solid white'; // Add a white border
       
       formContainer.innerHTML = `
-        <div class="innercard w-[97%] h-[550px] text-center bg-primary flex flex-col items-center justify-center rounded-3xl">
+        <div class="innercard w-[95%] h-[500px] m-5 text-center bg-primary flex flex-col items-center justify-center rounded-3xl">
           <img src="/assets/images/circle-tick.svg" alt="Success" class="mx-auto mb-4"/>
           <p class="text-white text-xl font-bold" style="font-family: Arimo;">Thank You</p> 
           <p class="text-white text-base" style="font-family: Arimo;">Form Submitted Successfully. We will reach you shortly.</p> 

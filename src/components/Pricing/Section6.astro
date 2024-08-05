@@ -46,7 +46,7 @@ let faqs = faqContent.faqs;
     </style>
     
     <p class="text-calc font-bold text-textblack text-center px-10" style="font-family: Arimo;">{heading}</p>
-    <div id="faq-container" class="py-20 px-[12%]">
+    <div id="faq-container" class="py-16 px-[12%]">
       {faqs.map((faq, index) => (
         <div class="faq">
           <div class="faq-question cursor-pointer flex justify-between items-center py-1" data-index={index}>
@@ -69,19 +69,16 @@ document.addEventListener('DOMContentLoaded', () => {
     const index = faqQuestion.dataset.index;
     const faqAnswer = faqQuestion.nextElementSibling as HTMLElement;
 
-    // Toggle the clicked FAQ
     if (faqAnswer.style.display === 'block') {
       faqAnswer.style.display = 'none';
       faqQuestion.querySelector('.icon')!.textContent = '+';
     } else {
-      // Close any open FAQ
       const currentlyOpen = faqContainer.querySelector('.faq-answer[style*="display: block"]') as HTMLElement;
       if (currentlyOpen) {
         currentlyOpen.style.display = 'none';
         currentlyOpen.previousElementSibling!.querySelector('.icon')!.textContent = '+';
       }
 
-      // Open the clicked FAQ
       faqAnswer.style.display = 'block';
       faqQuestion.querySelector('.icon')!.textContent = '-';
     }

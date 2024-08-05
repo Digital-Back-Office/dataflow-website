@@ -3,8 +3,17 @@ import { getEntry } from "astro:content";
 const Data = await getEntry("pricing", "section2");
 const data = Data.data;
 ---
-<div class="w-full py-24 bg-primary flex flex-col items-center justify-center gap-y-7">
+<div class="containersection2 w-full py-24 bg-primary flex flex-col items-center justify-center gap-y-7">
            <h3 class="text-2calc text-white text-center font-bold w-[90%]" style="font-family: Arimo;">{data.title}</h3>
            <p class="text-xl text-white text-center w-3/4 leading-tight font-bold" style="font-family: Arimo;">{data.description}</p>
 
 </div>
+
+<style>
+    @media (max-width:600px) {
+        .containersection2{
+            padding-top: 50px;
+            padding-bottom: 50px;
+        }
+    }
+</style>

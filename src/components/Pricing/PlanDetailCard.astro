@@ -3,12 +3,12 @@ const{option1,option2,option3,title} = Astro.props
 ---
 
 <div class="w-full flex plancontainer">
-    <div class="pricelistfeature w-1/4 h-[90px] border border-solid border-[#E6E9F5] flex flex-col justify-center px-5 min-w-[200px]">
+    <div class=" w-1/4 h-[90px] border border-solid border-[#E6E9F5] flex flex-col justify-center px-5 width100">
       <p  class="text-lg text-textblack  " style="font-family: Arimo;" >{title}</p>
     </div>
     {
         option1 === "yes" ? (
-          <div class="planstatus w-1/4 h-[90px] border border-solid border-[#E6E9F5] flex items-center justify-center px-5 planstatus">
+          <div class=" w-1/4 h-[90px] border border-solid border-[#E6E9F5] flex items-center justify-center px-5 planstatus">
             <img src="/assets/images/verifiedlogo.png" />
           </div>
         ) : option1 === "no" ? (
@@ -22,7 +22,7 @@ const{option1,option2,option3,title} = Astro.props
       } 
       {
         option2 === "yes" ? (
-          <div class="planstatus w-1/4 h-[90px] border border-solid border-[#E6E9F5] flex items-center justify-center px-5 planstatus">
+          <div class="w-1/4 h-[90px] border border-solid border-[#E6E9F5] flex items-center justify-center px-5 planstatus">
             <img src="/assets/images/verifiedlogo.png" />
           </div>
         ) : option2 === "no" ? (
@@ -52,3 +52,68 @@ const{option1,option2,option3,title} = Astro.props
       }
 
   </div>
+  <style>
+@media (max-width:600px) {
+  .container-price1{
+   width: 100%;
+   padding-left: 15px;
+   padding-right: 15px;
+   padding-top: 30px;
+   padding-bottom: 30px;
+  }
+  .container-price2{
+   width: 100%;
+   padding-left: 15px;
+   padding-right: 15px;
+   padding-top: 30px;
+   padding-bottom: 30px;
+  }
+ .text-container1{
+     width: 100%;
+     margin-bottom: 40px;
+     padding: 20px;
+     text-align:center
+ }
+ .toggle-container{
+          flex-direction: column;
+ }
+ .img-container{
+     width: 100%;
+     height:auto;
+ }
+
+ .planstatus{
+        padding: 10px;
+        padding-left: 20px;
+        width: 33.3%;
+ }
+ .planstatus2{
+        padding: 10px;
+        padding-left: 20px;
+        width: 45%;
+ }
+
+ .plancontainer{
+         flex-wrap: wrap;
+         align-items: center;
+         width: 100%;
+
+ }
+ .tablehead1{
+      display: none;
+ }
+ .tablehead{
+     border-radius: 0;
+     padding: 5px
+ }
+ .height-auto{
+   height: auto;
+ }
+ .width95{
+       width: 95%;
+     }
+     .width100{
+       width: 100%;
+     }
+}
+</style>

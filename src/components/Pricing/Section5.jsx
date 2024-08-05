@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { reviews, title, description } from "../../content/pricing/section5.mdx";
 
 function Review() {
@@ -7,14 +7,14 @@ function Review() {
   const [transitionDirection, setTransitionDirection] = useState('');
 
   const reviewsPerPage = 3;
+  const totalPages = Math.ceil(reviews.length / reviewsPerPage);
 
   const nextTestimonial = () => {
     if (currentIndex + reviewsPerPage < reviews.length && !isAnimating) {
-        setCurrentIndex(currentIndex + reviewsPerPage);
+      setCurrentIndex(currentIndex + reviewsPerPage);
       setTransitionDirection('left');
       setIsAnimating(true);
       setTimeout(() => {
-       
         setTransitionDirection('');
         setIsAnimating(false);
       }, 500);
@@ -22,9 +22,27 @@ function Review() {
   };
 
   const prevTestimonial = () => {
+    setCurrentIndex(currentIndex - reviewsPerPage);
     if (currentIndex - reviewsPerPage >= 0 && !isAnimating) {
-        setCurrentIndex(currentIndex - reviewsPerPage);
+      setCurrentIndex(currentIndex - reviewsPerPage);
       setTransitionDirection('right');
+      setIsAnimating(true);
+      setTimeout(() => {
+        setTransitionDirection('');
+        setIsAnimating(false);
+      }, 500);
+    }
+  };
+
+  const goToPage = (pageIndex) => {
+    if (!isAnimating) {
+      const newIndex = pageIndex * reviewsPerPage;
+      setCurrentIndex(newIndex);
+      if (newIndex < currentIndex) {
+        setTransitionDirection('right');
+      } else {
+        setTransitionDirection('left');
+      }
       setIsAnimating(true);
       setTimeout(() => {
         setTransitionDirection('');
@@ -38,71 +56,38 @@ function Review() {
   };
 
   return (
-    <div className='py-24 px-[12%] overflow-hidden'>
-        <style>
-            {`
-            @keyframes slide-in-right {
-              from {
-                transform: translateX(100%);
-                opacity: 0;
-              }
-              to {
-                transform: translateX(0);
-                opacity: 1;
-              }
+    <div className='py-24 overflow-hidden'>
+      <style>
+        {`
+          @keyframes slide-in-right {
+            from {
+              transform: translateX(100%);
+              opacity: 0;
             }
-
-            @keyframes slide-out-left {
-              from {
-                transform: translateX(0);
-                opacity: 1;
-              }
-              to {
-                transform: translateX(-100%);
-                opacity: 0;
-              }
+            to {
+              transform: translateX(0);
+              opacity: 1;
             }
-
-            @keyframes slide-in-left {
-              from {
-                transform: translateX(-100%);
-                opacity: 0;
-              }
-              to {
-                transform: translateX(0);
-                opacity: 1;
-              }
+          }
+          @keyframes slide-in-left {
+            from {
+              transform: translateX(-100%);
+              opacity: 0;
             }
-
-            @keyframes slide-out-right {
-              from {
-                transform: translateX(0);
-                opacity: 1;
-              }
-              to {
-                transform: translateX(100%);
-                opacity: 0;
-              }
+            to {
+              transform: translateX(0);
+              opacity: 1;
             }
-
-            .slide-in-right {
-              animation: slide-in-right 0.5s forwards;
-            }
-
-            .slide-out-left {
-              animation: slide-out-left 0.5s forwards;
-            }
-
-            .slide-in-left {
-              animation: slide-in-left 0.5s forwards;
-            }
-
-            .slide-out-right {
-              animation: slide-out-right 0.5s forwards;
-            }
-            `}
-        </style>
-      <div className='flex items-center justify-between mb-16'>
+          }
+          .slide-in-right {
+            animation: slide-in-right 0.5s forwards;
+          }
+          .slide-in-left {
+            animation: slide-in-left 0.5s forwards;
+          }
+        `}
+      </style>
+      <div className='flex items-center justify-between mb-16 px-[12%]'>
         <div className='flex flex-col gap-y-2'>
           <h3 className='text-0calc text-textblack font-bold' style={{ fontFamily: "Arimo" }}>{title}</h3>
           <p className='text-xl text-textblack' style={{ fontFamily: "Arimo" }}>{description}</p>
@@ -128,7 +113,7 @@ function Review() {
           )}
         </div>
       </div>
-      <div className='flex items-center justify-center gap-x-7'>
+      <div className='flex flex-wrap gap-y-3 items-center justify-center gap-x-7'>
         {getReviewsToDisplay().map((review, index) => (
           <div
             key={index}
@@ -137,6 +122,15 @@ function Review() {
             <p className='text-xl text-textblack font-bold mb-4' style={{ fontFamily: "Arimo" }}>{review.name}</p>
             <p className='text-base text-textblack' style={{ fontFamily: "Arimo" }}>{review.reviews}</p>
           </div>
+        ))}
+      </div>
+      <div className='w-full flex items-center justify-center mt-8 md:mt-14'>
+        {Array.from({ length: totalPages }, (_, index) => (
+          <button
+            key={index}
+            onClick={() => goToPage(index)}
+            className={`w-3 h-3 rounded-full mx-1 md:mx-2 ${currentIndex / reviewsPerPage === index ? 'bg-primary' : 'bg-[#bbe5e5]'}`}
+          ></button>
         ))}
       </div>
     </div>

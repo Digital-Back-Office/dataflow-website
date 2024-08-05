@@ -1,0 +1,36 @@
+---
+import { getEntry } from "astro:content";
+const Data = await getEntry("pricing", "section4");
+const data = Data.data;
+---
+<div class="w-full py-24 flex items-center justify-center px-[10%]">
+    <div class="w-1/2 flex items-center justify-center ">
+        <img src="/assets/images/pricingsection4.png" class="w-[90%]"/>
+        </div>
+    <div class="w-1/2 flex flex-col items-start gap-y-6  ">
+    <h3 class="font-bold text-2calc text-textblack mb-3" style="font-family: Arimo;">
+        {data.title}
+    </h3>
+    <div class="flex items-start gap-x-5">
+       <img src="/assets/images/pricingpagecircletick.png"/>
+       <p class="text-xl text-textblack" style="font-family: Arimo;">{data.description1}</p>
+    </div>
+    <div class="flex items-start gap-x-5">
+        <img src="/assets/images/pricingpagecircletick.png"/>
+        <p class="text-xl text-textblack" style="font-family: Arimo;">{data.description2}</p>
+     </div>
+     <div class="flex items-start gap-x-5">
+        <img src="/assets/images/pricingpagecircletick.png"/>
+        <p class="text-xl text-textblack" style="font-family: Arimo;">{data.description3}</p>
+     </div>
+     <div class="flex items-start gap-x-5">
+        <img src="/assets/images/pricingpagecircletick.png"/>
+        <p class="text-xl text-textblack" style="font-family: Arimo;">{data.description4}</p>
+     </div>
+     <div class="flex items-start gap-x-5">
+        <img src="/assets/images/pricingpagecircletick.png"/>
+        <p class="text-xl text-textblack" style="font-family: Arimo;">{data.description5}</p>
+     </div>
+    </div>
+</div>
+

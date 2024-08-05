@@ -1,5 +1,10 @@
 ---
 import TopSection from "../components/Pricing/TopSection.astro";
+import Section2 from "../components/Pricing/Section2.astro";
+import Section3 from "../components/Pricing/Section3.astro";
+import Section4 from "../components/Pricing/Section4.astro";
+import Section5 from "../components/Pricing/Section5.jsx";
+import Section6 from "../components/Pricing/Section6.astro";
 import Layout from "../layouts/Layout.astro";
 
 
@@ -7,4 +12,9 @@ import Layout from "../layouts/Layout.astro";
 
 <Layout title="Pricing">
     <TopSection/>
+    <Section2/>
+    <Section3/>
+    <Section4/>
+    <Section5  client:load/>
+    <Section6/>
 </Layout>

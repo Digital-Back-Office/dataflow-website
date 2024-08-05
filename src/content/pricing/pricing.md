@@ -6,68 +6,113 @@ hostdata: Host on dataflow cloud
 
 owncloudplan:
    plan1:
-      planname: Free Trail
-      slogan: What you get
+      suggestion: Simple Pack
+      planname: Free
+      slogan: The basics for individuals and organizations
+      cost: 0
+      duration: 14 days free trail
+      button: Join for free
       feature1: Centralized connection  
       feature2: Jupyter 
       feature3: Airflow 
       feature4: ADT 
       feature5: Dash app 
-      cost: 1 month free trail
-      duration:
-      button: choose
+      
    plan2:
+      suggestion: Recommended
       planname: Standard
-      slogan: Free Trail, plus
-      feature1: Centralized connection 
-      feature2: Jupyter
-      feature3: Airflow
-      feature4: ADT
-      feature5: Dash app
+      slogan: Advanced collaboration for individuals and organizations
       cost: 99
-      duration: month
-      button: choose
+      duration: per user/month
+      button: Continue with Team
+      prevplan: Everything included in Free, plus...
+      feature1: Centralized connection  
+      feature2: Jupyter 
+      feature3: Airflow 
+      feature4: ADT 
+      feature5: Dash app 
+      feature6: Required reviewers
+      feature7: Pages and Wikis 
+      feature8: Environment deployment branches and secrets
+      addonshead: Featured add-ons
+      addon1: GitHub Copilot Access
+      addon2: Web-based support
+
    plan3:
+      suggestion: Most Popular
       planname: Premium
-      slogan: Standard, plus
-      feature1: Free 2hrs Consultation/month
-      feature2: Mobile support
-      feature3: Response time
-      feature4: ADT
-      feature5: Services
+      slogan: Security, compliance, and flexible deployment
       cost: 199
-      duration: month
-      button: choose
+      duration: per user/month
+      button: Continue with Team
+      prevplan: Everything included in Team, plus...
+      feature1: Centralized connection  
+      feature2: Jupyter 
+      feature3: Airflow 
+      feature4: ADT 
+      feature5: Dash app 
+      feature6: Required reviewers
+      feature7: Pages and Wikis 
+      feature8: Environment deployment branches and secrets
+      feature9: SAML single sign-on
+      feature10: Pages and Wikis 
+      feature11: GitHub Connect
+      addonshead: Exclusive add-ons
+      addon1: GitHub Copilot Access
+      addon2: Web-based support
 
 datacloudplans:
    plan1:
-      planname: Free Trail
-      slogan: What you get
-      feature1: Setup cloud   
-      feature2: Data infrastructure 
-      feature3: 100 prompts /hour 
-      feature4: Consultation 
-      cost: 1 month free trail
-      duration:
-      button: contact us
-   plan2:
-      planname: Dataflow cloud
-      slogan: Free Trail, plus
+      suggestion: Simple Pack
+      planname: Free
+      slogan: The basics for individuals and organizations
+      cost: 0
+      duration: 14 days free trail
+      button: Join for free
       feature1: Setup cloud 
       feature2: Data infrastructure
       feature3: 100 prompts /hour
       feature4: Consultation
-      feature5: Team Collaboration
-      duration: month
-      button: contact us
 
+   plan2:
+      suggestion: Most Popular
+      planname: Premium
+      slogan: Security, compliance, and flexible deployment
+      message: For when your mission-critical software requires organization-wide security, compliance, and planning
+      button: Contact us for pricing
+      prevplan: Everything included in Team, plus...
+      feature1: Centralized connection  
+      feature2: Jupyter 
+      feature3: Airflow 
+      feature4: ADT 
+      feature5: Dash app 
+      feature6: Required reviewers
+      feature7: Setup cloud 
+      feature8: Data infrastructure
+      feature9: 100 prompts /hour
+      feature10: Consultation
+      feature11: Team Collaboration
+      addonshead: Exclusive add-ons
+      addon1: GitHub Copilot Access
+      addon2: Web-based support
 
+heading: Compare Plan Features
 
 table1:
-    tablehead1: Feature
-    tablehead2: Free Trial
-    tablehead3: Standard
-    tablehead4: Premium
+    tablehead1: 
+      title: Compare Plan Features
+      description: The basics for individuals and organizations
+    tablehead2:
+       cost: Free
+       button: choose this plan
+    tablehead3: 
+       cost: 99
+       duration: /month
+       button: choose this plan
+    tablehead4:
+       cost: 199
+       duration: /month
+       button: choose this plan
     feature1: Centralized connection management
     feature2: Stable connection management
     feature3: Jupyter
@@ -80,9 +125,15 @@ table1:
     feature10: Response time
 
 table2:
-    tablehead1: Feature
-    tablehead2: Free Trial
-    tablehead3: Premium
+    tablehead1: 
+      title: Compare Plan Features
+      description: The basics for individuals and organizations
+    tablehead2:
+       cost: Free
+       button: choose this plan
+    tablehead3:
+       cost: Contact us
+       button: choose this plan
     feature1: Setup Cloud
     feature2: Consultation
     feature3: Data infrastructure

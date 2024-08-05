@@ -1,34 +1,14 @@
 import React, { useState, useEffect } from 'react';
-
-const testimonials = [
-  {
-    name: "Lilia Bocouse",
-    position: "Head of Innovation",
-    heading: "People now recognise that having a good performance conversation means that something happens as a result.",
-    details: "“With Landingfolio, the design team can now build design which identifies employees’ career aspirations and goals and from which we approach managers and check to see what is happening.”"
-  },
-  {
-    name: "John Doe",
-    position: "Chief Executive Officer",
-    heading: "The service was exceptional and exceeded our expectations.",
-    details: "Thanks to your talented team for the branding we dreamed about :) Its seamless integration with other Google Cloud services and support for Apache Beam has made our batch and streaming data pipelines more efficient"
-  },
-  {
-    name: "John smith",
-    position: "Chief Executive Officer",
-    heading: "The service was exceptional and exceeded our expectations.",
-    details: "Thanks to your talented team for the branding we dreamed about :) Its seamless integration with other Google Cloud services and support for Apache Beam has made our batch and streaming data pipelines more efficient"
-  },
-];
+import {testimonials} from "../../content/Home/testimonials.mdx"
+import {title} from "../../content/Home/testimonials.mdx"
 
 function Testimonial() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [fadeClass, setFadeClass] = useState('');
 
   useEffect(() => {
-    // Trigger the fade animation whenever the testimonial changes
     setFadeClass('fade-in-right');
-    const timeout = setTimeout(() => setFadeClass(''), 500); // Remove the class after animation duration
+    const timeout = setTimeout(() => setFadeClass(''), 500);
     return () => clearTimeout(timeout);
   }, [currentIndex]);
 
@@ -86,7 +66,7 @@ function Testimonial() {
             `}
           </style>
           <img src='/assets/images/qoutes.png' className='mb-8' alt='quote' />
-          <p className='text-textblack text-2xl font-bold mb-8' style={{ fontFamily: "Arimo" }}>People now recognise that having a good performance conversation means that something happens as a result.</p>
+          <p className='text-textblack text-2xl font-bold mb-8' style={{ fontFamily: "Arimo" }}>{title}</p>
           <div className={`fadepart ${fadeClass}`}>
             <p className='text-[#52525B] text-lg font-normal mb-8' style={{ fontFamily: "Arimo" }}>{testimonials[currentIndex].details}</p>
             <p className='text-base font-bold text-textblack mb-8' style={{ fontFamily: "Arimo" }}>
@@ -96,14 +76,14 @@ function Testimonial() {
             </p>
           </div>
           <div className='flex'>
-            {currentIndex == 0 ? <button disabled className='cursor-not-allowed h-12 w-12 border-solid border-2 border-primary rounded-full flex items-center justify-center  group pl-1'>
-              <div className="inline-block transform rotate-[135deg] border-primary border-r-2 border-b-2 p-1"></div>
+            {currentIndex == 0 ? <button disabled className='cursor-not-allowed h-12 w-12 border-solid border-2 border-gray-300 rounded-full flex items-center justify-center  group pl-1'>
+              <div className="inline-block transform rotate-[135deg] border-gray-300 border-r-2 border-b-2 p-1"></div>
             </button> : <button onClick={prevTestimonial} className='h-12 w-12 border-solid border-2 border-primary bg-primary rounded-full flex items-center justify-center hover:bg-white group pl-1'>
               <div className="inline-block transform rotate-[135deg] border-white border-r-2 border-b-2 p-1 group-hover:border-primary"></div>
             </button>}
             {
-              currentIndex==testimonials.length-1 ?  <button disabled className='cursor-not-allowed ml-5 h-12 w-12 border-solid border-2  border-primary rounded-full flex items-center justify-center  group pr-1'>
-              <div className="inline-block transform -rotate-[45deg] border-primary border-r-2 border-b-2 p-1 "></div>
+              currentIndex==testimonials.length-1 ?  <button disabled className='cursor-not-allowed ml-5 h-12 w-12 border-solid border-2  border-gray-300 rounded-full flex items-center justify-center  group pr-1'>
+              <div className="inline-block transform -rotate-[45deg] border-gray-300 border-r-2 border-b-2 p-1 "></div>
             </button> :  <button onClick={nextTestimonial} className='ml-5 h-12 w-12 border-solid border-2 bg-primary border-primary rounded-full flex items-center justify-center hover:bg-white group pr-1'>
               <div className="inline-block transform -rotate-[45deg] border-white border-r-2 border-b-2 p-1 group-hover:border-primary"></div>
             </button>

@@ -18,7 +18,7 @@ export default {
 				'7calc': 'calc(3.5rem + 3vw)',
 				'8calc': 'calc(2rem + 1vw)',
 				'9calc': 'calc(1rem + 2vw)',
-				'10calc': 'calc(1rem + 2vw)',
+				'10calc': 'calc(1.7rem + 2vw)',
 				
 			  },
 

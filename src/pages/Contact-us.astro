@@ -7,33 +7,33 @@ const data = Data.data;
 
 <Layout title="Book a demo">
   <div class="flex items-center justify-center py-24">
-    <div class="formcontainer w-3/4  flex items-center justify-center 2xl:py-16 py-16 bg-[#F6F6F6] rounded-3xl p-[5%] shadow-lg">
+    <div class="formcontainer w-4/5  flex items-center justify-center 2xl:py-16 py-16 bg-[#F6F6F6] rounded-3xl p-[5%] shadow-lg">
       <div class=" titlecontainer flex flex-col items-start justify-start">
         <h1 class="text-9calc font-bold text-textblack mb-10 w-4/5" style="font-family: Arimo;">{data.title}</h1>
         <p class="text-lg w-4/5 mb-10 text-textblack" style="font-family: Arimo;">{data.description}</p>
         <img src="/assets/images/contactusimage.png" class="w-[70%]"/>
       </div>
-      <div class="colcontainer w-4/6 max-w-[600px] flex flex-col items-center justify-center rounded-2xl elevation-2">
+      <div class="colcontainer w-5/6 max-w-[600px] flex flex-col items-center justify-center rounded-2xl elevation-2">
         <h3 class="text-0calc font-bold mb-[2%] text-textblack" style="font-family: Arimo;">{data.form.title}</h3>
         <form id="myForm" class="w-full items-center justify-between">
           <div class="w-full colcontainer h-20 flex items-center justify-between mb-[4%]">
             <div class="h-full w-[47%] colcontainerchild flex flex-col justify-evenly">
               <label class="text-base 2xl:text-lg font-bold text-textblack" style="font-family: Arimo;">{data.form.label1}</label>
-              <input required placeholder={data.form.placeholder1} class="custom-input border-[2px] border-secondary rounded-lg h-10 p-2" name="entry.1291198894"/>
+              <input required placeholder={data.form.placeholder1} class="custom-input border border-primary rounded-lg h-10 p-2" name="entry.1291198894"/>
             </div>
             <div class="h-full w-[47%] colcontainerchild flex flex-col justify-evenly">
               <label class="text-base 2xl:text-lg font-bold text-textblack" style="font-family: Arimo;">{data.form.label2}</label>
-              <input required type="email" placeholder={data.form.placeholder2} class="custom-input border-[2px] border-secondary rounded-lg h-10 p-2" name="entry.59580764"/>
+              <input required type="email" placeholder={data.form.placeholder2} class="custom-input border border-primary rounded-lg h-10 p-2" name="entry.59580764"/>
             </div>
           </div>
           <div class="w-full colcontainer h-20 flex items-center justify-between mb-[4%]">
             <div class="h-full w-[47%] colcontainerchild flex flex-col justify-evenly">
               <label class="text-base 2xl:text-lg font-bold text-textblack" style="font-family: Arimo;">{data.form.label4}</label>
-              <input required placeholder={data.form.placeholder4} class="custom-input border-[2px] border-secondary rounded-lg h-10 p-2" name="entry.1637227755"/>
+              <input required placeholder={data.form.placeholder4} class="custom-input border border-primary rounded-lg h-10 p-2" name="entry.1637227755"/>
             </div>
             <div class="h-full w-[47%] colcontainerchild flex flex-col justify-evenly">
               <label class="text-base 2xl:text-lg font-bold text-textblack" style="font-family: Arimo;">{data.form.label5}</label>
-              <select required id="options" class="custom-input border-[2px] border-secondary rounded-lg h-10 p-2" name="entry.1061557718" style="color: #9ca3b1;">
+              <select required id="options" class="custom-input border border-primary rounded-lg h-10 p-2" name="entry.1061557718" style="color: #9ca3b1;">
                 <option value="" disabled selected>Company Size</option>
                 <option value="1-10">1-10 employees</option>
                 <option value="11-50">11-50 employees</option>
@@ -49,11 +49,11 @@ const data = Data.data;
           <input type="hidden" name="entry.664159867" value="Contact-us"/>
           <div class="w-full flex flex-col justify-between mb-[2%]">
             <label class="text-base 2xl:text-lg font-bold mb-2 text-textblack" style="font-family: Arimo;">{data.form.label3}</label>
-            <textarea required name="entry.1056515558" placeholder={data.form.placeholder3} class="custom-input border-[2px] border-secondary rounded-lg p-2" rows="3" cols="30" style="resize:none"></textarea>
+            <textarea required name="entry.1056515558" placeholder={data.form.placeholder3} class="custom-input border border-primary rounded-lg p-2" rows="3" cols="30" style="resize:none"></textarea>
           </div>
           <div class="w-full flex items-center justify-start mb-3">
-            <input type="checkbox" required class="ml-3 w-4 h-4"/>
-            <p class="text-gray-500 ml-3 my-3">{data.form.terms}<span><a href="" class="ml-2 underline underline-offset-4">{data.form.link}</a></span></p>
+            <input type="checkbox" required class="typecheckbox ml-3 w-4 h-4"/>
+            <p class="text-gray-500 ml-3 my-3">{data.form.terms}<span><a href="/Termsandconditions" class="ml-2 underline underline-offset-4 text-primary">{data.form.link}</a></span></p>
           </div>
           <button type="submit" class="bottombutton custom-button text-lg bg-primary w-full h-12 flex items-center justify-center duration-300 text-white font-bold rounded-lg shadow-md flex text-base items-center gap-x-2 hover:-translate-y-1" style="font-family: Roboto;">
             {data.form.button}<img class="button-img" src="/assets/images/arrowright.svg" alt="Arrow Right"/>
@@ -116,7 +116,12 @@ const data = Data.data;
     border-color: #1DD0D5;
     outline: none;
   }
-  @media(max-width:550px){
+  input[type=checkbox] {
+    accent-color: rgb(0, 164, 156);
+
+}
+
+  @media(max-width:650px){
     .formcontainer{
       width: 100%;
       flex-direction: column;
@@ -125,6 +130,7 @@ const data = Data.data;
       padding-left:10px;
       padding-right:10px;
       height: auto;
+
     }
     .titlecontainer{
       align-items: center;

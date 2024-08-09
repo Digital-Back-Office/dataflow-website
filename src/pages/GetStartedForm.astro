@@ -22,21 +22,21 @@ const data = Data.data;
                     <div class="w-full h-20 colcontainer flex items-center justify-between mb-[4%]">
                       <div class="h-full w-[47%] colcontainerchild bg-white flex flex-col justify-evenly">
                         <label class="text-base 2xl:text-lg font-bold text-textblack" style="font-family: Arimo;">{data.form.label1}</label>
-                        <input required placeholder={data.form.placeholder1} class="custom-input border-[2px] border-secondary rounded-lg h-10 p-2" name="entry.1291198894" />
+                        <input required placeholder={data.form.placeholder1} class="custom-input border-[1px] border-primary rounded-lg h-10 p-2" name="entry.1291198894" />
                       </div>
                       <div class="h-full w-[47%] colcontainerchild bg-white flex flex-col justify-evenly">
                         <label class="text-base 2xl:text-lg font-bold text-textblack" style="font-family: Arimo;">{data.form.label2}</label>
-                        <input required type="email" placeholder={data.form.placeholder2} class="custom-input border-[2px] border-secondary rounded-lg h-10 p-2" name="entry.59580764" />
+                        <input required type="email" placeholder={data.form.placeholder2} class="custom-input border-[1px] border-primary rounded-lg h-10 p-2" name="entry.59580764" />
                       </div>
                     </div>
                     <div class="w-full h-20 colcontainer flex items-center justify-between mb-[4%]">
                       <div class="h-full w-[47%] colcontainerchild bg-white flex flex-col justify-evenly">
                         <label class="text-base 2xl:text-lg font-bold text-textblack" style="font-family: Arimo;">{data.form.label3}</label>
-                        <input required placeholder={data.form.placeholder3} class="custom-input border-[2px] border-secondary rounded-lg h-10 p-2" name="entry.1637227755" />
+                        <input required placeholder={data.form.placeholder3} class="custom-input border-[1px] border-primary rounded-lg h-10 p-2" name="entry.1637227755" />
                       </div>
                       <div class="h-full w-[47%] colcontainerchild bg-white flex flex-col justify-evenly">
                         <label class="text-base 2xl:text-lg font-bold text-textblack" style="font-family: Arimo;">{data.form.label4}</label>
-                        <select required id="option1" class="custom-input border-[2px] border-secondary rounded-lg h-10 p-2 text-textblack" name="entry.1061557718" style="color: #9ca3b1;">
+                        <select required id="option1" class="custom-input border-[1px] border-primary rounded-lg h-10 p-2 text-textblack" name="entry.1061557718" style="color: #9ca3b1;">
                           <option value="" disabled selected>Company Size</option>
                           <option value="1-10">1-10 employees</option>
                           <option value="11-50">11-50 employees</option>
@@ -51,7 +51,7 @@ const data = Data.data;
                     </div>
                     <div class="w-full  flex flex-col justify-between mb-[4%] mb-8">
                       <label class="text-base 2xl:text-lg font-bold text-textblack" style="font-family: Arimo; ">{data.form.label5}</label>
-                      <select required id="option2" class="custom-input border-[2px] border-secondary rounded-lg h-10 p-2 text-textblack" name="entry.154861476" style="color: #9ca3b1;">
+                      <select required id="option2" class="custom-input border-[1px] border-primary rounded-lg h-10 p-2 text-textblack" name="entry.154861476" style="color: #9ca3b1;">
                         <option  value="" disabled selected>{data.form.placeholder5}</option>
                         <option  value="search Engine">Search Engine</option>
                         <option value="social Media">Social Media</option>
@@ -62,7 +62,7 @@ const data = Data.data;
                     </div>
                     <div class="w-full h-32 flex flex-col justify-between mb-[4%] mb-2">
                       <label class="text-base 2xl:text-lg font-bold text-textblack" style="font-family: Arimo;">{data.form.label6}</label>
-                      <textarea required name="entry.1056515558" placeholder={data.form.placeholder6} class="custom-input border-[2px] border-secondary rounded-lg h-24 p-2" rows="10" cols="30" style="resize:none"></textarea>
+                      <textarea required name="entry.1056515558" placeholder={data.form.placeholder6} class="custom-input border-[1px] border-primary rounded-lg h-24 p-2" rows="10" cols="30" style="resize:none"></textarea>
                     </div>
                     <input  type="hidden" name="entry.664159867" value="Get Started">
                     <button type="submit" class="bottombutton custom-button text-lg bg-primary w-full h-12 flex items-center justify-center duration-300 text-white font-bold rounded-lg shadow-md flex text-base items-center gap-x-2 hover:-translate-y-1" style="font-family: Roboto;">
@@ -138,11 +138,12 @@ const data = Data.data;
     outline: none; /* Remove the default outline */
   }
 
-  @media(max-width:550px){
+  @media(max-width:750px){
     .formcontainer{
       flex-direction: column;
       padding-left:10px ;
       padding-right:10px ;
+      margin-bottom: 100px;
     }
     .container-child-1{
       width: 100%;

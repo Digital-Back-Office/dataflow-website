@@ -1,0 +1,463 @@
+---
+import { getEntry } from "astro:content";
+import FeatureCard from "./FeatureCard.astro"
+import PlanDetailCard from "./PlanDetailCard.astro"
+import PlanDetailCard2 from "./PlanDetailCard2.astro"
+const Data = await getEntry("pricing", "pricing");
+const pricing = await getEntry("pricing", "plancost");
+const pricingdata = JSON.stringify(pricing.data)
+const data = Data.data;
+const owncloudplan1 = data.owncloudplan.plan1
+const owncloudplan2 = data.owncloudplan.plan2
+const owncloudplan3 = data.owncloudplan.plan3
+const datacloudplan1 = data.datacloudplans.plan1
+const datacloudplan2 = data.datacloudplans.plan2
+const planfeature1 = data.table1
+const planfeature2 = data.table2
+---
+<astro-greet data-message={pricingdata}>
+</astro-greet>
+<div class=" py-24 w-full flex flex-col items-center justify-center">
+    <h1 class="text-9calc font-bold text-textblack text-center px-3 w-3/5 width90" style="font-family: Arimo;">{data.title}</h1>
+    <p class="md:text-2xl sm:text-xl text-textblack mt-5 text-center" style="font-family: Arimo;">{data.description}</p>
+    <div class="flex justify-center items-center gap-x-5 mt-10 toggle-container ">
+        <p class="text-lg text-textblack font-bold" style="font-family: Arimo;">{data.hostown}</p>
+        <label class="switch">
+            <input class="toggle" type="checkbox">
+            <span class="slider round"></span>
+          </label>
+          <p class="text-lg text-textblack font-bold" style="font-family: Arimo;">{data.hostdata}</p>
+     </div>
+     <div class="container-price1 price1 flex flex-wrap justify-center gap-10 my-20">
+     <div class="w-[350px] h-[1000px]  rounded-3xl shadow-2xl overflow-hidden height-auto">
+      <div class="w-full flex justify-end h-7">
+      </div>
+        <div class="w-full h-[270px] p-3 flex flex-col items-center height-auto">
+          <p  class="text-3xl font-bold text-textblack mb-2" style="font-family: Arimo;" >{owncloudplan1.planname}</p>
+          <p  class="text-base text-textblack w-3/5 text-center mb-4" style="font-family: Arimo;" >{owncloudplan1.slogan}</p>
+            <div class="flex items-start">
+              <p  class="currency-symbol text-xl text-[#57606A] leading-none" style="font-family: Arimo;">$</p>
+              <p class="cost1 text-8calc font-normal text-textblack leading-none" style="font-family: Arimo;">{owncloudplan1.cost}</p>
+            </div>
+            <p class="text-textblack font-medium text-lg mb-5"  style="font-family: Arimo;" >{owncloudplan1.duration}</p>
+            <button class="w-full h-10 border-solid border-2  rounded-md hover:opacity-80">
+                      <p class="text-textblack font-normal text-lg"  style="font-family: Arimo;" >{owncloudplan1.button}</p>
+            </button>
+        </div>
+        <div class="w-full bg-[#F6F8FA] h-[700px] p-4 height-auto">
+          <FeatureCard feature={owncloudplan1.feature1}/>
+          <FeatureCard feature={owncloudplan1.feature2}/>
+          <FeatureCard feature={owncloudplan1.feature3}/>
+          <FeatureCard feature={owncloudplan1.feature4}/>
+          <FeatureCard feature={owncloudplan1.feature5}/>
+        </div>
+     </div>
+     <div class="w-[358px] h-[1050px] bg-primary border-b-8 border-x-8 border-solid border-primary rounded-3xl shadow-2xl -translate-y-4 overflow-hidden height-auto">
+      <div class="w-full flex justify-center bg-primary">
+        <div class="py-[3px]"><p class="text-base font-bold text-white" style="font-family: Arimo;">{owncloudplan2.suggestion}</p></div>
+      </div>
+        <div class="w-full h-[290px] p-3 pt-6 pb-3 flex flex-col bg-white rounded-t-xl items-center height-auto">
+          <p  class="text-3xl font-bold text-textblack mb-2" style="font-family: Arimo;" >{owncloudplan2.planname}</p>
+          <p  class="text-base text-textblack w-4/5 text-center mb-4" style="font-family: Arimo;" >{owncloudplan2.slogan}</p>
+            <div class="flex items-start">
+              <p class="currency-symbol text-xl text-[#57606A] leading-none" style="font-family: Arimo;">$</p>
+              <p class="cost2 text-8calc font-normal text-textblack leading-none" style="font-family: Arimo;">{owncloudplan2.cost}</p>
+            </div>
+            <p class="text-textblack font-medium text-lg mb-5"  style="font-family: Arimo;" >{owncloudplan2.duration}</p>
+            <button class="w-full py-2  bg-primary rounded-md hover:opacity-90 ">
+                      <p class="text-white font-bold text-base"  style="font-family: Arimo;" >{owncloudplan2.button}</p>
+            </button>
+        </div>
+        <div class="w-full bg-[#F6F8FA] h-[750px] p-4 height-auto">
+          <div class="flex items-center gap-x-3 mb-4">
+            <img src="/assets/images/leftarrowblack.png" class="w-5 h-5"/>
+            <p  class="text-base text-textblack" style="font-family: Arimo;" >{owncloudplan2.prevplan}</p>
+          </div>
+          <FeatureCard feature={owncloudplan2.feature1}/>
+          <FeatureCard feature={owncloudplan2.feature2}/>
+          <FeatureCard feature={owncloudplan2.feature3}/>
+          <FeatureCard feature={owncloudplan2.feature4}/>
+          <FeatureCard feature={owncloudplan2.feature5}/>
+          <FeatureCard feature={owncloudplan2.feature6}/>
+          <FeatureCard feature={owncloudplan2.feature7}/>
+          <FeatureCard feature={owncloudplan2.feature8}/>
+
+          <p  class="text-[17px] text-textblack font-bold mb-4" style="font-family: Arimo;" >{owncloudplan2.addonshead}</p>
+          <FeatureCard feature={owncloudplan2.addon1}/>
+        </div>
+     </div>
+     <div class="w-[350px] h-[1000px]  rounded-3xl shadow-2xl overflow-hidden height-auto">
+      <div class="w-full flex justify-end">
+        <div class="px-[31px] py-[3px] bg-[#FFD700] rounded-tr-3xl rounded-bl-3xl"><p class="text-base font-bold text-white" style="font-family: Arimo;">{owncloudplan3.suggestion}</p></div>
+      </div>
+        <div class="w-full h-[270px] p-3 flex flex-col items-center height-auto">
+          <p  class="text-3xl font-bold text-textblack mb-2" style="font-family: Arimo;" >{owncloudplan3.planname}</p>
+          <p  class="text-base text-textblack w-3/5 text-center mb-4" style="font-family: Arimo;" >{owncloudplan3.slogan}</p>
+            <div class="flex items-start">
+              <p class="currency-symbol text-xl text-[#57606A] leading-none" style="font-family: Arimo;">$</p>
+              <p class="cost3 text-8calc font-normal text-textblack leading-none" style="font-family: Arimo;">{owncloudplan3.cost}</p>
+            </div>
+            <p class="text-textblack font-medium text-lg mb-5"  style="font-family: Arimo;" >{owncloudplan3.duration}</p>
+            <button class="w-full py-2  bg-primary rounded-md hover:opacity-90  ">
+              <p class="text-white font-bold text-base"  style="font-family: Arimo;" >{owncloudplan3.button}</p>
+           </button>
+        </div>
+        <div class="w-full bg-[#F6F8FA] h-[700px] p-4 height-auto">
+          <div class="flex items-center gap-x-3 mb-4">
+            <img src="/assets/images/leftarrowblack.png" class="w-5 h-5"/>
+            <p  class="text-base text-textblack" style="font-family: Arimo;" >{owncloudplan3.prevplan}</p>
+          </div>
+          <FeatureCard feature={owncloudplan3.feature1}/>
+          <FeatureCard feature={owncloudplan3.feature2}/>
+          <FeatureCard feature={owncloudplan3.feature3}/>
+          <FeatureCard feature={owncloudplan3.feature4}/>
+          <FeatureCard feature={owncloudplan3.feature5}/>
+          <FeatureCard feature={owncloudplan3.feature6}/>
+          <FeatureCard feature={owncloudplan3.feature7}/>
+          <FeatureCard feature={owncloudplan3.feature8}/>
+          <FeatureCard feature={owncloudplan3.feature9}/>
+          <FeatureCard feature={owncloudplan3.feature10}/>
+          <FeatureCard feature={owncloudplan3.feature11}/>
+          <p  class="text-[17px] text-textblack font-bold mb-4" style="font-family: Arimo;" >{owncloudplan3.addonshead}</p>
+          <FeatureCard feature={owncloudplan3.addon1}/>
+        </div>
+     </div>
+    </div>
+    <div class=" container-price2 price2 flex flex-wrap justify-center gap-10 my-20 hidden">
+      <div class="w-[350px] h-[1000px]  rounded-3xl shadow-2xl overflow-hidden height-auto">
+       <div class="w-full flex justify-end h-7">
+       </div>
+         <div class="w-full h-[270px] p-3 flex flex-col items-center height-auto">
+           <p  class="text-3xl font-bold text-textblack mb-2" style="font-family: Arimo;" >{datacloudplan1.planname}</p>
+           <p  class="text-base text-textblack w-3/5 text-center mb-4" style="font-family: Arimo;" >{datacloudplan1.slogan}</p>
+             <div class="flex items-start">
+               <p  class=" currency-symbol text-xl text-[#57606A] leading-none" style="font-family: Arimo;">$</p>
+               <p class="text-8calc font-normal text-textblack leading-none" style="font-family: Arimo;">{datacloudplan1.cost}</p>
+             </div>
+             <p class="text-textblack font-medium text-lg mb-5"  style="font-family: Arimo;" >{datacloudplan1.duration}</p>
+             <button class="w-full h-10 border-solid border-2  rounded-md hover:opacity-90  ">
+                       <p class="text-textblack font-normal text-lg"  style="font-family: Arimo;" >{datacloudplan1.button}</p>
+             </button>
+         </div>
+         <div class="w-full bg-[#F6F8FA] h-[700px] p-4 height-auto">
+          <FeatureCard feature={datacloudplan1.feature1}/>
+          <FeatureCard feature={datacloudplan1.feature2}/>
+          <FeatureCard feature={datacloudplan1.feature3}/>
+          <FeatureCard feature={datacloudplan1.feature4}/>
+         </div>
+      </div>
+      <div class="w-[350px] h-[1000px]  rounded-3xl shadow-2xl overflow-hidden height-auto">
+       <div class="w-full flex justify-end">
+         <div class="px-[31px] py-[3px] bg-[#FFD700] rounded-tr-3xl rounded-bl-3xl"><p class="text-base font-bold text-white" style="font-family: Arimo;">{datacloudplan2.suggestion}</p></div>
+       </div>
+         <div class="w-full h-[270px] p-3 flex flex-col items-center height-auto">
+           <p  class="text-3xl font-bold text-textblack mb-2" style="font-family: Arimo;" >{datacloudplan2.planname}</p>
+           <p  class="text-base text-textblack w-3/5 text-center mb-4" style="font-family: Arimo;" >{datacloudplan2.slogan}</p>
+             <p class="text-textblack font-medium text-base text-center mb-6"  style="font-family: Arimo;" >{datacloudplan2.message}</p>
+             <button class="w-full py-2  bg-primary rounded-md hover:opacity-90 ">
+               <p class="text-white font-bold text-base"  style="font-family: Arimo;" >{datacloudplan2.button}</p>
+            </button>  
+         </div>
+         <div class="w-full bg-[#F6F8FA] h-[700px] p-4 height-auto">
+          <div class="flex items-center gap-x-3 mb-4">
+            <img src="/assets/images/leftarrowblack.png" class="w-5 h-5"/>
+            <p  class="text-base text-textblack" style="font-family: Arimo;" >{datacloudplan2.prevplan}</p>
+          </div>
+          <FeatureCard feature={datacloudplan2.feature1}/>
+          <FeatureCard feature={datacloudplan2.feature2}/>
+          <FeatureCard feature={datacloudplan2.feature3}/>
+          <FeatureCard feature={datacloudplan2.feature4}/>
+          <FeatureCard feature={datacloudplan2.feature5}/>
+          <FeatureCard feature={datacloudplan2.feature6}/>
+          <FeatureCard feature={datacloudplan2.feature7}/>
+          <FeatureCard feature={datacloudplan2.feature8}/>
+          <FeatureCard feature={datacloudplan2.feature9}/>
+          <FeatureCard feature={datacloudplan2.feature10}/>
+          <FeatureCard feature={datacloudplan2.feature11}/>
+           <p  class="text-[17px] text-textblack font-bold mb-4" style="font-family: Arimo;" >{datacloudplan2.addonshead}</p>
+           <FeatureCard feature={datacloudplan2.addon1}/>
+         </div>
+      </div>
+     </div>
+     <div class="pb-20">
+      <p class="text-calc font-bold text-textblack text-center px-10 " style="font-family: Arimo;">{data.heading}</p>
+     </div>
+     <div class="pricetable1 w-4/5 flex flex-col justify-center items-center width95">
+      <div class="w-full flex ">
+    <div class=" tablehead1 w-1/4 h-[150px] border border-solid border-[#E6E9F5] flex flex-col justify-center px-5">
+      <p class="text-xl font-bold text-textblack mb-2" style="font-family: Arimo;">{planfeature1.tablehead1.title}</p>
+      <p  class="text-base text-textblack  " style="font-family: Arimo;" >{planfeature1.tablehead1.description}</p>
+    </div>
+    <div class="planstatus w-1/4 h-[150px] border border-solid border-[#E6E9F5] flex flex-col items-center justify-between p-5 py-6 ">
+      <p class="text-0calc font-bold text-textblack mb-2" style="font-family: Roboto;">{planfeature1.tablehead2.cost}</p>
+      <button class="w-full py-2  bg-primary rounded-md hover:opacity-90 ">
+        <p class="text-white font-bold text-base "  style="font-family: Arimo;" >{planfeature1.tablehead2.button}</p>
+      </button>
+    </div>
+    <div class="planstatus w-1/4 h-[150px] border border-solid border-[#E6E9F5] flex flex-col items-center justify-between p-5 py-6">
+      <p class="font-bold text-calc"  style="font-family: Roboto;"><span class="currency-symbol">$</span><span class="cost2">{planfeature1.tablehead3.cost}</span><span class="text-base font-normal mt-2"> {planfeature1.tablehead3.duration}</span></p>
+      <button class="w-full py-2  bg-primary rounded-md hover:opacity-90 ">
+        <p class="text-white font-bold text-base"  style="font-family: Arimo;" >{planfeature1.tablehead3.button}</p>
+      </button>
+    </div>
+    <div class="planstatus w-1/4 h-[150px] border border-solid border-[#E6E9F5] flex flex-col items-center justify-between p-5 py-6">
+      <p class="font-bold text-calc"  style="font-family: Roboto;"><span class="currency-symbol">$</span><span class="cost3">{planfeature1.tablehead3.cost}</span><span class="text-base font-normal mt-2">  {planfeature1.tablehead3.duration}</span></p>
+      <button class="w-full py-2  bg-primary rounded-md hover:opacity-90  ">
+        <p class="text-white font-bold text-base"  style="font-family: Arimo;" >{planfeature1.tablehead3.button}</p>
+      </button>
+    </div>
+  </div>
+          <PlanDetailCard title= {planfeature1.feature1} option1="yes" option2="yes" option3="yes" />
+          <PlanDetailCard title= {planfeature1.feature2} option1="yes" option2="yes" option3="yes" />
+          <PlanDetailCard title= {planfeature1.feature3} option1="yes" option2="yes" option3="yes" />
+          <PlanDetailCard title= {planfeature1.feature4} option1="yes" option2="yes" option3="yes" />
+          <PlanDetailCard title= {planfeature1.feature5} option1="yes" option2="yes" option3="yes" />
+          <PlanDetailCard title= {planfeature1.feature6} option1="yes" option2="yes" option3="yes" />
+          <PlanDetailCard title= {planfeature1.feature7} option1="no" option2="yes" option3="yes" />
+          <PlanDetailCard title= {planfeature1.feature8} option1="no" option2="yes" option3="yes" />
+          <PlanDetailCard title= {planfeature1.feature9} option1="no" option2="yes" option3="yes" />
+          <PlanDetailCard title= {planfeature1.feature10} option1="no" option2="48hrs" option3="30min" />
+    </div>
+    <div class="pricetable2 w-full flex flex-col items-center hidden">
+      <div class="w-4/5 flex justify-center plancontainer">
+    <div class="tablehead1 w-1/4 h-[150px] border border-solid border-[#E6E9F5] flex flex-col justify-center px-5 width95">
+      <p class="text-xl font-bold text-textblack mb-2" style="font-family: Arimo;">{planfeature2.tablehead1.title}</p>
+      <p  class="text-base text-textblack  " style="font-family: Arimo;" >{planfeature2.tablehead1.description}</p>
+    </div>
+    <div class="planstatus w-1/4 h-[150px] border border-solid border-[#E6E9F5] flex flex-col items-center justify-between p-5 py-6 planstatus2">
+      <p class="text-0calc font-bold text-textblack mb-2" style="font-family: Roboto;">{planfeature2.tablehead2.cost}</p>
+      <button class="w-full py-2  bg-primary rounded-md hover:opacity-90 ">
+        <p class="text-white font-bold text-base"  style="font-family: Arimo;" >{planfeature2.tablehead2.button}</p>
+      </button>
+    </div>
+    <div class="planstatus2 w-1/4 h-[150px] border border-solid border-[#E6E9F5] flex flex-col items-center justify-between p-5 py-6 planstatus2">
+      <p class="font-bold text-0calc"  style="font-family: Roboto;">{planfeature2.tablehead3.cost}</p>
+      <button class="w-full py-2  bg-primary rounded-md hover:opacity-90 ">
+        <p class="text-white font-bold text-base"  style="font-family: Arimo;" >{planfeature2.tablehead3.button}</p>
+      </button>
+    </div> 
+  </div>
+  <PlanDetailCard2 title= {planfeature2.feature1} option1="yes" option2="yes" />
+  <PlanDetailCard2 title= {planfeature2.feature2} option1="yes" option2="yes" />
+  <PlanDetailCard2 title= {planfeature2.feature3} option1="yes" option2="yes" />
+  <PlanDetailCard2 title= {planfeature2.feature4} option1="yes" option2="yes" />
+  <PlanDetailCard2 title= {planfeature2.feature5} option1="no" option2="yes" />
+  <PlanDetailCard2 title= {planfeature2.feature6} option1="no" option2="yes" />
+    </div>
+</div>
+
+
+<script>
+
+document.addEventListener('DOMContentLoaded', function () {
+  const checkbox = document.querySelector('.toggle') as HTMLInputElement;
+    const price1 = document.querySelector('.price1') as HTMLElement;
+    const price2 = document.querySelector('.price2') as HTMLElement;
+    const pricetable1 = document.querySelector('.pricetable1') as HTMLElement;
+    const pricetable2 = document.querySelector('.pricetable2') as HTMLElement;
+
+    checkbox.addEventListener('change', function () {
+        if (checkbox.checked === true){
+            price1.classList.add('hidden');
+            price2.classList.remove('hidden');
+            pricetable1.classList.add('hidden');
+            pricetable2.classList.remove('hidden');
+        } else {
+            price1.classList.remove('hidden');
+            price2.classList.add('hidden');
+            pricetable1.classList.remove('hidden');
+            pricetable2.classList.add('hidden');
+        }
+    });
+    let pricing;
+    class AstroGreet extends HTMLElement {
+    constructor() {
+      super();
+      const message = this.dataset.message;
+     pricing = JSON.parse(message)
+    }
+  }
+  customElements.define('astro-greet', AstroGreet);
+    async function fetchGeolocation() {
+        try {
+          const response = await fetch('https://ipinfo.io/json');
+          const data = await response.json();
+          const country = data.country;
+
+              const euroCountries = [
+                'AT', 'BE', 'HR', 'CY', 'EE', 'FI', 'FR', 'DE', 'GR', 'IE', 
+                'IT', 'LV', 'LT', 'LU', 'MT', 'NL', 'PT', 'SK', 'SI', 'ES', 'SE'
+              ];
+
+          let price;
+          if (country == 'GB' || country == 'UK') {
+            price = '£';
+            const elements = document.querySelectorAll('.cost2');
+        elements.forEach(element => {
+          (element as HTMLElement).innerText = pricing.pricing.UK.standard;
+        });
+        const elements2 = document.querySelectorAll('.cost3');
+        elements2.forEach(element => {
+          (element as HTMLElement).innerText = pricing.pricing.UK.premium;
+        });
+          } else if (euroCountries.includes(country)) {
+            const elements = document.querySelectorAll('.cost2');
+        elements.forEach(element => {
+          (element as HTMLElement).innerText = pricing.pricing.EU.standard;
+        });
+        const elements2 = document.querySelectorAll('.cost3');
+        elements2.forEach(element => {
+          (element as HTMLElement).innerText = pricing.pricing.EU.premium;
+        });
+            price = '€';
+          } else {
+            const elements = document.querySelectorAll('.cost2');
+        elements.forEach(element => {
+          (element as HTMLElement).innerText = pricing.pricing.US.standard;
+        });
+        const elements2 = document.querySelectorAll('.cost3');
+        elements2.forEach(element => {
+          (element as HTMLElement).innerText = pricing.pricing.US.premium;
+        });
+            price = '$';
+          }
+          const elements = document.querySelectorAll('.currency-symbol');
+        elements.forEach(element => {
+          (element as HTMLElement).innerText = price;
+        });
+        } catch (error) {
+                  }
+      }
+
+      fetchGeolocation();
+});
+
+</script>
+<style>
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 55px;
+  height: 25px;
+  border: 2px solid #30BABA;
+  border-radius:16px
+}
+
+.switch input { 
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: white;
+  -webkit-transition: .1s;
+  transition: .1s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 15px;
+  width: 15px;
+  left: 4px;
+  bottom: 3px;
+  background-color: #30BABA;
+  -webkit-transition: .1s;
+  transition: .1s;
+}
+
+input:checked + .slider {
+  background-color: white;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px white;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(28px);
+  -ms-transform: translateX(28px);
+  transform: translateX(28px);
+}
+
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+@media (max-width:600px) {
+     .container-price1{
+      width: 100%;
+      padding-left: 15px;
+      padding-right: 15px;
+      padding-top: 30px;
+      padding-bottom: 30px;
+     }
+     .container-price2{
+      width: 100%;
+      padding-left: 15px;
+      padding-right: 15px;
+      padding-top: 30px;
+      padding-bottom: 30px;
+     }
+    .text-container1{
+        width: 100%;
+        margin-bottom: 40px;
+        padding: 20px;
+        text-align:center
+    }
+    .toggle-container{
+             flex-direction: column;
+    }
+    .img-container{
+        width: 100%;
+        height:auto;
+    }
+    .pricelistfeature{
+        width:90%
+    }
+    .planstatus{
+           padding: 10px;
+           padding-left: 20px;
+           width: 33.3%;
+    }
+    .planstatus2{
+           padding: 10px;
+           padding-left: 20px;
+           width: 45%;
+    }
+
+    .plancontainer{
+            flex-wrap: wrap;
+            align-items: center;
+            width: 100%;
+
+    }
+    .tablehead1{
+         display: none;
+    }
+    .tablehead{
+        border-radius: 0;
+        padding: 5px
+    }
+    .height-auto{
+      height: auto;
+    }
+    .width90{
+      width: 90%;
+    }
+    .width95{
+      width: 90%;
+    }
+  }
+</style>

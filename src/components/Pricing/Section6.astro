@@ -1,0 +1,89 @@
+---
+interface FAQContentType {
+  heading: string;
+  faqs: Array<{
+    question: string;
+    answer: string;
+  }>;
+}
+import * as  FAQContent from '../../content/pricing/faq.mdx';
+const faqContent = FAQContent as unknown as FAQContentType;
+
+let heading = faqContent.heading;
+let faqs = faqContent.faqs;
+---
+
+<style>
+    .faq {
+      margin: 5px 0;
+    }
+    
+    .faq-question {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+     
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      margin-top: 20px;
+    }
+    
+    .faq-answer {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-top: none;
+      border-radius: 0 0 5px 5px;
+      margin-bottom: 10px;
+      display: none;       
+      transform: translateY(-7px);
+
+    }
+    
+    .icon {
+      font-size: 40px;
+    }
+    </style>
+    
+    <p class="text-calc font-bold text-textblack text-center px-10" style="font-family: Arimo;">{heading}</p>
+    <div id="faq-container" class="py-16 px-[12%]">
+      {faqs.map((faq, index) => (
+        <div class="faq">
+          <div class="faq-question cursor-pointer flex justify-between items-center py-1" data-index={index}>
+            <span class="ml-5 text-textblack text-xl font-bold" style="font-family: Arimo; text-textblack">{faq.question}</span>
+            <span class="icon mr-5 text-textblack">+</span>
+          </div>
+          <div class="faq-answer text-base text-textblack" style="font-family: Arimo;">{faq.answer}</div>
+        </div>
+      ))}
+    </div>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const faqContainer = document.getElementById('faq-container');
+
+  faqContainer?.addEventListener('click', (event) => {
+    const target = event.target as HTMLElement;
+    const faqQuestion = target.closest('.faq-question') as HTMLElement;
+    if (!faqQuestion) return;
+
+    const index = faqQuestion.dataset.index;
+    const faqAnswer = faqQuestion.nextElementSibling as HTMLElement;
+
+    if (faqAnswer.style.display === 'block') {
+      faqAnswer.style.display = 'none';
+      faqQuestion.querySelector('.icon')!.textContent = '+';
+    } else {
+      const currentlyOpen = faqContainer.querySelector('.faq-answer[style*="display: block"]') as HTMLElement;
+      if (currentlyOpen) {
+        currentlyOpen.style.display = 'none';
+        currentlyOpen.previousElementSibling!.querySelector('.icon')!.textContent = '+';
+      }
+
+      faqAnswer.style.display = 'block';
+      faqQuestion.querySelector('.icon')!.textContent = '-';
+    }
+  });
+});
+
+
+</script>

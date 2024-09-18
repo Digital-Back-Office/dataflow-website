@@ -1,0 +1,20 @@
+---
+import { getEntry } from "astro:content";
+
+const Data = await getEntry("services", "services");
+let data = Data.data.topsection
+
+---
+<div class="w-full py-20  flex items-center justify-center">
+  <div class="w-2/5">
+  <h1 class="font-bold text-5calc text-textblack mb-14" style="font-family: Arimo;">
+    {data.title}
+  </h1>
+  <p class="text-lg text-textblack" style="font-family: Arimo;" >
+{data.description}
+  </p>
+ </div>
+  <div class="w-2/5 min-h-[55vh] pl-10 rounded-xl overflow-hidden">
+      <img src="/assets/images/servicesimages1.png" class="h-full w-full rounded-xl"/>
+</div>
+</div>

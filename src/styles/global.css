@@ -1,0 +1,35 @@
+:root{
+    --primary: #30baba;
+    --secondary-light: #5FCFCF;
+    --secondary-dark: #0B7474;
+    --secondary-muted: #209999;
+    --secondary-very-light: #C0FFFF;
+    --neutral-light: #F5F5F5;
+    --neutral-dark: #404040;
+    --grey-100: #F6F9FC;
+}
+
+html{
+    font-size: 16px;
+}
+
+.cm__body{
+    background-color: black !important;
+    width: 100%;
+    max-width: 100% !important;
+    display: flex;
+    flex-direction: row !important;
+    align-items: center !important;
+    padding: 0 !important;
+}
+.cm__texts{
+    padding: 0 !important;
+}
+
+.cm__title{
+    color: white !important;
+}
+
+.cc-1hqb{
+    max-width: 20px !important;
+}

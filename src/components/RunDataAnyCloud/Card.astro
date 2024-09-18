@@ -1,0 +1,22 @@
+---
+const{image,title,description} = Astro.props
+---
+<div class="card transition-all duration-100 ease-in-out min-w-[200px] min-h-[200px] w-[17vw] h-[17vw] bg-white p-[1.5vw] pb-[2vw] flex flex-col items-start justify-evenly shadow-xl rounded-md hover:bg-secondary hover:text-white hover:-translate-y-1 group">
+    <div class="w-[3.3vw] h-[3.3vw] min-w-[35px] min-h-[35px]">
+      <img src={image} class="w-full h-full object-contain image-container" />
+    </div>
+    <h3 class="2xl:text-lg xl:text-base font-bold md:text-base text-textblack group-hover:text-white" style="font-family: Arimo;">{title}</h3>
+    <p class="2xl:text-base xl:text-sm lg:text-sm md:text-sm text-textblack group-hover:text-white"  style="font-family: Arimo;">{description}</p>
+  </div>    
+  <style>
+    .card:hover .image-container {
+        filter: brightness(0) invert(1);
+    }
+    @media (max-width:500px) {
+     .card{
+      width: 100%;
+      padding:15px;
+      height: auto;
+     }
+  }
+    </style>

@@ -1,0 +1,139 @@
+---
+import { getEntry } from "astro:content";
+
+const Data = await getEntry("RunDataAnyCloud", "data");
+const data = Data.data.TopSection
+const button = Data.data.button1
+---
+<div class=" container-top w-full py-16 pt-20 flex items-center justify-center ">
+<div class="w-2/5 text-container">
+<h1 class="text-calc font-bold mb-[5%] text-textblack" style="font-family: Arimo;">{data.title}</h1>
+<p class="text-xl w-11/12 text-textblack" style="font-family: Arimo;" >{data.description}</p>
+<a href="/GetStartedForm"> <button class=" custom-button bg-secondary px-3 py-2 duration-700 text-white rounded-lg shadow-md flex text-base items-center gap-x-2 mt-14 hover:-translate-y-1 " style="font-family: Roboto;">{button}<img class="button-img"  src="/assets/images/arrowright.svg">   </button></a> 
+
+</div>
+<div class=" img-container w-2/5 bg-white h-auto "><img src="/assets/images/runanycloud.png" class=" transition-all duration-700 ease-in-out group-hover:scale-125"/>
+</div>
+</div>
+<div class="h-[200px] w-full scroll-container flex justify-center items-center ">
+
+
+<div class="scroll imgBox bg-white w-4/5" style="--time:20s">
+  <div>
+               <img src="/assets/images/awslogo.png" class="mr-10" alt="Logo" />
+               <img src="/assets/images/googlecloudlogo.png" alt="Logo" />
+               <img src="/assets/images/azurelogo.png" class="pb-7 px-5" alt="Logo" />
+                <img src="/assets/images/awslogo.png" class="mr-10" alt="Logo" />
+               <img src="/assets/images/googlecloudlogo.png" alt="Logo" />
+               <img src="/assets/images/azurelogo.png" class="pb-7 px-5" alt="Logo" />
+                <img src="/assets/images/awslogo.png" class="mr-10" alt="Logo" />
+               <img src="/assets/images/googlecloudlogo.png" alt="Logo" />
+               <img src="/assets/images/azurelogo.png" class="pb-7 px-5" alt="Logo" />
+      
+    
+      
+  </div>
+  <div>
+     <img src="/assets/images/awslogo.png" class="mr-10" alt="Logo" />
+    <img src="/assets/images/googlecloudlogo.png" alt="Logo" />
+    <img src="/assets/images/azurelogo.png" class="pb-7 px-5" alt="Logo" />
+     <img src="/assets/images/awslogo.png" class="mr-10" alt="Logo" />
+    <img src="/assets/images/googlecloudlogo.png" alt="Logo" />
+    <img src="/assets/images/azurelogo.png" class="pb-7 px-5" alt="Logo" />
+     <img src="/assets/images/awslogo.png" class="mr-10" alt="Logo" />
+    <img src="/assets/images/googlecloudlogo.png" alt="Logo" />
+    <img src="/assets/images/azurelogo.png" class="pb-7 px-5" alt="Logo" />
+     
+  </div>
+</div>
+</div>
+
+
+ <style>
+     @media (max-width:440px) {
+     .container-top{
+      width: 100%;
+      height: auto;
+      padding-left: 15px;
+      padding-right: 15px;
+      padding-top: 30px;
+      padding-bottom: 30px;
+        flex-direction:column;
+     }
+    .text-container{
+        width: 100%;
+        margin-bottom: 20px;
+    }
+    .img-container{
+        width: 100%;
+        height:auto;
+    }
+  }
+  .custom-button:hover {
+    background-color: #30BABA;
+  }
+  
+  .button-img {
+    filter: brightness(0) invert(1);
+  }
+  .scroll-container {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 1) 50%, rgba(246, 246, 246, 1) 50%);
+  }
+  
+.scroll {
+   
+    display: flex;
+   
+    overflow: hidden;
+}
+
+.scroll div {
+    white-space: nowrap;
+    animation: scroll var(--time) linear infinite;
+    animation-delay: calc(var(--time)*-1);
+
+}
+
+.scroll div:nth-child(2) {
+    animation: scroll2 var(--time) linear infinite;
+    animation-delay: calc(var(--time)/-2);
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(100%);
+    }
+
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+@keyframes scroll2 {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-200%);
+    }
+}
+
+
+
+.scroll div span:hover {
+    background: #3fd2f9;
+    cursor: pointer;
+}
+
+.imgBox div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.imgBox img {
+    max-width: 200px;
+    scale: 0.8;
+}
+</style>

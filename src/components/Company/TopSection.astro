@@ -1,0 +1,14 @@
+---
+import { getEntry } from "astro:content";
+
+const Data = await getEntry("company", "company");
+const data = Data.data.Topsection;
+---
+<div class="h-[700px]  w-full pt-[5%]  pl-[15%]" style="background-image: url('/assets/images/company.png'); background-size: cover;background-position:center; background-position-y:90%;">
+    <p class="text-5calc font-bold text-textblack " style="font-family: Arimo;"><span class="text-primary">{data.titlepart1}</span> <span>{data.titlepart2}</span><br><span>{data.titlepart3}</span> <span class="text-primary">{data.titlepart4}</span><br><span>{data.titlepart5}</span></p>
+</div>
+<style>
+    .image{
+        background-position-y:10%;
+    }
+</style>

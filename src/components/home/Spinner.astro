@@ -1,0 +1,219 @@
+---
+
+---
+
+<style>
+  .spinner-section {
+    background-color: var(--neutral-light);
+    width: 100%;
+    padding: 10.5rem 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .spinner-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 3.5rem;
+    width: 50%;
+  }
+  .spinner-heading {
+    color: black;
+    font-size: 6.25rem;
+    font-weight: 700;
+    line-height: 108%;
+    font-feature-settings:
+      "clig" off,
+      "liga" off;
+  }
+  .cont {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .inactive {
+    animation-name: top;
+    animation-duration: 1s;
+    animation-iteration-count: 1;
+    transform: translateY(10rem);
+  }
+  @keyframes top {
+    0% {
+      transform: translateY(0);
+    }
+    10% {
+      transform: translateY(5px);
+    }
+    50% {
+      transform: translateY(-10rem);
+      opacity: 100%;
+    }
+    50.001% {
+      opacity: 0%;
+    }
+    100% {
+      transform: translateY(10rem);
+      opacity: 0;
+    }
+  }
+  .switch-text {
+    transition: all 1s;
+  }
+  .learn-btn{
+    background-color:white;
+    width: fit-content;
+    border-radius: 10px;
+    padding: 10px;
+    text-decoration: none;
+    box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.25);
+  }
+  .spinner-gif{
+    width: 45%;
+  }
+  @media (max-width:1330px){
+    .spinner-heading{
+      font-size: 5.75rem;
+    }
+  }
+  @media (max-width:1330px){
+    .spinner-heading{
+      font-size: 5rem;
+    }
+    .spinner-text{
+      gap: 3rem;
+    }
+  }
+  @media (max-width:1056px){
+    .spinner-heading{
+      font-size: 4.4rem;
+    }
+    .spinner-text{
+      gap: 2rem;
+    }
+    .switch-text{
+      font-size: 6.5rem !important;
+    }
+    .switch-text1{
+      font-size: 6.5rem !important;
+    }
+  }
+  @media (max-width: 950px){
+    .cont{
+      flex-direction: column-reverse;
+      gap: 3rem;
+    }
+    .spinner-text{
+      align-items: center;
+      width: 100%;
+      text-align: center;
+    }
+    .switch-text{
+      text-align: center;
+    }
+    .switch-text1{
+      text-align: center;
+    }
+    .spinner-gif{
+      width: 70%;
+    }
+  }
+  @media (max-width: 680px){
+    .spinner-heading{
+      font-size: 3.8rem;
+    }
+  }
+
+  @media (max-width: 450px){
+    .switch-text{
+      font-size: 4.4rem !important;
+    }
+    .switch-text1{
+      font-size: 4.4rem !important;
+    }
+    .spinner-heading{
+      font-size: 3rem;
+    }
+    .spinner-gif{
+      width: 90%;
+    }
+    .spinner-section{
+      padding: 3rem 0;
+    }
+  }
+</style>
+
+<section class="spinner-section">
+  <div class="container">
+    <div class="cont">
+      <div class="spinner-gif">
+        <img src="/assets/images/home/logo-spinner.svg" />
+      </div>
+
+      <div class="spinner-text">
+        <h4 class="spinner-heading">
+          Best in class tools in one platform like
+        </h4>
+
+        <div style="position: relative; width:100%; overflow-y:hidden;">
+          <h3 class="switch-text1" style="font-size: 8rem; opacity:0">Airflow</h3>
+          <h3
+            id="text1"
+            class="switch-text"
+            style="font-size: 8rem; position:absolute; top:0; left:0; right:0; width:100%;"
+          >
+            Airflow
+          </h3>
+          <h3
+            id="text2"
+            class="inactive switch-text"
+            style="font-size: 8rem;  position:absolute; top:0; left:0; right:0; width:100%;"
+          >
+          </h3>
+        </div>
+
+        <a href="#" class="learn-btn">
+          Learn More<i class="ai-arrow-right ms-2"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const text1 = document.getElementById("text1") as HTMLElement;
+  const text2 = document.getElementById("text2") as HTMLElement;
+  const arr = ["Airflow", "Jupyter", "DBT", "MlFLow", "Theia Id"];
+  const color = ["#5FCFCF", "#32CD32", "#FFD700", "#FFA500", "#4169E1"];
+  const len = arr.length;
+  let index = 0;
+  let tab = 1;
+  text1.innerText = arr[index];
+  text1.style.color = color[index];
+
+  async function switchText() {
+    index = (index + 1) % len;
+    if (tab === 1) {
+      text2.innerText = arr[index];
+      text2.style.color = color[index];
+      text1?.classList.add("inactive");
+      text2?.classList.remove("inactive");
+      tab = 2;
+    } else {
+      text1.innerText = arr[index];
+      text1.style.color = color[index];
+      text2.classList.add("inactive");
+      text1.classList.remove("inactive");
+      tab = 1;
+    }
+    setTimeout(() => {
+      switchText();
+    }, 1500);
+  }
+  setTimeout(() => {
+    switchText();
+  }, 1500);
+</script>

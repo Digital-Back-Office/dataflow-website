@@ -1,87 +1,186 @@
 ---
-import { getEntry } from "astro:content";
-const Data = await getEntry("comman", "footerheader");
-const header = Data.data.header;
-const { pagename } = Astro.props;
-const docsUrl = import.meta.env.VITE_DOCS_URL 
-
+import { getEntry } from 'astro:content'
+const Data = await getEntry('comman', 'footerheader')
+const header = Data.data.header
+const { pagename } = Astro.props
+const docsUrl = import.meta.env.VITE_DOCS_URL
 ---
 
-<header class="h-20 w-full flex items-center justify-between bg-[#30BABA] px-[2%]">
-  <div class="flex items-center gap-20">
+<header
+  class='h-20 w-full flex items-center justify-between bg-[#30BABA] px-[2%]'
+>
+  <div class='flex items-center gap-20'>
     <a href='/'>
       <img src='/assets/images/dataflow-logo-header.svg' class='h-12' />
     </a>
-    <nav class="hidden md:flex h-20 items-center justify-center">
-      <div class="flex items-center gap-12 justify-between tracking-wide">
-        <a href="/" id="nav1"> <p class="DataFlow text-white text-base font-bold hover:border-b-2 border-white">{header.nav1}</p> </a>
-        <a href="/Pricing" id="nav2"> <p class="Pricing text-white text-base font-bold hover:border-b-2 border-white">{header.nav2}</p> </a>
-        <a href={docsUrl} target="_blank" id="nav3"> <p class="LearnMore text-white text-base font-bold hover:border-b-2 border-white">{header.nav3}</p> </a>
-        <a href="/Company" id="nav4"> <p class="Company text-white text-base font-bold hover:border-b-2 border-white">{header.nav4}</p> </a>
-        <a href="/blog" id="nav5"> <p class="text-white text-base font-bold hover:border-b-2 border-white">{header.nav5}</p> </a>
+    <nav class='hidden md:flex h-20 items-center justify-center'>
+      <div class='flex items-center gap-12 justify-between tracking-wide'>
+        <a href='/' id='nav1'>
+          <p
+            class='DataFlow text-white text-base font-bold hover:border-b-2 border-white'
+          >
+            {header.nav1}
+          </p>
+        </a>
+        <a href='/Pricing' id='nav2'>
+          <p
+            class='Pricing text-white text-base font-bold hover:border-b-2 border-white'
+          >
+            {header.nav2}
+          </p>
+        </a>
+        <a href={docsUrl} target='_blank' id='nav3'>
+          <p
+            class='LearnMore text-white text-base font-bold hover:border-b-2 border-white'
+          >
+            {header.nav3}
+          </p>
+        </a>
+        <a href='/Company' id='nav4'>
+          <p
+            class='Company text-white text-base font-bold hover:border-b-2 border-white'
+          >
+            {header.nav4}
+          </p>
+        </a>
+        <a href='/blog' id='nav5'>
+          <p
+            class='text-white text-base font-bold hover:border-b-2 border-white'
+          >
+            {header.nav5}
+          </p>
+        </a>
       </div>
     </nav>
   </div>
-  
-  <a href="/BookDemo" class="hidden md:flex items-center">
-    <button class="px-[20px] py-[8px] text-white rounded-md text-base font-bold tracking-wide " >{header.button_1}</button>
-    <button class="px-[20px] py-[8px] bg-white rounded-md text-base font-bold tracking-wide shadow-md text-[#30BABA] " >{header.button_2}</button>
-  </a>
-  
-  <div class="md:hidden flex items-center">
-    <button id="burgerMenuButton" class="text-white focus:outline-none">
-      <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+
+  <div class='hidden md:flex items-center'>
+    <a href='/StartFreeTrial'>
+      <button
+        class='px-[20px] py-[8px] text-white rounded-md text-base font-bold tracking-wide'
+        >{header.button_1}</button
+      >
+    </a>
+    <a href='/BookDemo'>
+      <button
+        class='px-[20px] py-[8px] bg-white rounded-md text-base font-bold tracking-wide shadow-md text-[#30BABA]'
+        >{header.button_2}</button
+      >
+    </a>
+  </div>
+
+  <div class='md:hidden flex items-center'>
+    <button id='burgerMenuButton' class='text-white focus:outline-none'>
+      <svg
+        class='w-8 h-8'
+        fill='none'
+        stroke='currentColor'
+        viewBox='0 0 24 24'
+        xmlns='http://www.w3.org/2000/svg'
+      >
+        <path
+          stroke-linecap='round'
+          stroke-linejoin='round'
+          stroke-width='2'
+          d='M4 6h16M4 12h16m-7 6h7'></path>
       </svg>
     </button>
   </div>
 </header>
 
-<div id="mobileMenu" class="fixed top-0 left-0 w-full h-full bg-[#30BABA] transform -translate-x-full transition-transform duration-300 ease-in-out z-50">
-  <div class="h-20 w-full flex items-center justify-between px-4">
-    <a href="/"><img src="/assets/images/logoheader.png" class="h-10" /></a>
-    <button id="closeMenuButton" class="text-white focus:outline-none">
-      <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+<div
+  id='mobileMenu'
+  class='fixed top-0 left-0 w-full h-full bg-[#30BABA] transform -translate-x-full transition-transform duration-300 ease-in-out z-50'
+>
+  <div class='h-20 w-full flex items-center justify-between px-4'>
+    <a href='/'><img src='/assets/images/logoheader.png' class='h-10' /></a>
+    <button id='closeMenuButton' class='text-white focus:outline-none'>
+      <svg
+        class='w-8 h-8'
+        fill='none'
+        stroke='currentColor'
+        viewBox='0 0 24 24'
+        xmlns='http://www.w3.org/2000/svg'
+      >
+        <path
+          stroke-linecap='round'
+          stroke-linejoin='round'
+          stroke-width='2'
+          d='M6 18L18 6M6 6l12 12'></path>
       </svg>
     </button>
   </div>
-  <nav class="flex flex-col items-center mt-10">
-    <a href="/" class="text-white text-base font-medium py-2" id="nav1-mobile" style="font-family: Arial, Helvetica, sans-serif">{header.nav1}</a>
-    <a href="/Pricing" class="text-white text-base font-medium py-2" id="nav2-mobile" style="font-family: Arial, Helvetica, sans-serif">{header.nav2}</a>
-    <a href={docsUrl} class="text-white text-base font-medium py-2" id="nav3-mobile" style="font-family: Arial, Helvetica, sans-serif">{header.nav3}</a>
-    <a href="/Company" class="text-white text-base font-medium py-2" id="nav4-mobile" style="font-family: Arial, Helvetica, sans-serif">{header.nav4}</a>
-    <a href="/blog" class="text-white text-base font-medium py-2" id="nav5-mobile" style="font-family: Arial, Helvetica, sans-serif">{header.nav5}</a>
-    <a href="/BookDemo">
-      <button class="ease-in duration-300 px-[20px] py-[8px] bg-white rounded-md text-base font-medium border-2 shadow-md text-[#30BABA] mt-4 hover:bg-[#30BABA] hover:text-white hover:translate-y-1" style="font-family: Arial, Helvetica, sans-serif">{header.button}</button>
-    </a>
+  <nav class='flex flex-col items-center mt-10'>
+    <a
+      href='/'
+      class='text-white text-base font-bold py-2'
+      id='nav1-mobile'
+      style='font-family: Arial, Helvetica, sans-serif'>{header.nav1}</a
+    >
+    <a
+      href='/Pricing'
+      class='text-white text-base font-bold py-2'
+      id='nav2-mobile'
+      style='font-family: Arial, Helvetica, sans-serif'>{header.nav2}</a
+    >
+    <a
+      href={docsUrl}
+      class='text-white text-base font-bold py-2'
+      id='nav3-mobile'
+      style='font-family: Arial, Helvetica, sans-serif'>{header.nav3}</a
+    >
+    <a
+      href='/Company'
+      class='text-white text-base font-bold py-2'
+      id='nav4-mobile'
+      style='font-family: Arial, Helvetica, sans-serif'>{header.nav4}</a
+    >
+    <a
+      href='/blog'
+      class='text-white text-base font-bold py-2'
+      id='nav5-mobile'
+      style='font-family: Arial, Helvetica, sans-serif'>{header.nav5}</a
+    >
+    <div class='flex flex-col mt-4 items-center'>
+      <a href='/StartFreeTrial'>
+        <button
+          class='px-[20px] py-[8px] text-white rounded-md text-base font-bold tracking-wide'
+          >{header.button_1}</button
+        >
+      </a>
+      <a href='/BookDemo'>
+        <button
+          class='px-[20px] py-[8px] bg-white rounded-md text-base font-bold tracking-wide shadow-md text-[#30BABA]'
+          >{header.button_2}</button
+        >
+      </a>
+    </div>
   </nav>
-  <p id="helper" class="hidden">{pagename}</p>
+  <p id='helper' class='hidden'>{pagename}</p>
 </div>
 
 <script>
   document.addEventListener('DOMContentLoaded', () => {
-    const burgerMenuButton = document.getElementById('burgerMenuButton');
-    const mobileMenu = document.getElementById('mobileMenu');
-    const closeMenuButton = document.getElementById('closeMenuButton');
-    const helperText = document.getElementById('helper').innerText.trim();
-    const navElement = document.querySelector(`.${helperText}`);
-      
+    const burgerMenuButton = document.getElementById('burgerMenuButton')
+    const mobileMenu = document.getElementById('mobileMenu')
+    const closeMenuButton = document.getElementById('closeMenuButton')
+    const helperText = document.getElementById('helper').innerText.trim()
+    const navElement = document.querySelector(`.${helperText}`)
+
     if (navElement) {
-      navElement.classList.add('border-b-2');
-      
+      navElement.classList.add('border-b-2')
     }
 
     burgerMenuButton.addEventListener('click', () => {
-      mobileMenu.classList.remove('-translate-x-full');
-      mobileMenu.classList.add('translate-x-0');
-    });
+      mobileMenu.classList.remove('-translate-x-full')
+      mobileMenu.classList.add('translate-x-0')
+    })
 
     closeMenuButton.addEventListener('click', () => {
-      mobileMenu.classList.remove('translate-x-0');
-      mobileMenu.classList.add('-translate-x-full');
-    });
-  });
+      mobileMenu.classList.remove('translate-x-0')
+      mobileMenu.classList.add('-translate-x-full')
+    })
+  })
 </script>
 
 <style>
@@ -90,5 +189,4 @@ const docsUrl = import.meta.env.VITE_DOCS_URL
       display: block;
     }
   }
-
 </style>

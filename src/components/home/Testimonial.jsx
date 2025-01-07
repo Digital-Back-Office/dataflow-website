@@ -21,9 +21,12 @@ function Testimonial() {
   };
 
   return (
-    <div className='  bg-primary 2xl:px-[10%] px-[8%]  py-20 overflow-hidden '>
-      <div className='formcontainer flex items-center justify-center w-full bg-white rounded-3xl 2xl:px-[10%] px-[7%] 2xl:py-20 py-14'>
-        <div className='container-child1 w-1/2 h-full flex flex-col items-start pr-10'>
+    <div className='  bgq-white'>
+      <div className='formcontainer flex items-center justify-center gap-4 w-full bg-textPrimary px-52 py-24'>
+        <div className='w-1/2 p-8 flex items-center justify-center z-20 container-child2'>
+          <img src='/assets/images/testimonial-sample.png' className='w-[330px] h-[320px] rounded-2xl' />
+        </div>
+        <div className='container-child1 w-full h-full flex flex-col items-start p-10 text-white'>
           <style>
             {`
               @keyframes fadeInRight {
@@ -65,35 +68,33 @@ function Testimonial() {
               
             `}
           </style>
-          <img src='/assets/images/qoutes.png' className='mb-8' alt='quote' />
-          <p className='text-textblack text-2xl font-bold mb-8' style={{ fontFamily: "Arimo" }}>{title}</p>
+          <img src='/assets/images/qoutes.png' className='mb-2' alt='quote' />
+          <p className=' text-2xl font-bold mb-6' >{title}</p>
           <div className={`fadepart ${fadeClass}`}>
-            <p className='text-[#52525B] text-lg font-normal mb-8' style={{ fontFamily: "Arimo" }}>{testimonials[currentIndex].details}</p>
-            <p className='text-base font-bold text-textblack mb-8' style={{ fontFamily: "Arimo" }}>
+            <p className='text-base font-normal mb-4' >{testimonials[currentIndex].details}</p>
+            <p className='text-sm font-bold   mb-4' >
               {testimonials[currentIndex].name}
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              <span className='font-normal text-[#52525B]'>{testimonials[currentIndex].position}</span>
+              <span className='font-normal '>{testimonials[currentIndex].position}</span>
             </p>
           </div>
           <div className='flex'>
-            {currentIndex == 0 ? <button disabled className='cursor-not-allowed h-12 w-12 border-solid border-2 border-gray-300 rounded-full flex items-center justify-center  group pl-1'>
-              <div className="inline-block transform rotate-[135deg] border-gray-300 border-r-2 border-b-2 p-1"></div>
-            </button> : <button onClick={prevTestimonial} className='h-12 w-12 border-solid border-2 border-primary bg-primary rounded-full flex items-center justify-center hover:bg-white group pl-1'>
-              <div className="inline-block transform rotate-[135deg] border-white border-r-2 border-b-2 p-1 group-hover:border-primary"></div>
+            {currentIndex == 0 ? <button disabled className='cursor-not-allowed h-10 w-10 border-solid border-2 border-primary rounded-full flex items-center justify-center  group pl-1'>
+              <div className="inline-block transform rotate-[135deg] border-primary border-r-2 border-b-2 p-1"></div>
+            </button> : <button onClick={prevTestimonial} className='h-10 w-10 border-solid border-2 border-primary bg-primary rounded-full flex items-center justify-center hover:bg-white group pl-1'>
+              <div className="inline-block transform rotate-[135deg]  border-r-2 border-b-2 p-1 group-hover:border-primary"></div>
             </button>}
             {
-              currentIndex==testimonials.length-1 ?  <button disabled className='cursor-not-allowed ml-5 h-12 w-12 border-solid border-2  border-gray-300 rounded-full flex items-center justify-center  group pr-1'>
-              <div className="inline-block transform -rotate-[45deg] border-gray-300 border-r-2 border-b-2 p-1 "></div>
-            </button> :  <button onClick={nextTestimonial} className='ml-5 h-12 w-12 border-solid border-2 bg-primary border-primary rounded-full flex items-center justify-center hover:bg-white group pr-1'>
-              <div className="inline-block transform -rotate-[45deg] border-white border-r-2 border-b-2 p-1 group-hover:border-primary"></div>
+              currentIndex==testimonials.length-1 ?  <button disabled className='cursor-not-allowed ml-5 h-10 w-10 border-solid border-2  border-primary rounded-full flex items-center justify-center  group pr-1'>
+              <div className="inline-block transform -rotate-[45deg] border-primary border-r-2 border-b-2 p-1 "></div>
+            </button> :  <button onClick={nextTestimonial} className='ml-5 h-10 w-10 border-solid border-2 bg-primary border-primary rounded-full flex items-center justify-center hover:bg-white group pr-1'>
+              <div className="inline-block transform -rotate-[45deg]  border-r-2 border-b-2 p-1 group-hover:border-primary"></div>
             </button>
             }
           
           </div>
         </div>
-        <div className='w-1/2  flex items-center justify-center z-20 container-child2'>
-          <img src='/assets/images/qoutespicture.png' className='w-[100%]' />
-        </div>
+        
       </div>
     </div>
   );

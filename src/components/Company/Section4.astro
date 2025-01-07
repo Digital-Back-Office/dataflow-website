@@ -1,18 +1,44 @@
 ---
-import { getEntry } from "astro:content";
-import Card from "./Card.astro";
-const Data = await getEntry("company", "company");
-const data = Data.data.section4;
+import { getEntry } from 'astro:content'
+import Card from './Card.astro'
+const Data = await getEntry('company', 'company')
+const data = Data.data.section4
 ---
 
-<div class="w-full py-20 pt-10 flex flex-col items-center justify-center">
-     <h3 class="text-8calc text-textblack text-center font-bold mb-12" style="font-family: Arimo;">{data.title}</h3>
-     <div class="w-[80%] flex flex-wrap  justify-center items-center gap-5 ">
-       <Card image="/assets/images/companysection4logo1.png" title={data.featuretitle1} description={data.featuredescription1}/>
-       <Card image="/assets/images/companysection4logo2.png" title={data.featuretitle2} description={data.featuredescription2}/>
-       <Card image="/assets/images/companysection4logo3.png" title={data.featuretitle3} description={data.featuredescription3}/>
-       <Card image="/assets/images/companysection4logo4.png" title={data.featuretitle4} description={data.featuredescription4}/>
-       <Card image="/assets/images/companysection4logo5.png" title={data.featuretitle5} description={data.featuredescription5}/>
-       <Card image="/assets/images/companysection4logo6.png" title={data.featuretitle6} description={data.featuredescription6}/>
-     </div>
+<div class='w-full py-20 pt-10 flex flex-col items-center justify-center'>
+  <h3 class='text-8calc text-textblack text-center font-bold mb-12'>
+    {data.title}
+  </h3>
+  <div class='w-[80%] flex flex-wrap justify-center items-center gap-5'>
+    <Card
+      image='/assets/images/companysection4logo1.png'
+      title={data.featuretitle1}
+      description={data.featuredescription1}
+    />
+    <Card
+      image='/assets/images/companysection4logo2.png'
+      title={data.featuretitle2}
+      description={data.featuredescription2}
+    />
+    <Card
+      image='/assets/images/companysection4logo3.png'
+      title={data.featuretitle3}
+      description={data.featuredescription3}
+    />
+    <Card
+      image='/assets/images/companysection4logo4.png'
+      title={data.featuretitle4}
+      description={data.featuredescription4}
+    />
+    <Card
+      image='/assets/images/companysection4logo5.png'
+      title={data.featuretitle5}
+      description={data.featuredescription5}
+    />
+    <Card
+      image='/assets/images/companysection4logo6.png'
+      title={data.featuretitle6}
+      description={data.featuredescription6}
+    />
+  </div>
 </div>

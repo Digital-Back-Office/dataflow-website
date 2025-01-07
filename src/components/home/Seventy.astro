@@ -1,21 +1,25 @@
 ---
+import { getEntry } from 'astro:content'
 
-import { getEntry } from "astro:content";
-
-const Data = await getEntry("Home", "home");
-const data = Data.data.Seventy;
+const Data = await getEntry('Home', 'home')
+const data = Data.data.Seventy
 ---
-<div class="w-full py-36 flex flex-col items-center justify-center ">
-    <p class="text-3calc font-bold leading-none bg-fixed-text text-center" style="font-family: Arimo;">{data.title}</p>
-    <p class="text-2calc font-bold text-[#153D67] text-center" style="font-family: Arimo;">{data.description}</p>
-  </div>
+
+<div class='w-full py-36 flex flex-col items-center justify-center'>
+  <p class='text-3calc font-bold leading-none bg-fixed-text text-center'>
+    {data.title}
+  </p>
+  <p class='text-2calc font-bold text-[#153D67] text-center'>
+    {data.description}
+  </p>
+</div>
 <style>
-    .bg-fixed-text {
-      background-attachment: fixed;
-      background-image: url('/assets/images/Malhotra.png');
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      background-repeat: repeat;
-    }
+  .bg-fixed-text {
+    background-attachment: fixed;
+    background-image: url('/assets/images/Malhotra.png');
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    background-repeat: repeat;
+  }
 </style>

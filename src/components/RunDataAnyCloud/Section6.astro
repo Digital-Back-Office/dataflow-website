@@ -1,64 +1,76 @@
 ---
-const{logo,title,image} = Astro.props
-import { getEntry } from "astro:content";
-import Card from "./Card.astro";
-const Data = await getEntry("RunDataAnyCloud", "data");
+const { logo, title, image } = Astro.props
+import { getEntry } from 'astro:content'
+import Card from './Card.astro'
+const Data = await getEntry('RunDataAnyCloud', 'data')
 const data = Data.data.Section6
-
 ---
-<div class="container-top w-full  bg-[#F6F6F6] flex justify-center items-center">
-    <div class="img-container w-2/5 h-full flex items-center justify-center py-24">
-        <img class="image w-[30vw] h-[30vw]" src="/assets/images/privatecloud.png"/>
+
+<div class='container-top w-full bg-[#F6F6F6] flex justify-center items-center'>
+    <div
+        class='img-container w-2/5 h-full flex items-center justify-center py-24'
+    >
+        <img
+            class='image w-[30vw] h-[30vw]'
+            src='/assets/images/privatecloud.png'
+        />
     </div>
-    <div class="text-container w-2/5 flex flex-col items-center justify-center py-20 pr-[3%] overflow-hidden ">
-        <h2 class="text-calc font-bold pb-[2%] text-textblack" style="font-family: Arimo;">{data.title}</h2>
-        <p class="text-lg  mb-10 text-textblack" style="font-family: Arimo;">
+    <div
+        class='text-container w-2/5 flex flex-col items-center justify-center py-20 pr-[3%] overflow-hidden'
+    >
+        <h2 class='text-calc font-bold pb-[2%] text-textblack'>{data.title}</h2>
+        <p class='text-lg mb-10 text-textblack'>
             {data.description}
         </p>
-       <div class="card-container flex justify-between w-full ">
-        <Card image="/assets/images/flexibilityrundataanycloud.png" title={data.feature1.title} description={data.feature1.description}></Card>
-        <Card image="/assets/images/security.png" title={data.feature2.title} description={data.feature2.description}></Card>
-       </div>
-    </div>   
+        <div class='card-container flex justify-between w-full'>
+            <Card
+                image='/assets/images/flexibilityrundataanycloud.png'
+                title={data.feature1.title}
+                description={data.feature1.description}
+            />
+            <Card
+                image='/assets/images/security.png'
+                title={data.feature2.title}
+                description={data.feature2.description}
+            />
+        </div>
+    </div>
 </div>
 <style>
     .custom-button:hover {
-    background-color: #30BABA; /* Change button background color */
-    color: white; /* Change text color */
-}
+        background-color: #30baba; /* Change button background color */
+        color: white; /* Change text color */
+    }
 
-.custom-button:hover .button-img {
-    filter: brightness(0) invert(1); 
-}
-@media (max-width:500px) {
-     .container-top{
-      width: 100%;
-      height: auto;
-      padding-left: 15px;
-      padding-right: 15px;
-      padding-top: 30px;
-      padding-bottom: 30px;
-        flex-direction:column-reverse;
-     }
-    .text-container{
-        width: 100%;
-       
+    .custom-button:hover .button-img {
+        filter: brightness(0) invert(1);
     }
-    .img-container{
-        width: 100%;
-        height:auto;
+    @media (max-width: 500px) {
+        .container-top {
+            width: 100%;
+            height: auto;
+            padding-left: 15px;
+            padding-right: 15px;
+            padding-top: 30px;
+            padding-bottom: 30px;
+            flex-direction: column-reverse;
+        }
+        .text-container {
+            width: 100%;
+        }
+        .img-container {
+            width: 100%;
+            height: auto;
+        }
+        .image {
+            margin-bottom: 20px;
+            width: 90%;
+            height: 200px;
+        }
+        .card-container {
+            flex-direction: column;
+            align-items: center;
+            row-gap: 15px;
+        }
     }
-    .image{
-       
-        margin-bottom: 20px;
-        width: 90%;
-        height: 200px;
-
-    }
-      .card-container{
-      flex-direction: column;
-      align-items: center; 
-      row-gap: 15px;
-    }
-  }
 </style>

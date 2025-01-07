@@ -1,24 +1,40 @@
 ---
-import { getEntry } from "astro:content";
+import { getEntry } from 'astro:content'
 
-const Data = await getEntry("Home", "home");
-const data = Data.data.cta;
+const Data = await getEntry('Home', 'home')
+const data = Data.data.cta
 ---
 
-<div id="animatedouterdiv" class="cta-container pt-10 w-full flex justify-center items-end h-[650px]">
-  <div id="animatedDiv" class="responsive-container  w-[70%] bg-[#2FB7B8] rounded-t-[60px] flex flex-col items-center justify-center">
-    <p id="titleText" class=" text-4calc font-bold text-center text-white w-3/5" style="font-family: Arimo;" >{data.title}</p>
-    <p id="descText" class="text-lg text-center text-white mt-5 w-3/6 width90" style="font-family: Arimo;" >{data.description}</p>
-    <a class="custom-button transition-all duration-300 ease-in-out w-2/4 bg-white h-16 rounded-lg mt-10 flex items-center justify-center   min-h-12 group" style="font-family: Arimo;" href="Contact-us">
-      <p class="transition-all duration-200 text-2xl font-bold text-primary text-center group-hover:text-[30px]">{data.button}</p>
+<div
+  id='animatedouterdiv'
+  class='cta-container pt-10 w-full flex justify-center items-end h-[650px]'
+>
+  <div
+    id='animatedDiv'
+    class='responsive-container w-[70%] bg-[#2FB7B8] rounded-t-[60px] flex flex-col items-center justify-center'
+  >
+    <p id='titleText' class='text-4calc font-bold text-center text-white w-3/5'>
+      {data.title}
+    </p>
+    <p id='descText' class='text-lg text-center text-white mt-5 w-3/6 width90'>
+      {data.description}
+    </p>
+    <a
+      class='custom-button transition-all duration-300 ease-in-out w-2/4 bg-white h-16 rounded-lg mt-10 flex items-center justify-center min-h-12 group'
+      href='Contact-us'
+    >
+      <p
+        class='transition-all duration-200 text-2xl font-bold text-primary text-center group-hover:text-[30px]'
+      >
+        {data.button}
+      </p>
     </a>
   </div>
 </div>
 
 <style>
   @media (max-width: 500px) {
-
-    .cta-container{
+    .cta-container {
       height: 500px;
     }
     .responsive-container {
@@ -35,10 +51,10 @@ const data = Data.data.cta;
     p {
       font-size: 20px;
     }
-    .cta-container{
-  padding-top: 30px;
+    .cta-container {
+      padding-top: 30px;
     }
-    .width90{
+    .width90 {
       width: 90%;
     }
   }
@@ -50,7 +66,7 @@ const data = Data.data.cta;
       opacity: 0;
     }
     100% {
-      height:500px ;
+      height: 500px;
       width: 70%;
       transform: translateY(0%);
       opacity: 1;
@@ -77,7 +93,7 @@ const data = Data.data.cta;
       opacity: 0;
     }
     100% {
-      height:auto;
+      height: auto;
       width: 100%;
       transform: translateY(0%);
       opacity: 1;
@@ -91,7 +107,7 @@ const data = Data.data.cta;
       opacity: 0;
     }
     100% {
-       height: 600px;
+      height: 600px;
       width: 100%;
       opacity: 0;
     }
@@ -101,7 +117,7 @@ const data = Data.data.cta;
     0% {
       opacity: 0;
     }
-    50%{
+    50% {
       opacity: 0;
     }
     100% {
@@ -113,7 +129,7 @@ const data = Data.data.cta;
     0% {
       opacity: 1;
     }
-    50%{
+    50% {
       opacity: 0;
     }
     100% {
@@ -148,51 +164,54 @@ const data = Data.data.cta;
 
 <script>
   document.addEventListener('DOMContentLoaded', () => {
-    const animatedouterdiv = document.getElementById('animatedouterdiv');
-    const animatedDiv = document.getElementById('animatedDiv');
-    const titleText = document.getElementById('titleText');
-    const descText = document.getElementById('descText');
+    const animatedouterdiv = document.getElementById('animatedouterdiv')
+    const animatedDiv = document.getElementById('animatedDiv')
+    const titleText = document.getElementById('titleText')
+    const descText = document.getElementById('descText')
 
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          if (window.innerWidth <= 600) {
-            animatedDiv.classList.remove('fadeOutDownSmall-animation');
-            animatedDiv.classList.add('fadeInUpSmall-animation');
-            titleText.classList.remove('fadeOut-animation');
-            titleText.classList.add('fadeIn-animation');
-            descText.classList.remove('fadeOut-animation');
-            descText.classList.add('fadeIn-animation');
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            if (window.innerWidth <= 600) {
+              animatedDiv.classList.remove('fadeOutDownSmall-animation')
+              animatedDiv.classList.add('fadeInUpSmall-animation')
+              titleText.classList.remove('fadeOut-animation')
+              titleText.classList.add('fadeIn-animation')
+              descText.classList.remove('fadeOut-animation')
+              descText.classList.add('fadeIn-animation')
+            } else {
+              animatedDiv.classList.remove('fadeOutDown-animation')
+              animatedDiv.classList.add('fadeInUp-animation')
+              titleText.classList.remove('fadeOut-animation')
+              titleText.classList.add('fadeIn-animation')
+              descText.classList.remove('fadeOut-animation')
+              descText.classList.add('fadeIn-animation')
+            }
           } else {
-            animatedDiv.classList.remove('fadeOutDown-animation');
-            animatedDiv.classList.add('fadeInUp-animation');
-            titleText.classList.remove('fadeOut-animation');
-            titleText.classList.add('fadeIn-animation');
-            descText.classList.remove('fadeOut-animation');
-            descText.classList.add('fadeIn-animation');
+            if (window.innerWidth <= 600) {
+              animatedDiv.classList.remove('fadeInUpSmall-animation')
+              animatedDiv.classList.add('fadeOutDownSmall-animation')
+              titleText.classList.remove('fadeIn-animation')
+              titleText.classList.add('fadeOut-animation')
+              descText.classList.remove('fadeIn-animation')
+              descText.classList.add('fadeOut-animation')
+            } else {
+              animatedDiv.classList.remove('fadeInUp-animation')
+              animatedDiv.classList.add('fadeOutDown-animation')
+              titleText.classList.remove('fadeIn-animation')
+              titleText.classList.add('fadeOut-animation')
+              descText.classList.remove('fadeIn-animation')
+              descText.classList.add('fadeOut-animation')
+            }
           }
-        } else {
-          if (window.innerWidth <= 600) {
-            animatedDiv.classList.remove('fadeInUpSmall-animation');
-            animatedDiv.classList.add('fadeOutDownSmall-animation');
-            titleText.classList.remove('fadeIn-animation');
-            titleText.classList.add('fadeOut-animation');
-            descText.classList.remove('fadeIn-animation');
-            descText.classList.add('fadeOut-animation');
-          } else {
-            animatedDiv.classList.remove('fadeInUp-animation');
-            animatedDiv.classList.add('fadeOutDown-animation');
-            titleText.classList.remove('fadeIn-animation');
-            titleText.classList.add('fadeOut-animation');
-            descText.classList.remove('fadeIn-animation');
-            descText.classList.add('fadeOut-animation');
-          }
-        }
-      });
-    }, {
-      threshold: 0.20 
-    });
+        })
+      },
+      {
+        threshold: 0.2
+      }
+    )
 
-    observer.observe(animatedouterdiv);
-  });
+    observer.observe(animatedouterdiv)
+  })
 </script>

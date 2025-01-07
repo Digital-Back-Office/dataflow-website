@@ -1,26 +1,44 @@
 ---
-import { getEntry } from "astro:content";
+import { getEntry } from 'astro:content'
 
-const Data = await getEntry("Home", "home");
-const data = Data.data.Section2;
+const Data = await getEntry('Home', 'home')
+const data = Data.data.Section2
 ---
 
-<div class="responsive-container transition-all duration-1000 ease-in-out w-full bg-[#FCF5DE] py-24 flex md:flex-row flex-col items-center justify-center group hover:bg-[#FBBC05]  ">
-  <div class="image-container py-10  md:w-2/6 w-full flex flex-col justify-start items-center md:mr-[10%] mb-8 md:mb-0">
-    <img src="/assets/images/rundata3.png" class="h-[90%] w-[80%] transition-all duration-1000 ease-in-out group-hover:scale-125"/>
+<div
+  class='responsive-container transition-all duration-1000 ease-in-out w-full bg-[#FCF5DE] py-24 flex md:flex-row flex-col items-center justify-center group hover:bg-[#FBBC05]'
+>
+  <div
+    class='image-container py-10 md:w-2/6 w-full flex flex-col justify-start items-center md:mr-[10%] mb-8 md:mb-0'
+  >
+    <img
+      src='/assets/images/rundata3.png'
+      class='h-[90%] w-[80%] transition-all duration-1000 ease-in-out group-hover:scale-125'
+    />
   </div>
-  <div class="content-container  md:w-2/6 w-full flex flex-col justify-center items-center md:items-end">
-    <div class="flex-col justify-center items-start w-full md:w-auto px-4 md:px-0">
-      <h3 class="transition-all duration-1000 ease-in-out  text-textblack text-start font-bold mb-[5%] text-2calc w-full md:w-4/5" style="font-family: Arimo;">
+  <div
+    class='content-container md:w-2/6 w-full flex flex-col justify-center items-center md:items-end'
+  >
+    <div
+      class='flex-col justify-center items-start w-full md:w-auto px-4 md:px-0'
+    >
+      <h3
+        class='transition-all duration-1000 ease-in-out text-textblack text-start font-bold mb-[5%] text-2calc w-full md:w-4/5'
+      >
         {data.title}
       </h3>
-      <p class="transition-all duration-1000 ease-in-out text-textblack text-start text-lg w-full w-full md:w-4/5" style="font-family: Arimo;">
+      <p
+        class='transition-all duration-1000 ease-in-out text-textblack text-start text-lg w-full w-full md:w-4/5'
+      >
         {data.description}
       </p>
-      <a href="/ManageYourData">
-        <button class="custom-button2 transition-all duration-300 ease-in-out text-[#30BABA] flex items-center justify-center bg- text-base items-center gap-x-1 mt-14 h-10 w-32 group-hover:bg-[#feecec] group-hover:shadow-md group-hover:rounded-lg hover:-translate-y-1" style="font-family: Roboto;">
+      <a href='/ManageYourData'>
+        <button
+          class='custom-button2 transition-all duration-300 ease-in-out text-[#30BABA] flex items-center justify-center bg- text-base items-center gap-x-1 mt-14 h-10 w-32 group-hover:bg-[#feecec] group-hover:shadow-md group-hover:rounded-lg hover:-translate-y-1'
+          style='font-family: Roboto;'
+        >
           {Data.data.LearnMoreBtn}
-          <img src="/assets/images/arrowright.svg" height="20px" width="20px">
+          <img src='/assets/images/arrowright.svg' height='20px' width='20px' />
         </button>
       </a>
     </div>
@@ -37,7 +55,6 @@ const data = Data.data.Section2;
       flex-direction: column;
       padding-top: 96px;
       padding-bottom: 96px;
-      
     }
     .image-container {
       margin-right: 0;

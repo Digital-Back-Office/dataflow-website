@@ -7,46 +7,44 @@ const docsUrl = import.meta.env.VITE_DOCS_URL
 ---
 
 <header
-  class='h-20 w-full flex items-center justify-between bg-[#30BABA] px-[2%]'
+  class='h-16 w-full flex items-center justify-between bg-[#30BABA] px-[22px]'
 >
-  <div class='flex items-center gap-20'>
+  <div class='flex items-center gap-16'>
     <a href='/'>
       <img src='/assets/images/dataflow-logo-header.svg' class='h-12' />
     </a>
-    <nav class='hidden md:flex h-20 items-center justify-center'>
-      <div class='flex items-center gap-12 justify-between tracking-wide'>
+    <nav class='hidden md:flex h-16 items-center justify-center'>
+      <div class='flex items-center gap-10 justify-between tracking-wide'>
         <a href='/' id='nav1'>
           <p
-            class='DataFlow text-white text-base font-bold hover:border-b-2 border-white'
+            class='DataFlow text-white text-sm font-bold hover:border-b-2 border-white'
           >
             {header.nav1}
           </p>
         </a>
         <a href='/Pricing' id='nav2'>
           <p
-            class='Pricing text-white text-base font-bold hover:border-b-2 border-white'
+            class='Pricing text-white text-sm font-bold hover:border-b-2 border-white'
           >
             {header.nav2}
           </p>
         </a>
         <a href={docsUrl} target='_blank' id='nav3'>
           <p
-            class='LearnMore text-white text-base font-bold hover:border-b-2 border-white'
+            class='LearnMore text-white text-sm font-bold hover:border-b-2 border-white'
           >
             {header.nav3}
           </p>
         </a>
         <a href='/Company' id='nav4'>
           <p
-            class='Company text-white text-base font-bold hover:border-b-2 border-white'
+            class='Company text-white text-sm font-bold hover:border-b-2 border-white'
           >
             {header.nav4}
           </p>
         </a>
         <a href='/blog' id='nav5'>
-          <p
-            class='text-white text-base font-bold hover:border-b-2 border-white'
-          >
+          <p class='text-white text-sm font-bold hover:border-b-2 border-white'>
             {header.nav5}
           </p>
         </a>
@@ -57,13 +55,13 @@ const docsUrl = import.meta.env.VITE_DOCS_URL
   <div class='hidden md:flex items-center'>
     <a href='/StartFreeTrial'>
       <button
-        class='px-[20px] py-[8px] text-white rounded-md text-base font-bold tracking-wide'
+        class='px-[16px] py-[8px] hover:bg-[#30BABA] text-white rounded-md text-sm font-bold tracking-wide'
         >{header.button_1}</button
       >
     </a>
     <a href='/BookDemo'>
       <button
-        class='px-[20px] py-[8px] bg-white rounded-md text-base font-bold tracking-wide shadow-md text-[#30BABA]'
+        class='px-[20px] py-[8px] bg-white hover:bg-[#f9f9f9] rounded-md text-sm font-bold tracking-wide shadow-md text-[#30BABA]'
         >{header.button_2}</button
       >
     </a>

@@ -5,7 +5,7 @@ hero:
   cta_button: Free 14 Days trial
 
 LearnSection:
-   title: Best in class tools in one platform  
+   title: Best in class tools in one platform like
    features:
     - Airflow
     - mlflow
@@ -37,4 +37,5 @@ cta:
   button: 30 mins FREE Consultation
 
 LearnMoreBtn: Learn More
+ViewMoreButton  : View More
 ---

@@ -28,7 +28,8 @@ export default {
 			  colors: {
 				primary:"#30BABA",
 				secondary:"#1DD0D5",
-				textblack:"#393939"
+				textblack:"#393939",
+				textPrimary: "#364152"
 			  },
 			  keyframes: {
 				fadeIn: {

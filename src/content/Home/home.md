@@ -2,6 +2,7 @@
 hero:
   title1: Get data platform ready in less than
   title2: Thirty Minutes
+  cta_button: Free 14 Days trial
 
 LearnSection:
    title: Best in class tools in one platform  

@@ -5,7 +5,8 @@ header:
     nav3: Learn
     nav4: Company
     nav5: Blog
-    button: Book a demo
+    button_1: Start free trial
+    button_2: Book a demo
 
 footer:
     finance: Our dedicated team is prepared to assist you.

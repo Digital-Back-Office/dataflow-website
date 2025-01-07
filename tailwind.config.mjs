@@ -1,3 +1,5 @@
+import defaultTheme  from 'tailwindcss/defaultTheme'
+
 /** @type {import('tailwindcss').Config} */
 export default {
 	content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
@@ -6,6 +8,7 @@ export default {
 			fontFamily: {
 				helvetica: ['Helvetica', 'Arial', 'sans-serif'],
 				'helvetica-neue': ['Helvetica Neue', 'Arial', 'sans-serif'],
+				arimo: ['Arimo', ...defaultTheme.fontFamily.sans]
 			  },
 			  fontSize: {
 				'0calc': 'calc(0.8rem + 1vw)',

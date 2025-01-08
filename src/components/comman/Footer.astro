@@ -6,80 +6,98 @@ const docsUrl = import.meta.env.VITE_DOCS_URL
 ---
 
 <footer>
-  <div class='py-[20px] w-full flex items-center justify-center bg-[#2FB7B8]'>
-  </div>
-  <div class='footer-container w-full flex px-[5%] py-[50px]'>
-    <div
-      class='first-section w-[30%] mt-2 bg-white flex flex-col items-start justify-start'
-    >
-      <a href='/'><img src='/assets/images/greenlogo.png' class='h-12' /></a>
-      <p class='text-xs text-textblack mt-[20px] w-5/6'>{footer.description}</p>
-      <div class='w-4/5 mt-6'>
-        <button class='h-7 w-7 rounded-full bg-[#F6F0E1] hover:bg-[#30BABA] p-2'
-          ><img src='/assets/images/linkedin.png' /></button
+  <div
+    class='footer-container bg-gray-900 w-full flex flex-col gap-1 pt-10 pb-8 px-20 text-white'
+  >
+    <div class='w-full flex justify-center py-1'>
+      <a href='/'
+        ><img src='/assets/images/dataflow-logo-green.svg' class='h-14' /></a
+      >
+    </div>
+    <div class='flex'>
+      <div class='p-5 flex-1 flex flex-col'>
+        <p
+          class='text-xs px-1 text-wrap leading-relaxed tracking-wide text-[#F8FAFC]'
         >
-        <button
-          class='h-7 w-7 rounded-full bg-[#F6F0E1] hover:bg-[#30BABA] ml-3 p-2'
-          ><img src='/assets/images/xcom.svg' /></button
-        >
+          {footer.description}
+        </p>
+        <div class='my-4 flex items-center'>
+          <button
+            class='size-8 rounded-full bg-[#30baba31] hover:bg-[#30BABA] mx-1 flex justify-center items-center'
+            ><img
+              src='/assets/images/icon-linkedin.svg'
+              class='size-4 '
+            /></button
+          >
+          <button
+            class='size-8 rounded-full bg-[#30baba31] hover:bg-[#30BABA] mx-1 flex justify-center items-center'
+            ><img src='/assets/images/icon-x.svg' class='size-4' /></button
+          >
+        </div>
+        <p class='text-xs'>{footer.copyrights}</p>
       </div>
-      <p class='text-[#858C97] text-xs mt-[40px]'>{footer.copyrights}</p>
-    </div>
-    <div class='w-[20%] flex flex-col pt-[20px] gap-y-3'>
-      <a class='text-[15px] text-textblack hover:text-primary' href='/'
-        ><p>{footer.section1.link1}</p></a
-      >
-      <a class='text-[15px] text-textblack hover:text-primary' href='/Pricing'
-        ><p>{footer.section1.link2}</p></a
-      >
-      <a class='text-[15px] text-textblack hover:text-primary' href={docsUrl}
-        ><p>{footer.section1.link3}</p></a
-      >
-      <a class='text-[15px] text-textblack hover:text-primary' href='/Company'
-        ><p>{footer.section1.link4}</p></a
-      >
-      <a class='text-[15px] text-textblack hover:text-primary' href='/blog'
-        ><p>{footer.section1.link5}</p></a
-      >
-    </div>
-    <div class='w-[30%] flex flex-col pt-[20px] pr-[5%] gap-y-3'>
-      <a
-        class='text-[15px] text-textblack hover:text-primary'
-        href='/RunDataflowonanycloud'><p>{footer.section2.link1}</p></a
-      >
-      <a
-        class='text-[15px] text-textblack hover:text-primary'
-        href='/ManageYourData'><p>{footer.section2.link2}</p></a
-      >
-      <a
-        class='text-[15px] text-textblack hover:text-primary'
-        href='/SaygoodbyetoPythondependencyhell'
-        ><p>{footer.section2.link3}</p></a
-      >
-    </div>
-    <div class='w-[30%] flex flex-col pt-[20px] gap-y-3'>
-      <a class='text-[15px] text-textblack hover:text-primary' href='/BookDemo'
-        ><p>{footer.section3.link1}</p></a
-      >
-      <a
-        class='text-[15px] text-textblack hover:text-primary'
-        href='/Contact-us'><p>{footer.section3.link2}</p></a
-      >
-      <a
-        class='text-[15px] text-textblack hover:text-primary'
-        href='/Termsandconditions'><p>{footer.section3.link3}</p></a
-      >
-    </div>
-    <div class='w-[20%] flex flex-col pt-[20px] gap-y-3'>
-      <a class='text-[15px] text-textblack hover:text-primary'
-        ><p>{footer.section4.link1}</p></a
-      >
-      <a class='text-[15px] text-textblack hover:text-primary'
-        ><p>{footer.section4.link2}</p></a
-      >
-      <a class='text-[15px] text-textblack hover:text-primary'
-        ><p>{footer.section4.link3}</p></a
-      >
+      <div class='p-5 flex-1 flex flex-col'>
+        <p class='font-semibold text-base'>Company</p>
+        <div class='text-xs text-[#F8FAFC] w-[80%]'>
+          <a class='hover:text-primary' href='/'
+            ><p class='my-2'>{footer.section1.link1}</p></a
+          >
+          <a class='hover:text-primary' href='/Pricing'
+            ><p class='my-2'>{footer.section1.link2}</p></a
+          >
+          <a class='hover:text-primary' href={docsUrl}
+            ><p class='my-2'>{footer.section1.link3}</p></a
+          >
+          <a class='hover:text-primary' href='/Company'
+            ><p class='my-2'>{footer.section1.link4}</p></a
+          >
+          <a class='hover:text-primary' href='/blog'
+            ><p class='my-2'>{footer.section1.link5}</p></a
+          >
+        </div>
+      </div>
+      <div class='p-5 flex-1 flex flex-col'>
+        <p class='font-semibold text-base'>Product</p>
+        <div class='text-xs text-[#F8FAFC] w-[80%]'>
+          <a class='hover:text-primary' href='/'
+            ><p class='my-2'>{footer.section2.link1}</p></a
+          >
+          <a class='hover:text-primary' href='/Pricing'
+            ><p class='my-2'>{footer.section2.link2}</p></a
+          >
+          <a class='hover:text-primary' href={docsUrl}
+            ><p class='my-2'>{footer.section2.link3}</p></a
+          >
+        </div>
+      </div>
+      <div class='p-5 flex-1 flex flex-col'>
+        <p class='font-semibold text-base'>Help</p>
+        <div class='text-xs text-[#F8FAFC] w-[80%]'>
+          <a class='hover:text-primary' href='/'
+            ><p class='my-2'>{footer.section3.link1}</p></a
+          >
+          <a class='hover:text-primary' href='/Pricing'
+            ><p class='my-2'>{footer.section3.link2}</p></a
+          >
+          <a class='hover:text-primary' href={docsUrl}
+            ><p class='my-2'>{footer.section3.link3}</p></a
+          >
+        </div>
+      </div>
+      <div class='p-6 flex-1 flex flex-col'>
+        <p class='font-semibold text-base'>Contact Info</p>
+        <div class='text-xs text-[#F8FAFC] w-[80%]'>
+          <a class='hover:text-primary' href='/'
+            ><p class='my-2'>{footer.section4.link1}</p></a
+          >
+          <a class='hover:text-primary' href='/Pricing'
+            ><p class='my-2'>{footer.section4.link2}</p></a
+          >
+          <a class='hover:text-primary' href={docsUrl}
+            ><p class='my-2'>{footer.section4.link3}</p></a
+          >
+        </div>
+      </div>
     </div>
   </div>
 </footer>

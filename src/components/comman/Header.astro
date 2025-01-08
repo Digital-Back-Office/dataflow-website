@@ -14,38 +14,66 @@ const docsUrl = import.meta.env.VITE_DOCS_URL
       <img src='/assets/images/dataflow-logo-header.svg' class='h-12' />
     </a>
     <nav class='hidden md:flex h-16 items-center justify-center'>
-      <div class='flex items-center gap-10 justify-between tracking-wide'>
-        <a href='/' id='nav1'>
-          <p
-            class='DataFlow text-white text-sm font-bold hover:border-b-2 border-white'
-          >
+      <div
+        class='flex items-center justify-between tracking-wide h-full gap-[6px]'
+      >
+        <a
+          href='/'
+          id='nav1'
+          class='DataFlow h-full border-b-[3px] mb-[2px] border-transparent px-5 flex items-center hover:border-[#DEFFFF]'
+        >
+          <p class='text-white text-sm font-bold'>
             {header.nav1}
           </p>
         </a>
-        <a href='/Pricing' id='nav2'>
-          <p
-            class='Pricing text-white text-sm font-bold hover:border-b-2 border-white'
-          >
+        <a
+          href='/Pricing'
+          id='nav2'
+          class='Pricing h-full border-b-[3px] mb-[2px] border-transparent px-5 flex items-center hover:border-[#DEFFFF]'
+        >
+          <p class='text-white text-sm font-bold'>
             {header.nav2}
           </p>
         </a>
-        <a href={docsUrl} target='_blank' id='nav3'>
-          <p
-            class='LearnMore text-white text-sm font-bold hover:border-b-2 border-white'
-          >
+        <a
+          href='/best-in-class-data-tools'
+          id='nav3'
+          class='LearnMore h-full border-b-[3px] mb-[2px] border-transparent px-5 flex items-center hover:border-[#DEFFFF]'
+        >
+          <p class='text-white text-sm font-bold'>
             {header.nav3}
           </p>
         </a>
-        <a href='/Company' id='nav4'>
-          <p
-            class='Company text-white text-sm font-bold hover:border-b-2 border-white'
-          >
+        <a
+          href='/Company'
+          id='nav4'
+          class='Company h-full border-b-[3px] mb-[2px] border-transparent px-5 flex items-center hover:border-[#DEFFFF]'
+        >
+          <p class='text-white text-sm font-bold'>
             {header.nav4}
           </p>
         </a>
-        <a href='/blog' id='nav5'>
-          <p class='text-white text-sm font-bold hover:border-b-2 border-white'>
+        <a
+          href='/blog'
+          id='nav5'
+          class='blog h-full border-b-[3px] mb-[2px] border-transparent px-5 flex items-center hover:border-[#DEFFFF]'
+        >
+          <p class='text-white text-sm font-bold'>
             {header.nav5}
+          </p>
+        </a>
+        <a
+          href={docsUrl}
+          target='_blank'
+          class='h-full border-b-[3px] mb-[2px] border-transparent px-5 flex items-center hover:border-[#DEFFFF]'
+        >
+          <p class='text-white text-sm font-bold flex items-center gap-1'>
+            {header.nav6}
+            <img
+              src='/assets/images/icon-redirect-page.svg'
+              alt='redirect'
+              class='size-6'
+            />
           </p>
         </a>
       </div>
@@ -166,7 +194,9 @@ const docsUrl = import.meta.env.VITE_DOCS_URL
     const navElement = document.querySelector(`.${helperText}`)
 
     if (navElement) {
-      navElement.classList.add('border-b-2')
+      navElement.classList.remove('border-transparent')
+      navElement.classList.remove('hover:border-[#DEFFFF]')
+      navElement.classList.add('border-[#364152]')
     }
 
     burgerMenuButton.addEventListener('click', () => {

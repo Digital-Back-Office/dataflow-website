@@ -26,7 +26,7 @@ const docsUrl = import.meta.env.VITE_DOCS_URL
             class='size-8 rounded-full bg-[#30baba31] hover:bg-[#30BABA] mx-1 flex justify-center items-center'
             ><img
               src='/assets/images/icon-linkedin.svg'
-              class='size-4 '
+              class='size-4'
             /></button
           >
           <button
@@ -45,7 +45,7 @@ const docsUrl = import.meta.env.VITE_DOCS_URL
           <a class='hover:text-primary' href='/Pricing'
             ><p class='my-2'>{footer.section1.link2}</p></a
           >
-          <a class='hover:text-primary' href={docsUrl}
+          <a class='hover:text-primary' href='/best-in-class-data-tools'
             ><p class='my-2'>{footer.section1.link3}</p></a
           >
           <a class='hover:text-primary' href='/Company'
@@ -54,18 +54,28 @@ const docsUrl = import.meta.env.VITE_DOCS_URL
           <a class='hover:text-primary' href='/blog'
             ><p class='my-2'>{footer.section1.link5}</p></a
           >
+          <a href={docsUrl} target='_blank' class='hover:text-primary'>
+            <p class='my-2 flex items-center'>
+              {footer.section1.link6}
+              <img
+                src='/assets/images/icon-redirect-page.svg'
+                alt='redirect'
+                class='size-4'
+              />
+            </p>
+          </a>
         </div>
       </div>
       <div class='p-5 flex-1 flex flex-col'>
         <p class='font-semibold text-base'>Product</p>
         <div class='text-xs text-[#F8FAFC] w-[80%]'>
-          <a class='hover:text-primary' href='/'
+          <a class='hover:text-primary' href='/RunDataflowonanycloud'
             ><p class='my-2'>{footer.section2.link1}</p></a
           >
-          <a class='hover:text-primary' href='/Pricing'
+          <a class='hover:text-primary' href='/ManageYourData'
             ><p class='my-2'>{footer.section2.link2}</p></a
           >
-          <a class='hover:text-primary' href={docsUrl}
+          <a class='hover:text-primary' href='SaygoodbyetoPythondependencyhell'
             ><p class='my-2'>{footer.section2.link3}</p></a
           >
         </div>
@@ -73,24 +83,24 @@ const docsUrl = import.meta.env.VITE_DOCS_URL
       <div class='p-5 flex-1 flex flex-col'>
         <p class='font-semibold text-base'>Help</p>
         <div class='text-xs text-[#F8FAFC] w-[80%]'>
-          <a class='hover:text-primary' href='/'
+          <a class='hover:text-primary' href='/BookNow'
             ><p class='my-2'>{footer.section3.link1}</p></a
           >
-          <a class='hover:text-primary' href='/Pricing'
+          <a class='hover:text-primary' href='/ContactUs'
             ><p class='my-2'>{footer.section3.link2}</p></a
           >
-          <a class='hover:text-primary' href={docsUrl}
+          <a class='hover:text-primary' href='TermsandConditions'
             ><p class='my-2'>{footer.section3.link3}</p></a
           >
         </div>
       </div>
-      <div class='p-6 flex-1 flex flex-col'>
+      <div class='p-5 flex-1 flex flex-col'>
         <p class='font-semibold text-base'>Contact Info</p>
         <div class='text-xs text-[#F8FAFC] w-[80%]'>
-          <a class='hover:text-primary' href='/'
+          <a class='hover:text-primary' href='tel:+447404644039'
             ><p class='my-2'>{footer.section4.link1}</p></a
           >
-          <a class='hover:text-primary' href='/Pricing'
+          <a class='hover:text-primary' href='mailto:info@dataflow.zone'
             ><p class='my-2'>{footer.section4.link2}</p></a
           >
           <a class='hover:text-primary' href={docsUrl}

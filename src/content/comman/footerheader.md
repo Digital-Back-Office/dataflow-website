@@ -5,6 +5,7 @@ header:
     nav3: Learn
     nav4: Company
     nav5: Blog
+    nav6: Docs
     button_1: Start free trial
     button_2: Book a demo
 
@@ -24,6 +25,7 @@ footer:
         link3: Learn
         link4: Company
         link5: Blog
+        link6: Docs
     section2:
         link1: Run Dataflow on any cloud
         link2: Manage your data connection across tools

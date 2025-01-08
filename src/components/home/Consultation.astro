@@ -8,23 +8,42 @@ const data = Data.data.cta
 <div
     class='min-h-screen bg-[#F6F9FC] flex items-center justify-center font-helvetica-neue relative'
 >
-    <div class="flex flex-col gap-8 items-center">
+    <div class='flex flex-col gap-8 items-center'>
         <p
-            class='text-4calc text-center leading-none font-bold  text-textPrimary'
+            class='text-4calc max-sm:w-[300px] max-sm: text-center leading-none font-bold text-textPrimary'
         >
-            New life for data <br /> begins today
+            {data.title_1} <br> {data.title_2}
         </p>
-        <p class='w-[700px] text-lg text-center  text-textPrimary leading-relaxed'>
-            Expect a data engineering expert to evaluate your data needs,
-            followed by a live product demonstration. This session will provide
-            insights into how you can supercharge your data operations,
-            enhancing productivity and efficiency
+        <p
+            class='w-[700px] max-sm:w-[300px] text-lg max-sm:text-sm text-center text-textPrimary leading-relaxed'
+        >
+            {data.description}
         </p>
-        <button class="w-max px-16 bg-primary h-14 rounded-lg flex items-center justify-center text-white font-bold text-lg ">
-            30 mins FREE Consultation
+        <button
+            class='w-max px-16 max-sm:px-8 bg-primary h-14 max-sm:h-10 rounded-lg flex items-center justify-center text-white font-bold text-lg max-sm:text-xs'
+        >
+            {data.button}
         </button>
     </div>
 
-    <img src="/assets/images/bg-pattern-left.svg" alt="" class="absolute top-0 left-0 h-screen" /> 
-    <img src="/assets/images/bg-pattern-right.svg" alt="" class="absolute bottom-0 right-0 h-screen" /> 
+    <img
+        src='/assets/images/bg-pattern-left.svg'
+        alt=''
+        class='absolute top-0 left-0 h-screen max-sm:hidden'
+    />
+    <img
+        src='/assets/images/bg-pattern-right.svg'
+        alt=''
+        class='absolute bottom-0 right-0 h-screen max-sm:hidden'
+    />
+    <img
+        src='/assets/images/mobile-consultation-up.svg'
+        alt='consultation-up'
+        class='absolute top-0 left-0 w-full hidden max-sm:block'
+    />
+    <img
+        src='/assets/images/mobile-consultation-down.svg'
+        alt='consultation-down'
+        class='absolute bottom-0 right-0 w-full hidden max-sm:block'
+    />
 </div>

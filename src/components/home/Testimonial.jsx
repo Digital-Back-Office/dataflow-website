@@ -21,12 +21,12 @@ function Testimonial() {
   };
 
   return (
-    <div className='  bgq-white'>
-      <div className='formcontainer flex items-center justify-center gap-4 w-full bg-textPrimary px-52 py-24'>
-        <div className='w-1/2 p-8 flex items-center justify-center z-20 container-child2'>
+    <div className='overflow-x-hidden'>
+      <div className='formcontainer flex items-center justify-center gap-4 w-full bg-textPrimary px-52 max-sm:px-2 py-24 max-sm:py-18'>
+        <div className='w-1/2 p-8 max-sm:p-4 flex items-center justify-center z-20 container-child2'>
           <img src='/assets/images/testimonial-sample.png' className='w-[330px] h-[320px] rounded-2xl' />
         </div>
-        <div className='container-child1 w-full h-full flex flex-col items-start p-10 text-white'>
+        <div className='container-child1 w-full h-full flex flex-col items-start p-10 max-sm:p-5 text-white'>
           <style>
             {`
               @keyframes fadeInRight {

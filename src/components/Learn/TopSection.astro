@@ -5,17 +5,23 @@ import { getEntry } from 'astro:content'
 const Data = await getEntry('learn', 'learn')
 ---
 
-<div class='w-full flex justify-center items-center'>
+<div class='w-full min-h-screen flex justify-center items-center'>
   <div
     class='responsive-container w-6/12 flex flex-col justify-center items-end pl-[8%]'
   >
     <div>
-      <h1 class='text-8calc font-bold text-start text-textblack mb-12'>
+      <h1 class='text-8calc font-bold text-start text-textblack mb-10'>
         {Data.data.toptitle}
       </h1>
-      <p class='text-0calc font-medium text-start text-textblack'>
+      <p class='text-0calc font-medium text-start text-textblack mb-10'>
         {Data.data.topdescription}
       </p>
+      <a
+        href='/Contact-us'
+        class='w-max px-16 max-sm:px-8 bg-primary h-14 max-sm:h-10 rounded-lg flex items-center justify-center text-white font-bold text-lg max-sm:text-xs'
+      >
+        30 mins Free Consultation
+      </a>
     </div>
   </div>
   <div

@@ -8,7 +8,9 @@ export default {
 			fontFamily: {
 				helvetica: ['Helvetica', 'Arial', 'sans-serif'],
 				'helvetica-neue': ['Helvetica Neue', 'Arial', 'sans-serif'],
-				arimo: ['Arimo', ...defaultTheme.fontFamily.sans]
+				arimo: ['Arimo', ...defaultTheme.fontFamily.sans],
+				'roboto': ['Roboto', 'Arial', 'sans-serif'],
+				'inter': ['Inter', 'Arial', 'sans-serif'],
 			  },
 			  fontSize: {
 				'0calc': 'calc(0.8rem + 1vw)',

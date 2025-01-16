@@ -6,6 +6,7 @@ interface Props {
 const { title } = Astro.props
 import Footer from '../components/comman/Footer.astro'
 import Header from '../components/comman/Header.astro'
+import 'aos/dist/aos.css'
 ---
 
 <!doctype html>
@@ -42,10 +43,14 @@ import Header from '../components/comman/Header.astro'
 		/>
 		<title>{title}</title>
 	</head>
-	<body class='font-arimo overflow-x-hidden'>
+	<body class='font-arimo overflow-x-hidden '>
 		<Header pagename={title} />
 		<slot />
 		<Footer />
+		<script>
+			import AOS from 'aos'
+			AOS.init()
+		</script>
 	</body>
 </html>
 <style></style>

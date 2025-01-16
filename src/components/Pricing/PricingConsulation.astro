@@ -1,0 +1,50 @@
+---
+import { getEntry } from 'astro:content'
+
+const Data = await getEntry('pricing', 'consultation')
+const data = Data.data
+---
+
+<div
+    class='min-h-[80vh] bg-[#F6F9FC] flex items-center justify-center font-helvetica-neue relative'
+>
+    <div class='flex gap-24 items-center max-sm:flex-col max-sm:gap-10'>
+        <div class=''>
+            <p class='text-4calc text-textPrimary leading-none font-normal'>
+                {data.description}
+            </p>
+            <p class='text-4calc leading-none font-bold text-textPrimary'>
+                {data.title_1}
+                <br />
+                {data.title_2}
+            </p>
+        </div>
+        <a
+            href='/Contact-us'
+            class='w-max px-10 max-sm:px-8 bg-primary h-14 max-sm:h-10 rounded-lg flex items-center justify-center text-white font-bold text-lg max-sm:text-xs'
+        >
+            {data.button}
+        </a>
+    </div>
+
+    <img
+        src='/assets/images/pricing-bg-pattern-left.svg'
+        alt=''
+        class='absolute top-0 left-0 h-full max-sm:hidden'
+    />
+    <img
+        src='/assets/images/pricing-bg-pattern-right.svg'
+        alt=''
+        class='absolute bottom-0 right-0 h-full max-sm:hidden'
+    />
+    <img
+        src='/assets/images/mobile-consultation-up.svg'
+        alt='consultation-up'
+        class='absolute top-0 left-0 w-full hidden max-sm:block'
+    />
+    <img
+        src='/assets/images/mobile-consultation-down.svg'
+        alt='consultation-down'
+        class='absolute bottom-0 right-0 w-full hidden max-sm:block'
+    />
+</div>

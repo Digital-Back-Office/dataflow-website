@@ -23,48 +23,53 @@ let faqs = faqContent.faqs
     justify-content: space-between;
     align-items: center;
     cursor: pointer;
-
-    border: 1px solid #ccc;
     border-radius: 10px;
     margin-top: 20px;
   }
 
   .faq-answer {
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-top: none;
+    background-color: white;
     border-radius: 0 0 5px 5px;
     margin-bottom: 10px;
     display: none;
-    transform: translateY(-7px);
+    transform: translateY(-5px);
   }
 
-  .icon {
-    font-size: 40px;
-  }
 </style>
 
-<p class='text-calc font-bold text-textblack text-center px-10'>{heading}</p>
-<div id='faq-container' class='py-16 px-[12%]'>
-  {
-    faqs.map((faq, index) => (
-      <div class='faq'>
-        <div
-          class='faq-question cursor-pointer flex justify-between items-center py-1'
-          data-index={index}
-        >
-          <span
-            class='ml-5 text-textblack text-xl font-bold'
-            style='font-family: Arimo; text-textblack'
+<div class='flex max-md:flex-col max-md:items-center gap-20 w-full justify-center py-20 min-h-screen'>
+  <div class='mt-8 flex flex-col gap-4 max-sm:gap-2 p-2'>
+    <p class='text-2calc font-bold text-textblack'>
+      Any Question? <br /> Checkout the FAQ
+    </p>
+    <p>Feel free to reach out to us for more doubts</p>
+    <a
+      href="/Contact-us"
+      class='p-2 px-3 w-max font-semibold rounded-lg text-sm bg-[#30baba] text-white mt-4'
+    >
+      Contact Us
+    </a>
+  </div>
+  <div id='faq-container' class='w-[50%] max-sm:w-full max-sm:px-4 m-4'>
+    {
+      faqs.map((faq, index) => (
+        <div class='faq'>
+          <div
+            class={`faq-question z-10 cursor-pointer flex justify-between items-center py-6 shadow-[0px_0px_80px_rgba(0,0,0,0.1)]`}
+            data-index={index}
           >
-            {faq.question}
-          </span>
-          <span class='icon mr-5 text-textblack'>+</span>
+            <span class='ml-5 text-textblack text-xl font-bold'>
+              {faq.question}
+            </span>
+            <i class='icon fas fa-chevron-down mr-5 text-textblack' />
+          </div>
+          <div class='faq-answer text-sm text-textblack shadow-lg  border-t-[1px] border-textblack/50 p-4 py-6 '>
+            {faq.answer}
+          </div>
         </div>
-        <div class='faq-answer text-base text-textblack'>{faq.answer}</div>
-      </div>
-    ))
-  }
+      ))
+    }
+  </div>
 </div>
 <script>
   document.addEventListener('DOMContentLoaded', () => {
@@ -80,20 +85,25 @@ let faqs = faqContent.faqs
 
       if (faqAnswer.style.display === 'block') {
         faqAnswer.style.display = 'none'
-        faqQuestion.querySelector('.icon')!.textContent = '+'
+        faqQuestion.querySelector('.icon')!.classList.remove('fa-chevron-up')
+        faqQuestion.querySelector('.icon')!.classList.add('fa-chevron-down')
       } else {
         const currentlyOpen = faqContainer.querySelector(
           '.faq-answer[style*="display: block"]'
         ) as HTMLElement
         if (currentlyOpen) {
           currentlyOpen.style.display = 'none'
-          currentlyOpen.previousElementSibling!.querySelector(
-            '.icon'
-          )!.textContent = '+'
+          currentlyOpen
+            .previousElementSibling!.querySelector('.icon')!
+            .classList.remove('fa-chevron-up')
+          currentlyOpen
+            .previousElementSibling!.querySelector('.icon')!
+            .classList.add('fa-chevron-down')
         }
 
         faqAnswer.style.display = 'block'
-        faqQuestion.querySelector('.icon')!.textContent = '-'
+        faqQuestion.querySelector('.icon')!.classList.remove('fa-chevron-down')
+        faqQuestion.querySelector('.icon')!.classList.add('fa-chevron-up')
       }
     })
   })

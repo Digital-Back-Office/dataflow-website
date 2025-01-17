@@ -10,11 +10,12 @@ const { title, image, logo, link, mirror } = Astro.props
     transition-timing-function: cubic-bezier(
       0.1,
       -0.6,
-      0.2,
-      1.5
-    ); /* Exaggerated bounce effect */
+      0.1,
+      1
+    );
 
     transition-duration: 1s;
+    transition-delay: 0.5s;
   }
 
   [data-aos='fade-bounce'].aos-animate {
@@ -33,7 +34,7 @@ const { title, image, logo, link, mirror } = Astro.props
     <img src={image} alt='' class='w-[85%]' />
   </div>
   <div
-    class={`flex-[0.35] max-sm:py-10 h-full flex flex-col max-sm:items-center gap-10 ${mirror && 'pl-[5%]'}`}
+    class={`flex-[0.35] max-sm:py-10 h-full flex flex-col max-sm:items-center gap-10 ${mirror && 'pl-[7%]'}`}
   >
     <img src={logo} alt='airflow' class='w-1/2 max-sm:w-1/3' />
     <p class='text-4xl max-sm:text-3xl font-bold w-[80%] leading-tight text-[#303030]'>

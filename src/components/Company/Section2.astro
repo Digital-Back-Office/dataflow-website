@@ -6,12 +6,12 @@ const data = Data.data.section2
 import Membercard from './Memebercard.astro'
 ---
 
-<div class='responsive-container py-16 w-full flex-row-reverse flex items-start justify-center'>
-  <div class='w-[30%] px-10 sticky top-48'>
+<div class='responsive-container py-16 w-full flex-row-reverse flex max-md:flex-col items-start justify-center'>
+  <div class='w-[30%] px-10 sticky max-md:relative max-md:top-0 top-48 max-md:mb-10 max-md:flex max-md:flex-col max-md:items-center max-md:w-full'>
     <p class='text-8calc font-bold text-textblack'>{data.title}</p>
     <a href='/AllMembers'>
       <button
-        class='transition-all transition-700 custom-button flex bg-white py-2 px-3 text-primary items-center mt-10 gap-x-2 shadow-md rounded-lg hover:-translate-y-1'
+        class='transition-all transition-700 custom-button flex bg-white py-2 px-3 text-primary items-center mt-10 gap-x-2 shadow-md rounded-lg'
         style='font-family: Roboto;'
       >
         {data.button}
@@ -24,7 +24,7 @@ import Membercard from './Memebercard.astro'
       </button>
     </a>
   </div>
-  <div class='flex flex-col items-between justity-between gap-y-14 '>
+  <div class='flex flex-col items-between justity-between gap-y-14 max-md:pl-2'>
     <div class='w-full flex justify-center flex-wrap gap-x-10'>
       <Membercard />
       <Membercard />

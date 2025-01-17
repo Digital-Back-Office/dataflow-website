@@ -297,7 +297,8 @@ const docsUrl = import.meta.env.VITE_DOCS_URL
 
         if (content.classList.contains('open')) {
           content.classList.remove('open')
-          content.style.maxHeight = '0'
+          // content.style.maxHeight = '0'
+          content.classList.add('max-h-[0]')
           arrow.classList.remove('fa-chevron-up')
           arrow.classList.add('fa-chevron-down')
         } else {
@@ -306,7 +307,8 @@ const docsUrl = import.meta.env.VITE_DOCS_URL
             .querySelectorAll('.accordion-content.open')
             .forEach((openContent) => {
               openContent.classList.remove('open')
-              openContent.style.maxHeight = '0'
+              // openContent.style.maxHeight = '0'
+              openContent.classList.add('max-h-[0]')
             })
 
           document
@@ -317,7 +319,8 @@ const docsUrl = import.meta.env.VITE_DOCS_URL
             })
 
           content.classList.add('open')
-          content.style.maxHeight = content.scrollHeight + 'px'
+          // content.style.maxHeight = content.scrollHeight + 'px'
+          content.classList.remove(`max-h-[${content.scrollHeight}px]`)
           arrow.classList.remove('fa-chevron-down')
           arrow.classList.add('fa-chevron-up')
         }

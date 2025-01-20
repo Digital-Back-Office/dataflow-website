@@ -6,7 +6,7 @@ button: Get Started
 section1: 
   title:  Why Data Connection Management Matters
   description: Effective data connection management is crucial for maintaining the accuracy and consistency of your data across multiple tools and platforms. By ensuring seamless synchronization and secure data transfers, you can enhance operational efficiency, reduce errors, and make informed decisions based on reliable data. Properly managed data connections streamline workflows, save time, and improve overall productivity, making them essential for any modern business.
-  featuretitle1: Real-time Synchronization
+  featuretitle1: Interoperability
   featuredescription1: Keep your data updated in real-time to reflect the most current information.
   featuretitle2: Improve Data Accuracy
   featuredescription2: Ensure your data is consistent and reliable across all tools and platforms.

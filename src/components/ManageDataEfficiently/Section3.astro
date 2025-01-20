@@ -7,13 +7,15 @@ const button = Data.data.button
 import Imagecard from './Imagecard.astro'
 ---
 
-<div class='container-top w-full py-24 flex items-center justify-center'>
+<div
+  class='container-top min-h-screen bg-[#F6F6F6] w-full py-24 flex items-center justify-center'
+>
   <div class='text-container w-2/5'>
     <h1 class='text-2calc font-bold mb-8 text-textblack'>{data.title}</h1>
     <p class='text-lg w-10/12 text-textblack'>{data.description}</p>
     <a href='/GetStartedForm'>
       <button
-        class='custom-button bg-secondary px-3 py-2 duration-700 text-white rounded-lg shadow-md flex text-base items-center gap-x-2 mt-14 hover:-translate-y-1'
+        class='custom-button bg-primary hover:bg-[#30baba] px-3 py-2 text-white rounded-lg shadow-md flex text-base items-center gap-x-2 mt-14'
         style='font-family: Roboto;'
       >
         {button}
@@ -26,7 +28,7 @@ import Imagecard from './Imagecard.astro'
     </a>
   </div>
   <div
-    class='w-2/5 img-container flex flex-row flex-wrap items-between justify-between'
+    class='w-2/5 img-container flex flex-row flex-wrap items-between justify-between max-sm:my-10'
   >
     <Imagecard
       image='/assets/images/manageyourdatasection3image1.png'

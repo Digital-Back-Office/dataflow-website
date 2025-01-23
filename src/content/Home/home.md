@@ -1,6 +1,6 @@
 ---
 hero:
-  title1: Get data platform ready in less than
+  title1: AI ready data platform in less than
   title2: Thirty Minutes
   cta_button: Free 14 Days trial
 
@@ -32,8 +32,8 @@ Seventy:
   description: In Data team efficiency with Dataflow.
 
 cta:
-  title_1: New life for 
-  title_2: data begins today
+  title_1: New life for data
+  title_2: begins today
   description: Expect a data engineering expert to evaluate your data needs, followed by a live product demonstration. This session will provide insights into how you can supercharge your data operations, enhancing productivity and efficiency
   button: 30 mins FREE Consultation
 

@@ -23,14 +23,14 @@ function Testimonial() {
   return (
     <div className='overflow-x-hidden'>
       <div className='formcontainer flex items-center justify-center gap-4 w-full bg-textPrimary px-52 max-sm:px-2  py-24 max-sm:py-18'>
-        <div className='flex items-center justify-center max-md:flex-col w-full h-full '>
+        <div className='flex items-center justify-center max-md:flex-col w-full h-full  '>
           <div className='w-1/2 max-md:w-full p-8 max-sm:p-4 flex items-center justify-center z-20 container-child2'>
             <img
               src='/assets/images/testimonial-sample.png'
               className='w-[330px] h-[320px]  max-md:h-full max-md:w-full rounded-2xl'
             />
           </div>
-          <div className='w-full flex flex-col max-sm:p-5 text-white gap-20 max-md:gap-0'>
+          <div className='w-full h-[300px] flex flex-col justify-between max-sm:p-5 text-white gap-20 max-md:gap-0 '>
             <style>
               {`
               @keyframes fadeInRight {
@@ -64,7 +64,7 @@ function Testimonial() {
               
             `}
             </style>
-            <div className={`fadepart ${fadeClass}`}>
+            <div className={`fadepart ${fadeClass} `}>
               <p className='text-base font-normal mb-4'>
                 {testimonials[currentIndex].details}
               </p>
@@ -76,7 +76,7 @@ function Testimonial() {
                 </span>
               </p>
             </div>
-            <div className='flex'>
+            <div className='flex '>
               {currentIndex == 0 ? (
                 <button
                   disabled

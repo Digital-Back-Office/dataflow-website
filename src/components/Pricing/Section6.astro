@@ -29,22 +29,23 @@ let faqs = faqContent.faqs
 
   .faq-answer {
     background-color: white;
-    border-radius: 0 0 5px 5px;
+    border-radius: 0 0 10px 10px;
     margin-bottom: 10px;
     display: none;
     transform: translateY(-5px);
   }
-
 </style>
 
-<div class='flex max-md:flex-col max-md:items-center gap-20 w-full justify-center py-20 min-h-screen'>
+<div
+  class='flex max-md:flex-col max-md:items-center gap-20 w-full justify-center py-20 min-h-screen'
+>
   <div class='mt-8 flex flex-col gap-4 max-sm:gap-2 p-2'>
     <p class='text-2calc font-bold text-textblack'>
       Any Question? <br /> Checkout the FAQ
     </p>
     <p>Feel free to reach out to us for more doubts</p>
     <a
-      href="/Contact-us"
+      href='/Contact-us'
       class='p-2 px-3 w-max font-semibold rounded-lg text-sm bg-[#30baba] text-white mt-4'
     >
       Contact Us
@@ -63,7 +64,7 @@ let faqs = faqContent.faqs
             </span>
             <i class='icon fas fa-chevron-down mr-5 text-textblack' />
           </div>
-          <div class='faq-answer text-sm text-textblack shadow-lg  border-t-[1px] border-textblack/50 p-4 py-6 '>
+          <div class='faq-answer text-sm text-textblack shadow-lg  border-t-[1px] border-[#D3D3D3] p-4 py-6'>
             {faq.answer}
           </div>
         </div>

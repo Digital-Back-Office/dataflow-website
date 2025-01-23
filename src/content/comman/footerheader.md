@@ -5,12 +5,19 @@ header:
     nav3: Learn
     nav4: Company
     nav5: Blog
-    button: Book a demo
+    nav6: Docs
+    button_1: Start free trial
+    button_2: Book a demo
 
 footer:
     finance: Our dedicated team is prepared to assist you.
     finance_underline: Talk to our finance agent
-    description: Discover how our love for data and dedication to customer can supercharge your data-driven decision making.
+    description: Enhance your data workflow with
+                seamless integration and management
+                solutions. Stay connected and informed
+                with our latest updates and insights,
+                ensuring you get the most out of your data
+                processing needs.
     copyrights: © All rights reserved.
     section1:
         link1: Why Dataflow?
@@ -18,6 +25,7 @@ footer:
         link3: Learn
         link4: Company
         link5: Blog
+        link6: Docs
     section2:
         link1: Run Dataflow on any cloud
         link2: Manage your data connection across tools

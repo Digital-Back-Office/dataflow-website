@@ -2,9 +2,10 @@
 hero:
   title1: Get data platform ready in less than
   title2: Thirty Minutes
+  cta_button: Free 14 Days trial
 
 LearnSection:
-   title: Best in class tools in one platform  
+   title: Best in class tools in one platform like
    features:
     - Airflow
     - mlflow
@@ -31,9 +32,11 @@ Seventy:
   description: In Data team efficiency with Dataflow.
 
 cta:
-  title: New life for data begins today
+  title_1: New life for 
+  title_2: data begins today
   description: Expect a data engineering expert to evaluate your data needs, followed by a live product demonstration. This session will provide insights into how you can supercharge your data operations, enhancing productivity and efficiency
   button: 30 mins FREE Consultation
 
 LearnMoreBtn: Learn More
+ViewMoreButton  : View More
 ---

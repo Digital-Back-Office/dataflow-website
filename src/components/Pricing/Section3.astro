@@ -1,51 +1,62 @@
 ---
-import { getEntry } from "astro:content";
-const Data = await getEntry("pricing", "section3");
-const data = Data.data;
-
+import { getEntry } from 'astro:content'
+const Data = await getEntry('pricing', 'section3')
+const data = Data.data
 ---
-<div class="containersection3 w-full py-24 flex items-center justify-center px-[10%]">
-    <div class="w-1/2 flex flex-col items-start gap-y-6  pr-10 width100">
-    <h3 class="font-bold text-2calc text-textblack mb-3" style="font-family: Arimo;">
-        {data.title}
-    </h3>
-    <div class="flex items-start gap-x-5">
-       <img src="/assets/images/pricingpagecircletick.png"/>
-       <p class="text-xl text-textblack" style="font-family: Arimo;">{data.description1}</p>
-    </div>
-    <div class="flex items-start gap-x-5">
-        <img src="/assets/images/pricingpagecircletick.png"/>
-        <p class="text-xl text-textblack" style="font-family: Arimo;">{data.description2}</p>
-     </div>
-     <div class="flex items-start gap-x-5">
-        <img src="/assets/images/pricingpagecircletick.png"/>
-        <p class="text-xl text-textblack" style="font-family: Arimo;">{data.description3}</p>
-     </div>
-     <div class="flex items-start gap-x-5">
-        <img src="/assets/images/pricingpagecircletick.png"/>
-        <p class="text-xl text-textblack" style="font-family: Arimo;">{data.description4}</p>
-     </div>
-     <div class="flex items-start gap-x-5">
-        <img src="/assets/images/pricingpagecircletick.png"/>
-        <p class="text-xl text-textblack" style="font-family: Arimo;">{data.description5}</p>
-     </div>
-    </div>
-    <div class="w-1/2 flex items-center justify-center width100">
-    <img src="/assets/images/pricingsection3.png"/>
-    </div>
+
+<div class='min-h-[250px] flex justify-center items-end'>
+   <p class='text-[45px] text-textblack font-bold'>Additional Support</p>
+</div>
+<div
+   class='containersection3 w-full py-24 flex items-center justify-center px-[10%]'
+>
+   <div class='w-1/2'>
+      <div class='flex flex-col items-start gap-y-6 pr-10 width100'>
+         <h3 class='font-bold text-2calc text-textblack mb-3'>
+            {data.title}
+         </h3>
+         <div class='flex items-start gap-x-5'>
+            <img src='/assets/images/pricingpagecircletick.png' />
+            <p class='text-lg text-textblack'>{data.description1}</p>
+         </div>
+         <div class='flex items-start gap-x-5'>
+            <img src='/assets/images/pricingpagecircletick.png' />
+            <p class='text-lg text-textblack'>{data.description2}</p>
+         </div>
+         <div class='flex items-start gap-x-5'>
+            <img src='/assets/images/pricingpagecircletick.png' />
+            <p class='text-lg text-textblack'>{data.description3}</p>
+         </div>
+         <div class='flex items-start gap-x-5'>
+            <img src='/assets/images/pricingpagecircletick.png' />
+            <p class='text-lg text-textblack'>{data.description4}</p>
+         </div>
+         <div class='flex items-start gap-x-5'>
+            <img src='/assets/images/pricingpagecircletick.png' />
+            <p class='text-lg text-textblack'>{data.description5}</p>
+         </div>
+      </div>
+      <div class="mt-10">
+         <a
+            href='/best-in-class-data-tools'
+            class='p-3 px-4 w-max font-semibold rounded-lg text-sm bg-[#30baba] text-white mt-4'
+         >
+            Learn More
+         </a>
+      </div>
+   </div>
+   <div class='w-1/2 flex items-center justify-center'>
+      <img src='/assets/images/data-analytics.png' class='w-[80%]' />
+   </div>
 </div>
 
 <style>
-   @media (max-width:600px) {
-       .containersection3{
-flex-direction: column-reverse;
-row-gap: 20px;
-padding-top: 40px;
-padding-bottom: 40px;
-       }
-       .width100{
-         width:100%;
-         padding-right: 0%;
-       }
+   @media (max-width: 600px) {
+      .containersection3 {
+         flex-direction: column-reverse;
+         row-gap: 20px;
+         padding-top: 40px;
+         padding-bottom: 40px;
+      }
    }
 </style>

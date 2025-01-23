@@ -1,9 +1,12 @@
 ---
-
+const { photo,name,position } = Astro.props
 ---
 
-<div class="w-[18vw] h-[26vw] min-w-[250px] min-h-[340px]  ">
-    <img class=" w-full h-[80%]" src="/assets/images/membercardimage.png"/>
-    <p class="mx-2 mt-2 text-base text-textblack" style="font-family: Arimo;">Nick Yarris</p>
-    <p class="mx-2 text-base text-gray-400"  style="font-family: Arimo;">Web designer</p>
+<div class='min-h-[340px] border-b-[1px] border-[#E3E9EF] py-3'>
+  <img
+    class='w-[320px] h-[370px] rounded-3xl contain'
+    src={photo}
+  />
+  <p class='mx-2 mt-2 text-base text-textblack'>{name}</p>
+  <p class='mx-2 text-base text-gray-400'>{position}</p>
 </div>

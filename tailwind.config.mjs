@@ -1,3 +1,5 @@
+import defaultTheme  from 'tailwindcss/defaultTheme'
+
 /** @type {import('tailwindcss').Config} */
 export default {
 	content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
@@ -6,6 +8,9 @@ export default {
 			fontFamily: {
 				helvetica: ['Helvetica', 'Arial', 'sans-serif'],
 				'helvetica-neue': ['Helvetica Neue', 'Arial', 'sans-serif'],
+				arimo: ['Arimo', ...defaultTheme.fontFamily.sans],
+				'roboto': ['Roboto', 'Arial', 'sans-serif'],
+				'inter': ['Inter', 'Arial', 'sans-serif'],
 			  },
 			  fontSize: {
 				'0calc': 'calc(0.8rem + 1vw)',
@@ -25,7 +30,8 @@ export default {
 			  colors: {
 				primary:"#30BABA",
 				secondary:"#1DD0D5",
-				textblack:"#393939"
+				textblack:"#393939",
+				textPrimary: "#364152"
 			  },
 			  keyframes: {
 				fadeIn: {

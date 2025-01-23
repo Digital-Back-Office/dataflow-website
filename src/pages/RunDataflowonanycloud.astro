@@ -7,6 +7,7 @@ import Section6 from "../components/RunDataAnyCloud/Section6.astro";
 import Leftsection  from "../components/RunDataAnyCloud/Leftsection.astro";
 import Rightsection  from "../components/RunDataAnyCloud/Rightsection.astro";
 import { getEntry } from "astro:content";
+import Section from "../components/RunDataAnyCloud/Section.astro";
 const Data = await getEntry("RunDataAnyCloud", "data");
 const data1 = Data.data.Section3
 const data2 = Data.data.Section4
@@ -19,9 +20,9 @@ const data3 = Data.data.Section5
     <TopSection/>
     <Section1/>
     <Section2/>
-    <Leftsection logo="/assets/images/azurelogo.png" title={data1.title} image="/assets/images/macbookazure.png" link="https://azure.microsoft.com/"/>
-    <Rightsection logo="/assets/images/googlecloudlogo.png" title={data2.title} image="/assets/images/macbookgooglecloud.png" link="https://cloud.google.com/"  />
-    <Leftsection logo="/assets/images/awslogo.png" title={data3.title} image="/assets/images/macbookaws.png" link="https://aws.amazon.com/" />
+    <Section logo="/assets/images/azurelogo.png" title={data1.title} image="/assets/images/macbookazure.png" link="https://azure.microsoft.com/"/>
+    <Section mirror logo="/assets/images/googlecloudlogo.png" title={data2.title} image="/assets/images/macbookgooglecloud.png" link="https://cloud.google.com/"  />
+    <Section logo="/assets/images/aws-logo.png" title={data3.title} image="/assets/images/macbookaws.png" link="https://aws.amazon.com/"/>
     <Section6 />
 
 

@@ -1,0 +1,324 @@
+<div class="activity-indicator">
+    <div class="activity-indicator-anti">
+      <div class="circle">
+        <div class="outer1">
+          <div class="circlebox">
+            <div class="circleitem" style="animation: moveUpDown1 1s ease-in-out infinite;"></div>
+            <div class="circleitem" style="animation: moveUpDown3 1s ease-in-out infinite;"></div>
+            <div class="circleitem" style="animation: moveUpDown2 1s ease-in-out infinite;"></div>
+          </div>
+          <div class="circlebox">
+            <div class="circleitem" style="animation: moveUpDown2 1s ease-in-out infinite;"></div>
+            <div class="circleitem" style="animation: moveUpDown4 1s ease-in-out infinite;"></div>
+            <div class="circleitem" style="animation: moveUpDown2 1s ease-in-out infinite;"></div>
+            <div class="circleitem" style="animation: moveUpDown4 1s ease-in-out infinite;"></div>
+            <div class="circleitem" style="animation: moveUpDown2 1s ease-in-out infinite;"></div>
+          </div>
+          <div class="circlebox">
+            <div class="circleitem" style="animation: moveUpDown4 1s ease-in-out infinite;"></div>
+            <div class="circleitem" style="animation: moveUpDown2 1s ease-in-out infinite;"></div>
+            <div class="circleitem" style="animation: moveUpDown2 1s ease-in-out infinite;"></div>
+            <div class="circleitem" style="animation: moveUpDown1 1s ease-in-out infinite;"></div>
+            <div class="circleitem" style="animation: moveUpDown2 1s ease-in-out infinite;"></div>
+            <div class="circleitem" style="animation: moveUpDown2 1s ease-in-out infinite;"></div>
+            <div class="circleitem" style="animation: moveUpDown4 1s ease-in-out infinite;"></div>
+          </div>
+          <div class="circlebox">
+            <div class="circleitem" style="animation: moveUpDown5 1s ease-in-out infinite;"></div>
+            <div class="circleitem" style="animation: moveUpDown4 1s ease-in-out infinite;"></div>
+            <div class="circleitem" style="animation: moveUpDown2 1s ease-in-out infinite;"></div>
+            <div class="circleitem" style="animation: moveUpDown4 1s ease-in-out infinite;"></div>
+            <div class="circleitem" style="animation: moveUpDown5 1s ease-in-out infinite;"></div>
+          </div>
+          <div class="circlebox">
+            <div class="circleitem" style="animation: moveUpDown6 1s ease-in-out infinite;"></div>
+            <div class="circleitem" style="animation: moveUpDown7 1s ease-in-out infinite;"></div>
+            <div class="circleitem" style="animation: moveUpDown6 1s ease-in-out infinite;"></div>
+          </div>
+        </div>
+        <div class="outer2">
+          <div class="innerstick1" style="animation: innerstick1 1s ease-in-out infinite;"></div>
+          <div class="innerstick2" style="animation: innerstick2 1s ease-in-out infinite;"></div>
+          <div class="innerstick3" style="animation: innerstick3 1s ease-in-out infinite;"></div>
+          <div class="innerstick4" style="animation: innerstick4 1s ease-in-out infinite;"></div>
+          <div class="innerstick3" style="animation: innerstick3 1s ease-in-out infinite;"></div>
+          <div class="innerstick2" style="animation: innerstick2 1s ease-in-out infinite;"></div>
+          <div class="innerstick1" style="animation: innerstick1 1s ease-in-out infinite;"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <style>
+
+  
+    
+    .activity-indicator {
+   
+      width: 370px;
+      height: 370px;
+       border: 6.5px solid #20999900 ;
+      border-top: 6.5px solid #209999;
+      border-left: 6.5px solid #209999ae;
+      border-bottom: 6.5px solid #2099996c;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+     
+    }
+    .activity-indicator-anti {
+   
+   width: 360px;
+   height: 360px;
+    border: 2px solid #20999900 ;
+   border-top: 2px solid #74eaea;
+   border-left: 2px solid #58d6d6;
+   border-bottom: 2px solid #56cecead;
+   border-radius: 50%;
+   animation: antispin2 1s linear infinite;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+  
+ }
+    .circle {
+        position: relative;
+      width: 350px;
+      height: 350px;
+      border-radius: 50%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background-image:url("/sandclock.png");
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size:65% 65% ;
+      animation: antispin 1s linear infinite;
+      overflow: hidden;
+      backface-visibility: hidden;
+
+     
+    }
+    .circlebox{
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      
+    }
+    .circleitem{
+        background-color: #209999;
+        height: 12px;
+        width: 12px;
+        border-radius: 50%;
+        margin:4px;
+       
+        
+    }
+    
+    .outercircle{
+        width: 70%;
+        height: 50%;
+        
+    
+    }
+    .outer1{
+        padding-top:40px;
+        width: 80%;
+        height: 40%;
+        
+        
+        
+    }
+    .outer2{
+        
+        width: 80%;
+        height: 45%;
+        display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: start;
+
+      padding-bottom: 20px;
+
+     
+        
+    }
+    .innerstick1{
+       width: 12px;
+       height: 20px;
+       background-color: #209999;
+       border-radius: 20px;
+       margin: 8px;
+       margin-top:45px;
+       margin-left: 5px;
+       margin-right: 5px;
+    }
+    .innerstick2{
+       width: 12px;
+       height: 40px;
+       background-color: #209999;
+       border-radius: 20px;
+       margin: 8px;
+       margin-top:35px;
+       margin-left: 5px;
+       margin-right: 5px;
+    }
+    
+    .innerstick3{
+       width: 12px;
+       height: 65px;
+       background-color: #209999;
+       border-radius: 20px;
+       margin: 8px;
+       margin-top: 20px;
+       margin-left: 5px;
+       margin-right: 5px;
+    
+    }
+    .innerstick4{
+       width: 12px;
+       height: 85px;
+       background-color: #209999;
+       border-radius: 20px;
+       margin: 8px;
+       margin-top: 15px;
+       margin-left: 5px;
+       margin-right: 5px;
+    
+    }
+    @keyframes moveUpDown1 {
+        0%, 100% {
+                transform: translateY(0);
+            }
+            33% {
+                transform: translateY(10px);
+            }
+            43%{
+                transform: translateY(20px);
+            }
+            66% {
+                transform: translateY(40px);
+            }
+        }
+        @keyframes moveUpDown3 {
+        0%, 30%,100% {
+                transform: translateY(0);
+            }
+            33% {
+                transform: translateY(10px);
+            }
+            66% {
+                transform: translateY(40px);
+            }
+        }
+        @keyframes moveUpDown7 {
+        0%, ,100% {
+                transform: translateY(0);
+            }
+            23% {
+                transform: translateY(10px);
+            }
+            53% {
+                transform: translateY(100px);
+            }
+        }
+    
+        @keyframes moveUpDown2 {
+        0%,20%, 100% {
+                transform: translateY(0);
+            }
+            
+            50% {
+                transform: translateY(25px);
+            }
+        }
+        @keyframes moveUpDown4 {
+        0%,25%, 100% {
+                transform: translateY(0);
+            }
+            
+            50% {
+                transform: translateY(15px);
+            }
+        }
+        @keyframes moveUpDown5 {
+        0%,20%, 100% {
+                transform: translateY(0);
+            }
+            
+            50% {
+                transform: translateY(5px);
+            }
+        }
+        @keyframes moveUpDown6 {
+        0%,20%, 100% {
+                transform: translateY(0);
+            }
+            
+            50% {
+                transform: translateY(10px);
+            }
+        }
+       
+    
+        @keyframes innerstick1{
+            0%,{
+                
+              
+            }
+            50%,90% {
+                height: 68px;
+                
+            }
+            
+        }
+        @keyframes innerstick2{
+            0%,{
+                
+             
+            }
+            40%,80% {
+                height: 79px;
+               
+            }
+        }
+        @keyframes innerstick3{
+            30%,79%{
+                transform: translateY(10px);
+                height: 85px;
+            }
+            100% {
+                transform: translateY(0px);
+            }
+        }
+        @keyframes innerstick4{
+            20%,69%{
+                transform: translateY(10px);
+                height: 90px;
+            }
+            100% {
+                transform: translateY(0px);
+            }
+        }
+          
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes antispin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+@keyframes antispin2 {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(-720deg); }
+}
+
+    
+    </style>

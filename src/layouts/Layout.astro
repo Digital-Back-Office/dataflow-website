@@ -1,34 +1,56 @@
 ---
 interface Props {
-	title: string;
+	title: string
 }
 
-const { title } = Astro.props;
-import Footer from "../components/comman/Footer.astro";
-import Header from "../components/comman/Header.astro";
+const { title } = Astro.props
+import Footer from '../components/comman/Footer.astro'
+import Header from '../components/comman/Header.astro'
+import 'aos/dist/aos.css'
 ---
+
 <!doctype html>
-<html lang="en">
+<html lang='en'>
 	<head>
-		<script src="/src/scripts/cookie-consent.js"></script>
-		<meta charset="UTF-8" />
-		<meta name="description" content="Astro description" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.png" />
-		<link href="https://fonts.googleapis.com/css2?family=Helvetica+Neue:wght@400;700&display=swap" rel="stylesheet">
-		<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
-		<link href="https://fonts.googleapis.com/css2?family=Arimo&display=swap" rel="stylesheet">
-		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@400;700&display=swap">
-		<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orestbida/cookieconsent@3.0.1/dist/cookieconsent.css">
-		<title>{title}</title>	
+		<script src='/src/scripts/cookie-consent.js'></script>
+		<meta charset='UTF-8' />
+		<meta name='description' content='Astro description' />
+		<meta name='viewport' content='width=device-width' />
+		<link rel='icon' type='image/svg+xml' href='/favicon.png' />
+		<link
+			href='https://fonts.googleapis.com/css2?family=Helvetica+Neue:wght@400;700&display=swap'
+			rel='stylesheet'
+		/>
+		<link
+			href='https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap'
+			rel='stylesheet'
+		/>
+		<link
+			href='https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap'
+			rel='stylesheet'
+		/>
+		<link
+			href='https://fonts.googleapis.com/css2?family=Arimo&display=swap'
+			rel='stylesheet'
+		/>
+		<link
+			rel='stylesheet'
+			href='https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@400;700&display=swap'
+		/>
+		<link
+			rel='stylesheet'
+			href='https://cdn.jsdelivr.net/gh/orestbida/cookieconsent@3.0.1/dist/cookieconsent.css'
+		/>
+		<title>{title}</title>
 	</head>
-	<body>
-		<Header pagename = {title}/>
+	<body class='font-arimo overflow-x-hidden '>
+		<Header pagename={title} />
 		<slot />
-       <Footer/>
+		<Footer />
+		<script>
+			import AOS from 'aos'
+			AOS.init()
+		</script>
 	</body>
 </html>
-<style >
-
-</style>
+<style></style>

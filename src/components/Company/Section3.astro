@@ -1,21 +1,34 @@
 ---
-import { getEntry } from "astro:content";
-const Data = await getEntry("company", "company");
-const data = Data.data.section3;
+import { getEntry } from 'astro:content'
+const Data = await getEntry('company', 'company')
+const data = Data.data.section3
 ---
 
-<div class="w-full py-24 flex items-center justify-center" >
-    <div class="w-2/6 ">
-      <h2 class="text-calc text-textblack font-bold" style="font-family: Arimo;">{data.title1}</h2>
-      <div class="h-2 w-20 bg-primary mb-8 rounded-lg"></div>
-      <p class="text-lg text-textblack w-8/12" style="font-family: Arimo;">{data.description1}</p>
+<div
+  class='w-full py-40 my-12 max-sm:my-2 max-sm:py-20 flex max-sm:flex-col max-sm:gap-y-8 items-center justify-center bg-[#F8FAFC]'
+>
+  <div class='w-2/6 max-sm:w-[90%] flex flex-col gap-y-3'>
+    <h2 class='text-4xl text-textblack font-extrabold'>{data.title1}</h2>
+    <div class='h-3 w-24 bg-primary rounded-lg'></div>
+    <p class='text-xl text-[#576071] mb-7 max-sm:mb-4 w-9/12 leading-relaxed'>
+      {data.description1}
+    </p>
+    <a
+      href='/AllMembers'
+      class='flex bg-primary hover:bg-[#0AA3A3] py-2 px-3 w-max text-white items-center gap-x-1 shadow-md rounded-lg'
+      style='font-family: Roboto;'
+    >
+      {data.button}
+      <img
+        src='/assets/images/arrowright-white.svg'
+        class='invert brightness-0'
+        height='18px'
+        width='18px'
+      />
+    </a>
   </div>
-  <div class="w-2/6">
-    <h2 class="text-0calc text-textblack font-bold mb-7" style="font-family: Arimo;">{data.title2}</h2>
-      <p class="text-lg text-textblack" style="font-family: Arimo;">{data.description2}</p>
-      <button class=" flex bg-white py-2 px-3 text-primary items-center mt-10 gap-x-2 shadow-md rounded-lg hover:-translate-y-1" style="font-family: Roboto;">
-        {data.button}
-        <img src="/assets/images/arrowright.svg" height="20px" width="20px">
-      </button>
+  <div class='w-[40%] max-sm:w-[90%]'>
+    <h2 class='text-calc text-textblack font-bold mb-7'>{data.title2}</h2>
+    <p class='text-lg text-textblack'>{data.description2}</p>
   </div>
 </div>

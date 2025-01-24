@@ -14,20 +14,20 @@ const data = Data.data
         {data.title1}<br />{data.title2}
       </h1>
       <ul
-        style='list-style-type: disc; padding-left: 1.5rem;'
-        class='w-[80%] font-semibold tracking-wide'
+        style='list-style-type: none; padding-left: 1.5rem;'
+        class='w-[85%] font-semibold tracking-wide'
       >
-        <li class='text-base mb-4 text-textblack'>
-          {data.description[0]}
+        <li class='text-base mb-4 text-textblack  flex items-start gap-2'>
+          <span class="mt-[1px]"><img src="/public/assets/images/check-box-icon.png" alt="point"></span>{data.description[0]}
         </li>
-        <li class='text-base mb-4 text-textblack'>
-          {data.description[1]}
+        <li class='text-base mb-4 text-textblack flex items-start gap-2'>
+          <span class="mt-[1px]"><img src="/public/assets/images/check-box-icon.png" alt="point"></span>{data.description[1]}
         </li>
-        <li class='text-base mb-4 text-textblack'>
-          {data.description[2]}
+        <li class='text-base mb-4 text-textblack flex items-start gap-2'>
+          <span class="mt-[1px]"><img src="/public/assets/images/check-box-icon.png" alt="point"></span>{data.description[2]}
         </li>
-        <li class='text-base mb-4 text-textblack'>
-          {data.description[3]}
+        <li class='text-base mb-4 text-textblack flex items-start gap-2'>
+          <span class="mt-[1px]"><img src="/public/assets/images/check-box-icon.png" alt="point"></span>{data.description[3]}
         </li>
       </ul>
     </div>
@@ -78,7 +78,7 @@ const data = Data.data
               <select
                 required
                 id='option1'
-                class='custom-input border-[1px] border-[#E0E0E0] rounded-lg h-10 p-2 text-textblack'
+                class='custom-input border-[1px] border-[#E0E0E0] rounded-lg h-10 p-2 text-[#9ca3b1]'
                 name='entry.1061557718'
               >
                 <option value='' class='' disabled selected>Company Size</option
@@ -101,7 +101,7 @@ const data = Data.data
               <select
                 required
                 id='option2'
-                class='custom-input border-[1px] border-[#E0E0E0] rounded-lg h-10 p-2 text-textblack'
+                class='custom-input border-[1px] border-[#E0E0E0] rounded-lg h-10 p-2 text-[#9ca3b1]'
                 name='entry.154861476'
               >
                 <option value='' class='' disabled selected
@@ -133,11 +133,7 @@ const data = Data.data
               class='bottom-0 bg-primary hover:bg-primaryHover w-full h-[50px] justify-center duration-300 text-white font-bold rounded-lg shadow-md flex text-base items-center gap-x-2'
               style='font-family: Roboto;'
             >
-              Get Started <img
-                class='button-img'
-                src='/assets/images/arrowright.svg'
-                alt='Arrow Right'
-              />
+              Get Started
             </button>
           </form>
         </div>
@@ -226,6 +222,10 @@ const data = Data.data
   select,
   textarea {
     margin-bottom: 20px;
+  }
+
+  label {
+    margin-bottom: 2px;
   }
 
   @media (max-width: 750px) {

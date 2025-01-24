@@ -7,9 +7,9 @@ import Imagecard from '../ManageDataEfficiently/Imagecard.astro'
 ---
 
 <div
-  class='container-top min-h-screen w-full py-24 flex items-center justify-center'
+  class='container-top min-h-screen w-full py-24 flex items-center justify-center max-md:flex-col'
 >
-  <div class='text-container w-2/5'>
+  <div class='text-container max-md:w-4/5  w-2/5'>
     <h1 class='text-2calc font-bold mb-8 text-textblack'>{data.title3}</h1>
     <p class='text-base w-10/12 text-textblack'>{data.description3}</p>
     <a href='/GetStartedForm'>
@@ -27,7 +27,7 @@ import Imagecard from '../ManageDataEfficiently/Imagecard.astro'
     </a>
   </div>
   <div
-    class='w-2/5 h-[60vh] img-container flex flex-row flex-wrap items-between justify-between max-sm:my-10'
+    class='w-2/5 img-container flex flex-row flex-wrap items-between justify-between max-md:my-10'
   >
     <Imagecard
       image='/assets/images/pythondatadependencyfeaturemage1.png'

@@ -11,15 +11,15 @@ const docsUrl = import.meta.env.VITE_DOCS_URL
     rel='stylesheet'
   />
 </head>
-<footer>
+<footer class="">
   <div
-    class='footer-container hidden max-md:flex bg-gray-900 w-full flex-col gap-1 pt-10 pb-8 px-20 text-white'
+    class='footer-container hidden max-md:flex bg-gray-900 w-full flex-col gap-1 pt-[40px] pb-[32px] px-[80px] text-white'
   >
     <div
-      class='w-full flex max-sm:flex-col justify-center max-md:items-center py-1'
+      class='w-full flex max-sm:flex-col justify-center max-md:items-center py-[4px]'
     >
       <a href='/'
-        ><img src='/assets/images/dataflow-logo-green.svg' class='h-14' /></a
+        ><img src='/assets/images/dataflow-logo-green.svg' class='h-[56px]' /></a
       >
     </div>
     <div class='flex max-md:flex-col'>
@@ -30,22 +30,22 @@ const docsUrl = import.meta.env.VITE_DOCS_URL
         >
         <div class='accordion-content text-xs text-[#F8FAFC] w-[80%]'>
           <a class='hover:text-primary' href='/'
-            ><p class='my-4'>{footer.section1.link1}</p></a
+            ><p class='my-[16px]'>{footer.section1.link1}</p></a
           >
           <a class='hover:text-primary' href='/Pricing'
-            ><p class='my-4'>{footer.section1.link2}</p></a
+            ><p class='my-[16px]'>{footer.section1.link2}</p></a
           >
           <a class='hover:text-primary' href='/best-in-class-data-tools'
-            ><p class='my-4'>{footer.section1.link3}</p></a
+            ><p class='my-[16px]'>{footer.section1.link3}</p></a
           >
           <a class='hover:text-primary' href='/Company'
-            ><p class='my-4'>{footer.section1.link4}</p></a
+            ><p class='my-[16px]'>{footer.section1.link4}</p></a
           >
           <a class='hover:text-primary' href='/blog'
-            ><p class='my-4'>{footer.section1.link5}</p></a
+            ><p class='my-[16px]'>{footer.section1.link5}</p></a
           >
           <a href={docsUrl} target='_blank' class='hover:text-primary'>
-            <p class='my-4 flex items-center'>
+            <p class='my-[16px] flex items-center'>
               {footer.section1.link6}
               <img
                 src='/assets/images/icon-redirect-page.svg'
@@ -63,13 +63,13 @@ const docsUrl = import.meta.env.VITE_DOCS_URL
         >
         <div class='accordion-content text-xs text-[#F8FAFC] w-[80%]'>
           <a class='hover:text-primary' href='/RunDataflowonanycloud'
-            ><p class='my-4'>{footer.section2.link1}</p></a
+            ><p class='my-[16px]'>{footer.section2.link1}</p></a
           >
           <a class='hover:text-primary' href='/ManageYourData'
-            ><p class='my-4'>{footer.section2.link2}</p></a
+            ><p class='my-[16px]'>{footer.section2.link2}</p></a
           >
           <a class='hover:text-primary' href='SaygoodbyetoPythondependencyhell'
-            ><p class='my-4'>{footer.section2.link3}</p></a
+            ><p class='my-[16px]'>{footer.section2.link3}</p></a
           >
         </div>
       </div>
@@ -80,31 +80,31 @@ const docsUrl = import.meta.env.VITE_DOCS_URL
         >
         <div class='accordion-content text-xs text-[#F8FAFC] w-[80%]'>
           <a class='hover:text-primary' href='/BookNow'
-            ><p class='my-4'>{footer.section3.link1}</p></a
+            ><p class='my-[16px]'>{footer.section3.link1}</p></a
           >
           <a class='hover:text-primary' href='/ContactUs'
-            ><p class='my-4'>{footer.section3.link2}</p></a
+            ><p class='my-[16px]'>{footer.section3.link2}</p></a
           >
           <a class='hover:text-primary' href='TermsandConditions'
-            ><p class='my-4'>{footer.section3.link3}</p></a
+            ><p class='my-[16px]'>{footer.section3.link3}</p></a
           >
         </div>
       </div>
       <!-- Accordion for Contact Info -->
-      <div class='p-5 flex-1 flex flex-col'>
+      <div class='p-[20px] flex-1 flex flex-col'>
         <button class='accordion-btn font-semibold text-base'
           >Contact Info <i class='accordion-arrow fas fa-chevron-down'
           ></i></button
         >
         <div class='accordion-content text-xs text-[#F8FAFC] w-[80%]'>
           <a class='hover:text-primary' href='tel:+447404644039'
-            ><p class='my-4'>{footer.section4.link1}</p></a
+            ><p class='my-[16px]'>{footer.section4.link1}</p></a
           >
           <a class='hover:text-primary' href='mailto:info@dataflow.zone'
-            ><p class='my-4'>{footer.section4.link2}</p></a
+            ><p class='my-[16px]'>{footer.section4.link2}</p></a
           >
           <a class='hover:text-primary' href={docsUrl}
-            ><p class='my-4'>{footer.section4.link3}</p></a
+            ><p class='my-[16px]'>{footer.section4.link3}</p></a
           >
         </div>
       </div>
@@ -120,30 +120,30 @@ const docsUrl = import.meta.env.VITE_DOCS_URL
           class='size-8 rounded-full bg-[#30baba31] hover:bg-[#30BABA] mx-1 flex justify-center items-center'
           ><img src='/assets/images/icon-linkedin.svg' class='size-4' /></button
         >
-        <button
+        <!-- <button
           class='size-8 rounded-full bg-[#30baba31] hover:bg-[#30BABA] mx-1 flex justify-center items-center'
           ><img src='/assets/images/icon-x.svg' class='size-4' /></button
-        >
+        > -->
       </div>
       <p class='text-xs'>{footer.copyrights}</p>
     </div>
   </div>
   <div
-    class='footer-container max-md:hidden bg-gray-900 w-full flex flex-col gap-1 pt-10 pb-8 px-20 max-md:px-10 text-white'
+    class='footer-container max-md:hidden bg-gray-900 w-full flex flex-col gap-1 pt-[40px] pb-[32px] px-[80px] max-md:px-10 text-white'
   >
-    <div class='w-full flex max-sm:flex-col justify-center py-1'>
+    <div class='w-full flex max-sm:flex-col justify-center py-[4px]'>
       <a href='/'
-        ><img src='/assets/images/dataflow-logo-green.svg' class='h-14' /></a
+        ><img src='/assets/images/dataflow-logo-green.svg' class='h-[56px]' /></a
       >
     </div>
     <div class='flex'>
-      <div class='p-5 flex-1 flex flex-col'>
+      <div class='p-[20px] flex-1 flex flex-col'>
         <p
-          class='text-xs px-1 text-wrap leading-relaxed tracking-wide text-[#F8FAFC]'
+          class='text-xs px-[4px] text-wrap leading-relaxed tracking-wide text-[#F8FAFC]'
         >
           {footer.description}
         </p>
-        <div class='my-4 flex items-center'>
+        <div class='my-[16px] flex items-center'>
           <button
             class='size-8 rounded-full bg-[#30baba31] hover:bg-[#30BABA] mx-1 flex justify-center items-center'
             ><img
@@ -151,14 +151,14 @@ const docsUrl = import.meta.env.VITE_DOCS_URL
               class='size-4'
             /></button
           >
-          <button
+          <!-- <button
             class='size-8 rounded-full bg-[#30baba31] hover:bg-[#30BABA] mx-1 flex justify-center items-center'
             ><img src='/assets/images/icon-x.svg' class='size-4' /></button
-          >
+          > -->
         </div>
         <p class='text-xs'>{footer.copyrights}</p>
       </div>
-      <div class='p-5 flex-1 flex flex-col'>
+      <div class='p-[20px] flex-1 flex flex-col'>
         <p class='font-semibold text-base'>Company</p>
         <div class='text-xs text-[#F8FAFC] w-[80%]'>
           <a class='hover:text-primary' href='/'
@@ -188,7 +188,7 @@ const docsUrl = import.meta.env.VITE_DOCS_URL
           </a>
         </div>
       </div>
-      <div class='p-5 flex-1 flex flex-col'>
+      <div class='p-[20px] flex-1 flex flex-col'>
         <p class='font-semibold text-base'>Product</p>
         <div class='text-xs text-[#F8FAFC] w-[80%]'>
           <a class='hover:text-primary' href='/RunDataflowonanycloud'
@@ -202,7 +202,7 @@ const docsUrl = import.meta.env.VITE_DOCS_URL
           >
         </div>
       </div>
-      <div class='p-5 flex-1 flex flex-col'>
+      <div class='p-[20px] flex-1 flex flex-col'>
         <p class='font-semibold text-base'>Help</p>
         <div class='text-xs text-[#F8FAFC] w-[80%]'>
           <a class='hover:text-primary' href='/BookDemo'
@@ -216,7 +216,7 @@ const docsUrl = import.meta.env.VITE_DOCS_URL
           >
         </div>
       </div>
-      <div class='p-5 flex-1 flex flex-col'>
+      <div class='p-[20px] flex-1 flex flex-col'>
         <p class='font-semibold text-base'>Contact Info</p>
         <div class='text-xs text-[#F8FAFC] w-[80%]'>
           <a class='hover:text-primary' href='tel:+447404644039'

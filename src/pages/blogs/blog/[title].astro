@@ -15,8 +15,7 @@ export async function getStaticPaths() {
   return paths
 }
 
-
-const {title } = Astro.params
+const { title } = Astro.params
 ---
 
 <Bloglayout title='Blog'>
@@ -34,7 +33,7 @@ const {title } = Astro.params
 
     <!-- Post title + post meta -->
     <h1 class='display-4 text-center pb-2 pb-lg-3'>
-      {title.split("-").join(" ").toUpperCase()}
+      {title.split('-').join(' ').toUpperCase()}
     </h1>
     <div
       class='d-flex flex-wrap align-items-center justify-content-center mt-n2'
@@ -67,7 +66,7 @@ const {title } = Astro.params
   <section class='jarallax' data-jarallax data-speed='.65'>
     <div
       class='jarallax-img bg-position-center-y'
-      style='background-image: url(/public/assets/img/cta-bg.jpg);'
+      style='background-image: url(/assets/img/cta-bg.jpg);'
     >
     </div>
     <div class='d-none d-xxl-block' style='height: 760px;'></div>
@@ -114,7 +113,7 @@ const {title } = Astro.params
         <figure class='figure'>
           <img
             class='figure-img rounded-5 mb-3'
-            src='/public/assets/img/03.jpg'
+            src='/assets/img/03.jpg'
             alt='Image'
           />
           <figcaption class='figure-caption'>
@@ -190,7 +189,7 @@ const {title } = Astro.params
           <div class='d-flex align-items-start py-2'>
             <img
               class='d-block rounded-circle mb-3'
-              src='/public/assets/images/testimonial-sample.png'
+              src='/assets/images/testimonial-sample.png'
               width='56'
               alt='Author image'
             />
@@ -256,5 +255,4 @@ const {title } = Astro.params
       </div>
     </div>
   </section>
-
 </Bloglayout>

@@ -19,12 +19,16 @@ const data = Data.data
       >
         <li class='text-base mb-4 text-textblack flex items-start gap-2'>
           <span class='mt-[3px]'
-            ><img src='/assets/images/check-box-icon.png' alt='point' width="20px"/></span
+            ><img
+              src='/assets/images/check-box-icon.png'
+              alt='point'
+              width='20px'
+            /></span
           >{data.description[0]}
         </li>
         <li class='text-base mb-4 text-textblack flex items-start gap-2'>
           <span class='mt-[3px]'
-            ><img src='/assets/images/check-box-icon.png' alt='point'  /></span
+            ><img src='/assets/images/check-box-icon.png' alt='point' /></span
           >{data.description[1]}
         </li>
         <li class='text-base mb-4 text-textblack flex items-start gap-2'>
@@ -34,7 +38,7 @@ const data = Data.data
         </li>
         <li class='text-base mb-4 text-textblack flex items-start gap-2'>
           <span class='mt-[3px]'
-            ><img src='/assets/images/check-box-icon.png' alt='point'  /></span
+            ><img src='/assets/images/check-box-icon.png' alt='point' /></span
           >{data.description[3]}
         </li>
       </ul>
@@ -86,7 +90,7 @@ const data = Data.data
               <select
                 required
                 id='option1'
-                class='custom-input border-[1px] border-[#E0E0E0] rounded-lg h-10 p-2 text-[#9ca3b1]'
+                class='custom-input border-[1px] border-[#E0E0E0] rounded-lg h-10 p-2 text-[#9ca3b1] text-[14px]'
                 name='entry.1061557718'
               >
                 <option value='' class='' disabled selected>Company Size</option
@@ -109,7 +113,7 @@ const data = Data.data
               <select
                 required
                 id='option2'
-                class='custom-input border-[1px] border-[#E0E0E0] rounded-lg h-10 p-2 text-[#9ca3b1]'
+                class='custom-input border-[1px] border-[#E0E0E0] rounded-lg h-10 p-2 text-[#9ca3b1] text-[14px]'
                 name='entry.154861476'
               >
                 <option value='' class='' disabled selected
@@ -232,8 +236,20 @@ const data = Data.data
     margin-bottom: 20px;
   }
 
+  input::placeholder,
+  textarea::placeholder {
+    font-size: 14px;
+  }
+  
   label {
     margin-bottom: 2px;
+  }
+
+  select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background: url('/assets/icons/Icon-select-down.svg') no-repeat 98.5% 50%;
   }
 
   @media (max-width: 750px) {
@@ -262,7 +278,7 @@ const data = Data.data
     transform: rotateY(180deg);
   }
 
-   .flip-card-front,
+  .flip-card-front,
   .flip-card-back {
     position: absolute;
     width: 100%;
@@ -271,10 +287,10 @@ const data = Data.data
     backface-visibility: hidden;
   }
 
- .flip-card-back {
-  position: absolute;
-  top: 0;
- }
+  .flip-card-back {
+    position: absolute;
+    top: 0;
+  }
 
   .flip-card-back {
     height: 530px;

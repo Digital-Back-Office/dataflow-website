@@ -109,7 +109,7 @@ const data = Data.data
           <select
             required
             id='options'
-            class='custom-input border border-[#E0E0E0] rounded-lg h-10 p-2 text-[#9ca3b1]'
+            class='custom-input border border-[#E0E0E0] rounded-lg h-10 p-2 text-[#9ca3b1] text-[14px]'
             name='entry.1061557718'
           >
             <option value='' disabled selected>Company Size</option>
@@ -277,6 +277,18 @@ const data = Data.data
   select,
   textarea {
     margin-bottom: 20px;
+  }
+
+  input::placeholder,
+  textarea::placeholder {
+    font-size: 14px;
+  }
+
+  select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background: url('/assets/icons/Icon-select-down.svg') no-repeat 98.5% 50%;
   }
 
   label {

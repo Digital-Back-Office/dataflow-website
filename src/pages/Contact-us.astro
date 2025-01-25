@@ -75,7 +75,7 @@ const data = Data.data
               id='options'
               class='custom-input border border-[#E0E0E0] rounded-lg h-10 p-2'
               name='entry.1061557718'
-              style='color: #9ca3b1;'
+              style='color: #9ca3b1; font-size: 14px;'
             >
               <option value='' disabled selected>Company Size</option>
               <option value='1-10'>1-10 employees</option>
@@ -103,7 +103,12 @@ const data = Data.data
               style='resize:none'></textarea>
           </div>
           <div class='w-full flex items-center justify-start mb-3'>
-            <input type='checkbox' required class='ml-3 size-3 ' style="margin-bottom: 0;" />
+            <input
+              type='checkbox'
+              required
+              class='ml-3 size-3'
+              style='margin-bottom: 0;'
+            />
             <p class='text-gray-500 ml-1 my-3 text-sm'>
               {data.form.terms}<span
                 ><a
@@ -116,7 +121,7 @@ const data = Data.data
           </div>
           <button
             type='submit'
-            class=' bg-primary hover:bg-primaryHover w-full h-12 flex items-center justify-center duration-300 text-white font-bold rounded-lg shadow-md text-base gap-x-2 '
+            class='bg-primary hover:bg-primaryHover w-full h-12 flex items-center justify-center duration-300 text-white font-bold rounded-lg shadow-md text-base gap-x-2'
             style='font-family: Roboto;'
           >
             {data.form.button}
@@ -237,9 +242,21 @@ const data = Data.data
   select,
   textarea {
     margin-bottom: 20px;
+    
+  }
+
+  input::placeholder,  textarea::placeholder {
+    font-size: 14px;
   }
 
   label {
     margin-bottom: 2px;
+  }
+
+  select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background: url('/assets/icons/Icon-select-down.svg') no-repeat 98.5% 50%;
   }
 </style>

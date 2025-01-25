@@ -6,16 +6,16 @@ const data = Data.data
 ---
 
 <Layout title='Book a demo'>
-  <div class='flex items-center justify-center py-24'>
+  <div class='flex items-center justify-center py-20 min-h-screen bg-[#F8FAFC]'>
     <div
-      class='formcontainer w-4/5 flex items-center justify-center 2xl:py-16 py-16 bg-[#F6F6F6] rounded-3xl p-[5%] shadow-lg'
+      class='formcontainer w-[75%] flex items-center justify-center gap-12 p-10 bg-white rounded-3xl border-[1px] border-[#E0E0E0]'
     >
       <div class='titlecontainer flex flex-col items-start justify-start'>
-        <h1 class='text-9calc font-bold text-textblack mb-10 w-4/5'>
+        <h1 class='text-6xl font-bold text-textblack mb-6 w-max'>
           {data.title}
         </h1>
-        <p class='text-lg w-4/5 mb-10 text-textblack'>{data.description}</p>
-        <img src='/assets/images/contactusimage.png' class='w-[70%]' />
+        <p class='text-sm w-[320px] mb-6 text-textblack'>{data.description}</p>
+        <img src='/assets/images/contactusimage.png' class='w-[300px]' />
       </div>
       <div
         class='colcontainer w-5/6 max-w-[600px] flex flex-col items-center justify-center rounded-2xl elevation-2'
@@ -25,112 +25,101 @@ const data = Data.data
         </h3>
         <form id='myForm' class='w-full items-center justify-between'>
           <div
-            class='w-full colcontainer h-20 flex items-center justify-between mb-[4%]'
+            class='h-full w-full colcontainerchild flex flex-col justify-evenly'
           >
-            <div
-              class='h-full w-[47%] colcontainerchild flex flex-col justify-evenly'
+            <label class='text-base font-bold text-textblack'
+              >{data.form.label1}</label
             >
-              <label class='text-base 2xl:text-lg font-bold text-textblack'
-                >{data.form.label1}</label
-              >
-              <input
-                required
-                placeholder={data.form.placeholder1}
-                class='custom-input border border-primary rounded-lg h-10 p-2'
-                name='entry.1291198894'
-              />
-            </div>
-            <div
-              class='h-full w-[47%] colcontainerchild flex flex-col justify-evenly'
-            >
-              <label class='text-base 2xl:text-lg font-bold text-textblack'
-                >{data.form.label2}</label
-              >
-              <input
-                required
-                type='email'
-                placeholder={data.form.placeholder2}
-                class='custom-input border border-primary rounded-lg h-10 p-2'
-                name='entry.59580764'
-              />
-            </div>
+            <input
+              required
+              placeholder={data.form.placeholder1}
+              class='custom-input border border-[#E0E0E0] rounded-lg h-10 p-2'
+              name='entry.1291198894'
+            />
           </div>
           <div
-            class='w-full colcontainer h-20 flex items-center justify-between mb-[4%]'
+            class='h-full w-full colcontainerchild flex flex-col justify-evenly'
           >
-            <div
-              class='h-full w-[47%] colcontainerchild flex flex-col justify-evenly'
+            <label class='text-base font-bold text-textblack'
+              >{data.form.label2}</label
             >
-              <label class='text-base 2xl:text-lg font-bold text-textblack'
-                >{data.form.label4}</label
-              >
-              <input
-                required
-                placeholder={data.form.placeholder4}
-                class='custom-input border border-primary rounded-lg h-10 p-2'
-                name='entry.1637227755'
-              />
-            </div>
-            <div
-              class='h-full w-[47%] colcontainerchild flex flex-col justify-evenly'
+            <input
+              required
+              type='email'
+              placeholder={data.form.placeholder2}
+              class='custom-input border border-[#E0E0E0] rounded-lg h-10 p-2'
+              name='entry.59580764'
+            />
+          </div>
+          <div
+            class='h-full w-full colcontainerchild flex flex-col justify-evenly'
+          >
+            <label class='text-base font-bold text-textblack'
+              >{data.form.label4}</label
             >
-              <label class='text-base 2xl:text-lg font-bold text-textblack'
-                >{data.form.label5}</label
-              >
-              <select
-                required
-                id='options'
-                class='custom-input border border-primary rounded-lg h-10 p-2'
-                name='entry.1061557718'
-                style='color: #9ca3b1;'
-              >
-                <option value='' disabled selected>Company Size</option>
-                <option value='1-10'>1-10 employees</option>
-                <option value='11-50'>11-50 employees</option>
-                <option value='51-200'>51-200 employees</option>
-                <option value='201-500'>201-500 employees</option>
-                <option value='501-1000'>501-1000 employees</option>
-                <option value='1001-5000'>1001-5000 employees</option>
-                <option value='5001-10000'>5001-10,000 employees</option>
-                <option value='10001+'>10,001+ employees</option>
-              </select>
-            </div>
+            <input
+              required
+              placeholder={data.form.placeholder4}
+              class='custom-input border border-[#E0E0E0] rounded-lg h-10 p-2'
+              name='entry.1637227755'
+            />
+          </div>
+          <div
+            class='h-full w-full colcontainerchild flex flex-col justify-evenly'
+          >
+            <label class='text-base font-bold text-textblack'
+              >{data.form.label5}</label
+            >
+            <select
+              required
+              id='options'
+              class='custom-input border border-[#E0E0E0] rounded-lg h-10 p-2'
+              name='entry.1061557718'
+              style='color: #9ca3b1;'
+            >
+              <option value='' disabled selected>Company Size</option>
+              <option value='1-10'>1-10 employees</option>
+              <option value='11-50'>11-50 employees</option>
+              <option value='51-200'>51-200 employees</option>
+              <option value='201-500'>201-500 employees</option>
+              <option value='501-1000'>501-1000 employees</option>
+              <option value='1001-5000'>1001-5000 employees</option>
+              <option value='5001-10000'>5001-10,000 employees</option>
+              <option value='10001+'>10,001+ employees</option>
+            </select>
           </div>
           <input type='hidden' name='entry.664159867' value='Contact-us' />
-          <div class='w-full flex flex-col justify-between mb-[2%]'>
-            <label class='text-base 2xl:text-lg font-bold mb-2 text-textblack'
+          <div class='w-full flex flex-col justify-between'>
+            <label class='text-base font-bold text-textblack'
               >{data.form.label3}</label
             >
             <textarea
               required
               name='entry.1056515558'
               placeholder={data.form.placeholder3}
-              class='custom-input border border-primary rounded-lg p-2'
+              class='custom-input border border-[#E0E0E0] rounded-lg p-2'
               rows='3'
               cols='30'
               style='resize:none'></textarea>
           </div>
           <div class='w-full flex items-center justify-start mb-3'>
-            <input type='checkbox' required class='typecheckbox ml-3 w-4 h-4' />
-            <p class='text-gray-500 ml-3 my-3'>
+            <input type='checkbox' required class='typecheckbox ml-3 size-3 ' style="margin-bottom: 0;" />
+            <p class='text-gray-500 ml-1 my-3 text-sm'>
               {data.form.terms}<span
                 ><a
                   href='/Termsandconditions'
-                  class='ml-2 underline underline-offset-4 text-primary'
+                  class='ml-1 underline underline-offset-4 text-gray-700'
                   >{data.form.link}</a
-                ></span>
+                ></span
+              >
             </p>
           </div>
           <button
             type='submit'
-            class='bottombutton custom-button text-lg bg-primary w-full h-12 flex items-center justify-center duration-300 text-white font-bold rounded-lg shadow-md flex text-base items-center gap-x-2 hover:-translate-y-1'
+            class=' bg-primary hover:bg-primaryHover w-full h-12 flex items-center justify-center duration-300 text-white font-bold rounded-lg shadow-md text-base gap-x-2 '
             style='font-family: Roboto;'
           >
-            {data.form.button}<img
-              class='button-img'
-              src='/assets/images/arrowright.svg'
-              alt='Arrow Right'
-            />
+            {data.form.button}
           </button>
         </form>
       </div>
@@ -242,5 +231,15 @@ const data = Data.data
       width: 100%;
       height: 100%;
     }
+  }
+
+  input,
+  select,
+  textarea {
+    margin-bottom: 20px;
+  }
+
+  label {
+    margin-bottom: 2px;
   }
 </style>

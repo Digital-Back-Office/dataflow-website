@@ -7,67 +7,67 @@ const docsUrl = import.meta.env.VITE_DOCS_URL
 ---
 
 <header
-  class='h-16 w-full flex items-center justify-between bg-[#30BABA] px-[22px]'
+  class='h-14 w-full flex items-center justify-between bg-[#30BABA] px-[22px]'
 >
-  <div class='flex items-center gap-16'>
-    <a href='/'>
+  <div class='flex items-center gap-16 p-[5px] pt-[9px]'>
+    <a href='/' class="">
       <img src='/assets/images/dataflow-logo-header.svg' class='h-12' />
     </a>
-    <nav class='hidden md:flex h-16 items-center justify-center'>
+    <nav class='hidden md:flex h-12 items-baseline  mt-[5px] '>
       <div
         class='flex items-center justify-between tracking-wide h-full gap-[6px]'
       >
         <a
           href='/'
           id='nav1'
-          class='DataFlow h-full border-b-[3px] mb-[2px] border-transparent px-[20px] flex items-center hover:border-[#EFFFFF] hover:border-opacity-70'
+          class='DataFlow h-full border-b-[3px] mb-[2px] border-transparent px-[18px] flex items-center hover:border-[#EFFFFF] hover:border-opacity-70'
         >
-          <p class='text-white text-sm font-bold'>
+          <p class='text-white text-sm font-semibold'>
             {header.nav1}
           </p>
         </a>
         <a
           href='/Pricing'
           id='nav2'
-          class='Pricing h-full border-b-[3px] mb-[2px] border-transparent px-[20px] flex items-center hover:border-[#EFFFFF] hover:border-opacity-70'
+          class='Pricing h-full border-b-[3px] mb-[2px] border-transparent px-[18px] flex items-center hover:border-[#EFFFFF] hover:border-opacity-70'
         >
-          <p class='text-white text-sm font-bold'>
+          <p class='text-white text-sm font-semibold'>
             {header.nav2}
           </p>
         </a>
         <a
           href='/best-in-class-data-tools'
           id='nav3'
-          class='LearnMore h-full border-b-[3px] mb-[2px] border-transparent px-[20px] flex items-center hover:border-[#EFFFFF] hover:border-opacity-70'
+          class='LearnMore h-full border-b-[3px] mb-[2px] border-transparent px-[18px] flex items-center hover:border-[#EFFFFF] hover:border-opacity-70'
         >
-          <p class='text-white text-sm font-bold'>
+          <p class='text-white text-sm font-semibold'>
             {header.nav3}
           </p>
         </a>
         <a
           href='/Company'
           id='nav4'
-          class='Company h-full border-b-[3px] mb-[2px] border-transparent px-[20px] flex items-center hover:border-[#EFFFFF] hover:border-opacity-70'
+          class='Company h-full border-b-[3px] mb-[2px] border-transparent px-[18px] flex items-center hover:border-[#EFFFFF] hover:border-opacity-70'
         >
-          <p class='text-white text-sm font-bold'>
+          <p class='text-white text-sm font-semibold'>
             {header.nav4}
           </p>
         </a>
         <a
-          href='/blog'
+          href='/blogs/1'
           id='nav5'
-          class='blog h-full border-b-[3px] mb-[2px] border-transparent px-[20px] flex items-center hover:border-[#EFFFFF] hover:border-opacity-70'
+          class='blog h-full border-b-[3px] mb-[2px] border-transparent px-[18px] flex items-center hover:border-[#EFFFFF] hover:border-opacity-70'
         >
-          <p class='text-white text-sm font-bold'>
+          <p class='text-white text-sm font-semibold'>
             {header.nav5}
           </p>
         </a>
         <a
           href={docsUrl}
           target='_blank'
-          class='h-full border-b-[3px] mb-[2px] border-transparent px-[20px] flex items-center hover:border-[#EFFFFF] hover:border-opacity-70'
+          class='h-full border-b-[3px] mb-[2px] border-transparent px-[18px] flex items-center hover:border-[#EFFFFF] hover:border-opacity-70'
         >
-          <p class='text-white text-sm font-bold flex items-center gap-1'>
+          <p class='text-white text-sm font-semibold flex items-center gap-1'>
             {header.nav6}
             <img
               src='/assets/images/icon-redirect-page.svg'
@@ -162,7 +162,7 @@ const docsUrl = import.meta.env.VITE_DOCS_URL
       style='font-family: Arial, Helvetica, sans-serif'>{header.nav4}</a
     >
     <a
-      href='/blog'
+      href='/blogs/1'
       class='text-white text-base font-bold py-2'
       id='nav5-mobile'
       style='font-family: Arial, Helvetica, sans-serif'>{header.nav5}</a

@@ -6,120 +6,105 @@ const data = Data.data
 ---
 
 <Layout title='Get Started'>
-  <div class='w-full formcontainer py-24 flex justify-center items-center'>
-    <div class='w-2/6 container-child-1'>
+  <div
+    class='w-full min-h-screen bg-[#F8FAFC] flex justify-center items-start py-20'
+  >
+    <div class='mt-[50px]'>
       <h1 class='text-9calc font-black mb-10 text-textblack'>
         {data.title1}<br />{data.title2}
       </h1>
-      <ul style='list-style-type: disc; padding-left: 1.5rem;'>
-        <li class='text-base 2xl:text-lg mb-4 text-textblack'>
-          {data.description[0]}
+      <ul
+        style='list-style-type: none; padding-left: 1.5rem;'
+        class='w-[85%] font-semibold tracking-wide'
+      >
+        <li class='text-base mb-4 text-textblack  flex items-start gap-2'>
+          <span class="mt-[1px]"><img src="/assets/images/check-box-icon.png" alt="point"></span>{data.description[0]}
         </li>
-        <li class='text-base 2xl:text-lg mb-4 text-textblack'>
-          {data.description[1]}
+        <li class='text-base mb-4 text-textblack flex items-start gap-2'>
+          <span class="mt-[1px]"><img src="/assets/images/check-box-icon.png" alt="point"></span>{data.description[1]}
         </li>
-        <li class='text-base 2xl:text-lg mb-4 text-textblack'>
-          {data.description[2]}
+        <li class='text-base mb-4 text-textblack flex items-start gap-2'>
+          <span class="mt-[1px]"><img src="/assets/images/check-box-icon.png" alt="point"></span>{data.description[2]}
         </li>
-        <li class='text-base 2xl:text-lg mb-4 text-textblack'>
-          {data.description[3]}
+        <li class='text-base mb-4 text-textblack flex items-start gap-2'>
+          <span class="mt-[1px]"><img src="/assets/images/check-box-icon.png" alt="point"></span>{data.description[3]}
         </li>
       </ul>
     </div>
     <div
-      class='flip-card w-3/6 container-child-2 max-w-[600px] min-h-[600px] ml-10'
+      class='flip-card w-[580px] h-max ml-10 bg-white rounded-[30px] border-[#E0E0E0] border-[1px] p-8'
     >
       <div class='flip-card-inner w-full h-full'>
-        <div class='flip-card-front'>
-          <form
-            id='myForm'
-            class='w-full border-2 border-solid border-primary rounded-3xl px-[5%] py-[7%]'
-          >
-            <div
-              class='w-full h-20 colcontainer flex items-center justify-between mb-[4%]'
-            >
-              <div
-                class='h-full w-[47%] colcontainerchild bg-white flex flex-col justify-evenly'
+        <div id='flip-card-front' class=''>
+          <form id='myForm' class='w-full'>
+            <div class='h-full w-full flex flex-col justify-evenly'>
+              <label class='text-base font-bold text-textblack'
+                >{data.form.label1}</label
               >
-                <label class='text-base 2xl:text-lg font-bold text-textblack'
-                  >{data.form.label1}</label
-                >
-                <input
-                  required
-                  placeholder={data.form.placeholder1}
-                  class='custom-input border-[1px] border-primary rounded-lg h-10 p-2'
-                  name='entry.1291198894'
-                />
-              </div>
-              <div
-                class='h-full w-[47%] colcontainerchild bg-white flex flex-col justify-evenly'
-              >
-                <label class='text-base 2xl:text-lg font-bold text-textblack'
-                  >{data.form.label2}</label
-                >
-                <input
-                  required
-                  type='email'
-                  placeholder={data.form.placeholder2}
-                  class='custom-input border-[1px] border-primary rounded-lg h-10 p-2'
-                  name='entry.59580764'
-                />
-              </div>
+              <input
+                required
+                placeholder={data.form.placeholder1}
+                class='custom-input border-[1px] border-[#E0E0E0] rounded-lg h-10 p-2 placeholder:text-sm'
+                name='entry.1291198894'
+              />
             </div>
-            <div
-              class='w-full h-20 colcontainer flex items-center justify-between mb-[4%]'
-            >
-              <div
-                class='h-full w-[47%] colcontainerchild bg-white flex flex-col justify-evenly'
+            <div class='h-full w-full flex flex-col justify-evenly'>
+              <label class='text-base font-bold text-textblack'
+                >{data.form.label2}</label
               >
-                <label class='text-base 2xl:text-lg font-bold text-textblack'
-                  >{data.form.label3}</label
-                >
-                <input
-                  required
-                  placeholder={data.form.placeholder3}
-                  class='custom-input border-[1px] border-primary rounded-lg h-10 p-2'
-                  name='entry.1637227755'
-                />
-              </div>
-              <div
-                class='h-full w-[47%] colcontainerchild bg-white flex flex-col justify-evenly'
-              >
-                <label class='text-base 2xl:text-lg font-bold text-textblack'
-                  >{data.form.label4}</label
-                >
-                <select
-                  required
-                  id='option1'
-                  class='custom-input border-[1px] border-primary rounded-lg h-10 p-2 text-textblack'
-                  name='entry.1061557718'
-                  style='color: #9ca3b1;'
-                >
-                  <option value='' disabled selected>Company Size</option>
-                  <option value='1-10'>1-10 employees</option>
-                  <option value='11-50'>11-50 employees</option>
-                  <option value='51-200'>51-200 employees</option>
-                  <option value='201-500'>201-500 employees</option>
-                  <option value='501-1000'>501-1000 employees</option>
-                  <option value='1001-5000'>1001-5000 employees</option>
-                  <option value='5001-10000'>5001-10,000 employees</option>
-                  <option value='10001+'>10,001+ employees</option>
-                </select>
-              </div>
+              <input
+                required
+                type='email'
+                placeholder={data.form.placeholder2}
+                class='custom-input border-[1px] border-[#E0E0E0] rounded-lg h-10 p-2 placeholder:text-sm'
+                name='entry.59580764'
+              />
             </div>
-            <div class='w-full flex flex-col justify-between mb-[4%] mb-8'>
+            <div class='h-full w-full flex flex-col justify-evenly'>
+              <label class='text-base font-bold text-textblack'
+                >{data.form.label3}</label
+              >
+              <input
+                required
+                placeholder={data.form.placeholder3}
+                class='custom-input border-[1px] border-[#E0E0E0] rounded-lg h-10 p-2 placeholder:text-sm'
+                name='entry.1637227755'
+              />
+            </div>
+            <div class='h-full w-full flex flex-col justify-evenly'>
+              <label class='text-base font-bold text-textblack'
+                >{data.form.label4}</label
+              >
+              <select
+                required
+                id='option1'
+                class='custom-input border-[1px] border-[#E0E0E0] rounded-lg h-10 p-2 text-[#9ca3b1]'
+                name='entry.1061557718'
+              >
+                <option value='' class='' disabled selected>Company Size</option
+                >
+                <option value='1-10'>1-10 employees</option>
+                <option value='11-50'>11-50 employees</option>
+                <option value='51-200'>51-200 employees</option>
+                <option value='201-500'>201-500 employees</option>
+                <option value='501-1000'>501-1000 employees</option>
+                <option value='1001-5000'>1001-5000 employees</option>
+                <option value='5001-10000'>5001-10,000 employees</option>
+                <option value='10001+'>10,001+ employees</option>
+              </select>
+            </div>
+            <div class='w-full flex flex-col justify-between'>
               <label
-                class='text-base 2xl:text-lg font-bold text-textblack'
+                class='text-base font-bold text-textblack'
                 style='font-family: Arimo; '>{data.form.label5}</label
               >
               <select
                 required
                 id='option2'
-                class='custom-input border-[1px] border-primary rounded-lg h-10 p-2 text-textblack'
+                class='custom-input border-[1px] border-[#E0E0E0] rounded-lg h-10 p-2 text-[#9ca3b1]'
                 name='entry.154861476'
-                style='color: #9ca3b1;'
               >
-                <option value='' disabled selected
+                <option value='' class='' disabled selected
                   >{data.form.placeholder5}</option
                 >
                 <option value='search Engine'>Search Engine</option>
@@ -129,45 +114,35 @@ const data = Data.data
                 <option value='other'>Other</option>
               </select>
             </div>
-            <div class='w-full h-32 flex flex-col justify-between mb-[4%] mb-2'>
-              <label class='text-base 2xl:text-lg font-bold text-textblack'
+            <div class='w-full h-32 flex flex-col justify-between mb-[15px]'>
+              <label class='text-base font-bold text-textblack'
                 >{data.form.label6}</label
               >
               <textarea
                 required
                 name='entry.1056515558'
                 placeholder={data.form.placeholder6}
-                class='custom-input border-[1px] border-primary rounded-lg h-24 p-2'
-                rows='10'
+                class='custom-input border-[1px] border-[#E0E0E0] rounded-lg h-24 p-2 placeholder:text-sm'
+                rows='20'
                 cols='30'
-                style='resize:none'></textarea>
+                style='resize:none; margin-bottom: 10px;'></textarea>
             </div>
             <input type='hidden' name='entry.664159867' value='Get Started' />
             <button
               type='submit'
-              class='bottombutton custom-button text-lg bg-primary w-full h-12 flex items-center justify-center duration-300 text-white font-bold rounded-lg shadow-md flex text-base items-center gap-x-2 hover:-translate-y-1'
+              class='bottom-0 bg-primary hover:bg-primaryHover w-full h-[50px] justify-center duration-300 text-white font-bold rounded-lg shadow-md flex text-base items-center gap-x-2'
               style='font-family: Roboto;'
             >
-              Get Started <img
-                class='button-img'
-                src='/assets/images/arrowright.svg'
-                alt='Arrow Right'
-              />
+              Get Started
             </button>
           </form>
         </div>
-        <div class='flip-card-back mt-20'>
+        <div class='flip-card-back hidden mb-10'>
           <img src='/assets/images/circle-tick.svg' />
-          <p
-            class='text-white text-calc font-bold text-center mt-7'
-            style='font-family: Arimo ;'
-          >
+          <p class='text-white text-calc font-bold text-center mt-7'>
             Thank You
           </p>
-          <p
-            class='text-white text-xl text-center'
-            style='font-family: Arimo ;'
-          >
+          <p class='text-white text-xl text-center'>
             Form Submitted Successfully. We will reach you shortly.
           </p>
           <button
@@ -199,6 +174,9 @@ const data = Data.data
         })
 
         // Add class to show the back of the card
+        document
+          .getElementById('flip-card-front')
+          .classList.add('flip-card-front')
         document.querySelector('.flip-card-inner').classList.add('flipped')
 
         // Display success message
@@ -215,7 +193,7 @@ const data = Data.data
   document
     .getElementById('submit-another-form')
     .addEventListener('click', function () {
-      location.reload() // Reload the page
+      return location.reload() // Reload the page
     })
 
   document.getElementById('option1').addEventListener('change', function () {
@@ -240,28 +218,21 @@ const data = Data.data
     outline: none; /* Remove the default outline */
   }
 
+  input,
+  select,
+  textarea {
+    margin-bottom: 20px;
+  }
+
+  label {
+    margin-bottom: 2px;
+  }
+
   @media (max-width: 750px) {
-    .formcontainer {
-      flex-direction: column;
-      padding-left: 10px;
-      padding-right: 10px;
-      margin-bottom: 100px;
-    }
-    .container-child-1 {
-      width: 100%;
-    }
-    .container-child-2 {
-      width: 100%;
-      margin: 0%;
-    }
     .colcontainer {
       flex-direction: column;
       height: auto;
       column-gap: 20px;
-    }
-    .colcontainerchild {
-      width: 100%;
-      margin-top: 20px;
     }
   }
 
@@ -276,7 +247,7 @@ const data = Data.data
     height: 100%;
     transition: transform 0.6s;
     transform-style: preserve-3d;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); */
   }
 
   .flip-card-inner.flipped {

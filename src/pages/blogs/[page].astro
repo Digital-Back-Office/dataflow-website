@@ -1,8 +1,31 @@
 ---
-import Bloglayout from '../layouts/Bloglayout.astro'
-import { posts } from '../content/Blog/data'
+import Bloglayout from '../../layouts/Bloglayout.astro'
+import { posts } from '../../content/Blog/data'
 let updatedposts = posts || []
-import BlogGrid from '../components/blog/BlogGrid.astro'
+import BlogGrid from '../../components/blog/BlogGrid.astro'
+
+const POSTS_PER_PAGE = 6 
+
+const { page } = Astro.params
+const currentPage = parseInt(page) || 1
+
+const totalPosts = posts.length
+const totalPages = Math.ceil(totalPosts / POSTS_PER_PAGE)
+const startIndex = (currentPage - 1) * POSTS_PER_PAGE
+const endIndex = startIndex + POSTS_PER_PAGE
+const paginatedPosts = posts.slice(startIndex, endIndex)
+
+
+const pageNumbers = Array.from({ length: totalPages }, (_, i) => i + 1)
+
+export const getStaticPaths = () => {
+  const POSTS_PER_PAGE = 6
+  const totalPages = Math.ceil(posts.length / POSTS_PER_PAGE)
+
+  return Array.from({ length: totalPages }, (_, i) => ({
+    params: { page: (i + 1).toString() }
+  }))
+}
 ---
 
 <style>
@@ -18,6 +41,33 @@ import BlogGrid from '../components/blog/BlogGrid.astro'
     font-size: 12px;
     padding-left: 38px;
   }
+
+  .pagination {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    gap: 8px;
+    margin-bottom: 40px;
+    padding: 0;
+  }
+  .pagination li {
+    display: inline;
+  }
+  .pagination a {
+    padding: 8px 12px;
+    border: 1px solid #fff;
+    text-decoration: none;
+    border-radius: 4px;
+    color: #686868;
+    transition: background-color 0.2s;
+  }
+  .pagination a:hover {
+    color: #000;
+  }
+  .pagination a.active {
+    font-weight: bold;
+    color: #30baba;
+  }
 </style>
 
 <Bloglayout title='Blog'>
@@ -32,21 +82,11 @@ import BlogGrid from '../components/blog/BlogGrid.astro'
       </ol>
     </nav>
 
-    <!-- Page title + filters -->
+    <!-- Page title  -->
     <div class='flex justify-between items-center'>
       <div class=''>
         <h1 class='' style='font-size: 40px; font-weight: 600;'>Blog grid</h1>
       </div>
-      <!-- <div class='col-xl-2 offset-xl-1 col-lg-3 col-sm-5'>
-        <select id='category-filter' class='form-select'>
-          <option value='all'>All categories</option>
-          <option value='inspiration'>Inspiration</option>
-          <option value='Brand strategy'>Brand strategy</option>
-          <option value='Books'>Books</option>
-          <option value='ecommerce'>Ecommerce</option>
-          <option value='travel-vacation'>Travel & Vacation</option>
-        </select>
-      </div> -->
       <div
         class='w-[40%] max-sm:w-full flex justify-end max-sm:justify-center'
         style='height: 38px;'
@@ -72,146 +112,27 @@ import BlogGrid from '../components/blog/BlogGrid.astro'
           <div class='text-center min-h-[100px]'>
             <h2 class='text-xl '>No posts found</h2>
           </div>
+        ) : (
+          <BlogGrid updatedposts={paginatedPosts} />
         )
-        : <BlogGrid updatedposts={updatedposts} />
       }
     </div>
 
-    <!-- Blog grid (masonry) -->
-    <!-- <div
-      id='blog-grid'
-      data-masonry='{"percentPosition": true,"itemSelector": ".masonry-grid-item", }'
-      class='masonry-grid mb-2 mb-md-4 pb-lg-3'
-      data-columns='3'
-    >
+    <!-- Pagination -->
+    <ul class='pagination'>
       {
-        updatedposts.map((post, i) => (
-          <article class='masonry-grid-item'>
-            <div class='card border-0 bg-secondary'>
-              {post.image && (
-                <a href={post.url}>
-                  <img class='card-img-top' src={post.image} alt='Post image' />
-                </a>
-              )}
-              <div class='card-body pb-4'>
-                <div class='d-flex align-items-center mb-4 mt-n1'>
-                  <span class='fs-sm text-body-secondary'>
-                    {post.time} : {i}
-                  </span>
-                  <span class='fs-xs opacity-20 mx-3'>|</span>
-                  <a class='badge text-nav fs-xs border' href='#'>
-                    {post.category}
-                  </a>
-                </div>
-                <h3 class='h4 card-title'>
-                  <a href={post.url}>{post.title}</a>
-                </h3>
-                <p class='card-text'>{post.description}</p>
-              </div>
-              <div class='card-footer pt-3 '>
-                <a href={post.url}>
-                  <p
-                    class='font-bold text-lg hover:text-primary'
-                    style='font-family:Arimo;'
-                  >
-                    Know more
-                  </p>
-                </a>
-              </div>
-            </div>
-          </article>
+        pageNumbers.map((num) => (
+          <li>
+            <a
+              href={`/blogs/${num}`}
+              class={`${currentPage === num ? 'active' : ''}`}
+            >
+              {num}
+            </a>
+          </li>
         ))
       }
-    </div> -->
-
-    <!-- <div class='container'>
-      <div class='row'>
-        <div class='column'>
-          {
-            updatedposts.map((post, i) => (
-              <article class='masonry-grid-item bg-black max-w-[380px]'>
-                <div class='card border-0 bg-secondary'>
-                  {post.image && (
-                    <a href={post.url}>
-                      <img
-                        class='card-img-top'
-                        src={post.image}
-                        alt='Post image'
-                      />
-                    </a>
-                  )}
-                  <div class='card-body pb-4'>
-                    <div class='d-flex align-items-center mb-4 mt-n1'>
-                      <span class='fs-sm text-body-secondary'>
-                        {post.time} : {i}
-                      </span>
-                      <span class='fs-xs opacity-20 mx-3'>|</span>
-                      <a class='badge text-nav fs-xs border' href='#'>
-                        {post.category}
-                      </a>
-                    </div>
-                    <h3 class='h4 card-title'>
-                      <a href={post.url}>{post.title}</a>
-                    </h3>
-                    <p class='card-text'>{post.description}</p>
-                  </div>
-                  <div class='card-footer pt-3 '>
-                    <a href={post.url}>
-                      <p
-                        class='font-bold text-lg hover:text-primary'
-                        style='font-family:Arimo;'
-                      >
-                        Know more
-                      </p>
-                    </a>
-                  </div>
-                </div>
-              </article>
-            ))
-          }
-        </div>
-      </div>
-    </div> -->
-
-    <!-- Pagination -->
-    <!-- <div class='row gy-3 align-items-center mb-md-2 mb-xl-4'>
-      <div class='col col-md-4 col-6 order-md-1 order-1'>
-        <div class='d-flex align-items-center'>
-          <span class='text-body-secondary fs-sm'>Show</span>
-          <select
-            id='pagination-select'
-            class='form-select form-select-flush w-auto'
-          >
-            <option value='6'>6</option>
-            <option value='9' selected>9</option>
-            <option value='12'>12</option>
-            <option value='24'>24</option>
-          </select>
-        </div>
-      </div>
-      <div class='col col-md-4 col-12 order-md-2 order-3 text-center'>
-        <button
-          id='load-more'
-          class='btn btn-primary w-md-auto w-100'
-          type='button'>Load more posts</button
-        >
-      </div>
-      <div class='col col-md-4 col-6 order-md-3 order-2'>
-        <nav aria-label='Page navigation'>
-          <ul id='setpage' class='pagination pagination-sm justify-content-end'>
-            <li class='page-item active' aria-current='page'>
-              <span class='page-link'
-                >1<span class='visually-hidden'>(current)</span></span
-              >
-            </li>
-            <li class='page-item'><a class='page-link' href='#'>2</a></li>
-            <li class='page-item'><a class='page-link' href='#'>3</a></li>
-            <li class='page-item'><a class='page-link' href='#'>4</a></li>
-            <li class='page-item'><a class='page-link' href='#'>5</a></li>
-          </ul>
-        </nav>
-      </div>
-    </div> -->
+    </ul>
   </div>
 
   <!-- Subscription -->
@@ -288,7 +209,7 @@ import BlogGrid from '../components/blog/BlogGrid.astro'
 </Bloglayout>
 
 <script>
-  import { posts } from '../content/Blog/data'
+  import { posts } from '../../content/Blog/data'
 
   // Ensure this script runs after the DOM is fully loaded
   document.addEventListener('DOMContentLoaded', () => {

@@ -6,7 +6,9 @@ const data = Data.data
 ---
 
 <Layout title='Book a demo'>
-  <div class='formcontainer w-full flex items-start justify-center py-24'>
+  <div
+    class='formcontainer w-full flex items-start justify-center py-24 bg-[#F8FAFC]'
+  >
     <div class='container-child-1 flex flex-col w-2/6 pr-10'>
       <div class='mb-14'>
         <h2 class='text-10calc font-black text-textblack leading-none'>
@@ -59,85 +61,80 @@ const data = Data.data
     </div>
     <div
       id='formcontainer'
-      class='container-child-2 w-3/6 max-w-[600px] min-h-[550px] ml-10 border-[1.5px] border-primary flex flex-col items-center justify-center rounded-2xl px-[3%] bg-white drop-shadow-xl py-12'
+      class='container-child-2 w-3/6 max-w-[600px] min-h-[550px] ml-10 border-[1.5px] border-[#E0E0E0] flex flex-col items-center justify-center rounded-2xl px-[3%] bg-white py-12'
     >
       <form id='myForm' class='w-full items-center justify-between'>
-        <div class='w-full colcontainer flex items-center justify-between mb-5'>
-          <div class='w-[47%] colcontainerchild flex flex-col justify-evenly'>
-            <label class='text-base 2xl:text-lg font-bold text-textblack'
-              >{data.form.label1}</label
-            >
-            <input
-              required
-              placeholder={data.form.placeholder1}
-              class='custom-input border border-primary rounded-lg h-10 p-2'
-              name='entry.1291198894'
-            />
-          </div>
-          <div class='w-[47%] colcontainerchild flex flex-col justify-evenly'>
-            <label class='text-base 2xl:text-lg font-bold text-textblack'
-              >{data.form.label2}</label
-            >
-            <input
-              required
-              type='email'
-              placeholder={data.form.placeholder2}
-              class='custom-input border border-primary rounded-lg h-10 p-2'
-              name='entry.59580764'
-            />
-          </div>
-        </div>
-        <div class='w-full colcontainer flex items-center justify-between mb-5'>
-          <div
-            class='h-full w-[47%] colcontainerchild flex flex-col justify-evenly'
+        <div class='w-full colcontainerchild flex flex-col justify-evenly'>
+          <label class='text-base 2xl:text-lg font-bold text-textblack'
+            >{data.form.label1}</label
           >
-            <label class='text-base 2xl:text-lg font-bold text-textblack'
-              >{data.form.label3}</label
-            >
-            <input
-              required
-              placeholder={data.form.placeholder3}
-              class='custom-input border border-primary rounded-lg h-10 p-2'
-              name='entry.1637227755'
-            />
-          </div>
-          <div
-            class='h-full w-[47%] colcontainerchild flex flex-col justify-evenly'
-          >
-            <label class='text-base 2xl:text-lg font-bold text-textblack'
-              >{data.form.label4}</label
-            >
-            <select
-              required
-              id='options'
-              class='custom-input border border-primary rounded-lg h-10 p-2 text-textblack'
-              name='entry.1061557718'
-              style='color: #9ca3b1;'
-            >
-              <option value='' disabled selected>Company Size</option>
-              <option value='1-10'>1-10 employees</option>
-              <option value='11-50'>11-50 employees</option>
-              <option value='51-200'>51-200 employees</option>
-              <option value='201-500'>201-500 employees</option>
-              <option value='501-1000'>501-1000 employees</option>
-              <option value='1001-5000'>1001-5000 employees</option>
-              <option value='5001-10000'>5001-10,000 employees</option>
-              <option value='10001+'>10,001+ employees</option>
-            </select>
-          </div>
+          <input
+            required
+            placeholder={data.form.placeholder1}
+            class='custom-input border border-[#E0E0E0] rounded-lg h-10 p-2'
+            name='entry.1291198894'
+          />
         </div>
-        <div class='h-full w-full flex flex-col justify-evenly mb-5'>
+        <div class='w-full colcontainerchild flex flex-col justify-evenly'>
+          <label class='text-base 2xl:text-lg font-bold text-textblack'
+            >{data.form.label2}</label
+          >
+          <input
+            required
+            type='email'
+            placeholder={data.form.placeholder2}
+            class='custom-input border border-[#E0E0E0] rounded-lg h-10 p-2'
+            name='entry.59580764'
+          />
+        </div>
+        <div
+          class='h-full w-full colcontainerchild flex flex-col justify-evenly'
+        >
+          <label class='text-base 2xl:text-lg font-bold text-textblack'
+            >{data.form.label3}</label
+          >
+          <input
+            required
+            placeholder={data.form.placeholder3}
+            class='custom-input border border-[#E0E0E0] rounded-lg h-10 p-2'
+            name='entry.1637227755'
+          />
+        </div>
+        <div
+          class='h-full w-full colcontainerchild flex flex-col justify-evenly'
+        >
+          <label class='text-base 2xl:text-lg font-bold text-textblack'
+            >{data.form.label4}</label
+          >
+          <select
+            required
+            id='options'
+            class='custom-input border border-[#E0E0E0] rounded-lg h-10 p-2  text-[#9ca3b1]'
+            name='entry.1061557718'
+          >
+            <option value='' disabled selected>Company Size</option>
+            <option value='1-10'>1-10 employees</option>
+            <option value='11-50'>11-50 employees</option>
+            <option value='51-200'>51-200 employees</option>
+            <option value='201-500'>201-500 employees</option>
+            <option value='501-1000'>501-1000 employees</option>
+            <option value='1001-5000'>1001-5000 employees</option>
+            <option value='5001-10000'>5001-10,000 employees</option>
+            <option value='10001+'>10,001+ employees</option>
+          </select>
+        </div>
+        <div class='h-full w-full flex flex-col justify-evenly'>
           <label class='text-base 2xl:text-lg font-bold text-textblack'
             >{data.form.label5}</label
           >
           <input
             required
             placeholder={data.form.placeholder5}
-            class='custom-input border border-primary rounded-lg h-10 p-2'
+            class='custom-input border border-[#E0E0E0] rounded-lg h-10 p-2'
             name='entry.1798038289'
           />
         </div>
-        <div class='h-full w-full flex flex-col justify-evenly mb-5'>
+        <div class='h-full w-full flex flex-col justify-evenly'>
           <label class='text-base 2xl:text-lg font-bold text-textblack'
             >{data.form.label6}</label
           >
@@ -145,13 +142,12 @@ const data = Data.data
             type='datetime-local'
             id='datetime'
             required
-            class='custom-input border border-primary rounded-lg h-10 p-2'
+            class='custom-input border border-[#E0E0E0] rounded-lg h-10 p-2 text-[#9ca3b1]'
             name='entry.800910305'
-            style='color: #9ca3b1;'
           />
         </div>
         <input type='hidden' name='entry.664159867' value='Book a demo' />
-        <div class='w-full h-32 flex flex-col justify-between mb-[2%]'>
+        <div class='w-full h-32 flex flex-col justify-between'>
           <label class='text-base 2xl:text-lg font-bold text-textblack'
             >{data.form.label7}</label
           >
@@ -159,34 +155,30 @@ const data = Data.data
             required
             name='entry.1056515558'
             placeholder={data.form.placeholder7}
-            class='custom-input border border-primary rounded-lg p-2'
+            class='custom-input border border-[#E0E0E0] rounded-lg p-2'
             rows='10'
             cols='30'
             style='resize:none'></textarea>
         </div>
-        <div class='w-full flex items-center justify-start mb-5'>
-          <input type='checkbox' required class='typecheckbox ml-3 w-4 h-4' />
-          <p class='text-gray-500 ml-3 my-3'>
+        <div class='w-full flex gap-2'>
+          <input type='checkbox' required class='size-4' />
+          <p class='text-gray-500 leading-none'>
             {data.form.terms}<span
               ><a
                 href='/Termsandconditions'
-                class='ml-2 underline underline-offset-4 text-primary'
+                class='underline underline-offset-4 text-primary'
                 >{data.form.link}</a
-              ></span>
+              ></span
+            >
           </p>
         </div>
 
         <button
           type='submit'
-          class='bottombutton custom-button text-lg bg-primary w-full h-14 flex items-center justify-center duration-300 text-white font-bold rounded-lg shadow-md flex text-base items-center gap-x-2 hover:-translate-y-1'
+          class='bg-primary hover:bg-primaryHover w-full h-14 justify-center duration-300 text-white font-bold rounded-lg shadow-md flex text-base items-center gap-x-2'
           style='font-family: Roboto;'
         >
           {data.form.button}
-          <img
-            class='button-img'
-            src='/assets/images/arrowright.svg'
-            alt='Arrow Right'
-          />
         </button>
       </form>
       <div id='thank-you-message' class='w-full h-full hidden text-center'>
@@ -274,6 +266,16 @@ const data = Data.data
   }
   input[type='checkbox'] {
     accent-color: rgb(0, 164, 156);
+  }
+
+  input,
+  select,
+  textarea {
+    margin-bottom: 20px;
+  }
+
+  label {
+    margin-bottom: 2px;
   }
 
   @media (max-width: 800px) {

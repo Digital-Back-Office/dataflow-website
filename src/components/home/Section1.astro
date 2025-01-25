@@ -5,7 +5,7 @@ const Data = await getEntry("Home", "home");
 const data = Data.data.Section1;
 ---
 
-<div class="responsive-container transition-all duration-1000 py-32 w-full bg-[#FBE2F0] flex md:flex-row flex-col items-center justify-center group hover:bg-[#D40F7D]" data-aos="fade-up">
+<div class="responsive-container min-h-screen transition-all duration-1000 py-32 w-full bg-[#FBE2F0] flex md:flex-row flex-col items-center justify-center group hover:bg-[#D40F7D]">
   <div class="content-container  md:w-2/6 w-full flex flex-col justify-center items-start px-3 py-4">
     <h3 class="textphone transition-all duration-1000 ease-in-out text-2calc text-textblack font-bold mb-[5%] group-hover:text-white  w-4/5 " >
       {data.title}
@@ -14,7 +14,7 @@ const data = Data.data.Section1;
       {data.description}
     </p>
     <a href="/RunDataflowonanycloud">
-      <button class="custom-button2 transition-all duration-400 ease-in-out text-[#30BABA] flex items-center justify-center bg- text-base items-center gap-x-1 mt-14 max-sm:mt-6 h-10 w-32 group-hover:bg-[#feecec] group-hover:shadow-md group-hover:rounded-lg " style="font-family: Roboto;">
+      <button class="custom-button2 transition-all duration-400 ease-in-out text-[#30BABA] flex items-center justify-center bg- text-base gap-x-1 mt-14 max-sm:mt-6 h-10 w-32 group-hover:bg-[#feecec] group-hover:shadow-md group-hover:rounded-lg " style="font-family: Roboto;">
         {Data.data.LearnMoreBtn}
         <img src="/assets/images/arrowright.svg" height="20px" width="20px">
       </button>

@@ -1,0 +1,117 @@
+---
+const { updatedposts } = Astro.props
+// import { posts } from '../../content/Blog/data'
+---
+
+<style>
+  .masonry-grid {
+    display: flex;
+    margin-left: -15px;
+    flex-wrap: wrap;
+  }
+  .masonry-grid-sizer,
+  .masonry-grid-item {
+    width: 33.333%;
+    padding-left: 15px;
+    box-sizing: border-box;
+  }
+  .masonry-grid-item {
+    margin-bottom: 30px;
+  }
+  .masonry-grid-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .active {
+    color: #30baba;
+  }
+</style>
+
+<script>
+  import Masonry from 'masonry-layout'
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const masonryGrid = document.querySelector('#blog-grid')
+    new Masonry(masonryGrid, {
+      percentPosition: true,
+      itemSelector: '.masonry-grid-item',
+      columnWidth: '.masonry-grid-sizer'
+    })
+  })
+
+  document.querySelector('.page-link').addEventListener('click', () => {
+    document.querySelector('.page-link').classList.add('active')
+    document.querySelector('.page-link').classList.add('text-primary')
+  })
+</script>
+
+<div class=''>
+  <div
+    id='blog-grid'
+    class='masonry-grid mb-2 mb-md-4 pb-lg-3  mt-[20px]'
+    data-columns='3'
+  >
+    <div class='masonry-grid-sizer'></div>
+
+    {
+      updatedposts.map((post, i) => (
+        <article class='masonry-grid-item'>
+          <div class='card border-0 bg-secondary'>
+            {post.image && (
+              <a
+                href={`blog/${post.title.split(' ').join('-').toLowerCase()}`}
+                class='cursor-pointer'
+              >
+                <img class='card-img-top' src={post.image} alt='Post' />
+              </a>
+            )}
+            <div class='card-body pb-4'>
+              <div class='d-flex align-items-center mb-4 mt-n1'>
+                <span class='fs-sm text-body-secondary'>
+                  {post.time} : {post.id}
+                </span>
+                <span class='fs-xs opacity-20 mx-3'>|</span>
+                <a class='badge text-nav fs-xs border' href='#'>
+                  {post.category}
+                </a>
+              </div>
+              <h3 class='h4 card-title'>
+                <a
+                  href={`blog/${post.title.split(' ').join('-').toLowerCase()}`}
+                  class='hover:text-primary cursor-pointer'
+                >
+                  {post.title}
+                </a>
+              </h3>
+              <p class='card-text'>{post.description}</p>
+            </div>
+            <div class='card-footer pt-3'>
+              <a href={post.link}>
+                <p
+                  class='font-bold text-lg hover:text-primary'
+                  style='font-family:Arimo;'
+                >
+                  Know more
+                </p>
+              </a>
+            </div>
+          </div>
+        </article>
+      ))
+    }
+  </div>
+  <div
+    class='flex justify-content-center align-items-center text-center mb-20 mt-10'
+  >
+    <!-- <button
+      id='load-more'
+      class='btn btn-primary w-md-auto w-80 p-2 px-3 my-2 rounded-xl text-sm'
+      type='button'
+      onClick={() => handleLoadMore}
+    >
+      Load more posts
+    </button> -->
+  </div>
+</div>

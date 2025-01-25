@@ -76,38 +76,40 @@ function Testimonial() {
                 </span>
               </p>
             </div>
-            <div className='flex '>
-              {currentIndex == 0 ? (
-                <button
-                  disabled
-                  className='cursor-not-allowed h-10 w-10 border-solid border-2 border-primary rounded-full flex items-center justify-center  group pl-1'
-                >
-                  <div className='inline-block transform rotate-[135deg] border-primary border-r-2 border-b-2 p-1'></div>
-                </button>
-              ) : (
-                <button
-                  onClick={prevTestimonial}
-                  className='h-10 w-10 border-solid border-2 border-primary bg-primary rounded-full flex items-center justify-center hover:bg-white group pl-1'
-                >
-                  <div className='inline-block transform rotate-[135deg]  border-r-2 border-b-2 p-1 group-hover:border-primary'></div>
-                </button>
-              )}
-              {currentIndex == testimonials.length - 1 ? (
-                <button
-                  disabled
-                  className='cursor-not-allowed ml-5 h-10 w-10 border-solid border-2  border-primary rounded-full flex items-center justify-center  group pr-1'
-                >
-                  <div className='inline-block transform -rotate-[45deg] border-primary border-r-2 border-b-2 p-1 '></div>
-                </button>
-              ) : (
-                <button
-                  onClick={nextTestimonial}
-                  className='ml-5 h-10 w-10 border-solid border-2 bg-primary border-primary rounded-full flex items-center justify-center hover:bg-white group pr-1'
-                >
-                  <div className='inline-block transform -rotate-[45deg]  border-r-2 border-b-2 p-1 group-hover:border-primary'></div>
-                </button>
-              )}
-            </div>
+            {testimonials.length > 1 && (
+              <div className='flex '>
+                {currentIndex == 0 ? (
+                  <button
+                    disabled
+                    className='cursor-not-allowed h-10 w-10 border-solid border-2 border-primary rounded-full flex items-center justify-center  group pl-1'
+                  >
+                    <div className='inline-block transform rotate-[135deg] border-primary border-r-2 border-b-2 p-1'></div>
+                  </button>
+                ) : (
+                  <button
+                    onClick={prevTestimonial}
+                    className='h-10 w-10 border-solid border-2 border-primary bg-primary rounded-full flex items-center justify-center hover:bg-white group pl-1'
+                  >
+                    <div className='inline-block transform rotate-[135deg]  border-r-2 border-b-2 p-1 group-hover:border-primary'></div>
+                  </button>
+                )}
+                {currentIndex == testimonials.length - 1 ? (
+                  <button
+                    disabled
+                    className='cursor-not-allowed ml-5 h-10 w-10 border-solid border-2  border-primary rounded-full flex items-center justify-center  group pr-1'
+                  >
+                    <div className='inline-block transform -rotate-[45deg] border-primary border-r-2 border-b-2 p-1 '></div>
+                  </button>
+                ) : (
+                  <button
+                    onClick={nextTestimonial}
+                    className='ml-5 h-10 w-10 border-solid border-2 bg-primary border-primary rounded-full flex items-center justify-center hover:bg-white group pr-1'
+                  >
+                    <div className='inline-block transform -rotate-[45deg]  border-r-2 border-b-2 p-1 group-hover:border-primary'></div>
+                  </button>
+                )}
+              </div>
+            )}
           </div>
         </div>
       </div>

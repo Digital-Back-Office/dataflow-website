@@ -17,13 +17,13 @@ const planfeature2 = data.table2
 ---
 
 <astro-greet data-message={pricingdata}> </astro-greet>
-<div class='py-24 w-full flex flex-col items-center justify-center'>
+<div class='py-24 max-sm:py-16 w-full flex flex-col items-center justify-center'>
   <h1
-    class='text-9calc font-bold text-textblack text-center px-3 w-3/5 width90'
+    class='text-9calc font-bold text-textblack text-center px-3 w-3/5 max-sm:w-full leading-tight'
   >
     {data.title}
   </h1>
-  <p class='md:text-2xl sm:text-xl text-textblack mt-5 text-center'>
+  <p class='text-2xl max-sm:text-sm max-sm:mt-2 text-textblack mt-[0px] text-center'>
     {data.description}
   </p>
   <div class='flex justify-center items-center gap-x-5 mt-10 toggle-container'>
@@ -34,149 +34,159 @@ const planfeature2 = data.table2
     </label>
     <p class='text-lg text-textblack font-bold'>{data.hostdata}</p>
   </div>
-  <div
-    class='container-price1 price1 flex flex-wrap justify-center gap-10 my-20'
-  >
+  <div class='price1 flex flex-wrap justify-center gap-10 my-20'>
     <div
-      class='w-[350px] h-[1000px] rounded-3xl shadow-2xl overflow-hidden height-auto'
+      class='w-[380px] max-sm:w-[90%] min-h-[1000px] rounded-3xl drop-shadow-[0_15px_20px_rgba(0,0,0,0.1)] bg-[#F6F8FA]'
     >
-      <div class='w-full flex justify-end h-7'></div>
-      <div class='w-full h-[270px] p-3 flex flex-col items-center height-auto'>
-        <p class='text-3xl font-bold text-textblack mb-2'>
+      <div
+        class='w-full min-h-[270px] bg-white rounded-t-3xl p-4 flex flex-col items-center height-auto pt-[28px]'
+      >
+        <p class='text-xl font-bold text-textblack mb-2'>
           {owncloudplan1.planname}
         </p>
-        <p class='text-base text-textblack w-3/5 text-center mb-4'>
+        <p class='text-sm text-textblack w-3/5 text-center mb-4'>
           {owncloudplan1.slogan}
         </p>
-        <div class='flex items-start'>
-          <p class='currency-symbol text-xl text-[#57606A] leading-none'>$</p>
-          <p class='cost1 text-8calc font-normal text-textblack leading-none'>
+        <div class='flex items-start my-[8px]'>
+          <p class='currency-symbol text-xl text-[#57606A] leading-none pr-1'>
+            $
+          </p>
+          <p class='cost1 text-8calc font-bold text-textblack leading-none'>
             {owncloudplan1.cost}
           </p>
         </div>
-        <p class='text-textblack font-medium text-lg mb-5'>
+        <p class='text-textblack font-medium text-md mb-5'>
           {owncloudplan1.duration}
         </p>
         <button
-          class='w-full h-10 border-solid border-2 rounded-md hover:opacity-80'
+          class='w-full h-[50px] border-solid border-2 rounded-md hover:opacity-80 my-[10px]'
         >
-          <p class='text-textblack font-normal text-lg'>
+          <p class='text-textblack font-normal text-md'>
             {owncloudplan1.button}
           </p>
         </button>
       </div>
-      <div class='w-full bg-[#F6F8FA] h-[700px] p-4 height-auto'>
-        <FeatureCard feature={owncloudplan1.feature1} />
-        <FeatureCard feature={owncloudplan1.feature2} />
-        <FeatureCard feature={owncloudplan1.feature3} />
-        <FeatureCard feature={owncloudplan1.feature4} />
-        <FeatureCard feature={owncloudplan1.feature5} />
+      <div class='w-full bg-[#F6F8FA] h-[700px] rounded-3xl p-4 height-auto'>
+        <FeatureCard feature={owncloudplan1.feature_1} />
+        <FeatureCard feature={owncloudplan1.feature_2} />
+        <FeatureCard feature={owncloudplan1.feature_3} />
+        <FeatureCard
+          feature={owncloudplan1.feature_4}
+          apps={owncloudplan1.apps}
+        />
+        <FeatureCard feature={owncloudplan1.feature_5} />
+        <FeatureCard feature={owncloudplan1.feature_6} />
+        <FeatureCard feature={owncloudplan1.feature_7} />
+        <FeatureCard feature={owncloudplan1.feature_8} />
       </div>
     </div>
     <div
-      class='w-[358px] h-[1050px] bg-primary border-b-8 border-x-8 border-solid border-primary rounded-3xl shadow-2xl -translate-y-4 overflow-hidden height-auto'
+      class='w-[380px] max-sm:w-[90%] min-h-[1050px] bg-primary border-b-8 border-x-8 max-sm:border-b-4 max-sm:border-x-4  border-solid border-primary rounded-3xl drop-shadow-[0_15px_20px_rgba(0,0,0,0.1)] -translate-y-4 overflow-hidden height-auto'
     >
       <div class='w-full flex justify-center bg-primary'>
-        <div class='py-[3px]'>
-          <p class='text-base font-bold text-white'>
+        <div class='py-[8px]'>
+          <p class='text-base font-semibold text-white tracking-wider'>
             {owncloudplan2.suggestion}
           </p>
         </div>
       </div>
       <div
-        class='w-full h-[290px] p-3 pt-6 pb-3 flex flex-col bg-white rounded-t-xl items-center height-auto'
+        class='w-full min-h-[290px] p-3 pt-6 pb-3 flex flex-col bg-white rounded-t-2xl items-center height-auto'
       >
-        <p class='text-3xl font-bold text-textblack mb-2'>
+        <p class='text-2xl font-bold text-textblack mb-2'>
           {owncloudplan2.planname}
         </p>
-        <p class='text-base text-textblack w-4/5 text-center mb-4'>
+        <p class='text-sm leading-snug text-textblack w-4/5 text-center mb-4'>
           {owncloudplan2.slogan}
         </p>
-        <div class='flex items-start'>
-          <p class='currency-symbol text-xl text-[#57606A] leading-none'>$</p>
-          <p class='cost2 text-8calc font-normal text-textblack leading-none'>
+        <div class='flex items-start my-[8px]'>
+          <p class='currency-symbol text-xl text-[#57606A] leading-none pr-1'>
+            $
+          </p>
+          <p class='cost2 text-8calc font-bold text-textblack leading-none'>
             {owncloudplan2.cost}
           </p>
         </div>
-        <p class='text-textblack font-medium text-lg mb-5'>
+        <p class='text-textblack font-medium text-md mb-5'>
           {owncloudplan2.duration}
         </p>
-        <button class='w-full py-2 bg-primary rounded-md hover:opacity-90'>
-          <p class='text-white font-bold text-base'>{owncloudplan2.button}</p>
+        <button
+          class='w-full h-[50px] bg-primary border-primary border-solid border-2 rounded-md hover:opacity-95 my-[10px]'
+        >
+          <p class='text-white text-md'>
+            {owncloudplan1.button}
+          </p>
         </button>
       </div>
-      <div class='w-full bg-[#F6F8FA] h-[750px] p-4 height-auto'>
-        <div class='flex items-center gap-x-3 mb-4'>
-          <img src='/assets/images/leftarrowblack.png' class='w-5 h-5' />
-          <p class='text-base text-textblack'>{owncloudplan2.prevplan}</p>
-        </div>
-        <FeatureCard feature={owncloudplan2.feature1} />
-        <FeatureCard feature={owncloudplan2.feature2} />
-        <FeatureCard feature={owncloudplan2.feature3} />
-        <FeatureCard feature={owncloudplan2.feature4} />
-        <FeatureCard feature={owncloudplan2.feature5} />
-        <FeatureCard feature={owncloudplan2.feature6} />
-        <FeatureCard feature={owncloudplan2.feature7} />
-        <FeatureCard feature={owncloudplan2.feature8} />
-
-        <p class='text-[17px] text-textblack font-bold mb-4'>
-          {owncloudplan2.addonshead}
-        </p>
-        <FeatureCard feature={owncloudplan2.addon1} />
+      <div class='w-full bg-[#F6F8FA] h-[750px] p-4'>
+        <FeatureCard feature={owncloudplan2.feature_1} />
+        <FeatureCard feature={owncloudplan2.feature_2} />
+        <FeatureCard feature={owncloudplan2.feature_3} />
+        <FeatureCard
+          feature={owncloudplan2.feature_4}
+          apps={owncloudplan2.apps}
+        />
+        <FeatureCard feature={owncloudplan2.feature_5} />
+        <FeatureCard feature={owncloudplan2.feature_6} />
+        <FeatureCard feature={owncloudplan2.feature_7} />
+        <FeatureCard feature={owncloudplan2.feature_8} />
       </div>
     </div>
     <div
-      class='w-[350px] h-[1000px] rounded-3xl shadow-2xl overflow-hidden height-auto'
+      class='w-[380px] max-sm:w-[90%] min-h-[1000px] rounded-3xl drop-shadow-[0_15px_20px_rgba(0,0,0,0.1)] overflow-hidden height-auto'
     >
-      <div class='w-full flex justify-end'>
+      <div class='w-full flex justify-end bg-white'>
         <div
-          class='px-[31px] py-[3px] bg-[#FFD700] rounded-tr-3xl rounded-bl-3xl'
+          class='px-[31px] py-[3px] bg-[#FDC700] rounded-tr-3xl rounded-bl-3xl'
         >
-          <p class='text-base font-bold text-white'>
+          <p class='text-sm font-semibold text-[#fff] tracking-wide'>
             {owncloudplan3.suggestion}
           </p>
         </div>
       </div>
-      <div class='w-full h-[270px] p-3 flex flex-col items-center height-auto'>
-        <p class='text-3xl font-bold text-textblack mb-2'>
+      <div
+        class='w-full min-h-[270px] bg-white p-3 flex flex-col items-center height-auto'
+      >
+        <p class='text-2xl font-bold text-textblack mb-2'>
           {owncloudplan3.planname}
         </p>
-        <p class='text-base text-textblack w-3/5 text-center mb-4'>
+        <p class='text-sm leading-snug text-textblack w-1/2 text-center mb-4'>
           {owncloudplan3.slogan}
         </p>
-        <div class='flex items-start'>
-          <p class='currency-symbol text-xl text-[#57606A] leading-none'>$</p>
-          <p class='cost3 text-8calc font-normal text-textblack leading-none'>
+        <div class='flex items-start my-[8px]'>
+          <p class='currency-symbol text-xl text-[#57606A] leading-none pr-1'>
+            $
+          </p>
+          <p class='cost3 text-8calc font-bold text-textblack leading-none'>
             {owncloudplan3.cost}
           </p>
         </div>
-        <p class='text-textblack font-medium text-lg mb-5'>
+        <p class='text-textblack font-medium text-md mb-5'>
           {owncloudplan3.duration}
         </p>
-        <button class='w-full py-2 bg-primary rounded-md hover:opacity-90'>
-          <p class='text-white font-bold text-base'>{owncloudplan3.button}</p>
+        <button
+          class='w-full h-[50px] bg-primary border-primary border-solid border-2 rounded-md hover:opacity-80 my-[10px]'
+        >
+          <p class='text-white text-md'>
+            {owncloudplan2.button}
+          </p>
         </button>
       </div>
       <div class='w-full bg-[#F6F8FA] h-[700px] p-4 height-auto'>
-        <div class='flex items-center gap-x-3 mb-4'>
-          <img src='/assets/images/leftarrowblack.png' class='w-5 h-5' />
-          <p class='text-base text-textblack'>{owncloudplan3.prevplan}</p>
-        </div>
-        <FeatureCard feature={owncloudplan3.feature1} />
-        <FeatureCard feature={owncloudplan3.feature2} />
-        <FeatureCard feature={owncloudplan3.feature3} />
-        <FeatureCard feature={owncloudplan3.feature4} />
-        <FeatureCard feature={owncloudplan3.feature5} />
-        <FeatureCard feature={owncloudplan3.feature6} />
-        <FeatureCard feature={owncloudplan3.feature7} />
-        <FeatureCard feature={owncloudplan3.feature8} />
-        <FeatureCard feature={owncloudplan3.feature9} />
-        <FeatureCard feature={owncloudplan3.feature10} />
-        <FeatureCard feature={owncloudplan3.feature11} />
-        <p class='text-[17px] text-textblack font-bold mb-4'>
-          {owncloudplan3.addonshead}
-        </p>
-        <FeatureCard feature={owncloudplan3.addon1} />
+        <FeatureCard feature={owncloudplan3.feature_1} />
+        <FeatureCard feature={owncloudplan3.feature_2} />
+        <FeatureCard feature={owncloudplan3.feature_3} />
+        <FeatureCard
+          feature={owncloudplan3.feature_4}
+          apps={owncloudplan3.apps}
+        />
+        <FeatureCard feature={owncloudplan3.feature_5} />
+        <FeatureCard feature={owncloudplan3.feature_6} />
+        <FeatureCard feature={owncloudplan3.feature_7} />
+        <FeatureCard feature={owncloudplan3.feature_8} />
+        <FeatureCard feature={owncloudplan3.feature_9} />
+        <FeatureCard feature={owncloudplan3.feature_10} />
+        <FeatureCard feature={owncloudplan3.feature_11} />
       </div>
     </div>
   </div>
@@ -184,30 +194,33 @@ const planfeature2 = data.table2
     class='container-price2 price2 flex flex-wrap justify-center gap-10 my-20 hidden'
   >
     <div
-      class='w-[350px] h-[1000px] rounded-3xl shadow-2xl overflow-hidden height-auto'
+      class='w-[400px] h-[1000px] rounded-3xl drop-shadow-[0_15px_20px_rgba(0,0,0,0.1)] overflow-hidden bg-[#F6F8FA]'
     >
-      <div class='w-full flex justify-end h-7'></div>
-      <div class='w-full h-[270px] p-3 flex flex-col items-center height-auto'>
+      <div
+        class='w-full min-h-[270px] p-3 pt-7 flex flex-col items-center bg-white'
+      >
         <p class='text-3xl font-bold text-textblack mb-2'>
           {datacloudplan1.planname}
         </p>
-        <p class='text-base text-textblack w-3/5 text-center mb-4'>
+        <p class='text-sm text-textblack w-3/5 text-center mb-4'>
           {datacloudplan1.slogan}
         </p>
-        <div class='flex items-start'>
-          <p class='currency-symbol text-xl text-[#57606A] leading-none'>$</p>
-          <p class='text-8calc font-normal text-textblack leading-none'>
+        <div class='flex items-start my-[8px]'>
+          <p class='currency-symbol text-xl text-[#57606A] leading-none pr-1'>
+            $
+          </p>
+          <p class='text-8calc font-bold text-textblack leading-none'>
             {datacloudplan1.cost}
           </p>
         </div>
-        <p class='text-textblack font-medium text-lg mb-5'>
+        <p class='text-textblack font-medium text-md mb-5'>
           {datacloudplan1.duration}
         </p>
         <button
-          class='w-full h-10 border-solid border-2 rounded-md hover:opacity-90'
+          class='w-full h-[50px] border-solid border-2 rounded-md hover:opacity-80 my-[10px]'
         >
-          <p class='text-textblack font-normal text-lg'>
-            {datacloudplan1.button}
+          <p class='text-textblack font-normal text-md'>
+            {owncloudplan1.button}
           </p>
         </button>
       </div>
@@ -219,7 +232,7 @@ const planfeature2 = data.table2
       </div>
     </div>
     <div
-      class='w-[350px] h-[1000px] rounded-3xl shadow-2xl overflow-hidden height-auto'
+      class='w-[400px] h-[1000px] rounded-3xl shadow-2xl overflow-hidden height-auto'
     >
       <div class='w-full flex justify-end'>
         <div
@@ -240,15 +253,15 @@ const planfeature2 = data.table2
         <p class='text-textblack font-medium text-base text-center mb-6'>
           {datacloudplan2.message}
         </p>
-        <button class='w-full py-2 bg-primary rounded-md hover:opacity-90'>
-          <p class='text-white font-bold text-base'>{datacloudplan2.button}</p>
+        <button
+          class='w-full h-[50px] bg-primary border-primary border-solid border-2 rounded-md hover:opacity-80 my-[10px]'
+        >
+          <p class='text-white text-md'>
+            {owncloudplan2.button}
+          </p>
         </button>
       </div>
       <div class='w-full bg-[#F6F8FA] h-[700px] p-4 height-auto'>
-        <div class='flex items-center gap-x-3 mb-4'>
-          <img src='/assets/images/leftarrowblack.png' class='w-5 h-5' />
-          <p class='text-base text-textblack'>{datacloudplan2.prevplan}</p>
-        </div>
         <FeatureCard feature={datacloudplan2.feature1} />
         <FeatureCard feature={datacloudplan2.feature2} />
         <FeatureCard feature={datacloudplan2.feature3} />
@@ -273,128 +286,137 @@ const planfeature2 = data.table2
     </p>
   </div>
   <div
-    class='pricetable1 w-4/5 flex flex-col justify-center items-center width95'
+    class='pricetable1 w-4/5 flex flex-col justify-center items-center width95 rounded-[30px] border-[#E6E9F5] border overflow-hidden'
   >
-    <div class='w-full flex'>
-      <div
-        class='tablehead1 w-1/4 h-[150px] border border-solid border-[#E6E9F5] flex flex-col justify-center px-5'
-      >
-        <p class='text-xl font-bold text-textblack mb-2'>
+    <div class='w-full flex bg-[#EEF2F6]'>
+      <div class='tablehead1 w-1/4 h-[150px] flex flex-col justify-center px-5'>
+        <p class='text-2xl font-bold text-textblack mb-2'>
           {planfeature1.tablehead1.title}
         </p>
-        <p class='text-base text-textblack'>
+        <p class='text-xs leading-snug text-textblack'>
           {planfeature1.tablehead1.description}
         </p>
       </div>
       <div
-        class='planstatus w-1/4 h-[150px] border border-solid border-[#E6E9F5] flex flex-col items-center justify-between p-5 py-6'
+        class='planstatus w-1/4 h-[150px] flex flex-col items-center justify-between p-5 max-sm:p-0 py-6'
       >
-        <p
-          class='text-0calc font-bold text-textblack mb-2'
-          style='font-family: Roboto;'
-        >
+        <p class='text-0calc font-bold text-textblack mb-2'>
           {planfeature1.tablehead2.cost}
         </p>
         <button class='w-full py-2 bg-primary rounded-md hover:opacity-90'>
-          <p class='text-white font-bold text-base'>
+          <p class='text-white font-medium text-base max-sm:text-sm'>
             {planfeature1.tablehead2.button}
           </p>
         </button>
       </div>
       <div
-        class='planstatus w-1/4 h-[150px] border border-solid border-[#E6E9F5] flex flex-col items-center justify-between p-5 py-6'
+        class='planstatus w-1/4 h-[150px] flex flex-col items-center justify-between p-5 py-6'
       >
-        <p class='font-bold text-calc' style='font-family: Roboto;'>
+        <p class='font-bold text-calc'>
           <span class='currency-symbol'>$</span><span class='cost2'
             >{planfeature1.tablehead3.cost}</span
-          ><span class='text-base font-normal mt-2'>
-            {planfeature1.tablehead3.duration}</span>
+          ><span class='text-base text-gray-500 font-normal mt-2'>
+            {planfeature1.tablehead3.duration}</span
+          >
         </p>
         <button class='w-full py-2 bg-primary rounded-md hover:opacity-90'>
-          <p class='text-white font-bold text-base'>
+          <p class='text-white font-medium text-base'>
             {planfeature1.tablehead3.button}
           </p>
         </button>
       </div>
       <div
-        class='planstatus w-1/4 h-[150px] border border-solid border-[#E6E9F5] flex flex-col items-center justify-between p-5 py-6'
+        class='planstatus w-1/4 h-[150px] flex flex-col items-center justify-between p-5 py-6'
       >
-        <p class='font-bold text-calc' style='font-family: Roboto;'>
+        <p class='font-bold text-calc'>
           <span class='currency-symbol'>$</span><span class='cost3'
             >{planfeature1.tablehead3.cost}</span
-          ><span class='text-base font-normal mt-2'>
-            {planfeature1.tablehead3.duration}</span>
+          ><span class='text-base text-gray-500 font-normal mt-2'>
+            {planfeature1.tablehead3.duration}</span
+          >
         </p>
         <button class='w-full py-2 bg-primary rounded-md hover:opacity-90'>
-          <p class='text-white font-bold text-base'>
+          <p class='text-white font-medium text-base'>
             {planfeature1.tablehead3.button}
           </p>
         </button>
       </div>
     </div>
     <PlanDetailCard
-      title={planfeature1.feature1}
+      title={planfeature1.feature_1}
       option1='yes'
       option2='yes'
       option3='yes'
     />
     <PlanDetailCard
-      title={planfeature1.feature2}
+      title={planfeature1.feature_2}
       option1='yes'
       option2='yes'
       option3='yes'
     />
     <PlanDetailCard
-      title={planfeature1.feature3}
+      title={planfeature1.feature_3}
       option1='yes'
       option2='yes'
       option3='yes'
     />
     <PlanDetailCard
-      title={planfeature1.feature4}
+      title={planfeature1.feature_4}
       option1='yes'
       option2='yes'
       option3='yes'
     />
     <PlanDetailCard
-      title={planfeature1.feature5}
+      title={planfeature1.feature_5}
+      option1='Standard Support'
+      option2='Premium Support'
+      option3='24/7 Dedicated Support'
+    />
+    <PlanDetailCard
+      title={planfeature1.feature_6}
       option1='yes'
       option2='yes'
       option3='yes'
     />
     <PlanDetailCard
-      title={planfeature1.feature6}
+      title={planfeature1.feature_7}
       option1='yes'
       option2='yes'
       option3='yes'
     />
     <PlanDetailCard
-      title={planfeature1.feature7}
+      title={planfeature1.feature_8}
+      option1='yes'
+      option2='yes'
+      option3='yes'
+    />
+    <PlanDetailCard
+      title={planfeature1.feature_9}
       option1='no'
-      option2='yes'
+      option2='no'
       option3='yes'
     />
     <PlanDetailCard
-      title={planfeature1.feature8}
+      title={planfeature1.feature_10}
       option1='no'
-      option2='yes'
+      option2='no'
       option3='yes'
     />
     <PlanDetailCard
-      title={planfeature1.feature9}
+      title={planfeature1.feature_11}
       option1='no'
-      option2='yes'
+      option2='no'
       option3='yes'
     />
     <PlanDetailCard
-      title={planfeature1.feature10}
+      title={planfeature1.feature_12}
       option1='no'
       option2='48hrs'
       option3='30min'
     />
   </div>
   <div class='pricetable2 w-full flex flex-col items-center hidden'>
-    <div class='w-4/5 flex justify-center plancontainer'>
+    <div class='w-4/5 flex justify-center plancontainer bg-[#EEF2F6]'>
       <div
         class='tablehead1 w-1/4 h-[150px] border border-solid border-[#E6E9F5] flex flex-col justify-center px-5 width95'
       >
@@ -494,6 +516,7 @@ const planfeature2 = data.table2
         const data = await response.json()
         const country = data.country
 
+        console.log(country)
         const euroCountries = [
           'AT',
           'BE',
@@ -564,8 +587,8 @@ const planfeature2 = data.table2
   .switch {
     position: relative;
     display: inline-block;
-    width: 55px;
-    height: 25px;
+    width: 53px;
+    height: 23px;
     border: 2px solid #30baba;
     border-radius: 16px;
   }
@@ -591,10 +614,10 @@ const planfeature2 = data.table2
   .slider:before {
     position: absolute;
     content: '';
-    height: 15px;
-    width: 15px;
-    left: 4px;
-    bottom: 3px;
+    height: 16px;
+    width: 16px;
+    left: 2px;
+    top: 2px;
     background-color: #30baba;
     -webkit-transition: 0.1s;
     transition: 0.1s;
@@ -679,9 +702,7 @@ const planfeature2 = data.table2
     .height-auto {
       height: auto;
     }
-    .width90 {
-      width: 90%;
-    }
+
     .width95 {
       width: 90%;
     }

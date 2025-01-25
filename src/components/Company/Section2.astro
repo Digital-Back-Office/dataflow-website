@@ -12,8 +12,8 @@ import Membercard from './Membercard.astro'
   <div
     class='w-[30%] px-10 sticky max-md:relative max-md:top-0 top-48 max-md:mb-10 max-md:flex max-md:flex-col max-md:items-center max-md:w-full'
   >
-    <p class='text-8calc font-bold text-textblack'>{data.title}</p>
-    <a href='/AllMembers'>
+    <p class='text-8calc font-bold text-textblack leading-tight'>{data.title}</p>
+    <!-- <a href='/AllMembers'>
       <button
         class='transition-all transition-700 custom-button flex bg-white py-2 px-3 text-primary items-center mt-10 gap-x-2 rounded-lg'
         style='font-family: Roboto;'
@@ -26,22 +26,26 @@ import Membercard from './Membercard.astro'
           class='button-img'
         />
       </button>
-    </a>
+    </a> -->
+    <p class="mt-5">
+      We work together with a passion for delivering exceptional value to our
+      clients.
+    </p>
   </div>
   <div class='flex flex-col items-between justity-between gap-y-14 max-md:pl-2'>
     <div class='w-full flex justify-center flex-wrap gap-x-10'>
       <Membercard
-        photo='/assets/images/anurag-dbo.jpg'
+        photo='/assets/images/company/anurag-dbo.png'
         name='Anurag Jain'
         position='Founder'
       />
       <Membercard
-        photo='/assets/images/dinesh-dbo.jpg'
+        photo='/assets/images/company/dinesh-dbo.png'
         name='Dinesh'
         position='DevOps Engineer'
       />
     </div>
-    <div class='w-full flex justify-center flex-wrap gap-x-10'>
+    <!-- <div class='w-full flex justify-center flex-wrap gap-x-10'>
       <Membercard
         photo='/assets/images/mageshkrishna-dbo.jpg'
         name='Magesh Krishna'
@@ -52,22 +56,22 @@ import Membercard from './Membercard.astro'
         name='Harigovind'
         position='Backend Developer'
       />
-    </div>
+    </div> -->
     <div class='w-full flex justify-center flex-wrap gap-x-10'>
       <Membercard
-        photo='/assets/images/gokulnath-dbo.jpg'
+        photo='/assets/images/company/gokulnath-dbo.png'
         name='Gokulnath'
         position='Frontend Developer'
       />
       <Membercard
-        photo='/assets/images/aditya-dbo.jpg'
+        photo='/assets/images/company/aditya-dbo.png'
         name='Aditya'
         position='DevOps Engineer'
       />
     </div>
     <div class='w-full flex flex-wrap gap-x-10'>
       <Membercard
-        photo='/assets/images/tejas-dbo.jpg'
+        photo='/assets/images/company/tejas-dbo.png'
         name='Tejas'
         position='UI/UX Designer'
       />

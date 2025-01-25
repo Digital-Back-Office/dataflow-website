@@ -22,7 +22,7 @@ footer:
     section1:
         link1: Why Dataflow?
         link2: Pricing
-        link3: Learn
+        link3: Apps
         link4: Company
         link5: Blog
         link6: Docs

@@ -5,9 +5,9 @@ import { getEntry } from 'astro:content'
 const Data = await getEntry('learn', 'learn')
 ---
 
-<div class='w-full min-h-screen flex justify-center items-center'>
+<div class='w-full min-h-screen flex justify-center items-center max-sm:justify-start'>
   <div
-    class='responsive-container w-6/12 flex flex-col justify-center items-end pl-[8%]'
+    class='responsive-container w-6/12 flex flex-col justify-center items-end pl-[8%] max-sm:pl-0 max-sm:w-full'
   >
     <div>
       <h1 class='text-8calc font-bold text-start text-textblack mb-10'>

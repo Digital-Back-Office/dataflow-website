@@ -25,24 +25,24 @@ const { title, image, logo, link, mirror } = Astro.props
 </style>
 
 <div
-  class={`min-h-screen ${mirror ? 'bg-white' : 'bg-[#F8FAFC]'} flex ${mirror && 'flex-row-reverse'} items-center justify-center max-sm:flex-col px`}
+  class={`min-h-screen ${mirror ? 'bg-white' : 'bg-[#F8FAFC]'} flex ${mirror && 'flex-row-reverse'} items-center justify-center max-sm:flex-col `}
 >
   <div
     data-aos='fade-bounce'
     class='flex-[0.65] flex justify-center items-center max-sm:py-8'
   >
-    <img src={image} alt='' class='w-[85%] rounded-3xl shadow-sm' />
+    <img src={image} alt='' class='w-[85%] ' />
   </div>
   <div
-    class={`flex-[0.35] max-sm:py-10 h-full flex flex-col max-sm:items-center gap-10 ${mirror && 'pl-[7%]'}`}
+    class={`flex-[0.35] max-sm:py-10 h-full flex flex-col max-sm:pl-[30px] gap-10 ${mirror && 'pl-[7%]'}`}
   >
     <img src={logo} alt='airflow' class='w-max h-[80px] max-sm:h-[40px]' />
-    <p class='text-4xl max-sm:text-3xl font-bold w-[80%] leading-tight text-[#303030]'>
+    <p class='text-4xl max-sm:text-2xl font-bold w-[80%] leading-tight text-[#303030]'>
       {title}
     </p>
     <a
       href={link}
-      class='p-2 px-3 w-max font-light inline-flex rounded-lg text-sm bg-[#30baba] text-white mt-4'
+      class='p-2 px-3 w-max font-light inline-flex rounded-lg text-sm bg-[#30baba] text-white mt-4 max-sm:mt-0'
     >
       Learn More
       <img

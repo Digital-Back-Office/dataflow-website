@@ -1,4 +1,4 @@
----
+<!-- ---
 free_tier:
     plan_name: Free
     description: For Personal use
@@ -69,4 +69,4 @@ Custom Setup
 - Full Admin access 
 - Dedicated support staff
 - Transparent pricing 
-- Pay license + cloud cost on actuals
+- Pay license + cloud cost on actuals -->

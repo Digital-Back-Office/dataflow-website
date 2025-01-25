@@ -14,20 +14,28 @@ const data = Data.data
         {data.title1}<br />{data.title2}
       </h1>
       <ul
-        style='list-style-type: none; padding-left: 1.5rem;'
+        style='list-style-type: none;'
         class='w-[85%] font-semibold tracking-wide'
       >
-        <li class='text-base mb-4 text-textblack  flex items-start gap-2'>
-          <span class="mt-[1px]"><img src="/assets/images/check-box-icon.png" alt="point"></span>{data.description[0]}
+        <li class='text-base mb-4 text-textblack flex items-start gap-2'>
+          <span class='mt-[3px]'
+            ><img src='/assets/images/check-box-icon.png' alt='point' width="20px"/></span
+          >{data.description[0]}
         </li>
         <li class='text-base mb-4 text-textblack flex items-start gap-2'>
-          <span class="mt-[1px]"><img src="/assets/images/check-box-icon.png" alt="point"></span>{data.description[1]}
+          <span class='mt-[3px]'
+            ><img src='/assets/images/check-box-icon.png' alt='point'  /></span
+          >{data.description[1]}
         </li>
         <li class='text-base mb-4 text-textblack flex items-start gap-2'>
-          <span class="mt-[1px]"><img src="/assets/images/check-box-icon.png" alt="point"></span>{data.description[2]}
+          <span class='mt-[3px]'
+            ><img src='/assets/images/check-box-icon.png' alt='point' /></span
+          >{data.description[2]}
         </li>
         <li class='text-base mb-4 text-textblack flex items-start gap-2'>
-          <span class="mt-[1px]"><img src="/assets/images/check-box-icon.png" alt="point"></span>{data.description[3]}
+          <span class='mt-[3px]'
+            ><img src='/assets/images/check-box-icon.png' alt='point'  /></span
+          >{data.description[3]}
         </li>
       </ul>
     </div>
@@ -137,7 +145,7 @@ const data = Data.data
             </button>
           </form>
         </div>
-        <div class='flip-card-back hidden mb-10'>
+        <div class='mb-10 flip-card-back'>
           <img src='/assets/images/circle-tick.svg' />
           <p class='text-white text-calc font-bold text-center mt-7'>
             Thank You
@@ -254,7 +262,7 @@ const data = Data.data
     transform: rotateY(180deg);
   }
 
-  .flip-card-front,
+   .flip-card-front,
   .flip-card-back {
     position: absolute;
     width: 100%;
@@ -263,15 +271,20 @@ const data = Data.data
     backface-visibility: hidden;
   }
 
+ .flip-card-back {
+  position: absolute;
+  top: 0;
+ }
+
   .flip-card-back {
-    margin-top: 10px;
-    height: 550px;
+    height: 530px;
     display: flex;
+    padding: 0 20px;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: #1dcfd5;
+    background-color: #15bec4;
     transform: rotateY(180deg);
-    border-radius: 25px;
+    border-radius: 20px;
   }
 </style>

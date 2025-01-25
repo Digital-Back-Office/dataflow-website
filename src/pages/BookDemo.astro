@@ -109,7 +109,7 @@ const data = Data.data
           <select
             required
             id='options'
-            class='custom-input border border-[#E0E0E0] rounded-lg h-10 p-2  text-[#9ca3b1]'
+            class='custom-input border border-[#E0E0E0] rounded-lg h-10 p-2 text-[#9ca3b1]'
             name='entry.1061557718'
           >
             <option value='' disabled selected>Company Size</option>
@@ -160,13 +160,18 @@ const data = Data.data
             cols='30'
             style='resize:none'></textarea>
         </div>
-        <div class='w-full flex gap-2'>
-          <input type='checkbox' required class='size-4' />
-          <p class='text-gray-500 leading-none'>
+        <div class='w-full flex items-center justify-start mb-3'>
+          <input
+            type='checkbox'
+            required
+            class='ml-3 size-3'
+            style='margin-bottom: 0;'
+          />
+          <p class='text-gray-500 ml-1 text-sm'>
             {data.form.terms}<span
               ><a
                 href='/Termsandconditions'
-                class='underline underline-offset-4 text-primary'
+                class='underline underline-offset-4 text-gray-700 ml-[2px]'
                 >{data.form.link}</a
               ></span
             >

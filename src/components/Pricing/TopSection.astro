@@ -210,7 +210,7 @@ const planfeature2 = data.table2
   >
     <!-- Cloud Hosted 1-->
     <div
-      class='w-[380px] max-sm:w-[90%] py-[25px] px-[15px] h-max flex flex-col items-center gap-4 bg-white rounded-[30px] drop-shadow-[0_15px_20px_rgba(0,0,0,0.1)]'
+      class='w-[400px] max-sm:w-[90%] py-[25px] px-[15px] h-max flex flex-col items-center gap-4 bg-white rounded-[30px] drop-shadow-[0_15px_20px_rgba(0,0,0,0.1)]'
     >
       <div class='p-2 text-center'>
         <p class='text-3xl font-bold'>Cloud Hosted</p>
@@ -230,30 +230,118 @@ const planfeature2 = data.table2
         </div>
         <div class='flex justify-center items-center'>
           <!-- vCPU , GiB -->
-          <div class='w-[70%] my-4 border-[1px] rounded-2xl border-[#E6E9F5]'>
-            <div class='text-center my-4'>
-              <p>
-                <span class='font-bold text-2xl'>0.99</span>
-                <span class='text-textblack'>/hour</span>
-                <span class='text-lg ml-[2px]'>Small</span>
-              </p>
-              <p class='text-lg font-semibold'>( 2vCPU, 8 GiB )</p>
+          <div
+            class='w-[85%] my-4 border-[1px] rounded-2xl bg-[#F6F8FA] border-[#D2D2D2] flex flex-col items-center'
+          >
+            <div
+              class='w-[70%] border-b-[1px] text-[#364152] border-[#d2d2d2] pt-5'
+            >
+              <div class='my-4 borber-1 flex flex-col'>
+                <p class='text-center relative'>
+                  <span class='font-bold text-2xl relative'>
+                    <span
+                      class='currency-symbol font-normal text-xl text-[#57606A] leading-none pr-1 absolute top-[-5px] left-[-15px]'
+                      >$</span
+                    >
+                    0.99</span
+                  >
+                  <span class='text-textblack'>/hour Small</span>
+                </p>
+                <div class='flex flex-col gap-1 pl-5 py-2'>
+                  <p
+                    class='text-lg font-semibold inline-flex gap-1 items-center'
+                  >
+                    <img
+                      src='/assets/icons/icon-cpu.svg'
+                      alt='vCPU'
+                      class='size-[20px]'
+                    />2vCPU
+                  </p>
+                  <p
+                    class='text-lg font-semibold inline-flex gap-1 items-center'
+                  >
+                    <img
+                      src='/assets/icons/icon-ram.svg'
+                      alt='vCPU'
+                      class='size-[20px]'
+                    />8 GiB
+                  </p>
+                </div>
+              </div>
             </div>
-            <div class='text-center my-4'>
-              <p>
-                <span class='font-bold text-2xl'>1.99</span>
-                <span class='text-textblack'>/hour</span>
-                <span class='text-lg ml-[2px]'>Medium</span>
-              </p>
-              <p class='text-lg font-semibold'>( 4vCPU, 16 GiB )</p>
+
+            <div
+              class='w-[70%] border-b-[1px] text-[#364152] border-[#d2d2d2] pt-5'
+            >
+              <div class='my-4 borber-1 flex flex-col'>
+                <p class='text-center relative'>
+                  <span class='font-bold text-2xl relative'>
+                    <span
+                      class='currency-symbol font-normal text-xl text-[#57606A] leading-none pr-1 absolute top-[-5px] left-[-15px]'
+                      >$</span
+                    >
+                    1.99</span
+                  >
+                  <span class='text-textblack'>/hour Medium</span>
+                </p>
+                <div class='flex flex-col gap-1 pl-5 py-2'>
+                  <p
+                    class='text-lg font-semibold inline-flex gap-1 items-center'
+                  >
+                    <img
+                      src='/assets/icons/icon-cpu.svg'
+                      alt='vCPU'
+                      class='size-[20px]'
+                    />4vCPU
+                  </p>
+                  <p
+                    class='text-lg font-semibold inline-flex gap-1 items-center'
+                  >
+                    <img
+                      src='/assets/icons/icon-ram.svg'
+                      alt='vCPU'
+                      class='size-[20px]'
+                    />16 GiB
+                  </p>
+                </div>
+              </div>
             </div>
-            <div class='text-center my-4'>
-              <p>
-                <span class='font-bold text-2xl'>2.99</span>
-                <span class='text-textblack'>/hour</span>
-                <span class='text-lg ml-[2px]'>Large</span>
-              </p>
-              <p class='text-lg font-semibold'>( 8vCPU, 32 GiB )</p>
+
+            <div
+              class='w-[70%] border-b-[1px] text-[#364152] border-[#d2d2d2] pt-5'
+            >
+              <div class='my-4 borber-1 flex flex-col'>
+                <p class='text-center relative'>
+                  <span class='font-bold text-2xl relative'>
+                    <span
+                      class='currency-symbol font-normal text-xl text-[#57606A] leading-none pr-1 absolute top-[-5px] left-[-15px]'
+                      >$</span
+                    >
+                    2.99</span
+                  >
+                  <span class='text-textblack'>/hour Large</span>
+                </p>
+                <div class='flex flex-col gap-1 pl-5 py-2'>
+                  <p
+                    class='text-lg font-semibold inline-flex gap-1 items-center'
+                  >
+                    <img
+                      src='/assets/icons/icon-cpu.svg'
+                      alt='vCPU'
+                      class='size-[20px]'
+                    />8vCPU
+                  </p>
+                  <p
+                    class='text-lg font-semibold inline-flex gap-1 items-center'
+                  >
+                    <img
+                      src='/assets/icons/icon-ram.svg'
+                      alt='vCPU'
+                      class='size-[20px]'
+                    />32 GiB
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -272,7 +360,7 @@ const planfeature2 = data.table2
 
     <!-- Cloud Hosted 2-->
     <div
-      class='w-[400px] max-sm:w-[90%] py-[25px] px-[15px] min-h-max flex flex-col items-center gap-6 bg-white rounded-[30px] drop-shadow-[0_15px_20px_rgba(0,0,0,0.1)]'
+      class='w-[400px] max-sm:w-[90%] py-[25px] px-[15px] min-h-max flex flex-col items-center gap-5 bg-white rounded-[30px] drop-shadow-[0_15px_20px_rgba(0,0,0,0.1)]'
     >
       <div class='p-2 text-center'>
         <p class='text-3xl font-bold'>Standard</p>
@@ -292,30 +380,118 @@ const planfeature2 = data.table2
         </div>
         <div class='flex justify-center items-center'>
           <!-- vCPU , GiB -->
-          <div class='w-[70%] my-4 border-[1px] rounded-2xl border-[#E6E9F5]'>
-            <div class='text-center my-4'>
-              <p>
-                <span class='font-bold text-2xl'>0.49</span>
-                <span class='text-textblack'>/hour</span>
-                <span class='text-lg ml-[2px]'>Small</span>
-              </p>
-              <p class='text-lg font-semibold'>( 2vCPU, 8 GiB )</p>
+          <div
+            class='w-[80%] my-4 border-[1px] rounded-2xl bg-[#F6F8FA] border-[#D2D2D2] flex flex-col items-center'
+          >
+            <div
+              class='w-[70%] border-b-[1px] text-[#364152] border-[#d2d2d2] pt-5'
+            >
+              <div class='my-4 borber-1 flex flex-col'>
+                <p class='text-center relative'>
+                  <span class='font-bold text-2xl relative'>
+                    <span
+                      class='currency-symbol font-normal text-xl text-[#57606A] leading-none pr-1 absolute top-[-5px] left-[-15px]'
+                      >$</span
+                    >
+                    0.49</span
+                  >
+                  <span class='text-textblack'>/hour Small</span>
+                </p>
+                <div class='flex flex-col gap-1 pl-5 py-2'>
+                  <p
+                    class='text-lg font-semibold inline-flex gap-1 items-center'
+                  >
+                    <img
+                      src='/assets/icons/icon-cpu.svg'
+                      alt='vCPU'
+                      class='size-[20px]'
+                    />2vCPU
+                  </p>
+                  <p
+                    class='text-lg font-semibold inline-flex gap-1 items-center'
+                  >
+                    <img
+                      src='/assets/icons/icon-ram.svg'
+                      alt='vCPU'
+                      class='size-[20px]'
+                    />8 GiB
+                  </p>
+                </div>
+              </div>
             </div>
-            <div class='text-center my-4'>
-              <p>
-                <span class='font-bold text-2xl'>0.99</span>
-                <span class='text-textblack'>/hour</span>
-                <span class='text-lg ml-[2px]'>Medium</span>
-              </p>
-              <p class='text-lg font-semibold'>( 4vCPU, 16 GiB )</p>
+
+            <div
+              class='w-[70%] border-b-[1px] text-[#364152] border-[#d2d2d2] pt-5'
+            >
+              <div class='my-4 borber-1 flex flex-col'>
+                <p class='text-center relative'>
+                  <span class='font-bold text-2xl relative'>
+                    <span
+                      class='currency-symbol font-normal text-xl text-[#57606A] leading-none pr-1 absolute top-[-5px] left-[-15px]'
+                      >$</span
+                    >
+                    0.99</span
+                  >
+                  <span class='text-textblack'>/hour Medium</span>
+                </p>
+                <div class='flex flex-col gap-1 pl-5 py-2'>
+                  <p
+                    class='text-lg font-semibold inline-flex gap-1 items-center'
+                  >
+                    <img
+                      src='/assets/icons/icon-cpu.svg'
+                      alt='vCPU'
+                      class='size-[20px]'
+                    />4vCPU
+                  </p>
+                  <p
+                    class='text-lg font-semibold inline-flex gap-1 items-center'
+                  >
+                    <img
+                      src='/assets/icons/icon-ram.svg'
+                      alt='vCPU'
+                      class='size-[20px]'
+                    />16 GiB
+                  </p>
+                </div>
+              </div>
             </div>
-            <div class='text-center my-4'>
-              <p>
-                <span class='font-bold text-2xl'>1.99</span>
-                <span class='text-textblack'>/hour</span>
-                <span class='text-lg ml-[2px]'>Large</span>
-              </p>
-              <p class='text-lg font-semibold'>( 8vCPU, 32 GiB )</p>
+
+            <div
+              class='w-[70%] border-b-[1px] text-[#364152] border-[#d2d2d2] pt-5'
+            >
+              <div class='my-4 borber-1 flex flex-col'>
+                <p class='text-center relative'>
+                  <span class='font-bold text-2xl relative'>
+                    <span
+                      class='currency-symbol font-normal text-xl text-[#57606A] leading-none pr-1 absolute top-[-5px] left-[-15px]'
+                      >$</span
+                    >
+                    1.99</span
+                  >
+                  <span class='text-textblack'>/hour Large</span>
+                </p>
+                <div class='flex flex-col gap-1 pl-5 py-2'>
+                  <p
+                    class='text-lg font-semibold inline-flex gap-1 items-center'
+                  >
+                    <img
+                      src='/assets/icons/icon-cpu.svg'
+                      alt='vCPU'
+                      class='size-[20px]'
+                    />8vCPU
+                  </p>
+                  <p
+                    class='text-lg font-semibold inline-flex gap-1 items-center'
+                  >
+                    <img
+                      src='/assets/icons/icon-ram.svg'
+                      alt='vCPU'
+                      class='size-[20px]'
+                    />32 GiB
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -364,7 +540,7 @@ const planfeature2 = data.table2
         <FeatureCard feature='Cloud cost on actuals' />
       </div>
     </div>
-</div>
+  </div>
 
   <!-- COMPARE PLANS -->
   <div class='compare_plans_heading pb-20'>
@@ -374,7 +550,7 @@ const planfeature2 = data.table2
   </div>
 
   <!-- HOST ON YOUR OWN CLOUD - TABLE -->
-  <div  
+  <div
     class='pricetable1 relative w-4/5 flex flex-col justify-center items-center width95 rounded-[30px] border-[#E6E9F5] border overflow-hidden'
   >
     <div class='w-full flex bg-[#EEF2F6]'>

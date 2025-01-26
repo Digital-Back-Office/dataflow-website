@@ -38,9 +38,12 @@ const planfeature2 = data.table2
     </label>
     <p class='text-lg text-textblack font-bold'>{data.hostdata}</p>
   </div>
-  <div class='price1 flex flex-wrap justify-center gap-10 my-20'>
+
+  <!-- HOST ON YOUR OWN CLOUD -->
+  <div class='price1 flex flex-wrap justify-center gap-10 my-20 hidden'>
+    <!-- Free Tier -->
     <div
-      class='w-[380px] max-sm:w-[90%] min-h-[1000px] rounded-3xl drop-shadow-[0_15px_20px_rgba(0,0,0,0.1)] bg-[#F6F8FA]'
+      class='w-[380px] max-sm:w-[90%] min-h-[900px] rounded-3xl drop-shadow-[0_15px_20px_rgba(0,0,0,0.1)]'
     >
       <div
         class='w-full min-h-[270px] bg-white rounded-t-3xl p-4 flex flex-col items-center height-auto pt-[28px]'
@@ -70,7 +73,7 @@ const planfeature2 = data.table2
           </p>
         </button>
       </div>
-      <div class='w-full bg-[#F6F8FA] h-[700px] rounded-3xl p-4 height-auto'>
+      <div class='w-full bg-[#F6F8FA] h-[780px] rounded-3xl p-4'>
         <FeatureCard feature={owncloudplan1.feature_1} />
         <FeatureCard feature={owncloudplan1.feature_2} />
         <FeatureCard feature={owncloudplan1.feature_3} />
@@ -84,6 +87,8 @@ const planfeature2 = data.table2
         <FeatureCard feature={owncloudplan1.feature_8} />
       </div>
     </div>
+
+    <!-- Start Up -->
     <div
       class='w-[380px] max-sm:w-[90%] min-h-[1050px] bg-primary border-b-8 border-x-8 max-sm:border-b-4 max-sm:border-x-4 border-solid border-primary rounded-3xl drop-shadow-[0_15px_20px_rgba(0,0,0,0.1)] -translate-y-4 overflow-hidden height-auto'
     >
@@ -136,8 +141,10 @@ const planfeature2 = data.table2
         <FeatureCard feature={owncloudplan2.feature_8} />
       </div>
     </div>
+
+    <!-- Enterprise -->
     <div
-      class='w-[380px] max-sm:w-[90%] min-h-[1000px] rounded-3xl drop-shadow-[0_15px_20px_rgba(0,0,0,0.1)] overflow-hidden height-auto'
+      class='w-[380px] max-sm:w-[90%] min-h-[900px] rounded-3xl drop-shadow-[0_15px_20px_rgba(0,0,0,0.1)] overflow-hidden'
     >
       <div class='w-full flex justify-end bg-white'>
         <div
@@ -176,7 +183,9 @@ const planfeature2 = data.table2
           </p>
         </button>
       </div>
-      <div class='w-full bg-[#F6F8FA] h-[700px] p-4 height-auto'>
+      <div
+        class='w-full bg-[#F6F8FA] h-[750px] p-4 height-auto rounded-b-[30px] overflow-hidden'
+      >
         <FeatureCard feature={owncloudplan3.feature_1} />
         <FeatureCard feature={owncloudplan3.feature_2} />
         <FeatureCard feature={owncloudplan3.feature_3} />
@@ -194,105 +203,175 @@ const planfeature2 = data.table2
       </div>
     </div>
   </div>
+
+  <!-- HOST ON DATAFLOW CLOUD -->
   <div
-    class='container-price2 price2 flex flex-wrap justify-center gap-10 my-20 hidden'
+    class='container-price2 price2 flex flex-wrap justify-center gap-8 my-20'
   >
+    <!-- Cloud Hosted 1-->
     <div
-      class='w-[400px] h-[1000px] rounded-3xl drop-shadow-[0_15px_20px_rgba(0,0,0,0.1)] overflow-hidden bg-[#F6F8FA]'
+      class='w-[380px] max-sm:w-[90%] py-[25px] px-[15px] h-max flex flex-col items-center gap-4 bg-white rounded-[30px] drop-shadow-[0_15px_20px_rgba(0,0,0,0.1)]'
     >
-      <div
-        class='w-full min-h-[270px] p-3 pt-7 flex flex-col items-center bg-white'
-      >
-        <p class='text-3xl font-bold text-textblack mb-2'>
-          {datacloudplan1.planname}
-        </p>
-        <p class='text-sm text-textblack w-3/5 text-center mb-4'>
-          {datacloudplan1.slogan}
-        </p>
-        <div class='flex items-start my-[8px]'>
+      <div class='p-2 text-center'>
+        <p class='text-2xl font-bold'>Cloud Hosted</p>
+        <p class='text-sm'>(Shared Infra)</p>
+      </div>
+      <div class='w-full'>
+        <div class='flex justify-center items-start my-[8px]'>
           <p class='currency-symbol text-xl text-[#57606A] leading-none pr-1'>
             $
           </p>
-          <p class='text-8calc font-bold text-textblack leading-none'>
-            {datacloudplan1.cost}
+          <p class='cost1 text-8calc font-bold text-textblack leading-none'>
+            0+
           </p>
         </div>
-        <p class='text-textblack font-medium text-md mb-5'>
-          {datacloudplan1.duration}
-        </p>
-        <button
-          class='w-full h-[50px] border-solid border-2 rounded-md hover:opacity-80 my-[10px]'
-        >
-          <p class='text-textblack font-normal text-md'>
-            {owncloudplan1.button}
-          </p>
-        </button>
+        <div class='flex justify-center items-center'>
+          <!-- vCPU , GiB -->
+          <div class='w-[70%] my-4 border-[1px] rounded-2xl border-[#E6E9F5]'>
+            <div class='text-center my-4'>
+              <p>
+                <span class='font-bold text-2xl'>0.99</span>
+                <span class='text-textblack'>/hour</span>
+                <span class='text-lg ml-[2px]'>Small</span>
+              </p>
+              <p class='text-lg font-semibold'>( 2vCPU, 8 GiB )</p>
+            </div>
+            <div class='text-center my-4'>
+              <p>
+                <span class='font-bold text-2xl'>1.99</span>
+                <span class='text-textblack'>/hour</span>
+                <span class='text-lg ml-[2px]'>Medium</span>
+              </p>
+              <p class='text-lg font-semibold'>( 4vCPU, 16 GiB )</p>
+            </div>
+            <div class='text-center my-4'>
+              <p>
+                <span class='font-bold text-2xl'>2.99</span>
+                <span class='text-textblack'>/hour</span>
+                <span class='text-lg ml-[2px]'>Large</span>
+              </p>
+              <p class='text-lg font-semibold'>( 8vCPU, 32 GiB )</p>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class='w-full bg-[#F6F8FA] h-[700px] p-4 height-auto'>
-        <FeatureCard feature={datacloudplan1.feature1} />
-        <FeatureCard feature={datacloudplan1.feature2} />
-        <FeatureCard feature={datacloudplan1.feature3} />
-        <FeatureCard feature={datacloudplan1.feature4} />
+
+      <!-- Contact Us -->
+      <div class='w-full flex justify-center'>
+        <a
+        href="/Contact-us"
+          class='w-[90%] h-[40px] bg-primary hover:bg-primaryHover text-white flex justify-center items-center rounded-md'
+        >
+          Contact Us</a
+        >
       </div>
     </div>
+
+    <!-- Cloud Hosted 2-->
     <div
-      class='w-[400px] h-[1000px] rounded-3xl shadow-2xl overflow-hidden height-auto'
+      class='w-[400px] max-sm:w-[90%] py-[40px] px-[15px] min-h-max flex flex-col items-center gap-4 bg-white rounded-[30px] drop-shadow-[0_15px_20px_rgba(0,0,0,0.1)]'
     >
-      <div class='w-full flex justify-end'>
-        <div
-          class='px-[31px] py-[3px] bg-[#FFD700] rounded-tr-3xl rounded-bl-3xl'
-        >
-          <p class='text-base font-bold text-white'>
-            {datacloudplan2.suggestion}
+      <div class='p-2 text-center'>
+        <p class='text-2xl font-bold'>Cloud Hosted</p>
+        <p class='text-sm'>(Shared Infra)</p>
+      </div>
+      <div class='w-full'>
+        <div class='flex justify-center items-start my-[8px]'>
+          <p class='currency-symbol text-xl text-[#57606A] leading-none pr-1'>
+            $
+          </p>
+          <p class='cost1 text-8calc font-bold text-textblack leading-none'>
+            599+
           </p>
         </div>
+        <div class='flex justify-center items-center'>
+          <!-- vCPU , GiB -->
+          <div class='w-[70%] my-4 border-[1px] rounded-2xl border-[#E6E9F5]'>
+            <div class='text-center my-4'>
+              <p>
+                <span class='font-bold text-2xl'>0.49</span>
+                <span class='text-textblack'>/hour</span>
+                <span class='text-lg ml-[2px]'>Small</span>
+              </p>
+              <p class='text-lg font-semibold'>( 2vCPU, 8 GiB )</p>
+            </div>
+            <div class='text-center my-4'>
+              <p>
+                <span class='font-bold text-2xl'>0.99</span>
+                <span class='text-textblack'>/hour</span>
+                <span class='text-lg ml-[2px]'>Medium</span>
+              </p>
+              <p class='text-lg font-semibold'>( 4vCPU, 16 GiB )</p>
+            </div>
+            <div class='text-center my-4'>
+              <p>
+                <span class='font-bold text-2xl'>1.99</span>
+                <span class='text-textblack'>/hour</span>
+                <span class='text-lg ml-[2px]'>Large</span>
+              </p>
+              <p class='text-lg font-semibold'>( 8vCPU, 32 GiB )</p>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class='w-full h-[270px] p-3 flex flex-col items-center height-auto'>
-        <p class='text-3xl font-bold text-textblack mb-2'>
-          {datacloudplan2.planname}
-        </p>
-        <p class='text-base text-textblack w-3/5 text-center mb-4'>
-          {datacloudplan2.slogan}
-        </p>
-        <p class='text-textblack font-medium text-base text-center mb-6'>
-          {datacloudplan2.message}
-        </p>
-        <button
-          class='w-full h-[50px] bg-primary border-primary border-solid border-2 rounded-md hover:opacity-80 my-[10px]'
+
+      <!-- Contact Us -->
+      <div class='w-full flex justify-center'>
+        <a
+        href="/Contact-us"
+          class='w-[90%] h-[40px] bg-primary hover:bg-primaryHover text-white flex justify-center items-center rounded-md'
         >
-          <p class='text-white text-md'>
-            {owncloudplan2.button}
-          </p>
-        </button>
+          Contact Us</a
+        >
       </div>
-      <div class='w-full bg-[#F6F8FA] h-[700px] p-4 height-auto'>
-        <FeatureCard feature={datacloudplan2.feature1} />
-        <FeatureCard feature={datacloudplan2.feature2} />
-        <FeatureCard feature={datacloudplan2.feature3} />
-        <FeatureCard feature={datacloudplan2.feature4} />
-        <FeatureCard feature={datacloudplan2.feature5} />
-        <FeatureCard feature={datacloudplan2.feature6} />
-        <FeatureCard feature={datacloudplan2.feature7} />
-        <FeatureCard feature={datacloudplan2.feature8} />
-        <FeatureCard feature={datacloudplan2.feature9} />
-        <FeatureCard feature={datacloudplan2.feature10} />
-        <FeatureCard feature={datacloudplan2.feature11} />
-        <p class='text-[17px] text-textblack font-bold mb-4'>
-          {datacloudplan2.addonshead}
+    </div>
+
+    <!-- Custom Setup -->
+    <div
+      class='w-[380px] relative max-sm:w-[90%] py-[25px] px-[15px] h-max flex flex-col items-center gap-4 bg-white rounded-[30px] drop-shadow-[0_15px_20px_rgba(0,0,0,0.1)]'
+    >
+      <div
+        class='absolute top-0 right-0 px-[31px] py-[3px] bg-[#FDC700] rounded-tr-3xl rounded-bl-3xl'
+      >
+        <p class='text-sm font-semibold text-[#fff] tracking-wide'>
+          {owncloudplan3.suggestion}
         </p>
-        <FeatureCard feature={datacloudplan2.addon1} />
+      </div>
+      <div class='p-2 text-center'>
+        <p class='text-2xl font-bold'>Custom Setup</p>
+      </div>
+
+      <!-- Contact Us -->
+      <div class='w-full flex justify-center'>
+        <a
+        href="/Contact-us"
+          class='w-[90%] h-[40px] bg-primary hover:bg-primaryHover text-white flex justify-center items-center rounded-md'
+        >
+          Contact Us</a
+        >
+      </div>
+
+      <div class='w-[90%] flex flex-col gap-[3px] mt-4'>
+        <FeatureCard feature='Full Admin Access' />
+        <FeatureCard feature='Bespoke licensing cost' />
+        <FeatureCard feature='Transparent pricing' />
+        <FeatureCard feature='Cloud cost on actuals' />
       </div>
     </div>
   </div>
-  <div class='pb-20'>
+
+  <!-- COMPARE PLANS -->
+  <div class='compare_plans_heading pb-20 hidden'>
     <p class='text-calc font-bold text-textblack text-center px-10'>
       {data.heading}
     </p>
   </div>
+
+  <!-- HOST ON YOUR OWN CLOUD - TABLE -->
   <div
-    class='pricetable1 relative w-4/5 flex flex-col justify-center items-center width95 rounded-[30px] border-[#E6E9F5] border overflow-hidden'
+    class='pricetable1 relative w-4/5 flex flex-col justify-center items-center width95 rounded-[30px] border-[#E6E9F5] border overflow-hidden hidden'
   >
-    <div class='w-full flex bg-[#EEF2F6] '>
+    <div class='w-full flex bg-[#EEF2F6]'>
       <div
         class='tablehead1 w-1/4 h-[150px] max-sm:h-[120px] flex flex-col justify-center px-5'
       >
@@ -306,7 +385,7 @@ const planfeature2 = data.table2
       <div
         class='planstatus w-1/4 h-[150px] max-sm:h-[120px] flex flex-col items-center justify-between p-5 max-sm:p-0 py-6 max-sm:w-full'
       >
-        <p class='text-0calc font-bold text-black mb-2 '>
+        <p class='text-0calc font-bold text-black mb-2'>
           {planfeature1.tablehead2.cost}
         </p>
         <button
@@ -435,6 +514,8 @@ const planfeature2 = data.table2
       option3='30min'
     />
   </div>
+
+  <!-- HOST ON YOUR DATAFLOW CLOUD - TABLE -->
   <div class='pricetable2 w-full flex flex-col items-center hidden'>
     <div class='w-4/5 flex justify-center plancontainer bg-[#EEF2F6]'>
       <div
@@ -507,18 +588,23 @@ const planfeature2 = data.table2
     const price2 = document.querySelector('.price2') as HTMLElement
     const pricetable1 = document.querySelector('.pricetable1') as HTMLElement
     const pricetable2 = document.querySelector('.pricetable2') as HTMLElement
+    const compare_plans_heading = document.querySelector(
+      '.compare_plans_heading'
+    ) as HTMLElement
 
     checkbox.addEventListener('change', function () {
       if (checkbox.checked === true) {
         price1.classList.add('hidden')
         price2.classList.remove('hidden')
         pricetable1.classList.add('hidden')
-        pricetable2.classList.remove('hidden')
+        // pricetable2.classList.remove('hidden')
+        compare_plans_heading.classList.add('hidden')
       } else {
         price1.classList.remove('hidden')
         price2.classList.add('hidden')
         pricetable1.classList.remove('hidden')
-        pricetable2.classList.add('hidden')
+        //pricetable2.classList.add('hidden')
+        compare_plans_heading.classList.remove('hidden')
       }
     })
     let pricing
@@ -536,7 +622,6 @@ const planfeature2 = data.table2
         const data = await response.json()
         const country = data.country
 
-        console.log(country)
         const euroCountries = [
           'AT',
           'BE',

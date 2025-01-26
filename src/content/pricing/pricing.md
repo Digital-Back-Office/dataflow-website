@@ -33,7 +33,7 @@ owncloudplan:
       slogan: Launch your AI Startup today! For Organisations upto 5 users
       cost: 99
       duration: per user/month
-      button: Continue with Team
+      button: Get Started
       prevplan: Everything included in Free, plus...
       feature1: Centralized connection  
       feature2: Jupyter 
@@ -62,7 +62,7 @@ owncloudplan:
       slogan: Security, compliance, and flexible deployment
       cost: 199
       duration: per user/month
-      button: Continue with Team
+      button: Get Started
       prevplan: Everything included in Team, plus...
       feature1: Centralized connection  
       feature2: Jupyter 
@@ -134,15 +134,15 @@ table1:
      description: Choose your workspace plan according to your organisational plan
    tablehead2:
       cost: Free
-      button: Choose This Plan
+      button: Get Started
    tablehead3: 
       cost: 99
       duration: /month
-      button: Choose This Plan
+      button: Get Started
    tablehead4:
       cost: 199
       duration: /month
-      button: Choose This Plan
+      button: Get Started
    feature1: Centralized connection management
    feature2: Stable connection management
    feature3: Jupyter

@@ -6,11 +6,15 @@ const data = Data.data
 const button = Data.data.button
 ---
 
-<div class='container-top min-h-screen w-full py-24 flex items-center justify-center max-sm:flex-col'>
+<div
+  class='container-top min-h-screen w-full py-24 flex items-center justify-center max-sm:flex-col'
+>
   <div class='text-container w-2/5'>
-    <h1 class='text-2calc font-bold mb-8 text-textblack leading-snug'>{data.title1}</h1>
-    <p class='text-md w-11/12 text-textblack '>{data.description2}</p>
-    <a href='/GetStartedForm'>
+    <h1 class='text-2calc font-bold mb-8 text-textblack leading-snug'>
+      {data.title1}
+    </h1>
+    <p class='text-md w-11/12 text-textblack'>{data.description2}</p>
+    <a href='/StartFreeTrail'>
       <button
         class='custom-button bg-primary hover:bg-[#30baba] px-3 py-2 text-white rounded-lg shadow-md flex text-base items-center gap-x-2 mt-10'
         style='font-family: Roboto;'

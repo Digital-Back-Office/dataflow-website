@@ -12,7 +12,10 @@ const { feature, apps } = Astro.props
       <div>
         {apps.map((app) => (
           <div class='pl-10 pt-[6px]'>
-            <p class='text-xs leading-tight text-textblack/90'>- {app}</p>
+            <p class='text-xs leading-tight text-textblack/90'>
+              <span class='mr-[1px] '>&#8226;</span>
+              <span>{app}</span>
+            </p>
           </div>
         ))}
         <div class='pl-10 pt-[5px]'>
@@ -22,3 +25,4 @@ const { feature, apps } = Astro.props
     )
   }
 </div>
+<!-- • -->

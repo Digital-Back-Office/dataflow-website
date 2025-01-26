@@ -24,8 +24,7 @@ owncloudplan:
       apps: ["Jupyterhub" , "Airflow"]
       feature_5: Standard Support
       feature_6: Self Install
-      feature_7: Unlimited public/private repositories
-      feature_8: Automatic security and version updates
+      feature_7: Automatic security and version updates
       
    plan2:
       suggestion: Recommended
@@ -46,11 +45,10 @@ owncloudplan:
       feature_2: Unlimited shared data connections
       feature_3: Git integration
       feature_4: Apps Included
-      apps: ["Jupyterhub" , "Airflow", "Superset","Dash Apps"]
+      apps:  ["Jupyterhub" , "Airflow", "Superset","Dash Apps","VS Code"]
       feature_5: Premium Support
       feature_6: Self Install
-      feature_7: Unlimited public/private repositories
-      feature_8: Automatic security and version updates
+      feature_7: Automatic security and version updates
       feature8: Environment deployment branches and secrets
       addonshead: Featured add-ons
       addon1: GitHub Copilot Access
@@ -63,30 +61,19 @@ owncloudplan:
       cost: 199
       duration: per user /month
       button: Get Started
-      prevplan: Everything included in Team, plus...
-      feature1: Centralized connection  
-      feature2: Jupyter 
-      feature3: Airflow 
-      feature4: ADT 
-      feature5: Dash app 
-      feature6: Required reviewers
-      feature7: Pages and Wikis 
-      feature8: Environment deployment branches and secrets
-      feature9: SAML single sign-on
       feature10: Pages and Wikis 
       feature11: GitHub Connect
       feature_1: AI ready python environment
       feature_2: Unlimited shared data connections
       feature_3: Git integration
       feature_4: Apps included
-      apps: ["Jupyterhub" , "Airflow", "Superset","Dash Apps","VS Code","Streamlit"]
+      apps: ["Jupyterhub" , "Airflow", "Superset","Dash Apps","VS Code"]
       feature_5: 24/7 Dedicated Support
       feature_6: Self install
-      feature_7: Unlimited public/private repositories
-      feature_8: Automatic security and version updates
-      feature_9: Enhanced Data Security
-      feature_10: Custom server configuration
-      feature_11: Full Admin Access
+      feature_7: Automatic security and version updates
+      feature_8: Enhanced Data Security
+      feature_9: Custom server configuration
+      feature_10: Full Admin Access
       addonshead: Exclusive add-ons
       addon1: GitHub Copilot Access
       addon2: Web-based support
@@ -157,15 +144,14 @@ table1:
    feature_2: Unlimited shared data connections
    feature_3: Git integration
    feature_4: Apps included
-   apps: ["Jupyterhub" , "Airflow", "Superset","Dash Apps","VS Code","Streamlit"]
+   apps: ["Jupyterhub" , "Airflow", "Superset","Dash Apps","VS Code"]
    feature_5: Support
    feature_6: Self install
-   feature_7: Unlimited public/private repositories
-   feature_8: Automatic security and version updates
-   feature_9: Enhanced Data Security
-   feature_10: Custom server configuration
-   feature_11: Full Admin Access
-   feature_12: Response time
+   feature_7: Automatic security and version updates
+   feature_8: Enhanced Data Security
+   feature_9: Custom server configuration
+   feature_10: Full Admin Access
+   feature_11: Response time
     
 
 table2:

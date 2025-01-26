@@ -40,7 +40,7 @@ const planfeature2 = data.table2
   </div>
 
   <!-- HOST ON YOUR OWN CLOUD -->
-  <div class='price1 flex flex-wrap justify-center gap-10 my-20 '>
+  <div class='price1 flex flex-wrap justify-center gap-10 my-20'>
     <!-- Free Tier -->
     <div
       class='w-[380px] max-sm:w-[90%] min-h-[900px] rounded-3xl drop-shadow-[0_15px_20px_rgba(0,0,0,0.1)]'
@@ -66,7 +66,7 @@ const planfeature2 = data.table2
           {owncloudplan1.duration}
         </p>
         <a
-          href="/GetStartedFree "
+          href='/GetStartedFree '
           class='w-full h-[50px] border-solid border-2 flex justify-center items-center rounded-md hover:opacity-80 my-[10px]'
         >
           <p class='text-textblack font-normal text-md'>
@@ -120,13 +120,14 @@ const planfeature2 = data.table2
         <p class='text-textblack font-medium text-md mb-5'>
           {owncloudplan2.duration}
         </p>
-        <button
-          class='w-full h-[50px] bg-primary border-primary border-solid border-2 rounded-md hover:opacity-95 my-[10px]'
+        <a
+          href='/GetStartedFree'
+          class='w-full h-[50px] flex justify-center items-center bg-primary border-primary border-solid border-2 rounded-md hover:opacity-95 my-[10px]'
         >
           <p class='text-white text-md'>
             {owncloudplan2.button}
           </p>
-        </button>
+        </a>
       </div>
       <div class='w-full bg-[#F6F8FA] h-[750px] p-4'>
         <FeatureCard feature={owncloudplan2.feature_1} />
@@ -176,13 +177,14 @@ const planfeature2 = data.table2
         <p class='text-textblack font-medium text-md mb-5'>
           {owncloudplan3.duration}
         </p>
-        <button
-          class='w-full h-[50px] bg-primary border-primary border-solid border-2 rounded-md hover:opacity-80 my-[10px]'
+        <a
+          href='/GetStartedFree'
+          class='w-full h-[50px] flex justify-center items-center bg-primary border-primary border-solid border-2 rounded-md hover:opacity-80 my-[10px]'
         >
           <p class='text-white text-md'>
             {owncloudplan2.button}
           </p>
-        </button>
+        </a>
       </div>
       <div
         class='w-full bg-[#F6F8FA] h-[750px] p-4 height-auto rounded-b-[30px] overflow-hidden'
@@ -214,16 +216,19 @@ const planfeature2 = data.table2
       class='w-[380px] max-sm:w-[90%] py-[25px] px-[15px] h-max flex flex-col items-center gap-4 bg-white rounded-[30px] drop-shadow-[0_15px_20px_rgba(0,0,0,0.1)]'
     >
       <div class='p-2 text-center'>
-        <p class='text-2xl font-bold'>Cloud Hosted</p>
-        <p class='text-sm'>(Shared Infra)</p>
+        <p class='text-3xl font-bold'>Cloud Hosted</p>
+        <p class='text-sm mt-[2px] tracking-wider'>(Shared Infra)</p>
       </div>
       <div class='w-full'>
-        <div class='flex justify-center items-start my-[8px]'>
+        <div class='flex justify-center items-start mt-[8px]'>
           <p class='currency-symbol text-xl text-[#57606A] leading-none pr-1'>
             $
           </p>
-          <p class='cost1 text-8calc font-bold text-textblack leading-none'>
-            0+
+          <p
+            class='cost1 text-center text-8calc font-bold text-textblack leading-none'
+          >
+            0 <br />
+            <span class='text-3xl leading-none'>+</span>
           </p>
         </div>
         <div class='flex justify-center items-center'>
@@ -260,7 +265,7 @@ const planfeature2 = data.table2
       <!-- Contact Us -->
       <div class='w-full flex justify-center'>
         <a
-        href="/Contact-us"
+          href='/Contact-us'
           class='w-[90%] h-[40px] bg-primary hover:bg-primaryHover text-white flex justify-center items-center rounded-md'
         >
           Contact Us</a
@@ -270,19 +275,22 @@ const planfeature2 = data.table2
 
     <!-- Cloud Hosted 2-->
     <div
-      class='w-[400px] max-sm:w-[90%] py-[40px] px-[15px] min-h-max flex flex-col items-center gap-4 bg-white rounded-[30px] drop-shadow-[0_15px_20px_rgba(0,0,0,0.1)]'
+      class='w-[400px] max-sm:w-[90%] py-[25px] px-[15px] min-h-max flex flex-col items-center gap-6 bg-white rounded-[30px] drop-shadow-[0_15px_20px_rgba(0,0,0,0.1)]'
     >
       <div class='p-2 text-center'>
-        <p class='text-2xl font-bold'>Cloud Hosted</p>
-        <p class='text-sm'>(Shared Infra)</p>
+        <p class='text-3xl font-bold'>Standard</p>
+        <p class='text-sm mt-[2px] tracking-wider'>(Dedicated Infra)</p>
       </div>
       <div class='w-full'>
-        <div class='flex justify-center items-start my-[8px]'>
+        <div class='flex justify-center items-start mt-[8px]'>
           <p class='currency-symbol text-xl text-[#57606A] leading-none pr-1'>
             $
           </p>
-          <p class='cost1 text-8calc font-bold text-textblack leading-none'>
-            499+
+          <p
+            class='cost1 text-center text-8calc font-bold text-textblack leading-none'
+          >
+            499 <br />
+            <span class='text-3xl leading-none'>+</span>
           </p>
         </div>
         <div class='flex justify-center items-center'>
@@ -319,7 +327,7 @@ const planfeature2 = data.table2
       <!-- Contact Us -->
       <div class='w-full flex justify-center'>
         <a
-        href="/Contact-us"
+          href='/Contact-us'
           class='w-[90%] h-[40px] bg-primary hover:bg-primaryHover text-white flex justify-center items-center rounded-md'
         >
           Contact Us</a
@@ -339,13 +347,13 @@ const planfeature2 = data.table2
         </p>
       </div>
       <div class='p-2 text-center'>
-        <p class='text-2xl font-bold'>Custom Setup</p>
+        <p class='text-3xl font-bold'>Custom Setup</p>
       </div>
 
       <!-- Contact Us -->
       <div class='w-full flex justify-center'>
         <a
-        href="/Contact-us"
+          href='/Contact-us'
           class='w-[90%] h-[40px] bg-primary hover:bg-primaryHover text-white flex justify-center items-center rounded-md'
         >
           Contact Us</a
@@ -362,7 +370,7 @@ const planfeature2 = data.table2
   </div>
 
   <!-- COMPARE PLANS -->
-  <div class='compare_plans_heading pb-20 '>
+  <div class='compare_plans_heading pb-20'>
     <p class='text-calc font-bold text-textblack text-center px-10'>
       {data.heading}
     </p>
@@ -370,7 +378,7 @@ const planfeature2 = data.table2
 
   <!-- HOST ON YOUR OWN CLOUD - TABLE -->
   <div
-    class='pricetable1 relative w-4/5 flex flex-col justify-center items-center width95 rounded-[30px] border-[#E6E9F5] border overflow-hidden '
+    class='pricetable1 relative w-4/5 flex flex-col justify-center items-center width95 rounded-[30px] border-[#E6E9F5] border overflow-hidden'
   >
     <div class='w-full flex bg-[#EEF2F6]'>
       <div
@@ -389,15 +397,16 @@ const planfeature2 = data.table2
         <p class='text-0calc font-bold text-black mb-2'>
           {planfeature1.tablehead2.cost}
         </p>
-        <button
-          class='w-full py-2 max-sm:py-[4px] bg-primary rounded-md hover:opacity-90'
+        <a
+          href='/GetStartedFree'
+          class='flex justify-center items-center w-full py-2 max-sm:py-[4px] bg-primary rounded-md hover:opacity-90'
         >
           <p
             class='text-white font-medium text-base max-sm:text-xs max-sm:text-semibold'
           >
             {planfeature1.tablehead2.button}
           </p>
-        </button>
+        </a>
       </div>
       <div
         class='planstatus w-1/4 h-[150px] flex flex-col items-center justify-between max-sm:h-[120px] p-5 py-6 max-sm:p-0'
@@ -411,15 +420,16 @@ const planfeature2 = data.table2
             {planfeature1.tablehead3.duration}</span
           >
         </p>
-        <button
-          class='w-full py-2 max-sm:py-[4px] bg-primary rounded-md hover:opacity-90'
+        <a
+          href='/GetStartedFree'
+          class='flex justify-center items-center w-full py-2 max-sm:py-[4px] bg-primary rounded-md hover:opacity-90'
         >
           <p
             class='text-white font-medium text-base max-sm:text-xs max-sm:text-semibold'
           >
             {planfeature1.tablehead3.button}
           </p>
-        </button>
+        </a>
       </div>
       <div
         class='planstatus w-1/4 h-[150px] max-sm:h-[120px] flex flex-col items-center justify-between p-5 py-6'
@@ -433,13 +443,14 @@ const planfeature2 = data.table2
             {planfeature1.tablehead3.duration}</span
           >
         </p>
-        <button
-          class='w-full py-2 max-sm:py-[4px] bg-primary rounded-md hover:opacity-90'
+        <a
+          href='/GetStartedFree'
+          class='flex justify-center items-center w-full py-2 max-sm:py-[4px] bg-primary rounded-md hover:opacity-90'
         >
           <p class='text-white font-medium text-base max-sm:text-xs'>
             {planfeature1.tablehead3.button}
           </p>
-        </button>
+        </a>
       </div>
     </div>
     <PlanDetailCard
@@ -623,6 +634,8 @@ const planfeature2 = data.table2
         const data = await response.json()
         const country = data.country
 
+        console.log(pricing)
+
         const euroCountries = [
           'AT',
           'BE',
@@ -652,30 +665,32 @@ const planfeature2 = data.table2
           price = '£'
           const elements = document.querySelectorAll('.cost2')
           elements.forEach((element) => {
-            ;(element as HTMLElement).innerText = pricing.pricing.UK.standard
+            ;(element as HTMLElement).innerText = '99' //pricing.pricing.UK.standard
           })
           const elements2 = document.querySelectorAll('.cost3')
           elements2.forEach((element) => {
-            ;(element as HTMLElement).innerText = pricing.pricing.UK.premium
+            ;(element as HTMLElement).innerText = '499' //pricing.pricing.UK.premium
           })
-        } else if (euroCountries.includes(country)) {
+        }
+        // else if (euroCountries.includes(country)) {
+        //   const elements = document.querySelectorAll('.cost2')
+        //   elements.forEach((element) => {
+        //     ;(element as HTMLElement).innerText = pricing.pricing.EU.standard
+        //   })
+        //   const elements2 = document.querySelectorAll('.cost3')
+        //   elements2.forEach((element) => {
+        //     ;(element as HTMLElement).innerText = pricing.pricing.EU.premium
+        //   })
+        //   price = '€'
+        // }
+        else {
           const elements = document.querySelectorAll('.cost2')
           elements.forEach((element) => {
-            ;(element as HTMLElement).innerText = pricing.pricing.EU.standard
+            ;(element as HTMLElement).innerText = '99' //pricing.pricing.US.standard
           })
           const elements2 = document.querySelectorAll('.cost3')
           elements2.forEach((element) => {
-            ;(element as HTMLElement).innerText = pricing.pricing.EU.premium
-          })
-          price = '€'
-        } else {
-          const elements = document.querySelectorAll('.cost2')
-          elements.forEach((element) => {
-            ;(element as HTMLElement).innerText = pricing.pricing.US.standard
-          })
-          const elements2 = document.querySelectorAll('.cost3')
-          elements2.forEach((element) => {
-            ;(element as HTMLElement).innerText = pricing.pricing.US.premium
+            ;(element as HTMLElement).innerText = '499' //pricing.pricing.US.premium
           })
           price = '$'
         }

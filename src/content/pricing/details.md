@@ -1,5 +1,4 @@
-<!-- ---
-free_tier:
+<!-- free_tier:
     plan_name: Free
     description: For Personal use
     point_1: AI ready python environment

@@ -32,7 +32,7 @@ owncloudplan:
       planname: Start up
       slogan: Launch your AI Startup today! For Organisations upto 5 users
       cost: 99
-      duration: per user/month
+      duration: per user /month
       button: Get Started
       prevplan: Everything included in Free, plus...
       feature1: Centralized connection  
@@ -61,7 +61,7 @@ owncloudplan:
       planname: Enterprise
       slogan: Security, compliance, and flexible deployment
       cost: 199
-      duration: per user/month
+      duration: per user /month
       button: Get Started
       prevplan: Everything included in Team, plus...
       feature1: Centralized connection  

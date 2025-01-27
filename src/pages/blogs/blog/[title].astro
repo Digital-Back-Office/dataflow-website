@@ -1,5 +1,5 @@
 ---
-import Bloglayout from '../../../layouts/Bloglayout.astro'
+import BlogLayout from '../../../layouts/BlogLayout.astro'
 import { posts } from '../../../content/Blog/data'
 
 export async function getStaticPaths() {
@@ -18,7 +18,7 @@ export async function getStaticPaths() {
 const { title } = Astro.params
 ---
 
-<Bloglayout title='Blog'>
+<BlogLayout title='Blog'>
   <section class='container py-5 mt-5 mb-md-2 mb-lg-3 mb-xl-4'>
     <!-- Breadcrumb -->
     <nav aria-label='breadcrumb'>
@@ -255,4 +255,4 @@ const { title } = Astro.params
       </div>
     </div>
   </section>
-</Bloglayout>
+</BlogLayout>

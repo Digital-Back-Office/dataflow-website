@@ -1,7 +1,7 @@
 ---
 import { getEntry } from 'astro:content'
 
-const Data = await getEntry('ManageYourData', 'manageyourdata')
+const Data = await getEntry('features', 'manage-your-data')
 const data = Data.data.section3
 const button = Data.data.button
 import Imagecard from './Imagecard.astro'

@@ -1,7 +1,7 @@
 ---
 import { getEntry } from 'astro:content'
 
-const Data = await getEntry('Home', 'home')
+const Data = await getEntry('home', 'home')
 const data = Data.data.Seventy
 ---
 
@@ -9,7 +9,9 @@ const data = Data.data.Seventy
   <p class='text-3calc font-extrabold leading-none bg-fixed-text text-center'>
     {data.title}
   </p>
-  <p class='text-2calc max-sm:text-1calc max-sm:mt-4 font-bold  text-[#364152] text-center tracking-wider'>
+  <p
+    class='text-2calc max-sm:text-1calc max-sm:mt-4 font-bold text-[#364152] text-center tracking-wider'
+  >
     {data.description}
   </p>
 </div>

@@ -2,7 +2,7 @@
 import Animationsandclock from '../comman/Animationsandclock.astro'
 import { getEntry } from 'astro:content'
 
-const Data = await getEntry('Home', 'home')
+const Data = await getEntry('home', 'home')
 const hero = Data.data.hero
 ---
 

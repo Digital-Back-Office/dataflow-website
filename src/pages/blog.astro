@@ -1,5 +1,5 @@
 ---
-import Bloglayout from '../layouts/Bloglayout.astro'
+import BlogLayout from '../layouts/BlogLayout.astro'
 import { posts } from '../content/Blog/data'
 let updatedposts = posts || []
 import BlogGrid from '../components/blog/BlogGrid.astro'
@@ -20,7 +20,7 @@ import BlogGrid from '../components/blog/BlogGrid.astro'
   }
 </style>
 
-<Bloglayout title='Blog'>
+<BlogLayout title='Blog'>
   <div class='px-[15%]'>
     <!-- Breadcrumb -->
     <nav aria-label='breadcrumb'>
@@ -72,8 +72,9 @@ import BlogGrid from '../components/blog/BlogGrid.astro'
           <div class='text-center min-h-[100px]'>
             <h2 class='text-xl '>No posts found</h2>
           </div>
+        ) : (
+          <BlogGrid updatedposts={updatedposts} />
         )
-        : <BlogGrid updatedposts={updatedposts} />
       }
     </div>
 
@@ -285,7 +286,7 @@ import BlogGrid from '../components/blog/BlogGrid.astro'
       </div>
     </div>
   </section>
-</Bloglayout>
+</BlogLayout>
 
 <script>
   import { posts } from '../content/Blog/data'

@@ -2,7 +2,7 @@
 import Membercard from '../Company/Membercard.astro'
 import { getEntry } from 'astro:content'
 
-const Data = await getEntry('Allmembers', 'allmember')
+const Data = await getEntry('all-members', 'all-members')
 const data = Data.data
 
 const { photo, description, position, name } = Astro.props

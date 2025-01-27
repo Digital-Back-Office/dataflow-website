@@ -2,7 +2,7 @@
 import { getEntry } from 'astro:content'
 import Animatecard from './Animatecard.astro'
 import Card from './Card.astro'
-const Data = await getEntry('RunDataAnyCloud', 'data')
+const Data = await getEntry('features', 'run-data-on-any-cloud')
 const data = Data.data.Section2
 const button = Data.data.button1
 ---
@@ -13,7 +13,7 @@ const button = Data.data.button1
     <p class='w-[90%] max-sm:w-full text-lg text-textblack'>
       {data.description}
     </p>
-    <a href='/start-free-trail'>
+    <a href='/StartFreeTrail'>
       <button
         class='custom-button bg-primary hover:bg-[#30baba] px-3 py-2 duration-700 text-white rounded-lg shadow-md flex text-base items-center gap-x-2 mt-14'
         style='font-family: Roboto;'

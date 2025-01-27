@@ -1,8 +1,28 @@
 ---
-const { feature } = Astro.props
+const { feature, apps } = Astro.props
 ---
 
-<div class='flex items-center gap-x-3 mb-4'>
-  <img src='/assets/images/rightsidearrow.png' class='w-5 h-5' />
-  <p class='text-base text-textblack'>{feature}</p>
+<div class='mb-4'>
+  <div class='flex items-center gap-x-1'>
+    <img src='/assets/icons/icon-tick-primary.svg' class='size-5' />
+    <p class='text-sm text-textblack'>{feature}</p>
+  </div>
+  {
+    apps && (
+      <div>
+        {apps.map((app) => (
+          <div class='pl-10 pt-[6px]'>
+            <p class='text-xs leading-tight text-textblack/90'>
+              <span class='mr-[1px] '>&#8226;</span>
+              <span>{app}</span>
+            </p>
+          </div>
+        ))}
+        <div class='pl-10 pt-[5px]'>
+          <p class='text-xs leading-tight text-textblack/90'>and more..</p>
+        </div>
+      </div>
+    )
+  }
 </div>
+<!-- • -->

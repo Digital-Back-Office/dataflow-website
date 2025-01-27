@@ -1,8 +1,8 @@
 ---
 header:
     nav1: Why Dataflow?
-    nav2: Pricing
-    nav3: Learn
+    nav2: Apps
+    nav3: Pricing
     nav4: Company
     nav5: Blog
     nav6: Docs
@@ -22,7 +22,7 @@ footer:
     section1:
         link1: Why Dataflow?
         link2: Pricing
-        link3: Learn
+        link3: Apps
         link4: Company
         link5: Blog
         link6: Docs

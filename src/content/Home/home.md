@@ -21,11 +21,11 @@ Section1:
 
 Section2:
   title: Manage your data, connection across tools
-  description: Create and reuse connections across all your tools and platforms with ease. You can quickly deploy them across multiple applications, reducing setup time and minimizing errors.  This streamlined approach enhances efficiency, allowing yoyou to focus on leveraging your data and systems to their fullest potential.
+  description: Create and reuse connections across all your tools and platforms with ease. You can quickly deploy them across multiple applications, reducing setup time and minimizing errors.  This streamlined approach enhances efficiency, allowing you to focus on leveraging your data and systems to their fullest potential.
 
 Section3:
   title: Say goodbye to Python dependency hell
-  description: No more struggling with conflicting libraries or version issues—just a smooth, hassle-free experience that lets you focus on coding and innovation..
+  description: No more struggling with conflicting libraries or version issues—just a smooth, hassle-free experience that lets you focus on coding and innovation.
 
 Seventy:
   title: 70% increase

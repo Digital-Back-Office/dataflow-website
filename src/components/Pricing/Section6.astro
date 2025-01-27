@@ -11,6 +11,7 @@ const faqContent = FAQContent as unknown as FAQContentType
 
 let heading = faqContent.heading
 let faqs = faqContent.faqs
+
 ---
 
 <style>
@@ -37,7 +38,7 @@ let faqs = faqContent.faqs
 </style>
 
 <div
-  class='flex max-md:flex-col max-md:items-center gap-20 w-full justify-center py-20 min-h-screen'
+  class='flex max-md:flex-col max-md:items-center gap-20 max-sm:gap-5 w-full justify-center py-20 min-h-[600px]'
 >
   <div class='mt-8 flex flex-col gap-4 max-sm:gap-2 p-2'>
     <p class='text-2calc font-bold text-textblack'>
@@ -46,12 +47,12 @@ let faqs = faqContent.faqs
     <p>Feel free to reach out to us for more doubts</p>
     <a
       href='/Contact-us'
-      class='p-2 px-3 w-max font-semibold rounded-lg text-sm bg-[#30baba] text-white mt-4'
+      class='p-2 px-3 w-max font-semibold rounded-lg text-sm bg-primary hover:bg-primaryHover duration-300 text-white mt-4'
     >
       Contact Us
     </a>
   </div>
-  <div id='faq-container' class='w-[50%] max-sm:w-full max-sm:px-4 m-4'>
+  <div id='faq-container' class='w-[50%] max-sm:w-full mb-20 max-sm:px-4 m-4'>
     {
       faqs.map((faq, index) => (
         <div class='faq'>
@@ -64,7 +65,7 @@ let faqs = faqContent.faqs
             </span>
             <i class='icon fas fa-chevron-down mr-5 text-textblack' />
           </div>
-          <div class='faq-answer text-sm text-textblack shadow-lg  border-t-[1px] border-[#D3D3D3] p-4 py-6'>
+          <div class='faq-answer text-base text-textblack shadow-lg  border-t-[1px] border-[#D3D3D3] p-5 py-6'>
             {faq.answer}
           </div>
         </div>

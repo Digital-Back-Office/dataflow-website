@@ -4,36 +4,36 @@ const { option1, option2, title } = Astro.props
 
 <div class='w-4/5 flex justify-center plancontainer width95'>
   <div
-    class='w-1/4 h-[90px] border border-solid border-[#E6E9F5] flex flex-col justify-center px-5 width95 pricelistfeature'
+    class='w-1/4 h-[70px] border border-solid border-[#E6E9F5] flex flex-col justify-center px-5 width95 pricelistfeature'
   >
     <p class='text-lg text-textblack'>{title}</p>
   </div>
   {
     option1 === 'yes' ? (
-      <div class=' w-1/4 h-[90px] border border-solid border-[#E6E9F5] flex items-center justify-center px-5 planstatus2'>
+      <div class=' w-1/4 h-[70px] border border-solid border-[#E6E9F5] flex items-center justify-center px-5 planstatus2'>
         <img src='/assets/images/verifiedlogo.png' />
       </div>
     ) : option1 === 'no' ? (
-      <div class='w-1/4 h-[90px] border border-solid border-[#E6E9F5] flex items-center justify-center px-5 planstatus2'>
+      <div class='w-1/4 h-[70px] border border-solid border-[#E6E9F5] flex items-center justify-center px-5 planstatus2'>
         <p class='text-gray-500 text-3xl font-semibold'>-</p>
       </div>
     ) : (
-      <div class='w-1/4 h-[90px] border border-solid border-[#E6E9F5] flex items-center justify-center px-5 planstatus2'>
+      <div class='w-1/4 h-[70px] border border-solid border-[#E6E9F5] flex items-center justify-center px-5 planstatus2'>
         <p class='text-gray-500 text-lg font-semibold '>{option1}</p>
       </div>
     )
   }
   {
     option2 === 'yes' ? (
-      <div class=' w-1/4 h-[90px] border border-solid border-[#E6E9F5] flex items-center justify-center px-5 planstatus2'>
+      <div class=' w-1/4 h-[70px] border border-solid border-[#E6E9F5] flex items-center justify-center px-5 planstatus2'>
         <img src='/assets/images/verifiedlogo.png' />
       </div>
     ) : option2 === 'no' ? (
-      <div class='w-1/4 h-[90px] border border-solid border-[#E6E9F5] flex items-center justify-center px-5 planstatus2'>
+      <div class='w-1/4 h-[70px] border border-solid border-[#E6E9F5] flex items-center justify-center px-5 planstatus2'>
         <p class='text-gray-500 text-3xl font-semibold'>-</p>
       </div>
     ) : (
-      <div class='w-1/4 h-[90px] border border-solid border-[#E6E9F5] flex items-center justify-center px-5 planstatus2'>
+      <div class='w-1/4 h-[70px] border border-solid border-[#E6E9F5] flex items-center justify-center px-5 planstatus2'>
         <p class='text-gray-500 text-lg font-semibold '>{option2}</p>
       </div>
     )

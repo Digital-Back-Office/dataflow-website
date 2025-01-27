@@ -16,7 +16,7 @@ const data = Data.data.LearnSection
     class='responsive-container w-5/12 py-32 flex flex-col justify-center items-start'
   >
     <p
-      class='font-extrabold text-textPrimary text-5calc font-helvetica-neue leading-none mb-8 w-3/4'
+      class='font-extrabold text-textPrimary text-5calc font-helvetica-neue leading-none mb-8 w-3/4 max-sm:w-[90%] max-sm:text-left'
     >
       {data.title}
     </p>
@@ -62,9 +62,9 @@ const data = Data.data.LearnSection
         </p>
       </div>
     </div>
-    <a href='/best-in-class-data-tools'>
+    <a href='/Apps'>
       <button
-        class='custom-button text-white px-3 py-2 duration-700 bg-[#30BABA] rounded-lg shadow-md flex text-base items-center gap-x-2 mt-14'
+        class='custom-button text-white px-3 py-2 duration-400 bg-primary hover:bg-primaryHover rounded-lg shadow-md flex text-base items-center gap-x-2 mt-14'
       >
         {Data.data.ViewMoreButton}
         <img class='icon' src='/assets/images/arrowright.svg' />

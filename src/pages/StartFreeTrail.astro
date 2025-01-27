@@ -7,18 +7,18 @@ const data = Data.data
 
 <Layout title='Get Started'>
   <div
-    class='w-full min-h-screen bg-[#F8FAFC] flex justify-center items-start py-20'
+    class='w-full min-h-screen bg-[#F8FAFC] flex justify-center max-sm:flex-col items-start py-20'
   >
-    <div class='mt-[50px]'>
+    <div class='mt-[50px] max-sm:mt-0 max-sm:mb-6 max-sm:pl-8'>
       <h1 class='text-9calc font-black mb-10 text-textblack'>
         {data.title1}<br />{data.title2}
       </h1>
       <ul
         style='list-style-type: none;'
-        class='w-[85%] font-semibold tracking-wide'
+        class='w-[85%]  font-semibold tracking-wide'
       >
         <li class='text-base mb-4 text-textblack flex items-start gap-2'>
-          <span class='mt-[3px]'
+          <span class='mt-[3px] max-sm:mt-[6px]'
             ><img
               src='/assets/images/check-box-icon.png'
               alt='point'
@@ -27,24 +27,24 @@ const data = Data.data
           >{data.description[0]}
         </li>
         <li class='text-base mb-4 text-textblack flex items-start gap-2'>
-          <span class='mt-[3px]'
+          <span class='mt-[3px] max-sm:mt-[6px]'
             ><img src='/assets/images/check-box-icon.png' alt='point' /></span
           >{data.description[1]}
         </li>
         <li class='text-base mb-4 text-textblack flex items-start gap-2'>
-          <span class='mt-[3px]'
+          <span class='mt-[3px] max-sm:mt-[6px]'
             ><img src='/assets/images/check-box-icon.png' alt='point' /></span
           >{data.description[2]}
         </li>
         <li class='text-base mb-4 text-textblack flex items-start gap-2'>
-          <span class='mt-[3px]'
+          <span class='mt-[3px] max-sm:mt-[6px]'
             ><img src='/assets/images/check-box-icon.png' alt='point' /></span
           >{data.description[3]}
         </li>
       </ul>
     </div>
     <div
-      class='flip-card w-[580px] h-max ml-10 bg-white rounded-[30px] border-[#E0E0E0] border-[1px] p-8'
+      class='flip-card w-[580px] max-sm:w-[90%] h-max ml-10 max-sm:ml-4 bg-white rounded-[30px] border-[#E0E0E0] border-[1px] p-8 max-sm:p-4 max-sm:py-6'
     >
       <div class='flip-card-inner w-full h-full'>
         <div id='flip-card-front' class=''>
@@ -142,7 +142,7 @@ const data = Data.data
             <input type='hidden' name='entry.664159867' value='Get Started' />
             <button
               type='submit'
-              class='bottom-0 bg-primary hover:bg-primaryHover w-full h-[50px] justify-center duration-300 text-white font-bold rounded-lg shadow-md flex text-base items-center gap-x-2'
+              class='bottom-0 bg-primary hover:bg-primaryHover w-full h-[50px] max-sm:h-[40px] justify-center duration-300 text-white font-bold rounded-lg shadow-md flex text-base items-center gap-x-2'
               style='font-family: Roboto;'
             >
               Get Started

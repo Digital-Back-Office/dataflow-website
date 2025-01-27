@@ -1,27 +1,43 @@
 ---
-import { getEntry } from "astro:content";
+import { getEntry } from 'astro:content'
 
-const Data = await getEntry("Home", "home");
-const data = Data.data.Section1;
+const Data = await getEntry('Home', 'home')
+const data = Data.data.Section1
 ---
 
-<div class="responsive-container min-h-screen transition-all duration-1000 py-32 w-full bg-[#FBE2F0] flex md:flex-row flex-col items-center justify-center group hover:bg-[#D40F7D]">
-  <div class="content-container  md:w-2/6 w-full flex flex-col justify-center items-start px-3 py-4">
-    <h3 class="textphone transition-all duration-1000 ease-in-out text-2calc text-textblack font-bold mb-[5%] group-hover:text-white  w-4/5 " >
+<div
+  class='responsive-container min-h-screen transition-all duration-1000 py-32 w-full bg-[#FBE2F0] flex md:flex-row flex-col items-center justify-center group hover:bg-[#D40F7D]'
+>
+  <div
+    class='content-container md:w-2/6 w-full flex flex-col justify-center items-start px-3 py-4'
+  >
+    <h3
+      class='textphone transition-all duration-1000 ease-in-out text-2calc text-textblack font-bold mb-[5%] group-hover:text-white w-4/5 max-sm:pl-[10px]'
+    >
       {data.title}
     </h3>
-    <p class="textphone transition-all duration-1000 ease-in-out text-textblack text-lg group-hover:text-white w-full md:w-4/5 " >
+    <p
+      class='textphone transition-all duration-1000 ease-in-out text-textblack text-lg group-hover:text-white w-full md:w-4/5 max-sm:pl-[10px] '
+    >
       {data.description}
     </p>
-    <a href="/RunDataflowonanycloud">
-      <button class="custom-button2 transition-all duration-400 ease-in-out text-[#30BABA] flex items-center justify-center bg- text-base gap-x-1 mt-14 max-sm:mt-6 h-10 w-32 group-hover:bg-[#feecec] group-hover:shadow-md group-hover:rounded-lg " style="font-family: Roboto;">
+    <a href='/RunDataflowonanycloud'>
+      <button
+        class='custom-button2 transition-all duration-400 ease-in-out text-[#30BABA] flex items-center justify-center bg- text-base gap-x-1 mt-14 max-sm:mt-6 h-10 w-32 group-hover:bg-[#feecec] group-hover:shadow-md group-hover:rounded-lg'
+        style='font-family: Roboto;'
+      >
         {Data.data.LearnMoreBtn}
-        <img src="/assets/images/arrowright.svg" height="20px" width="20px">
+        <img src='/assets/images/arrowright.svg' height='20px' width='20px' />
       </button>
     </a>
   </div>
-  <div class="image-container  py-10 h-auto md:w-2/6 w-full flex flex-col justify-start items-center md:items-end">
-    <img src="/assets/images/runanycloud.png" class="h-[78%] w-[90%] transition-all duration-1000 ease-in-out group-hover:scale-125" />
+  <div
+    class='image-container py-10 h-auto md:w-2/6 w-full flex flex-col justify-start items-center md:items-end'
+  >
+    <img
+      src='/assets/images/runanycloud.png'
+      class='h-[78%] w-[90%] transition-all duration-1000 ease-in-out group-hover:scale-125'
+    />
   </div>
 </div>
 
@@ -33,7 +49,7 @@ const data = Data.data.Section1;
   @media (max-width: 500px) {
     .responsive-container {
       flex-direction: column-reverse;
-      
+
       padding-top: 90px;
       padding-bottom: 90px;
     }
@@ -45,7 +61,7 @@ const data = Data.data.Section1;
       width: 80%;
       margin-top: 20px;
     }
-    .textphone{
+    .textphone {
       width: 95%;
     }
   }

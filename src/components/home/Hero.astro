@@ -1,5 +1,5 @@
 ---
-import Animationsandclock from '../common/Animationsandclock.astro'
+import ClockAnimation from '../common/ClockAnimation.astro'
 import { getEntry } from 'astro:content'
 
 const Data = await getEntry('home', 'home')
@@ -29,7 +29,7 @@ const hero = Data.data.hero
       </a>
     </div>
     <div class='animations-container'>
-      <Animationsandclock />
+      <ClockAnimation />
     </div>
   </div>
 </div>

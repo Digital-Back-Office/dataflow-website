@@ -1,5 +1,5 @@
 ---
-import Membercard from '../Company/Membercard.astro'
+import MemberCard from '../Company/MemberCard.astro'
 import { getEntry } from 'astro:content'
 
 const Data = await getEntry('all-members', 'all-members')
@@ -16,7 +16,7 @@ const { photo, name, position, description } = Astro.props
       {description}
     </p>
   </div>
-  <Membercard photo={photo} name={name} position={position} />
+  <MemberCard photo={photo} name={name} position={position} />
 </div>
 <style>
   @media (max-width: 500px) {

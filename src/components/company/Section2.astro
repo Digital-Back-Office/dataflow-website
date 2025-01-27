@@ -3,7 +3,7 @@ import { getEntry } from 'astro:content'
 const Data = await getEntry('company', 'company')
 const data = Data.data.section2
 
-import Membercard from './Membercard.astro'
+import MemberCard from './MemberCard.astro'
 ---
 
 <div
@@ -36,43 +36,43 @@ import Membercard from './Membercard.astro'
   </div>
   <div class='flex flex-col items-between justity-between gap-y-14 max-md:pl-2'>
     <div class='w-full flex justify-center flex-wrap gap-x-10'>
-      <Membercard
+      <MemberCard
         photo='/assets/images/company/anurag-dbo.png'
         name='Anurag Jain'
         position='Founder'
       />
-      <Membercard
+      <MemberCard
         photo='/assets/images/company/dinesh-dbo.png'
         name='Dinesh'
         position='DevOps Engineer'
       />
     </div>
     <div class='w-full flex flex-wrap gap-x-10'>
-      <Membercard
+      <MemberCard
         photo='/assets/images/company/mageshkrishna-dbo.png'
         name='Magesh Krishna'
         position='Frontend Developer'
       />
-      <Membercard
+      <MemberCard
         photo='/assets/images/company/harigovind-dbo.png'
         name='Harigovind'
         position='Backend Developer'
       />
     </div>
     <div class='w-full flex justify-center flex-wrap gap-x-10'>
-      <Membercard
+      <MemberCard
         photo='/assets/images/company/gokulnath-dbo.png'
         name='Gokulnath'
         position='Frontend Developer'
       />
-      <Membercard
+      <MemberCard
         photo='/assets/images/company/aditya-dbo.png'
         name='Aditya'
         position='DevOps Engineer'
       />
     </div>
     <div class='w-full flex flex-wrap gap-x-10'>
-      <Membercard
+      <MemberCard
         photo='/assets/images/company/tejas-dbo.png'
         name='Tejas'
         position='UI/UX Designer'

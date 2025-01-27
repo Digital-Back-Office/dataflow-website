@@ -3,7 +3,7 @@ import { getEntry } from 'astro:content'
 const Data = await getEntry('features', 'python-dependency-hell')
 const data = Data.data
 const button = Data.data.button
-import Imagecard from '../manage-data-efficiently/Imagecard.astro'
+import ImageCard from '../manage-data-efficiently/ImageCard.astro'
 ---
 
 <div
@@ -29,19 +29,19 @@ import Imagecard from '../manage-data-efficiently/Imagecard.astro'
   <div
     class='w-2/5 img-container flex flex-row flex-wrap items-between justify-between max-md:my-10'
   >
-    <Imagecard
+    <ImageCard
       image='/assets/images/pythondatadependencyfeaturemage1.png'
       title={data.image1}
     />
-    <Imagecard
+    <ImageCard
       image='/assets/images/manageyourdatasection3image2.png'
       title={data.image2}
     />
-    <Imagecard
+    <ImageCard
       image='/assets/images/pythondatadependencyfeaturemage3.png'
       title={data.image3}
     />
-    <Imagecard
+    <ImageCard
       image='/assets/images/pythondatadependencyfeaturemage4.png'
       title={data.image4}
     />

@@ -1,9 +1,9 @@
 ---
 import Layout from '../layouts/Layout.astro'
-import TopSection from '../components/Learn/TopSection.astro'
+import TopSection from '../components/apps/TopSection.astro'
 
 import { getEntry } from 'astro:content'
-import LearnSection from '../components/Learn/LearnSection.astro'
+import LearnSection from '../components/apps/LearnSection.astro'
 
 const Data = await getEntry('apps', 'apps')
 const data1 = Data.data.section1.title

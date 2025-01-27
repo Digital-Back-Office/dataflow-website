@@ -1,11 +1,11 @@
 ---
 import Layout from '../layouts/Layout.astro'
-import TopSection from '../components/RunDataAnyCloud/TopSection.astro'
-import Section1 from '../components/RunDataAnyCloud/Section1.astro'
-import Section2 from '../components/RunDataAnyCloud/Section2.astro'
-import Section6 from '../components/RunDataAnyCloud/Section6.astro'
+import TopSection from '../components/features/run-data-on-any-cloud/TopSection.astro'
+import Section1 from '../components/features/run-data-on-any-cloud/Section1.astro'
+import Section2 from '../components/features/run-data-on-any-cloud/Section2.astro'
+import Section6 from '../components/features/run-data-on-any-cloud/Section6.astro'
 import { getEntry } from 'astro:content'
-import Section from '../components/RunDataAnyCloud/Section.astro'
+import Section from '../components/features/run-data-on-any-cloud/Section.astro'
 const Data = await getEntry('features', 'run-data-on-any-cloud')
 const data1 = Data.data.Section3
 const data2 = Data.data.Section4

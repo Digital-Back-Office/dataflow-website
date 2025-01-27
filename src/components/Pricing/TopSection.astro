@@ -7,11 +7,12 @@ const Data = await getEntry('pricing', 'pricing')
 const pricing = await getEntry('pricing', 'plancost')
 const pricingdata = JSON.stringify(pricing.data)
 const data = Data.data
-const owncloudplan1 = data.owncloudplan.plan1
-const owncloudplan2 = data.owncloudplan.plan2
-const owncloudplan3 = data.owncloudplan.plan3
-const datacloudplan1 = data.datacloudplans.plan1
-const datacloudplan2 = data.datacloudplans.plan2
+const owncloudplan1 = data.own_cloud_plan.plan_1
+const owncloudplan2 = data.own_cloud_plan.plan_2
+const owncloudplan3 = data.own_cloud_plan.plan_3
+const dataflow_cloud_plan_1 = data.dataflow_cloud_plan.plan_1
+const dataflow_cloud_plan_2 = data.dataflow_cloud_plan.plan_2
+const dataflow_cloud_plan_3 = data.dataflow_cloud_plan.custom_setup
 const planfeature1 = data.table1
 const planfeature2 = data.table2
 ---
@@ -213,8 +214,10 @@ const planfeature2 = data.table2
       class='w-[400px] max-sm:w-[90%] py-[25px] px-[15px] h-max flex flex-col items-center gap-4 bg-white rounded-[30px] drop-shadow-[0_15px_20px_rgba(0,0,0,0.1)]'
     >
       <div class='p-2 text-center'>
-        <p class='text-3xl font-bold'>Cloud Hosted</p>
-        <p class='text-sm mt-[2px] tracking-wider'>(Shared Infra)</p>
+        <p class='text-3xl font-bold'>{dataflow_cloud_plan_1.plan_name}</p>
+        <p class='text-sm mt-[2px] tracking-wider'>
+          {dataflow_cloud_plan_1.infra}
+        </p>
       </div>
       <div class='w-full'>
         <div class='flex justify-center items-start mt-[8px]'>
@@ -224,7 +227,8 @@ const planfeature2 = data.table2
           <p
             class='cost1 text-center text-8calc font-bold text-textblack leading-none'
           >
-            0 <br />
+            {dataflow_cloud_plan_1.cost}
+            <br />
             <span class='text-3xl leading-none'>+</span>
           </p>
         </div>
@@ -243,9 +247,12 @@ const planfeature2 = data.table2
                       class='currency-symbol font-normal text-xl text-[#57606A] leading-none pr-1 absolute top-[-5px] left-[-15px]'
                       >$</span
                     >
-                    0.99</span
+                    {dataflow_cloud_plan_1.instance_1.cost}</span
                   >
-                  <span class='text-textblack'>/hour Small</span>
+                  <span class='text-textblack'
+                    >{dataflow_cloud_plan_1.instance_1.duration}
+                    {dataflow_cloud_plan_1.instance_1.size}</span
+                  >
                 </p>
                 <div class='flex flex-col gap-1 pl-5 py-2'>
                   <p
@@ -255,7 +262,7 @@ const planfeature2 = data.table2
                       src='/assets/icons/icon-cpu.svg'
                       alt='vCPU'
                       class='size-[20px]'
-                    />2vCPU
+                    />{dataflow_cloud_plan_1.instance_1.cpu}
                   </p>
                   <p
                     class='text-lg font-semibold inline-flex gap-1 items-center'
@@ -264,7 +271,7 @@ const planfeature2 = data.table2
                       src='/assets/icons/icon-ram.svg'
                       alt='vCPU'
                       class='size-[20px]'
-                    />8 GiB
+                    />{dataflow_cloud_plan_1.instance_1.ram}
                   </p>
                 </div>
               </div>
@@ -280,9 +287,12 @@ const planfeature2 = data.table2
                       class='currency-symbol font-normal text-xl text-[#57606A] leading-none pr-1 absolute top-[-5px] left-[-15px]'
                       >$</span
                     >
-                    1.99</span
+                    {dataflow_cloud_plan_1.instance_2.cost}</span
                   >
-                  <span class='text-textblack'>/hour Medium</span>
+                  <span class='text-textblack'
+                    >{dataflow_cloud_plan_1.instance_2.duration}
+                    {dataflow_cloud_plan_1.instance_2.size}</span
+                  >
                 </p>
                 <div class='flex flex-col gap-1 pl-5 py-2'>
                   <p
@@ -292,7 +302,7 @@ const planfeature2 = data.table2
                       src='/assets/icons/icon-cpu.svg'
                       alt='vCPU'
                       class='size-[20px]'
-                    />4vCPU
+                    />{dataflow_cloud_plan_1.instance_2.cpu}
                   </p>
                   <p
                     class='text-lg font-semibold inline-flex gap-1 items-center'
@@ -301,7 +311,7 @@ const planfeature2 = data.table2
                       src='/assets/icons/icon-ram.svg'
                       alt='vCPU'
                       class='size-[20px]'
-                    />16 GiB
+                    />{dataflow_cloud_plan_1.instance_2.ram}
                   </p>
                 </div>
               </div>
@@ -317,9 +327,12 @@ const planfeature2 = data.table2
                       class='currency-symbol font-normal text-xl text-[#57606A] leading-none pr-1 absolute top-[-5px] left-[-15px]'
                       >$</span
                     >
-                    2.99</span
+                    {dataflow_cloud_plan_1.instance_3.cost}</span
                   >
-                  <span class='text-textblack'>/hour Large</span>
+                  <span class='text-textblack'
+                    >{dataflow_cloud_plan_1.instance_3.duration}
+                    {dataflow_cloud_plan_1.instance_3.size}</span
+                  >
                 </p>
                 <div class='flex flex-col gap-1 pl-5 py-2'>
                   <p
@@ -329,7 +342,7 @@ const planfeature2 = data.table2
                       src='/assets/icons/icon-cpu.svg'
                       alt='vCPU'
                       class='size-[20px]'
-                    />8vCPU
+                    />{dataflow_cloud_plan_1.instance_3.cpu}
                   </p>
                   <p
                     class='text-lg font-semibold inline-flex gap-1 items-center'
@@ -338,7 +351,7 @@ const planfeature2 = data.table2
                       src='/assets/icons/icon-ram.svg'
                       alt='vCPU'
                       class='size-[20px]'
-                    />32 GiB
+                    />{dataflow_cloud_plan_1.instance_3.ram}
                   </p>
                 </div>
               </div>
@@ -353,7 +366,7 @@ const planfeature2 = data.table2
           href='/contact-us'
           class='w-[90%] h-[40px] bg-primary hover:bg-primaryHover text-white flex justify-center items-center rounded-md'
         >
-          Contact Us</a
+          {dataflow_cloud_plan_1.button}</a
         >
       </div>
     </div>
@@ -363,8 +376,10 @@ const planfeature2 = data.table2
       class='w-[400px] max-sm:w-[90%] py-[25px] px-[15px] min-h-max flex flex-col items-center gap-5 bg-white rounded-[30px] drop-shadow-[0_15px_20px_rgba(0,0,0,0.1)]'
     >
       <div class='p-2 text-center'>
-        <p class='text-3xl font-bold'>Standard</p>
-        <p class='text-sm mt-[2px] tracking-wider'>(Dedicated Infra)</p>
+        <p class='text-3xl font-bold'>{dataflow_cloud_plan_2.plan_name}</p>
+        <p class='text-sm mt-[2px] tracking-wider'>
+          {dataflow_cloud_plan_2.infra}
+        </p>
       </div>
       <div class='w-full'>
         <div class='flex justify-center items-start mt-[8px]'>
@@ -374,7 +389,8 @@ const planfeature2 = data.table2
           <p
             class='cost1 text-center text-8calc font-bold text-textblack leading-none'
           >
-            499 <br />
+            {dataflow_cloud_plan_2.cost}
+            <br />
             <span class='text-3xl leading-none'>+</span>
           </p>
         </div>
@@ -393,9 +409,12 @@ const planfeature2 = data.table2
                       class='currency-symbol font-normal text-xl text-[#57606A] leading-none pr-1 absolute top-[-5px] left-[-15px]'
                       >$</span
                     >
-                    0.49</span
+                    {dataflow_cloud_plan_2.instance_1.cost}</span
                   >
-                  <span class='text-textblack'>/hour Small</span>
+                  <span class='text-textblack'
+                    >{dataflow_cloud_plan_2.instance_1.duration}
+                    {dataflow_cloud_plan_2.instance_1.size}</span
+                  >
                 </p>
                 <div class='flex flex-col gap-1 pl-5 py-2'>
                   <p
@@ -405,7 +424,7 @@ const planfeature2 = data.table2
                       src='/assets/icons/icon-cpu.svg'
                       alt='vCPU'
                       class='size-[20px]'
-                    />2vCPU
+                    />{dataflow_cloud_plan_2.instance_1.cpu}
                   </p>
                   <p
                     class='text-lg font-semibold inline-flex gap-1 items-center'
@@ -414,7 +433,7 @@ const planfeature2 = data.table2
                       src='/assets/icons/icon-ram.svg'
                       alt='vCPU'
                       class='size-[20px]'
-                    />8 GiB
+                    />{dataflow_cloud_plan_2.instance_1.ram}
                   </p>
                 </div>
               </div>
@@ -430,9 +449,12 @@ const planfeature2 = data.table2
                       class='currency-symbol font-normal text-xl text-[#57606A] leading-none pr-1 absolute top-[-5px] left-[-15px]'
                       >$</span
                     >
-                    0.99</span
+                    {dataflow_cloud_plan_2.instance_2.cost}</span
                   >
-                  <span class='text-textblack'>/hour Medium</span>
+                  <span class='text-textblack'
+                    >{dataflow_cloud_plan_2.instance_2.duration}
+                    {dataflow_cloud_plan_2.instance_2.size}</span
+                  >
                 </p>
                 <div class='flex flex-col gap-1 pl-5 py-2'>
                   <p
@@ -442,7 +464,7 @@ const planfeature2 = data.table2
                       src='/assets/icons/icon-cpu.svg'
                       alt='vCPU'
                       class='size-[20px]'
-                    />4vCPU
+                    />{dataflow_cloud_plan_2.instance_2.cpu}
                   </p>
                   <p
                     class='text-lg font-semibold inline-flex gap-1 items-center'
@@ -451,7 +473,7 @@ const planfeature2 = data.table2
                       src='/assets/icons/icon-ram.svg'
                       alt='vCPU'
                       class='size-[20px]'
-                    />16 GiB
+                    />{dataflow_cloud_plan_2.instance_2.ram}
                   </p>
                 </div>
               </div>
@@ -467,9 +489,12 @@ const planfeature2 = data.table2
                       class='currency-symbol font-normal text-xl text-[#57606A] leading-none pr-1 absolute top-[-5px] left-[-15px]'
                       >$</span
                     >
-                    1.99</span
+                    {dataflow_cloud_plan_2.instance_3.cost}</span
                   >
-                  <span class='text-textblack'>/hour Large</span>
+                  <span class='text-textblack'
+                    >{dataflow_cloud_plan_2.instance_3.duration}
+                    {dataflow_cloud_plan_2.instance_3.size}</span
+                  >
                 </p>
                 <div class='flex flex-col gap-1 pl-5 py-2'>
                   <p
@@ -479,7 +504,7 @@ const planfeature2 = data.table2
                       src='/assets/icons/icon-cpu.svg'
                       alt='vCPU'
                       class='size-[20px]'
-                    />8vCPU
+                    />{dataflow_cloud_plan_2.instance_3.cpu}
                   </p>
                   <p
                     class='text-lg font-semibold inline-flex gap-1 items-center'
@@ -488,7 +513,7 @@ const planfeature2 = data.table2
                       src='/assets/icons/icon-ram.svg'
                       alt='vCPU'
                       class='size-[20px]'
-                    />32 GiB
+                    />{dataflow_cloud_plan_2.instance_3.ram}
                   </p>
                 </div>
               </div>
@@ -503,7 +528,7 @@ const planfeature2 = data.table2
           href='/contact-us'
           class='w-[90%] h-[40px] bg-primary hover:bg-primaryHover text-white flex justify-center items-center rounded-md'
         >
-          Contact Us</a
+          {dataflow_cloud_plan_2.button}</a
         >
       </div>
     </div>
@@ -520,14 +545,15 @@ const planfeature2 = data.table2
         </p>
       </div>
       <div class='p-2 text-center'>
-        <p class='text-3xl font-bold'>Custom Setup</p>
+        <p class='text-3xl font-bold'>{dataflow_cloud_plan_3.plan_name}</p>
       </div>
 
       <div class='w-[90%] flex flex-col gap-[3px] mt-4'>
-        <FeatureCard feature='Transparent pricing' />
-        <FeatureCard feature='Bespoke licensing cost' />
-        <FeatureCard feature='Flexible Support pricing' />
-        <FeatureCard feature='Cloud cost on actuals' />
+        {
+          dataflow_cloud_plan_3.features.map((feature) => (
+            <FeatureCard feature={feature} />
+          ))
+        }
       </div>
       <!-- Contact Us -->
       <div class='w-full flex justify-center'>
@@ -535,7 +561,7 @@ const planfeature2 = data.table2
           href='/contact-us'
           class='w-[90%] h-[40px] bg-primary hover:bg-primaryHover text-white flex justify-center items-center rounded-md'
         >
-          Contact Us</a
+          {dataflow_cloud_plan_3.button}</a
         >
       </div>
     </div>

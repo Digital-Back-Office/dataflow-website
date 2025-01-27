@@ -1,7 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro'
 import { getEntry } from 'astro:content'
-const Data = await getEntry('comman', 'getstartedform')
+const Data = await getEntry('common', 'start-free-trail')
 const data = Data.data
 ---
 
@@ -11,9 +11,9 @@ const data = Data.data
     class='w-full relative min-h-screen bg-[#F8FAFC] flex justify-center max-sm:flex-col items-start py-20'
   >
     <div
-      class='absolute top-10 left-10 max-sm:left-5 max-sm:top-5 size-14 max-sm:size-10 '
+      class='absolute top-10 left-10 max-sm:left-5 max-sm:top-5 size-14 max-sm:size-10'
     >
-      <a href='/Pricing'>
+      <a href='/pricing'>
         <img src='/assets//icons/icon-previous.svg' alt='back' />
       </a>
     </div>

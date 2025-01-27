@@ -1,6 +1,6 @@
 ---
 import BlogLayout from '../../layouts/BlogLayout.astro'
-import { posts } from '../../content/Blog/data'
+import { posts } from '../../content/blog/data'
 let updatedposts = posts || []
 import BlogGrid from '../../components/blog/BlogGrid.astro'
 
@@ -208,7 +208,7 @@ export const getStaticPaths = () => {
 </BlogLayout>
 
 <script>
-  import { posts } from '../../content/Blog/data'
+  import { posts } from '../../content/blog/data'
 
   // Ensure this script runs after the DOM is fully loaded
   document.addEventListener('DOMContentLoaded', () => {

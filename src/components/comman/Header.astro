@@ -1,6 +1,6 @@
 ---
 import { getEntry } from 'astro:content'
-const Data = await getEntry('comman', 'footerheader')
+const Data = await getEntry('common', 'header-footer')
 const header = Data.data.header
 const { pagename } = Astro.props
 const docsUrl = import.meta.env.VITE_DOCS_URL

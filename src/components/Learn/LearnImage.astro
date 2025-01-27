@@ -10,7 +10,7 @@ export interface Props {
 const { title, image1, image2, logo, link } = Astro.props
 import { getEntry } from 'astro:content'
 
-const Data = await getEntry('learn', 'learn')
+const Data = await getEntry('apps', 'apps')
 const button = Data.data.button
 ---
 
@@ -31,17 +31,17 @@ const button = Data.data.button
   <div
     class='w-full md:w-2/5 h-full flex flex-col items-center md:items-start justify-center pl-5 md:pl-10 pr-5 md:pr-[8%] overflow-hidden'
   >
-    <div class=' mb-10 '>
+    <div class='mb-10'>
       <img src={logo} alt='Logo' />
     </div>
     <p
-      class=' text-calc font-bold text-center md:text-start text-textblack w-full md:w-4/5 mb-5 md:mb-10 '
+      class='text-calc font-bold text-center md:text-start text-textblack w-full md:w-4/5 mb-5 md:mb-10'
     >
       {title}
     </p>
     <a href={link} target='_blank'>
       <button
-        class=' custom-button bg-white px-3 py-2 mb-2 duration-300 text-[#30BABA]  rounded-lg shadow-md flex text-base items-center gap-x-2 hover:-translate-y-1'
+        class='custom-button bg-white px-3 py-2 mb-2 duration-300 text-[#30BABA] rounded-lg shadow-md flex text-base items-center gap-x-2 hover:-translate-y-1'
         style='font-family: Roboto;'
       >
         {button}
@@ -175,7 +175,6 @@ const button = Data.data.button
           threshold: 0.5
         }
       )
-
     })
   })
 </script>

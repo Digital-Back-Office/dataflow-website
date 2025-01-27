@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
-import { testimonials } from '../../content/Home/testimonials.mdx'
-import { title } from '../../content/Home/testimonials.mdx'
+import { testimonials } from '../../content/home/testimonials.mdx'
+import { title } from '../../content/home/testimonials.mdx'
 
 function Testimonial() {
   const [currentIndex, setCurrentIndex] = useState(0)

@@ -5,7 +5,7 @@ import TopSection from '../components/Learn/TopSection.astro'
 import { getEntry } from 'astro:content'
 import LearnSection from '../components/Learn/LearnSection.astro'
 
-const Data = await getEntry('learn', 'learn')
+const Data = await getEntry('apps', 'apps')
 const data1 = Data.data.section1.title
 const data2 = Data.data.section2.title
 const data3 = Data.data.section3.title

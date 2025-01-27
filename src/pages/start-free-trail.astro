@@ -1,7 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro'
 import { getEntry } from 'astro:content'
-const Data = await getEntry('comman', 'getstartedform')
+const Data = await getEntry('common', 'start-free-trail')
 const data = Data.data
 ---
 
@@ -15,7 +15,7 @@ const data = Data.data
       </h1>
       <ul
         style='list-style-type: none;'
-        class='w-[85%]  font-semibold tracking-wide'
+        class='w-[85%] font-semibold tracking-wide'
       >
         <li class='text-base mb-4 text-textblack flex items-start gap-2'>
           <span class='mt-[3px] max-sm:mt-[6px]'
@@ -240,7 +240,7 @@ const data = Data.data
   textarea::placeholder {
     font-size: 14px;
   }
-  
+
   label {
     margin-bottom: 2px;
   }

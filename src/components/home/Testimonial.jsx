@@ -1,27 +1,29 @@
-import React, { useState, useEffect } from 'react';
-import {testimonials} from "../../content/Home/testimonials.mdx"
-import {title} from "../../content/Home/testimonials.mdx"
+import React, { useState, useEffect } from 'react'
+import { testimonials } from '../../content/home/testimonials.mdx'
+import { title } from '../../content/home/testimonials.mdx'
 
 function Testimonial() {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [fadeClass, setFadeClass] = useState('');
+  const [currentIndex, setCurrentIndex] = useState(0)
+  const [fadeClass, setFadeClass] = useState('')
 
   useEffect(() => {
-    if(testimonials.length > 1) {
-    setFadeClass('fade-in-right');
-    const timeout = setTimeout(() => setFadeClass(''), 500);
-    
-    return () => clearTimeout(timeout);
+    if (testimonials.length > 1) {
+      setFadeClass('fade-in-right')
+      const timeout = setTimeout(() => setFadeClass(''), 500)
+
+      return () => clearTimeout(timeout)
     }
-  }, [currentIndex]);
+  }, [currentIndex])
 
   const nextTestimonial = () => {
-    setCurrentIndex((currentIndex + 1) % testimonials.length);
-  };
+    setCurrentIndex((currentIndex + 1) % testimonials.length)
+  }
 
   const prevTestimonial = () => {
-    setCurrentIndex((currentIndex - 1 + testimonials.length) % testimonials.length);
-  };
+    setCurrentIndex(
+      (currentIndex - 1 + testimonials.length) % testimonials.length
+    )
+  }
 
   return (
     <div className='overflow-x-hidden'>
@@ -128,4 +130,4 @@ function Testimonial() {
   )
 }
 
-export default Testimonial;
+export default Testimonial

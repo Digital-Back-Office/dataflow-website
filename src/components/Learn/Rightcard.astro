@@ -10,7 +10,7 @@ export interface Props {
 const { title, image1, image2, logo, link } = Astro.props
 import { getEntry } from 'astro:content'
 
-const Data = await getEntry('learn', 'learn')
+const Data = await getEntry('apps', 'apps')
 const button = Data.data.button
 ---
 

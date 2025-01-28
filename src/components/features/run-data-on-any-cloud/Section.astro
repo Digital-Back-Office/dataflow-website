@@ -29,11 +29,11 @@ const { title, image, logo, link, mirror } = Astro.props
     <img src={image} alt='' class='w-max max-h-[500px]' />
   </div>
   <div
-    class={`flex-[0.5] max-sm:py-10 h-full flex flex-col max-sm:items-center gap-10 ${!mirror && 'pl-[7%] max-sm:pl-0'}`}
+    class={`flex-[0.5] max-sm:py-10 h-full flex flex-col max-sm:items-center gap-10 max-sm:gap-6 ${!mirror && 'pl-[7%] max-sm:pl-0'}`}
   >
     <img src={logo} alt='airflow' class='h-[60px] max-sm:h-[40px] w-max' />
     <p
-      class='text-4xl max-sm:text-3xl font-bold w-[80%] leading-tight text-[#303030]'
+      class='text-4xl max-sm:text-2xl font-bold w-[80%] max-sm:w-full leading-tight text-[#303030]'
     >
       {title}
     </p>

@@ -85,13 +85,13 @@ const docsUrl = import.meta.env.VITE_DOCS_URL
   <div class='hidden md:flex items-center gap-[6px]'>
     <a href='/start-free-trail'>
       <button
-        class='px-[16px] py-[8px] hover:bg-[#3AC4C4] text-white rounded-md text-sm font-bold tracking-wide'
+        class='px-[16px] py-[8px] text-nowrap hover:bg-[#3AC4C4] text-white rounded-md text-sm font-bold tracking-wide'
         >{header.button_1}</button
       >
     </a>
     <a href='/book-demo'>
       <button
-        class='px-[16px] py-[8px] bg-white hover:bg-[#f9f9f9] rounded-md text-sm font-bold tracking-wide shadow-md text-[#30BABA]'
+        class='px-[16px] py-[8px] text-nowrap bg-white hover:bg-[#f9f9f9] rounded-md text-sm font-bold tracking-wide shadow-md text-[#30BABA]'
         >{header.button_2}</button
       >
     </a>
@@ -210,7 +210,7 @@ const docsUrl = import.meta.env.VITE_DOCS_URL
     const mobileMenu = document.getElementById('mobileMenu')
     const closeMenuButton = document.getElementById('closeMenuButton')
     const pathname = document.getElementById('pathname').innerText.trim()
-    const navElement = document.querySelector(`#${pathname || 'dataflow' }`)
+    const navElement = document.querySelector(`#${pathname || 'dataflow'}`)
 
     if (navElement) {
       navElement.classList.remove('border-transparent')

@@ -13,20 +13,18 @@ const data = Data.data
       class='formcontainer w-[75%] flex items-center justify-center gap-12 max-sm:gap-6 p-10 max-sm:p-5 bg-white rounded-3xl border-[1px] border-[#E0E0E0]'
     >
       <div class='titlecontainer flex flex-col items-start justify-start'>
+        <img
+          src='/assets/images/contact-us-illustration.svg'
+          class='w-[320px] max-sm:w-[90%] mb-8 self-center max-md:mt-10'
+        />
         <h1
           class='text-6xl max-sm:text-4xl max-sm:text-left font-bold text-textblack mb-6 max-sm:mb-4 w-max'
         >
           {data.title}
         </h1>
-        <p
-          class='text-sm w-[320px] max-sm:w-[250px] mb-6 text-textblack'
-        >
+        <p class='text-sm w-[320px] max-sm:w-[250px] mb-6 text-textblack'>
           {data.description}
         </p>
-        <img
-          src='/assets/images/contactusimage.png'
-          class='w-[300px] max-sm:w-full'
-        />
       </div>
       <div
         class='colcontainer w-5/6 max-w-[600px] flex flex-col items-center justify-center rounded-2xl elevation-2'
@@ -204,9 +202,9 @@ const data = Data.data
     accent-color: rgb(0, 164, 156);
   }
 
-  @media (max-width: 650px) {
+  @media (max-width: 900px) {
     .formcontainer {
-      width: 100%;
+      width: 80%;
       flex-direction: column;
       align-items: center;
       justify-items: center;
@@ -214,9 +212,12 @@ const data = Data.data
       padding-right: 10px;
       height: auto;
     }
-    /* .titlecontainer {
-      align-items: center;
-    } */
+  }
+
+  @media (max-width: 650px) {
+    .formcontainer {
+      width: 100%;
+    }
     .container-child-1 {
       width: 100%;
     }

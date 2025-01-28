@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { testimonials } from '../../content/home/testimonials.mdx'
 import { title } from '../../content/home/testimonials.mdx'
 
@@ -73,7 +73,6 @@ function Testimonial() {
     }
     
   }
-              
             `}
           </style>
           <img src='/assets/images/qoutes.png' className='mb-2' alt='quote' />

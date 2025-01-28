@@ -1,0 +1,56 @@
+---
+import LeftSection from '../components/all-members/LeftSection.astro'
+import RightSection from '../components/all-members/RightSection.astro'
+import TopSection from '../components/all-members/TopSection.astro'
+import Layout from '../layouts/Layout.astro'
+
+const desc = `Nick Black is our creative web designer, dedicated to crafting visually stunning and user-friendly interfaces for Dataflow. With a keen eye for design and a passion for enhancing user experiences, Nick transforms complex ideas into intuitive, engaging web solutions. His expertise in design principles and user interface development ensures that our platform is not only functional but also aesthetically pleasing.
+  With a background in graphic design and a love for all things digital, Nick continually explores new trends and technologies to keep Dataflow’s web presence fresh and cutting-edge. His commitment to excellence and innovation makes him a vital part of our team, helping to shape the visual identity and user experience of our products.
+  `
+---
+
+<Layout title='Data Flow Members'>
+  <TopSection />
+  <LeftSection
+    photo='/assets/images/company/anurag-dbo.png'
+    name={'Anurag Jain'}
+    position='Founder'
+    description={desc}
+  />
+  <RightSection
+    photo='/assets/images/company/dinesh-dbo.png'
+    name={'Dinesh Kumar'}
+    position='DevOps Engineer'
+    description={desc}
+  />
+  <LeftSection
+    photo='/assets/images/company/mageshkrishna-dbo.png'
+    name={'Magesh Krishna'}
+    position='Frontend Developer'
+    description={desc}
+  />
+  <RightSection
+    photo='/assets/images/company/harigovind-dbo.png'
+    name={'Harigovind'}
+    position='Backend Developer'
+    description={desc}
+  />
+  <LeftSection
+    photo='/assets/images/company/gokulnath-dbo.png'
+    name={'Gokulnath'}
+    position='Frontend Developer'
+    description={desc}
+  />
+  <RightSection
+    photo='/assets/images/company/aditya-dbo.png'
+    name={'Aditya Dahake'}
+    position='DevOps Engineer'
+    description={desc}
+  />
+  <LeftSection
+    photo='/assets/images/company/tejas-dbo.png'
+    name={'Tejas'}
+    position='UI/UX Designer'
+    description={desc}
+  />
+</Layout>

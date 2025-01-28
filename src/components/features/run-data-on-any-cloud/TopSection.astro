@@ -1,0 +1,168 @@
+---
+import { getEntry } from 'astro:content'
+
+const Data = await getEntry('features', 'run-data-on-any-cloud')
+const data = Data.data.TopSection
+const button = Data.data.button1
+---
+
+<div
+  class='container-top min-h-screen w-full py-10 pt-16 flex items-center justify-center'
+>
+  <div class='w-2/5 flex flex-col gap-6 max-sm:w-[90%]'>
+    <h1
+      class='text-4xl max-sm:text-2xl leading-normal tracking-wide font-bold text-textblack'
+    >
+      {data.title}
+    </h1>
+    <p class='text-lg max-sm:text-sm w-11/12 text-textblack leading-tight'>
+      {data.description}
+    </p>
+    <a
+      href='/start-free-trail'
+      class='w-max bg-primary px-3 py-2 text-white rounded-lg shadow-md flex text-base items-center gap-x-2 hover:bg-[#0AA3A3]'
+    >
+      {button}
+      <img
+        class='invert brightness-0 size-[20px]'
+        src='/assets/images/arrowright.svg'
+      />
+    </a>
+  </div>
+  <div class='img-container max-sm:hidden w-2/5 bg-white h-auto'>
+    <img
+      src='/assets/images/runanycloud.png'
+      class='transition-all duration-400 ease-in-out group-hover:scale-125'
+    />
+  </div>
+</div>
+<div class='h-[200px] w-full flex justify-center items-center'>
+  <div
+    class='z-10 w-[70%] overflow-x-hidden h-max flex items-center justify-center relative'
+  >
+    <!-- Infinite Scrolling effect -->
+    <div
+      class='h-full w-24 max-sm:w-12 bg-gradient-to-r from-white to-white/10 absolute top-0 left-0 z-40'
+    >
+    </div>
+    <div
+      class='h-full w-24 max-sm:w-12 bg-gradient-to-r to-white from-white/10 absolute top-0 right-0 z-40'
+    >
+    </div>
+
+    <!-- Company logos -->
+    <div class='scroll imgBox z-0' style='--time: 20s'>
+      <div class='flex items-center gap-3'>
+        <img src='/assets/images/awslogo.png' alt='Logo' />
+        <img src='/assets/images/googlecloudlogo.png' alt='Logo' />
+        <img src='/assets/images/snowflake-company.png' alt='Logo' />
+        <img src='/assets/images/awslogo.png' alt='Logo' />
+        <img src='/assets/images/googlecloudlogo.png' alt='Logo' />
+        <img src='/assets/images/azurelogo.png' alt='Logo' />
+        <img src='/assets/images/snowflake-company.png' alt='Logo' />
+        <img src='/assets/images/awslogo.png' alt='Logo' />
+        <img src='/assets/images/googlecloudlogo.png' alt='Logo' />
+        <img src='/assets/images/snowflake-company.png' alt='Logo' />
+        <img src='/assets/images/azurelogo.png' alt='Logo' />
+        <img src='/assets/images/snowflake-company.png' alt='Logo' />
+        <img src='/assets/images/awslogo.png' alt='Logo' />
+        <img src='/assets/images/googlecloudlogo.png' alt='Logo' />
+        <img src='/assets/images/snowflake-company.png' alt='Logo' />
+        <img src='/assets/images/azurelogo.png' alt='Logo' />
+      </div>
+      <div class='flex items-center gap-3 ml-3'>
+        <img src='/assets/images/awslogo.png' alt='Logo' />
+        <img src='/assets/images/googlecloudlogo.png' alt='Logo' />
+        <img src='/assets/images/snowflake-company.png' alt='Logo' />
+        <img src='/assets/images/awslogo.png' alt='Logo' />
+        <img src='/assets/images/googlecloudlogo.png' alt='Logo' />
+        <img src='/assets/images/azurelogo.png' alt='Logo' />
+        <img src='/assets/images/snowflake-company.png' alt='Logo' />
+        <img src='/assets/images/awslogo.png' alt='Logo' />
+        <img src='/assets/images/googlecloudlogo.png' alt='Logo' />
+        <img src='/assets/images/snowflake-company.png' alt='Logo' />
+        <img src='/assets/images/azurelogo.png' alt='Logo' />
+        <img src='/assets/images/snowflake-company.png' alt='Logo' />
+        <img src='/assets/images/awslogo.png' alt='Logo' />
+        <img src='/assets/images/googlecloudlogo.png' alt='Logo' />
+        <img src='/assets/images/snowflake-company.png' alt='Logo' />
+        <img src='/assets/images/azurelogo.png' alt='Logo' />
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  @media (max-width: 440px) {
+    .container-top {
+      width: 100%;
+      height: auto;
+      padding-left: 15px;
+      padding-right: 15px;
+      padding-top: 30px;
+      padding-bottom: 30px;
+      flex-direction: column;
+    }
+  }
+
+  .button-img {
+    filter: brightness(0) invert(1);
+  }
+
+  .scroll {
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+  }
+
+  .scroll div {
+    white-space: nowrap;
+    animation: scroll var(--time) linear infinite;
+    /* animation-delay: calc(var(--time) * -1); */
+  }
+
+  .scroll img {
+    max-height: 60px;
+  }
+
+  /* .scroll div:nth-child(2) {
+    animation: scroll2 var(--time) linear infinite;
+    animation-delay: calc(var(--time) / -2);
+  } */
+
+  @keyframes scroll {
+    0% {
+      transform: translateX(0%);
+    }
+
+    100% {
+      transform: translateX(-90%);
+    }
+  }
+
+  @keyframes scroll2 {
+    0% {
+      transform: translateX(0);
+    }
+
+    100% {
+      transform: translateX(-200%);
+    }
+  }
+
+  .scroll div span:hover {
+    background: #3fd2f9;
+    cursor: pointer;
+  }
+
+  .imgBox div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .imgBox img {
+    max-width: 200px;
+    scale: 0.8;
+  }
+</style>

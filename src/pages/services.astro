@@ -1,0 +1,24 @@
+---
+import Leftsection from "../components/services/LeftSection.astro";
+import Rightsection from "../components/services/RightSection.astro";
+import TopSection from "../components/services/TopSection.astro";
+import Layout from "../layouts/Layout.astro";
+import { getEntry } from "astro:content";
+
+const Data = await getEntry("services", "services");
+let data = Data.data.topsection
+
+
+---
+
+<Layout title="Services">
+    <TopSection/>
+    <Rightsection data={Data.data.section1} image="/assets/images/servicesimages2.png" />
+    <Leftsection data={Data.data.section2} image="/assets/images/servicesimages3.png" />
+    <Rightsection data={Data.data.section3} image="/assets/images/servicesimages4.png" />
+    <Leftsection  data={Data.data.section4} image="/assets/images/servicesimages5.png" />
+    <Rightsection data={Data.data.section5} image="/assets/images/servicesimages6.png" />
+    <Leftsection  data={Data.data.section6} image="/assets/images/servicesimages7.png" />
+    <Rightsection data={Data.data.section7} image="/assets/images/servicesimages8.png" />
+
+</Layout>

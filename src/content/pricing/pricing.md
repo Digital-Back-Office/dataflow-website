@@ -4,19 +4,15 @@ description: Host on Your Own Cloud or Leverage Dataflow's Cloud
 hostown: Host on your own cloud
 hostdata: Host on dataflow cloud
 
-owncloudplan:
-   plan1:
-      suggestion: Simple Pack
+
+# HOST ON YOUR OWN CLOUD
+own_cloud_plan:
+   plan_1:
       planname: Free
       slogan: For Personal use
       cost: 0
       duration: per month
       button: Join for free
-      feature1: Centralized connection  
-      feature2: Jupyter 
-      feature3: Airflow 
-      feature4: ADT 
-      feature5: Dash app 
       feature_1: AI ready python environment
       feature_2: Unlimited shared data connections
       feature_3: Git integration
@@ -26,21 +22,13 @@ owncloudplan:
       feature_6: Self Install
       feature_7: Automatic security and version updates
       
-   plan2:
+   plan_2:
       suggestion: Recommended
       planname: Start up
       slogan: Launch your AI Startup today! For Organisations upto 5 users
       cost: 99
       duration: per user /month
       button: Get Started
-      prevplan: Everything included in Free, plus...
-      feature1: Centralized connection  
-      feature2: Jupyter 
-      feature3: Airflow 
-      feature4: ADT 
-      feature5: Dash app 
-      feature6: Required reviewers
-      feature7: Pages and Wikis 
       feature_1: AI ready python environment
       feature_2: Unlimited shared data connections
       feature_3: Git integration
@@ -49,20 +37,14 @@ owncloudplan:
       feature_5: Premium Support
       feature_6: Self Install
       feature_7: Automatic security and version updates
-      feature8: Environment deployment branches and secrets
-      addonshead: Featured add-ons
-      addon1: GitHub Copilot Access
-      addon2: Web-based support
 
-   plan3:
+   plan_3:
       suggestion: Most Popular
       planname: Enterprise
       slogan: Security, compliance, and flexible deployment
       cost: 199
       duration: per user /month
       button: Get Started
-      feature10: Pages and Wikis 
-      feature11: GitHub Connect
       feature_1: AI ready python environment
       feature_2: Unlimited shared data connections
       feature_3: Git integration
@@ -74,46 +56,66 @@ owncloudplan:
       feature_8: Enhanced Data Security
       feature_9: Custom server configuration
       feature_10: Full Admin Access
-      addonshead: Exclusive add-ons
-      addon1: GitHub Copilot Access
-      addon2: Web-based support
-
-datacloudplans:
-   plan1:
-      suggestion: Simple Pack
-      planname: Free
-      slogan: The basics for individuals and organizations
-      cost: 0
-      duration: 14 days free trail
-      button: Join for free
-      feature1: Setup cloud 
-      feature2: Data infrastructure
-      feature3: 100 prompts /hour
-      feature4: Consultation
-
-   plan2:
-      suggestion: Most Popular
-      planname: Premium
-      slogan: Security, compliance, and flexible deployment
-      message: For when your mission-critical software requires organization-wide security, compliance, and planning
-      button: Contact us for pricing
-      prevplan: Everything included in Team, plus...
-      feature1: Centralized connection  
-      feature2: Jupyter 
-      feature3: Airflow 
-      feature4: ADT 
-      feature5: Dash app 
-      feature6: Required reviewers
-      feature7: Setup cloud 
-      feature8: Data infrastructure
-      feature9: 100 prompts /hour
-      feature10: Consultation
-      feature11: Team Collaboration
-      addonshead: Exclusive add-ons
-      addon1: GitHub Copilot Access
-      addon2: Web-based support
+      
 
 heading: Compare Plan Features
+
+# HOST ON DATAFLOW CLOUD 
+dataflow_cloud_plan:
+   plan_1:
+      plan_name: Cloud Hosted
+      infra: (Shared Infra)
+      cost: 0
+      button: Contact Us
+      instance_1:
+         cost: 0.99
+         duration: /hour
+         size: Small
+         cpu: 2vCPU
+         ram: 8 GiB
+      instance_2:
+         cost: 1.99
+         duration: /hour
+         size: Medium
+         cpu: 4vCPU
+         ram: 16 GiB
+      instance_3:
+         cost: 2.99
+         duration: /hour
+         size: Large
+         cpu: 8vCPU
+         ram: 32 GiB
+
+   plan_2:
+      plan_name: Standard
+      infra: (Dedicated Infra)
+      cost: 499
+      button: Contact Us
+      instance_1:
+         cost: 0.49
+         duration: /hour
+         size: Small
+         cpu: 2vCPU
+         ram: 8 GiB
+      instance_2:
+         cost: 0.99
+         duration: /hour
+         size: Medium
+         cpu: 4vCPU
+         ram: 16 GiB
+      instance_3:
+         cost: 1.99
+         duration: /hour
+         size: Large
+         cpu: 8vCPU
+         ram: 32 GiB
+
+   custom_setup:
+      plan_name: Custom Setup
+      features: ["Transparent pricing", 'Bespoke licensing cost','Flexible Support pricing','Cloud cost on actuals']
+      button: Contact Us
+
+
 
 table1:
    tablehead1: 

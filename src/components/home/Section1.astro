@@ -1,7 +1,7 @@
 ---
 import { getEntry } from 'astro:content'
 
-const Data = await getEntry('Home', 'home')
+const Data = await getEntry('home', 'home')
 const data = Data.data.Section1
 ---
 
@@ -17,11 +17,11 @@ const data = Data.data.Section1
       {data.title}
     </h3>
     <p
-      class='textphone transition-all duration-1000 ease-in-out text-textblack text-lg group-hover:text-white w-full md:w-4/5 max-sm:pl-[10px] '
+      class='textphone transition-all duration-1000 ease-in-out text-textblack text-lg group-hover:text-white w-full md:w-4/5 max-sm:pl-[10px]'
     >
       {data.description}
     </p>
-    <a href='/RunDataflowonanycloud'>
+    <a href='/run-dataflow-on-any-cloud'>
       <button
         class='custom-button2 transition-all duration-400 ease-in-out text-[#30BABA] flex items-center justify-center bg- text-base gap-x-1 mt-14 max-sm:mt-6 h-10 w-32 group-hover:bg-[#feecec] group-hover:shadow-md group-hover:rounded-lg'
         style='font-family: Roboto;'

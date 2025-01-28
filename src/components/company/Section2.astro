@@ -1,0 +1,104 @@
+---
+import { getEntry } from 'astro:content'
+const Data = await getEntry('company', 'company')
+const data = Data.data.section2
+
+import MemberCard from './MemberCard.astro'
+---
+
+<div
+  class='responsive-container py-16 w-full flex-row-reverse flex max-md:flex-col items-start justify-center'
+>
+  <div
+    class='w-[30%] px-10 sticky max-md:relative max-md:top-0 top-48 max-md:mb-10 max-md:flex max-md:flex-col max-md:items-center max-md:w-full'
+  >
+    <p class='text-8calc font-bold text-textblack leading-tight'>
+      {data.title}
+    </p>
+    <!-- <a href='/all-members'>
+      <button
+        class='transition-all transition-700 custom-button flex bg-white py-2 px-3 text-primary items-center mt-10 gap-x-2 rounded-lg'
+        style='font-family: Roboto;'
+      >
+        {data.button}
+        <img
+          src='/assets/images/arrowright.svg'
+          height='20px'
+          width='20px'
+          class='button-img'
+        />
+      </button>
+    </a> -->
+    <p class='mt-5'>
+      We work together with a passion for delivering exceptional value to our
+      clients.
+    </p>
+  </div>
+  <div class='flex flex-col items-between justity-between gap-y-14 max-md:pl-2'>
+    <div class='w-full flex justify-center flex-wrap gap-x-10'>
+      <MemberCard
+        photo='/assets/images/company/anurag-dbo.png'
+        name='Anurag Jain'
+        position='Founder'
+      />
+      <MemberCard
+        photo='/assets/images/company/dinesh-dbo.png'
+        name='Dinesh'
+        position='DevOps Engineer'
+      />
+    </div>
+    <div class='w-full flex flex-wrap gap-x-10'>
+      <MemberCard
+        photo='/assets/images/company/mageshkrishna-dbo.png'
+        name='Magesh Krishna'
+        position='Frontend Developer'
+      />
+      <MemberCard
+        photo='/assets/images/company/harigovind-dbo.png'
+        name='Harigovind'
+        position='Backend Developer'
+      />
+    </div>
+    <div class='w-full flex justify-center flex-wrap gap-x-10'>
+      <MemberCard
+        photo='/assets/images/company/gokulnath-dbo.png'
+        name='Gokulnath'
+        position='Frontend Developer'
+      />
+      <MemberCard
+        photo='/assets/images/company/aditya-dbo.png'
+        name='Aditya'
+        position='DevOps Engineer'
+      />
+    </div>
+    <div class='w-full flex flex-wrap gap-x-10'>
+      <MemberCard
+        photo='/assets/images/company/tejas-dbo.png'
+        name='Tejas'
+        position='UI/UX Designer'
+      />
+    </div>
+  </div>
+</div>
+<style>
+  .custom-button:hover {
+    background-color: #30baba; /* Change button background color */
+    color: white; /* Change text color */
+  }
+
+  .custom-button:hover .button-img {
+    filter: brightness(0) invert(1);
+  }
+  @media (max-width: 500px) {
+    .responsive-container {
+      flex-direction: column;
+      align-items: center;
+      padding: 10px;
+    }
+    .container1 {
+      width: 80%;
+      margin-bottom: 20px;
+      padding-left: 8%;
+    }
+  }
+</style>

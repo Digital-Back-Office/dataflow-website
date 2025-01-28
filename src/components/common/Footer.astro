@@ -1,0 +1,337 @@
+---
+import { getEntry } from 'astro:content'
+const Data = await getEntry('common', 'header-footer')
+const footer = Data.data.footer
+const docsUrl = import.meta.env.VITE_DOCS_URL
+---
+
+<head>
+  <link
+    href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css'
+    rel='stylesheet'
+  />
+</head>
+<footer class=''>
+  <div
+    class='footer-container hidden max-md:flex bg-gray-900 w-full flex-col gap-1 pt-[40px] pb-[32px] px-[80px] text-white'
+  >
+    <div
+      class='w-full flex max-sm:flex-col justify-center max-md:items-center py-[4px]'
+    >
+      <a href='/'
+        ><img
+          src='/assets/images/dataflow-logo-green.svg'
+          class='h-[56px]'
+        /></a
+      >
+    </div>
+    <div class='flex max-md:flex-col'>
+      <!-- Accordion for Company -->
+      <div class='p-5 flex-1 flex flex-col'>
+        <button class='accordion-btn font-semibold text-base'>
+          Company <i class='accordion-arrow fas fa-chevron-down'></i></button
+        >
+        <div class='accordion-content text-xs text-[#F8FAFC] w-[80%]'>
+          <a class='hover:text-primary' href='/'
+            ><p class='my-[16px]'>{footer.section1.link1}</p></a
+          >
+          <a class='hover:text-primary' href='/pricing'
+            ><p class='my-[16px]'>{footer.section1.link2}</p></a
+          >
+          <a class='hover:text-primary' href='/apps'
+            ><p class='my-[16px]'>{footer.section1.link3}</p></a
+          >
+          <a class='hover:text-primary' href='/company'
+            ><p class='my-[16px]'>{footer.section1.link4}</p></a
+          >
+          <!-- <a class='hover:text-primary' href='/blogs/1'
+            ><p class='my-[16px]'>{footer.section1.link5}</p></a
+          > -->
+          <a href={docsUrl} target='_blank' class='hover:text-primary'>
+            <p class='my-[16px] flex items-center'>
+              {footer.section1.link6}
+              <img
+                src='/assets/images/icon-redirect-page.svg'
+                alt='redirect'
+                class='size-4'
+              />
+            </p>
+          </a>
+        </div>
+      </div>
+      <!-- Accordion for Product -->
+      <div class='p-5 flex-1 flex flex-col'>
+        <button class='accordion-btn font-semibold text-base'
+          >Product <i class='accordion-arrow fas fa-chevron-down'></i></button
+        >
+        <div class='accordion-content text-xs text-[#F8FAFC] w-[80%]'>
+          <a class='hover:text-primary' href='/run-dataflow-on-any-cloud'
+            ><p class='my-[16px]'>{footer.section2.link1}</p></a
+          >
+          <a class='hover:text-primary' href='/manage-your-data'
+            ><p class='my-[16px]'>{footer.section2.link2}</p></a
+          >
+          <a class='hover:text-primary' href='/say-goodbye-to-python-dependency-hell'
+            ><p class='my-[16px]'>{footer.section2.link3}</p></a
+          >
+        </div>
+      </div>
+      <!-- Accordion for Help -->
+      <div class='p-5 flex-1 flex flex-col'>
+        <button class='accordion-btn font-semibold text-base'
+          >Help <i class='accordion-arrow fas fa-chevron-down'></i></button
+        >
+        <div class='accordion-content text-xs text-[#F8FAFC] w-[80%]'>
+          <a class='hover:text-primary' href='/book-demo'
+            ><p class='my-[16px]'>{footer.section3.link1}</p></a
+          >
+          <a class='hover:text-primary' href='/contact-us'
+            ><p class='my-[16px]'>{footer.section3.link2}</p></a
+          >
+          <a class='hover:text-primary' href='/terms-and-conditions'
+            ><p class='my-[16px]'>{footer.section3.link3}</p></a
+          >
+        </div>
+      </div>
+      <!-- Accordion for Contact Info -->
+      <div class='p-[20px] flex-1 flex flex-col'>
+        <button class='accordion-btn font-semibold text-base'
+          >Contact Info <i class='accordion-arrow fas fa-chevron-down'
+          ></i></button
+        >
+        <div class='accordion-content text-xs text-[#F8FAFC] w-[80%]'>
+          <a class='hover:text-primary' href='tel:+447404644039'
+            ><p class='my-[16px]'>{footer.section4.link1}</p></a
+          >
+          <a class='hover:text-primary' href='mailto:info@dataflow.zone'
+            ><p class='my-[16px]'>{footer.section4.link2}</p></a
+          >
+          <a class='hover:text-primary' href={docsUrl}
+            ><p class='my-[16px]'>{footer.section4.link3}</p></a
+          >
+        </div>
+      </div>
+    </div>
+    <div class='p-5 flex-1 flex flex-col'>
+      <p
+        class='text-xs px-1 text-wrap leading-relaxed tracking-wide text-[#F8FAFC]'
+      >
+        {footer.description}
+      </p>
+      <div class='my-4 flex items-center'>
+        <button
+          class='size-8 rounded-full bg-[#30baba31] hover:bg-[#007F7F] mx-1 flex justify-center items-center'
+          ><img src='/assets/images/icon-linkedin.svg' class='size-4' /></button
+        >
+        <!-- <button
+          class='size-8 rounded-full bg-[#30baba31] hover:bg-[#30BABA] mx-1 flex justify-center items-center'
+          ><img src='/assets/images/icon-x.svg' class='size-4' /></button
+        > -->
+      </div>
+      <p class='text-xs'>{footer.copyrights}</p>
+    </div>
+  </div>
+  <div
+    class='footer-container max-md:hidden bg-gray-900 w-full flex flex-col gap-1 pt-[40px] pb-[32px] px-[80px] max-md:px-10 text-white'
+  >
+    <div class='w-full flex max-sm:flex-col justify-center py-[4px]'>
+      <a href='/'
+        ><img
+          src='/assets/images/dataflow-logo-green.svg'
+          class='h-[56px]'
+        /></a
+      >
+    </div>
+    <div class='flex'>
+      <div class='p-[20px] flex-1 flex flex-col'>
+        <p
+          class='text-xs px-[4px] text-wrap leading-relaxed tracking-wide text-[#F8FAFC]'
+        >
+          {footer.description}
+        </p>
+        <div class='my-[16px] flex items-center'>
+          <button
+            class='size-8 rounded-full bg-[#30baba31] hover:bg-[#007F7F] mx-1 flex justify-center items-center'
+            ><img
+              src='/assets/images/icon-linkedin.svg'
+              class='size-4'
+            /></button
+          >
+          <!-- <button
+            class='size-8 rounded-full bg-[#30baba31] hover:bg-[#30BABA] mx-1 flex justify-center items-center'
+            ><img src='/assets/images/icon-x.svg' class='size-4' /></button
+          > -->
+        </div>
+        <p class='text-xs'>{footer.copyrights}</p>
+      </div>
+      <div class='p-[20px] flex-1 flex flex-col'>
+        <p class='font-semibold text-base'>Company</p>
+        <div class='text-xs text-[#F8FAFC] w-[80%]'>
+          <a class='hover:text-primary' href='/'
+            ><p class='my-2'>{footer.section1.link1}</p></a
+          >
+          <a class='hover:text-primary' href='/pricing'
+            ><p class='my-2'>{footer.section1.link2}</p></a
+          >
+          <a class='hover:text-primary' href='/apps'
+            ><p class='my-2'>{footer.section1.link3}</p></a
+          >
+          <a class='hover:text-primary' href='/company'
+            ><p class='my-2'>{footer.section1.link4}</p></a
+          >
+          <!-- <a class='hover:text-primary' href='/blogs/1'
+            ><p class='my-2'>{footer.section1.link5}</p></a
+          > -->
+          <a href={docsUrl} target='_blank' class='hover:text-primary'>
+            <p class='my-2 flex items-center'>
+              {footer.section1.link6}
+              <img
+                src='/assets/images/icon-redirect-page.svg'
+                alt='redirect'
+                class='size-4'
+              />
+            </p>
+          </a>
+        </div>
+      </div>
+      <div class='p-[20px] flex-1 flex flex-col'>
+        <p class='font-semibold text-base'>Product</p>
+        <div class='text-xs text-[#F8FAFC] w-[80%]'>
+          <a class='hover:text-primary' href='/run-dataflow-on-any-cloud'
+            ><p class='my-2'>{footer.section2.link1}</p></a
+          >
+          <a class='hover:text-primary' href='/manage-your-data'
+            ><p class='my-2'>{footer.section2.link2}</p></a
+          >
+          <a
+            class='hover:text-primary'
+            href='/say-goodbye-to-python-dependency-hell'
+            ><p class='my-2'>{footer.section2.link3}</p></a
+          >
+        </div>
+      </div>
+      <div class='p-[20px] flex-1 flex flex-col'>
+        <p class='font-semibold text-base'>Help</p>
+        <div class='text-xs text-[#F8FAFC] w-[80%]'>
+          <a class='hover:text-primary' href='/book-demo'
+            ><p class='my-2'>{footer.section3.link1}</p></a
+          >
+          <a class='hover:text-primary' href='/contact-us'
+            ><p class='my-2'>{footer.section3.link2}</p></a
+          >
+          <a class='hover:text-primary' href='/terms-and-conditions'
+            ><p class='my-2'>{footer.section3.link3}</p></a
+          >
+        </div>
+      </div>
+      <div class='p-[20px] flex-1 flex flex-col'>
+        <p class='font-semibold text-base'>Contact Info</p>
+        <div class='text-xs text-[#F8FAFC] w-[80%]'>
+          <a class='hover:text-primary' href='tel:+447404644039'
+            ><p class='my-2'>{footer.section4.link1}</p></a
+          >
+          <a class='hover:text-primary' href='mailto:info@dataflow.zone'
+            ><p class='my-2'>{footer.section4.link2}</p></a
+          >
+          <a class='hover:text-primary' href={docsUrl}
+            ><p class='my-2'>{footer.section4.link3}</p></a
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<style>
+  @media (max-width: 500px) {
+    footer {
+      flex-direction: column;
+    }
+
+    .footer-container {
+      flex-direction: column;
+      padding: 20px;
+    }
+
+    .footer-container > div {
+      width: 100%;
+      padding: 10px 0;
+    }
+
+    .footer-container .first-section {
+      order: 5;
+    }
+
+    .footer-container a p:hover {
+      color: var(--test-primary);
+    }
+  }
+
+  .accordion-content {
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.3s ease;
+  }
+
+  .accordion-content.open {
+    max-height: max-content; /* Adjust based on expected maximum height */
+  }
+
+  .accordion-btn {
+    text-align: left;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .accordion-arrow {
+    transition: transform 0.3s ease;
+  }
+
+  .accordion-btn .accordion-arrow.rotate {
+    transform: rotate(180deg); /* Rotates the arrow to point upwards */
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const accordionButtons = document.querySelectorAll('.accordion-btn')
+
+    accordionButtons.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const content = btn.nextElementSibling
+        const arrow = btn.querySelector('.accordion-arrow')
+
+        if (content.classList.contains('open')) {
+          content.classList.remove('open')
+          // content.style.maxHeight = '0'
+          content.classList.add('max-h-[0]')
+          arrow.classList.remove('fa-chevron-up')
+          arrow.classList.add('fa-chevron-down')
+        } else {
+          // Close any other open accordion
+          document
+            .querySelectorAll('.accordion-content.open')
+            .forEach((openContent) => {
+              openContent.classList.remove('open')
+              // openContent.style.maxHeight = '0'
+              openContent.classList.add('max-h-[0]')
+            })
+
+          document
+            .querySelectorAll('.accordion-arrow.fa-chevron-up')
+            .forEach((openArrow) => {
+              openArrow.classList.remove('fa-chevron-up')
+              openArrow.classList.add('fa-chevron-down')
+            })
+
+          content.classList.add('open')
+          // content.style.maxHeight = content.scrollHeight + 'px'
+          content.classList.remove(`max-h-[${content.scrollHeight}px]`)
+          arrow.classList.remove('fa-chevron-down')
+          arrow.classList.add('fa-chevron-up')
+        }
+      })
+    })
+  })
+</script>

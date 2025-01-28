@@ -1,0 +1,27 @@
+---
+import { getEntry } from 'astro:content'
+const Data = await getEntry('pricing', 'security-complaince')
+const data = Data.data
+---
+
+<div class='w-full min-h-[500px] bg-[#13243F] flex justify-center max-sm:py-10'>
+  <div class='flex max-sm:flex-col items-center w-max gap-16 max-sm:gap-6'>
+    <img
+      src='/assets/images/security-complaince.svg'
+      alt='security-complaince'
+      class='w-[265px] max-md:scale-[230px] max-sm:w-[200px]'
+    />
+    <div class='max-sm:w-[90%]'>
+      <h3
+        class='text-[42px] max-md:text-[30px] max-sm:text-center max-sm:text-[20px] font-semibold mb-6 text-white tracking-wide'
+      >
+        {data.title}
+      </h3>
+      <p
+        class='text-lg max-sm:text-sm max-sm:text-center text-white w-[650px] max-lg:w-full max-md:w-[300px] max-sm:w-full leading-tight'
+      >
+        {data.description}
+      </p>
+    </div>
+  </div>
+</div>

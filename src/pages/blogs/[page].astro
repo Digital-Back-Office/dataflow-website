@@ -1,10 +1,10 @@
 ---
-import Bloglayout from '../../layouts/Bloglayout.astro'
-import { posts } from '../../content/Blog/data'
+import BlogLayout from '../../layouts/BlogLayout.astro'
+import { posts } from '../../content/blog/data'
 let updatedposts = posts || []
 import BlogGrid from '../../components/blog/BlogGrid.astro'
 
-const POSTS_PER_PAGE = 6 
+const POSTS_PER_PAGE = 6
 
 const { page } = Astro.params
 const currentPage = parseInt(page) || 1
@@ -14,7 +14,6 @@ const totalPages = Math.ceil(totalPosts / POSTS_PER_PAGE)
 const startIndex = (currentPage - 1) * POSTS_PER_PAGE
 const endIndex = startIndex + POSTS_PER_PAGE
 const paginatedPosts = posts.slice(startIndex, endIndex)
-
 
 const pageNumbers = Array.from({ length: totalPages }, (_, i) => i + 1)
 
@@ -70,7 +69,7 @@ export const getStaticPaths = () => {
   }
 </style>
 
-<Bloglayout title='Blog'>
+<BlogLayout title='Blog'>
   <div class='px-[15%]'>
     <!-- Breadcrumb -->
     <nav aria-label='breadcrumb'>
@@ -206,10 +205,10 @@ export const getStaticPaths = () => {
       </div>
     </div>
   </section>
-</Bloglayout>
+</BlogLayout>
 
 <script>
-  import { posts } from '../../content/Blog/data'
+  import { posts } from '../../content/blog/data'
 
   // Ensure this script runs after the DOM is fully loaded
   document.addEventListener('DOMContentLoaded', () => {

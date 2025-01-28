@@ -1,0 +1,21 @@
+---
+import TopSection from '../components/pricing/TopSection.astro'
+import Section2 from '../components/pricing/Section2.astro'
+import Section3 from '../components/pricing/Section3.astro'
+import Section4 from '../components/pricing/Section4.astro'
+import Section5 from '../components/pricing/Section5.jsx'
+import Section6 from '../components/pricing/Section6.astro'
+import Layout from '../layouts/Layout.astro'
+import PricingConsulation from '../components/pricing/PricingConsulation.astro'
+import Testimonial from '../components/pricing/CustomerFeedback.jsx'
+---
+
+<Layout title='Pricing'>
+  <TopSection />
+  <Section2 />
+  <Section3 />
+  <Section4 />
+  <PricingConsulation />
+  <Testimonial client:load />
+  <Section6 />
+</Layout>

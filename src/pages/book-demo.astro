@@ -1,0 +1,337 @@
+---
+import Layout from '../layouts/Layout.astro'
+import { getEntry } from 'astro:content'
+const Data = await getEntry('common', 'book-demo')
+const data = Data.data
+---
+
+<Layout title='Book a demo'>
+  <div
+    class='formcontainer w-full flex items-start justify-center py-24 bg-[#F8FAFC]'
+  >
+    <div class='container-child-1 flex flex-col w-2/6 pr-10 max-sm:pl-3'>
+      <div class='mb-14'>
+        <h2 class='text-10calc font-black text-textblack leading-none'>
+          {data.maintitle1}
+        </h2>
+        <h2 class='text-5calc font-black text-textblack leading-tight'>
+          {data.maintitle2}
+        </h2>
+      </div>
+      <div class='h-full w-full flex flex-col'>
+        <div class='w-full flex items-start mb-10'>
+          <img
+            src='/assets/images/bookdemoimage1.png'
+            width='50px'
+            height='50px'
+            class='mr-5'
+          />
+          <div>
+            <h3 class='text-2xl font-bold 1 text-textblack text-textblack'>
+              {data.title1}
+            </h3>
+            <p class='text-base text-textblack'>{data.description1}</p>
+          </div>
+        </div>
+        <div class='w-full flex items-start mb-10'>
+          <img
+            src='/assets/images/bookdemoimage2.png'
+            width='50px'
+            height='50px'
+            class='mr-5'
+          />
+          <div>
+            <h3 class='text-2xl font-bold 1 text-textblack'>{data.title2}</h3>
+            <p class='text-base text-textblack'>{data.description2}</p>
+          </div>
+        </div>
+        <div class='w-full flex items-start mb-10'>
+          <img
+            src='/assets/images/bookdemoimage3.png'
+            width='50px'
+            height='50px'
+            class='mr-5'
+          />
+          <div>
+            <h3 class='text-2xl font-bold 1 text-textblack'>{data.title3}</h3>
+            <p class='text-base text-textblack'>{data.description3}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      id='formcontainer'
+      class='container-child-2 w-3/6 max-w-[600px] min-h-[550px] ml-10 border-[1.5px] border-[#E0E0E0] flex flex-col items-center justify-center rounded-2xl px-[3%] max-sm:px-3 bg-white py-12 max-sm:py-3'
+    >
+      <form id='myForm' class='w-full items-center justify-between'>
+        <div class='w-full colcontainerchild flex flex-col justify-evenly'>
+          <label class='text-base 2xl:text-lg font-bold text-textblack'
+            >{data.form.label1}</label
+          >
+          <input
+            required
+            placeholder={data.form.placeholder1}
+            class='custom-input border border-[#E0E0E0] rounded-lg h-10 p-2'
+            name='entry.1291198894'
+          />
+        </div>
+        <div class='w-full colcontainerchild flex flex-col justify-evenly'>
+          <label class='text-base 2xl:text-lg font-bold text-textblack'
+            >{data.form.label2}</label
+          >
+          <input
+            required
+            type='email'
+            placeholder={data.form.placeholder2}
+            class='custom-input border border-[#E0E0E0] rounded-lg h-10 p-2'
+            name='entry.59580764'
+          />
+        </div>
+        <div
+          class='h-full w-full colcontainerchild flex flex-col justify-evenly'
+        >
+          <label class='text-base 2xl:text-lg font-bold text-textblack'
+            >{data.form.label3}</label
+          >
+          <input
+            required
+            placeholder={data.form.placeholder3}
+            class='custom-input border border-[#E0E0E0] rounded-lg h-10 p-2'
+            name='entry.1637227755'
+          />
+        </div>
+        <div
+          class='h-full w-full colcontainerchild flex flex-col justify-evenly'
+        >
+          <label class='text-base 2xl:text-lg font-bold text-textblack'
+            >{data.form.label4}</label
+          >
+          <select
+            required
+            id='options'
+            class='custom-input border border-[#E0E0E0] rounded-lg h-10 p-2 text-[#9ca3b1] text-[14px]'
+            name='entry.1061557718'
+          >
+            <option value='' disabled selected>Company Size</option>
+            <option value='1-10'>1-10 employees</option>
+            <option value='11-50'>11-50 employees</option>
+            <option value='51-200'>51-200 employees</option>
+            <option value='201-500'>201-500 employees</option>
+            <option value='501-1000'>501-1000 employees</option>
+            <option value='1001-5000'>1001-5000 employees</option>
+            <option value='5001-10000'>5001-10,000 employees</option>
+            <option value='10001+'>10,001+ employees</option>
+          </select>
+        </div>
+        <div class='h-full w-full flex flex-col justify-evenly'>
+          <label class='text-base 2xl:text-lg font-bold text-textblack'
+            >{data.form.label5}</label
+          >
+          <input
+            required
+            placeholder={data.form.placeholder5}
+            class='custom-input border border-[#E0E0E0] rounded-lg h-10 p-2'
+            name='entry.1798038289'
+          />
+        </div>
+        <div class='h-full w-full flex flex-col justify-evenly'>
+          <label class='text-base 2xl:text-lg font-bold text-textblack'
+            >{data.form.label6}</label
+          >
+          <input
+            type='datetime-local'
+            id='datetime'
+            required
+            class='custom-input border border-[#E0E0E0] rounded-lg h-10 p-2 text-[#9ca3b1]'
+            name='entry.800910305'
+          />
+        </div>
+        <input type='hidden' name='entry.664159867' value='Book a demo' />
+        <div class='w-full h-32 flex flex-col justify-between'>
+          <label class='text-base 2xl:text-lg font-bold text-textblack'
+            >{data.form.label7}</label
+          >
+          <textarea
+            required
+            name='entry.1056515558'
+            placeholder={data.form.placeholder7}
+            class='custom-input border border-[#E0E0E0] rounded-lg p-2'
+            rows='10'
+            cols='30'
+            style='resize:none'></textarea>
+        </div>
+        <div class='w-full flex items-center justify-start mb-3'>
+          <input
+            type='checkbox'
+            required
+            class='ml-3 size-3'
+            style='margin-bottom: 0;'
+          />
+          <p class='text-gray-500 ml-1 text-sm'>
+            {data.form.terms}<span
+              ><a
+                href='/terms-and-conditions'
+                class='underline underline-offset-4 text-gray-700 ml-[2px]'
+                >{data.form.link}</a
+              ></span
+            >
+          </p>
+        </div>
+
+        <button
+          type='submit'
+          class='bg-primary hover:bg-primaryHover w-full h-14 justify-center duration-300 text-white font-bold rounded-lg shadow-md flex text-base items-center gap-x-2'
+          style='font-family: Roboto;'
+        >
+          {data.form.button}
+        </button>
+      </form>
+      <div id='thank-you-message' class='w-full h-full hidden text-center'>
+        <img
+          src='/assets/images/circle-tick.svg'
+          alt='Success'
+          class='mx-auto mb-4'
+        />
+        <p class='text-white text-xl font-bold'>Thank You</p>
+        <p class='text-white text-base'>
+          Form Submitted Successfully. We will reach you shortly.
+        </p>
+        <button
+          id='submit-another-form'
+          class='text-white text-lg text-center underline mt-5'
+          >Submit another form</button
+        >
+      </div>
+    </div>
+  </div>
+</Layout>
+<script type='module'>
+  document
+    .getElementById('myForm')
+    .addEventListener('submit', async function (event) {
+      event.preventDefault()
+
+      const formData = new FormData(this)
+      const url =
+        'https://docs.google.com/forms/u/0/d/e/1FAIpQLSeGjuyA_jjDmmT4jTY96s0CgCL_JKOJlNrTRqJ-9iqRmlEPKw/formResponse'
+
+      try {
+        const response = await fetch(url, {
+          method: 'POST',
+          mode: 'no-cors',
+          body: formData
+        })
+
+        const formContainer = document.getElementById('formcontainer')
+
+        formContainer.style.border = '0'
+
+        formContainer.innerHTML = `
+        <div class="w-full h-[500px] text-center bg-white flex flex-col items-center justify-center rounded-2xl">
+          <img src="/assets/images/circle-tickprimary.svg" alt="Success" class="mx-auto mb-4"/>
+          <p class="text-primary text-calc font-bold" >Thank You</p> 
+          <p class="text-primary text-base" >Form Submitted Successfully. We will reach you shortly.</p> 
+          <button id="submit-another-form" class="text-primary text-lg text-center underline mt-5" >Submit another form</button>
+        </div>
+      `
+
+        document
+          .getElementById('submit-another-form')
+          .addEventListener('click', function () {
+            location.reload()
+          })
+
+        document.getElementById('myForm').reset()
+      } catch (error) {
+        let text = 'Error in form Submission'
+        document.getElementById('result').style.color = 'red'
+        document.getElementById('result').innerHTML = text
+      }
+    })
+  document.getElementById('options').addEventListener('change', function () {
+    this.style.color = '#303030'
+  })
+  document.getElementById('datetime').addEventListener('change', function () {
+    this.style.color = '#303030'
+  })
+</script>
+
+<style>
+  .custom-button:hover {
+    background-color: #1dd0d5;
+  }
+
+  .button-img {
+    filter: brightness(0) invert(1);
+  }
+
+  .custom-input:focus {
+    border-color: #1dd0d5;
+    outline: none;
+  }
+  input[type='checkbox'] {
+    accent-color: rgb(0, 164, 156);
+  }
+
+  input,
+  select,
+  textarea {
+    margin-bottom: 20px;
+  }
+
+  /* @media (max-width: 500px) {
+    input,
+    select,
+    textarea {
+      margin-bottom: 10px;
+    }
+  } */
+
+  input::placeholder,
+  textarea::placeholder {
+    font-size: 14px;
+  }
+
+  select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background: url('/assets/icons/Icon-select-down.svg') no-repeat 98.5% 50%;
+  }
+
+  label {
+    margin-bottom: 2px;
+  }
+
+  @media (max-width: 800px) {
+    .formcontainer {
+      flex-direction: column;
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+
+    .container-child-1 {
+      width: 100%;
+    }
+
+    .container-child-2 {
+      width: 100%;
+      margin: 0%;
+    }
+
+    .colcontainer {
+      flex-direction: column;
+      height: auto;
+      column-gap: 20px;
+    }
+
+    .colcontainerchild {
+      width: 100%;
+      margin-top: 20px;
+    }
+
+    .hidden {
+      display: none;
+    }
+  }
+</style>

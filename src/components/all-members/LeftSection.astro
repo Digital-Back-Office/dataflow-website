@@ -1,0 +1,31 @@
+---
+import MemberCard from '../company/MemberCard.astro'
+import { getEntry } from 'astro:content'
+
+const Data = await getEntry('all-members', 'all-members')
+const data = Data.data
+
+const { photo, description, position, name } = Astro.props
+---
+
+<div
+  class='responsive-container w-full py-20 flex justify-center items-center gap-x-[5%]'
+>
+  <MemberCard photo={photo} name={name} position={position} />
+  <div class='w-1/2 mb-5 container1'>
+    <p class='text-lg text-textblack'>{description}</p>
+  </div>
+</div>
+<style>
+  @media (max-width: 500px) {
+    .responsive-container {
+      flex-direction: column;
+      height: auto;
+      padding: 10px;
+    }
+    .container1 {
+      width: 100%;
+      margin-bottom: 20px;
+    }
+  }
+</style>

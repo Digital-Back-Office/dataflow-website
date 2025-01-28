@@ -1,8 +1,8 @@
 ---
-import Animationsandclock from '../comman/Animationsandclock.astro'
+import ClockAnimation from '../common/ClockAnimation.astro'
 import { getEntry } from 'astro:content'
 
-const Data = await getEntry('Home', 'home')
+const Data = await getEntry('home', 'home')
 const hero = Data.data.hero
 ---
 
@@ -19,7 +19,7 @@ const hero = Data.data.hero
       >
         {hero.title2}
       </p>
-      <a href='/StartFreeTrail'>
+      <a href='/start-free-trail'>
         <button
           class='px-[20px] py-[10px] mb-[50px] bg-white hover:bg-[#f9f9f9] font-arimo rounded-md inline-flex items-center text-lg font-semibold tracking-wide shadow-md text-[#30BABA]'
         >
@@ -29,7 +29,7 @@ const hero = Data.data.hero
       </a>
     </div>
     <div class='animations-container'>
-      <Animationsandclock />
+      <ClockAnimation />
     </div>
   </div>
 </div>

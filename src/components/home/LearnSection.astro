@@ -1,8 +1,8 @@
 ---
-import RingAnimation from '../comman/RingAnimation.astro'
+import RingAnimation from '../common/RingAnimation.astro'
 import { getEntry } from 'astro:content'
 
-const Data = await getEntry('Home', 'home')
+const Data = await getEntry('home', 'home')
 const data = Data.data.LearnSection
 ---
 
@@ -62,7 +62,7 @@ const data = Data.data.LearnSection
         </p>
       </div>
     </div>
-    <a href='/Apps'>
+    <a href='/apps'>
       <button
         class='custom-button text-white px-3 py-2 duration-400 bg-primary hover:bg-primaryHover rounded-lg shadow-md flex text-base items-center gap-x-2 mt-14'
       >

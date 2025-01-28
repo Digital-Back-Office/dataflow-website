@@ -3,6 +3,8 @@ import { getEntry } from 'astro:content'
 const Data = await getEntry('common', 'header-footer')
 const header = Data.data.header
 const { pagename } = Astro.props
+
+const { pathname } = Astro.url
 const docsUrl = import.meta.env.VITE_DOCS_URL
 ---
 
@@ -19,8 +21,8 @@ const docsUrl = import.meta.env.VITE_DOCS_URL
       >
         <a
           href='/'
-          id='nav1'
-          class='DataFlow h-full border-b-[3px] mb-[2px] border-transparent px-[18px] flex items-center hover:border-[#EFFFFF] hover:border-opacity-70'
+          id='dataflow'
+          class='h-full border-b-[3px] mb-[2px] border-transparent px-[18px] flex items-center hover:border-[#EFFFFF] hover:border-opacity-70'
         >
           <p class='text-white text-sm font-semibold'>
             {header.nav1}
@@ -28,8 +30,8 @@ const docsUrl = import.meta.env.VITE_DOCS_URL
         </a>
         <a
           href='/apps'
-          id='nav2'
-          class='LearnMore h-full border-b-[3px] mb-[2px] border-transparent px-[18px] flex items-center hover:border-[#EFFFFF] hover:border-opacity-70'
+          id='apps'
+          class='h-full border-b-[3px] mb-[2px] border-transparent px-[18px] flex items-center hover:border-[#EFFFFF] hover:border-opacity-70'
         >
           <p class='text-white text-sm font-semibold'>
             {header.nav2}
@@ -37,8 +39,8 @@ const docsUrl = import.meta.env.VITE_DOCS_URL
         </a>
         <a
           href='/pricing'
-          id='nav3'
-          class='Pricing h-full border-b-[3px] mb-[2px] border-transparent px-[18px] flex items-center hover:border-[#EFFFFF] hover:border-opacity-70'
+          id='pricing'
+          class='h-full border-b-[3px] mb-[2px] border-transparent px-[18px] flex items-center hover:border-[#EFFFFF] hover:border-opacity-70'
         >
           <p class='text-white text-sm font-semibold'>
             {header.nav3}
@@ -46,8 +48,8 @@ const docsUrl = import.meta.env.VITE_DOCS_URL
         </a>
         <a
           href='/company'
-          id='nav4'
-          class='Company h-full border-b-[3px] mb-[2px] border-transparent px-[18px] flex items-center hover:border-[#EFFFFF] hover:border-opacity-70'
+          id='company'
+          class='h-full border-b-[3px] mb-[2px] border-transparent px-[18px] flex items-center hover:border-[#EFFFFF] hover:border-opacity-70'
         >
           <p class='text-white text-sm font-semibold'>
             {header.nav4}
@@ -55,8 +57,8 @@ const docsUrl = import.meta.env.VITE_DOCS_URL
         </a>
         <!-- <a
           href='/blogs/1'
-          id='nav5'
-          class='blog h-full border-b-[3px] mb-[2px] border-transparent px-[18px] flex items-center hover:border-[#EFFFFF] hover:border-opacity-70'
+          id='blog'
+          class='h-full border-b-[3px] mb-[2px] border-transparent px-[18px] flex items-center hover:border-[#EFFFFF] hover:border-opacity-70'
         >
           <p class='text-white text-sm font-semibold'>
             {header.nav5}
@@ -112,6 +114,8 @@ const docsUrl = import.meta.env.VITE_DOCS_URL
       </svg>
     </button>
   </div>
+
+  <p id='pathname' class='bg-black text-white hidden'>{pathname.split('/')}</p>
 </header>
 
 <div
@@ -205,8 +209,8 @@ const docsUrl = import.meta.env.VITE_DOCS_URL
     const burgerMenuButton = document.getElementById('burgerMenuButton')
     const mobileMenu = document.getElementById('mobileMenu')
     const closeMenuButton = document.getElementById('closeMenuButton')
-    const helperText = document.getElementById('helper').innerText.trim()
-    const navElement = document.querySelector(`.${helperText}`)
+    const pathname = document.getElementById('pathname').innerText.trim()
+    const navElement = document.querySelector(`#${pathname || 'dataflow' }`)
 
     if (navElement) {
       navElement.classList.remove('border-transparent')

@@ -2,9 +2,14 @@
 interface Props {
   title: string
   header?: boolean
+  meta_description?: string
 }
 
-const { title = "Dataflow | AI ready data platform", header = true } = Astro.props
+const {
+  title = 'Dataflow | AI ready data platform',
+  header = true,
+  meta_description = 'AI ready data platform in less than 30 minutes'
+} = Astro.props
 import Footer from '../components/common/Footer.astro'
 import Header from '../components/common/Header.astro'
 import 'aos/dist/aos.css'
@@ -15,10 +20,7 @@ import 'aos/dist/aos.css'
   <head>
     <script src='/src/scripts/cookie-consent.js'></script>
     <meta charset='UTF-8' />
-    <meta
-      name='description'
-      content='AI ready data platform in less than 30 minutes'
-    />
+    <meta name='description' content={meta_description} />
     <meta name='viewport' content='width=device-width' />
     <link rel='icon' type='image/svg+xml' href='/favicon.png' />
     <link

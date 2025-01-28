@@ -10,9 +10,14 @@ const Data = await getEntry('features', 'run-data-on-any-cloud')
 const data1 = Data.data.Section3
 const data2 = Data.data.Section4
 const data3 = Data.data.Section5
+const meta_description =
+  'Upgrade your data management and processing capabilities by using our service, which enables Dataflow on any cloud platform'
 ---
 
-<Layout title='Dataflow | Run Data on any cloud'>
+<Layout
+  title='Dataflow | Run Data on any cloud'
+  meta_description={meta_description}
+>
   <TopSection />
   <Section1 />
   <Section2 />

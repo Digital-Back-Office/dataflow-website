@@ -18,7 +18,7 @@ export async function getStaticPaths() {
 const { title } = Astro.params
 ---
 
-<BlogLayout title='Blog'>
+<BlogLayout title=`Dataflow | ${title.split('-').join(' ').toUpperCase()}`>
   <section class='container py-5 mt-5 mb-md-2 mb-lg-3 mb-xl-4'>
     <!-- Breadcrumb -->
     <nav aria-label='breadcrumb'>

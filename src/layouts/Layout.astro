@@ -2,9 +2,14 @@
 interface Props {
   title: string
   header?: boolean
+  meta_description?: string
 }
 
-const { title, header = true } = Astro.props
+const {
+  title = 'Dataflow | AI ready data platform',
+  header = true,
+  meta_description = 'AI ready data platform in less than 30 minutes'
+} = Astro.props
 import Footer from '../components/common/Footer.astro'
 import Header from '../components/common/Header.astro'
 import 'aos/dist/aos.css'
@@ -15,10 +20,7 @@ import 'aos/dist/aos.css'
   <head>
     <script src='/src/scripts/cookie-consent.js'></script>
     <meta charset='UTF-8' />
-    <meta
-      name='description'
-      content='Dataflow is all in one data platform for your every data need'
-    />
+    <meta name='description' content={meta_description} />
     <meta name='viewport' content='width=device-width' />
     <link rel='icon' type='image/svg+xml' href='/favicon.png' />
     <link
@@ -46,6 +48,17 @@ import 'aos/dist/aos.css'
       href='https://cdn.jsdelivr.net/gh/orestbida/cookieconsent@3.0.1/dist/cookieconsent.css'
     />
     <title>{title}</title>
+
+    <!-- Open Graph Meta Tags -->
+    <meta property='og:title' content='Dataflow | AI ready data platform' />
+    <meta
+      property='og:description'
+      content='AI ready data platform in less than 30 minutes'
+    />
+    <meta property='og:image' content='https://dataflow.zone/og-image.png' />
+    <meta property='og:url' content='https://dataflow.zone' />
+    <meta property='og:type' content='website' />
+    <meta property='og:site_name' content='dataflow.zone' />
   </head>
   <body class='font-arimo overflow-x-hidden'>
     {header && <Header pagename={title} />}

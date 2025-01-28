@@ -4,9 +4,14 @@ import Layout from '../layouts/Layout.astro'
 import Section1 from '../components/features/say-no-to-python-dependency-hell/Section1.astro'
 import Section2 from '../components/features/say-no-to-python-dependency-hell/Section2.astro'
 import Section3 from '../components/features/say-no-to-python-dependency-hell/Section3.astro'
+const meta_description =
+  'Effortlessly manage and resolve Python dependencies with Dataflow platform.'
 ---
 
-<Layout title='Python dependency hell'>
+<Layout
+  title='Dataflow | Say Goodbye to Python Dependency Hell'
+  meta_description={meta_description}
+>
   <Section1 />
   <Section2 />
   <Section3 />

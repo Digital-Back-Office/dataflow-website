@@ -1,25 +1,30 @@
 ---
 import BlogLayout from '../../layouts/BlogLayout.astro'
-import { posts } from '../../content/blog/data'
-let updatedposts = posts || []
+// import { posts } from '../../content/blog/data'
+import { getCollection } from 'astro:content'
 import BlogGrid from '../../components/blog/BlogGrid.astro'
+
+const blogs = await getCollection('blogs')
+let updatedposts = blogs || []
 
 const POSTS_PER_PAGE = 6
 
 const { page } = Astro.params
 const currentPage = parseInt(page) || 1
 
-const totalPosts = posts.length
+const totalPosts = blogs.length
 const totalPages = Math.ceil(totalPosts / POSTS_PER_PAGE)
 const startIndex = (currentPage - 1) * POSTS_PER_PAGE
 const endIndex = startIndex + POSTS_PER_PAGE
-const paginatedPosts = posts.slice(startIndex, endIndex)
+const paginatedPosts = blogs.slice(startIndex, endIndex).sort((a, b) => a.data.blog_no - b.data.blog_no)
 
 const pageNumbers = Array.from({ length: totalPages }, (_, i) => i + 1)
 
-export const getStaticPaths = () => {
+export const getStaticPaths = async () => {
+  const blogs = await getCollection('blogs')
+  
   const POSTS_PER_PAGE = 6
-  const totalPages = Math.ceil(posts.length / POSTS_PER_PAGE)
+  const totalPages = Math.ceil(blogs.length / POSTS_PER_PAGE)
 
   return Array.from({ length: totalPages }, (_, i) => ({
     params: { page: (i + 1).toString() }
@@ -120,6 +125,7 @@ export const getStaticPaths = () => {
     <!-- Pagination -->
     <ul class='pagination'>
       {
+        pageNumbers.length < 6 &&
         pageNumbers.map((num) => (
           <li>
             <a

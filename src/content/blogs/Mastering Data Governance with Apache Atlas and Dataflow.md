@@ -3,7 +3,7 @@ title: 'Mastering Data Governance with Apache Atlas and Dataflow'
 description: 'Implementing data governance and metadata management with Apache Atlas and Dataflow'
 tags: ['atlas', 'dataflow', 'datagovernance']
 date: '3 Nov, 2024'
-blog_no: 2
+blog_no: 6
 image: /assets/images/servicesimages7.png
 ---
 

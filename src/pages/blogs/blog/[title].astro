@@ -16,7 +16,7 @@ export async function getStaticPaths() {
 }
 
 const { data, body, render } = Astro.props
-const { title, date, tags } = data
+const { title, date, tags, image } = data
 const { Content } = await render()
 ---
 
@@ -41,13 +41,25 @@ const { Content } = await render()
       <span class='fs-xs opacity-20'>|</span>
       {
         tags.map((tag: string) => (
-          <p class='badge text-nav border '><span class="text-primary">#</span>{tag}</p>
-      ))
+          <p class='badge text-nav border '>
+            <span class='text-primary'>#</span>
+            {tag}
+          </p>
+        ))
       }
     </div>
 
+    {
+      image && (
+        <img
+          src={image}
+          alt='Blog Image'
+          class='w-full h-[400px]  my-[40px] mb-[50px] object-cover rounded-lg'
+        />
+      )
+    }
     <!-- Blog Content -->
-    <div class='mt-4 prose w-full max-w-none'>
+    <div class='mt-4 prose w-full max-w-none prose-img:max-w-[60%]'>
       <Content />
     </div>
   </section>

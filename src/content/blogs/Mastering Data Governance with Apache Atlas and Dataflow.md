@@ -4,10 +4,10 @@ description: 'Implementing data governance and metadata management with Apache A
 tags: ['atlas', 'dataflow', 'datagovernance']
 date: '3 Nov, 2024'
 blog_no: 2
+image: /assets/images/servicesimages7.png
 ---
 
 # Introduction
-
 Data governance is a critical component of modern data engineering, ensuring that organizations can track and manage their data assets. **Apache Atlas**, an open-source metadata management and governance tool, integrates well with **Dataflow**, providing data professionals with the tools they need to ensure data quality, security, and compliance.
 
 ---

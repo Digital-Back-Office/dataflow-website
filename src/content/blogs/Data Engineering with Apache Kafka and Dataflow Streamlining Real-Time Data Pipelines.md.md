@@ -4,7 +4,7 @@ description: 'Using Apache Kafka with Dataflow for real-time data stream process
 tags: ['kafka', 'dataflow', 'streaming']
 date: '12 Oct, 2024'
 blog_no: 3
-
+image: /assets/images/servicesimages7.png
 ---
 
 # Introduction

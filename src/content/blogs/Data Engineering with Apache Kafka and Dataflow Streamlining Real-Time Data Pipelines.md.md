@@ -3,7 +3,7 @@ title: 'Data Engineering with Apache Kafka and Dataflow: Streamlining Real-Time 
 description: 'Using Apache Kafka with Dataflow for real-time data stream processing'
 tags: ['kafka', 'dataflow', 'streaming']
 date: '12 Oct, 2024'
-blog_no: 3
+blog_no: 7
 image: /assets/images/servicesimages7.png
 ---
 

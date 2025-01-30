@@ -60,7 +60,7 @@ const { updatedposts } = Astro.props
         <article class='masonry-grid-item'>
           <div class='card border-0 bg-secondary'>
             {post.data.image && (
-              <a href={`/blogs/blog/${post.title}`} class='cursor-pointer'>
+              <a href={`/blogs/blog/${post.slug}`} class='cursor-pointer'>
                 <img class='card-img-top' src={post.data.image} alt='Post' />
               </a>
             )}

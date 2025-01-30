@@ -1,20 +1,37 @@
 ---
 import TopSection from '../components/pricing/TopSection.astro'
 import Section2 from '../components/pricing/Section2.astro'
-import Section3 from '../components/pricing/Section3.astro'
-import Section4 from '../components/pricing/Section4.astro'
-import Section5 from '../components/pricing/Section5.jsx'
 import Section6 from '../components/pricing/Section6.astro'
 import Layout from '../layouts/Layout.astro'
 import PricingConsulation from '../components/pricing/PricingConsulation.astro'
 import Testimonial from '../components/pricing/CustomerFeedback.jsx'
+import SupportSection from '../components/pricing/SupportSection.astro'
+import { getEntry } from 'astro:content'
+
+const { data: Help_24_7_data } = await getEntry('pricing', '24-7-help')
+const { data: All_in_one_solution_data } = await getEntry(
+  'pricing',
+  'all-in-one-solution'
+)
 ---
 
 <Layout title='Dataflow | Pricing'>
   <TopSection />
   <Section2 />
-  <Section3 />
-  <Section4 />
+  <div class='min-h-[200px] max-sm:min-h-[100px] flex justify-center items-end'>
+    <p class='text-[45px] max-sm:text-3xl text-textblack font-bold'>
+      Additional Support
+    </p>
+  </div>
+  <SupportSection
+    data={All_in_one_solution_data}
+    image='/assets/images/data-analytics.png'
+    mirror
+  />
+  <SupportSection
+    data={Help_24_7_data}
+    image='/assets/images/24-7-support.png'
+  />
   <PricingConsulation />
   <Testimonial client:load />
   <Section6 />

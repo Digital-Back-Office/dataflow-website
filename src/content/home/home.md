@@ -8,11 +8,12 @@ LearnSection:
   title: Best in class tools in one platform like
   features:
     - Airflow
-    - mlflow
-    - Theia IDE
+    - Mlflow
+    - VS Code
+    - Jupyter
+    - Streamlit
     - Dash App
     - Superset
-    - Jupyter
     - DBT
 
 Section1:

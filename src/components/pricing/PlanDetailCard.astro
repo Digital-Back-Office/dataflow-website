@@ -20,7 +20,7 @@ const { option1, option2, option3, title } = Astro.props
         </p>
       </div>
     ) : (
-      <div class='w-1/4 h-[75px] max-sm:h-[60px] border border-solid border-[#E6E9F5] flex items-center justify-center px-5 planstatus'>
+      <div class='w-1/4 h-[75px] max-sm:min-h-[60px] overflow-scroll text-center border border-solid border-[#E6E9F5] flex items-center justify-center px-5 planstatus'>
         <p class='text-gray-900 text-sm '>{option1}</p>
       </div>
     )
@@ -37,7 +37,7 @@ const { option1, option2, option3, title } = Astro.props
         </p>
       </div>
     ) : (
-      <div class='w-1/4 h-[75px] max-sm:h-[60px] border border-solid border-[#E6E9F5] flex items-center justify-center px-5 planstatus'>
+      <div class='w-1/4 h-[75px] max-sm:min-h-[60px] overflow-scroll text-center border border-solid border-[#E6E9F5] flex items-center justify-center px-5 planstatus'>
         <p class='text-gray-900 text-sm '>{option2}</p>
       </div>
     )
@@ -54,7 +54,7 @@ const { option1, option2, option3, title } = Astro.props
         </p>
       </div>
     ) : (
-      <div class='w-1/4 h-[75px] max-sm:h-[60px] border border-solid border-[#E6E9F5] flex items-center justify-center px-5 planstatus'>
+      <div class='w-1/4 h-[75px] max-sm:min-h-[60px] overflow-scroll text-center border border-solid border-[#E6E9F5] flex items-center justify-center px-5 planstatus'>
         <p class='text-gray-900 text-sm '>{option3}</p>
       </div>
     )

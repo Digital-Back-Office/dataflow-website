@@ -76,16 +76,14 @@ const planfeature2 = data.table2
         </a>
       </div>
       <div class='w-full bg-[#F6F8FA] h-[780px] rounded-b-3xl p-4'>
-        <FeatureCard feature={owncloudplan1.feature_1} />
-        <FeatureCard feature={owncloudplan1.feature_2} />
-        <FeatureCard feature={owncloudplan1.feature_3} />
-        <FeatureCard
-          feature={owncloudplan1.feature_4}
-          apps={owncloudplan1.apps}
-        />
-        <FeatureCard feature={owncloudplan1.feature_5} />
-        <FeatureCard feature={owncloudplan1.feature_6} />
-        <FeatureCard feature={owncloudplan1.feature_7} />
+        {
+          owncloudplan1.features.map((feature, i) => (
+            <FeatureCard
+              feature={feature}
+              apps={feature == 'Apps Included' ? owncloudplan1.apps : undefined}
+            />
+          ))
+        }
       </div>
     </div>
 
@@ -130,16 +128,14 @@ const planfeature2 = data.table2
         </a>
       </div>
       <div class='w-full bg-[#F6F8FA] h-[750px] p-4'>
-        <FeatureCard feature={owncloudplan2.feature_1} />
-        <FeatureCard feature={owncloudplan2.feature_2} />
-        <FeatureCard feature={owncloudplan2.feature_3} />
-        <FeatureCard
-          feature={owncloudplan2.feature_4}
-          apps={owncloudplan2.apps}
-        />
-        <FeatureCard feature={owncloudplan2.feature_5} />
-        <FeatureCard feature={owncloudplan2.feature_6} />
-        <FeatureCard feature={owncloudplan2.feature_7} />
+        {
+          owncloudplan2.features.map((feature, i) => (
+            <FeatureCard
+              feature={feature}
+              apps={feature == 'Apps Included' ? owncloudplan2.apps : undefined}
+            />
+          ))
+        }
       </div>
     </div>
 
@@ -188,19 +184,14 @@ const planfeature2 = data.table2
       <div
         class='w-full bg-[#F6F8FA] h-[750px] p-4 height-auto rounded-b-[30px] overflow-hidden'
       >
-        <FeatureCard feature={owncloudplan3.feature_1} />
-        <FeatureCard feature={owncloudplan3.feature_2} />
-        <FeatureCard feature={owncloudplan3.feature_3} />
-        <FeatureCard
-          feature={owncloudplan3.feature_4}
-          apps={owncloudplan3.apps}
-        />
-        <FeatureCard feature={owncloudplan3.feature_5} />
-        <FeatureCard feature={owncloudplan3.feature_6} />
-        <FeatureCard feature={owncloudplan3.feature_7} />
-        <FeatureCard feature={owncloudplan3.feature_8} />
-        <FeatureCard feature={owncloudplan3.feature_9} />
-        <FeatureCard feature={owncloudplan3.feature_10} />
+        {
+          owncloudplan3.features.map((feature, i) => (
+            <FeatureCard
+              feature={feature}
+              apps={feature == 'Apps Included' ? owncloudplan3.apps : undefined}
+            />
+          ))
+        }
       </div>
     </div>
   </div>
@@ -651,7 +642,30 @@ const planfeature2 = data.table2
         </a>
       </div>
     </div>
-    <PlanDetailCard
+    {
+      planfeature1.features.map((feature, i) => {
+
+        let option_1 = feature.option_1
+        let option_2 = feature.option_2
+        let option_3 = feature.option_3
+
+        if(feature.name === 'Apps Included') {
+          option_1 = owncloudplan1.apps.join(', ') + ' and more..'
+          option_2 = owncloudplan2.apps.join(', ') + ' and more..'
+          option_3 = owncloudplan3.apps.join(', ') + ' and more..'
+        }
+        
+        return (
+          <PlanDetailCard
+            title={feature.name}
+            option1={option_1}
+            option2={option_2}
+            option3={option_3}
+          />
+        )
+      })
+    }
+    <!-- <PlanDetailCard
       title={planfeature1.feature_1}
       option1='yes'
       option2='yes'
@@ -671,9 +685,9 @@ const planfeature2 = data.table2
     />
     <PlanDetailCard
       title={planfeature1.feature_4}
-      option1='yes'
-      option2='yes'
-      option3='yes'
+      option1={owncloudplan1.apps.join(', ') + ' and more..'}
+      option2={owncloudplan2.apps.join(', ') + ' and more..'}
+      option3={owncloudplan3.apps.join(', ') + ' and more..'}
     />
     <PlanDetailCard
       title={planfeature1.feature_5}
@@ -716,7 +730,7 @@ const planfeature2 = data.table2
       option1='48 Hrs'
       option2='24 Hrs'
       option3='30 Mins'
-    />
+    /> -->
   </div>
 
   <!-- HOST ON YOUR DATAFLOW CLOUD - TABLE -->

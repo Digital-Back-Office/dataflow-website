@@ -21,8 +21,8 @@ footer:
     copyrights: © All rights reserved.
     section1:
         link1: Why Dataflow?
-        link2: Pricing
-        link3: Apps
+        link2: Apps
+        link3: Pricing
         link4: Company
         link5: Blog
         link6: Docs

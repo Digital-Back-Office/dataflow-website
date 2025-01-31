@@ -3,7 +3,7 @@ TopSection:
     title: Upgrade your data management and processing capabilities by using our service, which enables Dataflow on any cloud platform
     description: Our solution eliminates the restrictions of single-cloud environments, offering you the freedom to choose the best cloud provider for your specific needs.
 
-Section1:
+benefits:
    title: Benefits of Running Dataflow on Any Cloud
    description: Running Dataflow on any cloud platform offers several key advantages that enhance your data processing capabilities. This approach provides unparalleled flexibility, allowing you to choose the cloud provider that best meets your needs, whether it’s AWS, Google Cloud, Azure, or another major service. This choice helps you avoid vendor lock-in and leverage the unique strengths of each platform.
    feature1:

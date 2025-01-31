@@ -1,12 +1,12 @@
 ---
 import TopSection from '../components/pricing/TopSection.astro'
-import Section2 from '../components/pricing/Section2.astro'
-import Section6 from '../components/pricing/Section6.astro'
+import SecurityComplaince from '../components/pricing/SecurityComplaince.astro'
 import Layout from '../layouts/Layout.astro'
 import PricingConsulation from '../components/pricing/PricingConsulation.astro'
-import Testimonial from '../components/pricing/CustomerFeedback.jsx'
+import Testimonial from '../components/common/Testimonial'
 import SupportSection from '../components/pricing/SupportSection.astro'
 import { getEntry } from 'astro:content'
+import FAQs from '../components/pricing/FAQs.astro'
 
 const { data: Help_24_7_data } = await getEntry('pricing', '24-7-help')
 const { data: All_in_one_solution_data } = await getEntry(
@@ -17,7 +17,7 @@ const { data: All_in_one_solution_data } = await getEntry(
 
 <Layout title='Dataflow | Pricing'>
   <TopSection />
-  <Section2 />
+  <SecurityComplaince />
   <div class='min-h-[200px] max-sm:min-h-[100px] flex justify-center items-end'>
     <p class='text-[45px] max-sm:text-3xl text-textblack font-bold'>
       Additional Support
@@ -34,5 +34,5 @@ const { data: All_in_one_solution_data } = await getEntry(
   />
   <PricingConsulation />
   <Testimonial client:load />
-  <Section6 />
+  <FAQs />
 </Layout>

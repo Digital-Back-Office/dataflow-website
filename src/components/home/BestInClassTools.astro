@@ -13,10 +13,10 @@ const data = Data.data.LearnSection
     <RingAnimation />
   </div>
   <div
-    class='responsive-container w-5/12 py-32 flex flex-col justify-center items-start'
+    class='w-5/12 py-32 max-md:w-[90%] flex flex-col justify-center items-start'
   >
     <p
-      class='font-extrabold text-textPrimary text-5calc font-helvetica-neue leading-none mb-8 w-3/4 max-sm:w-[90%] max-sm:text-left'
+      class='font-extrabold text-textPrimary text-5calc font-helvetica-neue leading-none mb-8 w-3/4 max-sm:w-full max-sm:text-left'
     >
       {data.title}
     </p>
@@ -64,7 +64,7 @@ const data = Data.data.LearnSection
     </div>
     <a href='/apps'>
       <button
-        class='custom-button text-white px-3 py-2 duration-400 bg-primary hover:bg-primaryHover rounded-lg shadow-md flex text-base items-center gap-x-2 mt-14'
+        class='custom-button text-white px-3 py-2 duration-400 bg-primary hover:bg-primaryHover rounded-lg shadow-md flex text-base items-center gap-x-2 mt-14 max-sm:mt-5'
       >
         {Data.data.ViewMoreButton}
         <img class='icon' src='/assets/images/arrowright.svg' />
@@ -138,12 +138,6 @@ const data = Data.data.LearnSection
   @media (max-width: 1059px) {
     .ring-animation-container {
       display: none;
-    }
-    .responsive-container {
-      width: 100%;
-      align-items: center;
-      max-width: 300px;
-      text-align: center;
     }
   }
 </style>

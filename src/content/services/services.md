@@ -8,7 +8,7 @@ section1:
   title1: Tailored Workflows
   description1: We design and implement data workflows customized to meet your specific business requirements.
   title2: Advanced Analytics
-  description2: Develop bespoke analytical tools and dashboards to provide insights unique to your business.
+  description2: Develop bespoke analytical apps and dashboards to provide insights unique to your business.
   title3: Seamless Integration
   description3: Seamlessly integrate the Dataflow platform with your existing systems and databases for a cohesive data management environment.
   title4: Innovative Solutions
@@ -79,5 +79,4 @@ section7:
   description3: Optimize resource usage to reduce costs and improve performance.
   title4: Continuous Monitoring
   description4: Monitor performance continuously to ensure sustained improvements.
-
 ---

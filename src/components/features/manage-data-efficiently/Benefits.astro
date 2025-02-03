@@ -1,0 +1,51 @@
+---
+import { getEntry } from 'astro:content'
+import Card from '../run-data-on-any-cloud/Card.astro'
+
+const Data = await getEntry('features', 'manage-your-data')
+const data = Data.data.section1
+---
+
+<div
+  class='w-full py-24 bg-[#F8FAFC] px-[7%] flex flex-col items-center justify-center max-sm:flex-col max-sm:px-[20px] max-sm:py-[30px]'
+>
+  <h2
+    class='text-calc font-bold mb-8 max-sm:mb-6 text-center max-sm:text-left text-textblack'
+  >
+    {data.title}
+  </h2>
+  <p
+    class='2xl:text-lg 2xl:w-3/4 lg:w-4/5 lg:text-base text-center max-sm:text-left pb-16 max-sm:pb-6 text-textblack'
+  >
+    {data.description}
+  </p>
+  <div class='card-container mt-10 flex gap-10 flex-wrap justify-evenly'>
+    <Card
+      image='/assets/images/Interoperability.png'
+      title={data.featuretitle1}
+      description={data.featuredescription1}
+    />
+    <Card
+      image='/assets/images/manageyourdatafeature2.png'
+      title={data.featuretitle2}
+      description={data.featuredescription2}
+    />
+    <Card
+      image='/assets/images/manageyourdatafeature3.png'
+      title={data.featuretitle3}
+      description={data.featuredescription3}
+    />
+  </div>
+</div>
+<style>
+  .card:hover .image-container {
+    filter: brightness(0) invert(1);
+  }
+  @media (max-width: 440px) {
+    .card-container {
+      flex-direction: column;
+      align-items: center;
+      row-gap: 15px;
+    }
+  }
+</style>

@@ -1,0 +1,55 @@
+---
+const { title, image, logo, link, mirror } = Astro.props
+---
+
+<style>
+  [data-aos='fade-bounce'] {
+    transform: translateY(200px);
+    opacity: 0;
+    transition-property: transform, opacity;
+    transition-timing-function: cubic-bezier(
+      0.1,
+      -0.6,
+      0.1,
+      1
+    );
+
+    transition-duration: 1s;
+    transition-delay: 0.5s;
+  }
+
+  [data-aos='fade-bounce'].aos-animate {
+    transform: translateY(0);
+    opacity: 1;
+  }
+</style>
+
+<div
+  class={`min-h-screen ${mirror ? 'bg-white' : 'bg-[#F8FAFC]'} flex ${mirror && 'flex-row-reverse'} items-center justify-center max-sm:flex-col `}
+>
+  <div
+    data-aos='fade-bounce'
+    class='flex-[0.65] flex justify-center items-center max-sm:py-8'
+  >
+    <img src={image} alt='' class='w-[85%] max-sm:w-[95%]' />
+  </div>
+  <div
+    class={`flex-[0.35] max-sm:pb-10 h-full flex flex-col max-sm:pl-[20px] gap-10 max-sm:gap-7 ${mirror && 'pl-[7%]'}`}
+  >
+    <img src={logo} alt='airflow' class='w-max h-[80px] max-sm:h-[40px]' />
+    <p class='text-4xl max-sm:text-2xl font-bold w-[90%] leading-tight text-[#303030]'>
+      {title}
+    </p>
+    <a
+      href={link}
+      class='p-2 px-3 w-max font-light inline-flex rounded-lg text-sm bg-[#30baba] text-white mt-4 max-sm:mt-0'
+    >
+      Learn More
+      <img
+        class='filter brightness-0 invert pl-1'
+        src='/assets/images/arrowright.png'
+        alt='Arrow Right'
+      />
+    </a>
+  </div>
+</div>

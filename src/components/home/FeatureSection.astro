@@ -3,7 +3,8 @@ const { title, description, button, image, href, color, mirror = false } = Astro
 ---
 
 <div
-  class=`responsive-container min-h-screen transition-all duration-1000 py-32 w-full bg-[${color.normal}] flex ${mirror && 'flex-row-reverse gap-32'} items-center justify-center group hover:bg-[${color.hover}]`
+  class=`responsive-container min-h-screen transition-all duration-1000 py-32 w-full flex ${mirror && 'flex-row-reverse gap-32'} items-center justify-center group`
+  style={`--normal-color: ${color.normal}; --hover-color: ${color.hover};`}
 >
   <div
     class='content-container md:w-2/6 w-full flex flex-col justify-center items-start px-3 py-4'
@@ -43,6 +44,14 @@ const { title, description, button, image, href, color, mirror = false } = Astro
     background-color: #ffffff; /* Change button background color */
   }
 
+  .responsive-container {
+    background-color: var(--normal-color);
+  }
+  
+  .responsive-container:hover {
+    background-color: var(--hover-color);
+  }
+  
   @media (max-width: 500px) {
     .responsive-container {
       flex-direction: column-reverse;

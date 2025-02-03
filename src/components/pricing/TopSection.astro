@@ -588,10 +588,10 @@ const planfeature2 = data.table2
         </p>
         <a
           href='/get-started'
-          class='flex justify-center items-center w-full py-2 max-sm:py-[4px] bg-primary rounded-md hover:opacity-90'
+          class='flex justify-center  w-full py-2 max-sm:py-[4px] bg-primary rounded-md hover:opacity-90'
         >
           <p
-            class='text-white font-medium text-base max-sm:text-xs max-sm:text-semibold'
+            class='text-white font-medium  text-center text-base max-sm:text-xs max-sm:text-semibold'
           >
             {planfeature1.tablehead2.button}
           </p>
@@ -611,10 +611,10 @@ const planfeature2 = data.table2
         </p>
         <a
           href='/get-started'
-          class='flex justify-center items-center w-full py-2 max-sm:py-[4px] bg-primary rounded-md hover:opacity-90'
+          class='flex justify-center  w-full py-2 max-sm:py-[4px] bg-primary rounded-md hover:opacity-90'
         >
           <p
-            class='text-white font-medium text-base max-sm:text-xs max-sm:text-semibold'
+            class='text-white font-medium  text-center text-base max-sm:text-xs max-sm:text-semibold'
           >
             {planfeature1.tablehead3.button}
           </p>
@@ -634,9 +634,9 @@ const planfeature2 = data.table2
         </p>
         <a
           href='/get-started'
-          class='flex justify-center items-center w-full py-2 max-sm:py-[4px] bg-primary rounded-md hover:opacity-90'
+          class='flex justify-center  w-full py-2 max-sm:py-[4px] bg-primary rounded-md hover:opacity-90'
         >
-          <p class='text-white font-medium text-base max-sm:text-xs'>
+          <p class='text-white font-medium text-center  text-base max-sm:text-xs'>
             {planfeature1.tablehead3.button}
           </p>
         </a>
@@ -649,7 +649,9 @@ const planfeature2 = data.table2
         let option_2 = feature.option_2
         let option_3 = feature.option_3
 
-        if (feature.name === 'Apps Included') {
+        let apps = feature.name === 'Apps Included'
+
+        if (apps) {
           option_1 = owncloudplan1.apps.join(', ') + ' and more..'
           option_2 = owncloudplan2.apps.join(', ') + ' and more..'
           option_3 = owncloudplan3.apps.join(', ') + ' and more..'
@@ -661,6 +663,7 @@ const planfeature2 = data.table2
             option1={option_1}
             option2={option_2}
             option3={option_3}
+            apps={apps}
           />
         )
       })

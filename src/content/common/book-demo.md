@@ -17,7 +17,7 @@ form:
    placeholder3: Your company name
    label4: Company size
    placeholder4: Your company size
-   label5: Phone number(optional)
+   label5: Phone number
    placeholder5: Your Phone number
    label6: Date and Time
    placeholder6: How do you intend to make use of Dataflow?

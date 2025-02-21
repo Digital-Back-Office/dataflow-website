@@ -27,7 +27,7 @@ const data = Data.data
             class='mr-5'
           />
           <div>
-            <h3 class='text-2xl font-bold 1 text-textblack '>
+            <h3 class='text-2xl font-bold 1 text-textblack'>
               {data.title1}
             </h3>
             <p class='text-base text-textblack'>{data.description1}</p>
@@ -142,6 +142,7 @@ const data = Data.data
             type='datetime-local'
             id='datetime'
             required
+            min={new Date().toISOString().split(':').slice(0, 2).join(':')}
             class='custom-input border border-[#E0E0E0] rounded-lg h-10 p-2 text-[#9ca3b1]'
             name='entry.800910305'
           />
@@ -212,11 +213,24 @@ const data = Data.data
       event.preventDefault()
 
       const formData = new FormData(this)
-      const url =
+
+      const googleFormUrl =
         'https://docs.google.com/forms/u/0/d/e/1FAIpQLSeGjuyA_jjDmmT4jTY96s0CgCL_JKOJlNrTRqJ-9iqRmlEPKw/formResponse'
 
+      const googleScriptURL =
+        'https://script.google.com/macros/s/AKfycbwocPWwe0x9lsPCpRfCz8a09OMpE1lorIcSVQiiRj8uMF1hEDx9a2TQ9iNslt1yTywfQw/exec'
+
       try {
-        const response = await fetch(url, {
+        await fetch(googleScriptURL, {
+          method: 'POST',
+          mode: 'no-cors',
+          body: formData
+        }).catch((error) => {
+          console.error('calendar error:', error)
+          return
+        })
+
+        await fetch(googleFormUrl, {
           method: 'POST',
           mode: 'no-cors',
           body: formData

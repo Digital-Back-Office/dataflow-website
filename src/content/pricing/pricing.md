@@ -13,14 +13,15 @@ own_cloud_plan:
       cost: 0
       duration: per month
       button: Join for free
-      feature_1: AI ready python environment
-      feature_2: Unlimited shared data connections
-      feature_3: Git integration
-      feature_4: Apps Included
       apps: ["Jupyterhub" , "Airflow"]
-      feature_5: Standard Support
-      feature_6: Self Install
-      feature_7: Automatic security and version updates
+      features:
+         - AI ready python environment
+         - Unlimited shared data connections
+         - Git integration
+         - Apps Included
+         - Standard Support
+         - Self Install
+         - Automatic security and version updates
       
    plan_2:
       suggestion: Recommended
@@ -29,14 +30,15 @@ own_cloud_plan:
       cost: 99
       duration: per user /month
       button: Get Started
-      feature_1: AI ready python environment
-      feature_2: Unlimited shared data connections
-      feature_3: Git integration
-      feature_4: Apps Included
       apps:  ["Jupyterhub" , "Airflow", "Superset","Dash Apps","VS Code"]
-      feature_5: Premium Support
-      feature_6: Self Install
-      feature_7: Automatic security and version updates
+      features:
+         - AI ready python environment
+         - Unlimited shared data connections
+         - Git integration
+         - Apps Included
+         - Premium Support
+         - Self Install
+         - Automatic security and version updates
 
    plan_3:
       suggestion: Most Popular
@@ -45,18 +47,18 @@ own_cloud_plan:
       cost: 199
       duration: per user /month
       button: Get Started
-      feature_1: AI ready python environment
-      feature_2: Unlimited shared data connections
-      feature_3: Git integration
-      feature_4: Apps included
       apps: ["Jupyterhub" , "Airflow", "Superset","Dash Apps","VS Code"]
-      feature_5: 24/7 Dedicated Support
-      feature_6: Self install
-      feature_7: Automatic security and version updates
-      feature_8: Enhanced Data Security
-      feature_9: Custom server configuration
-      feature_10: Full Admin Access
-      
+      features:
+         - AI ready python environment
+         - Unlimited shared data connections
+         - Git integration
+         - Apps Included
+         - 24/7 Dedicated Support
+         - Self Install
+         - Automatic security and version updates
+         - Enhanced Data Security
+         - Custom server configuration
+         - Full Admin Access
 
 heading: Compare Plan Features
 
@@ -112,11 +114,16 @@ dataflow_cloud_plan:
 
    custom_setup:
       plan_name: Custom Setup
-      features: ["Transparent pricing", 'Bespoke licensing cost','Flexible Support pricing','Cloud cost on actuals']
+      features: 
+      - Transparent pricing
+      - Bespoke licensing cost
+      - Flexible Support pricing
+      - Cloud cost on actuals
       button: Contact Us
 
 
 
+# HOST ON YOUR OWN CLOUD - TABLE
 table1:
    tablehead1: 
      title: Compare Plan Features
@@ -132,28 +139,62 @@ table1:
       cost: 199
       duration: /month
       button: Get Started
-   feature1: Centralized connection management
-   feature2: Stable connection management
-   feature3: Jupyter
-   feature4: Airflow
-   feature5: Dash app
-   feature6: Apache Spark
-   feature7: Free 2hrs Consultation /month
-   feature8: Email support
-   feature9: Mobile support
-   feature10: Response time
-   feature_1: AI ready python environment
-   feature_2: Unlimited shared data connections
-   feature_3: Git integration
-   feature_4: Apps included
-   apps: ["Jupyterhub" , "Airflow", "Superset","Dash Apps","VS Code"]
-   feature_5: Support
-   feature_6: Self install
-   feature_7: Automatic security and version updates
-   feature_8: Enhanced Data Security
-   feature_9: Custom server configuration
-   feature_10: Full Admin Access
-   feature_11: Response time
+
+   features:
+      - name: AI ready python environment
+        option_1: yes
+        option_2: yes
+        option_3: yes
+
+      - name: Unlimited shared data connections
+        option_1: yes
+        option_2: yes
+        option_3: yes
+
+      - name: Git integration
+        option_1: yes
+        option_2: yes
+        option_3: yes
+
+      - name: Apps Included
+        option_1: ["Jupyterhub" , "Airflow"]
+        option_2: ["Jupyterhub" , "Airflow", "Superset","Dash Apps","VS Code"]
+        option_3: ["Jupyterhub" , "Airflow", "Superset","Dash Apps","VS Code"]
+
+      - name: Support
+        option_1:  Standard Support
+        option_2: Premium Support
+        option_3: 24/7 Dedicated Support
+
+      - name: Self install
+        option_1: yes
+        option_2: yes
+        option_3: yes
+
+      - name: Automatic security and version updates
+        option_1: yes
+        option_2: yes
+        option_3: yes
+
+      - name: Enhanced Data Security
+        option_1: yes
+        option_2: yes
+        option_3: yes
+
+      - name: Custom server configuration
+        option_1: no
+        option_2: no
+        option_3: yes
+        
+      - name: Full Admin Access
+        option_1: no
+        option_2: no
+        option_3: yes
+        
+      - name: Response time
+        option_1: '48 Hrs'
+        option_2: '24 Hrs' 
+        option_3: '30 Mins'
     
 
 table2:

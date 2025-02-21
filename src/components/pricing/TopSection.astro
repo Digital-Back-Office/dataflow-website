@@ -76,16 +76,14 @@ const planfeature2 = data.table2
         </a>
       </div>
       <div class='w-full bg-[#F6F8FA] h-[780px] rounded-b-3xl p-4'>
-        <FeatureCard feature={owncloudplan1.feature_1} />
-        <FeatureCard feature={owncloudplan1.feature_2} />
-        <FeatureCard feature={owncloudplan1.feature_3} />
-        <FeatureCard
-          feature={owncloudplan1.feature_4}
-          apps={owncloudplan1.apps}
-        />
-        <FeatureCard feature={owncloudplan1.feature_5} />
-        <FeatureCard feature={owncloudplan1.feature_6} />
-        <FeatureCard feature={owncloudplan1.feature_7} />
+        {
+          owncloudplan1.features.map((feature, i) => (
+            <FeatureCard
+              feature={feature}
+              apps={feature == 'Apps Included' ? owncloudplan1.apps : undefined}
+            />
+          ))
+        }
       </div>
     </div>
 
@@ -130,16 +128,14 @@ const planfeature2 = data.table2
         </a>
       </div>
       <div class='w-full bg-[#F6F8FA] h-[750px] p-4'>
-        <FeatureCard feature={owncloudplan2.feature_1} />
-        <FeatureCard feature={owncloudplan2.feature_2} />
-        <FeatureCard feature={owncloudplan2.feature_3} />
-        <FeatureCard
-          feature={owncloudplan2.feature_4}
-          apps={owncloudplan2.apps}
-        />
-        <FeatureCard feature={owncloudplan2.feature_5} />
-        <FeatureCard feature={owncloudplan2.feature_6} />
-        <FeatureCard feature={owncloudplan2.feature_7} />
+        {
+          owncloudplan2.features.map((feature, i) => (
+            <FeatureCard
+              feature={feature}
+              apps={feature == 'Apps Included' ? owncloudplan2.apps : undefined}
+            />
+          ))
+        }
       </div>
     </div>
 
@@ -188,19 +184,14 @@ const planfeature2 = data.table2
       <div
         class='w-full bg-[#F6F8FA] h-[750px] p-4 height-auto rounded-b-[30px] overflow-hidden'
       >
-        <FeatureCard feature={owncloudplan3.feature_1} />
-        <FeatureCard feature={owncloudplan3.feature_2} />
-        <FeatureCard feature={owncloudplan3.feature_3} />
-        <FeatureCard
-          feature={owncloudplan3.feature_4}
-          apps={owncloudplan3.apps}
-        />
-        <FeatureCard feature={owncloudplan3.feature_5} />
-        <FeatureCard feature={owncloudplan3.feature_6} />
-        <FeatureCard feature={owncloudplan3.feature_7} />
-        <FeatureCard feature={owncloudplan3.feature_8} />
-        <FeatureCard feature={owncloudplan3.feature_9} />
-        <FeatureCard feature={owncloudplan3.feature_10} />
+        {
+          owncloudplan3.features.map((feature, i) => (
+            <FeatureCard
+              feature={feature}
+              apps={feature == 'Apps Included' ? owncloudplan3.apps : undefined}
+            />
+          ))
+        }
       </div>
     </div>
   </div>
@@ -235,10 +226,10 @@ const planfeature2 = data.table2
         <div class='flex justify-center items-center'>
           <!-- vCPU , GiB -->
           <div
-            class='w-[85%] my-4 border-[1px] rounded-2xl bg-[#F6F8FA] border-[#D2D2D2] flex flex-col items-center'
+            class='w-[85%] my-4 border-[1px] rounded-2xl bg-[#F6F8FA] border-[#d2d2d27b] flex flex-col items-center'
           >
             <div
-              class='w-[70%] border-b-[1px] text-[#364152] border-[#d2d2d2] pt-5'
+              class='w-[70%] border-b-[1px] text-[#364152] border-[#d2d2d27b] pt-5'
             >
               <div class='my-4 borber-1 flex flex-col'>
                 <p class='text-center relative'>
@@ -278,7 +269,7 @@ const planfeature2 = data.table2
             </div>
 
             <div
-              class='w-[70%] border-b-[1px] text-[#364152] border-[#d2d2d2] pt-5'
+              class='w-[70%] border-b-[1px] text-[#364152] border-[#d2d2d27b] pt-5'
             >
               <div class='my-4 borber-1 flex flex-col'>
                 <p class='text-center relative'>
@@ -318,7 +309,7 @@ const planfeature2 = data.table2
             </div>
 
             <div
-              class='w-[70%] border-b-[1px] text-[#364152] border-[#d2d2d2] pt-5'
+              class='w-[70%]  text-[#364152]  pt-5'
             >
               <div class='my-4 borber-1 flex flex-col'>
                 <p class='text-center relative'>
@@ -397,10 +388,10 @@ const planfeature2 = data.table2
         <div class='flex justify-center items-center'>
           <!-- vCPU , GiB -->
           <div
-            class='w-[80%] my-4 border-[1px] rounded-2xl bg-[#F6F8FA] border-[#D2D2D2] flex flex-col items-center'
+            class='w-[80%] my-4 border-[1px] rounded-2xl bg-[#F6F8FA] border-[#d2d2d27b] flex flex-col items-center'
           >
             <div
-              class='w-[70%] border-b-[1px] text-[#364152] border-[#d2d2d2] pt-5'
+              class='w-[70%] border-b-[1px] text-[#364152] border-[#d2d2d27b] pt-5'
             >
               <div class='my-4 borber-1 flex flex-col'>
                 <p class='text-center relative'>
@@ -440,7 +431,7 @@ const planfeature2 = data.table2
             </div>
 
             <div
-              class='w-[70%] border-b-[1px] text-[#364152] border-[#d2d2d2] pt-5'
+              class='w-[70%] border-b-[1px] text-[#364152] border-[#d2d2d27b] pt-5'
             >
               <div class='my-4 borber-1 flex flex-col'>
                 <p class='text-center relative'>
@@ -480,7 +471,7 @@ const planfeature2 = data.table2
             </div>
 
             <div
-              class='w-[70%] border-b-[1px] text-[#364152] border-[#d2d2d2] pt-5'
+              class='w-[70%] text-[#364152]  pt-5'
             >
               <div class='my-4 borber-1 flex flex-col'>
                 <p class='text-center relative'>
@@ -597,10 +588,10 @@ const planfeature2 = data.table2
         </p>
         <a
           href='/get-started'
-          class='flex justify-center items-center w-full py-2 max-sm:py-[4px] bg-primary rounded-md hover:opacity-90'
+          class='flex justify-center  w-full py-2 max-sm:py-[4px] bg-primary rounded-md hover:opacity-90'
         >
           <p
-            class='text-white font-medium text-base max-sm:text-xs max-sm:text-semibold'
+            class='text-white font-medium  text-center text-base max-sm:text-xs max-sm:text-semibold'
           >
             {planfeature1.tablehead2.button}
           </p>
@@ -620,10 +611,10 @@ const planfeature2 = data.table2
         </p>
         <a
           href='/get-started'
-          class='flex justify-center items-center w-full py-2 max-sm:py-[4px] bg-primary rounded-md hover:opacity-90'
+          class='flex justify-center  w-full py-2 max-sm:py-[4px] bg-primary rounded-md hover:opacity-90'
         >
           <p
-            class='text-white font-medium text-base max-sm:text-xs max-sm:text-semibold'
+            class='text-white font-medium  text-center text-base max-sm:text-xs max-sm:text-semibold'
           >
             {planfeature1.tablehead3.button}
           </p>
@@ -643,80 +634,40 @@ const planfeature2 = data.table2
         </p>
         <a
           href='/get-started'
-          class='flex justify-center items-center w-full py-2 max-sm:py-[4px] bg-primary rounded-md hover:opacity-90'
+          class='flex justify-center  w-full py-2 max-sm:py-[4px] bg-primary rounded-md hover:opacity-90'
         >
-          <p class='text-white font-medium text-base max-sm:text-xs'>
+          <p class='text-white font-medium text-center  text-base max-sm:text-xs'>
             {planfeature1.tablehead3.button}
           </p>
         </a>
       </div>
     </div>
-    <PlanDetailCard
-      title={planfeature1.feature_1}
-      option1='yes'
-      option2='yes'
-      option3='yes'
-    />
-    <PlanDetailCard
-      title={planfeature1.feature_2}
-      option1='yes'
-      option2='yes'
-      option3='yes'
-    />
-    <PlanDetailCard
-      title={planfeature1.feature_3}
-      option1='yes'
-      option2='yes'
-      option3='yes'
-    />
-    <PlanDetailCard
-      title={planfeature1.feature_4}
-      option1='yes'
-      option2='yes'
-      option3='yes'
-    />
-    <PlanDetailCard
-      title={planfeature1.feature_5}
-      option1='Standard Support'
-      option2='Premium Support'
-      option3='24/7 Dedicated Support'
-    />
-    <PlanDetailCard
-      title={planfeature1.feature_6}
-      option1='yes'
-      option2='yes'
-      option3='yes'
-    />
-    <PlanDetailCard
-      title={planfeature1.feature_7}
-      option1='yes'
-      option2='yes'
-      option3='yes'
-    />
-    <PlanDetailCard
-      title={planfeature1.feature_8}
-      option1='yes'
-      option2='yes'
-      option3='yes'
-    />
-    <PlanDetailCard
-      title={planfeature1.feature_9}
-      option1='no'
-      option2='no'
-      option3='yes'
-    />
-    <PlanDetailCard
-      title={planfeature1.feature_10}
-      option1='no'
-      option2='no'
-      option3='yes'
-    />
-    <PlanDetailCard
-      title={planfeature1.feature_11}
-      option1='48 Hrs'
-      option2='24 Hrs'
-      option3='30 Mins'
-    />
+    {
+      planfeature1.features.map((feature) => {
+
+        let option_1 = feature.option_1
+        let option_2 = feature.option_2
+        let option_3 = feature.option_3
+
+        let apps = feature.name === 'Apps Included'
+
+        if (apps) {
+          option_1 = owncloudplan1.apps.join(', ') + ' and more..'
+          option_2 = owncloudplan2.apps.join(', ') + ' and more..'
+          option_3 = owncloudplan3.apps.join(', ') + ' and more..'
+        }
+        
+        return (
+          <PlanDetailCard
+            title={feature.name}
+            option1={option_1}
+            option2={option_2}
+            option3={option_3}
+            apps={apps}
+          />
+        )
+      })
+    }
   </div>
 
   <!-- HOST ON YOUR DATAFLOW CLOUD - TABLE -->
@@ -826,7 +777,6 @@ const planfeature2 = data.table2
         const data = await response.json()
         const country = data.country
 
-        console.log(pricing)
 
         const euroCountries = [
           'AT',

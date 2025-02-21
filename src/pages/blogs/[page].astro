@@ -1,25 +1,32 @@
 ---
 import BlogLayout from '../../layouts/BlogLayout.astro'
-import { posts } from '../../content/blog/data'
-let updatedposts = posts || []
+// import { posts } from '../../content/blog/data'
+import { getCollection } from 'astro:content'
 import BlogGrid from '../../components/blog/BlogGrid.astro'
+
+const blogs = await getCollection('blogs')
+let updatedposts = blogs || []
 
 const POSTS_PER_PAGE = 6
 
 const { page } = Astro.params
 const currentPage = parseInt(page) || 1
 
-const totalPosts = posts.length
+const totalPosts = blogs.length
 const totalPages = Math.ceil(totalPosts / POSTS_PER_PAGE)
 const startIndex = (currentPage - 1) * POSTS_PER_PAGE
 const endIndex = startIndex + POSTS_PER_PAGE
-const paginatedPosts = posts.slice(startIndex, endIndex)
+const paginatedPosts = blogs
+  .slice(startIndex, endIndex)
+  .sort((a, b) => a.data.blog_no - b.data.blog_no)
 
 const pageNumbers = Array.from({ length: totalPages }, (_, i) => i + 1)
 
-export const getStaticPaths = () => {
+export const getStaticPaths = async () => {
+  const blogs = await getCollection('blogs')
+
   const POSTS_PER_PAGE = 6
-  const totalPages = Math.ceil(posts.length / POSTS_PER_PAGE)
+  const totalPages = Math.ceil(blogs.length / POSTS_PER_PAGE)
 
   return Array.from({ length: totalPages }, (_, i) => ({
     params: { page: (i + 1).toString() }
@@ -30,15 +37,18 @@ export const getStaticPaths = () => {
 <style>
   .breadcrumb {
     display: flex;
-    justify-content: center;
+    justify-content: start;
     font-size: 12px;
     margin: 5px;
   }
 
-  .search-input {
-    width: 300px;
-    font-size: 12px;
-    padding-left: 38px;
+  @media screen and (max-width: 768px) {
+    .breadcrumb {
+      display: flex;
+      justify-content: start;
+      font-size: 12px;
+      margin: 5px;
+    }
   }
 
   .pagination {
@@ -70,33 +80,33 @@ export const getStaticPaths = () => {
 </style>
 
 <BlogLayout title='Dataflow | Blogs'>
-  <div class='px-[15%]'>
+  <div class='px-[15%] max-sm:p-[20px]'>
     <!-- Breadcrumb -->
-    <nav aria-label='breadcrumb'>
-      <ol class='pt-lg-4 pb-lg-4 pb-2 breadcrumb'>
+    <nav aria-label='breadcrumb' class='mt-[20px] max-sm:mt-[5px]'>
+      <ol class='breadcrumb max-sm:justify-start'>
         <li class='breadcrumb-item'><a href='index.html'>Homepage</a></li>
-        <li class='breadcrumb-item active' aria-current='page'>
-          Blog grid no sidebar
-        </li>
+        <li class='breadcrumb-item active' aria-current='page'>Blogs</li>
       </ol>
     </nav>
 
     <!-- Page title  -->
-    <div class='flex justify-between items-center'>
+    <div
+      class='flex justify-between items-center max-sm:flex-col max-sm:gap-[20px] max-sm:items-start'
+    >
       <div class=''>
         <h1 class='' style='font-size: 40px; font-weight: 600;'>Blog grid</h1>
       </div>
       <div
-        class='w-[40%] max-sm:w-full flex justify-end max-sm:justify-center'
+        class='w-[40%] max-sm:w-full flex justify-end max-sm:justify-start'
         style='height: 38px;'
       >
-        <div class='position-relative max-sm:w-1/2'>
+        <div class='position-relative max-sm:w-full'>
           <i
             class='ai-search position-absolute top-50 start-0 translate-middle-y ms-3'
           ></i>
           <input
             id='search-bar'
-            class='form-control search-input'
+            class='form-control w-[300px] pl-[40px] max-sm:w-full'
             style='border: 1px solid #D7DDE2; border-radius: 14px; height: 38px; '
             type='search'
             placeholder='Enter keyword'
@@ -105,7 +115,7 @@ export const getStaticPaths = () => {
       </div>
     </div>
 
-    <div class=''>
+    <div class='pt-[20px]'>
       {
         updatedposts.length === 0 ? (
           <div class='text-center min-h-[100px]'>
@@ -120,16 +130,17 @@ export const getStaticPaths = () => {
     <!-- Pagination -->
     <ul class='pagination'>
       {
-        pageNumbers.map((num) => (
-          <li>
-            <a
-              href={`/blogs/${num}`}
-              class={`${currentPage === num ? 'active' : ''}`}
-            >
-              {num}
-            </a>
-          </li>
-        ))
+        pageNumbers.length < 6 &&
+          pageNumbers.map((num) => (
+            <li>
+              <a
+                href={`/blogs/${num}`}
+                class={`${currentPage === num ? 'active' : ''}`}
+              >
+                {num}
+              </a>
+            </li>
+          ))
       }
     </ul>
   </div>

@@ -13,7 +13,14 @@ const data = Data.data.topsection
     <p class='text-lg w-11/12 text-textblack'>{data.description}</p>
   </div>
   <div class='w-[25%] img-container'>
-    <img src='/assets/images/Allmembersimage1.png' class='img-container' />
+    <img
+      src='/assets/images/Allmembersimage1.png'
+      class='img-container'
+      alt='All members'
+      loading='lazy'
+      decoding='async'
+      fetchpriority='low'
+    />
   </div>
 </div>
 <style>

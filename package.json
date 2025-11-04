@@ -4,9 +4,10 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
-    "build": "astro check && astro build",
+    "build": "astro check && astro build && node scripts/generate-sitemap.js",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "generate-sitemap": "node scripts/generate-sitemap.js"
   },
   "dependencies": {
     "@astrojs/check": "^0.8.1",

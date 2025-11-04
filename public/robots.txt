@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Sitemap: https://dataflow.zone/sitemap.xml
+
+# Prevent crawling of any staging or secret folders (adjust if needed)
+Disallow: /admin

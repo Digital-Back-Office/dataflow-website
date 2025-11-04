@@ -18,7 +18,6 @@ import 'aos/dist/aos.css'
 <!doctype html>
 <html lang='en'>
   <head>
-    <script src='/src/scripts/cookie-consent.js'></script>
     <meta charset='UTF-8' />
     <meta name='description' content={meta_description} />
     <meta name='viewport' content='width=device-width' />
@@ -39,6 +38,7 @@ import 'aos/dist/aos.css'
       href='https://fonts.googleapis.com/css2?family=Arimo&display=swap'
       rel='stylesheet'
     />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       rel='stylesheet'
       href='https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@400;700&display=swap'
@@ -59,14 +59,29 @@ import 'aos/dist/aos.css'
     <meta property='og:url' content='https://dataflow.zone' />
     <meta property='og:type' content='website' />
     <meta property='og:site_name' content='dataflow.zone' />
+    <!-- Structured data (Organization) to improve rich results -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Dataflow",
+        "url": "https://dataflow.zone",
+        "logo": "https://dataflow.zone/favicon.png"
+      }
+    </script>
   </head>
   <body class='font-arimo overflow-x-hidden'>
     {header && <Header pagename={title} />}
     <slot />
     <Footer />
-    <script>
+    <!-- Defer non-critical scripts and initialize client-only libs safely -->
+    <script defer src='/src/scripts/cookie-consent.js'></script>
+    <script type="module" defer>
       import AOS from 'aos'
-      AOS.init()
+      // Initialize AOS on client only
+      if (typeof window !== 'undefined') {
+        AOS.init()
+      }
     </script>
   </body>
 </html>

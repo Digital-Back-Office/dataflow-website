@@ -290,9 +290,9 @@ export const getStaticPaths = async () => {
         const article = document.createElement('article')
         article.classList.add('masonry-grid-item')
 
-        article.innerHTML = `
-                        <div class="card border-0 bg-secondary">
-                            ${post.image ? `<a href="${post.url}"><img class="card-img-top" src="${post.image}" alt="Post image" /></a>` : ''}
+    article.innerHTML = `
+            <div class="card border-0 bg-secondary">
+              ${post.image ? `<a href="${post.url}"><img class="card-img-top" loading="lazy" decoding="async" src="${post.image}" alt="Post image" /></a>` : ''}
                             <div class="card-body pb-4">
                                 <div class="d-flex align-items-center mb-4 mt-n1">
                                     <span class="fs-sm text-body-secondary">${post.time}</span>

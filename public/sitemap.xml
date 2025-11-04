@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://dataflow.zone/</loc>
+  </url>
+  <url>
+    <loc>https://dataflow.zone/blogs/boost-your-ai-ml-processes-with-dataflow</loc>
+  </url>
+  <url>
+    <loc>https://dataflow.zone/blogs/building-data-warehouses-with-snowflake-and-dataflow-a-data-engineering-best-practice</loc>
+  </url>
+  <url>
+    <loc>https://dataflow.zone/blogs/data-engineering-with-apache-kafka-and-dataflow-streamlining-real-time-data-pipelines.md</loc>
+  </url>
+  <url>
+    <loc>https://dataflow.zone/blogs/exploring-apache-spark-with-dataflow-accelerating-big-data-analytics</loc>
+  </url>
+  <url>
+    <loc>https://dataflow.zone/blogs/mastering-data-governance-with-apache-atlas-and-dataflow</loc>
+  </url>
+  <url>
+    <loc>https://dataflow.zone/blogs/superset-with-dataflow</loc>
+  </url>
+  <url>
+    <loc>https://dataflow.zone/blogs/understanding-and-utilizing-connections-&-variables-in-dataflow</loc>
+  </url>
+  <url>
+    <loc>https://dataflow.zone/blogs/unleashing-the-power-of-apache-airflow-with-dataflow-for-seamless-etl-pipelines</loc>
+  </url>
+</urlset>

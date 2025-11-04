@@ -6,7 +6,12 @@ const { data, mirror = false, image } = Astro.props
   class=`containersection4 w-full py-24 flex ${mirror && 'flex-row-reverse'} items-center justify-center px-[10%] max-sm:px-[5%] max-sm:mb-8`
 >
   <div class='w-1/2 flex items-center justify-center width100'>
-    <img src={image} class='w-[80%]' />
+    <img 
+      src={image} 
+      class='w-[80%] opacity-0 transition-opacity duration-700 fadein-image' 
+      loading="lazy"
+      onload="this.classList.add('opacity-100')"
+    />
   </div>
   <div class='w-1/2 max-sm:w-full'>
     <div class='max-sm:w-full flex flex-col items-start gap-y-6 width100'>

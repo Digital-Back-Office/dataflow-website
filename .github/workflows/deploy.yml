@@ -18,6 +18,8 @@ jobs:
   build:
     env:
      BUILD_TYPE: production
+     PUBLIC_FORM_ID: ${{ secrets.PUBLIC_FORM_ID }}
+     PUBLIC_GOOGLE_APP_SCRIPT_ID: ${{ secrets.PUBLIC_GOOGLE_APP_SCRIPT_ID }}
 
     runs-on: ubuntu-latest
     steps:

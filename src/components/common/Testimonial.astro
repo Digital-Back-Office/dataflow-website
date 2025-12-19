@@ -1,0 +1,152 @@
+---
+import { getEntry } from 'astro:content'
+
+const Data = await getEntry('home', 'home')
+const testimonialsData = Data.data.testimonials
+const testimonials = testimonialsData.testimonials || []
+---
+
+<section class="relative w-full bg-white py-16">
+  <!-- Testimonials Heading -->
+  <div class="text-center mb-12">
+    <h2 class="text-5xl max-sm:text-3xl font-bold text-[#1A1A1A]">{testimonialsData.title}</h2>
+  </div>
+
+  <div class="max-w-4xl mx-auto flex items-center justify-center overflow-hidden px-8 max-sm:px-0">
+    <div class="relative w-full flex items-center justify-center max-sm:flex-col max-sm:gap-6">
+      
+      <!-- Left Arrow -->
+      <button 
+        id="prev-btn" 
+        class="absolute left-0 max-sm:static top-1/2 max-sm:top-auto -translate-y-1/2 max-sm:translate-y-0 z-50 text-[#14B8A6] hover:text-[#0D9488] p-3 rounded-full transition-all max-sm:hidden"
+        aria-label="Previous testimonial"
+      >
+        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+        </svg>
+      </button>
+
+      <!-- Testimonial Stack -->
+      <div id="testimonial-container" class="relative w-full max-w-2xl max-sm:max-w-sm h-96 max-sm:h-80">
+        {testimonials.map((t, i) => (
+          <div 
+            class="testimonial-card absolute w-full bg-white border border-slate-200 p-10 rounded-3xl shadow-lg transition-all duration-500 cursor-pointer flex flex-col justify-center items-center text-center min-h-[320px]"
+            style={`z-index: ${testimonials.length - i}; transform: translateY(${i * 16}px) scale(${1 - i * 0.04});`}
+            data-index={i}
+          >
+            {/* <!-- Person Info First --> */}
+            <div class="mb-8">
+              {
+                t.image &&
+                <img 
+                  src={t.image} 
+                  alt={t.name}
+                  class="w-16 h-16 rounded-full object-cover mx-auto mb-4"
+                />
+              }
+              <h4 class="font-bold text-slate-900 text-lg">{t.name}</h4>
+              <p class="text-sm text-[#14B8A6] font-medium">{t.role}</p>
+            </div>
+
+            <!-- Quote Message -->
+            <p class="text-lg italic text-slate-700">"{t.text}"</p>
+          </div>
+        ))}
+      </div>
+
+      <!-- Right Arrow -->
+      <button 
+        id="next-btn" 
+        class="absolute right-0 max-sm:static top-1/2 max-sm:top-auto -translate-y-1/2 max-sm:translate-y-0 z-50 text-[#14B8A6] hover:text-[#0D9488] p-3 rounded-full transition-all max-sm:hidden"
+        aria-label="Next testimonial"
+      >
+        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+        </svg>
+      </button>
+
+      <!-- Mobile Bottom Arrows Container -->
+      <div class="hidden max-sm:flex gap-4 justify-center w-full mt-4">
+        <button 
+          id="mobile-prev" 
+          class="text-[#14B8A6] hover:text-[#0D9488] p-3 rounded-full transition-all"
+          aria-label="Previous testimonial"
+        >
+          <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+          </svg>
+        </button>
+        <button 
+          id="mobile-next" 
+          class="text-[#14B8A6] hover:text-[#0D9488] p-3 rounded-full transition-all"
+          aria-label="Next testimonial"
+        >
+          <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<script>
+  function initTestimonials() {
+    const container = document.getElementById('testimonial-container');
+    const cards = Array.from(document.querySelectorAll('.testimonial-card')) as HTMLElement[];
+    const prevBtn = document.getElementById('prev-btn') as HTMLElement;
+    const nextBtn = document.getElementById('next-btn') as HTMLElement;
+    const mobilePrevBtn = document.getElementById('mobile-prev') as HTMLElement;
+    const mobileNextBtn = document.getElementById('mobile-next') as HTMLElement;
+    let currentIndex = 0;
+
+    function swap(direction = 'next') {
+      const topCard = cards[currentIndex] as HTMLElement;
+      
+      // 1. Animate the top card out (Swipe based on direction)
+      const swipeDirection = direction === 'next' ? 120 : -120;
+      topCard.style.transform = `translateX(${swipeDirection}%) rotate(${direction === 'next' ? 10 : -10}deg)`;
+      topCard.style.opacity = '0';
+
+      setTimeout(() => {
+        // 2. Move it to the bottom of the stack visually
+        topCard.style.zIndex = "0";
+        topCard.style.transform = `translateY(${(cards.length - 1) * 16}px) scale(${1 - (cards.length - 1) * 0.04})`;
+        
+        // 3. Update all other cards' positions
+        cards.forEach((card, idx) => {
+          const cardIndex = cards.indexOf(card);
+          const offset = (cardIndex - currentIndex - 1 + cards.length) % cards.length;
+          card.style.zIndex = String(cards.length - offset);
+          card.style.transform = `translateY(${offset * 16}px) scale(${1 - offset * 0.04})`;
+        });
+
+        // 4. Fade it back in at the bottom
+        setTimeout(() => {
+          topCard.style.opacity = '1';
+        }, 100);
+
+        currentIndex = (currentIndex + 1) % cards.length;
+      }, 500);
+    }
+
+    // Desktop Arrow button clicks
+    nextBtn?.addEventListener('click', () => swap('next'));
+    prevBtn?.addEventListener('click', () => swap('prev'));
+
+    // Mobile Arrow button clicks
+    mobileNextBtn?.addEventListener('click', () => swap('next'));
+    mobilePrevBtn?.addEventListener('click', () => swap('prev'));
+
+    // Auto-play every 5 seconds
+    setInterval(() => swap('next'), 5000);
+    
+    // Optional: Swap on click
+    container?.addEventListener('click', () => swap('next'));
+  }
+
+  // Runs on initial load and View Transitions
+  initTestimonials();
+  document.addEventListener('astro:after-swap', initTestimonials);
+</script>

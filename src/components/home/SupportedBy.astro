@@ -1,0 +1,24 @@
+---
+import { getEntry } from 'astro:content'
+
+const Data = await getEntry('home', 'home')
+const supported_by = Data.data.supported_by
+---
+
+<div class="w-full  lg:min-h-[400px] py-10 flex flex-col items-center justify-center gap-12">
+    <div>
+        <h2 class="text-4xl text-textblack font-bold max-sm:px-3">{supported_by.title}</h2>
+    </div>
+    <div class="flex items-center gap-12 max-sm:flex-col">
+        {
+            supported_by.incubators.map((item, index) => (
+                <div>
+                    <img 
+                        src={item.src} alt={item.name}
+                        class="h-[40px] max-sm:h-[30px]"
+                     />
+                </div>
+            ))
+        }
+    </div>
+</div>

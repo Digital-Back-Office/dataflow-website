@@ -31,7 +31,8 @@ export default {
         secondary: '#1DD0D5',
         textblack: '#393939',
         textPrimary: '#364152',
-        primaryHover: '#0AA3A3'
+        primaryHover: '#0AA3A3',
+        lightPrimary: '#30baba10'
       },
       keyframes: {
         fadeIn: {

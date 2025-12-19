@@ -1,34 +1,50 @@
 ---
-import { getEntry } from 'astro:content'
+import { getEntry } from "astro:content";
 
-const Data = await getEntry('features', 'manage-your-data')
-const data = Data.data.TopSection
-const button = Data.data.button
+const Data = await getEntry("features", "manage-your-data-connections");
+const data = Data.data.TopSection;
+const button = Data.data.button;
 ---
 
-<div class=' min-h-screen w-full flex items-center justify-center max-sm:flex-col max-sm:px-[20px] max-sm:py-[30px]'>
-  <div class='text-container w-2/5'>
-    <h1 class='text-2calc font-bold mb-8 text-textblack'>{data.title}</h1>
-    <p class='text-lg w-11/12 text-textblack'>{data.description}</p>
-    <a href='/start-free-trail'>
-      <button
-        class='custom-button bg-primary hover:bg-[#30abab] px-3 py-2 duration-700 text-white rounded-lg shadow-md flex text-base items-center gap-x-2 mt-14'
-        style='font-family: Roboto;'
+<div
+  class="min-h-screen w-full flex items-center justify-center max-md:flex-col max-md:px-[20px] max-md:py-[30px]"
+>
+  <div class="flex-1 flex justify-center gap-8 max-md:w-[90%]">
+    <div class="w-full flex flex-col gap-6 lg:w-2/3">
+      <h1
+        class="text-6xl max-md:text-5xl max-sm:text-2xl leading-snug tracking-wide font-bold text-black"
       >
-        {button}
+        {data.title}
+      </h1>
+      <p class="text-lg max-sm:text-sm  text-textblack leading-tight">
+        {data.description}
+      </p>
+      <a
+        href="https://docs.dataflow.zone/getting-started/installation"
+        class="w-max bg-primary px-4 py-3 text-white rounded-xl shadow-md flex text-base items-center gap-x-2 hover:bg-[#0AA3A3]"
+      >
+        {data.cta_text}
         <img
-          class='button-img'
-          src='/assets/images/arrowright.svg'
-          alt='Arrow right'
+          class="invert brightness-0 size-[20px]"
+          src="/assets/images/arrowright.svg"
+          alt="Arrow"
         />
-      </button>
-    </a>
+      </a>
+    </div>
   </div>
-  <div class='img-container w-[36%] h-auto flex items-center justify-center'>
+  <div class="flex-1 h-auto flex items-center justify-center">
     <img
-      src='/assets/images/rundata3.png'
-      class='h-full w-full object-contain'
-      alt='Description of image'
+      src="/assets/images/landing/hero-image.png"
+      class="h-full w-full object-contain"
+      alt="Description of image"
+    />
+  </div>
+
+  <!-- BG Pattern -->
+  <div class="absolute left-0 top-0">
+    <img
+      src="/public/assets/images/dataflow-bg-pattern.svg"
+      alt="dataflow-bg-pattern"
     />
   </div>
 </div>

@@ -4,6 +4,7 @@ import Layout from '../layouts/Layout.astro'
 import TopSection from '../components/features/say-no-to-python-dependency-hell/TopSection.astro'
 import Benefits from '../components/features/say-no-to-python-dependency-hell/Benefits.astro'
 import DependencyManagement from '../components/features/say-no-to-python-dependency-hell/DependencyManagement.astro'
+import TwoColumnSection from '../components/common/TwoColumnSection.astro'
 const meta_description =
   'Effortlessly manage and resolve Python dependencies with Dataflow platform.'
 ---
@@ -13,6 +14,14 @@ const meta_description =
   meta_description={meta_description}
 >
   <TopSection />
-  <Benefits />
+  <TwoColumnSection
+    title="Define Once. Share Everywhere."
+    description="Select your Python version and libraries. Dataflow resolves the dependency tree, builds the environment for you in the background, and when built it can be activated to be used across the workspace."
+    image="/assets/images/app-screenshots/dashboard.png"
+    buttonText="Get Started"
+    buttonHref="/start-free-trail"
+    imageSide="left"
+    bg="white"
+  />
   <DependencyManagement />
 </Layout>

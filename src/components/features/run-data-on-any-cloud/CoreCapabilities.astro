@@ -5,11 +5,12 @@ import Card from './Card.astro'
 const Data = await getEntry('features', 'run-data-on-any-cloud')
 const data = Data.data.Section2
 const button = Data.data.button1
+const features = data.features || []
 ---
 
-<div class='container-top w-full py-[5%] flex items-center justify-center'>
-  <div class='text-container w-2/5 max-sm:w-[90%] h-full mt-10'>
-    <h1 class='text-4xl font-bold mb-[5%] text-textblack'>{data.title}</h1>
+<div class='container-top w-full py-[5%] flex items-center justify-center max-md:flex-col'>
+  <div class='text-container w-2/5 max-md:w-[90%] h-full mt-10'>
+    <h1 class='text-4xl font-bold mb-[5%] text-black'>{data.title}</h1>
     <p class='w-[90%] max-sm:w-full max-sm:mt-10 text-lg text-textblack'>
       {data.description}
     </p>
@@ -22,36 +23,21 @@ const button = Data.data.button1
     >
   </div>
   <div
-    class='card-container w-2/5 h-full flex justify-evenly items-evenly flex-wrap mt-5 gap-6 gap-x-4'
+    class='card-container w-2/5 h-full flex justify-evenly items-evenly flex-wrap mt-5 gap-6 gap-x-4 max-md:w-full'
   >
-    <Card
-      image='/assets/images/realtimeprocessing.png'
-      title={data.feature1.title}
-      description={data.feature1.description}
+  
+    {features.map((feature) => (
+      <Card
+      image={feature.image}
+      title={feature.title}
+      description={feature.description}
       bg='bg-[#F8FAFC]'
-    />
-    <Card
-      image='/assets/images/batchprocessing.png'
-      title={data.feature2.title}
-      description={data.feature2.description}
-      bg='bg-[#F8FAFC]'
-    />
-    <Card
-      image='/assets/images/autoscaling.png'
-      title={data.feature3.title}
-      description={data.feature3.description}
-      bg='bg-[#F8FAFC]'
-    />
-    <Card
-      image='/assets/images/streamandbatchanalytics.png'
-      title={data.feature4.title}
-      description={data.feature4.description}
-      bg='bg-[#F8FAFC]'
-    />
+      />
+    ))}
   </div>
 </div>
 <div class='py-8 w-full bg-[#F8FAFC]'>
-  <h3 class='text-4xl max-sm:text-3xl pt-[8%] font-bold text-center text-textblack'>
+  <h3 class='text-4xl max-sm:text-3xl pt-[8%] font-bold text-center text-black'>
     {data.title2}
   </h3>
 </div>

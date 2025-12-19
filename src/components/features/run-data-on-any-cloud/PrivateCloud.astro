@@ -4,10 +4,11 @@ import { getEntry } from 'astro:content'
 import Card from './Card.astro'
 const Data = await getEntry('features', 'run-data-on-any-cloud')
 const data = Data.data.Section6
+const features = data.features || []
 ---
 
 <div
-  class='container-top min-h-screen w-full flex justify-center max-sm:flex-col items-center gap-4 max-sm:gap-0'
+  class='container-top min-h-screen w-full flex justify-center max-sm:flex-col items-center gap-4 max-sm:gap-0 max-md:flex-col'
 >
   <div
     class='img-container w-2/5 max-sm:w-full flex items-center justify-center py-24 max-sm:py-2'
@@ -26,19 +27,17 @@ const data = Data.data.Section6
     <p class='text-lg mb-10 text-textblack'>
       {data.description}
     </p>
-    <div class='card-container flex justify-between gap-6 w-full'>
-      <Card
-        image='/assets/images/flexibilityrundataanycloud.png'
-        title={data.feature1.title}
-        description={data.feature1.description}
-        bg='bg-[#F8FAFC]'
-      />
-      <Card
-        image='/assets/images/security.png'
-        title={data.feature2.title}
-        description={data.feature2.description}
-        bg='bg-[#F8FAFC]'
-      />
+    <div class='card-container flex justify-between gap-6 w-full max-md:flex-col'>
+      {
+        features.map((feature) => (
+          <Card
+            image={feature.image}
+            title={feature.title}
+            description={feature.description}
+            bg='bg-[#F8FAFC]'
+          />
+        ))
+      }
     </div>
   </div>
 </div>

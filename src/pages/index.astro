@@ -1,26 +1,21 @@
 ---
 import Layout from '../layouts/Layout.astro'
-import Testimonial from '../components/common/Testimonial'
+import Testimonial from '../components/common/Testimonial.astro'
 import Hero from '../components/home/Hero.astro'
-import BestInClassTools from '../components/home/BestInClassTools.astro'
-import Seventy from '../components/home/Seventy.astro'
-import Consultation from '../components/home/Consultation.astro'
+import LandingCTA from '../components/home/LandingCTA.astro'
 import FeatureSection from '../components/home/FeatureSection.astro'
-import { getEntry } from 'astro:content'
+import Tools from '../components/home/Tools.astro'
+import SupportedBy from '../components/home/SupportedBy.astro'
+import HowItWorks from '../components/home/HowItWorks.astro'
 
-const {data} = await getEntry('home', 'home')
-let features = data.features
 ---
 
 <Layout title='Dataflow | AI ready data platform'>
   <Hero />
-  <BestInClassTools />
-  {
-    features.map((feature, index) => (
-      <FeatureSection {...feature} key={index} />
-    ))
-  }
-  <Seventy />
-  <Testimonial client:load />
-  <Consultation />
+  <Tools />
+  <HowItWorks />
+  <FeatureSection />
+  <Testimonial />
+  <SupportedBy />
+  <LandingCTA />
 </Layout>

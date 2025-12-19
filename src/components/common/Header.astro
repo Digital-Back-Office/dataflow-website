@@ -9,83 +9,42 @@ const docsUrl = import.meta.env.VITE_DOCS_URL
 ---
 
 <header
-  class='h-14 w-full flex items-center justify-between bg-[#30BABA] px-[22px]'
+  class='h-16 w-full flex items-center justify-between bg-[#FFF] px-[22px]'
 >
   <div class='flex items-center gap-16 p-[5px] pt-[9px]'>
     <a href='/' class=''>
-      <img src='/assets/images/dataflow-logo-header.svg' class='h-12' />
+      <img src='/assets/images/dataflow-logo-green.svg' class='h-12' />
     </a>
     <nav class='hidden md:flex h-12 items-baseline mt-[5px]'>
       <div
         class='flex items-center justify-between tracking-wide h-full gap-[6px]'
       >
-        <a
-          href='/'
-          id='dataflow'
-          class='h-full border-b-[3px] mb-[2px] border-transparent px-[18px] flex items-center hover:border-[#EFFFFF] hover:border-opacity-70'
-        >
-          <p class='text-white text-sm font-semibold'>
-            {header.nav1}
-          </p>
-        </a>
-        <a
-          href='/apps'
-          id='apps'
-          class='h-full border-b-[3px] mb-[2px] border-transparent px-[18px] flex items-center hover:border-[#EFFFFF] hover:border-opacity-70'
-        >
-          <p class='text-white text-sm font-semibold'>
-            {header.nav2}
-          </p>
-        </a>
-        <a
-          href='/pricing'
-          id='pricing'
-          class='h-full border-b-[3px] mb-[2px] border-transparent px-[18px] flex items-center hover:border-[#EFFFFF] hover:border-opacity-70'
-        >
-          <p class='text-white text-sm font-semibold'>
-            {header.nav3}
-          </p>
-        </a>
-        <a
-          href='/company'
-          id='company'
-          class='h-full border-b-[3px] mb-[2px] border-transparent px-[18px] flex items-center hover:border-[#EFFFFF] hover:border-opacity-70'
-        >
-          <p class='text-white text-sm font-semibold'>
-            {header.nav4}
-          </p>
-        </a>
-        <!-- <a
-          href='/blogs/1'
-          id='blog'
-          class='h-full border-b-[3px] mb-[2px] border-transparent px-[18px] flex items-center hover:border-[#EFFFFF] hover:border-opacity-70'
-        >
-          <p class='text-white text-sm font-semibold'>
-            {header.nav5}
-          </p>
-        </a> -->
-        <a
-          href={docsUrl}
-          target='_blank'
-          class='h-full border-b-[3px] mb-[2px] border-transparent px-[18px] flex items-center hover:border-[#EFFFFF] hover:border-opacity-70'
-        >
-          <p class='text-white text-sm font-semibold flex items-center gap-1'>
-            {header.nav6}
-            <img
-              src='/assets/images/icon-redirect-page.svg'
-              alt='redirect'
-              class='size-6'
-            />
-          </p>
-        </a>
+      {
+        header.nav_items.map((item, index) => {
+
+          if (item.label === "Blogs") return null;
+
+          return (
+          <a
+            href={item.href}
+            id={item.label}
+            class='h-full border-b-[3px] mb-[2px] border-transparent px-[18px] flex items-center hover:border-primary hover:border-opacity-70'
+          >
+            <p class='text-primary text-sm font-semibold'>
+              {item.label}
+            </p>
+          </a>
+        )
+        })
+      }
       </div>
     </nav>
   </div>
 
-  <div class='hidden md:flex items-center gap-[6px]'>
+  <div class='hidden md:flex items-center gap-[8px]'>
     <a href='/start-free-trail'>
       <button
-        class='px-[16px] py-[8px] text-nowrap hover:bg-[#3AC4C4] text-white rounded-md text-sm font-bold tracking-wide'
+        class='px-[16px] py-[8px] text-nowrap bg-[#3AC4C4] text-white rounded-md text-sm font-bold tracking-wide'
         >{header.button_1}</button
       >
     </a>
@@ -98,7 +57,7 @@ const docsUrl = import.meta.env.VITE_DOCS_URL
   </div>
 
   <div class='md:hidden flex items-center'>
-    <button id='burgerMenuButton' class='text-white focus:outline-none'>
+    <button id='burgerMenuButton' class='text-primary focus:outline-none'>
       <svg
         class='w-8 h-8'
         fill='none'
@@ -118,15 +77,16 @@ const docsUrl = import.meta.env.VITE_DOCS_URL
   <p id='pathname' class='bg-black text-white hidden'>{pathname.split('/')}</p>
 </header>
 
+<!-- Mobile Menu -->
 <div
   id='mobileMenu'
-  class='fixed top-0 left-0 w-full h-full bg-[#30BABA] transform -translate-x-full transition-transform duration-300 ease-in-out z-50'
+  class='bg-white fixed top-0 left-0 w-full h-full transform -translate-x-full transition-transform duration-300 ease-in-out z-50'
 >
   <div class='h-20 w-full flex items-center justify-between px-4'>
     <a href='/'>
-      <img src='/assets/images/dataflow-logo-header.svg' class='h-12' />
+      <img src='/assets/images/dataflow-logo-green.svg' class='h-12' />
     </a>
-    <button id='closeMenuButton' class='text-white focus:outline-none'>
+    <button id='closeMenuButton' class='text-primary focus:outline-none'>
       <svg
         class='w-8 h-8'
         fill='none'
@@ -142,60 +102,32 @@ const docsUrl = import.meta.env.VITE_DOCS_URL
       </svg>
     </button>
   </div>
-  <nav class='flex flex-col items-center mt-10'>
-    <a
-      href='/'
-      class='text-white text-base font-bold py-2'
-      id='nav1-mobile'
-      style='font-family: Arial, Helvetica, sans-serif'>{header.nav1}</a
-    >
-    <a
-      href='/apps'
-      class='text-white text-base font-bold py-2'
-      id='nav2-mobile'
-      style='font-family: Arial, Helvetica, sans-serif'>{header.nav2}</a
-    >
-    <a
-      href={'/pricing'}
-      class='text-white text-base font-bold py-2'
-      id='nav3-mobile'
-      style='font-family: Arial, Helvetica, sans-serif'>{header.nav3}</a
-    >
+  <nav class='bg-white flex flex-col items-center mt-10'>
+      {
+        header?.nav_items.map((item, index) => {
 
-    <a
-      href='/company'
-      class='text-white text-base font-bold py-2'
-      id='nav4-mobile'
-      style='font-family: Arial, Helvetica, sans-serif'>{header.nav4}</a
-    >
-    <a
-      href={docsUrl}
-      class='text-white text-base font-bold py-2 flex items-center'
-      id='nav3-mobile'
-      style='font-family: Arial, Helvetica, sans-serif'
-      >{header.nav6}
-      <img
-        src='/assets/images/icon-redirect-page.svg'
-        alt='redirect'
-        class='size-4'
-      /></a
-    >
-    <!-- <a
-      href='/blogs/1'
-      class='text-white text-base font-bold py-2'
-      id='nav5-mobile'
-      style='font-family: Arial, Helvetica, sans-serif'>{header.nav5}</a
-    > -->
+          if (item.label === "Blogs") return null;
+
+          return (
+          <a
+            href={item.href}
+            id={item.label}
+            class='text-primary text-base font-bold py-2'
+            style='font-family: Arial, Helvetica, sans-serif'>
+              {item.label}
+          </a> )}
+        )
+      }
     <div class='flex flex-col mt-14 items-center gap-4'>
       <a href='/start-free-trail'>
         <button
-          class='px-[20px] py-[8px] text-white rounded-md text-base font-bold tracking-wide'
+          class='px-[20px] py-[8px] bg-primary text-white rounded-md text-base font-bold tracking-wide'
           >{header.button_1}</button
         >
       </a>
       <a href='/book-demo'>
         <button
-          class='px-[20px] py-[8px] bg-white rounded-md text-base font-bold tracking-wide shadow-md text-[#30BABA]'
+          class='px-[20px] py-[8px] bg-white rounded-md text-base font-bold tracking-wide shadow-md text-primary'
           >{header.button_2}</button
         >
       </a>

@@ -61,7 +61,7 @@ footer:
         - label: "Run Dataflow on any cloud"
           href: "/run-dataflow-on-any-cloud"
         - label: "Manage your data connection across tools"
-          href: "/manage-your-data"
+          href: "/manage-your-data-connections"
         - label: "Say goodbye to Python dependency"
           href: "/say-goodbye-to-python-dependency-hell"
     

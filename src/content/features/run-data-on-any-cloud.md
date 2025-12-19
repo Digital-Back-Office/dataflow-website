@@ -1,40 +1,52 @@
 ---
 TopSection:
-  title: Upgrade your data management and processing capabilities by using our service, which enables Dataflow on any cloud platform
-  description: Our solution eliminates the restrictions of single-cloud environments, offering you the freedom to choose the best cloud provider for your specific needs.
+  title: Your Data, Your Cloud. No Lock-In
+  description: Deploy the full Dataflow stack on AWS, Azure, GCP. Switch providers without rewriting your pipelines.
+  cta_text: "Read Documentation"
+  company_logos:
+    title: 'Production-ready on all major providers'
+    logos:
+      - image: /assets/images/awslogo.png
+        alt: AWS Logo
+      - image: /assets/images/googlecloudlogo.png
+        alt: Google Cloud Logo
+      - image: /assets/images/snowflake-company.png
+        alt: Snowflake Logo
+      - image: /assets/images/azurelogo.png
+        alt: Azure Logo
+
 
 benefits:
   title: Benefits of Running Dataflow on Any Cloud
   description: Running Dataflow on any cloud platform offers several key advantages that enhance your data processing capabilities. This approach provides unparalleled flexibility, allowing you to choose the cloud provider that best meets your needs, whether it’s AWS, Google Cloud, Azure, or another major service. This choice helps you avoid vendor lock-in and leverage the unique strengths of each platform.
-  feature1:
-    title: Flexibility
-    description: Choose any cloud provider that fits your needs, such as AWS, Google Cloud, or Azure, without being locked into one vendor.
-  feature2:
-    title: Scalability
-    description: Automatically adjust resources to handle both small and large data workloads efficiently, ensuring optimal performance.
-  feature3:
-    title: Interoperability
-    description: Easily integrate with a variety of cloud services and apps for a smooth and efficient data processing workflow.
-  feature4:
-    title: Cost-Efficiency
-    description: Save money by selecting the most cost-effective cloud provider and using resources only when necessary.
+  features:
+    - title: Flexibility
+      description: Choose any cloud provider that fits your needs, such as AWS, Google Cloud, or Azure, without being locked into one vendor.
+      image: /assets/images/flexibilityrundataanycloud.png
+    - title: Interoperability
+      description: Easily integrate with a variety of cloud services and apps for a smooth and efficient data processing workflow.
+      image: /assets/images/Interoperability.png
+    - title: Cost-Efficiency
+      description: Save money by selecting the most cost-effective cloud provider and using resources only when necessary.
+      image: /assets/images/cost-efficiency.png
 
 Section2:
   title: Core Capabilities
   description: Running Dataflow on Any Cloud" enables seamless integration and execution of data processing pipelines across multiple cloud platforms, ensuring flexibility and scalability. This service allows users to harness the power of cloud-agnostic data flow management, optimizing resource use and reducing vendor lock-in.
-  feature1:
-    title: Real-Time Processing
-    description: Dataflow processes data instantly as it arrives, perfect for tasks needing immediate insights like fraud detection or real-time monitoring.
-  feature2:
-    title: Batch Processing
-    description: Handles large volumes of data in scheduled chunks, suitable for daily reports and data warehousing.
-  feature3:
-    title: Auto-Scaling
-    description: Automatically adjusts resources to match workload demands, ensuring efficient use of resources and cost savings.
-  feature4:
-    title: Stream and Batch Analytics
-    description: Provides apps to analyze both live data streams and historical data for complete insights and reporting.
-  title2: Write Once, Run Anywhere
+  features:
+    - title: Real-Time Processing
+      description: Dataflow processes data instantly as it arrives, perfect for tasks needing immediate insights like fraud detection or real-time monitoring.
+      image: /assets/images/realtimeprocessing.png
+    - title: Batch Processing
+      description: Handles large volumes of data in scheduled chunks, suitable for daily reports and data warehousing.
+      image: /assets/images/batchprocessing.png
+    - title: Auto-Scaling
+      description: Automatically adjusts resources to match workload demands, ensuring efficient use of resources and cost savings.
+      image: /assets/images/autoscaling.png
+    - title: Stream and Batch Analytics
+      description: Provides apps to analyze both live data streams and historical data for complete insights and reporting.
+      image: /assets/images/streamandbatchanalytics.png
+  title2: "Write Once, Run Anywhere"
 
 Section3:
   title: Comprehensive feature breakdowns, video tutorials, case studies, expandable sections for detailed information, and strong CTAs.
@@ -48,6 +60,14 @@ Section5:
 Section6:
   title: Unlock the Potential of Your Private Cloud
   description: Our solution eliminates the restrictions of single-cloud environments, offering you the freedom to choose the best cloud provider for your specific needs.
+  features:
+    - title: Flexibility
+      description: Choose any cloud provider that fits your needs, such as AWS, Google Cloud, or Azure, without being locked into one vendor.
+      image: '/assets/images/flexibilityrundataanycloud.png'
+    - title: Security
+      description: Maintain high security standards with end-to-end encryption and compliance with industry regulations.
+      image: '/assets/images/security.png'
+
   feature1:
     title: Flexibility
     description: Choose any cloud provider that fits your needs, such as AWS, Google Cloud, or Azure, without being locked into one vendor.

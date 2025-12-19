@@ -2,6 +2,7 @@
 import Benefits from '../components/features/manage-data-efficiently/Benefits.astro'
 import DataConnections from '../components/features/manage-data-efficiently/DataConnections.astro'
 import CoreFeatures from '../components/features/manage-data-efficiently/CoreFeatures.astro'
+import Comparison from '../components/features/manage-data-efficiently/Comparison.astro'
 
 import TopSection from '../components/features/manage-data-efficiently/TopSection.astro'
 import Layout from '../layouts/Layout.astro'
@@ -10,10 +11,11 @@ const meta_description =
 ---
 
 <Layout
-  title='Dataflow | Manage your data efficiently'
+  title='Dataflow | Manage your data connections'
   meta_description={meta_description}
 >
   <TopSection />
+  <Comparison />
   <Benefits />
   <DataConnections />
   <CoreFeatures />

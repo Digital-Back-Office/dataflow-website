@@ -7,37 +7,44 @@ const button = Data.data.button
 ---
 
 <div
-  class=' min-h-screen w-full py-24 flex items-center justify-center max-sm:flex-col max-sm:px-[20px] max-sm:py-[30px]'
+  class="container-top min-h-screen w-full py-10 pt-16 flex items-center justify-center max-sm:flex-col max-sm:py-[30px] max-sm:px-[20px] max-sm:justify-start max-sm:items-start max-sm:min-h-max"
 >
-  <div class='text-container w-2/5'>
-    <h1 class='text-2calc font-bold mb-8 text-textblack leading-snug'>
-      {data.title1}
+  <div class="absolute left-0 top-0">
+    <img
+      src="/public/assets/images/dataflow-bg-pattern.svg"
+      alt="dataflow-bg-pattern"
+    />
+  </div>
+  <div class="w-2/5 flex flex-col gap-8 max-md:w-[90%]">
+    <h1
+      class="text-5xl max-md:text-5xl max-sm:text-2xl leading-snug tracking-wide font-bold text-black"
+    >
+      {data.title}
     </h1>
-    <p class='text-md w-11/12 text-textblack'>{data.description2}</p>
-    <a href='/start-free-trail'>
-      <button
-        class='custom-button bg-primary hover:bg-[#30baba] px-3 py-2 text-white rounded-lg shadow-md flex text-base items-center gap-x-2 mt-10'
-        style='font-family: Roboto;'
-      >
-        {button}
-        <img
-          class='button-img'
-          src='/assets/images/arrowright.svg'
-          alt='Arrow right'
-        />
-      </button>
+    <p class="text-lg max-sm:text-sm w-10/12 text-textblack leading-tight">
+      {data.description}
+    </p>
+    <a
+      href="https://docs.dataflow.zone/getting-started/installation"
+      class="w-max bg-primary px-4 py-3 text-white rounded-xl shadow-md flex text-base items-center gap-x-2 hover:bg-[#0AA3A3]"
+    >
+      {data.cta_text}
+      <img
+        class="invert brightness-0 size-[20px]"
+        src="/assets/images/arrowright.svg"
+        alt="Arrow"
+      />
     </a>
   </div>
-  <div
-    class='img-container w-[40%] h-auto flex items-center justify-center pb-10'
-  >
+  <div class="img-container max-md:hidden w-2/5 bg-white h-auto">
     <img
-      src='/assets/images/python-dependency.svg'
-      class='h-full w-full object-contain'
-      alt='Description of image'
+      src="/assets/images/python-dependency.svg"
+      alt="Run on Any Cloud"
+      class="transition-all duration-400 ease-in-out group-hover:scale-125"
     />
   </div>
 </div>
+
 
 <style>
   .custom-button:hover {

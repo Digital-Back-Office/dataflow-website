@@ -1,9 +1,9 @@
 ---
-const { image, title, description, bg } = Astro.props
+const { image, title, description, bg, height = '[250px]', width = '[280px]', href = null , label = null, target = "_self" } = Astro.props
 ---
 
 <div
-  class={`card transition-all duration-100 ease-in-out w-[280px] h-[250px]  p-7 py-6  text-textblack hover:text-white ${bg ? bg : "bg-white"} hover:bg-[#364152] flex flex-col items-start justify-evenly rounded-[36px] max-sm:rounded-3xl group`}
+  class={`card transition-all duration-100 ease-in-out w-${width} h-${height} p-7 py-6  text-textblack hover:text-white ${bg ? bg : "bg-white"} hover:bg-[#364152] flex flex-col gap-2 items-start justify-evenly rounded-[36px] max-sm:rounded-3xl group`}
 >
   <div class='size-[40px] max-sm:my-1 max-sm:size-[30px]'>
     <img src={image} class='w-full h-full object-contain image-container' />
@@ -14,6 +14,17 @@ const { image, title, description, bg } = Astro.props
   <p class='text-sm max-sm:my-1 max-sm:text-xs'>
     {description}
   </p>
+  {
+    href && label && (
+      <a href={href} class='mt-2 text-primary hover:underline' target={target}>
+        {label}
+        <img 
+          src='/assets/images/arrowright.png' 
+          class='inline-block ml-2'
+        />
+      </a>
+    )
+  }
 </div>
 <style>
   .card:hover .image-container {

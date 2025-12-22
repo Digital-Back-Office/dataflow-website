@@ -1,0 +1,59 @@
+---
+interface Props {
+    label: string
+    href?: string
+    target?: '_self' | '_blank'
+    rel?: string
+    type?: 'button' | 'submit' | 'reset'
+    iconSrc?: string
+    iconAlt?: string
+    variant?: 'primary' | 'ghost'
+    className?: string
+}
+
+const {
+    label,
+    href,
+    target = '_self',
+    rel = target === '_blank' ? 'noreferrer noopener' : undefined,
+    type = 'button',
+    iconSrc = '/assets/images/arrowright.svg',
+    iconAlt = 'Arrow icon',
+    variant = 'primary',
+    className = '',
+} = Astro.props
+
+const baseClasses =
+    'w-max inline-flex hover:cursor-pointer items-center gap-x-2 px-4 py-3 rounded-xl text-base font-medium transition duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary'
+const variantClasses =
+    variant === 'ghost'
+        ? 'bg-transparent text-primary hover:bg-primary/10 shadow-none'
+        : 'bg-primary text-white shadow-md hover:bg-primary'
+const classes = `${baseClasses} ${variantClasses} ${className}`.trim()
+---
+
+{href ? (
+    <a href={href} target={target} rel={rel} class={classes} aria-label={label}>
+        {label}
+        {iconSrc && (
+            <img
+                class='invert brightness-0 size-[20px]'
+                src={iconSrc}
+                alt={iconAlt}
+                loading='lazy'
+            />
+        )}
+    </a>
+) : (
+    <button type={type} class={classes} aria-label={label}>
+        {label}
+        {iconSrc && (
+            <img
+                class='invert brightness-0 size-[20px]'
+                src={iconSrc}
+                alt={iconAlt}
+                loading='lazy'
+            />
+        )}
+    </button>
+)}

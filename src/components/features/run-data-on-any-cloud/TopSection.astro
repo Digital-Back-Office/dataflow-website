@@ -1,5 +1,6 @@
 ---
 import { getEntry } from "astro:content";
+import CustomButton from "../../common/CustomButton.astro";
 
 const Data = await getEntry("features", "run-data-on-any-cloud");
 const data = Data.data.TopSection;
@@ -10,7 +11,7 @@ const logos = data.company_logos.logos || [];
 <div
   class="container-top min-h-screen w-full py-10 pt-16 flex items-center justify-center max-sm:flex-col max-sm:py-[30px] max-sm:px-[20px] max-sm:justify-start max-sm:items-start max-sm:min-h-max"
 >
-  <div class="absolute left-0 top-0">
+  <div class="absolute left-0 top-0 z-[-1]">
     <img
       src="/public/assets/images/dataflow-bg-pattern.svg"
       alt="dataflow-bg-pattern"
@@ -25,17 +26,7 @@ const logos = data.company_logos.logos || [];
     <p class="text-lg max-sm:text-sm w-11/12 text-textblack leading-tight">
       {data.description}
     </p>
-    <a
-      href="https://docs.dataflow.zone/getting-started/installation"
-      class="w-max bg-primary px-4 py-3 text-white rounded-xl shadow-md flex text-base items-center gap-x-2 hover:bg-[#0AA3A3]"
-    >
-      {data.cta_text}
-      <img
-        class="invert brightness-0 size-[20px]"
-        src="/assets/images/arrowright.svg"
-        alt="Arrow"
-      />
-    </a>
+    <CustomButton href={"https://docs.dataflow.zone/getting-started/installation"} label={data.cta_text} target="_blank" />
   </div>
   <div class="img-container max-md:hidden w-2/5 bg-white h-auto">
     <img

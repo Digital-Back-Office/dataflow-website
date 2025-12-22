@@ -3,7 +3,7 @@ import { getEntry } from 'astro:content'
 import FeatureCard from './FeatureCard.astro'
 import PlanDetailCard from './PlanDetailCard.astro'
 import PlanDetailCard2 from './PlanDetailCard2.astro'
-const Data = await getEntry('pricing', 'pricing')
+const Data = await getEntry('pricing', 'pricing-plans')
 const pricing = await getEntry('pricing', 'plancost')
 const pricingdata = JSON.stringify(pricing.data)
 const data = Data.data

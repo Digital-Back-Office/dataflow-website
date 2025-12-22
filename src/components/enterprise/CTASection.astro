@@ -1,0 +1,22 @@
+---
+import { getEntry } from 'astro:content'
+
+const Data = await getEntry('enterprise', 'enterprise')
+const ctaSection = Data?.data?.cta_section || {}
+---
+
+<div class="py-20 flex flex-col gap-10 items-center justify-center bg-gradient-to-b from-white from-5% via-[#30BABA] via-50% to-white to-95% min-h-[300px] lg:h-screen">
+    <h2 class="w-1/2 max-md:w-[90%] text-7xl max-md:text-5xl max-sm:text-3xl font-bold text-[#175C5C] text-center">
+        {ctaSection.title}
+    </h2>
+    <p class="text-2xl max-md:text-xl max-sm:text-lg text-white tracking-wide text-center max-w-4xl px-4">
+        {ctaSection.description}
+    </p>
+    <a href={ctaSection.cta_button_link || '#'}>
+        <button
+            class="min-w-[400px] max-md:min-w-[100px] px-[30px] py-[15px] max-sm:px-[20px] max-sm:py-[8px] mb-[50px] bg-white hover:bg-[#f9f9f9] font-arimo rounded-md inline-flex items-center justify-center text-lg max-sm:text-md font-semibold tracking-wide shadow-md text-[#30BABA]"
+        >
+            {ctaSection.cta_button_text}
+        </button>
+    </a>
+</div>

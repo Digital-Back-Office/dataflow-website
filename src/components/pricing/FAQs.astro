@@ -7,6 +7,7 @@ interface FAQContentType {
   }>
 }
 import * as FAQContent from '../../content/pricing/faq.mdx'
+import CustomButton from '../common/CustomButton.astro'
 const faqContent = FAQContent as unknown as FAQContentType
 
 let heading = faqContent.heading
@@ -44,12 +45,13 @@ let faqs = faqContent.faqs
       Any Question? <br /> Checkout the FAQ
     </p>
     <p>Feel free to reach out to us for more doubts</p>
-    <a
+    <!-- <a
       href='/contact-us'
       class='p-2 px-3 w-max font-semibold rounded-lg text-sm bg-primary hover:bg-primaryHover duration-300 text-white mt-4'
     >
       Contact Us
-    </a>
+    </a> -->
+    <CustomButton label='Contact Us' href='/contact-us' iconSrc={null} />
   </div>
   <div id='faq-container' class='w-[50%] max-sm:w-full mb-20 max-sm:px-[5px]'>
     {

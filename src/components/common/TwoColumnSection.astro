@@ -36,7 +36,7 @@ const reverseOnMobile =
       class={`flex flex-col md:flex ${reverseOnMobile} items-center gap-10 lg:gap-20`}
     >
       <!-- Text Column -->
-      <div class="md:min-w-[700px] max-sm:w-[90%] flex flex-col justify-center">
+      <div class="md:min-w-[700px] max-sm:w-[90%] flex flex-col justify-center"  data-aos="fade-up" data-aos-duration="700" data-aos-offset="200">
         <h2
           class="w-full text-4xl md:text-5xl max-sm:text-3xl font-bold text-textblack leading-tight mb-6"
         >
@@ -59,6 +59,7 @@ const reverseOnMobile =
       <!-- Image Column -->
       <div
         class="md:w-1/2 w-full flex justify-center md:justify-end max-md:w-[90%]"
+        
       >
         {
           image ? (
@@ -67,6 +68,7 @@ const reverseOnMobile =
               alt={imageAlt}
               loading="lazy"
               class="lg:min-w-[750px] lg:max-w-[750px] rounded-xl shadow-lg object-contain"
+              data-aos="fade-up" data-aos-duration="600" data-aos-offset="300"
             />
           ) : null
         }

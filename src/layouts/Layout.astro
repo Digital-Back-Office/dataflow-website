@@ -74,10 +74,7 @@ import 'aos/dist/aos.css'
     {header && <Header pagename={title} />}
     <slot />
     <Footer />
-    <script>
-      import AOS from 'aos'
-      AOS.init()
-    </script>
+    <script src='/src/scripts/aos-init.js'></script>
   </body>
 </html>
 <style></style>

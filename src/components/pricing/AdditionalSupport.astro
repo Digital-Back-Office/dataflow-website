@@ -5,23 +5,21 @@ import Card from "../features/run-data-on-any-cloud/Card.astro";
 
 const pricingEntry = await getEntry("pricing", "pricing");
 const support = pricingEntry.data.additional_support;
-const cards = (support?.cards ?? []).map((c) => ({
-  ...c,
-  width: c.width ? `[${c.width}]` : "[280px]",
-}));
+const cards = support?.cards ?? [];
 ---
 
 <div
   class="min-h-[500px] max-sm:min-h-[100px] flex flex-col justify-center gap-16 max-sm:gap-10 items-center bg-white py-10 px-4"
 >
-  <p class="text-[45px] max-sm:text-3xl text-textblack font-bold">
+  <p class="text-[45px] max-sm:text-3xl text-textblack font-bold" data-aos="fade-up" data-aos-duration="850" data-aos-offset="200">
     {support.section_title}
-  </p>
+  </p>  
   <div
+    data-aos="fade-up" data-aos-duration="850" data-aos-offset="400"
     class="flex items-center w-2/3 max-sm:w-full max-sm:flex-col gap-10 justify-between"
   >
     <div>
-      <h1 class="text-5xl max-sm:text-3xl max-sm:w-full font-bold w-2/3 mb-5">{support.heading}</h1>
+      <h1 class="text-5xl max-sm:text-3xl max-sm:w-full font-bold w-full mb-5">{support.heading}</h1>
       <p class="text-textblack tracking-wide mb-5">{support.descriptions}</p>
       <CustomButton
         label={support.button.label}

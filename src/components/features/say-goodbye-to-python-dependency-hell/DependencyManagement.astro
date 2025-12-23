@@ -13,7 +13,7 @@ const features = data.features || []
 <div
   class='min-h-screen w-full py-24 flex items-center justify-center max-md:flex-col  max-sm:px-[20px] max-sm:py-[30px] bg-[#F8FAFC]'
 >
-  <div class='text-container max-md:w-4/5 w-2/5'>
+  <div class='text-container max-md:w-4/5 w-2/5' data-aos="fade-right" data-aos-duration="850" data-aos-offset="200">
     <h1 class='text-2calc font-bold mb-8 text-textblack'>{data.title3}</h1>
     <p class='text-lg w-10/12 text-textblack'>{data.description3}</p>
     <CustomButton 
@@ -24,6 +24,7 @@ const features = data.features || []
   </div>
   <div
     class='w-2/5 img-container flex flex-row flex-wrap items-between justify-between max-md:my-10'
+    data-aos="fade-left" data-aos-duration="850" data-aos-offset="200"
   >
     <div class="img-container grid grid-cols-2 max-md:grid-cols-1 gap-8 w-[620px]">
       {

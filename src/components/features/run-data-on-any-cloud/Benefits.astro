@@ -10,16 +10,18 @@ const features = data.features || [];
 <div
   class="flex flex-col gap-8 w-full min-h-screen bg-[#F8FAFC] items-center justify-center max-md:mt-10 max-sm:py-[30px] max-sm:px-[20px] max-sm:items-start"
 >
-  <h2 class="text-calc font-bold text-black text-center max-sm:text-left">
+  <h2 class="text-calc font-bold text-black text-center max-sm:text-left" data-aos="fade-up" data-aos-duration="850" data-aos-offset="200">
     {data.title}
   </h2>
   <p
+  data-aos="fade-up" data-aos-duration="850" data-aos-offset="400"
     class="w-[65%] max-sm:w-full tracking-wide text-lg text-center max-sm:text-left text-textblack"
   >
     {data.description}
   </p>
   <div
     class="flex flex-wrap w-full min-h-[300px] justify-center items-center gap-8 max-sm:gap-4"
+    data-aos="fade-up" data-aos-duration="850" data-aos-offset="400"
   >
     {
       features.map((feature) => (

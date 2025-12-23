@@ -9,9 +9,9 @@ const docsUrl = import.meta.env.VITE_DOCS_URL
 ---
 
 <header
-  class='h-16 w-full flex items-center justify-between bg-[#FFF] px-[22px]'
+  class='h-16 w-full flex items-center justify-between bg-[#FFF] px-[22px] z-50'
 >
-  <div class='flex items-center gap-16 p-[5px] pt-[9px]'>
+  <div class='flex items-center gap-16 p-[5px] pt-[9px] z-50'>
     <a href='/' class=''>
       <img src='/assets/images/dataflow-logo-green.svg' class='h-12' />
     </a>
@@ -27,7 +27,7 @@ const docsUrl = import.meta.env.VITE_DOCS_URL
           return (
           <a
             href={item.href}
-            id={item.label}
+            id={item.href.split('/')[1] || 'dataflow'}
             class='h-full border-b-[3px] mb-[2px] border-transparent px-[18px] flex items-center hover:border-primary hover:border-opacity-70'
           >
             <p class='text-primary text-sm font-semibold'>
@@ -41,8 +41,8 @@ const docsUrl = import.meta.env.VITE_DOCS_URL
     </nav>
   </div>
 
-  <div class='hidden md:flex items-center gap-[8px]'>
-    <a href='/start-free-trail'>
+  <div class='hidden md:flex items-center gap-[8px] z-50'>
+    <a href='https://app.dataflow.zone/' target="_blank">
       <button
         class='px-[16px] py-[8px] text-nowrap bg-[#3AC4C4] text-white rounded-md text-sm font-bold tracking-wide'
         >{header.button_1}</button
@@ -56,7 +56,7 @@ const docsUrl = import.meta.env.VITE_DOCS_URL
     </a>
   </div>
 
-  <div class='md:hidden flex items-center'>
+  <div class='md:hidden flex items-center z-50'>
     <button id='burgerMenuButton' class='text-primary focus:outline-none'>
       <svg
         class='w-8 h-8'
@@ -119,7 +119,7 @@ const docsUrl = import.meta.env.VITE_DOCS_URL
         )
       }
     <div class='flex flex-col mt-14 items-center gap-4'>
-      <a href='/start-free-trail'>
+      <a href='https://app.dataflow.zone/'>
         <button
           class='px-[20px] py-[8px] bg-primary text-white rounded-md text-base font-bold tracking-wide'
           >{header.button_1}</button
@@ -148,7 +148,7 @@ const docsUrl = import.meta.env.VITE_DOCS_URL
       navElement.classList.remove('border-transparent')
       navElement.classList.remove('hover:border-[#EFFFFF]')
       navElement.classList.remove('hover:border-opacity-70')
-      navElement.classList.add('border-[#fff]')
+      navElement.classList.add('border-primary')
     }
 
     burgerMenuButton.addEventListener('click', () => {

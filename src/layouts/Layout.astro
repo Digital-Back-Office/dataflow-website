@@ -12,7 +12,6 @@ const {
 } = Astro.props
 import Footer from '../components/common/Footer.astro'
 import Header from '../components/common/Header.astro'
-import 'aos/dist/aos.css'
 ---
 
 <!doctype html>
@@ -33,6 +32,8 @@ import 'aos/dist/aos.css'
     <meta name='description' content={meta_description} />
     <meta name='viewport' content='width=device-width' />
     <link rel='icon' type='image/svg+xml' href='/favicon.png' />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
     <link
       href='https://fonts.googleapis.com/css2?family=Helvetica+Neue:wght@400;700&display=swap'
       rel='stylesheet'
@@ -74,7 +75,13 @@ import 'aos/dist/aos.css'
     {header && <Header pagename={title} />}
     <slot />
     <Footer />
-    <script src='/src/scripts/aos-init.js'></script>
+    <script is:inline>
+      document.addEventListener('DOMContentLoaded', () => {
+        if (window.AOS) {
+          AOS.init();
+        }
+      });
+    </script>
   </body>
 </html>
 <style></style>

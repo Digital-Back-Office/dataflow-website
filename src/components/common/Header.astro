@@ -136,7 +136,7 @@ const docsUrl = import.meta.env.VITE_DOCS_URL
   <p id='helper' class='hidden'>{pagename}</p>
 </div>
 
-<script>
+<script is:inline>
   document.addEventListener('DOMContentLoaded', () => {
     const burgerMenuButton = document.getElementById('burgerMenuButton')
     const mobileMenu = document.getElementById('mobileMenu')

@@ -22,13 +22,13 @@ benefits:
   features:
     - title: Flexibility
       description: Choose any cloud provider that fits your needs, such as AWS, Google Cloud, or Azure, without being locked into one vendor.
-      image: /assets/images/flexibilityrundataanycloud.png
+      image: /assets/icons/flexibilityrundataanycloud.png
     - title: Interoperability
       description: Easily integrate with a variety of cloud services and apps for a smooth and efficient data processing workflow.
-      image: /assets/images/Interoperability.png
+      image: /assets/icons/Interoperability.png
     - title: Cost-Efficiency
       description: Save money by selecting the most cost-effective cloud provider and using resources only when necessary.
-      image: /assets/images/cost-efficiency.png
+      image: /assets/icons/cost-efficiency.png
 
 Section2:
   title: Core Capabilities
@@ -36,16 +36,16 @@ Section2:
   features:
     - title: Real-Time Processing
       description: Dataflow processes data instantly as it arrives, perfect for tasks needing immediate insights like fraud detection or real-time monitoring.
-      image: /assets/images/realtimeprocessing.png
+      image: /assets/icons/realtimeprocessing.png
     - title: Batch Processing
       description: Handles large volumes of data in scheduled chunks, suitable for daily reports and data warehousing.
-      image: /assets/images/batchprocessing.png
+      image: /assets/icons/batchprocessing.png
     - title: Auto-Scaling
       description: Automatically adjusts resources to match workload demands, ensuring efficient use of resources and cost savings.
-      image: /assets/images/autoscaling.png
+      image: /assets/icons/autoscaling.png
     - title: Stream and Batch Analytics
       description: Provides apps to analyze both live data streams and historical data for complete insights and reporting.
-      image: /assets/images/streamandbatchanalytics.png
+      image: /assets/icons/streamandbatchanalytics.png
   title2: "Write Once, Run Anywhere"
 
 Section3:
@@ -63,10 +63,10 @@ Section6:
   features:
     - title: Flexibility
       description: Choose any cloud provider that fits your needs, such as AWS, Google Cloud, or Azure, without being locked into one vendor.
-      image: '/assets/images/flexibilityrundataanycloud.png'
+      image: '/assets/icons/flexibilityrundataanycloud.png'
     - title: Security
       description: Maintain high security standards with end-to-end encryption and compliance with industry regulations.
-      image: '/assets/images/security.png'
+      image: '/assets/icons/security.png'
 
   feature1:
     title: Flexibility

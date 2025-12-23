@@ -4,7 +4,7 @@ description: 'Implementing data governance and metadata management with Apache A
 tags: ['atlas', 'dataflow', 'datagovernance']
 date: '3 Nov, 2024'
 blog_no: 6
-image: /assets/images/servicesimages7.png
+image: /assets/images/contactusimage.png
 ---
 
 # Introduction

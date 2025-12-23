@@ -8,15 +8,15 @@ tools:
   title: "Native integration with the tools"
   tool_items:
     - name: 'Jupyter'
-      src: '/assets/images/jupyterlogofull.png'
+      src: '/assets/images/apps/jupyterlogofull.png'
     - name: 'ML Flow'
-      src: '/assets/images/mlflowlogofull.png'
+      src: '/assets/images/apps/mlflowlogofull.png'
     - name: 'Streamlit'
-      src: '/assets/images/streamlit-logo.png'
+      src: '/assets/images/apps/streamlit-logo.png'
     - name: 'VS Code'
-      src: '/assets/images/vs-code-logo.png'
+      src: '/assets/images/apps/vs-code-logo.png'
     - name: 'Dash'
-      src: '/assets/images/dash-app-logo.png'
+      src: '/assets/images/apps/dash-app-logo.png'
 
 supported_by:
   title: "Supported By"

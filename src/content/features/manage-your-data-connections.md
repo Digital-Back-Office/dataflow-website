@@ -15,10 +15,10 @@ why_data_connection_matters:
       image: /assets/icons/icon-clock-with-check.svg
     - title: "Improve Data Accuracy"
       description: "Ensure your data is consistent and reliable across all apps and platforms."
-      image: /assets/images/manageyourdatafeature2.png
+      image: /assets/icons/icon-settings-rise.svg
     - title: "Streamlined Workflows"
       description: "Simplify your processes by integrating and automating data connections."
-      image: /assets/images/manageyourdatafeature3.png
+      image: /assets/icons/icon-streamline.svg
 
 grow_together_managing_connections:
   title: Grow Together by Managing Your Data Connections Across apps
@@ -34,16 +34,16 @@ core_features:
   features:
     - title: Zero-Trust Security
       description: Secrets are encrypted at rest and in transit. We use industry-standard banking-grade encryption to ensure your credentials never leak.
-      image: /assets/images/realtimeprocessing.png
+      image: /assets/icons/realtimeprocessing.png
     - title: Audit Logs
       description: Know exactly who accessed which secret and when. Full audit trails for compliance (SOC2/ISO 27001).
-      image: /assets/images/autoscaling.png
+      image: /assets/icons/autoscaling.png
     - title: Scoped Permissions
       description: Limit access by environment. Ensure Production_DB credentials can only be accessed by the Prod Airflow cluster, not by a developer's local notebook.
-      image: /assets/images/batchprocessing.png
+      image: /assets/icons/batchprocessing.png
     - title: Unified experience
       description: Connections created in Dataflow are automatically available to all the apps. Use dataflow.connection to access it easily
-      image: /assets/images/streamandbatchanalytics.png
+      image: /assets/icons/streamandbatchanalytics.png
 
 comparison:
   heading: "The End of .env File Sprawl"

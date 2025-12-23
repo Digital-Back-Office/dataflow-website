@@ -70,7 +70,7 @@ footer:
         - label: "Book Now"
           href: "/book-demo"
         - label: "Contact Us"
-          href: "/contact"
+          href: "/contact-us"
         - label: "Privacy policy"
           href: "/privacy-policy"
     

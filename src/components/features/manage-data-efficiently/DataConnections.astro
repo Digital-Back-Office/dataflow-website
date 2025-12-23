@@ -1,5 +1,6 @@
 ---
 import { getEntry } from 'astro:content'
+import CustomButton from '../../common/CustomButton.astro'
 
 const Data = await getEntry('features', 'manage-your-data-connections')
 const data = Data.data.grow_together_managing_connections
@@ -15,28 +16,14 @@ const button = Data.data.button
   <div class='text-container w-[40%]'>
     <h1 class='text-2calc font-bold mb-8 text-textblack'>{data.title}</h1>
     <p class='text-lg w-11/12 text-textblack'>{data.description}</p>
-    <a href='/start-free-trail'>
-      <button
-        class='custom-button bg-primary hover:bg-primary px-4 py-3 duration-700 text-white rounded-lg shadow-md flex text-base items-center gap-x-2 mt-14'
-      >
-        {button}
-        <img
-          class='button-img'
-          src='/assets/images/arrowright.svg'
-          alt='Arrow right'
-        />
-      </button>
-    </a>
+    <CustomButton 
+      label={button}
+      href="/start-free-trail"
+      className="mt-14"
+    />
   </div>
 </div>
 <style>
-  .custom-button:hover {
-    background-color: #30baba;
-  }
-
-  .button-img {
-    filter: brightness(0) invert(1);
-  }
   @media (max-width: 440px) {
     .text-container {
       width: 100%;

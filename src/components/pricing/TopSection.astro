@@ -736,16 +736,16 @@ const planfeature2 = data.table2
   </div>
 </div>
 
-<script>
+<script is:inline>
   document.addEventListener('DOMContentLoaded', function () {
-    const checkbox = document.querySelector('.toggle') as HTMLInputElement
-    const price1 = document.querySelector('.price1') as HTMLElement
-    const price2 = document.querySelector('.price2') as HTMLElement
-    const pricetable1 = document.querySelector('.pricetable1') as HTMLElement
-    const pricetable2 = document.querySelector('.pricetable2') as HTMLElement
+    const checkbox = document.querySelector('.toggle')
+    const price1 = document.querySelector('.price1')
+    const price2 = document.querySelector('.price2')
+    const pricetable1 = document.querySelector('.pricetable1')
+    const pricetable2 = document.querySelector('.pricetable2')
     const compare_plans_heading = document.querySelector(
       '.compare_plans_heading'
-    ) as HTMLElement
+    )
 
     checkbox.addEventListener('change', function () {
       if (checkbox.checked === true) {
@@ -807,38 +807,38 @@ const planfeature2 = data.table2
           price = '£'
           const elements = document.querySelectorAll('.cost2')
           elements.forEach((element) => {
-            ;(element as HTMLElement).innerText = '99' //pricing.pricing.UK.standard
+            ;(element).innerText = '99' //pricing.pricing.UK.standard
           })
           const elements2 = document.querySelectorAll('.cost3')
           elements2.forEach((element) => {
-            ;(element as HTMLElement).innerText = '499' //pricing.pricing.UK.premium
+            ;(element).innerText = '499' //pricing.pricing.UK.premium
           })
         }
         // else if (euroCountries.includes(country)) {
         //   const elements = document.querySelectorAll('.cost2')
         //   elements.forEach((element) => {
-        //     ;(element as HTMLElement).innerText = pricing.pricing.EU.standard
+        //     ;(element).innerText = pricing.pricing.EU.standard
         //   })
         //   const elements2 = document.querySelectorAll('.cost3')
         //   elements2.forEach((element) => {
-        //     ;(element as HTMLElement).innerText = pricing.pricing.EU.premium
+        //     ;(element).innerText = pricing.pricing.EU.premium
         //   })
         //   price = '€'
         // }
         else {
           const elements = document.querySelectorAll('.cost2')
           elements.forEach((element) => {
-            ;(element as HTMLElement).innerText = '99' //pricing.pricing.US.standard
+            ;(element).innerText = '99' //pricing.pricing.US.standard
           })
           const elements2 = document.querySelectorAll('.cost3')
           elements2.forEach((element) => {
-            ;(element as HTMLElement).innerText = '499' //pricing.pricing.US.premium
+            ;(element).innerText = '499' //pricing.pricing.US.premium
           })
           price = '$'
         }
         const elements = document.querySelectorAll('.currency-symbol')
         elements.forEach((element) => {
-          ;(element as HTMLElement).innerText = price
+          ;(element).innerText = price
         })
       } catch (error) {}
     }

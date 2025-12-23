@@ -34,6 +34,7 @@ let faqs = faqContent.faqs
     margin-bottom: 10px;
     display: none;
     transform: translateY(-5px);
+    transition: all 0.3s ease;
   }
 </style>
 
@@ -66,7 +67,7 @@ let faqs = faqContent.faqs
             </span>
             <i class='icon fas fa-chevron-down mr-5 text-textblack' />
           </div>
-          <div class='faq-answer text-base text-textblack shadow-lg  border-t-[1px] border-[#d2d2d27b] p-5 py-6'>
+          <div class='faq-answer duration-400 text-base text-textblack shadow-lg  border-t-[1px] border-[#d2d2d27b] p-5 py-6'>
             {faq.answer}
           </div>
         </div>
@@ -74,39 +75,35 @@ let faqs = faqContent.faqs
     }
   </div>
 </div>
-<script>
+<script is:inline>
   document.addEventListener('DOMContentLoaded', () => {
     const faqContainer = document.getElementById('faq-container')
 
     faqContainer?.addEventListener('click', (event) => {
-      const target = event.target as HTMLElement
-      const faqQuestion = target.closest('.faq-question') as HTMLElement
+      const target = event.target 
+      const faqQuestion = target.closest('.faq-question') 
       if (!faqQuestion) return
 
       const index = faqQuestion.dataset.index
-      const faqAnswer = faqQuestion.nextElementSibling as HTMLElement
+      const faqAnswer = faqQuestion.nextElementSibling 
 
       if (faqAnswer.style.display === 'block') {
         faqAnswer.style.display = 'none'
-        faqQuestion.querySelector('.icon')!.classList.remove('fa-chevron-up')
-        faqQuestion.querySelector('.icon')!.classList.add('fa-chevron-down')
+        faqQuestion.querySelector('.icon')?.classList.remove('fa-chevron-up')
+        faqQuestion.querySelector('.icon')?.classList.add('fa-chevron-down')
       } else {
         const currentlyOpen = faqContainer.querySelector(
           '.faq-answer[style*="display: block"]'
-        ) as HTMLElement
+        ) 
         if (currentlyOpen) {
           currentlyOpen.style.display = 'none'
-          currentlyOpen
-            .previousElementSibling!.querySelector('.icon')!
-            .classList.remove('fa-chevron-up')
-          currentlyOpen
-            .previousElementSibling!.querySelector('.icon')!
-            .classList.add('fa-chevron-down')
+          currentlyOpen.previousElementSibling?.querySelector('.icon')?.classList.remove('fa-chevron-up')
+          currentlyOpen.previousElementSibling?.querySelector('.icon')?.classList.add('fa-chevron-down')
         }
 
         faqAnswer.style.display = 'block'
-        faqQuestion.querySelector('.icon')!.classList.remove('fa-chevron-down')
-        faqQuestion.querySelector('.icon')!.classList.add('fa-chevron-up')
+        faqQuestion.querySelector('.icon')?.classList.remove('fa-chevron-down')
+        faqQuestion.querySelector('.icon')?.classList.add('fa-chevron-up')
       }
     })
   })

@@ -11,13 +11,13 @@ const logos = data.company_logos.logos || [];
 <div
   class="container-top min-h-screen w-full py-10 pt-16 flex items-center justify-center max-sm:flex-col max-sm:py-[30px] max-sm:px-[20px] max-sm:justify-start max-sm:items-start max-sm:min-h-max"
 >
-  <div class="absolute left-0 top-0 z-[-1]">
+  <div class="absolute left-0 top-0 z-[-1]" data-aos="fade-right" data-aos-duration="850" data-aos-offset="200">
     <img
       src="/assets/images/dataflow-bg-pattern.svg"
       alt="dataflow-bg-pattern"
     />
   </div>
-  <div class="w-2/5 flex flex-col gap-8 max-md:w-[90%]">
+  <div class="w-2/5 flex flex-col gap-8 max-md:w-[90%]" data-aos="fade-right" data-aos-duration="850" data-aos-offset="200">
     <h1
       class="text-7xl max-md:text-5xl max-sm:text-2xl leading-snug tracking-wide font-bold text-black"
     >
@@ -28,7 +28,7 @@ const logos = data.company_logos.logos || [];
     </p>
     <CustomButton href={"https://docs.dataflow.zone/getting-started/installation"} label={data.cta_text} target="_blank" />
   </div>
-  <div class="img-container max-md:hidden w-2/5 bg-white h-auto">
+  <div class="img-container max-md:hidden w-2/5 bg-white h-auto" data-aos="fade-left" data-aos-duration="850" data-aos-offset="200">
     <img
       src="/assets/images/runanycloud.png"
       alt="Run on Any Cloud"
@@ -37,7 +37,7 @@ const logos = data.company_logos.logos || [];
   </div>
 </div>
 
-<div class="h-[200px] w-full flex flex-col justify-center items-center">
+<div class="h-[200px] w-full flex flex-col justify-center items-center" data-aos="fade-up" data-aos-duration="850" data-aos-offset="200">
   <div>
     <h2 class="text-4xl max-sm:text-xl font-bold text-black mb-10 text-center">
       {data.company_logos.title}

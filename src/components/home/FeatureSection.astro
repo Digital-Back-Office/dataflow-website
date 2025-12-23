@@ -1,108 +1,190 @@
 ---
-import { getEntry } from 'astro:content'
+import { getEntry } from "astro:content";
 
-const data = await getEntry('home', 'home')
-const features = data.data.features
+const data = await getEntry("home", "home");
+const features = data.data.features;
 
-const feature_1 = features[0]
-const feature_2 = features[1]
-const feature_3 = features[2]
-const feature_4 = features[3]
-const feature_5 = features[4]
+const feature_1 = features[0];
+const feature_2 = features[1];
+const feature_3 = features[2];
+const feature_4 = features[3];
+const feature_5 = features[4];
 ---
 
-<section class='w-full bg-white py-24 max-sm:py-16'>
-  <div class='max-w-[85rem] mx-auto px-8 max-sm:px-6'>
+<section class="w-full bg-white py-24 max-sm:py-16">
+  <div class="max-w-[85rem] mx-auto px-8 max-sm:px-6">
     <!-- Bento Grid Layout -->
-    <div class='grid grid-cols-1 lg:grid-cols-5 gap-6 auto-rows-auto'>
-      
+    <div class="grid grid-cols-1 lg:grid-cols-5 gap-6 auto-rows-auto">
       <!-- Card 1 -->
-      <div class='lg:col-span-3 bg-lightPrimary rounded-3xl p-8 max-sm:p-4 flex flex-col justify-between min-h-[320px]'>
+      <div
+        data-aos="fade-down"
+        data-aos-duration="700"
+        data-aos-offset="200"
+        class="lg:col-span-3 bg-lightPrimary rounded-3xl p-8 max-sm:p-4 flex flex-col justify-between min-h-[320px]"
+      >
         <div>
-          <img src={feature_1.icon} class='w-12 h-12 text-[#14B8A6] mb-6'  alt=" Define Once, Use Everywhere">
-          <h3 class='text-2xl max-sm:text-xl font-bold text-[#1A1A1A] mb-4'>
+          <img
+            src={feature_1.icon}
+            class="w-12 h-12 text-[#14B8A6] mb-6"
+            alt=" Define Once, Use Everywhere"
+          />
+          <h3 class="text-2xl max-sm:text-xl font-bold text-[#1A1A1A] mb-4">
             {feature_1.title}
           </h3>
-          <p class='text-[#4A5568] leading-relaxed'>
+          <p class="text-[#4A5568] leading-relaxed">
             {feature_1.description}
           </p>
         </div>
-        <a href={feature_1.href} class='inline-flex items-center gap-2 text-[#14B8A6] font-semibold mt-6 bg-white px-6 py-3 rounded-lg hover:shadow-lg transition-all w-fit'>
+        <a
+          href={feature_1.href}
+          class="inline-flex items-center gap-2 text-[#14B8A6] font-semibold mt-6 bg-white px-6 py-3 hover:underline w-fit"
+        >
           {feature_1.cta_text}
-          <img src="/assets/icons/arrowright.svg" alt="Learn More" class="w-5 h-5">
+          <img
+            src="/assets/icons/arrowright.svg"
+            alt="Learn More"
+            class="w-5 h-5"
+          />
         </a>
       </div>
 
       <!-- Card 2: Goodbye, Dependency Hell (Large - spans 2 columns, 2 rows on large screens) -->
-      <div class='lg:col-span-2 bg-lightPrimary rounded-3xl p-8 max-sm:p-4 flex flex-col justify-between min-h-[320px]'>
+      <div
+        data-aos="fade-down"
+        data-aos-duration="700"
+        data-aos-offset="200"
+        class="lg:col-span-2 bg-lightPrimary rounded-3xl p-8 max-sm:p-4 flex flex-col justify-between min-h-[320px]"
+      >
         <div>
-          <img src={feature_2.icon} class='w-12 h-12 text-[#14B8A6] mb-6' alt={feature_2.title}>
-          <h3 class='text-3xl max-sm:text-2xl font-bold text-[#1A1A1A] mb-4'>
+          <img
+            src={feature_2.icon}
+            class="w-12 h-12 text-[#14B8A6] mb-6"
+            alt={feature_2.title}
+          />
+          <h3 class="text-3xl max-sm:text-2xl font-bold text-[#1A1A1A] mb-4">
             {feature_2.title}
           </h3>
-          <p class='text-[#4A5568] text-md max-sm:text-base leading-relaxed max-w-2xl'>
+          <p
+            class="text-[#4A5568] text-md max-sm:text-base leading-relaxed max-w-2xl"
+          >
             {feature_2.description}
           </p>
         </div>
-        <a href={feature_2.href} class='inline-flex items-center gap-2 text-[#14B8A6] font-semibold mt-6 bg-white px-6 py-3 rounded-lg hover:shadow-lg transition-all w-fit'>
+        <a
+          href={feature_2.href}
+          class="inline-flex items-center gap-2 text-[#14B8A6] font-semibold mt-6 bg-white px-6 py-3 hover:underline w-fit"
+        >
           {feature_2.cta_text}
-          <img src="/assets/icons/arrowright.svg" alt="Learn More" class="w-5 h-5">
+          <img
+            src="/assets/icons/arrowright.svg"
+            alt="Learn More"
+            class="w-5 h-5"
+          />
         </a>
       </div>
 
-      <div class='lg:col-span-3 grid grid-cols-1 md:grid-cols-2 gap-6'>
+      <div class="lg:col-span-3 grid grid-cols-1 md:grid-cols-2 gap-6">
         <!-- Card 3: Run on Any Cloud -->
-        <div class='bg-lightPrimary rounded-3xl p-8 max-sm:p-4 flex flex-col justify-between min-h-[320px]'>
+        <div
+          data-aos="fade-up"
+          data-aos-duration="700"
+          data-aos-offset="200"
+          class="bg-lightPrimary rounded-3xl p-8 max-sm:p-4 flex flex-col justify-between min-h-[320px]"
+        >
           <div>
-            <img src={feature_3.icon} class='w-12 h-12 text-[#14B8A6] mb-6' alt={feature_3.title}>
-            <h3 class='text-2xl max-sm:text-xl font-bold text-[#1A1A1A] mb-4'>
+            <img
+              src={feature_3.icon}
+              class="w-12 h-12 text-[#14B8A6] mb-6"
+              alt={feature_3.title}
+            />
+            <h3 class="text-2xl max-sm:text-xl font-bold text-[#1A1A1A] mb-4">
               {feature_3.title}
             </h3>
-            <p class='text-[#4A5568] leading-relaxed'>
+            <p class="text-[#4A5568] leading-relaxed">
               {feature_3.description}
             </p>
           </div>
-          <a href={feature_3.href} class='inline-flex items-center gap-2 text-[#14B8A6] font-semibold mt-6 bg-white px-6 py-3 rounded-lg hover:shadow-lg transition-all w-fit'>
+          <a
+            href={feature_3.href}
+            class="inline-flex items-center gap-2 text-[#14B8A6] font-semibold mt-6 bg-white px-6 py-3 hover:underline w-fit"
+          >
             {feature_3.cta_text}
-            <img src="/assets/icons/arrowright.svg" alt="Learn More" class="w-5 h-5">
+            <img
+              src="/assets/icons/arrowright.svg"
+              alt="Learn More"
+              class="w-5 h-5"
+            />
           </a>
         </div>
 
         <!-- Card 4: Share Apps Instantly -->
-        <div class='bg-lightPrimary rounded-3xl p-8 max-sm:p-4 flex flex-col justify-between min-h-[280px]'>
+        <div
+          data-aos="fade-up"
+          data-aos-duration="700"
+          data-aos-offset="200"
+          class="bg-lightPrimary rounded-3xl p-8 max-sm:p-4 flex flex-col justify-between min-h-[280px]"
+        >
           <div>
-            <img src={feature_4.icon} class='w-12 h-12 text-[#14B8A6] mb-6' alt={feature_4.title}>
-            <h3 class='text-2xl max-sm:text-xl font-bold text-[#1A1A1A] mb-4'>
+            <img
+              src={feature_4.icon}
+              class="w-12 h-12 text-[#14B8A6] mb-6"
+              alt={feature_4.title}
+            />
+            <h3 class="text-2xl max-sm:text-xl font-bold text-[#1A1A1A] mb-4">
               {feature_4.title}
             </h3>
-            <p class='text-[#4A5568] leading-relaxed'>
+            <p class="text-[#4A5568] leading-relaxed">
               {feature_4.description}
             </p>
           </div>
-          <a href={feature_4.href} class='inline-flex items-center gap-2 text-[#14B8A6] font-semibold mt-6 bg-white px-6 py-3 rounded-lg hover:shadow-lg transition-all w-fit'>
+          <a
+            href={feature_4.href}
+            class="inline-flex items-center gap-2 text-[#14B8A6] font-semibold mt-6 bg-white px-6 py-3 hover:underline w-fit"
+          >
             {feature_4.cta_text}
-            <img src="/assets/icons/arrowright.svg" alt="Learn More" class="w-5 h-5">
+            <img
+              src="/assets/icons/arrowright.svg"
+              alt="Learn More"
+              class="w-5 h-5"
+            />
           </a>
         </div>
       </div>
 
       <!-- Card 5: Bring your team in one place (Large - spans 2 columns) -->
-      <div class=' lg:col-span-2 bg-lightPrimary rounded-3xl p-8 max-sm:p-4 flex flex-col justify-between min-h-[280px]'>
+      <div
+        data-aos="fade-up"
+        data-aos-duration="700"
+        data-aos-offset="200"
+        class="lg:col-span-2 bg-lightPrimary rounded-3xl p-8 max-sm:p-4 flex flex-col justify-between min-h-[280px]"
+      >
         <div>
-          <img src={feature_5.icon} class='w-12 h-12 text-[#14B8A6] mb-6' alt={feature_5.title}>
-          <h3 class='text-3xl max-sm:text-2xl font-bold text-[#1A1A1A] mb-4'>
+          <img
+            src={feature_5.icon}
+            class="w-12 h-12 text-[#14B8A6] mb-6"
+            alt={feature_5.title}
+          />
+          <h3 class="text-3xl max-sm:text-2xl font-bold text-[#1A1A1A] mb-4">
             {feature_5.title}
           </h3>
-          <p class='text-[#4A5568] text-lg max-sm:text-base leading-relaxed max-w-3xl'>
+          <p
+            class="text-[#4A5568] text-lg max-sm:text-base leading-relaxed max-w-3xl"
+          >
             {feature_5.description}
           </p>
         </div>
-        <a href={feature_5.href} class='inline-flex items-center gap-2 text-[#14B8A6] font-semibold mt-6 bg-white px-6 py-3 rounded-lg hover:shadow-lg transition-all w-fit'>
+        <a
+          href={feature_5.href}
+          class="inline-flex items-center gap-2 text-[#14B8A6] font-semibold mt-6 bg-white px-6 py-3 hover:underline w-fit"
+        >
           {feature_5.cta_text}
-          <img src="/assets/icons/arrowright.svg" alt="Learn More" class="w-5 h-5">
+          <img
+            src="/assets/icons/arrowright.svg"
+            alt="Learn More"
+            class="w-5 h-5"
+          />
         </a>
       </div>
-
     </div>
   </div>
 </section>

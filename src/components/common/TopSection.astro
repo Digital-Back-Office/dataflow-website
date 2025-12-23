@@ -44,11 +44,11 @@ const reverseOnMd = imageSide === 'left' ? 'md:flex-row-reverse' : 'md:flex-row'
 ---
 
 <div class={`container-top min-h-screen w-full py-10 pt-16 flex flex-col md:${reverseOnMd} md:flex-row items-center justify-center ${bgClass} max-sm:flex-col max-sm:py-[30px] max-sm:px-[20px] max-sm:justify-start max-sm:items-start max-sm:min-h-max`}>
-  <div class="absolute left-0 top-0 z-1">
+  <div class="absolute left-0 top-0 z-1" data-aos="fade-right" data-aos-duration="700" data-aos-offset="200">
     <img src="/assets/images/dataflow-bg-pattern.svg" alt="dataflow-bg-pattern" />
   </div>
 
-  <div class="md:w-2/5 w-full flex flex-col gap-8 px-6 max-sm:px-2 max-md:w-[90%] z-10">
+  <div data-aos="fade-right" data-aos-duration="700" data-aos-offset="200" class="md:w-2/5 w-full flex flex-col gap-8 px-6 max-sm:px-2 max-md:w-[90%] z-10">
     <h1 class="text-5xl max-md:text-4xl max-sm:text-2xl leading-snug tracking-wide font-bold text-black">
       {title}
     </h1>
@@ -64,7 +64,7 @@ const reverseOnMd = imageSide === 'left' ? 'md:flex-row-reverse' : 'md:flex-row'
   </div>
 
   {image ? (
-    <div class={`img-container  z-10 max-sm:mt-10 ${hideImageOnMobile ? 'max-md:hidden' : ''} md:block md:w-2/5 w-full flex justify-center px-6`}>
+    <div data-aos="fade-left" data-aos-duration="700" data-aos-offset="200" class={`img-container  z-10 max-sm:mt-10 ${hideImageOnMobile ? 'max-md:hidden' : ''} md:block md:w-2/5 w-full flex justify-center px-6`}>
       <img src={image} alt={imageAlt ?? title} class="transition-all duration-400 ease-in-out rounded-lg w-full object-contain" />
     </div>
   ) : null}

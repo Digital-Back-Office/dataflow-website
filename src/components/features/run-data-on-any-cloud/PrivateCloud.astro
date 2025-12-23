@@ -11,6 +11,7 @@ const features = data.features || []
   class='container-top min-h-screen w-full flex justify-center max-sm:flex-col items-center gap-4 max-sm:gap-0 max-md:flex-col'
 >
   <div
+  data-aos="fade-right" data-aos-duration="850" data-aos-offset="200"
     class='img-container w-2/5 max-sm:w-full flex items-center justify-center py-24 max-sm:py-2'
   >
     <img
@@ -19,6 +20,7 @@ const features = data.features || []
     />
   </div>
   <div
+  data-aos="fade-left" data-aos-duration="850" data-aos-offset="200"
     class='text-container w-2/5 flex flex-col items-center justify-center py-20 max-sm:py-8 pr-[3%] overflow-hidden'
   >
     <h2 class='text-2calc leading-tight font-bold pb-[2%] text-textblack'>
@@ -27,7 +29,7 @@ const features = data.features || []
     <p class='text-lg mb-10 text-textblack'>
       {data.description}
     </p>
-    <div class='card-container flex justify-between gap-6 w-full max-md:flex-col'>
+    <div class='card-container flex gap-6 w-full max-md:flex-col'>
       {
         features.map((feature) => (
           <Card

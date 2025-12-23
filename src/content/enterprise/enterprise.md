@@ -36,5 +36,7 @@ sections:
 cta_section:
   title: "Ready to standardize your data stack?"
   description: "Get a tailored package that fits your security and compliance needs."
-  cta_button_text: "Get a Custom Quote"
+  button:
+    text: "Get a Custom Quote"
+    href: "/book-demo"
 ---

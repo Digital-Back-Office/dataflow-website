@@ -91,18 +91,18 @@ const testimonials = testimonialsData.testimonials || []
 </section>
 
 
-<script>
+<script is:inline>
   function initTestimonials() {
     const container = document.getElementById('testimonial-container');
-    const cards = Array.from(document.querySelectorAll('.testimonial-card')) as HTMLElement[];
-    const prevBtn = document.getElementById('prev-btn') as HTMLElement;
-    const nextBtn = document.getElementById('next-btn') as HTMLElement;
-    const mobilePrevBtn = document.getElementById('mobile-prev') as HTMLElement;
-    const mobileNextBtn = document.getElementById('mobile-next') as HTMLElement;
+    const cards = Array.from(document.querySelectorAll('.testimonial-card'));
+    const prevBtn = document.getElementById('prev-btn');
+    const nextBtn = document.getElementById('next-btn');
+    const mobilePrevBtn = document.getElementById('mobile-prev');
+    const mobileNextBtn = document.getElementById('mobile-next');
     let currentIndex = 0;
 
     function swap(direction = 'next') {
-      const topCard = cards[currentIndex] as HTMLElement;
+      const topCard = cards[currentIndex];
       
       // 1. Animate the top card out (Swipe based on direction)
       const swipeDirection = direction === 'next' ? 120 : -120;

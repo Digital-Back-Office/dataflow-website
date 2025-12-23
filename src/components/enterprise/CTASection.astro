@@ -12,11 +12,11 @@ const ctaSection = Data?.data?.cta_section || {}
     <p class="text-2xl max-md:text-xl max-sm:text-lg text-white tracking-wide text-center max-w-4xl px-4">
         {ctaSection.description}
     </p>
-    <a href={ctaSection.cta_button_link || '#'}>
+    <a href={ctaSection.button.href || '#'}>
         <button
             class="min-w-[400px] max-md:min-w-[100px] px-[30px] py-[15px] max-sm:px-[20px] max-sm:py-[8px] mb-[50px] bg-white hover:bg-[#f9f9f9] font-arimo rounded-md inline-flex items-center justify-center text-lg max-sm:text-md font-semibold tracking-wide shadow-md text-[#30BABA]"
         >
-            {ctaSection.cta_button_text}
+            {ctaSection.button.text}
         </button>
     </a>
 </div>

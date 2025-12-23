@@ -6,6 +6,7 @@ const data = Data.data.core_features;
 const button = Data.data.button;
 import ImageCard from "./ImageCard.astro";
 import Card from "../run-data-on-any-cloud/Card.astro";
+import CustomButton from "../../common/CustomButton.astro";
 const features = data.features || [];
 ---
 
@@ -20,19 +21,11 @@ const features = data.features || [];
       <p class="text-lg text-textblack max-w-[560px] leading-relaxed">
         {data.description}
       </p>
-      <a href="/start-free-trail">
-        <button
-          class="custom-button bg-primary hover:bg-[#30baba] px-4 py-3 text-white rounded-lg shadow-md flex text-base items-center gap-x-3 mt-10"
-          style="font-family: Roboto;"
-        >
-          {button}
-          <img
-            class="button-img"
-            src="/assets/images/arrowright.svg"
-            alt="Arrow right"
-          />
-        </button>
-      </a>
+      <CustomButton 
+        label={button}
+        href="/start-free-trail"
+        className="mt-10"
+      />
     </div>
   </div>
 
@@ -51,14 +44,7 @@ const features = data.features || [];
   </div>
 </div>
 <style>
-  .custom-button:hover {
-    background-color: #30baba;
-  }
-
-  .button-img {
-    filter: brightness(0) invert(1);
-  }
-
+  
   @media (max-width: 768px) {
     .img-container {
       max-width: 100%;

@@ -1,12 +1,11 @@
 ---
-import { getEntry } from 'astro:content'
-const Data = await getEntry('features', 'python-dependency-hell')
-const data = Data.data
-const button = Data.data.button
-import ImageCard from '../manage-data-efficiently/ImageCard.astro'
 import Card from '../run-data-on-any-cloud/Card.astro'
 import CustomButton from '../../common/CustomButton.astro'
+import { getEntry } from 'astro:content'
 
+const Data = await getEntry('features', 'python-dependency-hell')
+const data = Data.data.simplify_dependency_management;
+const button = data.button
 const features = data.features || [] 
 ---
 
@@ -14,11 +13,11 @@ const features = data.features || []
   class='min-h-screen w-full py-24 flex items-center justify-center max-md:flex-col  max-sm:px-[20px] max-sm:py-[30px] bg-[#F8FAFC]'
 >
   <div class='text-container max-md:w-4/5 w-2/5' data-aos="fade-right" data-aos-duration="850" data-aos-offset="200">
-    <h1 class='text-2calc font-bold mb-8 text-textblack'>{data.title3}</h1>
-    <p class='text-lg w-10/12 text-textblack'>{data.description3}</p>
+    <h1 class='text-2calc font-bold mb-8 text-textblack'>{data.title}</h1>
+    <p class='text-lg w-10/12 text-textblack'>{data.description}</p>
     <CustomButton 
-      label={button}
-      href="/start-free-trail"
+      label={button.label}
+      href={button.href}
       className="mt-10"
     />
   </div>

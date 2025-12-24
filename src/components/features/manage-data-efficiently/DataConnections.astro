@@ -4,7 +4,7 @@ import CustomButton from '../../common/CustomButton.astro'
 
 const Data = await getEntry('features', 'manage-your-data-connections')
 const data = Data.data.grow_together_managing_connections
-const button = Data.data.button
+const button = data.button
 ---
 
 <div
@@ -17,8 +17,8 @@ const button = Data.data.button
     <h1 class='text-2calc font-bold mb-8 text-textblack'>{data.title}</h1>
     <p class='text-lg w-11/12 text-textblack'>{data.description}</p>
     <CustomButton 
-      label={button}
-      href="/start-free-trail"
+      label={button.label}
+      href={button.href}
       className="mt-14"
     />
   </div>

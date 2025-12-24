@@ -7,9 +7,8 @@ import { getEntry } from 'astro:content'
 import Section from '../components/features/run-data-on-any-cloud/Section.astro'
 import Benefits from '../components/features/run-data-on-any-cloud/Benefits.astro'
 const Data = await getEntry('features', 'run-data-on-any-cloud')
-const data1 = Data.data.Section3
-const data2 = Data.data.Section4
-const data3 = Data.data.Section5
+const data = Data?.data?.cloud_providers || {}
+const cloud_providers = data?.cloud_providers || []
 const meta_description =
   'Upgrade your data management and processing capabilities by using our service, which enables Dataflow on any cloud platform'
 ---
@@ -21,24 +20,16 @@ const meta_description =
   <TopSection />
   <Benefits />
   <CoreCapabilities />
-  <Section
-    logo='/assets/images/azurelogo.png'
-    title={data1.title}
-    image='/assets/images/macbookazure.png'
-    link='https://azure.microsoft.com/'
-  />
-  <Section
-    mirror
-    logo='/assets/images/googlecloudlogo.png'
-    title={data2.title}
-    image='/assets/images/macbookgooglecloud.png'
-    link='https://cloud.google.com/'
-  />
-  <Section
-    logo='/assets/images/aws-logo.png'
-    title={data3.title}
-    image='/assets/images/macbookaws.png'
-    link='https://aws.amazon.com/'
-  />
+  {
+    cloud_providers.map((provider, idx) => (
+      <Section
+        mirror={idx % 2 !== 0}
+        logo={provider.logo}
+        title={provider.title}
+        image={provider.image}
+        link={provider.link}
+      />
+    ))
+  }
   <PrivateCloud />
 </Layout>

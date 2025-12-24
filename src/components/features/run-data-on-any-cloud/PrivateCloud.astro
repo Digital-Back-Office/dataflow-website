@@ -3,7 +3,7 @@ const { logo, title, image } = Astro.props
 import { getEntry } from 'astro:content'
 import Card from './Card.astro'
 const Data = await getEntry('features', 'run-data-on-any-cloud')
-const data = Data.data.Section6
+const data = Data.data.private_cloud
 const features = data.features || []
 ---
 

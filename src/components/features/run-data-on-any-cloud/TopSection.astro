@@ -3,8 +3,7 @@ import { getEntry } from "astro:content";
 import CustomButton from "../../common/CustomButton.astro";
 
 const Data = await getEntry("features", "run-data-on-any-cloud");
-const data = Data.data.TopSection;
-const button = Data.data.button1;
+const data = Data.data.top_section;
 const logos = data.company_logos.logos || [];
 ---
 

@@ -3,8 +3,8 @@ import { getEntry } from 'astro:content'
 import CustomButton from '../../common/CustomButton.astro'
 
 const Data = await getEntry('features', 'python-dependency-hell')
-const data = Data.data
-const button = Data.data.button
+const data = Data.data.top_section
+const button = data.button
 ---
 
 <div
@@ -25,7 +25,7 @@ const button = Data.data.button
     <p class="text-lg max-sm:text-sm w-10/12 text-textblack leading-tight">
       {data.description}
     </p>
-    <CustomButton href={"https://docs.dataflow.zone/getting-started/installation"} label={data.cta_text} target="_blank" />
+    <CustomButton href={button.href} label={button.label} target="_blank" />
   </div>
   <div class="img-container max-md:hidden w-2/5 bg-white h-auto" data-aos="fade-left" data-aos-duration="850" data-aos-offset="200">
     <img

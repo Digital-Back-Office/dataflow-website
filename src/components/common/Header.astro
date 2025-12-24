@@ -9,90 +9,220 @@ const docsUrl = import.meta.env.VITE_DOCS_URL
 ---
 
 <header
-  class='h-16 w-full flex items-center justify-between bg-[#FFF] px-[22px] z-50'
+  class='h-16 w-full flex items-center justify-between bg-white px-[16%] max-xl:px-[5%] z-50 sticky top-0'
+  style='font-family: Plus Jakarta Sans, sans-serif;'
 >
-  <div class='flex items-center gap-16 p-[5px] pt-[9px] z-50'>
-    <a href='/' class=''>
-      <img src='/assets/images/dataflow-logo-green.svg' class='h-12' />
+  <div class='flex items-center gap-16 max-xl:gap-12 z-50'>
+    <a href='/' class='flex items-center'>
+      <img src='/assets/images/dataflow-logo-green.svg' class='h-9' />
     </a>
-    <nav class='hidden md:flex h-12 items-baseline mt-[5px]'>
-      <div
-        class='flex items-center justify-between tracking-wide h-full gap-[6px]'
-      >
-      {
-        header.nav_items.map((item, index) => {
-
-          if (item.label === "Blogs") return null;
-
-          return (
-          <a
-            href={item.href}
-            id={item.href.split('/')[1] || 'dataflow'}
-            class='h-full border-b-[3px] mb-[2px] border-transparent px-[18px] flex items-center hover:border-primary hover:border-opacity-70'
-          >
-            <p class='text-primary text-sm font-semibold'>
-              {item.label}
-            </p>
-          </a>
-        )
-        })
-      }
+    <nav class='hidden lg:flex items-center gap-10 max-xl:gap-8'>
+      <!-- Product Dropdown -->
+      <div class='relative group'>
+        <button class='text-sm font-medium text-gray-700 hover:text-gray-900 transition-colors flex items-center gap-1 py-2'>
+          Product
+          <svg class='w-4 h-4' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
+            <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'></path>
+          </svg>
+        </button>
+        <div class='absolute left-0 top-full pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200'>
+          <div class='bg-white rounded-lg shadow-lg border border-gray-100 p-8 w-[420px]'>
+            <div class='space-y-4'>
+              <div class='space-y-4'>
+                <p class='text-xs font-semibold text-gray-500 uppercase tracking-wider'>Features</p>
+                <a href='/run-dataflow-on-any-cloud' class='flex items-start gap-4 p-3 rounded-lg hover:bg-gray-50 transition-colors group/item'>
+                  <div class='p-2.5 bg-primary/10 rounded-lg shrink-0'>
+                    <svg class='w-6 h-6 text-primary' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
+                      <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z'></path>
+                    </svg>
+                  </div>
+                  <div>
+                    <p class='text-base font-semibold text-gray-900 group-hover/item:text-primary mb-1'>Run on Any Cloud</p>
+                    <p class='text-sm text-gray-600'>Deploy to AWS, Azure, or Google Cloud</p>
+                  </div>
+                </a>
+                <a href='/manage-your-data-connections' class='flex items-start gap-4 p-3 rounded-lg hover:bg-gray-50 transition-colors group/item'>
+                  <div class='p-2.5 bg-primary/10 rounded-lg shrink-0'>
+                    <svg class='w-6 h-6 text-primary' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
+                      <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4'></path>
+                    </svg>
+                  </div>
+                  <div>
+                    <p class='text-base font-semibold text-gray-900 group-hover/item:text-primary mb-1'>Manage Connections</p>
+                    <p class='text-sm text-gray-600'>Connect your data across apps</p>
+                  </div>
+                </a>
+                <a href='/say-goodbye-to-python-dependency-hell' class='flex items-start gap-4 p-3 rounded-lg hover:bg-gray-50 transition-colors group/item'>
+                  <div class='p-2.5 bg-primary/10 rounded-lg shrink-0'>
+                    <svg class='w-6 h-6 text-primary' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
+                      <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z'></path>
+                    </svg>
+                  </div>
+                  <div>
+                    <p class='text-base font-semibold text-gray-900 group-hover/item:text-primary mb-1'>No Dependency Hell</p>
+                    <p class='text-sm text-gray-600'>Isolated Python environments</p>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
+
+      <!-- Solutions Dropdown -->
+      <div class='relative group'>
+        <button class='text-sm font-medium text-gray-700 hover:text-gray-900 transition-colors flex items-center gap-1 py-2'>
+          Solutions
+          <svg class='w-4 h-4' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
+            <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'></path>
+          </svg>
+        </button>
+        <div class='absolute left-0 top-full pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200'>
+          <div class='bg-white rounded-lg shadow-lg border border-gray-100 p-6 w-72'>
+            <a href='/enterprise' class='flex items-start gap-4 p-3 rounded-lg hover:bg-gray-50 transition-colors group/item'>
+              <div class='p-2.5 bg-primary/10 rounded-lg shrink-0'>
+                <svg class='w-6 h-6 text-primary' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
+                  <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4'></path>
+                </svg>
+              </div>
+              <div>
+                <p class='text-base font-semibold text-gray-900 group-hover/item:text-primary mb-1'>Enterprise</p>
+                <p class='text-sm text-gray-600'>For large teams</p>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Community Dropdown -->
+      <div class='relative group'>
+        <button class='text-sm font-medium text-gray-700 hover:text-gray-900 transition-colors flex items-center gap-1 py-2'>
+          Community
+          <svg class='w-4 h-4' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
+            <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'></path>
+          </svg>
+        </button>
+        <div class='absolute left-0 top-full pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200'>
+          <div class='bg-white rounded-lg shadow-lg border border-gray-100 p-8 w-[560px]'>
+            <div class='grid grid-cols-3 gap-8'>
+              <!-- Resources Column -->
+              <div class='space-y-4 col-span-2'>
+                <p class='text-xs font-semibold text-gray-500 uppercase tracking-wider'>Resources</p>
+                <button onclick="document.getElementById('arcadeModal').classList.remove('hidden')" class='w-full flex items-start gap-3 p-3 rounded-lg hover:bg-gray-50 transition-colors group/item text-left'>
+                  <svg class='w-5 h-5 text-primary mt-0.5 shrink-0' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
+                    <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z'></path>
+                    <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M21 12a9 9 0 11-18 0 9 9 0 0118 0z'></path>
+                  </svg>
+                  <div>
+                    <p class='text-base font-medium text-gray-900 group-hover/item:text-primary mb-1'>Try Demo</p>
+                    <p class='text-sm text-gray-600'>Interactive product walkthrough</p>
+                  </div>
+                </button>
+                <a href='/blogs/1' class='flex items-start gap-3 p-3 rounded-lg hover:bg-gray-50 transition-colors group/item'>
+                  <svg class='w-5 h-5 text-primary mt-0.5 shrink-0' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
+                    <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z'></path>
+                  </svg>
+                  <div>
+                    <p class='text-base font-medium text-gray-900 group-hover/item:text-primary mb-1'>Blog</p>
+                    <p class='text-sm text-gray-600'>Data engineering insights</p>
+                  </div>
+                </a>
+              </div>
+
+              <!-- Socials Column -->
+              <div class='space-y-4'>
+                <p class='text-xs font-semibold text-gray-500 uppercase tracking-wider'>Connect</p>
+                <a href='https://github.com/Digital-Back-Office' target='_blank' class='flex items-start gap-3 p-3 rounded-lg hover:bg-gray-50 transition-colors group/item'>
+                  <svg class='w-5 h-5 text-primary mt-0.5 shrink-0' fill='currentColor' viewBox='0 0 24 24'>
+                    <path fill-rule='evenodd' d='M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z' clip-rule='evenodd'></path>
+                  </svg>
+                  <div>
+                    <p class='text-base font-medium text-gray-900 group-hover/item:text-primary mb-1 whitespace-nowrap'>GitHub</p>
+                    <p class='text-sm text-gray-600 whitespace-nowrap'>View our code</p>
+                  </div>
+                </a>
+                <a href='https://www.linkedin.com/company/digital-back-office' target='_blank' class='flex items-start gap-3 p-3 rounded-lg hover:bg-gray-50 transition-colors group/item'>
+                  <svg class='w-5 h-5 text-primary mt-0.5 shrink-0' fill='currentColor' viewBox='0 0 24 24'>
+                    <path d='M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z'></path>
+                  </svg>
+                  <div>
+                    <p class='text-base font-medium text-gray-900 group-hover/item:text-primary mb-1 whitespace-nowrap'>LinkedIn</p>
+                    <p class='text-sm text-gray-600 whitespace-nowrap'>Follow updates</p>
+                  </div>
+                </a>
+                <a href='https://discord.gg/dataflow' target='_blank' class='flex items-start gap-3 p-3 rounded-lg hover:bg-gray-50 transition-colors group/item'>
+                  <svg class='w-5 h-5 text-primary mt-0.5 shrink-0' fill='currentColor' viewBox='0 0 24 24'>
+                    <path d='M20.317 4.37a19.791 19.791 0 00-4.885-1.515.074.074 0 00-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 00-5.487 0 12.64 12.64 0 00-.617-1.25.077.077 0 00-.079-.037A19.736 19.736 0 003.677 4.37a.07.07 0 00-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 00.031.057 19.9 19.9 0 005.993 3.03.078.078 0 00.084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 00-.041-.106 13.107 13.107 0 01-1.872-.892.077.077 0 01-.008-.128 10.2 10.2 0 00.372-.292.074.074 0 01.077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 01.078.01c.12.098.246.198.373.292a.077.077 0 01-.006.127 12.299 12.299 0 01-1.873.892.077.077 0 00-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 00.084.028 19.839 19.839 0 006.002-3.03.077.077 0 00.032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 00-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z'></path>
+                  </svg>
+                  <div>
+                    <p class='text-base font-medium text-gray-900 group-hover/item:text-primary mb-1 whitespace-nowrap'>Discord</p>
+                    <p class='text-sm text-gray-600 whitespace-nowrap'>Join community</p>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pricing -->
+      <a href='/pricing' class='text-sm font-medium text-gray-700 hover:text-gray-900 transition-colors'>
+        Pricing
+      </a>
     </nav>
   </div>
 
-  <div class='hidden md:flex items-center gap-[8px] z-50'>
-    <a href='https://app.dataflow.zone/' target="_blank">
+  <div class='hidden lg:flex items-center gap-3 z-50'>
+    <a href='/start-free-trail'>
       <button
-        class='px-[16px] py-[8px] text-nowrap bg-[#3AC4C4] text-white rounded-md text-sm font-bold tracking-wide'
-        >{header.button_1}</button
+        class='px-5 py-2 text-sm font-medium text-primary border border-primary rounded-md hover:bg-primary/5 transition-all duration-200'
       >
+        Try it free
+      </button>
     </a>
     <a href='/book-demo'>
       <button
-        class='px-[16px] py-[8px] text-nowrap bg-white hover:bg-[#f9f9f9] rounded-md text-sm font-bold tracking-wide shadow-md text-[#30BABA]'
-        >{header.button_2}</button
+        class='px-5 py-2 bg-primary hover:bg-primaryHover text-white rounded-md text-sm font-medium transition-all duration-200'
       >
+        Talk to us
+      </button>
     </a>
   </div>
 
-  <div class='md:hidden flex items-center z-50'>
-    <button id='burgerMenuButton' class='text-primary focus:outline-none'>
+  <div class='lg:hidden flex items-center z-50'>
+    <button id='burgerMenuButton' class='text-gray-700 focus:outline-none'>
       <svg
-        class='w-8 h-8'
+        class='w-6 h-6'
         fill='none'
         stroke='currentColor'
         viewBox='0 0 24 24'
-        xmlns='http://www.w3.org/2000/svg'
       >
         <path
           stroke-linecap='round'
           stroke-linejoin='round'
           stroke-width='2'
-          d='M4 6h16M4 12h16m-7 6h7'></path>
+          d='M4 6h16M4 12h16M4 18h16'></path>
       </svg>
     </button>
   </div>
-
-  <p id='pathname' class='bg-black text-white hidden'>{pathname.split('/')}</p>
 </header>
 
 <!-- Mobile Menu -->
 <div
   id='mobileMenu'
-  class='bg-white fixed top-0 left-0 w-full h-full transform -translate-x-full transition-transform duration-300 ease-in-out z-50'
+  class='bg-white fixed top-0 left-0 w-full h-full transform -translate-x-full transition-transform duration-300 ease-in-out z-50 overflow-y-auto'
+  style='font-family: Plus Jakarta Sans, sans-serif;'
 >
-  <div class='h-20 w-full flex items-center justify-between px-4'>
+  <div class='h-16 w-full flex items-center justify-between px-6 border-b border-gray-100'>
     <a href='/'>
-      <img src='/assets/images/dataflow-logo-green.svg' class='h-12' />
+      <img src='/assets/images/dataflow-logo-green.svg' class='h-9' />
     </a>
-    <button id='closeMenuButton' class='text-primary focus:outline-none'>
+    <button id='closeMenuButton' class='text-gray-700 focus:outline-none'>
       <svg
-        class='w-8 h-8'
+        class='w-6 h-6'
         fill='none'
         stroke='currentColor'
         viewBox='0 0 24 24'
-        xmlns='http://www.w3.org/2000/svg'
       >
         <path
           stroke-linecap='round'
@@ -102,38 +232,71 @@ const docsUrl = import.meta.env.VITE_DOCS_URL
       </svg>
     </button>
   </div>
-  <nav class='bg-white flex flex-col items-center mt-10'>
-      {
-        header?.nav_items.map((item, index) => {
+  
+  <nav class='bg-white px-6 py-6'>
+    <!-- Product Section -->
+    <div class='mb-6'>
+      <p class='text-xs font-semibold text-gray-500 uppercase tracking-wider mb-3'>Product</p>
+      <div class='space-y-1'>
+        <a href='/run-dataflow-on-any-cloud' class='block px-3 py-2 text-sm text-gray-700 hover:bg-gray-50 rounded-md'>
+          Run on Any Cloud
+        </a>
+        <a href='/manage-your-data-connections' class='block px-3 py-2 text-sm text-gray-700 hover:bg-gray-50 rounded-md'>
+          Manage Connections
+        </a>
+        <a href='/say-goodbye-to-python-dependency-hell' class='block px-3 py-2 text-sm text-gray-700 hover:bg-gray-50 rounded-md'>
+          No Dependency Hell
+        </a>
+      </div>
+    </div>
 
-          if (item.label === "Blogs") return null;
+    <!-- Solutions Section -->
+    <div class='mb-6'>
+      <p class='text-xs font-semibold text-gray-500 uppercase tracking-wider mb-3'>Solutions</p>
+      <div class='space-y-1'>
+        <a href='/enterprise' class='block px-3 py-2 text-sm text-gray-700 hover:bg-gray-50 rounded-md'>
+          Enterprise
+        </a>
+      </div>
+    </div>
 
-          return (
-          <a
-            href={item.href}
-            id={item.label}
-            class='text-primary text-base font-bold py-2'
-            style='font-family: Arial, Helvetica, sans-serif'>
-              {item.label}
-          </a> )}
-        )
-      }
-    <div class='flex flex-col mt-14 items-center gap-4'>
-      <a href='https://app.dataflow.zone/'>
-        <button
-          class='px-[20px] py-[8px] bg-primary text-white rounded-md text-base font-bold tracking-wide'
-          >{header.button_1}</button
-        >
+    <!-- Community Section -->
+    <div class='mb-6'>
+      <p class='text-xs font-semibold text-gray-500 uppercase tracking-wider mb-3'>Community</p>
+      <div class='space-y-1'>
+        <a href='/blogs/1' class='block px-3 py-2 text-sm text-gray-700 hover:bg-gray-50 rounded-md'>
+          Blog
+        </a>
+        <a href='https://github.com/Digital-Back-Office' target='_blank' class='block px-3 py-2 text-sm text-gray-700 hover:bg-gray-50 rounded-md'>
+          GitHub
+        </a>
+        <a href='https://www.linkedin.com/company/digital-back-office' target='_blank' class='block px-3 py-2 text-sm text-gray-700 hover:bg-gray-50 rounded-md'>
+          LinkedIn
+        </a>
+      </div>
+    </div>
+
+    <!-- Pricing -->
+    <div class='mb-6'>
+      <a href='/pricing' class='block px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 rounded-md'>
+        Pricing
+      </a>
+    </div>
+
+    <!-- Buttons -->
+    <div class='flex flex-col gap-3 mt-8'>
+      <a href='/start-free-trail'>
+        <button class='w-full px-5 py-3 text-primary border border-primary rounded-md font-medium hover:bg-primary/5 transition-all'>
+          Try it free
+        </button>
       </a>
       <a href='/book-demo'>
-        <button
-          class='px-[20px] py-[8px] bg-white rounded-md text-base font-bold tracking-wide shadow-md text-primary'
-          >{header.button_2}</button
-        >
+        <button class='w-full px-5 py-3 bg-primary hover:bg-primaryHover text-white rounded-md font-medium transition-all'>
+          Talk to us
+        </button>
       </a>
     </div>
   </nav>
-  <p id='helper' class='hidden'>{pagename}</p>
 </div>
 
 <script is:inline>
@@ -141,15 +304,6 @@ const docsUrl = import.meta.env.VITE_DOCS_URL
     const burgerMenuButton = document.getElementById('burgerMenuButton')
     const mobileMenu = document.getElementById('mobileMenu')
     const closeMenuButton = document.getElementById('closeMenuButton')
-    const pathname = document.getElementById('pathname').innerText.trim()
-    const navElement = document.querySelector(`#${pathname || 'dataflow'}`)
-
-    if (navElement) {
-      navElement.classList.remove('border-transparent')
-      navElement.classList.remove('hover:border-[#EFFFFF]')
-      navElement.classList.remove('hover:border-opacity-70')
-      navElement.classList.add('border-primary')
-    }
 
     burgerMenuButton.addEventListener('click', () => {
       mobileMenu.classList.remove('-translate-x-full')
@@ -162,11 +316,3 @@ const docsUrl = import.meta.env.VITE_DOCS_URL
     })
   })
 </script>
-
-<style>
-  @media (max-width: 470px) {
-    .md\\:hidden {
-      display: block;
-    }
-  }
-</style>

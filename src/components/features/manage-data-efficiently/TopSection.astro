@@ -1,10 +1,9 @@
-  ---
+---
 import { getEntry } from "astro:content";
 import CustomButton from "../../common/CustomButton.astro";
 
 const Data = await getEntry("features", "manage-your-data-connections");
-const data = Data.data.TopSection;
-const button = Data.data.button;
+const data = Data.data.top_section;
 ---
 
 <div
@@ -17,10 +16,14 @@ const button = Data.data.button;
       >
         {data.title}
       </h1>
-      <p class="text-lg max-sm:text-sm  text-textblack leading-tight">
+      <p class="text-lg max-sm:text-sm text-textblack leading-tight">
         {data.description}
       </p>
-      <CustomButton href={"https://docs.dataflow.zone/getting-started/installation"} label={data.cta_text} target="_blank" />
+      <CustomButton
+        href={"https://docs.dataflow.zone/getting-started/installation"}
+        label={data.cta_text}
+        target="_blank"
+      />
     </div>
   </div>
   <div class="flex-1 h-auto flex items-center justify-center">

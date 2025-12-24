@@ -1,5 +1,5 @@
 ---
-TopSection:
+top_section:
   title: Your Data, Your Cloud. No Lock-In
   description: Deploy the full Dataflow stack on AWS, Azure, GCP. Switch providers without rewriting your pipelines.
   cta_text: "Read Documentation"
@@ -15,7 +15,6 @@ TopSection:
       - image: /assets/images/azurelogo.png
         alt: Azure Logo
 
-
 benefits:
   title: Benefits of Running Dataflow on Any Cloud
   description: Running Dataflow on any cloud platform offers several key advantages that enhance your data processing capabilities. This approach provides unparalleled flexibility, allowing you to choose the cloud provider that best meets your needs, whether it’s AWS, Google Cloud, Azure, or another major service. This choice helps you avoid vendor lock-in and leverage the unique strengths of each platform.
@@ -30,9 +29,12 @@ benefits:
       description: Save money by selecting the most cost-effective cloud provider and using resources only when necessary.
       image: /assets/icons/cost-efficiency.png
 
-Section2:
+core_capabilities:
   title: Core Capabilities
   description: Running Dataflow on Any Cloud" enables seamless integration and execution of data processing pipelines across multiple cloud platforms, ensuring flexibility and scalability. This service allows users to harness the power of cloud-agnostic data flow management, optimizing resource use and reducing vendor lock-in.
+  button:
+    label: "Get Started"
+    href: "/book-demo"
   features:
     - title: Real-Time Processing
       description: Dataflow processes data instantly as it arrives, perfect for tasks needing immediate insights like fraud detection or real-time monitoring.
@@ -46,18 +48,24 @@ Section2:
     - title: Stream and Batch Analytics
       description: Provides apps to analyze both live data streams and historical data for complete insights and reporting.
       image: /assets/icons/streamandbatchanalytics.png
-  title2: "Write Once, Run Anywhere"
 
-Section3:
-  title: Comprehensive feature breakdowns, video tutorials, case studies, expandable sections for detailed information, and strong CTAs.
+cloud_providers:
+  title: "Write Once, Run Anywhere"
+  cloud_providers:
+    - title: "Comprehensive feature breakdowns, video tutorials, case studies, expandable sections for detailed information, and strong CTAs."
+      logo: "/assets/images/azurelogo.png"
+      link: "https://azure.microsoft.com/"
+      image: "/assets/images/macbookazure.png"
+    - title: "Visual aids, step-by-step guides, detailed descriptions of capabilities, customer testimonials, and a clean, intuitive design."
+      logo: "/assets/images/googlecloudlogo.png"
+      link: "https://cloud.google.com/"
+      image: "/assets/images/macbookgooglecloud.png"
+    - title: "Detailed feature explanations, case studies, interactive elements, clear call-to-action buttons, and a structured layout."
+      logo: "/assets/images/aws-logo.png"
+      link: "https://aws.amazon.com/"
+      image: "/assets/images/macbookaws.png"
 
-Section4:
-  title: Visual aids, step-by-step guides, detailed descriptions of capabilities, customer testimonials, and a clean, intuitive design.
-
-Section5:
-  title: Detailed feature explanations, case studies, interactive elements, clear call-to-action buttons, and a structured layout.
-
-Section6:
+private_cloud:
   title: Unlock the Potential of Your Private Cloud
   description: Our solution eliminates the restrictions of single-cloud environments, offering you the freedom to choose the best cloud provider for your specific needs.
   features:
@@ -74,7 +82,4 @@ Section6:
   feature2:
     title: Security
     description: Maintain high security standards with end-to-end encryption and compliance with industry regulations.
-
-button1: Get Started
-button2: Learn More
 ---

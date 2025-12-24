@@ -3,8 +3,7 @@ import { getEntry } from "astro:content";
 
 const Data = await getEntry("features", "manage-your-data-connections");
 const data = Data.data.core_features;
-const button = Data.data.button;
-import ImageCard from "./ImageCard.astro";
+const button = data.button;
 import Card from "../run-data-on-any-cloud/Card.astro";
 import CustomButton from "../../common/CustomButton.astro";
 const features = data.features || [];
@@ -22,8 +21,8 @@ const features = data.features || [];
         {data.description}
       </p>
       <CustomButton 
-        label={button}
-        href="/start-free-trail"
+        label={button.label}
+        href={button.href}
         className="mt-10"
       />
     </div>

@@ -2,10 +2,12 @@
 import { getEntry } from 'astro:content'
 import AnimateCard from './AnimateCard.astro'
 import Card from './Card.astro'
+import CustomButton from '../../common/CustomButton.astro'
 const Data = await getEntry('features', 'run-data-on-any-cloud')
-const data = Data.data.Section2
-const button = Data.data.button1
+const data = Data.data.core_capabilities
+const button = data.button
 const features = data.features || []
+const cloud_providers = Data?.data?.cloud_providers || []
 ---
 
 <div class='container-top w-full py-[5%] flex items-center justify-center max-md:flex-col'>
@@ -14,13 +16,11 @@ const features = data.features || []
     <p class='w-[90%] max-sm:w-full max-sm:mt-10 text-lg text-textblack'>
       {data.description}
     </p>
-    <a href='/StartFreeTrail'>
-      <button
-        class='custom-button bg-primary hover:bg-[#30baba] px-3 py-2 duration-700 text-white rounded-lg shadow-md flex text-base items-center gap-x-2 mt-14'
-        style='font-family: Roboto;'
-        >{button}<img class='button-img' src='/assets/images/arrowright.svg' />
-      </button></a
-    >
+    <CustomButton
+      href={button.href}
+      label={button.label}
+      className='mt-10'
+      />
   </div>
   <div
   data-aos="fade-left" data-aos-duration="850" data-aos-offset="200"
@@ -39,7 +39,7 @@ const features = data.features || []
 </div>
 <div class='py-8 w-full bg-[#F8FAFC]'>
   <h3 class='text-4xl max-sm:text-3xl pt-[8%] font-bold text-center text-black'>
-    {data.title2}
+    {cloud_providers.title}
   </h3>
 </div>
 <style>

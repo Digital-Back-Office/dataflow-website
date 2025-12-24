@@ -1,5 +1,5 @@
 ---
-Topsection:
+top_section:
   title: "Engineering the Future of Data Operations"
   description: "Headquartered in London, trusted globally. We are a team of systems engineers, data scientists, and architects building the unified data stack."
   tagline:

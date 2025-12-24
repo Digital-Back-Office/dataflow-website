@@ -51,6 +51,10 @@ import Header from '../components/common/Header.astro'
       rel='stylesheet'
     />
     <link
+      href='https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap'
+      rel='stylesheet'
+    />
+    <link
       rel='stylesheet'
       href='https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@400;700&display=swap'
     />
@@ -71,10 +75,27 @@ import Header from '../components/common/Header.astro'
     <meta property='og:type' content='website' />
     <meta property='og:site_name' content='dataflow.zone' />
   </head>
-  <body class='font-arimo overflow-x-hidden'>
+  <body class='arimo overflow-x-hidden' style='font-family: Plus Jakarta Sans, sans-serif;'>
     {header && <Header pagename={title} />}
     <slot />
     <Footer />
+    
+    <!-- Arcade Demo Modal -->
+    <div id="arcadeModal" class="hidden fixed inset-0 bg-black/60 backdrop-blur-sm z-[100] flex items-center justify-center p-4" onclick="if(event.target.id === 'arcadeModal') this.classList.add('hidden')">
+      <div class="relative bg-white rounded-2xl shadow-2xl max-w-6xl w-full max-h-[90vh] overflow-hidden" onclick="event.stopPropagation()">
+        <button onclick="document.getElementById('arcadeModal').classList.add('hidden')" class="absolute top-4 right-4 z-10 w-10 h-10 bg-gray-900/80 hover:bg-gray-900 text-white rounded-full flex items-center justify-center transition-colors">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </button>
+        <div class="p-6">
+          <div style="position: relative; padding-bottom: calc(46.7188% + 41px); height: 0px; width: 100%;">
+            <iframe src="https://demo.arcade.software/TxVzl4hr8AGXnxq8XMNw?embed&embed_mobile=tab&embed_desktop=inline&show_copy_link=true" title="Dataflow Demo (under 2 mins)" frameborder="0" loading="lazy" webkitallowfullscreen mozallowfullscreen allowfullscreen allow="clipboard-write" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; color-scheme: light;"></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+    
     <script is:inline>
       document.addEventListener('DOMContentLoaded', () => {
         if (window.AOS) {

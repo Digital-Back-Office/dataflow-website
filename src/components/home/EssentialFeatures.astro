@@ -1,0 +1,110 @@
+---
+interface Props {
+  features: any[]
+}
+
+const { features } = Astro.props
+---
+
+<section class='px-[5%] py-20 bg-gray-50 max-sm:py-12' style='font-family: Plus Jakarta Sans, sans-serif;'>
+  <div class='max-w-7xl mx-auto'>
+    <h2 class='text-4xl max-sm:text-3xl font-bold text-center text-gray-900 mb-4' data-aos='fade-up'>
+      Essential Features
+    </h2>
+    <p class='text-center text-gray-600 mb-12' data-aos='fade-up' data-aos-delay='100'>
+      Unlock the power of streamlined development and seamless collaboration.
+    </p>
+
+    <div class='grid md:grid-cols-6 gap-6 max-md:grid-cols-1'>
+      {/* Feature 1: Define Once, Use Everywhere - Large Hero Card */}
+      {features.filter((_, idx) => idx === 0).map((feature) => (
+        <div class='md:col-span-4 bg-gradient-to-br from-primary/5 via-primary/10 to-primary/5 rounded-3xl p-10 max-md:p-8 group hover:shadow-lg transition-all duration-300' data-aos='fade-up' data-aos-delay='200'>
+          <div class='flex items-start justify-between max-md:flex-col gap-6'>
+            <div class='flex-1'>
+              <div class='w-14 h-14 bg-primary rounded-2xl flex items-center justify-center mb-5 transition-transform duration-300'>
+                <img src={feature.icon} alt={feature.title} class='w-7 h-7 brightness-0 invert' />
+              </div>
+              <h3 class='text-3xl max-md:text-2xl font-bold text-gray-900 mb-4'>{feature.title}</h3>
+              <p class='text-gray-700 text-lg mb-6 leading-relaxed'>{feature.description}</p>
+              {feature.href && (
+                <a href={feature.href} class='inline-flex items-center gap-2 px-6 py-3 bg-primary hover:bg-primaryHover text-white rounded-lg font-semibold transition-all duration-300 group/btn'>
+                  Learn more
+                  <svg class='w-5 h-5 transition-transform group-hover/btn:translate-x-1' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
+                    <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M9 5l7 7-7 7'></path>
+                  </svg>
+                </a>
+              )}
+            </div>
+            <div class='hidden md:block w-32 h-32 bg-primary/20 rounded-full blur-3xl absolute right-10 top-10 -z-0'></div>
+          </div>
+        </div>
+      ))}
+
+      {/* Feature 2: Goodbye, Dependency Hell - Tall Right Card */}
+      {features.filter((_, idx) => idx === 1).map((feature) => (
+        <div class='md:col-span-2 md:row-span-2 bg-white rounded-3xl p-8 border-2 border-primary/20 hover:border-primary/30 group hover:shadow-lg transition-all duration-300 flex flex-col' data-aos='fade-up' data-aos-delay='300'>
+          <div class='w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-5 transition-colors duration-300'>
+            <img src={feature.icon} alt={feature.title} class='w-6 h-6' />
+          </div>
+          <h3 class='text-2xl font-bold text-gray-900 mb-4'>{feature.title}</h3>
+          <p class='text-gray-600 mb-6 flex-1 leading-relaxed'>{feature.description}</p>
+          
+          {/* Bottom decorative element */}
+          {/* <div class='flex items-center gap-2 text-xs text-gray-500'>
+            <svg class='w-4 h-4 text-primary' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
+              <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z'></path>
+            </svg>
+            <span>Containerized & Immutable</span>
+          </div> */}
+          
+          {feature.href && (
+            <a href={feature.href} class='text-primary hover:text-primaryHover font-semibold inline-flex items-center gap-2 text-sm group/link'>
+              Learn more
+              <svg class='w-4 h-4 transition-transform group-hover/link:translate-x-1' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
+                <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M9 5l7 7-7 7'></path>
+              </svg>
+            </a>
+          )}
+        </div>
+      ))}
+
+      {/* Feature 3: Share Apps Instantly - Bottom Left */}
+      {features.filter((_, idx) => idx === 3).map((feature) => (
+        <div class='md:col-span-2 bg-white rounded-3xl p-8 border border-gray-200 group hover:shadow-lg hover:border-primary/30 transition-all duration-300' data-aos='fade-up' data-aos-delay='400'>
+          <div class='w-12 h-12 bg-gradient-to-br from-primary/10 to-primary/20 rounded-xl flex items-center justify-center mb-5 transition-transform duration-300'>
+            <img src={feature.icon} alt={feature.title} class='w-6 h-6' />
+          </div>
+          <h3 class='text-xl font-bold text-gray-900 mb-3'>{feature.title}</h3>
+          <p class='text-gray-600 text-sm mb-4 leading-relaxed'>{feature.description}</p>
+          {feature.href && (
+            <a href={feature.href} class='text-primary hover:text-primaryHover font-semibold inline-flex items-center gap-2 text-sm group/link'>
+              Learn more
+              <svg class='w-4 h-4 transition-transform group-hover/link:translate-x-1' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
+                <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M9 5l7 7-7 7'></path>
+              </svg>
+            </a>
+          )}
+        </div>
+      ))}
+
+      {/* Feature 4: Bring your team - Bottom Right Wide */}
+      {features.filter((_, idx) => idx === 4).map((feature) => (
+        <div class='md:col-span-2 bg-white rounded-3xl p-8 border border-gray-200 group hover:shadow-lg hover:border-primary/30 transition-all duration-300' data-aos='fade-up' data-aos-delay='500'>
+          <div class='w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-5 transition-colors duration-300'>
+            <img src={feature.icon} alt={feature.title} class='w-6 h-6' />
+          </div>
+          <h3 class='text-xl font-bold text-gray-900 mb-3'>{feature.title}</h3>
+          <p class='text-gray-600 text-sm mb-4 leading-relaxed'>{feature.description}</p>
+          {feature.href && (
+            <a href={feature.href} class='text-primary hover:text-primaryHover font-semibold inline-flex items-center gap-2 text-sm group/link'>
+              Learn more
+              <svg class='w-4 h-4 transition-transform group-hover/link:translate-x-1' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
+                <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M9 5l7 7-7 7'></path>
+              </svg>
+            </a>
+          )}
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

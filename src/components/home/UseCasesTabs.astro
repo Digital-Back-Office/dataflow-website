@@ -81,6 +81,8 @@ const tabs: UseCaseTab[] = [
         <button 
           class={`use-case-tab px-6 py-3 rounded-lg font-medium transition-colors ${index === 0 ? 'bg-primary text-white' : 'bg-white text-gray-700 hover:bg-gray-100'}`}
           data-tab={tab.id}
+          data-aos='fade-up'
+          data-aos-delay={200 + index * 100}
         >
           {tab.title}
         </button>
@@ -90,7 +92,12 @@ const tabs: UseCaseTab[] = [
     <!-- Tab Contents -->
     <div class='tab-content-wrapper relative h-[580px] max-md:h-auto'>
       {tabs.map((tab, index) => (
-        <div class={`tab-content ${index === 0 ? 'active' : ''} bg-white rounded-2xl p-12 max-sm:p-6 shadow-sm`} data-content={tab.id}>
+        <div 
+          class={`tab-content ${index === 0 ? 'active' : ''} bg-white rounded-2xl p-12 max-sm:p-6 shadow-sm`} 
+          data-content={tab.id}
+          data-aos='fade-up'
+          data-aos-delay='400'
+        >
           <div class='grid md:grid-cols-2 gap-12 items-center'>
             <div>
               <h3 class='text-3xl font-bold text-gray-900 mb-4'>

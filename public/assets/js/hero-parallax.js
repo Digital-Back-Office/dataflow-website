@@ -34,11 +34,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const delay = index * 150;
     
     setTimeout(() => {
-      // Fade in and move to position
-      circle?.setAttribute('opacity', '1');
-      image?.setAttribute('opacity', '1');
-      
-      animateNode(circle, image, 500, 400, targetX, targetY, 800);
+      // Fade in and move to position with opacity animation
+      animateNodeWithFade(circle, image, 500, 400, targetX, targetY, 0, 1, 800);
     }, delay);
     
     // Show lines after nodes are in position
@@ -131,6 +128,39 @@ document.addEventListener('DOMContentLoaded', () => {
       circle.setAttribute('cy', currentY.toString());
       image.setAttribute('x', (currentX - imgSize / 2).toString());
       image.setAttribute('y', (currentY - imgSize / 2).toString());
+      
+      if (progress < 1) {
+        requestAnimationFrame(animate);
+      }
+    }
+    
+    requestAnimationFrame(animate);
+  }
+  
+  // Helper function to animate node with opacity transition
+  function animateNodeWithFade(circle, image, startX, startY, endX, endY, startOpacity, endOpacity, duration) {
+    if (!circle || !image) return;
+    
+    const startTime = performance.now();
+    const imgSize = parseFloat(image.getAttribute('width') || '16');
+    
+    function animate(currentTime) {
+      const elapsed = currentTime - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      
+      // Easing function (ease-out)
+      const eased = 1 - Math.pow(1 - progress, 3);
+      
+      const currentX = startX + (endX - startX) * eased;
+      const currentY = startY + (endY - startY) * eased;
+      const currentOpacity = startOpacity + (endOpacity - startOpacity) * eased;
+      
+      circle.setAttribute('cx', currentX.toString());
+      circle.setAttribute('cy', currentY.toString());
+      circle.setAttribute('opacity', currentOpacity.toString());
+      image.setAttribute('x', (currentX - imgSize / 2).toString());
+      image.setAttribute('y', (currentY - imgSize / 2).toString());
+      image.setAttribute('opacity', currentOpacity.toString());
       
       if (progress < 1) {
         requestAnimationFrame(animate);

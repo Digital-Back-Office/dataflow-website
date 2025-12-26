@@ -1,0 +1,46 @@
+---
+import { getEntry } from 'astro:content'
+
+const Data = await getEntry('home', 'home')
+const gpuData = Data.data.gpu_compute
+---
+
+<section class="px-[5%] py-24 max-sm:py-16" style="font-family: Plus Jakarta Sans, sans-serif;">
+  <div class="max-w-6xl mx-auto">
+    <div class="relative overflow-hidden rounded-3xl bg-gradient-to-br from-primary/10 via-primary/5 to-primary/10 border-2 border-primary/20 shadow-xl">
+      <!-- Decorative Elements -->
+      <div class="absolute top-0 right-0 w-64 h-64 bg-primary/10 rounded-full blur-3xl"></div>
+      <div class="absolute bottom-0 left-0 w-64 h-64 bg-primary/5 rounded-full blur-3xl"></div>
+      
+      <!-- Grid Pattern -->
+      <div class="absolute inset-0 opacity-5" style="background-image: radial-gradient(circle at 1px 1px, rgb(48 186 186) 1px, transparent 0); background-size: 24px 24px;"></div>
+      
+      <div class="relative p-10 max-sm:p-6">
+        <div class="max-w-4xl">
+          <h2 class="text-4xl max-sm:text-3xl font-extrabold text-gray-900 leading-tight mb-4" data-aos="fade-up">
+            {gpuData.title}
+          </h2>
+          <div class="space-y-2 mb-8">
+            <p class="text-lg max-sm:text-base text-gray-700" data-aos="fade-up" data-aos-delay="100">
+              {gpuData.lines[0]}
+            </p>
+            <p class="text-lg max-sm:text-base text-gray-700" data-aos="fade-up" data-aos-delay="150">
+              {gpuData.lines[1]}
+            </p>
+            <p class="text-lg max-sm:text-base text-gray-700" data-aos="fade-up" data-aos-delay="200">
+              {gpuData.lines[2]}
+            </p>
+          </div>
+          <div class="flex items-center gap-4 max-sm:flex-col" data-aos="fade-up" data-aos-delay="250">
+            <a href={gpuData.primary_cta.href} class="px-6 py-3 bg-primary hover:bg-primaryHover text-white font-semibold rounded-lg shadow-md transition-all duration-200">
+              {gpuData.primary_cta.text}
+            </a>
+            <a href={gpuData.secondary_cta.href} class="px-6 py-3 bg-white hover:bg-gray-50 text-gray-900 font-semibold rounded-lg border-2 border-gray-200 hover:border-primary transition-all duration-200">
+              {gpuData.secondary_cta.text}
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

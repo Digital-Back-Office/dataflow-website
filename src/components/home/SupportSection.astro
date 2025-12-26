@@ -1,4 +1,8 @@
 ---
+import { getEntry } from 'astro:content'
+
+const Data = await getEntry('home', 'home')
+const support = Data.data?.support_section || null
 // Support Section - We've Got Your Back
 ---
 

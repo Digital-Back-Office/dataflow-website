@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro'
 import HeroSection from '../components/home/HeroSection.astro'
 import UseCasesTabs from '../components/home/UseCasesTabs.astro'
+import GPUSection from '../components/home/GPUSection.astro'
 import ShipDataApps from '../components/home/ShipDataApps.astro'
 import EssentialFeatures from '../components/home/EssentialFeatures.astro'
 import EnterpriseReady from '../components/home/EnterpriseReady.astro'
@@ -19,6 +20,7 @@ const { hero, features } = data
 <Layout title='Dataflow | AI ready data platform'>
   <HeroSection hero={hero} />
   <UseCasesTabs />
+  <GPUSection />
   <ShipDataApps />
   <EssentialFeatures features={features} />
   <EnterpriseReady />

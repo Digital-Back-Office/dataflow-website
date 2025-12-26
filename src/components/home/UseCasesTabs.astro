@@ -1,4 +1,8 @@
 ---
+import { getEntry } from 'astro:content'
+
+const Data = await getEntry('home', 'home')
+
 interface UseCaseTab {
   id: string
   title: string
@@ -8,9 +12,11 @@ interface UseCaseTab {
   link: string
   image: string
   imageAlt: string
+  cta_text?: string
+  video?: string  
 }
 
-const tabs: UseCaseTab[] = [
+const defaultTabs: UseCaseTab[] = [
   {
     id: 'exploration',
     title: 'Data Exploration',
@@ -68,12 +74,14 @@ const tabs: UseCaseTab[] = [
     imageAlt: 'ETL'
   }
 ]
+
+const tabs: UseCaseTab[] = Data.data?.use_cases || defaultTabs
 ---
 
 <section class='px-[5%] py-20 bg-gray-50 max-sm:py-12' style='font-family: Plus Jakarta Sans, sans-serif;'>
   <div class='max-w-7xl mx-auto'>
     <h2 class='text-4xl max-sm:text-3xl font-bold text-center text-gray-900 mb-12' data-aos='fade-up'>
-      Built for All Data Use Cases
+      {Data.data?.use_cases_title || 'Built for All Data Use Cases'}
     </h2>
     
     <div class='flex justify-center gap-4 mb-12 max-sm:flex-wrap'>
@@ -117,14 +125,26 @@ const tabs: UseCaseTab[] = [
                 ))}
               </ul>
               <a href={tab.link} class='inline-flex items-center gap-2 px-6 py-3 bg-primary hover:bg-primaryHover text-white rounded-lg font-semibold transition-all duration-300 group/btn'>
-                Learn more
+                {tab.cta_text || 'Learn more'}
                 <svg class='w-5 h-5 transition-transform group-hover/btn:translate-x-1' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
                   <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M9 5l7 7-7 7'></path>
                 </svg>
               </a>
             </div>
-            <div class='bg-gradient-to-br from-primary/10 to-primary/5 rounded-xl p-8 flex items-center justify-center min-h-[300px]'>
-              <img src={tab.image} alt={tab.imageAlt} class='max-w-full h-auto' />
+            <div class={`bg-gradient-to-br from-primary/10 to-primary/5 rounded-xl ${!tab.video && 'p-8'} flex items-center justify-center min-h-[300px]`}>
+              {tab.video ? (
+                <video
+                  class='max-w-full h-auto rounded-md'
+                  src={tab.video}
+                  autoplay
+                  muted
+                  loop
+                  playsinline
+                  poster={tab.image}
+                />
+              ) : (
+                <img src={tab.image} alt={tab.imageAlt} class='max-w-full h-auto' />
+              )}
             </div>
           </div>
         </div>

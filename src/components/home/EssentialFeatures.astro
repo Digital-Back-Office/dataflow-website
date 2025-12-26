@@ -1,9 +1,8 @@
 ---
-interface Props {
-  features: any[]
-}
+import { getEntry } from 'astro:content'
 
-const { features } = Astro.props
+const Data = await getEntry('home', 'home')
+const features = Data.data?.features || Astro.props?.features || []
 ---
 
 <section class='px-[5%] py-20 bg-gray-50 max-sm:py-12' style='font-family: Plus Jakarta Sans, sans-serif;'>
@@ -18,7 +17,7 @@ const { features } = Astro.props
     <div class='grid md:grid-cols-6 gap-6 max-md:grid-cols-1'>
       {/* Feature 1: Define Once, Use Everywhere - Large Hero Card */}
       {features.filter((_, idx) => idx === 0).map((feature) => (
-        <div class='md:col-span-4 bg-gradient-to-br from-primary/5 via-primary/10 to-primary/5 rounded-3xl p-10 max-md:p-8 group hover:shadow-lg transition-all duration-300' data-aos='fade-up' data-aos-delay='200'>
+        <div class='md:col-span-4 bg-gradient-to-br from-primary/5 via-primary/10 to-primary/5 rounded-3xl p-10 max-md:p-8 group  transition-all duration-300' data-aos='fade-up' data-aos-delay='200'>
           <div class='flex items-start justify-between max-md:flex-col gap-6'>
             <div class='flex-1'>
               <div class='w-14 h-14 bg-primary rounded-2xl flex items-center justify-center mb-5 transition-transform duration-300'>
@@ -42,7 +41,7 @@ const { features } = Astro.props
 
       {/* Feature 2: Goodbye, Dependency Hell - Tall Right Card */}
       {features.filter((_, idx) => idx === 1).map((feature) => (
-        <div class='md:col-span-2 md:row-span-2 bg-white rounded-3xl p-8 border-2 border-primary/20 hover:border-primary/30 group hover:shadow-lg transition-all duration-300 flex flex-col' data-aos='fade-up' data-aos-delay='300'>
+        <div class='md:col-span-2 md:row-span-2 bg-white rounded-3xl p-8 border-2 border-primary/20 hover:border-primary/30 group  transition-all duration-300 flex flex-col' data-aos='fade-up' data-aos-delay='300'>
           <div class='w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-5 transition-colors duration-300'>
             <img src={feature.icon} alt={feature.title} class='w-6 h-6' />
           </div>
@@ -70,7 +69,7 @@ const { features } = Astro.props
 
       {/* Feature 3: Share Apps Instantly - Bottom Left */}
       {features.filter((_, idx) => idx === 3).map((feature) => (
-        <div class='md:col-span-2 bg-white rounded-3xl p-8 border border-gray-200 group hover:shadow-lg hover:border-primary/30 transition-all duration-300' data-aos='fade-up' data-aos-delay='400'>
+        <div class='md:col-span-2 bg-white rounded-3xl p-8 border border-gray-200 group  hover:border-primary/30 transition-all duration-300' data-aos='fade-up' data-aos-delay='400'>
           <div class='w-12 h-12 bg-gradient-to-br from-primary/10 to-primary/20 rounded-xl flex items-center justify-center mb-5 transition-transform duration-300'>
             <img src={feature.icon} alt={feature.title} class='w-6 h-6' />
           </div>
@@ -89,7 +88,7 @@ const { features } = Astro.props
 
       {/* Feature 4: Bring your team - Bottom Right Wide */}
       {features.filter((_, idx) => idx === 4).map((feature) => (
-        <div class='md:col-span-2 bg-white rounded-3xl p-8 border border-gray-200 group hover:shadow-lg hover:border-primary/30 transition-all duration-300' data-aos='fade-up' data-aos-delay='500'>
+        <div class='md:col-span-2 bg-white rounded-3xl p-8 border border-gray-200 group  hover:border-primary/30 transition-all duration-300' data-aos='fade-up' data-aos-delay='500'>
           <div class='w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-5 transition-colors duration-300'>
             <img src={feature.icon} alt={feature.title} class='w-6 h-6' />
           </div>

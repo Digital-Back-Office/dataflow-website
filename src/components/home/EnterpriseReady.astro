@@ -1,4 +1,8 @@
 ---
+import { getEntry } from 'astro:content'
+
+const Data = await getEntry('home', 'home')
+const enterprise = Data.data?.enterprise || null
 // Enterprise Ready Section
 ---
 

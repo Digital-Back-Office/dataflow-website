@@ -4,6 +4,15 @@ document.addEventListener('DOMContentLoaded', () => {
   const lines = document.querySelectorAll('.flow-line');
   const svg = document.getElementById('dataflowSvg');
   const heroSection = document.querySelector('section');
+  // Tooltip element
+  const tooltip = document.createElement('div');
+  tooltip.id = 'heroTooltip';
+  tooltip.style.position = 'absolute';
+  tooltip.style.zIndex = '20';
+  tooltip.style.pointerEvents = 'none';
+  tooltip.className = 'px-2 py-1 rounded-md text-xs font-semibold bg-black/80 text-white shadow-lg';
+  tooltip.style.display = 'none';
+  heroSection && heroSection.appendChild(tooltip);
   
   if (!nodes.length || !svg || !heroSection) return;
   
@@ -24,6 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const targetX = parseFloat(node.getAttribute('data-target-x') || '500');
     const targetY = parseFloat(node.getAttribute('data-target-y') || '400');
     const speed = parseFloat(node.getAttribute('data-speed') || '1');
+    const name = node.getAttribute('data-name') || 'Data Tool';
     
     // Store target positions
     node.setAttribute('data-final-x', targetX.toString());
@@ -37,6 +47,42 @@ document.addEventListener('DOMContentLoaded', () => {
       // Fade in and move to position with opacity animation
       animateNodeWithFade(circle, image, 500, 400, targetX, targetY, 0, 1, 800);
     }, delay);
+
+    // Attach tooltip and hover brightness handlers
+    if (circle) {
+      circle.setAttribute('stroke-width', '1.5');
+      circle.setAttribute('fill-opacity', '0.95');
+      
+      // Hover events for brightness and tooltip
+      circle.addEventListener('mouseenter', (e) => {
+        circle.style.filter = 'drop-shadow(0 0 10px rgba(48,186,186,0.9))';
+        circle.setAttribute('stroke-width', '2');
+        handleTooltip('mouseenter', e, name);
+      });
+      circle.addEventListener('mousemove', (e) => handleTooltip('mousemove', e, name));
+      circle.addEventListener('mouseleave', (e) => {
+        circle.style.filter = '';
+        circle.setAttribute('stroke-width', '1.5');
+        handleTooltip('mouseleave', e, name);
+      });
+    }
+    if (image) {
+      image.addEventListener('mouseenter', (e) => {
+        if (circle) {
+          circle.style.filter = 'drop-shadow(0 0 10px rgba(48,186,186,0.9))';
+          circle.setAttribute('stroke-width', '2');
+        }
+        handleTooltip('mouseenter', e, name);
+      });
+      image.addEventListener('mousemove', (e) => handleTooltip('mousemove', e, name));
+      image.addEventListener('mouseleave', (e) => {
+        if (circle) {
+          circle.style.filter = '';
+          circle.setAttribute('stroke-width', '1.5');
+        }
+        handleTooltip('mouseleave', e, name);
+      });
+    }
     
     // Show lines after nodes are in position
     if (index === nodes.length - 1) {
@@ -168,5 +214,20 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     
     requestAnimationFrame(animate);
+  }
+
+  function handleTooltip(evt, e, name) {
+    if (!heroSection) return;
+    const rect = heroSection.getBoundingClientRect();
+    if (evt === 'mouseleave') {
+      tooltip.style.display = 'none';
+      return;
+    }
+    tooltip.textContent = name;
+    tooltip.style.display = 'block';
+    const x = e.clientX - rect.left + 12;
+    const y = e.clientY - rect.top + 12;
+    tooltip.style.left = x + 'px';
+    tooltip.style.top = y + 'px';
   }
 });

@@ -1,122 +1,125 @@
 ---
-// Developers love Dataflow Section
+import { getEntry } from 'astro:content'
+
+const Data = await getEntry('home', 'home')
+const data = Data.data?.developers_love
+
+const defaultCards = [
+  {
+    title: 'Community',
+    description: 'Connect with fellow developers, share knowledge, and get help from our active community.',
+    links: [{ text: 'Join Discourse community', href: 'https://discourse.dataflow.com', target: '_blank' }]
+  },
+  {
+    title: 'Learn',
+    description: 'Access comprehensive documentation, tutorials, and guides to get the most out of Dataflow.',
+    links: [
+      { text: 'Read the documentation', href: 'https://docs.dataflow.com', target: '_blank' },
+      { text: 'Browse tutorials & blogs', href: '/blogs/1' }
+    ]
+  },
+  {
+    title: 'Try',
+    description: 'Experience Dataflow firsthand with our interactive demos and free trial.',
+    actions: [
+      { text: 'Watch interactive demo', onclick: "document.getElementById('arcadeModal').classList.remove('hidden')" },
+      { text: 'Start free trial', href: '/start-free-trail' }
+    ]
+  },
+  {
+    title: 'Support',
+    description: 'Get help when you need it from our dedicated support team.',
+    links: [
+      { text: 'Contact support team', href: '/contact-us' },
+      { text: 'Email us directly', href: 'mailto:support@dataflow.com' }
+    ]
+  }
+]
+
+const cards = data?.cards || defaultCards
 ---
 
 <section class='px-[5%] py-20 bg-gray-50 max-sm:py-12' style='font-family: Plus Jakarta Sans, sans-serif;'>
   <div class='max-w-7xl mx-auto'>
     <div class='text-center mb-12'>
       <h2 class='text-4xl max-sm:text-3xl font-bold text-gray-900 mb-4' data-aos='fade-up'>
-        Developers love Dataflow
+        {data?.title || 'Developers love Dataflow'}
       </h2>
       <p class='text-lg text-gray-600 max-w-3xl mx-auto' data-aos='fade-up' data-aos-delay='100'>
-        Join a growing community of data engineers and developers building with Dataflow.
+        {data?.subtitle || 'Join a growing community of data engineers and developers building with Dataflow.'}
       </p>
     </div>
 
     <div class='grid md:grid-cols-2 gap-6'>
-      <!-- Community Card -->
-      <div class='bg-white rounded-2xl p-10 border border-primary/20 hover:border-primary/30 transition-shadow' data-aos='fade-up' data-aos-delay='200'>
-        <h3 class='text-2xl font-bold text-gray-900 mb-3'>Community</h3>
-        <p class='text-gray-600 mb-6'>
-          Connect with fellow developers, share knowledge, and get help from our active community.
-        </p>
-        <div class='space-y-3'>
-          <a href='https://discourse.dataflow.com' target='_blank' class='flex items-center gap-3 text-primary hover:text-primaryHover font-medium group'>
-            <svg class='w-5 h-5 transition-transform group-hover:translate-x-1' fill='currentColor' viewBox='0 0 24 24'>
-              <path d='M12.103 0C18.666 0 24 5.485 24 11.997c0 6.51-5.33 11.99-11.9 11.99L0 24V11.79C0 5.28 5.532 0 12.103 0zm.116 4.563c-2.593-.003-4.996 1.352-6.337 3.57-1.33 2.208-1.387 4.957-.148 7.22L4.4 19.61l4.794-1.074c2.745 1.225 5.965.676 8.136-1.39 2.17-2.054 2.86-5.228 1.737-7.997-1.135-2.778-3.84-4.59-6.84-4.585h-.008z'></path>
-            </svg>
-            Join Discourse community
-            <svg class='w-4 h-4 transition-transform group-hover:translate-x-1' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
-              <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M9 5l7 7-7 7'></path>
-            </svg>
-          </a>
+      {cards.map((card, index) => (
+        <div class='bg-white rounded-2xl p-10 border border-primary/20 hover:border-primary/30 transition-shadow' data-aos='fade-up' data-aos-delay={200 + index * 100}>
+          <h3 class='text-2xl font-bold text-gray-900 mb-3'>{card.title}</h3>
+          <p class='text-gray-600 mb-6'>{card.description}</p>
+          <div class='space-y-3'>
+            {card.links?.map((link) => (
+              <a href={link.href} target={link.target} class='flex items-center gap-3 text-primary hover:text-primaryHover font-medium group'>
+                {card.title === 'Community' && (
+                  <svg class='w-5 h-5 transition-transform group-hover:translate-x-1' fill='currentColor' viewBox='0 0 24 24'>
+                    <path d='M12.103 0C18.666 0 24 5.485 24 11.997c0 6.51-5.33 11.99-11.9 11.99L0 24V11.79C0 5.28 5.532 0 12.103 0zm.116 4.563c-2.593-.003-4.996 1.352-6.337 3.57-1.33 2.208-1.387 4.957-.148 7.22L4.4 19.61l4.794-1.074c2.745 1.225 5.965.676 8.136-1.39 2.17-2.054 2.86-5.228 1.737-7.997-1.135-2.778-3.84-4.59-6.84-4.585h-.008z'></path>
+                  </svg>
+                )}
+                {card.title === 'Learn' && (
+                  <svg class='w-5 h-5 transition-transform group-hover:translate-x-1' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
+                    {link.text.includes('documentation') ? (
+                      <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253'></path>
+                    ) : (
+                      <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z'></path>
+                    )}
+                  </svg>
+                )}
+                {card.title === 'Support' && (
+                  <svg class='w-5 h-5 transition-transform group-hover:translate-x-1' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
+                    {link.text.includes('Email') ? (
+                      <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z'></path>
+                    ) : (
+                      <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z'></path>
+                    )}
+                  </svg>
+                )}
+                {link.text}
+                <svg class='w-4 h-4 transition-transform group-hover:translate-x-1' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
+                  <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M9 5l7 7-7 7'></path>
+                </svg>
+              </a>
+            ))}
+            {card.actions?.map((action) => (
+              action.onclick ? (
+                <button onclick={action.onclick} class='flex items-center gap-3 text-primary hover:text-primaryHover font-medium group w-full'>
+                  <svg class='w-5 h-5 transition-transform group-hover:translate-x-1' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
+                    {action.text.includes('demo') ? (
+                      <Fragment>
+                        <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z'></path>
+                        <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M21 12a9 9 0 11-18 0 9 9 0 0118 0z'></path>
+                      </Fragment>
+                    ) : (
+                      <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M13 10V3L4 14h7v7l9-11h-7z'></path>
+                    )}
+                  </svg>
+                  {action.text}
+                  <svg class='w-4 h-4 transition-transform group-hover:translate-x-1' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
+                    <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M9 5l7 7-7 7'></path>
+                  </svg>
+                </button>
+              ) : (
+                <a href={action.href} class='flex items-center gap-3 text-primary hover:text-primaryHover font-medium group'>
+                  <svg class='w-5 h-5 transition-transform group-hover:translate-x-1' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
+                    <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M13 10V3L4 14h7v7l9-11h-7z'></path>
+                  </svg>
+                  {action.text}
+                  <svg class='w-4 h-4 transition-transform group-hover:translate-x-1' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
+                    <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M9 5l7 7-7 7'></path>
+                  </svg>
+                </a>
+              )
+            ))}
+          </div>
         </div>
-      </div>
-
-      <!-- Learn Card -->
-      <div class='bg-white rounded-2xl p-10 border border-primary/20 hover:border-primary/30 transition-shadow' data-aos='fade-up' data-aos-delay='300'>
-        <h3 class='text-2xl font-bold text-gray-900 mb-3'>Learn</h3>
-        <p class='text-gray-600 mb-6'>
-          Access comprehensive documentation, tutorials, and guides to get the most out of Dataflow.
-        </p>
-        <div class='space-y-3'>
-          <a href='https://docs.dataflow.com' target='_blank' class='flex items-center gap-3 text-primary hover:text-primaryHover font-medium group'>
-            <svg class='w-5 h-5 transition-transform group-hover:translate-x-1' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
-              <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253'></path>
-            </svg>
-            Read the documentation
-            <svg class='w-4 h-4 transition-transform group-hover:translate-x-1' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
-              <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M9 5l7 7-7 7'></path>
-            </svg>
-          </a>
-          <a href='/blogs/1' class='flex items-center gap-3 text-primary hover:text-primaryHover font-medium group'>
-            <svg class='w-5 h-5 transition-transform group-hover:translate-x-1' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
-              <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z'></path>
-            </svg>
-            Browse tutorials & blogs
-            <svg class='w-4 h-4 transition-transform group-hover:translate-x-1' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
-              <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M9 5l7 7-7 7'></path>
-            </svg>
-          </a>
-        </div>
-      </div>
-
-      <!-- Try Card -->
-      <div class='bg-white rounded-2xl p-10 border border-primary/20 hover:border-primary/30 transition-shadow' data-aos='fade-up' data-aos-delay='400'>
-        <h3 class='text-2xl font-bold text-gray-900 mb-3'>Try</h3>
-        <p class='text-gray-600 mb-6'>
-          Experience Dataflow firsthand with our interactive demos and free trial.
-        </p>
-        <div class='space-y-3'>
-          <button onclick="document.getElementById('arcadeModal').classList.remove('hidden')" class='flex items-center gap-3 text-primary hover:text-primaryHover font-medium group w-full'>
-            <svg class='w-5 h-5 transition-transform group-hover:translate-x-1' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
-              <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z'></path>
-              <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M21 12a9 9 0 11-18 0 9 9 0 0118 0z'></path>
-            </svg>
-            Watch interactive demo
-            <svg class='w-4 h-4 transition-transform group-hover:translate-x-1' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
-              <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M9 5l7 7-7 7'></path>
-            </svg>
-          </button>
-          <a href='/start-free-trail' class='flex items-center gap-3 text-primary hover:text-primaryHover font-medium group'>
-            <svg class='w-5 h-5 transition-transform group-hover:translate-x-1' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
-              <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M13 10V3L4 14h7v7l9-11h-7z'></path>
-            </svg>
-            Start free trial
-            <svg class='w-4 h-4 transition-transform group-hover:translate-x-1' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
-              <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M9 5l7 7-7 7'></path>
-            </svg>
-          </a>
-        </div>
-      </div>
-
-      <!-- Support Card -->
-      <div class='bg-white rounded-2xl p-10 border border-primary/20 hover:border-primary/30 transition-shadow' data-aos='fade-up' data-aos-delay='500'>
-        <h3 class='text-2xl font-bold text-gray-900 mb-3'>Support</h3>
-        <p class='text-gray-600 mb-6'>
-          Get help when you need it from our dedicated support team.
-        </p>
-        <div class='space-y-3'>
-          <a href='/contact-us' class='flex items-center gap-3 text-primary hover:text-primaryHover font-medium group'>
-            <svg class='w-5 h-5 transition-transform group-hover:translate-x-1' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
-              <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z'></path>
-            </svg>
-            Contact support team
-            <svg class='w-4 h-4 transition-transform group-hover:translate-x-1' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
-              <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M9 5l7 7-7 7'></path>
-            </svg>
-          </a>
-          <a href='mailto:support@dataflow.com' class='flex items-center gap-3 text-primary hover:text-primaryHover font-medium group'>
-            <svg class='w-5 h-5 transition-transform group-hover:translate-x-1' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
-              <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z'></path>
-            </svg>
-            Email us directly
-            <svg class='w-4 h-4 transition-transform group-hover:translate-x-1' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
-              <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M9 5l7 7-7 7'></path>
-            </svg>
-          </a>
-        </div>
-      </div>
+      ))}
     </div>
   </div>
 </section>

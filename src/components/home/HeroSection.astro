@@ -546,16 +546,30 @@ const hero = Data.data?.hero || {
         class="text-6xl max-sm:text-4xl font-bold text-gray-900 mb-6 leading-tight"
         data-aos="fade-up"
       >
-        Focus on Data Logic,<br />Not Glue Code.
+        {(hero?.title || 'All your data tools, finally working together—without breaking environments. <br/> AI ready and Open source tools.')
+          .split(/<br\s*\/?>/i)
+          .map((line, i, arr) => (
+            <span>
+              {line}
+              {i !== arr.length - 1 && <br />}
+            </span>
+          ))}
       </h1>
       <p
         class="text-xl max-sm:text-lg text-gray-600 mb-8 max-w-3xl mx-auto"
         data-aos="fade-up"
         data-aos-delay="100"
       >
-        All your data tools, finally working together—without breaking environments. <br>
-        AI ready and Open source tools.
-      </p>
+        {
+          (hero?.description || 'All your data tools, finally working together—without breaking environments. <br/> AI ready and Open source tools.')
+            .split(/<br\s*\/?>/i)
+            .map((line, i, arr) => (
+              <span>
+                {line}
+                {i !== arr.length - 1 && <br />}
+              </span>
+            ))
+        }</p>
       <div
         class="flex items-center justify-center gap-4 mb-8 max-sm:flex-col"
         data-aos="fade-up"
@@ -565,13 +579,13 @@ const hero = Data.data?.hero || {
           href={hero.primary_cta?.href || '#'}
           class="px-8 py-3 bg-primary hover:bg-primaryHover text-white rounded-lg font-semibold transition-all duration-300"
         >
-          {hero.primary_cta?.text || 'Primary'}
+          {hero.primary_cta?.text || 'Try it free'}
         </a>
         <a
           href={hero.secondary_cta?.href || '#'}
           class="px-8 py-3 border-2 bg-white border-gray-300 hover:border-primary text-gray-900 rounded-lg font-semibold transition-all duration-300"
         >
-          {hero.secondary_cta?.text || 'Secondary'}
+          {hero.secondary_cta?.text || 'Talk to us'}
         </a>
       </div>
       <div

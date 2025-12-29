@@ -5,6 +5,7 @@ interface Step {
   description: string
   bullets: string[]
   icon: string
+  image?: string
 }
 
 import { getEntry } from 'astro:content'
@@ -46,17 +47,19 @@ let defaultSteps: Step[] = [
     icon: '/assets/icons/upload-cloud.svg'
   }
 ]
-let steps: Step[] = Data.data?.ship_steps || defaultSteps
+
+const data = Data.data?.ship_apps_faster
+let steps: Step[] = data?.steps || defaultSteps
 ---
 
 <section class='px-[5%] py-32 max-sm:py-16' style='font-family: Plus Jakarta Sans, sans-serif;'>
   <div class='max-w-5xl mx-auto'>
     <div class='text-center mb-20'>
       <h2 class='text-4xl max-sm:text-3xl font-bold text-gray-900 mb-4' data-aos='fade-up'>
-        {Data.data?.ship_title || 'Ship data apps in a single flow.'}
+        {data?.title || 'Ship data apps in a single flow.'}
       </h2>
       <p class='text-xl text-gray-600 max-w-3xl mx-auto' data-aos='fade-up' data-aos-delay='100'>
-        {Data.data?.ship_subtitle || 'Dataflow removes environment chaos and glue code across notebooks, pipelines, and apps.'}
+        {data?.subtitle || 'Dataflow removes environment chaos and glue code across notebooks, pipelines, and apps.'}
       </p>
     </div>
 
@@ -88,23 +91,32 @@ let steps: Step[] = Data.data?.ship_steps || defaultSteps
                 </div>
               </div>
               <div class='flex-1 bg-white rounded-2xl p-8 shadow-sm border border-gray-100'>
-                <div class='flex items-center gap-3 mb-3'>
-                  <span class='text-sm font-bold text-primary bg-primary/10 px-3 py-1 rounded-full'>STEP {step.number}</span>
-                  <h3 class='text-2xl font-bold text-gray-900'>{step.title}</h3>
+                <div class='grid md:grid-cols-2 gap-8 items-center'>
+                  <div>
+                    <div class='flex items-center gap-3 mb-3'>
+                      <span class='text-sm font-bold text-primary bg-primary/10 px-3 py-1 rounded-full'>STEP {step.number}</span>
+                      <h3 class='text-2xl font-bold text-gray-900'>{step.title}</h3>
+                    </div>
+                    <p class='text-gray-700 leading-relaxed mb-4'>
+                      {step.description}
+                    </p>
+                    <ul class='space-y-2 text-gray-600'>
+                    {step.bullets.map(bullet => (
+                      <li class='flex items-start gap-2'>
+                        <svg class='w-5 h-5 text-primary mt-0.5 flex-shrink-0' fill='currentColor' viewBox='0 0 20 20'>
+                          <path fill-rule='evenodd' d='M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z' clip-rule='evenodd'></path>
+                        </svg>
+                        <span>{bullet}</span>
+                      </li>
+                    ))}
+                    </ul>
+                  </div>
+                  {step.image && (
+                    <div class='flex items-center justify-center max-md:hidden'>
+                      <img src={step.image} alt={step.title} class='w-64 h-48 object-contain' />
+                    </div>
+                  )}
                 </div>
-                <p class='text-gray-700 leading-relaxed mb-4'>
-                  {step.description}
-                </p>
-                <ul class='space-y-2 text-gray-600'>
-                  {step.bullets.map(bullet => (
-                    <li class='flex items-start gap-2'>
-                      <svg class='w-5 h-5 text-primary mt-0.5 flex-shrink-0' fill='currentColor' viewBox='0 0 20 20'>
-                        <path fill-rule='evenodd' d='M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z' clip-rule='evenodd'></path>
-                      </svg>
-                      <span>{bullet}</span>
-                    </li>
-                  ))}
-                </ul>
               </div>
             </div>
           </div>

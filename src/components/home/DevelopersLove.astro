@@ -42,17 +42,17 @@ const cards = data?.cards || defaultCards
 <section class='px-[5%] py-20 bg-gray-50 max-sm:py-12' style='font-family: Plus Jakarta Sans, sans-serif;'>
   <div class='max-w-7xl mx-auto'>
     <div class='text-center mb-12'>
-      <h2 class='text-4xl max-sm:text-3xl font-bold text-gray-900 mb-4' data-aos='fade-up'>
+      <h2 class='text-4xl max-sm:text-3xl font-bold text-gray-900 mb-4' data-aos='slide-up'>
         {data?.title || 'Developers love Dataflow'}
       </h2>
-      <p class='text-lg text-gray-600 max-w-3xl mx-auto' data-aos='fade-up' data-aos-delay='100'>
+      <p class='text-xl text-gray-600 max-w-3xl mx-auto' data-aos='fade-up' data-aos-delay='100'>
         {data?.subtitle || 'Join a growing community of data engineers and developers building with Dataflow.'}
       </p>
     </div>
 
     <div class='grid md:grid-cols-2 gap-6'>
       {cards.map((card, index) => (
-        <div class='bg-white rounded-2xl p-10 border border-primary/20 hover:border-primary/30 transition-shadow' data-aos='fade-up' data-aos-delay={200 + index * 100}>
+        <div class='bg-white rounded-2xl p-10 border border-primary/20 hover:border-primary/30 transition-shadow' data-aos='zoom-in-up' data-aos-delay={200 + index * 100}>
           <h3 class='text-2xl font-bold text-gray-900 mb-3'>{card.title}</h3>
           <p class='text-gray-600 mb-6'>{card.description}</p>
           <div class='space-y-3'>

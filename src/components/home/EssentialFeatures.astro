@@ -17,7 +17,7 @@ const features = data?.features || Astro.props?.features || []
 
     <div class='grid md:grid-cols-6 gap-6 max-md:grid-cols-1'>
       {/* Feature 1: Define Once, Use Everywhere - Large Hero Card */}
-      <div class='md:col-span-4 bg-gradient-to-br from-primary/5 via-primary/10 to-primary/5 rounded-3xl p-10 max-md:p-8 group  transition-all duration-300' data-aos='fade-up' data-aos-delay='200'>
+      <div class='md:col-span-4 bg-gradient-to-br from-primary/5 via-primary/10 to-primary/5 rounded-3xl p-10 max-md:p-8 group  transition-all duration-300' data-aos='fade-right' data-aos-delay='200'>
         <div class='flex items-start justify-between max-md:flex-col gap-6'>
           <div class='flex-1'>
             <div class='w-14 h-14 bg-primary rounded-2xl flex items-center justify-center mb-5 transition-transform duration-300'>
@@ -39,7 +39,7 @@ const features = data?.features || Astro.props?.features || []
       </div>
 
       {/* Feature 2: Goodbye, Dependency Hell - Tall Right Card */}
-      <div class='md:col-span-2 md:row-span-2 bg-white rounded-3xl p-8 border-2 border-primary/20 hover:border-primary/30 group  transition-all duration-300 flex flex-col' data-aos='fade-up' data-aos-delay='300'>
+      <div class='md:col-span-2 md:row-span-2 bg-white rounded-3xl p-8 border-2 border-primary/20 hover:border-primary/30 group  transition-all duration-300 flex flex-col' data-aos='fade-left' data-aos-delay='300'>
         <div class='w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-5 transition-colors duration-300'>
           <img src={features[1].icon} alt={features[1].title} class='w-6 h-6' />
         </div>

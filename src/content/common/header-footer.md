@@ -1,20 +1,72 @@
 ---
 header:
-  button_1: "Start free trial"
-  button_2: "Book a demo"
-  nav_items:
-    - label: "Why Dataflow?"
-      href: "/"
-    - label: "Enterprise"
-      href: "/enterprise"
-    - label: "Pricing"
-      href: "/pricing"
-    - label: "About Us"
-      href: "/about-us"
-    - label: "Documents"
-      href: "/documents"
-    - label: "Blogs"
-      href: "/blogs/1"
+  logo:
+    href: "/"
+    image: "/assets/images/dataflow-logo-green.svg"
+    alt: "Dataflow logo"
+  nav:
+    desktop:
+      - label: "Product"
+        type: "mega"
+        width: "w-[420px]"
+        columns:
+          - heading: "Features"
+            items:
+              - title: "Run on Any Cloud"
+                description: "Deploy to AWS, Azure, or Google Cloud"
+                href: "/run-dataflow-on-any-cloud"
+              - title: "Manage Connections"
+                description: "Connect your data across apps"
+                href: "/manage-your-data-connections"
+              - title: "No Dependency Hell"
+                description: "Isolated Python environments"
+                href: "/say-goodbye-to-python-dependency-hell"
+      - label: "Solutions"
+        type: "list"
+        width: "w-72"
+        items:
+          - title: "Enterprise"
+            description: "For large teams"
+            href: "/enterprise"
+      - label: "Community"
+        type: "mega"
+        width: "w-[560px]"
+        columns:
+          - heading: "Resources"
+            span: 2
+            items:
+              - title: "Try Demo"
+                description: "Interactive product walkthrough"
+                action: "open-demo-modal"
+              - title: "Blog"
+                description: "Data engineering insights"
+                href: "/blogs/1"
+              - title: "YouTube"
+                description: "Video tutorials"
+                href: "https://youtube.com/@dataflow"
+          - heading: "Connect"
+            span: 1
+            items:
+              - title: "X"
+                description: "Follow us"
+                href: "https://x.com/dataflow"
+              - title: "LinkedIn"
+                description: "Follow updates"
+                href: "https://www.linkedin.com/company/digital-back-office"
+              - title: "Discourse"
+                description: "Join community"
+                href: "https://discourse.dataflow.com"
+      - label: "Pricing"
+        type: "link"
+        href: "/pricing"
+  ctas:
+    primary:
+      label: "Try it free"
+      href: "https://app.dataflow.zone"
+      target: "_blank"
+    secondary:
+      label: "Talk to us"
+      href: "/book-demo"
 
 footer:
   finance: "Our dedicated team is prepared to assist you."
@@ -85,12 +137,12 @@ footer:
   
   social_links:
     - platform: "linkedin"
-      url: "https://linkedin.com/company/dataflow"
+      url: "https://www.linkedin.com/company/dataflow-zone/about/"
       icon: "/assets/icons/icon-linkedin.svg"
     - platform: "twitter"
       url: "https://twitter.com/dataflow"
       icon: "/assets/icons/icon-x.svg"
     - platform: "youtube"
-      url: "https://youtube.com/dataflow"
+      url: "https://www.youtube.com/@DataFlowZone"
       icon: "/assets/icons/icon-youtube.svg"
 ---

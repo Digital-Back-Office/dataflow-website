@@ -29,14 +29,14 @@ const reverseOnMobile =
 ---
 
 <section
-  class={`w-full ${bgClass} py-20 lg:h-screen flex items-center justify-center max-sm:px-4`}
+  class={`w-full ${bgClass} py-20 lg:min-h-screen flex items-center justify-center max-sm:px-4 px-4`}
 >
-  <div class="">
+  <div class="max-w-7xl mx-auto w-full">
     <div
       class={`flex flex-col md:flex ${reverseOnMobile} items-center gap-10 lg:gap-20`}
     >
       <!-- Text Column -->
-      <div class="md:min-w-[700px] max-sm:w-[90%] flex flex-col justify-center"  data-aos="fade-up" data-aos-duration="700" data-aos-offset="200">
+      <div class="md:flex-1 md:max-w-[700px] w-full flex flex-col justify-center"  data-aos="fade-up" data-aos-duration="700" data-aos-offset="200">
         <h2
           class="w-full text-4xl md:text-5xl max-sm:text-3xl font-bold text-textblack leading-tight mb-6"
         >
@@ -58,7 +58,7 @@ const reverseOnMobile =
 
       <!-- Image Column -->
       <div
-        class="md:w-1/2 w-full flex justify-center md:justify-end max-md:w-[90%]"
+        class="md:flex-1 w-full flex justify-center md:justify-end"
         
       >
         {
@@ -67,7 +67,7 @@ const reverseOnMobile =
               src={image}
               alt={imageAlt}
               loading="lazy"
-              class="lg:min-w-[750px] lg:max-w-[750px] rounded-xl shadow-lg object-contain"
+              class="w-full max-w-[750px] rounded-xl shadow-lg object-contain"
               data-aos="fade-up" data-aos-duration="600" data-aos-offset="300"
             />
           ) : null

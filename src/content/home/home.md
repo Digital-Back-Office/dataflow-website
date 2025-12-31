@@ -7,7 +7,8 @@ hero:
   subtitle: "All your data tools, finally working together—without breaking environments. AI ready and open-source friendly."
   primary_cta:
     text: "Try it free"
-    href: "/start-free-trail"
+    href: "https://app.dataflow.zone/"
+    target: "_blank"
   secondary_cta:
     text: "Talk to us"
     href: "/book-demo"

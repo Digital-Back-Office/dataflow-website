@@ -52,7 +52,7 @@ const data = Data.data?.ship_apps_faster
 let steps: Step[] = data?.steps || defaultSteps
 ---
 
-<section class='px-[5%] py-32 max-sm:py-16' style='font-family: Plus Jakarta Sans, sans-serif;'>
+<section class='px-[5%] py-32 lg:pb-28 max-sm:py-16' style='font-family: Plus Jakarta Sans, sans-serif;'>
   <div class='max-w-5xl mx-auto'>
     <div class='text-center mb-20'>
       <h2 class='text-4xl max-sm:text-3xl font-bold text-gray-900 mb-4' data-aos='fade-up'>
@@ -65,7 +65,7 @@ let steps: Step[] = data?.steps || defaultSteps
 
     <div class='relative'>
       <!-- Timeline line -->
-      <div class='absolute left-[23px] top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary via-primary to-primary max-md:hidden'></div>
+      <div data-aos='fade-up' class='absolute left-[23px] top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary via-primary to-primary max-md:hidden'></div>
       
       <div class='space-y-16'>
         {steps.map((step, index) => (

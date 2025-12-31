@@ -1,11 +1,53 @@
 ---
 import { getEntry } from 'astro:content'
-const Data = await getEntry('common', 'header-footer')
-const header = Data.data.header
+import NavIcon from './NavIcon.astro'
+
+const data = await getEntry('common', 'header-footer')
+const header = data.data.header ?? {}
+const logo = header.logo ?? { href: '/', image: '/assets/images/dataflow-logo-green.svg' }
+const desktopNav = header.nav?.desktop ?? []
+const desktopCtas = header.ctas ?? {}
 const { pagename } = Astro.props
 
-const { pathname } = Astro.url
-const docsUrl = import.meta.env.VITE_DOCS_URL
+const isExternal = (href?: string) => Boolean(href?.startsWith('http'))
+
+// Convert desktop nav to mobile sections
+const mobileSections = desktopNav.map((navItem) => {
+  if (navItem.type === 'link') {
+    return {
+      heading: navItem.label,
+      items: [{ label: navItem.label, href: navItem.href }]
+    }
+  }
+  
+  const items: any[] = []
+  
+  if (navItem.type === 'mega' && navItem.columns) {
+    navItem.columns.forEach((column: any) => {
+      column.items?.forEach((item: any) => {
+        items.push({
+          label: item.title,
+          href: item.href,
+          action: item.action
+        })
+      })
+    })
+  } else if (navItem.type === 'list' && navItem.items) {
+    navItem.items.forEach((item: any) => {
+      items.push({
+        label: item.title,
+        href: item.href
+      })
+    })
+  }
+  
+  return {
+    heading: navItem.label,
+    items
+  }
+})
+
+const mobileCtas = desktopCtas
 ---
 
 <header
@@ -13,189 +55,142 @@ const docsUrl = import.meta.env.VITE_DOCS_URL
   style='font-family: Plus Jakarta Sans, sans-serif;'
 >
   <div class='flex items-center gap-16 max-xl:gap-12 z-50'>
-    <a href='/' class='flex items-center'>
-      <img src='/assets/images/dataflow-logo-green.svg' class='h-9' />
+    <a href={logo.href ?? '/'} class='flex items-center'>
+      <img src={logo.image ?? '/assets/images/dataflow-logo-green.svg'} class='h-9' alt={logo.alt ?? ''} />
     </a>
     <nav class='hidden lg:flex items-center gap-10 max-xl:gap-8'>
-      <!-- Product Dropdown -->
-      <div class='relative group'>
-        <button class='text-sm font-medium text-gray-700 hover:text-gray-900 transition-colors flex items-center gap-1 py-2'>
-          Product
-          <svg class='w-4 h-4' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
-            <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'></path>
-          </svg>
-        </button>
-        <div class='absolute left-0 top-full pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200'>
-          <div class='bg-white rounded-lg shadow-lg border border-gray-100 p-8 w-[420px]'>
-            <div class='space-y-4'>
-              <div class='space-y-4'>
-                <p class='text-xs font-semibold text-gray-500 uppercase tracking-wider'>Features</p>
-                <a href='/run-dataflow-on-any-cloud' class='flex items-start gap-4 p-3 rounded-lg hover:bg-gray-50 transition-colors group/item'>
-                  <div class='p-2.5 bg-primary/10 rounded-lg shrink-0'>
-                    <svg class='w-6 h-6 text-primary' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
-                      <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z'></path>
-                    </svg>
-                  </div>
-                  <div>
-                    <p class='text-base font-semibold text-gray-900 group-hover/item:text-primary mb-1'>Run on Any Cloud</p>
-                    <p class='text-sm text-gray-600'>Deploy to AWS, Azure, or Google Cloud</p>
-                  </div>
-                </a>
-                <a href='/manage-your-data-connections' class='flex items-start gap-4 p-3 rounded-lg hover:bg-gray-50 transition-colors group/item'>
-                  <div class='p-2.5 bg-primary/10 rounded-lg shrink-0'>
-                    <svg class='w-6 h-6 text-primary' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
-                      <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4'></path>
-                    </svg>
-                  </div>
-                  <div>
-                    <p class='text-base font-semibold text-gray-900 group-hover/item:text-primary mb-1'>Manage Connections</p>
-                    <p class='text-sm text-gray-600'>Connect your data across apps</p>
-                  </div>
-                </a>
-                <a href='/say-goodbye-to-python-dependency-hell' class='flex items-start gap-4 p-3 rounded-lg hover:bg-gray-50 transition-colors group/item'>
-                  <div class='p-2.5 bg-primary/10 rounded-lg shrink-0'>
-                    <svg class='w-6 h-6 text-primary' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
-                      <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z'></path>
-                    </svg>
-                  </div>
-                  <div>
-                    <p class='text-base font-semibold text-gray-900 group-hover/item:text-primary mb-1'>No Dependency Hell</p>
-                    <p class='text-sm text-gray-600'>Isolated Python environments</p>
-                  </div>
-                </a>
-              </div>
+      {desktopNav.map((navItem) => (
+        navItem.type === 'link' ? (
+          <a
+            class='text-sm font-medium text-gray-700 hover:text-gray-900 transition-colors'
+            href={navItem.href}
+            target={isExternal(navItem.href) ? '_blank' : undefined}
+            rel={isExternal(navItem.href) ? 'noreferrer' : undefined}
+          >
+            {navItem.label}
+          </a>
+        ) : (
+          <div class='relative group'>
+            <button class='text-sm font-medium text-gray-700 hover:text-gray-900 transition-colors flex items-center gap-1 py-2'>
+              {navItem.label}
+              <svg class='w-4 h-4' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
+                <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'></path>
+              </svg>
+            </button>
+            <div class='absolute left-0 top-full pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200'>
+              {navItem.type === 'mega' && (
+                <div class={`bg-white rounded-lg shadow-lg border border-gray-100 p-8 ${navItem.width ?? (navItem.columns && navItem.columns.length > 1 ? 'w-[560px]' : 'w-[420px]')}`}>
+                  {navItem.columns && navItem.columns.length > 1 ? (
+                    <div class='grid grid-cols-3 gap-8'>
+                      {navItem.columns.map((column) => (
+                        <div class={`space-y-4 ${column.span === 2 ? 'col-span-2' : ''}`}>
+                          <p class='text-xs font-semibold text-gray-500 uppercase tracking-wider'>{column.heading}</p>
+                          {column.items?.map((item) => (
+                            item.action ? (
+                              <button
+                                class='w-full flex items-start gap-3 p-3 rounded-lg hover:bg-gray-50 transition-colors group/item text-left'
+                                onclick="document.getElementById('arcadeModal').classList.remove('hidden')"
+                              >
+                                <div class='p-2 bg-primary/10 rounded-lg shrink-0 flex items-center justify-center'>
+                                  <NavIcon title={item.title} size='small' />
+                                </div>
+                                <div>
+                                  <p class='text-base font-medium text-gray-900 group-hover/item:text-primary mb-1'>{item.title}</p>
+                                  <p class='text-sm text-gray-600'>{item.description}</p>
+                                </div>
+                              </button>
+                            ) : (
+                              <a
+                                href={item.href}
+                                class='flex items-start gap-3 p-3 rounded-lg hover:bg-gray-50 transition-colors group/item'
+                                target={isExternal(item.href) ? '_blank' : undefined}
+                                rel={isExternal(item.href) ? 'noreferrer' : undefined}
+                              >
+                                <div class='p-2 bg-primary/10 rounded-lg shrink-0 flex items-center justify-center'>
+                                  <NavIcon title={item.title} size='small' />
+                                </div>
+                                <div>
+                                  <p class='text-base font-medium text-gray-900 group-hover/item:text-primary mb-1'>{item.title}</p>
+                                  <p class='text-sm text-gray-600'>{item.description}</p>
+                                </div>
+                              </a>
+                            )
+                          ))}
+                        </div>
+                      ))}
+                    </div>
+                  ) : (
+                    navItem.columns?.map((column) => (
+                      <div class='space-y-4'>
+                        <p class='text-xs font-semibold text-gray-500 uppercase tracking-wider'>{column.heading}</p>
+                        {column.items?.map((item) => (
+                          <a
+                            href={item.href}
+                            class='flex items-start gap-4 p-3 rounded-lg hover:bg-gray-50 transition-colors group/item'
+                            target={isExternal(item.href) ? '_blank' : undefined}
+                            rel={isExternal(item.href) ? 'noreferrer' : undefined}
+                          >
+                            <div class='p-2.5 bg-primary/10 rounded-lg shrink-0 flex items-center justify-center'>
+                              <NavIcon title={item.title} size='large' />
+                            </div>
+                            <div>
+                              <p class='text-base font-semibold text-gray-900 group-hover/item:text-primary mb-1'>{item.title}</p>
+                              <p class='text-sm text-gray-600'>{item.description}</p>
+                            </div>
+                          </a>
+                        ))}
+                      </div>
+                    ))
+                  )}
+                </div>
+              )}
+
+              {navItem.type === 'list' && (
+                <div class={`bg-white rounded-lg shadow-lg border border-gray-100 p-6 ${navItem.width ?? 'w-72'}`}>
+                  {navItem.items?.map((item) => (
+                    <a
+                      href={item.href}
+                      class='flex items-start gap-4 p-3 rounded-lg hover:bg-gray-50 transition-colors group/item'
+                      target={isExternal(item.href) ? '_blank' : undefined}
+                      rel={isExternal(item.href) ? 'noreferrer' : undefined}
+                    >
+                      <div class='p-2.5 bg-primary/10 rounded-lg shrink-0 flex items-center justify-center'>
+                        <NavIcon title={item.title} size='large' />
+                      </div>
+                      <div>
+                        <p class='text-base font-semibold text-gray-900 group-hover/item:text-primary mb-1'>{item.title}</p>
+                        <p class='text-sm text-gray-600'>{item.description}</p>
+                      </div>
+                    </a>
+                  ))}
+                </div>
+              )}
             </div>
           </div>
-        </div>
-      </div>
-
-      <!-- Solutions Dropdown -->
-      <div class='relative group'>
-        <button class='text-sm font-medium text-gray-700 hover:text-gray-900 transition-colors flex items-center gap-1 py-2'>
-          Solutions
-          <svg class='w-4 h-4' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
-            <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'></path>
-          </svg>
-        </button>
-        <div class='absolute left-0 top-full pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200'>
-          <div class='bg-white rounded-lg shadow-lg border border-gray-100 p-6 w-72'>
-            <a href='/enterprise' class='flex items-start gap-4 p-3 rounded-lg hover:bg-gray-50 transition-colors group/item'>
-              <div class='p-2.5 bg-primary/10 rounded-lg shrink-0'>
-                <svg class='w-6 h-6 text-primary' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
-                  <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4'></path>
-                </svg>
-              </div>
-              <div>
-                <p class='text-base font-semibold text-gray-900 group-hover/item:text-primary mb-1'>Enterprise</p>
-                <p class='text-sm text-gray-600'>For large teams</p>
-              </div>
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Community Dropdown -->
-      <div class='relative group'>
-        <button class='text-sm font-medium text-gray-700 hover:text-gray-900 transition-colors flex items-center gap-1 py-2'>
-          Community
-          <svg class='w-4 h-4' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
-            <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'></path>
-          </svg>
-        </button>
-        <div class='absolute left-0 top-full pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200'>
-          <div class='bg-white rounded-lg shadow-lg border border-gray-100 p-8 w-[560px]'>
-            <div class='grid grid-cols-3 gap-8'>
-              <!-- Resources Column -->
-              <div class='space-y-4 col-span-2'>
-                <p class='text-xs font-semibold text-gray-500 uppercase tracking-wider'>Resources</p>
-                <button onclick="document.getElementById('arcadeModal').classList.remove('hidden')" class='w-full flex items-start gap-3 p-3 rounded-lg hover:bg-gray-50 transition-colors group/item text-left'>
-                  <svg class='w-5 h-5 text-primary mt-0.5 shrink-0' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
-                    <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z'></path>
-                    <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M21 12a9 9 0 11-18 0 9 9 0 0118 0z'></path>
-                  </svg>
-                  <div>
-                    <p class='text-base font-medium text-gray-900 group-hover/item:text-primary mb-1'>Try Demo</p>
-                    <p class='text-sm text-gray-600'>Interactive product walkthrough</p>
-                  </div>
-                </button>
-                <a href='/blogs/1' class='flex items-start gap-3 p-3 rounded-lg hover:bg-gray-50 transition-colors group/item'>
-                  <svg class='w-5 h-5 text-primary mt-0.5 shrink-0' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
-                    <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z'></path>
-                  </svg>
-                  <div>
-                    <p class='text-base font-medium text-gray-900 group-hover/item:text-primary mb-1'>Blog</p>
-                    <p class='text-sm text-gray-600'>Data engineering insights</p>
-                  </div>
-                </a>
-                <a href='https://youtube.com/@dataflow' target='_blank' class='flex items-start gap-3 p-3 rounded-lg hover:bg-gray-50 transition-colors group/item'>
-                  <svg class='w-5 h-5 text-primary mt-0.5 shrink-0' fill='currentColor' viewBox='0 0 24 24'>
-                    <path d='M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z'></path>
-                  </svg>
-                  <div>
-                    <p class='text-base font-medium text-gray-900 group-hover/item:text-primary mb-1'>YouTube</p>
-                    <p class='text-sm text-gray-600'>Video tutorials</p>
-                  </div>
-                </a>
-              </div>
-
-              <!-- Socials Column -->
-              <div class='space-y-4'>
-                <p class='text-xs font-semibold text-gray-500 uppercase tracking-wider'>Connect</p>
-                <a href='https://x.com/dataflow' target='_blank' class='flex items-start gap-3 p-3 rounded-lg hover:bg-gray-50 transition-colors group/item'>
-                  <svg class='w-5 h-5 text-primary mt-0.5 shrink-0' fill='currentColor' viewBox='0 0 24 24'>
-                    <path d='M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z'></path>
-                  </svg>
-                  <div>
-                    <p class='text-base font-medium text-gray-900 group-hover/item:text-primary mb-1 whitespace-nowrap'>X</p>
-                    <p class='text-sm text-gray-600 whitespace-nowrap'>Follow us</p>
-                  </div>
-                </a>
-                <a href='https://www.linkedin.com/company/digital-back-office' target='_blank' class='flex items-start gap-3 p-3 rounded-lg hover:bg-gray-50 transition-colors group/item'>
-                  <svg class='w-5 h-5 text-primary mt-0.5 shrink-0' fill='currentColor' viewBox='0 0 24 24'>
-                    <path d='M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z'></path>
-                  </svg>
-                  <div>
-                    <p class='text-base font-medium text-gray-900 group-hover/item:text-primary mb-1 whitespace-nowrap'>LinkedIn</p>
-                    <p class='text-sm text-gray-600 whitespace-nowrap'>Follow updates</p>
-                  </div>
-                </a>
-                <a href='https://discourse.dataflow.com' target='_blank' class='flex items-start gap-3 p-3 rounded-lg hover:bg-gray-50 transition-colors group/item'>
-                  <svg class='w-5 h-5 text-primary mt-0.5 shrink-0' fill='currentColor' viewBox='0 0 24 24'>
-                    <path d='M12.103 0C18.666 0 24 5.485 24 11.997c0 6.51-5.33 11.99-11.9 11.99L0 24V11.79C0 5.28 5.532 0 12.103 0zm.116 4.563c-2.593-.003-4.996 1.352-6.337 3.57-1.33 2.208-1.387 4.957-.148 7.22L4.4 19.61l4.794-1.074c2.745 1.225 5.965.676 8.136-1.39 2.17-2.054 2.86-5.228 1.737-7.997-1.135-2.778-3.84-4.59-6.84-4.585h-.008z'></path>
-                  </svg>
-                  <div>
-                    <p class='text-base font-medium text-gray-900 group-hover/item:text-primary mb-1 whitespace-nowrap'>Discourse</p>
-                    <p class='text-sm text-gray-600 whitespace-nowrap'>Join community</p>
-                  </div>
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Pricing -->
-      <a href='/pricing' class='text-sm font-medium text-gray-700 hover:text-gray-900 transition-colors'>
-        Pricing
-      </a>
+        )
+      ))}
     </nav>
   </div>
 
   <div class='hidden lg:flex items-center gap-3 z-50'>
-    <a href='/start-free-trail'>
-      <button
-        class='px-5 py-2 text-sm font-medium text-primary border border-primary rounded-md hover:bg-primary/5 transition-all duration-200'
-      >
-        Try it free
-      </button>
-    </a>
-    <a href='/book-demo'>
-      <button
-        class='px-5 py-2 bg-primary hover:bg-primaryHover text-white rounded-md text-sm font-medium transition-all duration-200'
-      >
-        Talk to us
-      </button>
-    </a>
+    {desktopCtas?.primary && (
+      <a href={desktopCtas.primary.href} target={desktopCtas.primary}>
+        <button
+          class='px-5 py-2 text-sm font-medium text-primary border border-primary rounded-md hover:bg-primary/5 transition-all duration-200'
+        >
+          {desktopCtas.primary.label}
+        </button>
+      </a>
+    )}
+    {desktopCtas?.secondary && (
+      <a href={desktopCtas.secondary.href}>
+        <button
+          class='px-5 py-2 bg-primary hover:bg-primaryHover text-white rounded-md text-sm font-medium transition-all duration-200'
+        >
+          {desktopCtas.secondary.label}
+        </button>
+      </a>
+    )}
   </div>
 
   <div class='lg:hidden flex items-center z-50'>
@@ -243,65 +238,51 @@ const docsUrl = import.meta.env.VITE_DOCS_URL
   </div>
   
   <nav class='bg-white px-6 py-6'>
-    <!-- Product Section -->
-    <div class='mb-6'>
-      <p class='text-xs font-semibold text-gray-500 uppercase tracking-wider mb-3'>Product</p>
-      <div class='space-y-1'>
-        <a href='/run-dataflow-on-any-cloud' class='block px-3 py-2 text-sm text-gray-700 hover:bg-gray-50 rounded-md'>
-          Run on Any Cloud
-        </a>
-        <a href='/manage-your-data-connections' class='block px-3 py-2 text-sm text-gray-700 hover:bg-gray-50 rounded-md'>
-          Manage Connections
-        </a>
-        <a href='/say-goodbye-to-python-dependency-hell' class='block px-3 py-2 text-sm text-gray-700 hover:bg-gray-50 rounded-md'>
-          No Dependency Hell
-        </a>
+    {mobileSections.map((section) => (
+      <div class='mb-6'>
+        <p class='text-xs font-semibold text-gray-500 uppercase tracking-wider mb-3'>{section.heading}</p>
+        <div class='space-y-1'>
+          {section.items?.map((item) => (
+            item.action ? (
+              <button
+                onclick="document.getElementById('arcadeModal').classList.remove('hidden'); document.getElementById('mobileMenu').classList.remove('translate-x-0'); document.getElementById('mobileMenu').classList.add('-translate-x-full')"
+                class='block w-full text-left px-3 py-2 text-sm text-gray-700 hover:bg-gray-50 rounded-md'
+              >
+                {item.label}
+              </button>
+            ) : (
+              <a
+                href={item.href}
+                class='block px-3 py-2 text-sm text-gray-700 hover:bg-gray-50 rounded-md'
+                target={isExternal(item.href) ? '_blank' : undefined}
+                rel={isExternal(item.href) ? 'noreferrer' : undefined}
+              >
+                {item.label}
+              </a>
+            )
+          ))}
+        </div>
       </div>
-    </div>
+    ))}
 
-    <!-- Solutions Section -->
-    <div class='mb-6'>
-      <p class='text-xs font-semibold text-gray-500 uppercase tracking-wider mb-3'>Solutions</p>
-      <div class='space-y-1'>
-        <a href='/enterprise' class='block px-3 py-2 text-sm text-gray-700 hover:bg-gray-50 rounded-md'>
-          Enterprise
-        </a>
+    {mobileCtas && (
+      <div class='flex flex-col gap-3 mt-8'>
+        {mobileCtas.primary && (
+          <a href={mobileCtas.primary.href}>
+            <button class='w-full px-5 py-3 text-primary border border-primary rounded-md font-medium hover:bg-primary/5 transition-all'>
+              {mobileCtas.primary.label}
+            </button>
+          </a>
+        )}
+        {mobileCtas.secondary && (
+          <a href={mobileCtas.secondary.href}>
+            <button class='w-full px-5 py-3 bg-primary hover:bg-primaryHover text-white rounded-md font-medium transition-all'>
+              {mobileCtas.secondary.label}
+            </button>
+          </a>
+        )}
       </div>
-    </div>
-
-    <!-- Community Section -->
-    <div class='mb-6'>
-      <p class='text-xs font-semibold text-gray-500 uppercase tracking-wider mb-3'>Community</p>
-      <div class='space-y-1'>
-        <a href='/blogs/1' class='block px-3 py-2 text-sm text-gray-700 hover:bg-gray-50 rounded-md'>
-          Blog
-        </a>
-        <a href='https://www.linkedin.com/company/digital-back-office' target='_blank' class='block px-3 py-2 text-sm text-gray-700 hover:bg-gray-50 rounded-md'>
-          LinkedIn
-        </a>
-      </div>
-    </div>
-
-    <!-- Pricing -->
-    <div class='mb-6'>
-      <a href='/pricing' class='block px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 rounded-md'>
-        Pricing
-      </a>
-    </div>
-
-    <!-- Buttons -->
-    <div class='flex flex-col gap-3 mt-8'>
-      <a href='/start-free-trail'>
-        <button class='w-full px-5 py-3 text-primary border border-primary rounded-md font-medium hover:bg-primary/5 transition-all'>
-          Try it free
-        </button>
-      </a>
-      <a href='/book-demo'>
-        <button class='w-full px-5 py-3 bg-primary hover:bg-primaryHover text-white rounded-md font-medium transition-all'>
-          Talk to us
-        </button>
-      </a>
-    </div>
+    )}
   </nav>
 </div>
 

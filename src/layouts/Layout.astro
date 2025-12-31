@@ -98,7 +98,7 @@ import Header from '../components/common/Header.astro'
     <script is:inline>
       document.addEventListener('DOMContentLoaded', () => {
         if (window.AOS) {
-          AOS.init();
+          AOS.init({once: true});
         }
       });
     </script>

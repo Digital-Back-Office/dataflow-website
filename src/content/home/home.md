@@ -147,7 +147,7 @@ use_cases:
         - "Share dashboards via secure URLs"
       link: "/apps"
       cta_text: "Learn more"
-      video: "/assets/videos/streamlit.mp4"
+      video: "/assets/videos/data-visualisation.webm"
       image: "/assets/images/apps/streamlit-icon.svg"
       imageAlt: "Data Visualisation"
 
@@ -161,7 +161,7 @@ use_cases:
         - "Reproducible experiments with environment management"
       link: "/manage-your-data-connections"
       cta_text: "Learn more"
-      video: "/assets/videos/jupyter.mp4"
+      video: "/assets/videos/analysis.webm"
       image: "/assets/images/apps/mlflow.png"
       imageAlt: "Analytics"
 

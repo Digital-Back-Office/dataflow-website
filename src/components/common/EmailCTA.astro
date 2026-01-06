@@ -1,0 +1,65 @@
+---
+/**
+ * Reusable Email CTA Component
+ * 
+ * Props:
+ * - formId: Unique ID for the form (required)
+ * - pageSource: Page/source identifier for tracking (required)
+ * - placeholder: Placeholder text for email input (optional)
+ * - buttonText: Text for submit button (optional)
+ * - containerClass: Additional CSS classes for container (optional)
+ */
+
+interface Props {
+  formId: string
+  pageSource: string
+  placeholder?: string
+  buttonText?: string
+  containerClass?: string
+}
+
+const { 
+  formId,
+  pageSource,
+  placeholder = "What's your work email?", 
+  buttonText = "Get Started",
+  containerClass = ""
+} = Astro.props
+---
+
+<div
+  class={`flex items-center justify-center w-full px-4 ${containerClass}`}
+>
+  <form id={formId} class="w-full max-w-2xl mx-auto email-cta-form" data-page-source={pageSource}>
+    <div class="flex items-stretch gap-2 p-2 bg-white rounded-2xl border border-gray-200 max-sm:flex-col max-sm:gap-3">
+      <input
+        type="email"
+        id={`${formId}-email`}
+        name="email"
+        placeholder={placeholder}
+        required
+        class="flex-1 px-6 py-4 bg-transparent focus:outline-none text-gray-900 placeholder:text-gray-400 text-base max-sm:px-4"
+      />
+      <button
+        type="submit"
+        class="px-8 py-4 bg-primary hover:bg-primaryHover text-white rounded-xl font-semibold transition-all duration-300 hover:scale-[1.02] whitespace-nowrap max-sm:w-full max-sm:rounded-lg"
+      >
+        {buttonText}
+      </button>
+    </div>
+  </form>
+</div>
+
+<script>
+  import { setupEmailForm } from '../../utils/emailSubmission.js'
+  
+  // Get all email CTA forms on the page
+  const forms = document.querySelectorAll('.email-cta-form')
+  
+  forms.forEach((form) => {
+    const formId = form.id
+    const emailInputId = `${formId}-email`
+    const pageSource = form.getAttribute('data-page-source') || 'unknown'
+    setupEmailForm(formId, emailInputId, pageSource)
+  })
+</script>

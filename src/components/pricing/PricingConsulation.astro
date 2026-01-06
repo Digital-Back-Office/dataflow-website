@@ -1,5 +1,6 @@
 ---
 import { getEntry } from 'astro:content'
+import EmailCTA from '../common/EmailCTA.astro'
 
 const Data = await getEntry('pricing', 'consultation')
 const data = Data.data
@@ -21,12 +22,8 @@ data-aos="fade-in" data-aos-duration="850" data-aos-offset="200"
       </p>
     </div>
     
-    <a href={data.button.href || '#'}>
-        <button
-            class="min-w-[400px] max-md:min-w-[100px] px-[30px] py-[15px] max-sm:px-[20px] max-sm:py-[8px] mb-[50px] bg-white hover:bg-[#f9f9f9] font-arimo rounded-md inline-flex items-center justify-center text-lg max-sm:text-md font-semibold tracking-wide shadow-md text-[#30BABA]"
-        >
-           {data.button.text}
-        </button>
-    </a>
+    <div class="mb-[50px] w-full max-w-xl">
+      <EmailCTA formId="pricingCtaForm" pageSource="pricing-consultation" buttonText={data.button?.text || "Get Started →"} />
+    </div>
   </div>
 </div>

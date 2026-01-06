@@ -131,10 +131,10 @@ const tabs: UseCaseTab[] = data?.use_cases || defaultTabs
                 </svg>
               </a>
             </div>
-            <div class={`bg-gradient-to-br from-primary/10 to-primary/5 rounded-xl ${!tab.video && 'p-8'} flex items-center justify-center min-h-[300px]`}>
+            <div class={`bg-white rounded-xl ${!tab.video && 'p-8'} flex items-center justify-center min-h-[300px]`}>
               {tab.video ? (
                 <video
-                  class='max-w-full h-auto rounded-md'
+                  class='max-w-full h-full rounded-md'
                   src={tab.video}
                   autoplay
                   muted

@@ -43,7 +43,7 @@ header:
                 href: "/blogs/1"
               - title: "YouTube"
                 description: "Video tutorials"
-                href: "https://youtube.com/@dataflow"
+                href: "https://www.youtube.com/@DataFlowZone"
           - heading: "Connect"
             span: 1
             items:
@@ -52,7 +52,7 @@ header:
                 href: "https://x.com/dataflow"
               - title: "LinkedIn"
                 description: "Follow updates"
-                href: "https://www.linkedin.com/company/digital-back-office"
+                href: "https://www.linkedin.com/company/dataflow-zone/about/"
               - title: "Discourse"
                 description: "Join community"
                 href: "https://discourse.dataflow.com"
@@ -140,7 +140,7 @@ footer:
       url: "https://www.linkedin.com/company/dataflow-zone/about/"
       icon: "/assets/icons/icon-linkedin.svg"
     - platform: "twitter"
-      url: "https://twitter.com/dataflow"
+      url: "https://x.com/dataflow"
       icon: "/assets/icons/icon-x.svg"
     - platform: "youtube"
       url: "https://www.youtube.com/@DataFlowZone"

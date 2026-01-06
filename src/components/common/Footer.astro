@@ -5,218 +5,108 @@ const footer = Data.data.footer;
 const docsUrl = import.meta.env.VITE_DOCS_URL;
 ---
 
-<head>
-  <link
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
-    rel="stylesheet"
-  />
-</head>
-<footer class="" style="font-family: Plus Jakarta Sans, sans-serif;">
-  <!-- Footer -->
-  <div
-    class="footer-container max-md:hidden bg-gray-900 w-full flex flex-col gap-1 pt-[40px] pb-[32px] px-[80px] max-md:px-10 text-white"
-  >
-    <div class="w-full flex max-sm:flex-col justify-start py-[4px]">
-      <a href="/"
-        ><img
-          src="/assets/images/dataflow-logo-green.svg"
-          class="h-[56px] ml-4"
-        /></a
-      >
-    </div>
-    <div class="flex">
-      <div class="p-[20px] flex-1 flex flex-col">
-        <p
-          class="text-xs px-[4px] text-wrap leading-relaxed tracking-wide text-[#F8FAFC]"
-        >
+<footer class="bg-gradient-to-b from-[#0F1419] to-[#1a1f26] text-white" style="font-family: Plus Jakarta Sans, sans-serif;">
+  <div class="max-w-7xl mx-auto px-6 lg:px-12 py-16 lg:py-20">
+    
+    <!-- Main Footer Content -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 pb-12 border-b border-gray-800">
+      
+      <!-- Brand Section -->
+      <div class="lg:col-span-4 space-y-6">
+        <a href="/" class="inline-block group">
+          <img
+            src="/assets/images/dataflow-logo-green.svg"
+            alt="Dataflow Logo"
+            class="h-12"
+          />
+        </a>
+        <p class="text-sm leading-relaxed text-gray-400 max-w-sm">
           {footer.description}
         </p>
-        <div class="my-[16px] flex items-center">
+        
+        <!-- Social Links -->
+        <div class="flex items-center gap-3">
           {
             footer.social_links &&
               footer.social_links.map((social) => (
                 <a
                   href={social.url}
                   target="_blank"
-                  class="size-8 rounded-full bg-[#30baba31] hover:bg-[#007F7F] mx-1 flex justify-center items-center"
+                  rel="noopener noreferrer"
+                  class="group size-10 rounded-lg bg-gray-800/50 hover:bg-primary/20 border border-gray-700/50 hover:border-primary/50 flex items-center justify-center transition-all duration-300"
+                  aria-label={social.platform}
                 >
-                  <img src={social.icon} alt={social.platform} class="size-4" />
+                  <img 
+                    src={social.icon} 
+                    alt={social.platform} 
+                    class="size-5 transition-transform duration-300 group-hover:scale-110" 
+                  />
                 </a>
               ))
           }
         </div>
-        <p class="text-xs">{footer.copyrights}</p>
       </div>
-      {
-        footer.sections &&
-          footer.sections.map((section) => (
-            <div class="p-[20px] flex-1 flex flex-col">
-              <p class="font-semibold text-base">{section.heading}</p>
-              <div class="text-xs text-[#F8FAFC] w-[80%]">
-                {section.links &&
-                  section.links.map((link) => (
-                    <a class="hover:text-primary" href={link.href}>
-                      <p class="my-2">{link.label}</p>
-                    </a>
-                  ))}
-              </div>
-            </div>
-          ))
-      }
-    </div>
-  </div>
 
-  <!-- Mobile Footer -->
-  <div
-    class="footer-container hidden max-md:flex bg-gray-900 w-full flex-col gap-1 pt-[40px] pb-[32px] px-[80px] text-white"
-    style="font-family: Plus Jakarta Sans, sans-serif;"
-  >
-    <div
-      class="w-full flex max-sm:flex-col justify-center max-md:items-center py-[4px]"
-    >
-      <a href="/"
-        ><img
-          src="/assets/images/dataflow-logo-green.svg"
-          class="h-[56px]"
-        /></a
-      >
-    </div>
-    <div class="flex max-md:flex-col">
-      {
-        footer.sections &&
-          footer.sections.map((section) => (
-            <div class="p-1 py-4 flex-1 flex flex-col">
-              <button class="accordion-btn font-semibold text-base">
-                {section.heading}
-                <i class="accordion-arrow fas fa-chevron-down" />
-              </button>
-              <div class="accordion-content text-xs text-[#F8FAFC] w-[80%]">
-                {section.links &&
-                  section.links.map((link) => (
-                    <a class="hover:text-primary" href={link.href}>
-                      <p class="my-[16px]">{link.label}</p>
-                    </a>
-                  ))}
-              </div>
-            </div>
-          ))
-      }
-    </div>
-    <div class="p-1 py-4 flex-1 flex flex-col">
-      <p
-        class="text-xs px-1 text-wrap leading-relaxed tracking-wide text-[#F8FAFC]"
-      >
-        {footer.description}
-      </p>
-      <div class="my-4 flex items-center">
+      <!-- Links Grid -->
+      <div class="lg:col-span-8 grid grid-cols-2 md:grid-cols-4 gap-8 lg:gap-12">
         {
-          footer.social_links &&
-            footer.social_links.map((social) => (
-              <a
-                href={social.url}
-                target="_blank"
-                class="size-8 rounded-full bg-[#30baba31] hover:bg-[#007F7F] mx-1 flex justify-center items-center"
-              >
-                <img src={social.icon} alt={social.platform} class="size-4" />
-              </a>
+          footer.sections &&
+            footer.sections.map((section) => (
+              <div class="space-y-4">
+                <h3 class="text-sm font-semibold text-white uppercase tracking-wider">
+                  {section.heading}
+                </h3>
+                <ul class="space-y-3">
+                  {section.links &&
+                    section.links.map((link) => (
+                      <li>
+                        <a 
+                          href={link.href} 
+                          class="text-sm text-gray-400 hover:text-primary transition-colors duration-200 inline-block relative group"
+                        >
+                          <span class="relative">
+                            {link.label}
+                            <span class="absolute bottom-0 left-0 w-0 h-px bg-primary group-hover:w-full transition-all duration-300"></span>
+                          </span>
+                        </a>
+                      </li>
+                    ))}
+                </ul>
+              </div>
             ))
         }
       </div>
-      <p class="text-xs">{footer.copyrights}</p>
+    </div>
+
+    <!-- Bottom Bar -->
+    <div class="pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
+      <p class="text-sm text-gray-500">
+        {footer.copyrights}
+      </p>
+      <div class="flex items-center gap-6">
+        <a href="/privacy-policy" class="text-sm text-gray-500 hover:text-primary transition-colors duration-200">
+          Privacy Policy
+        </a>
+        <a href="/terms-and-conditions" class="text-sm text-gray-500 hover:text-primary transition-colors duration-200">
+          Terms
+        </a>
+      </div>
     </div>
   </div>
 </footer>
 
 <style>
-  @media (max-width: 500px) {
-    footer {
-      flex-direction: column;
-    }
-
-    .footer-container {
-      flex-direction: column;
-      padding: 20px;
-    }
-
-    .footer-container > div {
-      width: 100%;
-      padding: 10px 0;
-    }
-
-    .footer-container .first-section {
-      order: 5;
-    }
-
-    .footer-container a p:hover {
-      color: var(--test-primary);
-    }
+  footer {
+    position: relative;
   }
-
-  .accordion-content {
-    overflow: hidden;
-    max-height: 0;
-    transition: max-height 0.3s ease;
-  }
-
-  .accordion-content.open {
-    max-height: max-content; /* Adjust based on expected maximum height */
-  }
-
-  .accordion-btn {
-    text-align: left;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  .accordion-arrow {
-    transition: transform 0.3s ease;
-  }
-
-  .accordion-btn .accordion-arrow.rotate {
-    transform: rotate(180deg); /* Rotates the arrow to point upwards */
+  
+  footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(48, 186, 186, 0.5), transparent);
   }
 </style>
-
-<script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const accordionButtons = document.querySelectorAll(".accordion-btn");
-
-    accordionButtons.forEach((btn) => {
-      btn.addEventListener("click", () => {
-        const content = btn.nextElementSibling;
-        const arrow = btn.querySelector(".accordion-arrow");
-
-        if (content.classList.contains("open")) {
-          content.classList.remove("open");
-          // content.style.maxHeight = '0'
-          content.classList.add("max-h-[0]");
-          arrow.classList.remove("fa-chevron-up");
-          arrow.classList.add("fa-chevron-down");
-        } else {
-          // Close any other open accordion
-          document
-            .querySelectorAll(".accordion-content.open")
-            .forEach((openContent) => {
-              openContent.classList.remove("open");
-              // openContent.style.maxHeight = '0'
-              openContent.classList.add("max-h-[0]");
-            });
-
-          document
-            .querySelectorAll(".accordion-arrow.fa-chevron-up")
-            .forEach((openArrow) => {
-              openArrow.classList.remove("fa-chevron-up");
-              openArrow.classList.add("fa-chevron-down");
-            });
-
-          content.classList.add("open");
-          // content.style.maxHeight = content.scrollHeight + 'px'
-          content.classList.remove(`max-h-[${content.scrollHeight}px]`);
-          arrow.classList.remove("fa-chevron-down");
-          arrow.classList.add("fa-chevron-up");
-        }
-      });
-    });
-  });
-</script>

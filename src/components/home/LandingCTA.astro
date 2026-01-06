@@ -1,5 +1,6 @@
 ---
 import ClockAnimation from "../common/ClockAnimation.astro";
+import EmailCTA from "../common/EmailCTA.astro";
 import { getEntry } from "astro:content";
 
 const Data = await getEntry("home", "home");
@@ -24,14 +25,9 @@ const hero = Data.data.cta;
       >
         {hero.title2}
       </p>
-      <a href="/start-free-trail">
-        <button
-          class="px-[20px] py-[10px] mb-[50px] bg-white hover:bg-[#f9f9f9] font-arimo rounded-md inline-flex items-center text-lg font-semibold tracking-wide shadow-md text-[#30BABA]"
-        >
-          {hero.cta_button}
-          <img src="/assets/images/arrowright.svg" alt="" class="size-5 ml-1" />
-        </button>
-      </a>
+      <div class="mb-[50px] w-full max-w-xl">
+        <EmailCTA formId="landingCtaForm" pageSource="homepage-landing-cta" buttonText={hero.cta_button || "Get Started →"} />
+      </div>
     </div>
     <div class="animations-container lg:scale-125">
       <ClockAnimation />

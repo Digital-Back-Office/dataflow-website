@@ -120,7 +120,7 @@ use_cases:
       link: "/manage-your-data-connections"
       cta_text: "Learn more"
       image: "/assets/images/apps/jupyter.png"
-      video: "/assets/videos/etl.mp4"
+      video: "/assets/videos/jupyter.mp4"
       imageAlt: "Data Exploration"
 
     - id: "etl"
@@ -134,7 +134,7 @@ use_cases:
       link: "/manage-your-data-connections"
       cta_text: "Learn more"
       image: "/assets/images/apps/airflow-logo.svg"
-      video: "/assets/videos/etl.mp4"
+      video: "/assets/videos/airflow.mp4"
       imageAlt: "ETL"
 
     - id: "visualisation"
@@ -147,7 +147,7 @@ use_cases:
         - "Share dashboards via secure URLs"
       link: "/apps"
       cta_text: "Learn more"
-      video: "/assets/videos/etl.mp4"
+      video: "/assets/videos/streamlit.mp4"
       image: "/assets/images/apps/streamlit-icon.svg"
       imageAlt: "Data Visualisation"
 
@@ -161,7 +161,7 @@ use_cases:
         - "Reproducible experiments with environment management"
       link: "/manage-your-data-connections"
       cta_text: "Learn more"
-      video: "/assets/videos/etl.mp4"
+      video: "/assets/videos/jupyter.mp4"
       image: "/assets/images/apps/mlflow.png"
       imageAlt: "Analytics"
 

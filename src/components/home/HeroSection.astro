@@ -1,5 +1,6 @@
 ---
 import { getEntry } from 'astro:content'
+import EmailCTA from '../common/EmailCTA.astro'
 
 const Data = await getEntry('home', 'home')
 const hero = Data.data?.hero || {
@@ -570,26 +571,11 @@ const hero = Data.data?.hero || {
               </span>
             ))
         }</p>
-      <div
-        class="flex items-center justify-center gap-4 mb-8 max-sm:flex-col"
-        data-aos="fade-up"
-        data-aos-delay="200"
-      >
-        <a
-          href={hero.primary_cta?.href || '#'}
-          target={hero.primary_cta?.target || '_self'}
-          class="px-8 py-3 bg-primary hover:bg-primaryHover text-white rounded-lg font-semibold transition-all duration-300"
-        >
-          {hero.primary_cta?.text || 'Try it free'}
-        </a>
-        <a
-          href={hero.secondary_cta?.href || '#'}
-          target={hero.secondary_cta?.target || '_self'}
-          class="px-8 py-3 border-2 bg-white border-gray-300 hover:border-primary text-gray-900 rounded-lg font-semibold transition-all duration-300"
-        >
-          {hero.secondary_cta?.text || 'Talk to us'}
-        </a>
+      <!-- Email CTA Form -->
+      <div data-aos="fade-up" data-aos-delay="200" class="mb-8 w-full">
+        <EmailCTA formId="heroEmailForm" pageSource="homepage-hero" />
       </div>
+      
       <div
         class="flex items-center justify-center gap-8 text-sm text-gray-600 max-sm:flex-col max-sm:gap-4"
         data-aos="fade-up"
@@ -621,51 +607,72 @@ const hero = Data.data?.hero || {
     </div>
 
     
-    <!-- Platform Screenshot (Full) -->
+    <!-- Platform Demo Video -->
     <div 
       class="relative w-full max-w-6xl mx-auto mt-16"
       data-aos="fade-up"
       data-aos-delay="400"
     >
-      <!-- Animated Arrow Pointer -->
-      <div class="absolute -top-36 -right-28   max-sm:hidden z-20 pointer-animation">
-        <div class="flex flex-col items-center gap-2">
-          <p class="text-sm font-medium text-gray-700 text-center tracking-wide">Hover to Try Demo</p>
-          <img 
-            src="/assets/icons/hero-arrow.svg" 
-            alt="Arrow pointing to demo" 
-            class="w-16 h-auto opacity-70 -ml-2"
-          />
-        </div>
-      </div>
-
       <div 
-        class="relative rounded-2xl overflow-hidden shadow-2xl border-4 border-gray-200/50 group cursor-pointer"
-        onclick="document.getElementById('arcadeModal').classList.remove('hidden')"
+        class="relative rounded-2xl overflow-hidden shadow-2xl border-4 border-gray-200/50"
       >
-        <img 
-          src="/assets/images/app-screenshots/dashboard.png" 
-          alt="Dataflow Platform Dashboard" 
-          class="w-full h-auto block transition-all duration-500 group-hover:scale-[1.02]"
-        />
-        <!-- Overlay gradient -->
+        <video
+          id="heroVideo"
+          autoplay
+          loop
+          muted
+          playsinline
+          class="w-full h-auto block"
+          poster="/assets/images/app-screenshots/dashboard.png"
+        >
+          <!-- <source src="/assets/videos/data-exporation.webm" type="video/webm" /> -->
+          <source src="/assets/videos/hero-video.mp4" type="video/mp4" />
+          <!-- Fallback to image if video doesn't load -->
+          <img 
+            src="/assets/images/app-screenshots/dashboard.png" 
+            alt="Dataflow Platform Dashboard" 
+            class="w-full h-auto"
+          />
+        </video>
+        <!-- Unmute Button -->
+        <button
+          id="unmuteBtn"
+          class="absolute bottom-4 right-4 p-3 bg-white/90 hover:bg-white rounded-full shadow-lg transition-all duration-300 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-primary/50"
+          aria-label="Toggle sound"
+        >
+          <svg id="mutedIcon" class="w-5 h-5 text-gray-700" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M9.383 3.076A1 1 0 0110 4v12a1 1 0 01-1.707.707L4.586 13H2a1 1 0 01-1-1V8a1 1 0 011-1h2.586l3.707-3.707a1 1 0 011.09-.217zM12.293 7.293a1 1 0 011.414 0L15 8.586l1.293-1.293a1 1 0 111.414 1.414L16.414 10l1.293 1.293a1 1 0 01-1.414 1.414L15 11.414l-1.293 1.293a1 1 0 01-1.414-1.414L13.586 10l-1.293-1.293a1 1 0 010-1.414z" clip-rule="evenodd"/>
+          </svg>
+          <svg id="unmutedIcon" class="w-5 h-5 text-gray-700 hidden" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M9.383 3.076A1 1 0 0110 4v12a1 1 0 01-1.707.707L4.586 13H2a1 1 0 01-1-1V8a1 1 0 011-1h2.586l3.707-3.707a1 1 0 011.09-.217zM14.657 2.929a1 1 0 011.414 0A9.972 9.972 0 0119 10a9.972 9.972 0 01-2.929 7.071 1 1 0 01-1.414-1.414A7.971 7.971 0 0017 10c0-2.21-.894-4.208-2.343-5.657a1 1 0 010-1.414zm-2.829 2.828a1 1 0 011.415 0A5.983 5.983 0 0115 10a5.984 5.984 0 01-1.757 4.243 1 1 0 01-1.415-1.415A3.984 3.984 0 0013 10a3.983 3.983 0 00-1.172-2.828 1 1 0 010-1.415z" clip-rule="evenodd"/>
+          </svg>
+        </button>
+        <!-- Subtle overlay gradient -->
         <div class="absolute inset-0 bg-gradient-to-t from-black/5 to-transparent pointer-events-none"></div>
-        
-        <!-- Hover Overlay with "Try Dataflow Demo" -->
-        <div class="absolute inset-0 bg-white/60 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-all duration-500 flex items-center justify-center">
-          <div class="text-center transform scale-95 group-hover:scale-100 transition-transform duration-500">
-            <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-primary/10 flex items-center justify-center">
-              <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path>
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-              </svg>
-            </div>
-            <h3 class="text-2xl font-semibold text-gray-900 mb-1">Try Dataflow Demo</h3>
-            <p class="text-gray-600 text-sm">Interactive walkthrough</p>
-          </div>
-        </div>
       </div>
     </div>
+
+    <script is:inline>
+      // Handle video unmute
+      const video = document.getElementById('heroVideo');
+      const unmuteBtn = document.getElementById('unmuteBtn');
+      const mutedIcon = document.getElementById('mutedIcon');
+      const unmutedIcon = document.getElementById('unmutedIcon');
+      
+      if (video && unmuteBtn && mutedIcon && unmutedIcon) {
+        unmuteBtn.addEventListener('click', () => {
+          if (video.muted) {
+            video.muted = false;
+            mutedIcon.classList.add('hidden');
+            unmutedIcon.classList.remove('hidden');
+          } else {
+            video.muted = true;
+            mutedIcon.classList.remove('hidden');
+            unmutedIcon.classList.add('hidden');
+          }
+        });
+      }
+    </script>
 
     <!-- Powered By Section -->
      <div 

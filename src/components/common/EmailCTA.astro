@@ -28,27 +28,57 @@ const {
 ---
 
 <div
-  class={`flex items-center justify-center w-full px-4 ${containerClass}`}
+  class={`flex items-center justify-center w-full ${containerClass}`}
 >
   <form id={formId} class="w-full max-w-2xl mx-auto email-cta-form" data-page-source={pageSource}>
-    <div class="flex items-stretch gap-2 p-2 bg-white rounded-2xl border border-gray-200 max-sm:flex-col max-sm:gap-3">
-      <input
-        type="email"
-        id={`${formId}-email`}
-        name="email"
-        placeholder={placeholder}
-        required
-        class="flex-1 px-6 py-4 bg-transparent focus:outline-none text-gray-900 placeholder:text-gray-400 text-base max-sm:px-4"
-      />
-      <button
-        type="submit"
-        class="px-8 py-4 bg-primary hover:bg-primaryHover text-white rounded-xl font-semibold transition-all duration-300 hover:scale-[1.02] whitespace-nowrap max-sm:w-full max-sm:rounded-lg"
-      >
-        {buttonText}
-      </button>
+    <div class="relative email-input-wrapper">
+      <!-- Animated gradient background -->
+      <div class="absolute -inset-1 bg-gradient-to-r from-primary via-blue-500 to-primary opacity-0 group-hover:opacity-30 transition-opacity duration-500 rounded-2xl blur-md animate-gradient-xy"></div>
+      
+      <div class="relative flex items-stretch bg-white rounded-2xl border-2 shadow-xl shadow-primary/15 border-primary/80 hover:border-primary/50 focus-within:border-primary focus-within:shadow-[0_0_0_4px_rgba(48,186,186,0.15)] transition-all duration-300 max-sm:flex-col group">
+        <!-- Subtle glow effect on focus -->
+        <div class="absolute inset-0 rounded-2xl opacity-0 focus-within:opacity-100 transition-opacity duration-300 pointer-events-none">
+          <div class="absolute inset-0 rounded-2xl bg-gradient-to-r from-primary/10 via-blue-500/10 to-primary/10 blur-sm"></div>
+        </div>
+        
+        <input
+          type="email"
+          id={`${formId}-email`}
+          name="email"
+          placeholder={placeholder}
+          required
+          class="relative z-10 flex-1 px-6 py-5 bg-transparent focus:outline-none text-gray-900 placeholder:text-gray-400 text-base transition-all duration-200"
+        />
+        <button
+          type="submit"
+          class="relative z-10 m-1 px-8 py-4 bg-primary hover:bg-primaryHover text-white rounded-xl font-semibold transition-all duration-300 hover:shadow-lg   whitespace-nowrap max-sm:w-[calc(100%-0.5rem)] max-sm:rounded-lg"
+        >
+          {buttonText}
+        </button>
+      </div>
     </div>
   </form>
 </div>
+
+<style>
+  @keyframes gradient-xy {
+    0%, 100% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+  }
+  
+  .animate-gradient-xy {
+    background-size: 200% 200%;
+    animation: gradient-xy 3s ease infinite;
+  }
+  
+  .email-input-wrapper:hover .absolute.blur {
+    opacity: 0.2;
+  }
+</style>
 
 <script>
   import { setupEmailForm } from '../../utils/emailSubmission.js'

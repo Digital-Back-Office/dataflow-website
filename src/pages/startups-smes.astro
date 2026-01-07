@@ -1,0 +1,38 @@
+---
+import Layout from '../layouts/Layout.astro'
+import TopSection from '../components/common/TopSection.astro'
+import TwoColumnSection from '../components/common/TwoColumnSection.astro'
+import { getEntry } from 'astro:content'
+import Testimonial from '../components/common/Testimonial.astro'
+import CTASection from '../components/enterprise/CTASection.astro'
+
+const Data = await getEntry('startups-smes', 'startups-smes')
+const top = Data?.data?.top_section || {}
+const meta_description = top.description ?? 'Data Infrastructure for Startups and SMEs'
+const sections = Data?.data?.sections || []
+---
+
+<Layout title={`Dataflow | Startups & SMEs`} meta_description={meta_description}>
+	<TopSection
+		title={top.title}
+		description={top.description}
+		image={top.hero_image}
+		buttonText={top.button?.label}
+		buttonHref={top.button?.href}
+		imageSide="right"
+		bg="white"
+	/>
+	{
+		sections.map((sec, idx) => (
+			<TwoColumnSection
+				title={sec.title}
+				description={sec.description}
+				image={sec.image}
+				imageSide={sec.imageSide ?? 'right'}
+				bg={idx % 2 === 0 ? 'white' : 'F8FAFC'}
+			/>
+		))
+	}
+	<Testimonial />
+	<CTASection />
+</Layout>

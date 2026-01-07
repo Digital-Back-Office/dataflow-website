@@ -23,14 +23,20 @@ header:
                 href: "/say-goodbye-to-python-dependency-hell"
       - label: "Solutions"
         type: "list"
-        width: "w-72"
+        width: "w-80"
         items:
           - title: "Enterprise"
             description: "For large teams"
             href: "/enterprise"
+          - title: "Startups & SMEs"
+            description: "Scale fast, start lean"
+            href: "/startups-smes"
+          - title: "Personal"
+            description: "Free for learning & projects"
+            href: "/personal"
       - label: "Community"
         type: "mega"
-        width: "w-[560px]"
+        width: "w-[680px]"
         columns:
           - heading: "Resources"
             span: 2

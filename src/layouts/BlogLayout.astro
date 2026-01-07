@@ -27,35 +27,16 @@ const { title = 'Dataflow | AI ready data platform' } = Astro.props
     <meta charset='UTF-8' />
     <meta name='viewport' content='width=device-width, initial-scale=1.0' />
     <link rel='icon' type='image/x-icon' href='/favicon.png' />
-    <link rel='stylesheet' href='/assets/css/theme.min.css' />
-    <link rel='stylesheet' href='/assets/icons/around-icons.min.css' />
     <!-- AOS Animations -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
     
-    <!-- Import Google font (Inter) -->
-    <link
-      href='https://fonts.googleapis.com/css2?family=Helvetica+Neue:wght@400;700&display=swap'
-      rel='stylesheet'
-    />
-    <link
-      href='https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap'
-      rel='stylesheet'
-    />
-    <link
-      href='https://fonts.googleapis.com/css2?family=Arimo&display=swap'
-      rel='stylesheet'
-    />
-    <link
-      rel='stylesheet'
-      href='https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@400;700&display=swap'
-    />
+    <!-- Import Google fonts -->
     <link rel='preconnect' href='https://fonts.googleapis.com' />
     <link rel='preconnect' href='https://fonts.gstatic.com' crossorigin />
     <link
-      href='https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap'
+      href='https://fonts.googleapis.com/css2?family=Helvetica+Neue:wght@400;700&family=Roboto:wght@400;700&family=Arimo:wght@400;700&display=swap'
       rel='stylesheet'
-      id='google-font'
     />
 
     <title>{title}</title>
@@ -70,13 +51,12 @@ const { title = 'Dataflow | AI ready data platform' } = Astro.props
     <meta property='og:type' content='website' />
     <meta property='og:site_name' content='dataflow.zone' />
   </head>
-  <body id='body' class='font-arimo'>
+  <body id='body'>
     <Header />
     <div class=''>
       <slot />
     </div>
     <Footer />
-    <script src='/assets/js/theme.min.js' is:inline></script>
     <script is:inline>
       document.addEventListener('DOMContentLoaded', () => {
         if (window.AOS) {
@@ -84,10 +64,5 @@ const { title = 'Dataflow | AI ready data platform' } = Astro.props
         }
       });
     </script>
-    <script
-      src='https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js'
-      integrity='sha384-GNFwBvfVxBkLMJpYMOABq3c+d3KnQxudP/mGPkzpZSTYykLBNsZEnG2D9G/X/+7D'
-      crossorigin='anonymous'
-      async></script>
   </body>
 </html>

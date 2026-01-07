@@ -1,11 +1,8 @@
 ---
 import BlogLayout from '../../layouts/BlogLayout.astro'
-// import { posts } from '../../content/blog/data'
 import { getCollection } from 'astro:content'
-import BlogGrid from '../../components/blog/BlogGrid.astro'
 
 const blogs = await getCollection('blogs')
-let updatedposts = blogs || []
 
 const POSTS_PER_PAGE = 6
 
@@ -16,15 +13,27 @@ const totalPosts = blogs.length
 const totalPages = Math.ceil(totalPosts / POSTS_PER_PAGE)
 const startIndex = (currentPage - 1) * POSTS_PER_PAGE
 const endIndex = startIndex + POSTS_PER_PAGE
-const paginatedPosts = blogs
-  .slice(startIndex, endIndex)
-  .sort((a, b) => a.data.blog_no - b.data.blog_no)
 
-const pageNumbers = Array.from({ length: totalPages }, (_, i) => i + 1)
+// Sort by blog_no and paginate
+const sortedBlogs = blogs.sort((a, b) => b.data.blog_no - a.data.blog_no)
+const paginatedPosts = sortedBlogs.slice(startIndex, endIndex)
+
+const getPaginationRange = () => {
+  const maxVisible = 5
+  let start = Math.max(1, currentPage - Math.floor(maxVisible / 2))
+  let end = Math.min(totalPages, start + maxVisible - 1)
+  
+  if (end - start + 1 < maxVisible) {
+    start = Math.max(1, end - maxVisible + 1)
+  }
+  
+  return Array.from({ length: end - start + 1 }, (_, i) => start + i)
+}
+
+const pageNumbers = getPaginationRange()
 
 export const getStaticPaths = async () => {
   const blogs = await getCollection('blogs')
-
   const POSTS_PER_PAGE = 6
   const totalPages = Math.ceil(blogs.length / POSTS_PER_PAGE)
 
@@ -34,182 +43,341 @@ export const getStaticPaths = async () => {
 }
 ---
 
-<style>
-  .breadcrumb {
-    display: flex;
-    justify-content: start;
-    font-size: 12px;
-    margin: 5px;
-  }
-
-  @media screen and (max-width: 768px) {
-    .breadcrumb {
-      display: flex;
-      justify-content: start;
-      font-size: 12px;
-      margin: 5px;
-    }
-  }
-
-  .pagination {
-    display: flex;
-    justify-content: center;
-    list-style: none;
-    gap: 8px;
-    margin-bottom: 40px;
-    padding: 0;
-  }
-  .pagination li {
-    display: inline;
-  }
-  .pagination a {
-    padding: 8px 12px;
-    border: 1px solid #fff;
-    text-decoration: none;
-    border-radius: 4px;
-    color: #686868;
-    transition: background-color 0.2s;
-  }
-  .pagination a:hover {
-    color: #000;
-  }
-  .pagination a.active {
-    font-weight: bold;
-    color: #30baba;
-  }
-</style>
-
 <BlogLayout title='Dataflow | Blogs'>
-  <div class='px-[15%] max-sm:p-[20px]'>
-    <!-- Breadcrumb -->
-    <!-- <nav aria-label='breadcrumb' class='mt-[20px] max-sm:mt-[5px]'>
-      <ol class='breadcrumb max-sm:justify-start'>
-        <li class='breadcrumb-item active' aria-current='page'>Blogs</li>
-      </ol>
-    </nav> -->
-
-    <!-- Page title  -->
-    <div
-      class='flex justify-between items-center mt-[20px] max-sm:flex-col max-sm:gap-[20px] max-sm:items-start'
-    >
-      <div class=''>
-        <h1 class='' style='font-size: 40px; font-weight: 600;'>Blogs</h1>
+  <!-- Main Content -->
+  <div class='px-[15%] max-sm:px-[20px] pt-16 pb-24 max-sm:pt-12 max-sm:pb-16'>
+    <!-- Page Header with Search -->
+    <div class='flex justify-between items-center mb-12 max-sm:mb-8 max-sm:flex-col max-sm:gap-6 max-sm:items-start'>
+      <div>
+        <h1 class='text-5xl max-sm:text-4xl font-bold text-textblack'>Blogs</h1>
+        <p class='text-gray-600 mt-2'>Insights, tutorials, and updates from our team</p>
       </div>
-      <div
-        class='w-[40%] max-sm:w-full flex justify-end max-sm:justify-start'
-        style='height: 38px;'
-      >
-        <div class='position-relative max-sm:w-full'>
-          <i
-            class='ai-search position-absolute top-50 start-0 translate-middle-y ms-3'
-          ></i>
-          <input
-            id='search-bar'
-            class='form-control w-[300px] pl-[40px] max-sm:w-full'
-            style='border: 1px solid #D7DDE2; border-radius: 14px; height: 38px; '
-            type='search'
-            placeholder='Enter keyword'
-          />
-        </div>
+      
+      <!-- Search Bar -->
+      <div class='relative w-[320px] max-sm:w-full'>
+        <svg
+          class='absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400'
+          fill='none'
+          stroke='currentColor'
+          viewBox='0 0 24 24'
+        >
+          <path
+            stroke-linecap='round'
+            stroke-linejoin='round'
+            stroke-width='2'
+            d='M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z'
+          ></path>
+        </svg>
+        <input
+          id='search-input'
+          type='text'
+          placeholder='Search blogs...'
+          class='w-full pl-12 pr-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all'
+        />
       </div>
     </div>
 
-    <div class='pt-[20px]'>
+    <!-- Blog Grid -->
+    <div id='blog-container' class='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16'>
       {
-        updatedposts.length === 0 ? (
-          <div class='text-center min-h-[100px]'>
-            <h2 class='text-xl '>No posts found</h2>
-          </div>
-        ) : (
-          <BlogGrid updatedposts={paginatedPosts} />
-        )
+        paginatedPosts.map((post) => (
+          <article class='group bg-white rounded-2xl overflow-hidden border border-gray-100 hover:border-primary/30 hover:shadow-xl transition-all duration-300'>
+            {post.data.image && (
+              <a href={`/blogs/blog/${post.slug}`} class='block overflow-hidden'>
+                <img
+                  src={post.data.image}
+                  alt={post.data.title}
+                  class='w-full h-56 object-cover group-hover:scale-[1.015] transition-transform duration-300'
+                />
+              </a>
+            )}
+            
+            <div class='p-6'>
+              {/* Date and Tags */}
+              <div class='flex items-center gap-3 mb-4 text-sm text-gray-500'>
+                <time datetime={post.data.date}>{post.data.date}</time>
+                {post.data.tags && post.data.tags.length > 0 && (
+                  <>
+                    <span class='text-gray-300'>|</span>
+                    <span class='px-2 py-1 bg-primary/10 text-primary rounded-md text-xs font-medium'>
+                      {post.data.tags[0]}
+                    </span>
+                  </>
+                )}
+              </div>
+
+              {/* Title */}
+              <h3 class='text-xl font-bold text-textblack mb-3 line-clamp-2 group-hover:text-primary transition-colors'>
+                <a href={`/blogs/blog/${post.slug}`}>{post.data.title}</a>
+              </h3>
+
+              {/* Description */}
+              <p class='text-gray-600 text-sm line-clamp-3 mb-4'>
+                {post.data.description}
+              </p>
+
+              {/* Read More Link */}
+              <a
+                href={`/blogs/blog/${post.slug}`}
+                class='inline-flex items-center text-primary font-semibold text-sm hover:gap-2 transition-all group/link'
+              >
+                Read More
+                <svg
+                  class='w-4 h-4 ml-1 group-hover/link:translate-x-1 transition-transform'
+                  fill='none'
+                  stroke='currentColor'
+                  viewBox='0 0 24 24'
+                >
+                  <path
+                    stroke-linecap='round'
+                    stroke-linejoin='round'
+                    stroke-width='2'
+                    d='M9 5l7 7-7 7'
+                  />
+                </svg>
+              </a>
+            </div>
+          </article>
+        ))
       }
+    </div>
+
+    <!-- No Results Message -->
+    <div id='no-results' class='hidden text-center py-20'>
+      <svg
+        class='w-16 h-16 mx-auto mb-4 text-gray-300'
+        fill='none'
+        stroke='currentColor'
+        viewBox='0 0 24 24'
+      >
+        <path
+          stroke-linecap='round'
+          stroke-linejoin='round'
+          stroke-width='2'
+          d='M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z'
+        />
+      </svg>
+      <h3 class='text-xl font-semibold text-gray-700 mb-2'>No blogs found</h3>
+      <p class='text-gray-500'>Try adjusting your search terms</p>
     </div>
 
     <!-- Pagination -->
-    <ul class='pagination'>
-      {
-        pageNumbers.length < 6 &&
-          pageNumbers.map((num) => (
-            <li>
-              <a
-                href={`/blogs/${num}`}
-                class={`${currentPage === num ? 'active' : ''}`}
-              >
-                {num}
-              </a>
-            </li>
-          ))
-      }
-    </ul>
+    <nav class='flex justify-center items-center gap-2' aria-label='Blog pagination'>
+      {/* Previous Button */}
+      {currentPage > 1 && (
+        <a
+          href={`/blogs/${currentPage - 1}`}
+          class='px-4 py-2 rounded-lg border border-gray-200 text-gray-700 hover:border-primary hover:text-primary transition-all'
+          aria-label='Previous page'
+        >
+          <svg
+            class='w-5 h-5'
+            fill='none'
+            stroke='currentColor'
+            viewBox='0 0 24 24'
+          >
+            <path
+              stroke-linecap='round'
+              stroke-linejoin='round'
+              stroke-width='2'
+              d='M15 19l-7-7 7-7'
+            />
+          </svg>
+        </a>
+      )}
+
+      {/* First Page */}
+      {pageNumbers[0] > 1 && (
+        <>
+          <a
+            href='/blogs/1'
+            class='px-4 py-2 rounded-lg border border-gray-200 text-gray-700 hover:border-primary hover:text-primary transition-all'
+          >
+            1
+          </a>
+          {pageNumbers[0] > 2 && (
+            <span class='px-2 text-gray-400'>...</span>
+          )}
+        </>
+      )}
+
+      {/* Page Numbers */}
+      {pageNumbers.map((num) => (
+        <a
+          href={`/blogs/${num}`}
+          class={`px-4 py-2 rounded-lg border transition-all ${
+            currentPage === num
+              ? 'bg-primary text-white border-primary'
+              : 'border-gray-200 text-gray-700 hover:border-primary hover:text-primary'
+          }`}
+          aria-current={currentPage === num ? 'page' : undefined}
+        >
+          {num}
+        </a>
+      ))}
+
+      {/* Last Page */}
+      {pageNumbers[pageNumbers.length - 1] < totalPages && (
+        <>
+          {pageNumbers[pageNumbers.length - 1] < totalPages - 1 && (
+            <span class='px-2 text-gray-400'>...</span>
+          )}
+          <a
+            href={`/blogs/${totalPages}`}
+            class='px-4 py-2 rounded-lg border border-gray-200 text-gray-700 hover:border-primary hover:text-primary transition-all'
+          >
+            {totalPages}
+          </a>
+        </>
+      )}
+
+      {/* Next Button */}
+      {currentPage < totalPages && (
+        <a
+          href={`/blogs/${currentPage + 1}`}
+          class='px-4 py-2 rounded-lg border border-gray-200 text-gray-700 hover:border-primary hover:text-primary transition-all'
+          aria-label='Next page'
+        >
+          <svg
+            class='w-5 h-5'
+            fill='none'
+            stroke='currentColor'
+            viewBox='0 0 24 24'
+          >
+            <path
+              stroke-linecap='round'
+              stroke-linejoin='round'
+              stroke-width='2'
+              d='M9 5l7 7-7 7'
+            />
+          </svg>
+        </a>
+      )}
+    </nav>
   </div>
 
-  <!-- Subscription -->
-  <section class='w-full' data-bs-theme='dark'>
-    <div
-      class='h-full bg-[#364152] min-h-[400px] max-sm:min-h-[500px] flex justify-center items-center max-md:flex-col'
-    >
-      <div class=''>
-        <h2
-          class='text-[55px] max-md:text-[40px] max-sm:text-[30px] max-sm:mt-[20px] font-bold w-[600px] max-md:w-[450px] max-sm:w-[90%] max-sm:pl-[20px] max-sm:pt-[30px]'
-        >
-          Stay up to date with important news!
-        </h2>
-      </div>
-      <div>
-        <div class='flex gap-4 my-4 max-sm:flex-col max-sm:ml-[40px]'>
-          <div class='form-check text-[12px]'>
-            <label class='form-check-label text-white' for='advert-updates'
-              >Advertising Updates</label
-            >
-            <input
-              class='form-check-input size-[16px]'
-              id='advert-updates'
-              type='checkbox'
-              checked
-            />
-          </div>
-          <div class='form-check text-[12px]'>
-            <label class='form-check-label text-white' for='newsletter'
-              >Daily Newsletter</label
-            >
-            <input
-              class='form-check-input size-[16px]'
-              id='newsletter'
-              type='checkbox'
-            />
-          </div>
-          <div class='form-check text-[12px]'>
-            <label class='form-check-label text-white' for='week-in-review'
-              >Week in Review</label
-            >
-            <input
-              class='form-check-input size-[16px]'
-              id='week-in-review'
-              type='checkbox'
-            />
-          </div>
+  <!-- Newsletter Subscription Section -->
+  <section class='relative overflow-hidden bg-gradient-to-br from-[#1e293b] via-[#334155] to-[#1e293b] py-20 max-sm:py-12'>
+    {/* Background Pattern */}
+    <div class='absolute inset-0 opacity-10'>
+      <div class='absolute inset-0' style='background-image: radial-gradient(circle at 2px 2px, white 1px, transparent 0); background-size: 40px 40px;'></div>
+    </div>
+    
+    <div class='relative px-[15%] max-sm:px-[20px]'>
+      <div class='max-w-4xl mx-auto'>
+        {/* Header */}
+        <div class='text-center mb-10'>
+          <span class='inline-block px-4 py-1.5 bg-primary/10 text-primary rounded-full text-sm font-semibold mb-4'>
+            Newsletter
+          </span>
+          <h2 class='text-4xl max-md:text-3xl max-sm:text-2xl font-bold text-white leading-tight mb-4'>
+            Stay Updated with Latest Insights
+          </h2>
+          <p class='text-gray-300 text-lg max-sm:text-base'>
+            Get the latest articles, tutorials, and updates delivered to your inbox
+          </p>
         </div>
-        <div class='email-input max-sm:pb-10'>
-          <div
-            class='min-h-[50px] max-sm:w-[90%] flex items-center pl-5 p-[5px] max-sm:p-[2px] max-sm:pl-2 bg-white/5 backdrop:blur-xl rounded-2xl border-[1px] border-white/15 text-white'
-          >
-            <input
-              id='email-input'
-              class='w-[80%] bg-transparent p-2 outline-none placeholder:text-[12px]'
-              type='text'
-              placeholder='Your email'
-            />
-            <button
-              id='subscribe-button'
-              class='btn w-[25%] max-sm:w-max h-[45px] max-sm:h-[38px] max-sm:mr-[3px] max-sm:px-[5px] btn-primary rounded-xl text-[12px] tracking-wide font-normal'
-              type='button'>Subscribe</button
-            >
+
+        {/* Form */}
+        <form class='space-y-6' name='newsletter' method='POST'>
+          {/* Subscription Options */}
+          <div class='flex justify-center flex-wrap gap-6 max-sm:gap-4'>
+            <label class='flex items-center gap-2.5 text-white text-sm cursor-pointer group'>
+              <div class='relative'>
+                <input
+                  type='checkbox'
+                  name='advertising-updates'
+                  checked
+                  class='peer w-5 h-5 rounded border-2 border-gray-500 text-primary focus:ring-2 focus:ring-primary/50 focus:ring-offset-0 bg-transparent checked:bg-primary checked:border-primary transition-all cursor-pointer'
+                />
+                <svg class='absolute inset-0 w-5 h-5 text-white pointer-events-none opacity-0 peer-checked:opacity-100 transition-opacity' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
+                  <path stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M5 13l4 4L19 7'/>
+                </svg>
+              </div>
+              <span class='group-hover:text-primary transition-colors'>Product Updates</span>
+            </label>
+            <label class='flex items-center gap-2.5 text-white text-sm cursor-pointer group'>
+              <div class='relative'>
+                <input
+                  type='checkbox'
+                  name='daily-newsletter'
+                  class='peer w-5 h-5 rounded border-2 border-gray-500 text-primary focus:ring-2 focus:ring-primary/50 focus:ring-offset-0 bg-transparent checked:bg-primary checked:border-primary transition-all cursor-pointer'
+                />
+                <svg class='absolute inset-0 w-5 h-5 text-white pointer-events-none opacity-0 peer-checked:opacity-100 transition-opacity' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
+                  <path stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M5 13l4 4L19 7'/>
+                </svg>
+              </div>
+              <span class='group-hover:text-primary transition-colors'>Weekly Digest</span>
+            </label>
+            <label class='flex items-center gap-2.5 text-white text-sm cursor-pointer group'>
+              <div class='relative'>
+                <input
+                  type='checkbox'
+                  name='week-in-review'
+                  class='peer w-5 h-5 rounded border-2 border-gray-500 text-primary focus:ring-2 focus:ring-primary/50 focus:ring-offset-0 bg-transparent checked:bg-primary checked:border-primary transition-all cursor-pointer'
+                />
+                <svg class='absolute inset-0 w-5 h-5 text-white pointer-events-none opacity-0 peer-checked:opacity-100 transition-opacity' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
+                  <path stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M5 13l4 4L19 7'/>
+                </svg>
+              </div>
+              <span class='group-hover:text-primary transition-colors'>Tips & Tutorials</span>
+            </label>
           </div>
-          <div class='form-text mt-[5px]'>
-            * Yes, I agree to the <a href='#' class='text-primary underline'
-              >terms</a
-            > and <a href='#' class='text-primary underline'>privacy policy</a>
+
+          {/* Email Input */}
+          <div class='max-w-2xl mx-auto'>
+            <div class='flex items-stretch gap-3 p-2 bg-white/10 backdrop-blur-sm rounded-2xl border border-white/20 shadow-2xl max-sm:flex-col'>
+              <div class='flex-1 flex items-center gap-3 px-4'>
+                <svg class='w-5 h-5 text-gray-400' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
+                  <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z'/>
+                </svg>
+                <input
+                  type='email'
+                  name='email'
+                  required
+                  placeholder='Enter your email address'
+                  class='flex-1 bg-transparent text-white py-3 outline-none placeholder:text-gray-400 max-sm:w-full'
+                />
+              </div>
+              <button
+                type='submit'
+                class='group px-8 py-3.5 bg-primary hover:bg-primary/90 text-white rounded-xl font-semibold transition-all whitespace-nowrap max-sm:w-full flex items-center justify-center gap-2 shadow-lg hover:shadow-primary/25'
+              >
+                Subscribe
+                <svg class='w-4 h-4 group-hover:translate-x-1 transition-transform' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
+                  <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M14 5l7 7m0 0l-7 7m7-7H3'/>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          {/* Terms */}
+          <p class='text-center text-gray-400 text-sm'>
+            By subscribing, you agree to our{' '}
+            <a href='/terms-and-conditions' class='text-primary hover:text-primary/80 underline transition-colors'>
+              Terms
+            </a>{' '}
+            and{' '}
+            <a href='/terms-and-conditions' class='text-primary hover:text-primary/80 underline transition-colors'>
+              Privacy Policy
+            </a>
+          </p>
+        </form>
+
+        {/* Trust Indicators */}
+        <div class='mt-10 flex items-center justify-center gap-8 text-gray-400 text-sm max-sm:flex-col max-sm:gap-4'>
+          <div class='flex items-center gap-2'>
+            <svg class='w-5 h-5 text-primary' fill='currentColor' viewBox='0 0 20 20'>
+              <path fill-rule='evenodd' d='M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z' clip-rule='evenodd'/>
+            </svg>
+            <span>No spam, ever</span>
+          </div>
+          <div class='flex items-center gap-2'>
+            <svg class='w-5 h-5 text-primary' fill='currentColor' viewBox='0 0 20 20'>
+              <path d='M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z'/>
+              <path d='M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z'/>
+            </svg>
+            <span>Unsubscribe anytime</span>
           </div>
         </div>
       </div>
@@ -218,166 +386,52 @@ export const getStaticPaths = async () => {
 </BlogLayout>
 
 <script>
-  import { posts } from '../../content/blog/data'
-
-  // Ensure this script runs after the DOM is fully loaded
+  // Client-side search functionality
   document.addEventListener('DOMContentLoaded', () => {
-    const searchBar = document.getElementById('search-bar') as HTMLInputElement
-    const categoryFilter = document.getElementById(
-      'category-filter'
-    ) as HTMLSelectElement
-    const paginationSelect = document.getElementById(
-      'pagination-select'
-    ) as HTMLSelectElement
-    const loadMoreButton = document.getElementById(
-      'load-more'
-    ) as HTMLButtonElement
-    const setpage = document.getElementById('setpage') as HTMLButtonElement
-    const subscribeButton = document.getElementById(
-      'subscribe-button'
-    ) as HTMLButtonElement
-    const emailInput = document.getElementById(
-      'email-input'
-    ) as HTMLInputElement
-
-    let updatedPosts = posts.slice(0, 9)
-
-    let pagecapacity = 9
-    let pagecount = Math.ceil(posts.length / 9)
-
-    renderPagination(9)
-
-    function renderPagination(pageCapacity) {
-      let pagecount = Math.ceil(posts.length / pageCapacity)
-      const setpage = document.getElementById('setpage')
-      setpage.innerHTML = ''
-
-      for (let i = 1; i <= pagecount; i++) {
-        let linkitem = document.createElement('li')
-        linkitem.classList.add('page-item')
-        linkitem.innerHTML = `<a class="page-link" href="#">${i}</a>`
-        setpage.appendChild(linkitem)
-      }
-      addPaginationEventListeners()
-    }
-
-    function addPaginationEventListeners() {
-      const pageLinks = document.querySelectorAll('#setpage .page-link')
-      pageLinks.forEach((link) => {
-        link.addEventListener('click', function (event) {
-          event.preventDefault()
-          const pageNumber = this.textContent.trim()
-
-          updatedPosts = posts.slice(
-            (pageNumber - 1) * pagecapacity,
-            (pageNumber - 1) * pagecapacity + pagecapacity
-          )
-          renderPosts(updatedPosts)
-          document
-            .querySelectorAll('#setpage .page-item')
-            .forEach((item) => item.classList.remove('active'))
-          this.parentElement.classList.add('active')
+    const searchInput = document.getElementById('search-input') as HTMLInputElement
+    const blogContainer = document.getElementById('blog-container') as HTMLElement
+    const noResults = document.getElementById('no-results') as HTMLElement
+    
+    if (!searchInput || !blogContainer || !noResults) return
+    
+    const articles = Array.from(blogContainer.querySelectorAll('article'))
+    
+    searchInput.addEventListener('input', (e) => {
+      const searchTerm = (e.target as HTMLInputElement).value.toLowerCase().trim()
+      
+      if (!searchTerm) {
+        // Show all articles
+        articles.forEach(article => {
+          article.classList.remove('hidden')
         })
+        noResults.classList.add('hidden')
+        return
+      }
+      
+      let visibleCount = 0
+      
+      articles.forEach(article => {
+        const title = article.querySelector('h3')?.textContent?.toLowerCase() || ''
+        const description = article.querySelector('p')?.textContent?.toLowerCase() || ''
+        const tags = article.querySelector('.bg-primary\\/10')?.textContent?.toLowerCase() || ''
+        
+        const matches = title.includes(searchTerm) || 
+                       description.includes(searchTerm) || 
+                       tags.includes(searchTerm)
+        
+        if (matches) {
+          article.classList.remove('hidden')
+          visibleCount++
+        } else {
+          article.classList.add('hidden')
+        }
       })
-    }
-
-    function renderPosts(posts: Array<any>) {
-      const blogGrid = document.getElementById('blog-grid')!
-      blogGrid.innerHTML = ''
-
-      posts.forEach((post) => {
-        const article = document.createElement('article')
-        article.classList.add('masonry-grid-item')
-
-        article.innerHTML = `
-                        <div class="card border-0 bg-secondary">
-                            ${post.image ? `<a href="${post.url}"><img class="card-img-top" src="${post.image}" alt="Post image" /></a>` : ''}
-                            <div class="card-body pb-4">
-                                <div class="d-flex align-items-center mb-4 mt-n1">
-                                    <span class="fs-sm text-body-secondary">${post.time}</span>
-                                    <span class="fs-xs opacity-20 mx-3">|</span>
-                                    <a class="badge text-nav fs-xs border" href="#">${post.category}</a>
-                                </div>
-                                <h3 class="h4 card-title">
-                                    <a href="${post.url}">${post.title}</a>
-                                </h3>
-                                <p class="card-text">${post.description}</p>
-                            </div>
-                            <div class="card-footer pt-3">
-                                <a href="${post.url}"><p class="font-bold text-lg hover:text-primary" style="font-family:Arimo;">Know more</p></a>
-                            </div>
-                        </div>
-                    `
-
-        blogGrid.appendChild(article)
-      })
-    }
-
-    renderPosts(updatedPosts)
-
-    searchBar.addEventListener('input', (e: Event) => {
-      const target = e.target as HTMLInputElement
-      const query = target.value.toLowerCase()
-      const filteredPosts = posts.filter((post) =>
-        post.title.toLowerCase().includes(query)
-      )
-      updatedPosts = filteredPosts
-      renderPosts(updatedPosts)
-    })
-
-    categoryFilter.addEventListener('change', (e: Event) => {
-      const target = e.target as HTMLSelectElement
-      const category = target.value
-
-      if (category === 'all') {
-        updatedPosts = posts
+      
+      // Show/hide no results message
+      if (visibleCount === 0) {
+        noResults.classList.remove('hidden')
       } else {
-        updatedPosts = posts
-          .filter((data) => data.category === category)
-          .slice(0, 10)
-      }
-
-      renderPosts(updatedPosts)
-    })
-
-    paginationSelect.addEventListener('change', (e: Event) => {
-      const target = e.target as HTMLSelectElement
-      const categoryFilter = document.getElementById(
-        'category-filter'
-      ) as HTMLSelectElement
-      const category = categoryFilter.value
-      const postsPerPage = parseInt(target.value, 10)
-      pagecapacity = postsPerPage
-      let updated
-      if (category === 'all') {
-        updated = posts
-      } else {
-        updated = posts.filter((data) => data.category === category)
-      }
-      updatedPosts = updated.slice(0, postsPerPage)
-      renderPosts(updatedPosts)
-      renderPagination(postsPerPage)
-    })
-
-    loadMoreButton.addEventListener('click', () => {
-      const categoryFilter = document.getElementById(
-        'category-filter'
-      ) as HTMLSelectElement
-      const category = categoryFilter.value
-      let updated
-      if (category === 'all') {
-        updated = posts
-      } else {
-        updated = posts.filter((data) => data.category === category)
-      }
-      updatedPosts = updated.slice(0, updatedPosts.length + 5)
-      renderPosts(updatedPosts)
-    })
-
-    subscribeButton.addEventListener('click', () => {
-      const email = emailInput.value
-      if (email) {
-      } else {
+        noResults.classList.add('hidden')
       }
     })
   })

@@ -21,31 +21,41 @@ const { Content } = await render()
 ---
 
 <BlogLayout title=`Dataflow | ${title}`>
-  <section class='px-[8%] py-[80px] max-sm:py-[40px] pb-[140px]'>
+  <section class='px-[15%] max-sm:px-[20px] py-[80px] max-sm:py-[40px] pb-[140px]'>
     <!-- Breadcrumb -->
-    <nav aria-label='breadcrumb'>
-      <ol class='pb-2 breadcrumb'>
-        <li class='breadcrumb-item'><a href='/blogs/1'>Blog</a></li>
-        <li class='breadcrumb-item active' aria-current='page'>
+    <nav class='mb-6' aria-label='breadcrumb'>
+      <ol class='flex items-center space-x-2 text-sm text-gray-600'>
+        <li>
+          <a href='/' class='hover:text-primary transition-colors'>Home</a>
+        </li>
+        <li class='text-gray-400'>/</li>
+        <li>
+          <a href='/blogs/1' class='hover:text-primary transition-colors'>Blogs</a>
+        </li>
+        <li class='text-gray-400'>/</li>
+        <li class='text-textblack font-medium line-clamp-1' aria-current='page'>
           {title}
         </li>
       </ol>
     </nav>
 
-    <h1 class='display-4 mb-[20px]'>
+    <h1 class='display-4 mb-[20px] text-4xl font-bold'>
       {title}
     </h1>
-    <div class='flex flex-wrap items-center gap-[8px]'>
-      <p class='text-nav'>{date}</p>
-      <span class='fs-xs opacity-20'>|</span>
-      {
-        tags.map((tag: string) => (
-          <p class='badge text-nav border '>
-            <span class='text-primary'>#</span>
-            {tag}
-          </p>
-        ))
-      }
+    <div class='flex flex-wrap items-center gap-3 mb-6'>
+      <time datetime={date} class='text-sm text-gray-600'>{date}</time>
+      {tags && tags.length > 0 && (
+        <>
+          <span class='text-gray-300'>|</span>
+          <div class='flex flex-wrap gap-2'>
+            {tags.map((tag: string) => (
+              <span class='px-2 py-1 bg-primary/10 text-primary rounded-md text-xs font-medium'>
+                {tag}
+              </span>
+            ))}
+          </div>
+        </>
+      )}
     </div>
 
     {

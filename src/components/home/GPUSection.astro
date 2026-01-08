@@ -1,5 +1,6 @@
 ---
 import { getEntry } from 'astro:content'
+import CustomButton from '../common/CustomButton.astro'
 
 const Data = await getEntry('home', 'home')
 const gpuData = Data.data.gpu_compute
@@ -32,12 +33,19 @@ const gpuData = Data.data.gpu_compute
             </p>
           </div>
           <div class="flex items-center gap-4 max-sm:flex-col max-sm:items-start" data-aos="fade-right" data-aos-delay="250">
-            <a href={gpuData.primary_cta.href} class="px-6 py-3 bg-primary hover:bg-primaryHover text-white font-semibold rounded-lg shadow-md transition-all duration-200">
-              {gpuData.primary_cta.text}
-            </a>
-            <a href={gpuData.secondary_cta.href} class="px-6 py-3 bg-white hover:bg-gray-50 text-gray-900 font-semibold rounded-lg border-2 border-gray-200 hover:border-primary transition-all duration-200">
-              {gpuData.secondary_cta.text}
-            </a>
+            <CustomButton
+              label={gpuData.primary_cta.text}
+              href={gpuData.primary_cta.href}
+              variant="primary"
+              className="font-semibold"
+            />
+            <CustomButton
+              label={gpuData.secondary_cta.text}
+              href={gpuData.secondary_cta.href}
+              variant="outlined"
+              className="font-semibold"
+              iconSrc={null}
+            />
           </div>
         </div>
       </div>

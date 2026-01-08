@@ -5,6 +5,7 @@ top_section:
   button:
     label: 'Get Started'
     href: "https://docs.dataflow.zone/getting-started/installation"
+  hero_image: "/assets/images/app-screenshots/dashboard.png"
 
 section:
   title: "Define Once. Share Everywhere."

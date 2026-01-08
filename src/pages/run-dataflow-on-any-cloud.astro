@@ -1,25 +1,47 @@
 ---
 import Layout from '../layouts/Layout.astro'
-import TopSection from '../components/features/run-data-on-any-cloud/TopSection.astro'
-import CoreCapabilities from '../components/features/run-data-on-any-cloud/CoreCapabilities.astro'
+import TopSection from '../components/common/TopSection.astro'
+import InfiniteScrollLogos from '../components/common/InfiniteScrollLogos.astro'
+import FeatureGrid from '../components/common/FeatureGrid.astro'
 import PrivateCloud from '../components/features/run-data-on-any-cloud/PrivateCloud.astro'
 import { getEntry } from 'astro:content'
 import Section from '../components/features/run-data-on-any-cloud/Section.astro'
 import Benefits from '../components/features/run-data-on-any-cloud/Benefits.astro'
+
 const Data = await getEntry('features', 'run-data-on-any-cloud')
+const top = Data?.data?.top_section || {}
 const data = Data?.data?.cloud_providers || {}
 const cloud_providers = data?.cloud_providers || []
-const meta_description =
-  'Upgrade your data management and processing capabilities by using our service, which enables Dataflow on any cloud platform'
+const companyLogos = top?.company_logos || {}
+const coreCapabilities = Data?.data?.core_capabilities || {}
+const meta_description = top.description ?? 'Upgrade your data management and processing capabilities by using our service, which enables Dataflow on any cloud platform'
 ---
 
 <Layout
   title='Dataflow | Run Data on any cloud'
   meta_description={meta_description}
 >
-  <TopSection />
+  <TopSection
+    title={top.title}
+    description={top.description}
+    image={top.hero_image}
+    buttonText={top.button?.label}
+    buttonHref={top.button?.href}
+    imageSide="right"
+    bg="white"
+  />
+  <InfiniteScrollLogos
+    title={companyLogos.title}
+    logos={companyLogos.logos}
+  />
   <Benefits />
-  <CoreCapabilities />
+  <FeatureGrid
+    title={coreCapabilities.title}
+    description={coreCapabilities.description}
+    features={coreCapabilities.features}
+    button={coreCapabilities.button}
+    bg="white"
+  />
   {
     cloud_providers.map((provider, idx) => (
       <Section

@@ -1,0 +1,47 @@
+---
+import EmailCTA from './EmailCTA.astro'
+
+interface Props {
+  title: string
+  description: string
+  buttonText?: string
+  formId: string
+  pageSource: string
+  note?: string
+}
+
+const { title, description, buttonText = "Get Started", formId, pageSource, note } = Astro.props
+---
+
+<section 
+  class="relative py-24 max-sm:py-16 flex flex-col gap-10 items-center justify-center bg-gradient-to-b from-white from-5% via-primary/90 via-70% to-white to-95% min-h-[800px]" 
+>
+  <!-- Decorative blur elements -->
+  <div class="absolute top-10 right-10 w-64 h-64 bg-white/20 rounded-full blur-3xl"></div>
+  <div class="absolute bottom-10 left-10 w-64 h-64 bg-white/10 rounded-full blur-3xl"></div>
+  
+  <div class="relative max-w-5xl mx-auto px-[5%] text-center w-full">
+    <div class="mb-8" data-aos="fade-up">
+      <h2 class="text-6xl max-md:text-5xl max-sm:text-3xl text-white font-extrabold mb-6 leading-tight drop-shadow-lg">
+        {title}
+      </h2>
+      <p class="text-2xl max-md:text-xl max-sm:text-lg text-white/95 max-w-3xl mx-auto leading-relaxed">
+        {description}
+      </p>
+    </div>
+    
+    <div class="max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="100">
+      <EmailCTA 
+        formId={formId}
+        pageSource={pageSource}
+        buttonText={buttonText}
+      />
+    </div>
+    
+    {note && (
+      <p class="mt-6 text-sm text-white" data-aos="fade-up" data-aos-delay="200">
+        {note}
+      </p>
+    )}
+  </div>
+</section>

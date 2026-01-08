@@ -37,4 +37,12 @@ sections:
     description: "Collaborate with study groups, share projects with mentors, or publish interactive demos to impress recruiters. Every project gets a shareable link. No localhost port forwarding, no deployment nightmares."
     image: "/assets/images/app-screenshots/dashboard.png"
     imageSide: "right"
+
+cta_section:
+  title: "Start Building Today"
+  description: "Join thousands of learners, hobbyists, and aspiring data professionals using Dataflow to accelerate their journey. 100% free, forever."
+  button:
+    text: "Get Started Free"
+    href: "/get-started"
+  note: "No credit card required • No time limits • Full platform access"
 ---

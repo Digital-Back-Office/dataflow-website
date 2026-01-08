@@ -1,5 +1,6 @@
 ---
 import { getEntry } from 'astro:content'
+import CustomButton from '../common/CustomButton.astro'
 
 const Data = await getEntry('home', 'home')
 const support = Data.data?.support_section || null
@@ -66,15 +67,12 @@ const support = Data.data?.support_section || null
     </div>
 
     <div class='text-center mt-12' data-aos='fade-up' data-aos-delay='200'>
-      <a
-        href='/contact-us'
-        class='inline-flex items-center gap-2 px-8 py-3 bg-primary hover:bg-primaryHover text-white rounded-lg font-semibold transition-all duration-300'
-      >
-        Talk to our team
-        <svg class='w-5 h-5' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
-          <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M9 5l7 7-7 7'></path>
-        </svg>
-      </a>
+      <CustomButton
+        label="Talk to our team"
+        href="/contact-us"
+        variant="primary"
+        className="font-semibold"
+      />
     </div>
   </div>
 </section>

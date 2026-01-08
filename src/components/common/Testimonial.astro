@@ -45,7 +45,8 @@ const testimonials = testimonialsData.testimonials || []
                 />
               }
               <h4 class="font-bold text-slate-900 text-lg">{t.name}</h4>
-              <p class="text-sm text-[#14B8A6] font-medium">{t.role}</p>
+              <p class="text-xs uppercase tracking-wider text-[#14B8A6] font-semibold mt-1">{t.role}</p>
+              <p class="text-sm text-slate-500 italic ">{t.company || ""}</p>
             </div>
 
             <!-- Quote Message -->
@@ -139,8 +140,8 @@ const testimonials = testimonialsData.testimonials || []
     mobileNextBtn?.addEventListener('click', () => swap('next'));
     mobilePrevBtn?.addEventListener('click', () => swap('prev'));
 
-    // Auto-play every 5 seconds
-    setInterval(() => swap('next'), 5000);
+    // Auto-play every 10 seconds
+    setInterval(() => swap('next'), 10 * 1000);
     
     // Optional: Swap on click
     container?.addEventListener('click', () => swap('next'));

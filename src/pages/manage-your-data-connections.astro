@@ -1,22 +1,38 @@
 ---
 import Benefits from '../components/features/manage-data-efficiently/Benefits.astro'
 import DataConnections from '../components/features/manage-data-efficiently/DataConnections.astro'
-import CoreFeatures from '../components/features/manage-data-efficiently/CoreFeatures.astro'
+import FeatureGrid from '../components/common/FeatureGrid.astro'
 import Comparison from '../components/features/manage-data-efficiently/Comparison.astro'
-
-import TopSection from '../components/features/manage-data-efficiently/TopSection.astro'
+import TopSection from '../components/common/TopSection.astro'
 import Layout from '../layouts/Layout.astro'
-const meta_description =
-  'Seamlessly manage your data connections across various apps and platforms with Dataflow.'
+import { getEntry } from 'astro:content'
+
+const Data = await getEntry('features', 'manage-your-data-connections')
+const top = Data?.data?.top_section || {}
+const coreFeatures = Data?.data?.core_features || {}
+const meta_description = top.description ?? 'Seamlessly manage your data connections across various apps and platforms with Dataflow.'
 ---
 
 <Layout
   title='Dataflow | Manage your data connections'
   meta_description={meta_description}
 >
-  <TopSection />
+  <TopSection
+    title={top.title}
+    description={top.description}
+    image={top.hero_image}
+    buttonText={top.button?.label}
+    buttonHref={top.button?.href}
+    imageSide="right"
+    bg="white"
+  />
   <Comparison />
   <Benefits />
   <DataConnections />
-  <CoreFeatures />
+  <FeatureGrid
+    title={coreFeatures.title}
+    description={coreFeatures.description}
+    features={coreFeatures.features}
+    button={coreFeatures.button}
+  />
 </Layout>

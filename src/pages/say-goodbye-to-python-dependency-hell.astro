@@ -1,20 +1,30 @@
 ---
 import Layout from '../layouts/Layout.astro'
-import TopSection from '../components/features/say-goodbye-to-python-dependency-hell/TopSection.astro'
-import DependencyManagement from '../components/features/say-goodbye-to-python-dependency-hell/DependencyManagement.astro'
+import TopSection from '../components/common/TopSection.astro'
+import FeatureGrid from '../components/common/FeatureGrid.astro'
 import TwoColumnSection from '../components/common/TwoColumnSection.astro'
 import { getEntry } from 'astro:content'
-const meta_description =
-  'Effortlessly manage and resolve Python dependencies with Dataflow platform.'
+
 const Data = await getEntry('features', 'python-dependency-hell')
+const top = Data?.data?.top_section || {}
 const two_column_section = Data.data.section
+const dependencyMgmt = Data?.data?.simplify_dependency_management || {}
+const meta_description = top.description ?? 'Effortlessly manage and resolve Python dependencies with Dataflow platform.'
 ---
 
 <Layout
   title='Dataflow | Say Goodbye to Python Dependency Hell'
   meta_description={meta_description}
 >
-  <TopSection />
+  <TopSection
+    title={top.title}
+    description={top.description}
+    image={top.hero_image}
+    buttonText={top.button?.label}
+    buttonHref={top.button?.href}
+    imageSide="right"
+    bg="white"
+  />
   <TwoColumnSection
     title={two_column_section.title}
     description={two_column_section.description}
@@ -24,5 +34,10 @@ const two_column_section = Data.data.section
     imageSide={two_column_section.imageSide}
     bg="white"
   />
-  <DependencyManagement />
+  <FeatureGrid
+    title={dependencyMgmt.title}
+    description={dependencyMgmt.description}
+    features={dependencyMgmt.features}
+    button={dependencyMgmt.button}
+  />
 </Layout>

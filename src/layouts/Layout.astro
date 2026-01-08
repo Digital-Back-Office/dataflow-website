@@ -1,89 +1,142 @@
 ---
 interface Props {
-  title: string
-  header?: boolean
-  meta_description?: string
+  title: string;
+  header?: boolean;
+  meta_description?: string;
 }
 
 const {
-  title = 'Dataflow | AI ready data platform',
+  title = "Dataflow | AI ready data platform",
   header = true,
-  meta_description = 'AI ready data platform in less than 30 minutes'
-} = Astro.props
-import Footer from '../components/common/Footer.astro'
-import Header from '../components/common/Header.astro'
+  meta_description = "AI ready data platform in less than 30 minutes",
+} = Astro.props;
+import Footer from "../components/common/Footer.astro";
+import Header from "../components/common/Header.astro";
 ---
 
 <!doctype html>
-<html lang='en'>
+<html lang="en">
   <head>
     <!-- Google tag (gtag.js) -->
     <script is:inline> (function(ss,ex){ window.ldfdr=window.ldfdr||function(){(ldfdr._q=ldfdr._q||[]).push([].slice.call(arguments));}; (function(d,s){ fs=d.getElementsByTagName(s)[0]; function ce(src){ var cs=d.createElement(s); cs.src=src; cs.async=1; fs.parentNode.insertBefore(cs,fs); }; ce('https://sc.lfeeder.com/lftracker_v1_'+ss+(ex?'_'+ex:'')+'.js'); })(document,'script'); })('ywVkO4XmYXdaZ6Bj'); </script>
     <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-D5Y7ZFCM96"></script>
     <script is:inline>
       window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-D5Y7ZFCM96');
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-D5Y7ZFCM96");
     </script>
-    <script is:inline src="https://t.contentsquare.net/uxa/96d450d7e9094.js"></script>
-    <script src='/src/scripts/cookie-consent.js'></script>
-    <meta charset='UTF-8' />
-    <meta name='description' content={meta_description} />
-    <meta name='viewport' content='width=device-width' />
-    <link rel='icon' type='image/svg+xml' href='/favicon.png' />
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script is:inline src="https://t.contentsquare.net/uxa/96d450d7e9094.js"
+    ></script>
+    <!-- Google Tag Manager -->
+    <script is:inline>
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != "dataLayer" ? "&l=" + l : "";
+        j.async = true;
+        j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, "script", "dataLayer", "GTM-5BH2ZJRZ");
+    </script>
+    <!-- End Google Tag Manager -->
+    <script src="/src/scripts/cookie-consent.js"></script>
+    <meta charset="UTF-8" />
+    <meta name="description" content={meta_description} />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.png" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
-    
+
     <!-- Import Google fonts -->
-    <link rel='preconnect' href='https://fonts.googleapis.com' />
-    <link rel='preconnect' href='https://fonts.gstatic.com' crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href='https://fonts.googleapis.com/css2?family=Helvetica+Neue:wght@400;700&family=Roboto:wght@400;700&family=Arimo:wght@400;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap'
-      rel='stylesheet'
+      href="https://fonts.googleapis.com/css2?family=Helvetica+Neue:wght@400;700&family=Roboto:wght@400;700&family=Arimo:wght@400;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
     />
     <link
-      rel='stylesheet'
-      href='https://cdn.jsdelivr.net/gh/orestbida/cookieconsent@3.0.1/dist/cookieconsent.css'
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/orestbida/cookieconsent@3.0.1/dist/cookieconsent.css"
     />
     <title>{title}</title>
 
     <!-- Open Graph Meta Tags -->
-    <meta property='og:title' content='Dataflow | AI ready data platform' />
+    <meta property="og:title" content="Dataflow | AI ready data platform" />
     <meta
-      property='og:description'
-      content='AI ready data platform in less than 30 minutes'
+      property="og:description"
+      content="AI ready data platform in less than 30 minutes"
     />
-    <meta property='og:image' content='https://dataflow.zone/og-image.png' />
-    <meta property='og:url' content='https://dataflow.zone' />
-    <meta property='og:type' content='website' />
-    <meta property='og:site_name' content='dataflow.zone' />
+    <meta property="og:image" content="https://dataflow.zone/og-image.png" />
+    <meta property="og:url" content="https://dataflow.zone" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="dataflow.zone" />
   </head>
-  <body class='arimo overflow-x-hidden' style='font-family: Plus Jakarta Sans, sans-serif;'>
+  <body
+    class="arimo overflow-x-hidden"
+    style="font-family: Plus Jakarta Sans, sans-serif;"
+  >
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5BH2ZJRZ"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
     {header && <Header pagename={title} />}
     <slot />
     <Footer />
-    
+
     <!-- Arcade Demo Modal -->
-    <div id="arcadeModal" class="hidden fixed inset-0 bg-black/60 backdrop-blur-sm z-[100] flex items-center justify-center p-4" onclick="if(event.target.id === 'arcadeModal') this.classList.add('hidden')">
-      <div class="relative bg-white rounded-2xl shadow-2xl max-w-6xl w-full max-h-[90vh] overflow-hidden" onclick="event.stopPropagation()">
-        <button onclick="document.getElementById('arcadeModal').classList.add('hidden')" class="absolute top-4 right-4 z-10 w-10 h-10 bg-gray-900/80 hover:bg-gray-900 text-white rounded-full flex items-center justify-center transition-colors">
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+    <div
+      id="arcadeModal"
+      class="hidden fixed inset-0 bg-black/60 backdrop-blur-sm z-[100] flex items-center justify-center p-4"
+      onclick="if(event.target.id === 'arcadeModal') this.classList.add('hidden')"
+    >
+      <div
+        class="relative bg-white rounded-2xl shadow-2xl max-w-6xl w-full max-h-[90vh] overflow-hidden"
+        onclick="event.stopPropagation()"
+      >
+        <button
+          onclick="document.getElementById('arcadeModal').classList.add('hidden')"
+          class="absolute top-4 right-4 z-10 w-10 h-10 bg-gray-900/80 hover:bg-gray-900 text-white rounded-full flex items-center justify-center transition-colors"
+        >
+          <svg
+            class="w-6 h-6"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M6 18L18 6M6 6l12 12"></path>
           </svg>
         </button>
         <div class="p-6">
-          <div style="position: relative; padding-bottom: calc(46.7188% + 41px); height: 0px; width: 100%;">
-            <iframe src="https://demo.arcade.software/TxVzl4hr8AGXnxq8XMNw?embed&embed_mobile=tab&embed_desktop=inline&show_copy_link=true" title="Dataflow Demo (under 2 mins)" frameborder="0" loading="lazy" allowfullscreen allow="clipboard-write" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; color-scheme: light;"></iframe>
+          <div
+            style="position: relative; padding-bottom: calc(46.7188% + 41px); height: 0px; width: 100%;"
+          >
+            <iframe
+              src="https://demo.arcade.software/TxVzl4hr8AGXnxq8XMNw?embed&embed_mobile=tab&embed_desktop=inline&show_copy_link=true"
+              title="Dataflow Demo (under 2 mins)"
+              frameborder="0"
+              loading="lazy"
+              allowfullscreen
+              allow="clipboard-write"
+              style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; color-scheme: light;"
+            ></iframe>
           </div>
         </div>
       </div>
     </div>
-    
+
     <script is:inline>
-      document.addEventListener('DOMContentLoaded', () => {
+      document.addEventListener("DOMContentLoaded", () => {
         if (window.AOS) {
-          AOS.init({once: true});
+          AOS.init({ once: true });
         }
       });
     </script>

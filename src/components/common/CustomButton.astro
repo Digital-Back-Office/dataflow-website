@@ -7,7 +7,7 @@ interface Props {
     type?: 'button' | 'submit' | 'reset'
     iconSrc?: string
     iconAlt?: string
-    variant?: 'primary' | 'ghost'
+    variant?: 'primary' | 'ghost' | 'outlined'
     className?: string
 }
 
@@ -17,17 +17,19 @@ const {
     target = '_self',
     rel = target === '_blank' ? 'noreferrer noopener' : undefined,
     type = 'button',
-    iconSrc = '/assets/images/arrowright.svg',
+    iconSrc = '/assets/icons/icon-right-angular-arrow-white.svg',
     iconAlt = 'Arrow icon',
     variant = 'primary',
     className = '',
 } = Astro.props
 
 const baseClasses =
-    'w-max inline-flex hover:cursor-pointer items-center gap-x-2 px-4 py-3 rounded-xl text-base font-medium transition duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary'
+    'w-max inline-flex hover:cursor-pointer items-center gap-x-2 px-4 py-3 rounded-lg text-base font-medium transition duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary group'
 const variantClasses =
     variant === 'ghost'
         ? 'bg-transparent text-primary hover:bg-primary/10 shadow-none'
+        : variant === 'outlined'
+        ? 'bg-white hover:bg-gray-50 text-gray-900 border-2 border-gray-200 hover:border-primary shadow-none'
         : 'bg-primary text-white shadow-md hover:bg-primary'
 const classes = `${baseClasses} ${variantClasses} ${className}`.trim()
 ---
@@ -37,7 +39,7 @@ const classes = `${baseClasses} ${variantClasses} ${className}`.trim()
         {label}
         {iconSrc && (
             <img
-                class='invert brightness-0 size-[20px]'
+                class={variant === 'outlined' ? 'size-[20px] transition-transform group-hover:translate-x-1' : `size-[20px] transition-transform group-hover:translate-x-1`}
                 src={iconSrc}
                 alt={iconAlt}
                 loading='lazy'
@@ -49,7 +51,7 @@ const classes = `${baseClasses} ${variantClasses} ${className}`.trim()
         {label}
         {iconSrc && (
             <img
-                class='invert brightness-0 size-[20px]'
+                class={variant === 'outlined' ? 'size-[20px] transition-transform group-hover:translate-x-1' : 'invert brightness-0 size-[20px] transition-transform group-hover:translate-x-1'}
                 src={iconSrc}
                 alt={iconAlt}
                 loading='lazy'

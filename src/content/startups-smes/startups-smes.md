@@ -37,4 +37,15 @@ sections:
     description: "No consultants, no 6-month implementations, no enterprise sales calls. Sign up, connect your cloud, and start running pipelines before your coffee gets cold. Our docs are written for busy founders, not PhDs."
     image: "/assets/images/app-screenshots/dashboard.png"
     imageSide: "right"
+
+cta_section:
+  title: "Ready to Move Faster?"
+  description: "Join hundreds of startups building data products without the enterprise overhead. Start free, scale when ready."
+  button:
+    text: "Start Free Trial"
+    href: "/start-free-trail"
+  secondary_button:
+    text: "Talk to Sales"
+    href: "/book-demo"
+  note: "No credit card required • Free forever for personal projects"
 ---

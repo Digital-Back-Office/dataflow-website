@@ -1,5 +1,6 @@
 ---
 import { getEntry } from 'astro:content'
+import CustomButton from '../common/CustomButton.astro'
 
 const Data = await getEntry('home', 'home')
 
@@ -124,12 +125,12 @@ const tabs: UseCaseTab[] = data?.use_cases || defaultTabs
                   </li>
                 ))}
               </ul>
-              <a href={tab.link} class='inline-flex items-center gap-2 px-6 py-3 bg-primary hover:bg-primaryHover text-white rounded-lg font-semibold transition-all duration-300 group/btn'>
-                {tab.cta_text || 'Learn more'}
-                <svg class='w-5 h-5 transition-transform group-hover/btn:translate-x-1' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
-                  <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M9 5l7 7-7 7'></path>
-                </svg>
-              </a>
+              <CustomButton
+                label={tab.cta_text || 'Learn more'}
+                href={tab.link}
+                variant="primary"
+                className="font-semibold"
+              />
             </div>
             <div class={`bg-white rounded-xl ${!tab.video && 'p-8'} flex items-center justify-center min-h-[300px]`}>
               {tab.video ? (

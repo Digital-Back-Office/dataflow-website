@@ -1,4 +1,6 @@
 ---
+import CustomButton from "../common/CustomButton.astro"
+
 const { data, mirror = false, image } = Astro.props
 ---
 
@@ -29,12 +31,11 @@ const { data, mirror = false, image } = Astro.props
       }
     </div>
     <div class='mt-10'>
-      <a
-        href={data.href}
-        class='p-3 px-4 w-max font-semibold rounded-lg text-sm bg-primary hover:bg-primaryHover duration-300 text-white mt-4'
-      >
-        {data.button}
-      </a>
+       <CustomButton
+          label={data.button}
+          href={data.href}
+          variant="primary"
+        />
     </div>
   </div>
 </div>

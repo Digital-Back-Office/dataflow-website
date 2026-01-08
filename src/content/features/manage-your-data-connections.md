@@ -2,7 +2,10 @@
 top_section:
   title: "Define Once, Use Everywhere"
   description: "Define connections and secrets in one secure vault. Access them instantly across Airflow, Jupyter, and VS Code without copying .env files or exposing keys in git."
-  cta_text: "Get Started"
+  button:
+    label: "Get Started"
+    href: "/book-demo"
+  hero_image: "/assets/images/app-screenshots/dashboard.png"
 
 comparison:
   heading: "The End of .env File Sprawl"
@@ -44,7 +47,7 @@ grow_together_managing_connections:
     href: "/book-demo"
 
 core_features:
-  title: Core Features of Our Data Connection Management
+  title: Core Features of  Data Connection Management
   description: Our Data Connection Management offers automatic synchronization, secure data transfers, and customizable integrations for seamless data handling. With comprehensive monitoring and scalability, you can manage and optimize your data connections effortlessly.
   button:
     label: "Get Started"

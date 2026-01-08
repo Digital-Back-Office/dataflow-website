@@ -1,4 +1,6 @@
 ---
+import CustomButton from "../../common/CustomButton.astro"
+
 const { title, image, logo, link, mirror } = Astro.props
 ---
 
@@ -20,7 +22,8 @@ const { title, image, logo, link, mirror } = Astro.props
 </style>
 
 <div
-  class={`min-h-screen px-20 max-md:px-[20px] ${mirror ? 'bg-white' : 'bg-[#F8FAFC]'} flex ${!mirror && 'flex-row-reverse'} items-center justify-center max-sm:flex-col`}
+  class={`min-h-screen px-[10%] ${mirror ? 'bg-white' : 'bg-[#F8FAFC]'} flex ${!mirror && 'flex-row-reverse'} items-center justify-center max-sm:flex-col`}
+  style="font-family: Plus Jakarta Sans, sans-serif;"
 >
   <div
     data-aos='fade-bounce'
@@ -37,16 +40,11 @@ const { title, image, logo, link, mirror } = Astro.props
     >
       {title}
     </p>
-    <a
-      href={link}
-      class='p-2 px-3 w-max font-light inline-flex rounded-lg text-sm bg-[#30baba] text-white mt-4'
-    >
-      Learn More
-      <img
-        class='filter brightness-0 invert pl-1'
-        src='/assets/images/arrowright.png'
-        alt='Arrow Right'
+     <CustomButton
+        label="Learn More"
+        href={link}
+        variant="primary"
+        className="font-semibold"
       />
-    </a>
   </div>
 </div>

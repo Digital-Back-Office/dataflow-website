@@ -2,7 +2,10 @@
 top_section:
   title: Your Data, Your Cloud. No Lock-In
   description: Deploy the full Dataflow stack on AWS, Azure, GCP. Switch providers without rewriting your pipelines.
-  cta_text: "Read Documentation"
+  button:
+    label: "Read Documentation"
+    href: "https://docs.dataflow.zone/getting-started/installation"
+  hero_image: "/assets/images/runanycloud.png"
   company_logos:
     title: 'Production-ready on all major providers'
     logos:

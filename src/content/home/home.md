@@ -79,7 +79,7 @@ features:
       cta_text: Learn more
       icon: "/assets/icons/icon-compass.svg"
       image: /assets/images/runanycloud.png
-      href: /manage-your-data
+      href: /manage-your-data-connections
       color: { normal: "#FBE2F0", hover: "#D40F7D" }
 
     - title: Goodbye, Dependency Hell
@@ -98,13 +98,13 @@ features:
       description: Turn your notebooks and scripts into live, shareable URLs in minutes. Forget complex Dockerfiles and CI/CD pipelines—Dataflow automates the entire production deployment process. You build the logic; we handle the DevOps.
       cta_text: Learn more
       icon: "/assets/icons/icon-forward.svg"
-      href: /apps
+      href: /say-goodbye-to-python-dependency-hell
 
     - title: Bring your team in one place
       description: Scale securely with robust governance. Manage permissions via RBAC, audit actions with comprehensive logs, and share environments across teams without exposing sensitive credentials.
       cta_text: Learn more
       icon: "/assets/icons/icon-people-with-tick.svg"
-      href: /company
+      href: /manage-your-data-connections
 
 use_cases:
   title: "Built for All Data Use Cases"

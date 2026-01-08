@@ -39,7 +39,7 @@ const docsUrl = import.meta.env.VITE_DOCS_URL;
                   <img 
                     src={social.icon} 
                     alt={social.platform} 
-                    class="size-5 transition-transform duration-300 group-hover:scale-110" 
+                    class="size-5" 
                   />
                 </a>
               ))
@@ -84,12 +84,16 @@ const docsUrl = import.meta.env.VITE_DOCS_URL;
         {footer.copyrights}
       </p>
       <div class="flex items-center gap-6">
-        <a href="/privacy-policy" class="text-sm text-gray-500 hover:text-primary transition-colors duration-200">
-          Privacy Policy
-        </a>
-        <a href="/terms-and-conditions" class="text-sm text-gray-500 hover:text-primary transition-colors duration-200">
-          Terms
-        </a>
+        {
+          footer.bottom_bar.links.map((link) => (
+            <a 
+              href={link.href} 
+              class="text-sm text-gray-500 hover:text-primary transition-colors duration-200"
+            >
+              {link.label}
+            </a>
+          ))
+        }
       </div>
     </div>
   </div>

@@ -1,25 +1,39 @@
 ---
-import Card from '../run-data-on-any-cloud/Card.astro'
-import CustomButton from '../../common/CustomButton.astro'
-import { getEntry } from 'astro:content'
+import Card from '../features/run-data-on-any-cloud/Card.astro'
+import CustomButton from './CustomButton.astro'
 
-const Data = await getEntry('features', 'python-dependency-hell')
-const data = Data.data.simplify_dependency_management;
-const button = data.button
-const features = data.features || [] 
+interface Props {
+  title: string
+  description: string
+  features: Array<{
+    title: string
+    description: string
+    image: string
+  }>
+  button?: {
+    label: string
+    href: string
+  }
+  bg?: string
+}
+
+const { title, description, features, button, bg = 'F8FAFC' } = Astro.props
 ---
 
 <div
-  class='min-h-screen w-full py-24 px-[10%] flex items-center justify-center max-md:flex-col max-sm:py-16 bg-[#F8FAFC]'
+  class={`min-h-screen w-full py-24 px-[10%] flex items-center justify-center max-md:flex-col max-sm:py-16 bg-[#${bg}]`}
+  style="font-family: Plus Jakarta Sans, sans-serif;"
 >
   <div class='text-container max-md:w-4/5 w-2/5' data-aos="fade-right" data-aos-duration="850" data-aos-offset="200">
-    <h1 class='text-2calc font-bold mb-8 text-textblack'>{data.title}</h1>
-    <p class='text-lg w-10/12 text-textblack'>{data.description}</p>
-    <CustomButton 
-      label={button.label}
-      href={button.href}
-      className="mt-10"
-    />
+    <h1 class='text-5xl max-md:text-4xl font-bold mb-8 text-textblack'>{title}</h1>
+    <p class='text-lg w-10/12 text-textblack'>{description}</p>
+    {button && (
+      <CustomButton 
+        label={button.label}
+        href={button.href}
+        className="mt-10"
+      />
+    )}
   </div>
   <div
     class='w-2/5 img-container flex flex-row flex-wrap items-between justify-between max-md:my-10'

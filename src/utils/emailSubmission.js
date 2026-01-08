@@ -1,7 +1,7 @@
 const GOOGLE_FORM_CONFIG = {
-  formUrl: 'https://docs.google.com/forms/d/e/YOUR_FORM_ID/formResponse',
-  emailEntryId: 'entry.YOUR_ENTRY_ID', // Replace with your actual entry ID for email field
-  pageSourceEntryId: 'entry.YOUR_PAGE_SOURCE_ENTRY_ID' // Replace with your actual entry ID for page source field
+  formUrl: 'https://docs.google.com/forms/d/e/1FAIpQLScm9m5YZa0bdolEh1Sk3siQZgC2scoDnjc7gYk7xodB3WP2Vw/formResponse',
+  emailEntryId: 'entry.1103074482',
+  pageSourceEntryId: 'entry.1402974516'
 }
 
 // Redirect URL configuration

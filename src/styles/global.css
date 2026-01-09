@@ -2,6 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+/* CSS Reset for cross-platform consistency */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
 :root{
     --primary: #30baba;
     --secondary-light: #5FCFCF;
@@ -15,6 +24,25 @@
 
 html{
     font-size: 16px;
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    -webkit-text-size-adjust: 100%;
+    -moz-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+}
+
+body {
+    width: 100%;
+    min-height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    line-height: 1.5;
 }
 
 .cm__body{

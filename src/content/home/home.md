@@ -119,7 +119,7 @@ use_cases:
         - "Real-time collaboration with your team"
       link: "/manage-your-data-connections"
       cta_text: "Learn more"
-      image: "/assets/images/apps/jupyter.png"
+      image: "/assets/images/app-screenshots/dashboard.png"
       video: "/assets/videos/jupyter.mp4"
       imageAlt: "Data Exploration"
 
@@ -133,7 +133,7 @@ use_cases:
         - "Unified connection management across all pipelines"
       link: "/manage-your-data-connections"
       cta_text: "Learn more"
-      image: "/assets/images/apps/airflow-logo.svg"
+      image: "/assets/images/app-screenshots/dashboard.png"
       video: "/assets/videos/airflow.mp4"
       imageAlt: "ETL"
 
@@ -148,7 +148,7 @@ use_cases:
       link: "/apps"
       cta_text: "Learn more"
       video: "/assets/videos/data-visualisation.webm"
-      image: "/assets/images/apps/streamlit-icon.svg"
+      image: "/assets/images/app-screenshots/dashboard.png"
       imageAlt: "Data Visualisation"
 
     - id: "analytics"
@@ -162,7 +162,7 @@ use_cases:
       link: "/manage-your-data-connections"
       cta_text: "Learn more"
       video: "/assets/videos/analysis.webm"
-      image: "/assets/images/apps/mlflow.png"
+      image: "/assets/images/app-screenshots/dashboard.png"
       imageAlt: "Analytics"
 
 ship_apps_faster:

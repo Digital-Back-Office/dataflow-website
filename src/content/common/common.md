@@ -1,6 +1,7 @@
 ---
 testimonials:
   title: "Testimonials"
+  subtitle: "What our users are saying about us."
   testimonials:
     - name: "Sarah Chen"
       role: "Machine Learning Engineer"

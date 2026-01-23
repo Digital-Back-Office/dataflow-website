@@ -9,6 +9,7 @@ export default {
         helvetica: ['Helvetica', 'Arial', 'sans-serif'],
         'helvetica-neue': ['Helvetica Neue', 'Arial', 'sans-serif'],
         arimo: ['Arimo', ...defaultTheme.fontFamily.sans],
+        jakarta: ['Plus Jakarta Sans Variable', 'sans-serif'],
         roboto: ['Roboto', 'Arial', 'sans-serif'],
         inter: ['Inter', 'Arial', 'sans-serif']
       },

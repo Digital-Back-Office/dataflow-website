@@ -35,7 +35,7 @@ const testimonials = testimonialsData.testimonials || []
       <div id="testimonial-container" class="relative w-full max-w-3xl max-sm:max-w-sm h-[25rem] max-sm:h-80">
         {testimonials.map((t, i) => (
           <div 
-        class="testimonial-card absolute w-full bg-white border border-slate-200 p-10 rounded-3xl shadow-lg transition-all duration-500 cursor-pointer flex flex-col justify-center items-center text-center min-h-[22.5rem]"
+        class="testimonial-card absolute w-full bg-white border border-slate-200 p-10 rounded-3xl shadow-lg transition-all duration-500 cursor-pointer flex flex-col justify-center items-center text-center h-[18rem]"
         style={`z-index: ${testimonials.length - i}; transform: translateY(${i * 16}px) scale(${1 - i * 0.04});`}
         data-index={i}
           >

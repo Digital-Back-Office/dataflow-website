@@ -47,5 +47,7 @@ cta_section:
   secondary_button:
     text: "Talk to Sales"
     href: "/book-demo"
-  note: "No credit card required • Free forever for personal projects"
+  note: 
+    - "No credit card required"
+    - "Free forever for personal projects"
 ---

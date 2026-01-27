@@ -29,11 +29,11 @@ const reverseOnMobile =
 ---
 
 <section
-  class={`w-full ${bgClass} py-20 lg:min-h-[70vh] flex items-center justify-center max-sm:px-4 px-4`}
+  class={`w-full ${bgClass} py-20 lg:min-h-[70vh] flex items-center justify-center max-sm:px-4 px-6`}
 >
-  <div class="max-w-7xl mx-auto w-full">
+  <div class="">
     <div
-      class={`flex flex-col md:flex ${reverseOnMobile} items-center gap-10 lg:gap-20`}
+      class={`w-full flex flex-col md:flex ${reverseOnMobile} items-center gap-10 lg:gap-20`}
     >
       <!-- Text Column -->
       <div class="md:flex-1 md:max-w-[700px] w-full flex flex-col justify-center"  data-aos="fade-up" data-aos-duration="700" data-aos-offset="200">
@@ -44,7 +44,7 @@ const reverseOnMobile =
         </h2>
         {
           description && (
-            <p class="text-lg text-gray-600 mb-8 max-w-[680px]">
+            <p class="text-lg text-gray-600 text-justify mb-8 max-w-[680px]">
               {description}
             </p>
           )

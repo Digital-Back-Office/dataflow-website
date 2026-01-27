@@ -6,10 +6,10 @@ export default {
   theme: {
     extend: {
       fontFamily: {
+        jakarta: ['Plus Jakarta Sans Variable', 'sans-serif'],
         helvetica: ['Helvetica', 'Arial', 'sans-serif'],
         'helvetica-neue': ['Helvetica Neue', 'Arial', 'sans-serif'],
         arimo: ['Arimo', ...defaultTheme.fontFamily.sans],
-        jakarta: ['Plus Jakarta Sans Variable', 'sans-serif'],
         roboto: ['Roboto', 'Arial', 'sans-serif'],
         inter: ['Inter', 'Arial', 'sans-serif']
       },
@@ -33,7 +33,8 @@ export default {
         textblack: '#393939',
         textPrimary: '#364152',
         primaryHover: '#0AA3A3',
-        lightPrimary: '#30baba10'
+        lightPrimary: '#30baba10',
+        textDarker: "#1a1f26"
       },
       keyframes: {
         fadeIn: {

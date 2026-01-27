@@ -1,3 +1,5 @@
+@import "@fontsource-variable/plus-jakarta-sans";
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -64,4 +66,10 @@ body {
 
 .cc-1hqb{
     max-width: 20px !important;
+}
+
+@layer base {
+  body {
+    @apply font-jakarta;
+  }
 }

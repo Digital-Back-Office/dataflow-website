@@ -55,15 +55,15 @@ core_capabilities:
 cloud_providers:
   title: "Write Once, Run Anywhere"
   cloud_providers:
-    - title: "Comprehensive feature breakdowns, video tutorials, case studies, expandable sections for detailed information, and strong CTAs."
+    - title: "Discover **Azure** through detailed feature breakdowns, video tutorials, and real-world case studies. <br> Expandable sections and clear CTAs help users explore deeper and take action with confidence."
       logo: "/assets/images/azurelogo.png"
       link: "https://azure.microsoft.com/"
       image: "/assets/images/macbookazure.png"
-    - title: "Visual aids, step-by-step guides, detailed descriptions of capabilities, customer testimonials, and a clean, intuitive design."
+    - title: "Explore **Google Cloud** through visual aids, step-by-step guides, and detailed capability insights. <br> Customer testimonials and a clean, intuitive design help teams move forward with confidence."
       logo: "/assets/images/googlecloudlogo.png"
       link: "https://cloud.google.com/"
       image: "/assets/images/macbookgooglecloud.png"
-    - title: "Detailed feature explanations, case studies, interactive elements, clear call-to-action buttons, and a structured layout."
+    - title: "Explore **AWS** through detailed feature insights, real-world case studies, and interactive experiences. <br> Clear call-to-action buttons and a structured layout help teams move faster and build with confidence."
       logo: "/assets/images/aws-logo.png"
       link: "https://aws.amazon.com/"
       image: "/assets/images/macbookaws.png"

@@ -109,12 +109,12 @@ footer:
         - label: "Documentation"
           href: "https://docs.dataflow.zone/"
 
-    - heading: "Company"
+    - heading: "Contact info"
       links:
-        - label: "About us"
-          href: "/about-us"
-        - label: "Our team"
-          href: "/about-us#team"
+        - label: "+1 526 220 0444"
+          href: "tel:+15262200444"
+        - label: "info@dataflow.zone"
+          href: "mailto:info@dataflow.zone"
 
     - heading: "Help"
       links:
@@ -123,12 +123,13 @@ footer:
         - label: "Contact Us"
           href: "/contact-us"
 
-    - heading: "Contact info"
+    - heading: "Company"
       links:
-        - label: "+1 526 220 0444"
-          href: "tel:+15262200444"
-        - label: "info@dataflow.zone"
-          href: "mailto:info@dataflow.zone"
+        - label: "About us"
+          href: "/about-us"
+        - label: "Our team"
+          href: "/about-us#team"
+
 
   bottom_bar:
     links:
@@ -136,6 +137,8 @@ footer:
         href: "/privacy-policy"
       - label: "Terms and Conditions"
         href: "/terms-and-conditions"
+
+        
   social_links:
     - platform: "linkedin"
       url: "https://www.linkedin.com/company/dataflow-zone/about/"

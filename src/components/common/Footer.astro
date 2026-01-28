@@ -12,20 +12,20 @@ const docsUrl = import.meta.env.VITE_DOCS_URL;
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 pb-12 border-b border-gray-800">
       
       <!-- Brand Section -->
-      <div class="lg:col-span-4 space-y-6">
+      <div class="lg:col-span-4">
         <a href="/" class="inline-block group">
           <img
             src="/assets/images/dataflow-logo-green.svg"
             alt="Dataflow Logo"
-            class="h-12"
+            class="h-5rem"
           />
         </a>
-        <p class="text-sm leading-relaxed text-gray-400 max-w-sm">
+        <p class="text-md leading-relaxed text-justify text-gray-400 max-w-sm">
           {footer.description}
-        </p>
+        </p> 
         
         <!-- Social Links -->
-        <div class="flex items-center gap-3">
+        <div class="flex items-center gap-3 mt-14">
           {
             footer.social_links &&
               footer.social_links.map((social) => (
@@ -47,13 +47,17 @@ const docsUrl = import.meta.env.VITE_DOCS_URL;
         </div>
       </div>
 
+      <div class="lg:col-span-1">
+
+      </div>
+
       <!-- Links Grid -->
-      <div class="lg:col-span-8 grid grid-cols-2 md:grid-cols-4 gap-8 lg:gap-12">
+      <div class="lg:col-span-7 grid grid-cols-2 md:grid-cols-4 gap-8 lg:gap-12">
         {
           footer.sections &&
             footer.sections.map((section) => (
               <div class="space-y-4">
-                <h3 class="text-sm font-semibold text-white uppercase tracking-wider">
+                <h3 class="text-xl font-semibold text-white tracking-wider">
                   {section.heading}
                 </h3>
                 <ul class="space-y-3">
@@ -96,6 +100,13 @@ const docsUrl = import.meta.env.VITE_DOCS_URL;
         }
       </div>
     </div>
+  </div>
+
+  <!-- Large DATAFLOW Text -->
+  <div class="w-full  overflow-hidden max-sm:hidden">
+    <h2 class="mb-[-25px] text-[clamp(2rem,14vw,20rem)] tracking-wider text-transparent bg-gradient-to-b from-[#278b8b9c]  to-[#151a2143] bg-clip-text select-none leading-none text-center font-montserrat font-extrabold">
+      DATAFLOW
+    </h2>
   </div>
 </footer>
 

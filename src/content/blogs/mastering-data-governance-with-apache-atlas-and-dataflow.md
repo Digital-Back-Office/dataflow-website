@@ -5,6 +5,7 @@ tags: ['atlas', 'dataflow', 'datagovernance']
 date: '3 Nov, 2024'
 blog_no: 6
 image: /assets/images/contactusimage.png
+category: ["data"]
 ---
 
 # Introduction

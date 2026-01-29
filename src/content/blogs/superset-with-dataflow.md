@@ -5,6 +5,7 @@ tags: ['superset', 'dataflow']
 date: '29 Sept, 2024'
 blog_no: 2
 image: /assets/images/contactusimage.png
+category: ["resources"]
 ---
 
 In the ever-evolving world of data engineering, having robust apps that enable seamless data analysis and visualization is paramount. Enter **Apache Superset**, a modern, open-source data exploration and visualization platform that is transforming how organizations work with their data. When integrated with **Dataflow, a comprehensive data engineering platform**, the capabilities of Superset are amplified, creating a unified platform for building, analyzing, and visualizing datasets. This blog dives into the features of Superset, its importance in a Dataflow-centric environment, and how this integration **empowers data professionals**.

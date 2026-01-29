@@ -5,6 +5,7 @@ tags: ['connections', 'dataflow', 'variables']
 date: '30 Jan, 2025'
 image: /assets/images/blogs/connection-variable/connections-blog-thumbnail.jpg
 blog_no: 3
+category: ["resources"]
 ---
 
 

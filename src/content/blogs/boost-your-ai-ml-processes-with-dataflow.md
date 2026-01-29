@@ -1,10 +1,11 @@
 ---
 title: 'Boost Your AI/ML Processes with Dataflow: Using Airflow and MLflow to Automate Everything'
 description: 'Simple guide to boost your AI/ML processes with Dataflow'
-tags: ['Auth', 'NextAuth']
+tags: ['Auth', 'NextAuth',"News"]
 date: '29 Sept, 2024'
 blog_no: 1
 image: /assets/images/contactusimage.png
+category: ["news"]
 ---
 
 Efficiency and scalability are critical in the rapidly evolving fields of data science and machine learning. However, without the proper apps, handling intricate workflows—like data ingestion, model training, and deployment—can become too much to handle. What if the whole machine learning lifecycle could be smoothly automated?

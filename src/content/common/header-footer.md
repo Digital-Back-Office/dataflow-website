@@ -46,7 +46,7 @@ header:
                 action: "open-demo-modal"
               - title: "Blog"
                 description: "Data engineering insights"
-                href: "/blogs/1"
+                href: "/blogs"
               - title: "YouTube"
                 description: "Video tutorials"
                 href: "https://www.youtube.com/@DataFlowZone"
@@ -101,7 +101,7 @@ footer:
     - heading: "Resources"
       links:
         - label: "Blog"
-          href: "/blogs/1"
+          href: "/blogs"
         - label: "YouTube"
           href: "https://www.youtube.com/@DataFlowZone"
         - label: "Community"

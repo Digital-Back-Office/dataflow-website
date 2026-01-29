@@ -5,6 +5,7 @@ tags: ['kafka', 'dataflow', 'streaming']
 date: '12 Oct, 2024'
 blog_no: 7
 image: /assets/images/contactusimage.png
+category: ["engineering"]
 ---
 
 # Introduction

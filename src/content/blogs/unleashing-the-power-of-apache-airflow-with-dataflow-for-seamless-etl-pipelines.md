@@ -5,6 +5,7 @@ tags: ['airflow', 'dataflow', 'etl']
 date: '5 Oct, 2024'
 image: '/og-image.png'
 blog_no: 7
+category: ["engineering"]
 ---
 
 # Introduction

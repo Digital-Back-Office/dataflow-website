@@ -5,7 +5,7 @@ tags: ['snowflake', 'dataflow', 'datawarehouse']
 date: '27 Oct, 2024'
 blog_no: 4
 image: /assets/images/contactusimage.png
-
+category: ["ai-agent","news"]
 ---
 
 # Introduction

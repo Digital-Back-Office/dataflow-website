@@ -6,7 +6,7 @@ additional_support:
    descriptions: "Everything you need to get unblocked, available on demand."
    button:
       label: "Learn More"
-      href: "https://docs.dataflow.zone/getting-started/installation"
+      href: "https://docs.dataflow.zone/get-started/introduction-to-dataflow/"
       hrefTarget: "_blank"
       icon: null
 
@@ -15,7 +15,7 @@ additional_support:
         image: "/assets/icons/icon-youtube-primary.svg"
         title: "Video Walkthroughs"
         description: "Prefer visual learning? Browse our library of step-by-step tutorials covering everything from connecting Snowflake to deploying your first GenAI pipeline."
-        href: "https://docs.dataflow.zone/getting-started/installation"
+        href: "https://docs.dataflow.zone/get-started/introduction-to-dataflow/"
         label: "Browse Tutorials"
         target: "_blank"
         width: "320px"
@@ -23,7 +23,7 @@ additional_support:
         image: "/assets/icons/icon-people.svg"
         title: "Developer Forum"
         description: "Stuck on a configuration? Post your questions in our community forum to get direct answers from the Dataflow engineering team and other users."
-        href: "https://docs.dataflow.zone/getting-started/installation"
+        href: "https://docs.dataflow.zone/get-started/introduction-to-dataflow/"
         label: "Ask a Question"
         target: "_blank"
         width: "320px"

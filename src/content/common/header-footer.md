@@ -55,7 +55,7 @@ header:
             items:
               - title: "X"
                 description: "Follow us"
-                href: "https://x.com/dataflow"
+                href: "https://x.com/dataflow_zone"
               - title: "LinkedIn"
                 description: "Follow updates"
                 href: "https://www.linkedin.com/company/dataflow-zone/about/"
@@ -144,7 +144,7 @@ footer:
       url: "https://www.linkedin.com/company/dataflow-zone/about/"
       icon: "/assets/icons/icon-linkedin.svg"
     - platform: "X"
-      url: "https://x.com/dataflow"
+      url: "https://x.com/dataflow_zone"
       icon: "/assets/icons/icon-x.svg"
     - platform: "youtube"
       url: "https://www.youtube.com/@DataFlowZone"

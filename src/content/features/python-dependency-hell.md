@@ -4,7 +4,7 @@ top_section:
   description: Forget virtual environments, conflicting paths, and "it works on my machine." Dataflow builds immutable, containerized Python environments that sync across your team instantly.
   button:
     label: 'Get Started'
-    href: "https://docs.dataflow.zone/getting-started/installation"
+    href: "https://docs.dataflow.zone/get-started/introduction-to-dataflow/"
   hero_image: "/assets/images/app-screenshots/dashboard.png"
 
 section:

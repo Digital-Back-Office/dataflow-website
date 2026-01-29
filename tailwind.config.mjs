@@ -8,11 +8,6 @@ export default {
       fontFamily: {
         jakarta: ['Plus Jakarta Sans Variable', 'sans-serif'],
         montserrat: ['Montserrat Variable', 'sans-serif'],
-        helvetica: ['Helvetica', 'Arial', 'sans-serif'],
-        'helvetica-neue': ['Helvetica Neue', 'Arial', 'sans-serif'],
-        arimo: ['Arimo', ...defaultTheme.fontFamily.sans],
-        roboto: ['Roboto', 'Arial', 'sans-serif'],
-        inter: ['Inter', 'Arial', 'sans-serif']
       },
       fontSize: {
         '0calc': 'calc(0.8rem + 1vw)',

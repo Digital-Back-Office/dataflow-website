@@ -4,7 +4,7 @@ top_section:
   description: Deploy the full Dataflow stack on AWS, Azure, GCP. Switch providers without rewriting your pipelines.
   button:
     label: "Read Documentation"
-    href: "https://docs.dataflow.zone/getting-started/installation"
+    href: "https://docs.dataflow.zone/get-started/introduction-to-dataflow/"
   hero_image: "/assets/images/runanycloud.png"
   company_logos:
     title: 'Production-ready on all major providers'
@@ -13,8 +13,6 @@ top_section:
         alt: AWS Logo
       - image: /assets/images/googlecloudlogo.png
         alt: Google Cloud Logo
-      - image: /assets/images/snowflake-company.png
-        alt: Snowflake Logo
       - image: /assets/images/azurelogo.png
         alt: Azure Logo
 

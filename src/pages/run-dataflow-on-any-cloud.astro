@@ -1,7 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro'
 import TopSection from '../components/common/TopSection.astro'
-import InfiniteScrollLogos from '../components/common/InfiniteScrollLogos.astro'
+// InfiniteScrollLogos replaced with a simple flex logo list (client-side scrolling removed)
 import FeatureGrid from '../components/common/FeatureGrid.astro'
 import PrivateCloud from '../components/features/run-data-on-any-cloud/PrivateCloud.astro'
 import { getEntry } from 'astro:content'
@@ -30,10 +30,21 @@ const meta_description = top.description ?? 'Upgrade your data management and pr
     imageSide="right"
     bg="white"
   />
-  <InfiniteScrollLogos
-    title={companyLogos.title}
-    logos={companyLogos.logos}
-  />
+  <!-- Replaced InfiniteScrollLogos with a simple, accessible flex list of logos -->
+  {companyLogos && companyLogos.logos && (
+    <section class="py-8">
+      {companyLogos.title && (
+        <h3 class="text-center text-lg font-semibold text-gray-700 mb-6">{companyLogos.title}</h3>
+      )}
+      <div class="flex items-center justify-center flex-wrap gap-8 px-4">
+        {companyLogos.logos.map((logo) => (
+          <div class="flex items-center justify-center p-2">
+            <img src={logo.image} alt={logo.alt || ''} class="h-10 object-contain" />
+          </div>
+        ))}
+      </div>
+    </section>
+  )}
   <Benefits />
   <FeatureGrid
     title={coreCapabilities.title}

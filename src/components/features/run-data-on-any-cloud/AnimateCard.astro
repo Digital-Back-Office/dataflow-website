@@ -8,7 +8,7 @@ const { image, title, description } = Astro.props
     <div
         class='image-container w-[3.3vw] h-[3.3vw] mb-[5%] min-w-[35px] min-h-[35px]'
     >
-        <img src={image} class='w-full h-full object-contain image-content' />
+        <img src={image} alt={title} class='w-full h-full object-contain image-content' />
     </div>
     <h3
         class='2xl:text-lg xl:text-base font-bold md:text-base text-textblack mb-5 group-hover:text-white'

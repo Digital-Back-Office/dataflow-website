@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function () {
   if (!form) return;
 
   // Google Form configuration
-  const GOOGLE_FORM_ID = '1thOVJF3LLZCkuUvHPQWkqB4aFkx_SYf8k0CE4fxRxGo';
+  const GOOGLE_FORM_ID = '1FAIpQLSci4Z7XiJkLIXaR74abspyxq1ii3M7OGxh58d7S3LrEL1lCwQ';
   const FORM_URL = `https://docs.google.com/forms/d/e/${GOOGLE_FORM_ID}/formResponse`;
  
   const FIELD_MAPPINGS = {
@@ -111,7 +111,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const email = emailInput ? emailInput.value : '';
 
     if (!email) {
-      alert('Please enter your email address');
+      showToast('Please enter your email address');
       return;
     }
 
@@ -123,7 +123,7 @@ document.addEventListener('DOMContentLoaded', function () {
     subscriptionOptions.forEach((option) => {
       const checkbox = form.querySelector(`input[name="${option.name}"]`);
       if (checkbox && checkbox.checked && FIELD_MAPPINGS[option.name]) {
-        formData.append(FIELD_MAPPINGS[option.name], 'on');
+        formData.append(FIELD_MAPPINGS[option.name], 'yes');
       }
     });
 
@@ -133,15 +133,13 @@ document.addEventListener('DOMContentLoaded', function () {
       body: formData,
       mode: 'no-cors',
     })
-      .then(() => {
-        // Reset form
+      .then((response) => {
         form.reset();
-        // Show success toast
-        showToast('Thank you for subscribing!');
+        showToast('Thank you for subscribing!'); 
       })
       .catch((error) => {
         console.error('Form submission error:', error);
-        showToast('There was an error submitting the form. Please try again.');
+        showToast('Network error. Please check your connection and try again.');
       });
   });
 

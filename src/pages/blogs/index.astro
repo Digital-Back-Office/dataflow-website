@@ -62,7 +62,7 @@ const allBlogsJson = JSON.stringify(allBlogs.map(blog => ({
           {
             blogTabsConfig.map((t) => (
               <button
-                class="blog-tab text-gray-400 flex items-center gap-3 py-3 px-2 text-sm transition-colors no-underline border-b-2 border-transparent hover:text-textblack"
+                class="blog-tab text-nowrap text-gray-400 flex items-center gap-3 py-3 px-2 text-sm transition-colors no-underline border-b-2 border-transparent hover:text-textblack"
                 data-category={t.key}
                 aria-pressed="false"
               >

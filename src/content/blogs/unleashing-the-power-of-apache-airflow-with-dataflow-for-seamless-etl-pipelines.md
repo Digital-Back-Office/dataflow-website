@@ -3,7 +3,7 @@ title: 'Unleashing the Power of Apache Airflow with Dataflow for Seamless ETL Pi
 description: 'A guide to automating ETL processes with Apache Airflow and Dataflow'
 tags: ['airflow', 'dataflow', 'etl']
 date: '5 Oct, 2024'
-image: '/og-image.png'
+image: '/og-image.webp'
 blog_no: 7
 category: ["engineering"]
 ---

@@ -1,8 +1,11 @@
 ---
+import { Image } from 'astro:assets';
+import logoImage from '../../../public/assets/images/dataflow-logo-green.svg';
 import { getEntry } from "astro:content";
 const Data = await getEntry("common", "header-footer");
 const footer = Data.data.footer;
 const docsUrl = import.meta.env.VITE_DOCS_URL;
+
 ---
 
 <footer class="bg-gradient-to-b from-[#0F1419] to-[#1a1f26] text-white">
@@ -14,11 +17,7 @@ const docsUrl = import.meta.env.VITE_DOCS_URL;
       <!-- Brand Section -->
       <div class="lg:col-span-4">
         <a href="/" class="inline-block group">
-          <img
-            src="/assets/images/dataflow-logo-green.svg"
-            alt="Dataflow Logo"
-            class="h-5rem"
-          />
+          <Image src={logoImage} alt="Dataflow Logo" class="h-20 w-auto" loading="lazy" format="webp"/>
         </a>
         <p class="text-md leading-relaxed text-justify text-gray-400 max-w-sm">
           {footer.description}

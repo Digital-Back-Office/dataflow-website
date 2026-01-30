@@ -3,7 +3,7 @@ title: 'Understanding and Utilizing Connections & Variables in Dataflow'
 description: 'This guide will walk you through the step-by-step process of adding, editing, and testing connections and variables in Dataflow'
 tags: ['connections', 'dataflow', 'variables']
 date: '30 Jan, 2025'
-image: /assets/images/blogs/connection-variable/connections-blog-thumbnail.jpg
+image: /assets/images/blogs/connection-variable/connections-blog-thumbnail.webp
 blog_no: 3
 category: ["resources"]
 ---
@@ -41,7 +41,7 @@ This guide will walk you through how to **create, update, test, and delete** bot
    - **Extra settings (if required, such as SSL options)**  
 5. Click **"Save"** to create the connection.  
 
-![Alt text](/assets/images/blogs/connection-variable/create_connection.png)
+![Alt text](/assets/images/blogs/connection-variable/create_connection.webp)
 
 ---
 
@@ -59,7 +59,7 @@ This guide will walk you through how to **create, update, test, and delete** bot
 - Click the **"Test Connection"** button.  
 - The system will check the credentials and return if the **connection is valid or not**.  
 
-  ![Alt text](/assets/images/blogs/connection-variable/test_connection.png)
+   ![Alt text](/assets/images/blogs/connection-variable/test_connection.webp)
 
 ---
 
@@ -82,7 +82,7 @@ This guide will walk you through how to **create, update, test, and delete** bot
    - **Description** (optional)  
 4. Click **"Save"**.  
 
-![Alt text](/assets/images/blogs/connection-variable/create_variable.png)
+![Alt text](/assets/images/blogs/connection-variable/create_variable.webp)
 
 ---
 

@@ -5,12 +5,12 @@ top_section:
   button:
     label: 'Get Started'
     href: "https://docs.dataflow.zone/get-started/introduction-to-dataflow/"
-  hero_image: "/assets/images/app-screenshots/dashboard.png"
+  hero_image: "/assets/images/app-screenshots/dashboard.webp"
 
 section:
   title: "Define Once. Share Everywhere."
   description: "Select your Python version and libraries. Dataflow resolves the dependency tree, builds the environment for you in the background, and when built it can be activated to be used across the workspace."
-  image: "/assets/images/app-screenshots/dashboard.png"
+  image: "/assets/images/app-screenshots/dashboard.webp"
   button:
     label: "Get Started"
     href: "/book-demo"
@@ -28,7 +28,7 @@ simplify_dependency_management:
       image: "/assets/icons/icon-checklist.svg"
     - title: "Time Travel"
       description: "Broke your environment? Roll back to the previous successful build instantly. Every environment snapshot is versioned and stored."
-      image: "/assets/icons/icon-clock-loop.png"
+      image: "/assets/icons/icon-clock-loop.webp"
     - title: "Project Sandboxing"
       description: "Every project gets its own isolated container & isolated compute. Run legacy Python 3.9 code alongside a Python 3.11 AI model in the same platform without interference"
       image: "/assets/icons/icon-cubes.svg"

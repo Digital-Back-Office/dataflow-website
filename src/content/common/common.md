@@ -32,13 +32,13 @@ supported_by:
   title: "Supported By"
   incubators:
     - name: "Google Cloud"
-      logo: "/assets/images/googlecloudlogo.png"
+      logo: "/assets/images/googlecloudlogo.webp"
     - name: "AWS"
-      logo: "/assets/images/aws-logo.png"
+      logo: "/assets/images/aws-logo.webp"
     - name: "NatWest"
-      logo: "/assets/images/nat-west-logo.png"
+      logo: "/assets/images/nat-west-logo.webp"
     - name: "NVIDIA"
-      logo: "/assets/images/nvidia-logo.png"
+      logo: "/assets/images/nvidia-logo.webp"
     - name: "Barclays"
-      logo: "/assets/images/barclays-logo.png"
+      logo: "/assets/images/barclays-logo.webp"
 ---

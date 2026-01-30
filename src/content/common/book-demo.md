@@ -4,13 +4,13 @@ hero:
   subtitle: Demo Today
 
 highlights:
-  - image: /assets/images/bookdemoimage1.png
+  - image: /assets/images/bookdemoimage1.webp
     title: Understanding Your Data Processing Needs
     description: Identifying your unique data challenges to deliver tailored solutions.
-  - image: /assets/images/bookdemoimage2.png
+  - image: /assets/images/bookdemoimage2.webp
     title: Personalized Tour of the Dataflow Platform
     description: Personalized Dataflow platform demo featuring your specific requirements.
-  - image: /assets/images/bookdemoimage3.png
+  - image: /assets/images/bookdemoimage3.webp
     title: Discussing Your Integration Journey
     description: Planning your smooth and efficient Dataflow integration roadmap.
 

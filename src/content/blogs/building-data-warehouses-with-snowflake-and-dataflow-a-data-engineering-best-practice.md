@@ -4,7 +4,7 @@ description: 'Optimizing data warehouse workflows using Snowflake and Dataflow'
 tags: ['snowflake', 'dataflow', 'datawarehouse']
 date: '27 Oct, 2024'
 blog_no: 4
-image: /assets/images/contactusimage.png
+image: /assets/images/contactusimage.webp
 category: ["ai-agent","news"]
 ---
 

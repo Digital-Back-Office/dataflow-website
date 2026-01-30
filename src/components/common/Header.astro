@@ -1,6 +1,8 @@
 ---
 import { getEntry } from 'astro:content'
+import { Image } from 'astro:assets'
 import NavIcon from './NavIcon.astro'
+import logoImage from '../../../public/assets/images/dataflow-logo-green.svg'
 
 const data = await getEntry('common', 'header-footer')
 const header = data.data.header ?? {}
@@ -56,7 +58,17 @@ const mobileCtas = desktopCtas
 >
   <div class='flex items-center gap-10  max-xl:gap-12 z-50'>
     <a href={logo.href ?? '/'} class='flex items-center'>
-      <img src={logo.image ?? '/assets/images/dataflow-logo-green.svg'} class='h-12' alt={logo.alt ?? ''} />
+      <!-- <img src={logo.image ?? '/assets/images/dataflow-logo-green.svg'} class='h-12' alt={logo.alt ?? ''} /> -->
+    <Image
+      src={logoImage}
+      alt={'Dataflow Logo'}
+      width={144}
+      height={48}
+      class="h-12"
+      loading="eager"
+      format="webp"
+      fetchpriority="high"
+    />
     </a>
     <nav class='hidden lg:flex items-center gap-10 max-xl:gap-8'>
       {desktopNav.map((navItem) => (

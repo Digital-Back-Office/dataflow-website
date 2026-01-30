@@ -5,15 +5,15 @@ top_section:
   button:
     label: "Read Documentation"
     href: "https://docs.dataflow.zone/get-started/introduction-to-dataflow/"
-  hero_image: "/assets/images/runanycloud.png"
+  hero_image: "/assets/images/runanycloud.webp"
   company_logos:
     title: 'Production-ready on all major providers'
     logos:
-      - image: /assets/images/awslogo.png
+      - image: /assets/images/awslogo.webp
         alt: AWS Logo
-      - image: /assets/images/googlecloudlogo.png
+      - image: /assets/images/googlecloudlogo.webp
         alt: Google Cloud Logo
-      - image: /assets/images/azurelogo.png
+      - image: /assets/images/azurelogo.webp
         alt: Azure Logo
 
 benefits:
@@ -22,13 +22,13 @@ benefits:
   features:
     - title: Flexibility
       description: Choose any cloud provider that fits your needs, such as AWS, Google Cloud, or Azure, without being locked into one vendor.
-      image: /assets/icons/flexibilityrundataanycloud.png
+      image: /assets/icons/flexibilityrundataanycloud.webp
     - title: Interoperability
       description: Easily integrate with a variety of cloud services and apps for a smooth and efficient data processing workflow.
-      image: /assets/icons/Interoperability.png
+      image: /assets/icons/Interoperability.webp
     - title: Cost-Efficiency
       description: Save money by selecting the most cost-effective cloud provider and using resources only when necessary.
-      image: /assets/icons/cost-efficiency.png
+      image: /assets/icons/cost-efficiency.webp
 
 core_capabilities:
   title: Core Capabilities
@@ -39,32 +39,32 @@ core_capabilities:
   features:
     - title: Real-Time Processing
       description: Dataflow processes data instantly as it arrives, perfect for tasks needing immediate insights like fraud detection or real-time monitoring.
-      image: /assets/icons/realtimeprocessing.png
+      image: /assets/icons/realtimeprocessing.webp
     - title: Batch Processing
       description: Handles large volumes of data in scheduled chunks, suitable for daily reports and data warehousing.
-      image: /assets/icons/batchprocessing.png
+      image: /assets/icons/batchprocessing.webp
     - title: Auto-Scaling
       description: Automatically adjusts resources to match workload demands, ensuring efficient use of resources and cost savings.
-      image: /assets/icons/autoscaling.png
+      image: /assets/icons/autoscaling.webp
     - title: Stream and Batch Analytics
       description: Provides apps to analyze both live data streams and historical data for complete insights and reporting.
-      image: /assets/icons/streamandbatchanalytics.png
+      image: /assets/icons/streamandbatchanalytics.webp
 
 cloud_providers:
   title: "Write Once, Run Anywhere"
   cloud_providers:
     - title: "Discover **Azure** through detailed feature breakdowns, video tutorials, and real-world case studies. <br> Expandable sections and clear CTAs help users explore deeper and take action with confidence."
-      logo: "/assets/images/azurelogo.png"
+      logo: "/assets/images/azurelogo.webp"
       link: "https://azure.microsoft.com/"
-      image: "/assets/images/macbookazure.png"
+      image: "/assets/images/macbookazure.webp"
     - title: "Explore **Google Cloud** through visual aids, step-by-step guides, and detailed capability insights. <br> Customer testimonials and a clean, intuitive design help teams move forward with confidence."
-      logo: "/assets/images/googlecloudlogo.png"
+      logo: "/assets/images/googlecloudlogo.webp"
       link: "https://cloud.google.com/"
-      image: "/assets/images/macbookgooglecloud.png"
+      image: "/assets/images/macbookgooglecloud.webp"
     - title: "Explore **AWS** through detailed feature insights, real-world case studies, and interactive experiences. <br> Clear call-to-action buttons and a structured layout help teams move faster and build with confidence."
-      logo: "/assets/images/aws-logo.png"
+      logo: "/assets/images/aws-logo.webp"
       link: "https://aws.amazon.com/"
-      image: "/assets/images/macbookaws.png"
+      image: "/assets/images/macbookaws.webp"
 
 private_cloud:
   title: Unlock the Potential of Your Private Cloud
@@ -72,10 +72,10 @@ private_cloud:
   features:
     - title: Flexibility
       description: Choose any cloud provider that fits your needs, such as AWS, Google Cloud, or Azure, without being locked into one vendor.
-      image: '/assets/icons/flexibilityrundataanycloud.png'
+      image: '/assets/icons/flexibilityrundataanycloud.webp'
     - title: Security
       description: Maintain high security standards with end-to-end encryption and compliance with industry regulations.
-      image: '/assets/icons/security.png'
+      image: '/assets/icons/security.webp'
 
   feature1:
     title: Flexibility

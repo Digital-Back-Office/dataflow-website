@@ -1,6 +1,7 @@
 ---
+import { Image } from "astro:assets";
 import { getEntry } from "astro:content";
-
+import image from '../../../public/assets/images/company-illustration.svg'
 const Data = await getEntry("company", "company");
 const data = Data.data.top_section;
 const tagline = data.tagline;
@@ -18,11 +19,13 @@ const tagline = data.tagline;
     </p>
   </div>
   <div class="w-full max-sm:scale-[150%] max-md:mt-10">
-    <img
-      loading="eager"
-      src="/assets/images/company-illustration.svg"
-      alt="Simplify Data Processing "
+    <!-- ensure `import Image from 'astro:assets'` is added to the component frontmatter -->
+    <Image
+      src={image}
+      alt="Simplify Data Processing"
       class="w-full max-sm:-ml-6"
+      loading="eager"
+      format="webp"
     />
   </div>
 </div>

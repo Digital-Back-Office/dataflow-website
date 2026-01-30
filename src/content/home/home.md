@@ -18,29 +18,29 @@ hero:
     - "Free consultation"
   supported_by:
     - name: "Google Cloud"
-      logo: "/assets/images/googlecloudlogo.png"
+      logo: "/assets/images/googlecloudlogo.webp"
     - name: "AWS"
-      logo: "/assets/images/aws-logo.png"
+      logo: "/assets/images/aws-logo.webp"
     - name: "NatWest"
-      logo: "/assets/images/nat-west-logo.png"
+      logo: "/assets/images/nat-west-logo.webp"
     - name: "NVIDIA"
-      logo: "/assets/images/nvidia-logo.png"
+      logo: "/assets/images/nvidia-logo.webp"
     - name: "Barclays"
-      logo: "/assets/images/barclays-logo.png"
+      logo: "/assets/images/barclays-logo.webp"
 
 tools:
   title: "Native integration with the tools"
   tool_items:
     - name: "Jupyter"
-      src: "/assets/images/apps/jupyterlogofull.png"
+      src: "/assets/images/apps/jupyterlogofull.webp"
     - name: "ML Flow"
-      src: "/assets/images/apps/mlflowlogofull.png"
+      src: "/assets/images/apps/mlflowlogofull.webp"
     - name: "Streamlit"
-      src: "/assets/images/apps/streamlit-logo.png"
+      src: "/assets/images/apps/streamlit-logo.webp"
     - name: "VS Code"
-      src: "/assets/images/apps/vs-code-logo.png"
+      src: "/assets/images/apps/vs-code-logo.webp"
     - name: "Dash"
-      src: "/assets/images/apps/dash-app-logo.png"
+      src: "/assets/images/apps/dash-app-logo.webp"
 
 how_it_works:
   title: "How it works?"
@@ -48,27 +48,27 @@ how_it_works:
     - title: Define Your Environment. Once.
       description_1: Forget managing 15 different requirements.txt files and resolving Docker conflicts.
       description_2: Create one environment. It syncs automatically across Airflow, your IDE, and all your data apps within Dataflow.
-      image: "/assets/images/how-it-works/placeholder.png"
+      image: "/assets/images/how-it-works/placeholder.webp"
 
     - title: Code within Dataflow
       description_1: A fully persistent workspace with VS Code or Jupyter Notebook. No manual .env files—your secrets and connections are pre-injected.
       description_2: Securely create connections (SQL, S3, Snowflake, etc) and secrets once. Access them instantly in your code using the Dataflow Python library.
-      image: "/assets/images/how-it-works/placeholder.png"
+      image: "/assets/images/how-it-works/placeholder.webp"
 
     - title: Schedule with Airflow. Zero Config.
       description_1: Launch Airflow with your DAGs in a few clicks. Use standard Airflow exactly as you know it—no proprietary syntax, no changed core functionality.
       description_2: All your connections, secrets, and Python environments are already synced.
-      image: "/assets/images/how-it-works/placeholder.png"
+      image: "/assets/images/how-it-works/placeholder.webp"
 
     - title: Visualize Your Data
       description_1: Build interactive data apps using Streamlit or Dash. Seamlessly pull data using your existing Dataflow connections.
       description_2: ""
-      image: "/assets/images/how-it-works/placeholder.png"
+      image: "/assets/images/how-it-works/placeholder.webp"
 
     - title: Deploy & Share
       description_1: Deploy applications in one click. We use the exact same Python environment from your workspace, ensuring the app works in production exactly as it did in workspace.
       description_2: Supports deploying projects created within Dataflow or imported from external sources.
-      image: "/assets/images/how-it-works/placeholder.png"
+      image: "/assets/images/how-it-works/placeholder.webp"
 
 features:
   title: "Essential Features"
@@ -78,7 +78,7 @@ features:
       description: Unleash your creativity with the Dataflow platform. Customize and optimize solutions to reflect your unique approach, transforming the cloud data landscape and demonstrating your own distinctive methods.
       cta_text: Learn more
       icon: "/assets/icons/icon-compass.svg"
-      image: /assets/images/runanycloud.png
+      image: /assets/images/runanycloud.webp
       href: /manage-your-data-connections
       color: { normal: "#FBE2F0", hover: "#D40F7D" }
 
@@ -119,7 +119,7 @@ use_cases:
         - "Real-time collaboration with your team"
       link: "/manage-your-data-connections"
       cta_text: "Learn more"
-      image: "/assets/images/app-screenshots/dashboard.png"
+      image: "/assets/images/app-screenshots/dashboard.webp"
       video: "/assets/videos/jupyter.mp4"
       imageAlt: "Data Exploration"
 
@@ -133,7 +133,7 @@ use_cases:
         - "Unified connection management across all pipelines"
       link: "/manage-your-data-connections"
       cta_text: "Learn more"
-      image: "/assets/images/app-screenshots/dashboard.png"
+      image: "/assets/images/app-screenshots/dashboard.webp"
       video: "/assets/videos/airflow.mp4"
       imageAlt: "ETL"
 
@@ -148,7 +148,7 @@ use_cases:
       link: "/apps"
       cta_text: "Learn more"
       video: "/assets/videos/data-visualisation.webm"
-      image: "/assets/images/app-screenshots/dashboard.png"
+      image: "/assets/images/app-screenshots/dashboard.webp"
       imageAlt: "Data Visualisation"
 
     - id: "analytics"
@@ -162,7 +162,7 @@ use_cases:
       link: "/manage-your-data-connections"
       cta_text: "Learn more"
       video: "/assets/videos/analysis.webm"
-      image: "/assets/images/app-screenshots/dashboard.png"
+      image: "/assets/images/app-screenshots/dashboard.webp"
       imageAlt: "Analytics"
 
 ship_apps_faster:
@@ -177,7 +177,7 @@ ship_apps_faster:
         - "Manage environment variables and secrets."
         - "Sync automatically across your entire stack."
       icon: "/assets/icons/clipboard.svg"
-      image: "/assets/images/how-it-works/define.png"
+      image: "/assets/images/how-it-works/define.webp"
 
     - number: 2
       title: "Develop"
@@ -187,7 +187,7 @@ ship_apps_faster:
         - "Build pipelines, ML models, and dashboards."
         - "Schedule Airflow jobs with zero manual config."
       icon: "/assets/icons/code.svg"
-      image: "/assets/images/how-it-works/develop.png"
+      image: "/assets/images/how-it-works/develop.webp"
 
     - number: 3
       title: "Deploy"
@@ -197,7 +197,7 @@ ship_apps_faster:
         - "Convert notebooks into live production APIs."
         - "Eliminate Dockerfiles and CI/CD management."
       icon: "/assets/icons/upload-cloud.svg"
-      image: "/assets/images/how-it-works/deploy.png"
+      image: "/assets/images/how-it-works/deploy.webp"
 
 enterprise:
   title: "Enterprise-Ready from Day One"

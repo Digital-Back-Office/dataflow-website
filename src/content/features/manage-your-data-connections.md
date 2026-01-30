@@ -5,7 +5,7 @@ top_section:
   button:
     label: "Get Started"
     href: "/book-demo"
-  hero_image: "/assets/images/app-screenshots/dashboard.png"
+  hero_image: "/assets/images/app-screenshots/dashboard.webp"
 
 comparison:
   heading: "The End of .env File Sprawl"
@@ -55,14 +55,14 @@ core_features:
   features:
     - title: Zero-Trust Security
       description: Secrets are encrypted at rest and in transit. We use industry-standard banking-grade encryption to ensure your credentials never leak.
-      image: /assets/icons/realtimeprocessing.png
+      image: /assets/icons/realtimeprocessing.webp
     - title: Audit Logs
       description: Know exactly who accessed which secret and when. Full audit trails for compliance (SOC2/ISO 27001).
-      image: /assets/icons/autoscaling.png
+      image: /assets/icons/autoscaling.webp
     - title: Scoped Permissions
       description: Limit access by environment. Ensure Production_DB credentials can only be accessed by the Prod Airflow cluster, not by a developer's local notebook.
-      image: /assets/icons/batchprocessing.png
+      image: /assets/icons/batchprocessing.webp
     - title: Unified experience
       description: Connections created in Dataflow are automatically available to all the apps. Use dataflow.connection to access it easily
-      image: /assets/icons/streamandbatchanalytics.png
+      image: /assets/icons/streamandbatchanalytics.webp
 ---

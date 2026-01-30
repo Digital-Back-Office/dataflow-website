@@ -55,7 +55,6 @@ import '../styles/global.css';
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
 
-    <!-- Import Google fonts -->
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/gh/orestbida/cookieconsent@3.0.1/dist/cookieconsent.css"
@@ -130,11 +129,16 @@ import '../styles/global.css';
     </div>
 
     <script is:inline>
-      document.addEventListener("DOMContentLoaded", () => {
-        if (window.AOS) {
-          AOS.init({ once: true });
-        }
-      });
+      window.addEventListener('load', () => {
+          requestIdleCallback(() => {
+            if (window.AOS) {
+              AOS.init({
+                once: true,
+                disableMutationObserver: true,
+              });
+            }
+          });
+        });
     </script>
   </body>
 </html>

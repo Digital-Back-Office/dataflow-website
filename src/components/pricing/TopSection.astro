@@ -35,14 +35,14 @@ const planfeature2 = data.table2
   <div class='flex justify-center items-center gap-x-5 mt-10 toggle-container'>
     <p class='text-lg text-textblack font-bold'>{data.hostown}</p>
     <label class='switch'>
-      <input class='toggle' type='checkbox' />
+      <input class='toggle' type='checkbox' checked />
       <span class='slider round'></span>
     </label>
     <p class='text-lg text-textblack font-bold'>{data.hostdata}</p>
   </div>
 
   <!-- HOST ON YOUR OWN CLOUD -->
-  <div class='price1 flex flex-wrap justify-center gap-10 my-20'>
+  <div class='price1 flex flex-wrap justify-center gap-10 my-20 hidden'>
     <!-- Free Tier -->
     <div
       class='w-[380px] max-sm:w-[90%] min-h-[900px] rounded-3xl drop-shadow-[0_15px_20px_rgba(0,0,0,0.1)]'
@@ -202,7 +202,7 @@ const planfeature2 = data.table2
 
   <!-- HOST ON DATAFLOW CLOUD -->
   <div
-    class='container-price2 price2 flex flex-wrap justify-center gap-8 my-20 hidden'
+    class='container-price2 price2 flex flex-wrap justify-center gap-8 my-20'
   >
     <!-- Cloud Hosted 1-->
     <div
@@ -563,7 +563,7 @@ const planfeature2 = data.table2
   </div>
 
   <!-- COMPARE PLANS -->
-  <div class='compare_plans_heading pb-20' data-aos="fade-up" data-aos-duration="850" data-aos-offset="200">
+  <div class='compare_plans_heading pb-20 hidden' data-aos="fade-up" data-aos-duration="850" data-aos-offset="200">
     <p class='text-calc font-bold text-textblack text-center px-10'>
       {data.heading}
     </p>
@@ -572,7 +572,7 @@ const planfeature2 = data.table2
   <!-- HOST ON YOUR OWN CLOUD - TABLE -->
   <div
     data-aos="fade-up" data-aos-duration="850" data-aos-offset="400"
-    class='pricetable1 relative w-4/5 flex flex-col justify-center items-center width95 rounded-[30px] border-[#E6E9F5] border overflow-hidden'
+    class='pricetable1 relative w-4/5 flex flex-col justify-center items-center width95 rounded-[30px] border-[#E6E9F5] border overflow-hidden hidden'
   >
     <div class='w-full flex bg-[#EEF2F6]'>
       <div

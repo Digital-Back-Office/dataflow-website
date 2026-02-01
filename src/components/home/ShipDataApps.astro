@@ -9,6 +9,7 @@ interface Step {
 }
 
 import { getEntry } from 'astro:content'
+import CustomButton from '../common/CustomButton.astro'
 
 const Data = await getEntry('home', 'home')
 
@@ -122,6 +123,15 @@ let steps: Step[] = data?.steps || defaultSteps
           </div>
         ))}
       </div>
+    </div>
+
+    <!-- CTA Button -->
+    <div class='flex justify-center mt-16'>
+      <CustomButton
+        label={data?.cta_button?.label || 'Start Building Now'}
+        href={data?.cta_button?.href || 'https://app.dataflow.zone'}
+        variant="primary"
+      />
     </div>
   </div>
 </section>

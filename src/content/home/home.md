@@ -198,6 +198,9 @@ ship_apps_faster:
         - "Eliminate Dockerfiles and CI/CD management."
       icon: "/assets/icons/upload-cloud.svg"
       image: "/assets/images/how-it-works/deploy.webp"
+  cta_button:
+    label: "Start Building Now"
+    href: "https://app.dataflow.zone"
 
 enterprise:
   title: "Enterprise-Ready from Day One"
@@ -212,6 +215,9 @@ enterprise:
     - title: "Secure Access"
       description: "SSO integration, secret encryption. Share environments without exposing credentials."
       icon: "/assets/icons/icon-cloud.svg"
+  cta_button:
+    label: "Explore Enterprise"
+    href: "/enterprise"
 
 support_section:
   title: "We've Got Your Back"

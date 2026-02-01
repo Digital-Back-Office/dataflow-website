@@ -1,5 +1,6 @@
 ---
 import { getEntry } from 'astro:content'
+import CustomButton from '../common/CustomButton.astro'
 
 const Data = await getEntry('home', 'home')
 const data = Data.data?.enterprise || null
@@ -68,6 +69,15 @@ const cards = data?.cards || [
           {cards[2].description}
         </p>
       </div>
+    </div>
+
+    <!-- CTA Button -->
+    <div class='flex justify-center mt-12'>
+      <CustomButton
+        label={data?.cta_button?.label || 'Learn More'}
+        href={data?.cta_button?.href || '/enterprise'}
+        variant="primary"
+      />
     </div>
   </div>
 </section>

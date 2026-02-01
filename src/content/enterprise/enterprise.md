@@ -33,6 +33,10 @@ sections:
     image: "/assets/images/app-screenshots/dashboard.webp"
     imageSide: "left"
 
+section_cta:
+  label: "Explore Enterprise Features"
+  href: "/book-demo"
+
 cta_section:
   title: "Ready to standardize your data stack?"
   description: "Get a tailored package that fits your security and compliance needs."

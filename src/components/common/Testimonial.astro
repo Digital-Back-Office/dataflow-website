@@ -32,30 +32,30 @@ const testimonials = testimonialsData.testimonials || []
       </button>
 
       <!-- Testimonial Stack -->
-      <div id="testimonial-container" class="relative w-full max-w-3xl max-sm:max-w-sm h-[25rem] max-sm:h-80">
+      <div id="testimonial-container" class="relative w-full max-w-3xl max-sm:max-w-sm h-[25rem] max-sm:h-auto max-sm:min-h-[22rem]">
         {testimonials.map((t, i) => (
           <div 
-        class="testimonial-card absolute w-full bg-white border border-slate-200 p-10 rounded-3xl shadow-lg transition-all duration-500 cursor-pointer flex flex-col justify-center items-center text-center h-[18rem]"
+        class="testimonial-card absolute w-full bg-white border border-slate-200 p-10 max-sm:p-6 rounded-3xl shadow-lg transition-all duration-500 cursor-pointer flex flex-col justify-center items-center text-center h-[18rem] max-sm:h-auto max-sm:min-h-[20rem]"
         style={`z-index: ${testimonials.length - i}; transform: translateY(${i * 16}px) scale(${1 - i * 0.04});`}
         data-index={i}
           >
         {/* <!-- Person Info First --> */}
-        <div class="mb-8">
+        <div class="mb-8 max-sm:mb-6">
           {
             t.image &&
             <img 
           src={t.image} 
           alt={t.name}
-          class="w-16 h-16 rounded-full object-cover mx-auto mb-4"
+          class="w-16 h-16 max-sm:w-12 max-sm:h-12 rounded-full object-cover mx-auto mb-4 max-sm:mb-3"
             />
           }
-          <h4 class="font-bold text-slate-900 text-lg">{t.name}</h4>
+          <h4 class="font-bold text-slate-900 text-lg max-sm:text-base">{t.name}</h4>
           <p class="text-xs uppercase tracking-wider text-[#14B8A6] font-semibold mt-1">{t.role}</p>
-          <p class="text-sm text-slate-500 italic ">{t.company || ""}</p>
+          <p class="text-sm max-sm:text-xs text-slate-500 italic ">{t.company || ""}</p>
         </div>
 
         <!-- Quote Message -->
-        <p class="text-lg italic text-slate-700">"{t.text}"</p>
+        <p class="text-lg max-sm:text-base italic text-slate-700 max-sm:line-clamp-4">"{t.text}"</p>
           </div>
         ))}
       </div>

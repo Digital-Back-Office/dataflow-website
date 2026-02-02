@@ -62,7 +62,7 @@ header:
               - title: "Blog"
                 icon-id: "blog"
                 description: "Data engineering insights"
-                href: "/blogs"
+                href: "/blog"
               - title: "YouTube"
                 icon-id: "youtube"
                 description: "Video tutorials"
@@ -121,7 +121,7 @@ footer:
     - heading: "Resources"
       links:
         - label: "Blog"
-          href: "/blogs"
+          href: "/blog"
         - label: "YouTube"
           href: "https://www.youtube.com/@DataFlowZone"
         - label: "Community"

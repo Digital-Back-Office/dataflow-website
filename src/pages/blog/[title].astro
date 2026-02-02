@@ -1,7 +1,6 @@
 ---
-import BlogLayout from '../../../layouts/BlogLayout.astro'
 import { getCollection } from 'astro:content'
-import Layout from '../../../layouts/Layout.astro'
+import Layout from '../../layouts/Layout.astro'
 
 export async function getStaticPaths() {
   const blogs = await getCollection('blogs')
@@ -18,10 +17,10 @@ export async function getStaticPaths() {
 
 const { data, body, render } = Astro.props
 const { title, date, tags, image } = data
-const { Content } = await render()
+const { Content } = await Astro.props.render()
 ---
 
-<Layout title=`Dataflow | ${title}`>
+<Layout title=`${title}`>
   <section class='px-[15%] max-sm:px-[20px] py-[80px] max-sm:py-[40px] pb-[140px]'>
     <!-- Breadcrumb -->
     <nav class='mb-6' aria-label='breadcrumb'>
@@ -31,7 +30,7 @@ const { Content } = await render()
         </li>
         <li class='text-gray-400'>/</li>
         <li>
-          <a href='/blogs' class='hover:text-primary transition-colors'>Blogs</a>
+          <a href='/blog' class='hover:text-primary transition-colors'>Blogs</a>
         </li>
         <li class='text-gray-400'>/</li>
         <li class='text-textblack font-medium line-clamp-1' aria-current='page'>

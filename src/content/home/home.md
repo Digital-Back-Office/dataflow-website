@@ -266,7 +266,7 @@ developers_love:
           href: "https://docs.dataflow.com"
           target: "_blank"
         - text: "Browse tutorials & blogs"
-          href: "/blogs"
+          href: "/blog"
     - title: "Try"
       description: "Experience Dataflow firsthand with our interactive demos and free trial."
       actions:

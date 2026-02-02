@@ -97,7 +97,6 @@ document.addEventListener('DOMContentLoaded', function () {
     pageNumbersContainer.innerHTML = '';
 
     const totalPages = Math.ceil(filteredArticles.length / POSTS_PER_PAGE);
-    console.log('filteredArticles.length :>> ', allArticles);
     if (totalPages <= 1) {
       prevBtn.disabled = true;
       nextBtn.disabled = true;

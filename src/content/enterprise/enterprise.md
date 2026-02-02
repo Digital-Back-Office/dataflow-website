@@ -40,7 +40,8 @@ section_cta:
 cta_section:
   title: "Ready to standardize your data stack?"
   description: "Get a tailored package that fits your security and compliance needs."
+  should_redirect: false
   button:
-    text: "Get a Custom Quote"
+    text: "Get Started"
     href: "/book-demo"
 ---

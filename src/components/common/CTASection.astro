@@ -8,9 +8,11 @@ interface Props {
   formId: string
   pageSource: string
   note?: string
+  ctaRedirect?: boolean
+  buttonHref?: string
 }
 
-const { title, description, buttonText = "Get Started", formId, pageSource, note } = Astro.props
+const { title, description, buttonText = "Get Started", formId, pageSource, note, ctaRedirect, buttonHref } = Astro.props
 ---
 
 <section 
@@ -35,6 +37,8 @@ const { title, description, buttonText = "Get Started", formId, pageSource, note
         formId={formId}
         pageSource={pageSource}
         buttonText={buttonText}
+        shouldRedirect={ctaRedirect ?? true}
+        href={buttonHref}
       />
     </div>
     

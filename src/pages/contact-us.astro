@@ -177,6 +177,7 @@ const data = Data.data
   </section>
 </Layout>
 <script type='module'>
+  var formId = import.meta.env.PUBLIC_GOOGLE_FORM_ID
   document
     .getElementById('myForm')
     .addEventListener('submit', async function (event) {
@@ -184,7 +185,7 @@ const data = Data.data
 
       const formData = new FormData(this)
       const url =
-        'https://docs.google.com/forms/u/0/d/e/1FAIpQLSeGjuyA_jjDmmT4jTY96s0CgCL_JKOJlNrTRqJ-9iqRmlEPKw/formResponse'
+        `https://docs.google.com/forms/u/0/d/e/${formId}/formResponse`
 
       try {
         await fetch(url, {

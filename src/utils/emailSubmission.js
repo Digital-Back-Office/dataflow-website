@@ -1,5 +1,7 @@
+const formId = '1FAIpQLScm9m5YZa0bdolEh1Sk3siQZgC2scoDnjc7gYk7xodB3WP2Vw';
+
 const GOOGLE_FORM_CONFIG = {
-  formUrl: 'https://docs.google.com/forms/d/e/1FAIpQLScm9m5YZa0bdolEh1Sk3siQZgC2scoDnjc7gYk7xodB3WP2Vw/formResponse',
+  formUrl: `https://docs.google.com/forms/d/e/${formId}/formResponse`,
   emailEntryId: 'entry.1103074482',
   pageSourceEntryId: 'entry.1402974516'
 }
@@ -42,7 +44,7 @@ function redirectToApp(email) {
 }
 
 
-export async function handleEmailSubmit(email, pageSource = 'unknown') {
+export async function handleEmailSubmit(email, pageSource = 'unknown', shouldRedirect = true, customHref = '') {
   const trimmedEmail = email.trim()
   
   // Validate email
@@ -54,18 +56,23 @@ export async function handleEmailSubmit(email, pageSource = 'unknown') {
   // Submit to Google Form (non-blocking)
   await submitToGoogleForm(trimmedEmail, pageSource)
   
-  // Redirect to app
-  redirectToApp(trimmedEmail)
+  // Redirect based on shouldRedirect flag
+  if (shouldRedirect) {
+    redirectToApp(trimmedEmail)
+  } else if (customHref) {
+    window.location.href = customHref
+  }
 }
 
-export function setupEmailForm(formId, emailInputId, pageSource = 'unknown') {
+export function setupEmailForm(formId, emailInputId, pageSource = 'unknown', shouldRedirect = true, customHref = '') {
   const form = document.getElementById(formId)
   const emailInput = document.getElementById(emailInputId)
   
   if (form && emailInput) {
     form.addEventListener('submit', async (e) => {
       e.preventDefault()
-      await handleEmailSubmit(emailInput.value, pageSource)
+      await handleEmailSubmit(emailInput.value, pageSource, shouldRedirect, customHref)
     })
   }
+
 }

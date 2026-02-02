@@ -13,7 +13,7 @@ header:
           - heading: "Features"
             span: 3
             items:
-              - title: "Cloud Agnostics"
+              - title: "Cloud Agnostic"
                 icon-id: "cloud"
                 description: "Deploy to AWS, Azure, or Google Cloud"
                 href: "/product/cloud-agnostic"

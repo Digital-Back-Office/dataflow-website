@@ -16,15 +16,15 @@ header:
               - title: "Cloud Agnostics"
                 icon-id: "cloud"
                 description: "Deploy to AWS, Azure, or Google Cloud"
-                href: "/run-dataflow-on-any-cloud"
+                href: "/product/cloud-agnostic"
               - title: "Shared Foundation"
                 icon-id: "foundation"
                 description: "Connect your data across apps"
-                href: "/manage-your-data-connections"
+                href: "/product/shared-foundation"
               - title: "Deploy in one click"
                 icon-id: "deploy"
-                description: "Isolated Python environments"
-                href: "/say-goodbye-to-python-dependency-hell"
+                description: "Shared Python environments"
+                href: "/product/deploy-in-one-click"
           - heading: "Product"
             span: 2
             items:
@@ -39,15 +39,15 @@ header:
           - title: "Enterprise"
             icon-id: "enterprise"
             description: "For large teams"
-            href: "/enterprise"
+            href: "/solutions/enterprise"
           - title: "Startups & SMEs"
             icon-id: "startups"
             description: "Scale fast, start lean"
-            href: "/startups-smes"
+            href: "/solutions/startups-smes"
           - title: "Personal"
             icon-id: "personal"
             description: "Free for learning & projects"
-            href: "/personal"
+            href: "/solutions/personal"
       - label: "Community"
         type: "mega"
         width: "w-[600px]"
@@ -102,21 +102,21 @@ footer:
   sections:
     - heading: "Product"
       links:
-        - label: "Run Dataflow on any cloud"
-          href: "/run-dataflow-on-any-cloud"
-        - label: "Manage your data connections"
-          href: "/manage-your-data-connections"
-        - label: "No Dependency Hell"
-          href: "/say-goodbye-to-python-dependency-hell"
+        - label: "Cloud Agnostics"
+          href: "/product/cloud-agnostic"
+        - label: "Shared Foundation"
+          href: "/product/shared-foundation"
+        - label: "Deploy in one click"
+          href: "/product/deploy-in-one-click"
 
     - heading: "Solutions"
       links:
         - label: "Enterprise"
-          href: "/enterprise"
+          href: "/solutions/enterprise"
         - label: "Startups & SMEs"
-          href: "/startups-smes"
+          href: "/solutions/startups-smes"
         - label: "Personal"
-          href: "/personal"
+          href: "/solutions/personal"
 
     - heading: "Resources"
       links:
@@ -154,9 +154,9 @@ footer:
   bottom_bar:
     links:
       - label: "Privacy Policy"
-        href: "/privacy-policy"
+        href: "/legal/privacy-policy"
       - label: "Terms and Conditions"
-        href: "/terms-and-conditions"
+        href: "/legal/terms-and-conditions"
 
         
   social_links:
@@ -169,7 +169,7 @@ footer:
     - platform: "youtube"
       url: "https://www.youtube.com/@DataFlowZone"
       icon: "/assets/icons/icon-youtube.svg"
-    - platform: "Discourse"
-      url: "https://discourse.dataflow.com"
-      icon: "/assets/icons/icon-discourse.svg"
+    # - platform: "Discourse"
+    #   url: "https://discourse.dataflow.com"
+    #   icon: "/assets/icons/icon-discourse.svg"
 ---

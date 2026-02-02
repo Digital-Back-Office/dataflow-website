@@ -6,11 +6,16 @@ interface Props {
 }
 
 const {
-  title = "Dataflow | AI ready data platform",
+  title,
   header = true,
   meta_description = "AI ready data platform in less than 30 minutes",
 } = Astro.props;
 
+const pageTitle = Astro.url.pathname === "/" 
+  ? "Dataflow | AI ready data platform" 
+  : title && title !== "Dataflow" 
+    ? title + " | Dataflow - AI ready data platform" 
+    : "Dataflow | AI ready data platform";
 
 import Footer from "../components/common/Footer.astro";
 import Header from "../components/common/Header.astro";
@@ -61,7 +66,7 @@ import '../styles/global.css';
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/gh/orestbida/cookieconsent@3.0.1/dist/cookieconsent.css"
     />
-    <title>{title}</title>
+    <title>{pageTitle}</title>
 
     <!-- Open Graph Meta Tags -->
     <meta property="og:title" content="Dataflow | AI ready data platform" />

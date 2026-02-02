@@ -16,11 +16,11 @@ const { image, title, description, bg, height = null, width = null, href = null 
   </p>
   {
     href && label && (
-      <a href={href} class='mt-2 text-primary hover:underline' target={target}>
+      <a href={href} class='mt-2 text-primary group-hover:text-white hover:underline' target={target}>
         {label}
         <img 
           src='/assets/images/arrowright.webp' 
-          class='inline-block ml-2'
+          class='inline-block ml-2 group-hover:brightness-0 group-hover:invert'
         />
       </a>
     )

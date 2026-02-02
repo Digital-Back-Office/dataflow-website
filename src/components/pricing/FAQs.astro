@@ -26,14 +26,45 @@ let faqs = faqContent.faqs
     cursor: pointer;
     border-radius: 10px;
     margin-top: 20px;
+    padding: 20px;
+    transition: all 0.3s ease;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .faq-question:hover {
+    background-color: rgba(0, 0, 0, 0.02);
   }
 
   .faq-answer {
     background-color: white;
     border-radius: 0 0 10px 10px;
     margin-bottom: 10px;
-    display: none;
-    transform: translateY(-5px);
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: max-height 0.3s ease, opacity 0.3s ease;
+    border-top: 1px solid #d2d2d27b;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.05);
+  }
+
+  .faq-answer.open {
+    max-height: 500px;
+    opacity: 1;
+    padding: 20px;
+  }
+
+  .faq-answer.closed {
+    padding: 0 20px;
+  }
+
+  .icon {
+    transition: transform 0.3s ease;
+    display: inline-block;
+    flex-shrink: 0;
+  }
+
+  .icon.open {
+    transform: rotate(180deg);
   }
 
   .faq-content {
@@ -63,15 +94,15 @@ let faqs = faqContent.faqs
       faqs.map((faq, index) => (
         <div class='faq'>
           <div
-            class={`faq-question z-10 cursor-pointer flex justify-between items-center py-6 shadow-[0px_0px_80px_rgba(0,0,0,0.1)]`}
+            class={`faq-question z-10 cursor-pointer flex justify-between items-center`}
             data-index={index}
           >
-            <span class='ml-5 text-textblack text-xl font-bold'>
+            <span class='ml-5 text-textblack text-xl font-bold flex-1'>
               {faq.question}
             </span>
-            <i class='icon fas fa-chevron-down mr-5 text-textblack' />
+            <i class={`icon fas fa-chevron-down mr-5 text-textblack ${index === 0 ? 'open' : ''}`} />
           </div>
-          <div style={`display: ${index === 0 ? 'block' : 'none'}`} class='faq-answer text-base text-textblack shadow-lg  border-t-[1px] border-[#d2d2d27b] p-5 py-6'>
+          <div class={`faq-answer text-base text-textblack ${index === 0 ? 'open' : 'closed'}`}>
             {faq.answer}
           </div>
         </div>
@@ -88,26 +119,35 @@ let faqs = faqContent.faqs
       const faqQuestion = target.closest('.faq-question') 
       if (!faqQuestion) return
 
-      const index = faqQuestion.dataset.index
       const faqAnswer = faqQuestion.nextElementSibling 
+      const icon = faqQuestion.querySelector('.icon')
 
-      if (faqAnswer.style.display === 'block') {
-        faqAnswer.style.display = 'none'
-        faqQuestion.querySelector('.icon')?.classList.remove('fa-chevron-up')
-        faqQuestion.querySelector('.icon')?.classList.add('fa-chevron-down')
-      } else {
-        const currentlyOpen = faqContainer.querySelector(
-          '.faq-answer[style*="display: block"]'
-        ) 
-        if (currentlyOpen) {
-          currentlyOpen.style.display = 'none'
-          currentlyOpen.previousElementSibling?.querySelector('.icon')?.classList.remove('fa-chevron-up')
-          currentlyOpen.previousElementSibling?.querySelector('.icon')?.classList.add('fa-chevron-down')
+      // Close all other open FAQs
+      const allAnswers = faqContainer.querySelectorAll('.faq-answer')
+      const allIcons = faqContainer.querySelectorAll('.faq-question .icon')
+      
+      allAnswers.forEach((answer) => {
+        if (answer !== faqAnswer) {
+          answer.classList.remove('open')
+          answer.classList.add('closed')
         }
+      })
 
-        faqAnswer.style.display = 'block'
-        faqQuestion.querySelector('.icon')?.classList.remove('fa-chevron-down')
-        faqQuestion.querySelector('.icon')?.classList.add('fa-chevron-up')
+      allIcons.forEach((i) => {
+        if (i !== icon) {
+          i.classList.remove('open')
+        }
+      })
+
+      // Toggle current FAQ
+      if (faqAnswer.classList.contains('open')) {
+        faqAnswer.classList.remove('open')
+        faqAnswer.classList.add('closed')
+        icon?.classList.remove('open')
+      } else {
+        faqAnswer.classList.remove('closed')
+        faqAnswer.classList.add('open')
+        icon?.classList.add('open')
       }
     })
   })

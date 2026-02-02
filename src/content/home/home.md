@@ -79,32 +79,32 @@ features:
       cta_text: Learn more
       icon: "/assets/icons/icon-compass.svg"
       image: /assets/images/runanycloud.webp
-      href: /manage-your-data-connections
+      href: /product/shared-foundation
       color: { normal: "#FBE2F0", hover: "#D40F7D" }
 
     - title: Goodbye, Dependency Hell
       description: No more pip install errors or dependency issues. Dataflow allows you to create, manage, and share custom Python environments with a single click. Whether you are building legacy data pipelines or cutting-edge GenAI models, your dependencies are containerized, portable, and immutable. Focus on your code, not your config files.
       cta_text: Learn more
       icon: "/assets/icons/icon-link-attached.svg"
-      href: /say-goodbye-to-python-dependency-hell
+      href: /product/deploy-in-one-click
 
     - title: Run on Any Cloud
       description: Deploy Dataflow on AWS, Google Cloud, Azure, or your private on-premise cloud. Spin up persistent workspaces with the exact compute power you need—from standard CPUs to high-performance GPUs—and never worry about losing your work.
       cta_text: Learn more
       icon: "/assets/icons/icon-cloud-with-links.svg"
-      href: /run-dataflow-on-any-cloud
+      href: /product/cloud-agnostic
 
     - title: Share Apps Instantly
       description: Turn your notebooks and scripts into live, shareable URLs in minutes. Forget complex Dockerfiles and CI/CD pipelines—Dataflow automates the entire production deployment process. You build the logic; we handle the DevOps.
       cta_text: Learn more
       icon: "/assets/icons/icon-forward.svg"
-      href: /say-goodbye-to-python-dependency-hell
+      href: /product/deploy-in-one-click
 
     - title: Bring your team in one place
       description: Scale securely with robust governance. Manage permissions via RBAC, audit actions with comprehensive logs, and share environments across teams without exposing sensitive credentials.
       cta_text: Learn more
       icon: "/assets/icons/icon-people-with-tick.svg"
-      href: /manage-your-data-connections
+      href: /product/shared-foundation
 
 use_cases:
   title: "Built for All Data Use Cases"
@@ -117,7 +117,7 @@ use_cases:
         - "Interactive Jupyter notebooks with persistent workspaces"
         - "Pre-configured connections to all your data sources"
         - "Real-time collaboration with your team"
-      link: "/manage-your-data-connections"
+      link: "/product/shared-foundation"
       cta_text: "Learn more"
       image: "/assets/images/app-screenshots/dashboard.webp"
       video: "/assets/videos/jupyter.mp4"
@@ -131,7 +131,7 @@ use_cases:
         - "Native Airflow with auto-synced environments"
         - "DBT integration for data transformations"
         - "Unified connection management across all pipelines"
-      link: "/manage-your-data-connections"
+      link: "/product/shared-foundation"
       cta_text: "Learn more"
       image: "/assets/images/app-screenshots/dashboard.webp"
       video: "/assets/videos/airflow.mp4"
@@ -159,7 +159,7 @@ use_cases:
         - "MLflow integration for model tracking and deployment"
         - "GPU support for deep learning workloads"
         - "Reproducible experiments with environment management"
-      link: "/manage-your-data-connections"
+      link: "/product/shared-foundation"
       cta_text: "Learn more"
       video: "/assets/videos/analysis.webm"
       image: "/assets/images/app-screenshots/dashboard.webp"
@@ -217,7 +217,7 @@ enterprise:
       icon: "/assets/icons/icon-cloud.svg"
   cta_button:
     label: "Explore Enterprise"
-    href: "/enterprise"
+    href: "/solutions/enterprise"
 
 support_section:
   title: "We've Got Your Back"

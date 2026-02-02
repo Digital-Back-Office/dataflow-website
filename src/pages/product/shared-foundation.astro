@@ -1,10 +1,10 @@
 ---
-import Benefits from '../components/features/manage-data-efficiently/Benefits.astro'
-import DataConnections from '../components/features/manage-data-efficiently/DataConnections.astro'
-import FeatureGrid from '../components/common/FeatureGrid.astro'
-import Comparison from '../components/features/manage-data-efficiently/Comparison.astro'
-import TopSection from '../components/common/TopSection.astro'
-import Layout from '../layouts/Layout.astro'
+import Benefits from '../../components/features/manage-data-efficiently/Benefits.astro'
+import DataConnections from '../../components/features/manage-data-efficiently/DataConnections.astro'
+import FeatureGrid from '../../components/common/FeatureGrid.astro'
+import Comparison from '../../components/features/manage-data-efficiently/Comparison.astro'
+import TopSection from '../../components/common/TopSection.astro'
+import Layout from '../../layouts/Layout.astro'
 import { getEntry } from 'astro:content'
 
 const Data = await getEntry('features', 'manage-your-data-connections')
@@ -14,7 +14,7 @@ const meta_description = top.description ?? 'Seamlessly manage your data connect
 ---
 
 <Layout
-  title='Manage your data connections'
+  title='Shared Foundation'
   meta_description={meta_description}
 >
   <TopSection

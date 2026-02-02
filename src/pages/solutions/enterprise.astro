@@ -1,11 +1,11 @@
 ---
-import Layout from '../layouts/Layout.astro'
-import TopSection from '../components/common/TopSection.astro'
-import TwoColumnSection from '../components/common/TwoColumnSection.astro'
+import Layout from '../../layouts/Layout.astro'
+import TopSection from '../../components/common/TopSection.astro'
+import TwoColumnSection from '../../components/common/TwoColumnSection.astro'
 import { getEntry } from 'astro:content'
-import Testimonial from '../components/common/Testimonial.astro'
-import CTASection from '../components/common/CTASection.astro'
-import CustomButton from '../components/common/CustomButton.astro'
+import Testimonial from '../../components/common/Testimonial.astro'
+import CTASection from '../../components/common/CTASection.astro'
+import CustomButton from '../../components/common/CustomButton.astro'
 
 const Data = await getEntry('enterprise', 'enterprise')
 const top = Data?.data?.top_section || {}

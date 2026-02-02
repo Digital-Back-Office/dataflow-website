@@ -1,12 +1,12 @@
 ---
-import Layout from '../layouts/Layout.astro'
-import TopSection from '../components/common/TopSection.astro'
+import Layout from '../../layouts/Layout.astro'
+import TopSection from '../../components/common/TopSection.astro'
 // InfiniteScrollLogos replaced with a simple flex logo list (client-side scrolling removed)
-import FeatureGrid from '../components/common/FeatureGrid.astro'
-import PrivateCloud from '../components/features/run-data-on-any-cloud/PrivateCloud.astro'
+import FeatureGrid from '../../components/common/FeatureGrid.astro'
+import PrivateCloud from '../../components/features/run-data-on-any-cloud/PrivateCloud.astro'
 import { getEntry } from 'astro:content'
-import Section from '../components/features/run-data-on-any-cloud/Section.astro'
-import Benefits from '../components/features/run-data-on-any-cloud/Benefits.astro'
+import Section from '../../components/features/run-data-on-any-cloud/Section.astro'
+import Benefits from '../../components/features/run-data-on-any-cloud/Benefits.astro'
 
 const Data = await getEntry('features', 'run-data-on-any-cloud')
 const top = Data?.data?.top_section || {}
@@ -18,7 +18,7 @@ const meta_description = top.description ?? 'Upgrade your data management and pr
 ---
 
 <Layout
-  title='Run Data on any cloud'
+  title='Cloud Agnostic'
   meta_description={meta_description}
 >
   <TopSection
@@ -30,9 +30,8 @@ const meta_description = top.description ?? 'Upgrade your data management and pr
     imageSide="right"
     bg="white"
   />
-  <!-- Replaced InfiniteScrollLogos with a simple, accessible flex list of logos -->
   {companyLogos && companyLogos.logos && (
-    <section class="py-8">
+    <section class="py-8" data-aos="fade-up">
       {companyLogos.title && (
         <h3 class="text-center text-lg font-semibold text-gray-700 mb-6">{companyLogos.title}</h3>
       )}

@@ -10,7 +10,7 @@ top_section:
 sections:
   - title: "Scale Operations, Not Chaos"
     description: "As your data team grows, so does the complexity of your infrastructure. Dataflow provides a centralized command center to govern users, manage compute quotas, and enforce security policies across the entire organization. Eliminate \"Shadow IT\" and gain complete visibility into your data stack."
-    image: "/assets/images/app-screenshots/dashboard.webp"
+    image: "/assets/images/enterprise/scale-operations-not-chaos.webp"
     imageSide: "left"
     
   - title: "Role-Based Access Control"

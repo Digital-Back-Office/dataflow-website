@@ -1,8 +1,8 @@
 ---
-import Layout from '../layouts/Layout.astro'
-import TopSection from '../components/common/TopSection.astro'
-import FeatureGrid from '../components/common/FeatureGrid.astro'
-import TwoColumnSection from '../components/common/TwoColumnSection.astro'
+import Layout from '../../layouts/Layout.astro'
+import TopSection from '../../components/common/TopSection.astro'
+import FeatureGrid from '../../components/common/FeatureGrid.astro'
+import TwoColumnSection from '../../components/common/TwoColumnSection.astro'
 import { getEntry } from 'astro:content'
 
 const Data = await getEntry('features', 'python-dependency-hell')
@@ -13,7 +13,7 @@ const meta_description = top.description ?? 'Effortlessly manage and resolve Pyt
 ---
 
 <Layout
-  title='Say Goodbye to Python Dependency Hell'
+  title='Deploy in One Click'
   meta_description={meta_description}
 >
   <TopSection

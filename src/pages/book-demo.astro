@@ -26,19 +26,19 @@ const hiddenActionValue = form?.hidden_action_value || 'Book a demo'
       </div>
       <div class='h-full w-full flex flex-col'>
         {highlights?.map((item) => (
-          <div class='w-full flex items-start mb-10'>
+          <div class='w-full flex items-start mb-10 p-4 rounded-lg hover:bg-gray-50 transition-colors duration-200'>
             <img
               src={item.image}
               width='50px'
               height='50px'
-              class='mr-5'
+              class='mr-5 flex-shrink-0'
               alt={item.title}
             />
             <div>
-              <h3 class='text-2xl font-bold 1 text-textblack'>
+              <h3 class='text-2xl font-bold text-textblack mb-2'>
                 {item.title}
               </h3>
-              <p class='text-base text-textblack'>{item.description}</p>
+              <p class='text-base text-gray-600 leading-relaxed'>{item.description}</p>
             </div>
           </div>
         ))}
@@ -47,7 +47,7 @@ const hiddenActionValue = form?.hidden_action_value || 'Book a demo'
     <div
       id='formcontainer'
       data-aos="fade-left" data-aos-duration="850" data-aos-offset="200"
-      class='container-child-2 w-3/6 max-w-[600px] min-h-[550px] ml-10 border-[1.5px] border-[#E0E0E0] flex flex-col items-center justify-center rounded-2xl px-[3%] max-sm:px-3 bg-white py-12 max-sm:py-3'
+      class='container-child-2 w-3/6 max-w-[600px] min-h-[550px] ml-10 border-[1.5px] border-[#E0E0E0] flex flex-col items-center justify-center rounded-2xl px-[3%] max-sm:px-3 bg-white py-12 max-sm:py-3 shadow-lg hover:shadow-xl transition-shadow duration-300'
     >
       <form id='myForm' class='w-full items-center justify-between'>
         {formFields.map((field) => (
@@ -59,7 +59,7 @@ const hiddenActionValue = form?.hidden_action_value || 'Book a demo'
               <select
                 required
                 id={field.id}
-                class='custom-input border border-[#E0E0E0] rounded-lg h-10 p-2 text-[#9ca3b1] text-[14px]'
+                class='custom-input border border-[#E0E0E0] rounded-lg h-10 p-2 text-[#9ca3b1] text-[14px] transition-all duration-200 hover:border-primary/50'
                 name={field.name_attr}
               >
                 <option value='' disabled selected>
@@ -75,7 +75,7 @@ const hiddenActionValue = form?.hidden_action_value || 'Book a demo'
                 id={field.id}
                 required
                 placeholder={field.placeholder}
-                class='date-picker custom-input border border-[#E0E0E0] rounded-lg h-10 p-2'
+                class='date-picker custom-input border border-[#E0E0E0] rounded-lg h-10 p-2 transition-all duration-200 hover:border-primary/50'
                 name={field.name_attr}
               />
             ) : field.type === 'textarea' ? (
@@ -83,7 +83,7 @@ const hiddenActionValue = form?.hidden_action_value || 'Book a demo'
                 required
                 name={field.name_attr}
                 placeholder={field.placeholder}
-                class='custom-input border border-[#E0E0E0] rounded-lg p-2'
+                class='custom-input border border-[#E0E0E0] rounded-lg p-2 transition-all duration-200 hover:border-primary/50'
                 rows='5'
                 cols='30'
                 style='resize:none'
@@ -93,13 +93,13 @@ const hiddenActionValue = form?.hidden_action_value || 'Book a demo'
                 required
                 type={field.type || 'text'}
                 placeholder={field.placeholder}
-                class='custom-input border border-[#E0E0E0] rounded-lg h-10 p-2'
+                class='custom-input border border-[#E0E0E0] rounded-lg h-10 p-2 transition-all duration-200 hover:border-primary/50'
                 name={field.name_attr}
               />
             )}
           </div>
         ))}
-        <div class='text-xs hidden' id='available-slots-container'>
+        <div class='text-xs' id='available-slots-container'>
           <label
             class='show-available-slots text-base 2xl:text-lg font-bold text-textblack'
           >
@@ -110,8 +110,12 @@ const hiddenActionValue = form?.hidden_action_value || 'Book a demo'
               required
               id='available-slots'
               name='entry.1284317816'
-              class='available-slots border border-[#E0E0E0] w-full rounded-lg h-10 p-2 text-[#9ca3b1] text-[14px]'
+              disabled
+              class='available-slots border border-[#E0E0E0] w-full rounded-lg h-10 p-2 text-[#9ca3b1] text-[14px] disabled:bg-gray-50 disabled:cursor-not-allowed'
             >
+              <option value='' selected disabled>
+                Select date to get available slots
+              </option>
             </select>
           </div>
         </div>
@@ -364,7 +368,7 @@ const hiddenActionValue = form?.hidden_action_value || 'Book a demo'
   document.getElementById('date').addEventListener('change', async function () {
     this.style.color = '#303030'
 
-    const selectElement = document.getElementById('available-slots')
+    const selectElement = document.getElementById('available-slots') as HTMLSelectElement
     const slotsContainer = document.getElementById('available-slots-container')
     const BookDemoBtn = document.getElementById('book-demo-btn') as HTMLButtonElement
 
@@ -373,6 +377,11 @@ const hiddenActionValue = form?.hidden_action_value || 'Book a demo'
     let timezone = Intl.DateTimeFormat().resolvedOptions().timeZone
 
     var url = `https://script.google.com/macros/s/${appScriptID}/exec`
+
+    // Show loading state
+    selectElement.innerHTML = '<option value="" selected disabled>Loading available slots...</option>'
+    selectElement.disabled = false
+    selectElement.style.color = '#9ca3b1'
 
     fetch(`${url}?date=${date}&timezone=${timezone}`)
       .then((res) => res.json())
@@ -384,19 +393,22 @@ const hiddenActionValue = form?.hidden_action_value || 'Book a demo'
 
         if (availableSlots.length === 0) {
           const option = document.createElement('option')
-          option.value = null
+          option.value = ''
           option.textContent = 'No Available Slots'
           option.selected = true
-          option.style.color = '#393939'
+          option.disabled = true
+          option.style.color = '#9ca3b1'
           selectElement.appendChild(option)
-          slotsContainer.classList.remove('hidden')
+          selectElement.disabled = true
+          BookDemoBtn.disabled = true
           return
         } else {
           const option = document.createElement('option')
-          option.value = null
+          option.value = ''
           option.textContent = 'Select a slot'
-          option.style.color = '#393939'
+          option.style.color = '#9ca3b1'
           option.selected = true
+          option.disabled = true
           selectElement.appendChild(option)
         }
 
@@ -407,12 +419,29 @@ const hiddenActionValue = form?.hidden_action_value || 'Book a demo'
           option.style.color = '#393939'
           selectElement.appendChild(option)
         })
-        slotsContainer.classList.remove('hidden')
-        BookDemoBtn.disabled = false
+        
+        // Enable the dropdown for user selection
+        selectElement.disabled = false
       })
       .catch((err) => {
         console.log('err here :>> ', err)
+        selectElement.innerHTML = '<option value="" selected disabled>Error loading slots. Please try again.</option>'
+        selectElement.disabled = true
+        BookDemoBtn.disabled = true
       })
+  })
+
+  // Enable submit button when a slot is selected
+  document.getElementById('available-slots').addEventListener('change', function () {
+    const BookDemoBtn = document.getElementById('book-demo-btn') as HTMLButtonElement
+    const selectElement = this as HTMLSelectElement
+    
+    if (selectElement.value) {
+      BookDemoBtn.disabled = false
+      selectElement.style.color = '#303030'
+    } else {
+      BookDemoBtn.disabled = true
+    }
   })
 </script>
 
@@ -428,7 +457,13 @@ const hiddenActionValue = form?.hidden_action_value || 'Book a demo'
   .custom-input:focus {
     border-color: #1dd0d5;
     outline: none;
+    box-shadow: 0 0 0 3px rgba(29, 208, 213, 0.1);
   }
+  
+  .custom-input:hover {
+    border-color: rgba(29, 208, 213, 0.5);
+  }
+  
   input[type='checkbox'] {
     accent-color: rgb(0, 164, 156);
   }
@@ -439,17 +474,10 @@ const hiddenActionValue = form?.hidden_action_value || 'Book a demo'
     margin-bottom: 20px;
   }
 
-  /* @media (max-width: 500px) {
-    input,
-    select,
-    textarea {
-      margin-bottom: 10px;
-    }
-  } */
-
   input::placeholder,
   textarea::placeholder {
     font-size: 14px;
+    color: #9ca3b1;
   }
 
   select {
@@ -457,6 +485,12 @@ const hiddenActionValue = form?.hidden_action_value || 'Book a demo'
     -moz-appearance: none;
     appearance: none;
     background: url('/assets/icons/Icon-select-down.svg') no-repeat 98.5% 50%;
+    cursor: pointer;
+  }
+  
+  select:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
   }
 
   label {
@@ -468,15 +502,19 @@ const hiddenActionValue = form?.hidden_action_value || 'Book a demo'
       flex-direction: column;
       padding-left: 10px;
       padding-right: 10px;
+      padding-top: 40px;
+      padding-bottom: 40px;
     }
 
     .container-child-1 {
       width: 100%;
+      padding-right: 0;
+      margin-bottom: 40px;
     }
 
     .container-child-2 {
       width: 100%;
-      margin: 0%;
+      margin: 0;
     }
 
     .colcontainer {

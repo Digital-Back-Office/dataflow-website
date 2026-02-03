@@ -3,7 +3,7 @@ title: 'Exploring Apache Spark with Dataflow: Accelerating Big Data Analytics'
 description: 'How to leverage Apache Spark with Dataflow for big data processing'
 tags: ['spark', 'dataflow', 'bigdata']
 date: '20 Oct, 2024'
-image: /assets/images/contactusimage.webp
+image: /assets/images/blog/explore-apache-spark.webp
 category: ["engineering"]
 ---
 

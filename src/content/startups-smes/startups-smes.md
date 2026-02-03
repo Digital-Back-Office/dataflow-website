@@ -5,7 +5,7 @@ top_section:
   button:
     label: "Start Free Trial"
     href: "/start-free-trail"
-  hero_image: "/assets/images/enterprise/hero-image.webp"
+  hero_image: "/assets/images/startups/hero-image.webp"
 
 sections:
   - title: "Move Fast Without Breaking Things"

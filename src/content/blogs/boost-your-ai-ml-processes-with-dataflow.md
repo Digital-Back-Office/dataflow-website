@@ -3,7 +3,7 @@ title: 'Boost Your AI/ML Processes with Dataflow: Using Airflow and MLflow to Au
 description: 'Simple guide to boost your AI/ML processes with Dataflow'
 tags: ['Auth', 'NextAuth',"News"]
 date: '29 Sept, 2024'
-image: /assets/images/contactusimage.webp
+image: /assets/images/blog/boost-your.webp
 category: ["news"]
 ---
 
@@ -46,7 +46,6 @@ By combining these two potent apps into a single platform with **Dataflow**, you
 
 By combining **Airflow** and **MLflow**, **Dataflow** provides you with a comprehensive, automated AI/ML workflow on a single platform.
 
-## <img src='/og-image.webp'/>
 
 ## Conclusion: Use Dataflow to Revolutionize Your AI/ML Workflows
 

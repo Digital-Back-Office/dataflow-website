@@ -5,7 +5,7 @@ top_section:
   button:
     label: "Get Started Free"
     href: "https://app.dataflow.zone"
-  hero_image: "/assets/images/enterprise/hero-image.webp"
+  hero_image: "/assets/images/personal/hero-image.webp"
 
 sections:
   - title: "Learn by Doing, Not Just Reading"

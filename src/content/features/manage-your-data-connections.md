@@ -5,7 +5,7 @@ top_section:
   button:
     label: "Get Started"
     href: "/book-demo"
-  hero_image: "/assets/images/define-once-use-everywhere.webp"
+  hero_image: "/assets/images/product/define-once-use-everywhere.webp"
 
 comparison:
   heading: "The End of .env File Sprawl"
@@ -42,7 +42,7 @@ why_data_connection_matters:
 grow_together_managing_connections:
   title: Grow Together by Managing Your Data Connections Across apps
   description: Managing your data connections across apps allows your business to grow seamlessly and efficiently. By integrating and synchronizing your data, you ensure consistency and accuracy, empowering your team to collaborate better and make data-driven decisions.
-  image: /assets/images/grow-together.webp
+  image: /assets/images/product/grow-together.webp
   button:
     label: "Get Started"
     href: "/book-demo"

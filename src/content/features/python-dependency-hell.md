@@ -5,12 +5,12 @@ top_section:
   button:
     label: 'Get Started'
     href: "https://docs.dataflow.zone/get-started/introduction-to-dataflow/"
-  hero_image: "/assets/images/goodbye-dependency-hell.webp"
+  hero_image: "/assets/images/product/goodbye-dependency-hell.webp"
 
 section:
   title: "Define Once. Share Everywhere."
   description: "Select your Python version and libraries. Dataflow resolves the dependency tree, builds the environment for you in the background, and when built it can be activated to be used across the workspace."
-  image: "/assets/images/define-once-share-everywhere.webp"
+  image: "/assets/images/product/define-once-share-everywhere.webp"
   button:
     label: "Get Started"
     href: "/book-demo"

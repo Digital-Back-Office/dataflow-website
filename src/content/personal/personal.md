@@ -4,7 +4,7 @@ top_section:
   description: "Whether you're learning data science, building side projects, or experimenting with ML models, get the same tools Fortune 500 companies use—completely free. No credit card, no setup headaches, no limits on your curiosity."
   button:
     label: "Get Started Free"
-    href: "/get-started"
+    href: "https://app.dataflow.zone"
   hero_image: "/assets/images/enterprise/hero-image.webp"
 
 sections:

@@ -3,182 +3,143 @@ title: 'Understanding and Utilizing Connections & Variables in Dataflow'
 description: 'This guide will walk you through the step-by-step process of adding, editing, and testing connections and variables in Dataflow'
 tags: ['connections', 'dataflow', 'variables']
 date: '30 Jan, 2025'
-image: /assets/images/blogs/connection-variable/connections-blog-thumbnail.webp
+image: /assets/images/blog/understanding-connections-variables.webp
 category: ["resources"]
 ---
 
-
-In **Dataflow**, managing **connections** and **variables** efficiently is crucial for a seamless data science workflow. Whether you're connecting to a database or defining reusable variables, our platform makes it easy to set up and use them across your projects.  
-
-This guide will walk you through the **step-by-step process** of adding, editing, and testing **connections** and **variables** in Dataflow.  
+Managing connections and variables efficiently is essential for any data workflow. In Dataflow, we've made it straightforward to set up database connections and define reusable variables across your projects. Let's walk through how to work with these features.
 
 ---
 
-## **What Are Connections and Variables?**  
+## What Are Connections and Variables?
 
-### **Connections**  
-A **connection** in Dataflow allows you to securely link to various databases such as **PostgreSQL, MySQL**, and more. These connections enable you to retrieve and manipulate data directly within your workflows.  
+**Connections** let you securely link to databases like PostgreSQL and MySQL. Once configured, you can retrieve and manipulate data directly within your workflows without hardcoding credentials.
 
-### **Variables**  
-A **variable** is a reusable value that can be used anywhere in your Dataflow projects such as **API keys**, **access tokens** or **credentials**.  
+**Variables** are reusable values that you can reference anywhere in your projects. Think API keys, access tokens, or any configuration values you want to manage centrally.
 
-This guide will walk you through how to **create, update, test, and delete** both **connections** and **variables** step by step.  
-
----
-## **Managing Connections**  
-
-### **1️⃣ Creating a Connection**  
-1. Go to the **Connections** section from the sidebar and click **"Add Connection"**.   
-3. Choose the **database type** (e.g., PostgreSQL, MySQL, etc.).  
-4. Fill in the required fields:  
-   - **Connection Name** (must be unique)  
-   - **Database Type**  
-   - **Host**  
-   - **Port** 
-   - **Login** (username)
-   - **Password**  
-   - **Extra settings (if required, such as SSL options)**  
-5. Click **"Save"** to create the connection.  
-
-![Alt text](/assets/images/blogs/connection-variable/create_connection.webp)
+This guide covers creating, updating, testing, and deleting both connections and variables.
 
 ---
 
-### **2️⃣ Updating a Connection**  
-1. Go to the **Connections** page.  
-2. Click **Edit** next to the connection you want to modify.  
-3. Update the necessary details.  
-4. Click **"Save"** to apply changes.  
+## Managing Connections
 
-> ✅ **Pro Tip:** Updating a connection does not affect existing workflows unless credentials change.  
+### Creating a Connection
 
----
+Navigate to the Connections section from the sidebar and click "Add Connection". Select your database type (PostgreSQL, MySQL, etc.) and fill in the connection details:
 
-### **3️⃣ Testing a Connection**  
-- Click the **"Test Connection"** button.  
-- The system will check the credentials and return if the **connection is valid or not**.  
+- Connection Name (must be unique)
+- Database Type
+- Host
+- Port
+- Login (username)
+- Password
+- Extra settings if needed (like SSL options)
 
-   ![Alt text](/assets/images/blogs/connection-variable/test_connection.webp)
+Click "Save" when you're done.
 
----
-
-### **4️⃣ Deleting a Connection**  
-- Click the **"Delete"** button next to a connection.  
-- Confirm the action (⚠️ This cannot be undone).  
-
-> ✅ **Note:** Once deleted, any workflows using this connection will **fail** until a new connection is configured with the same connection name.  
+![Creating a connection](/assets/images/blogs/connection-variable/create_connection.webp)
 
 ---
 
-## **Managing Variables**  
+### Updating a Connection
 
-### **1️⃣ Creating a Variable**  
-1. Go to the **Settings** section from the sidebar and click **"Variables"**. 
-2. Click **"Add Variable"**.  
-3. Enter:  
-   - **Key** (must be unique)  
-   - **Value** (String, Integer, Boolean, etc.)  
-   - **Description** (optional)  
-4. Click **"Save"**.  
+Head to the Connections page and click "Edit" next to the connection you want to modify. Update the necessary details and save your changes.
 
-![Alt text](/assets/images/blogs/connection-variable/create_variable.webp)
+Keep in mind that updating a connection won't affect existing workflows unless you change the credentials themselves.
 
 ---
 
-### **2️⃣ Updating a Variable**  
-1. Go to the **Variables** page.  
-2. Click **Edit** next to the variable.  
-3. Modify its value and click **"Save"**.  
+### Testing a Connection
 
+Before using a connection in production, you'll want to verify it works. Just click the "Test Connection" button, and the system will validate your credentials and let you know if everything's configured correctly.
 
----
-
-### **3️⃣ Deleting a Variable**  
-- Click **"Delete"** next to the variable.  
-- Confirm the deletion (⚠️ This will impact workflows using this variable).  
-
-> ✅ **Note:** Ensure that no active workflows depend on the variable before deleting it.  
-
----
-# 📌 Using Connections and Variables in Python Code
-
-Once you’ve created connections and variables in Dataflow, you can use them directly in your Python scripts to interact with databases or retrieve stored values.
+![Testing a connection](/assets/images/blogs/connection-variable/test_connection.webp)
 
 ---
 
-##  1. Using a Connection in Python
+### Deleting a Connection
 
-You can retrieve a database connection using the **Dataflow SDK** and execute queries without hardcoding credentials.
+Click the "Delete" button next to any connection to remove it. Be careful though—this action can't be undone. Any workflows using this connection will fail until you configure a new connection with the same name.
 
-### **Example: Connecting to a Database & Running a Query**
+---
+
+## Managing Variables
+
+### Creating a Variable
+
+Go to Settings from the sidebar, then click "Variables" and "Add Variable". You'll need to provide:
+
+- Key (must be unique)
+- Value (can be a string, integer, boolean, etc.)
+- Description (optional but helpful)
+
+Click "Save" to create the variable.
+
+![Creating a variable](/assets/images/blogs/connection-variable/create_variable.webp)
+
+---
+
+### Updating a Variable
+
+From the Variables page, click "Edit" next to the variable you want to change. Modify its value and save.
+
+---
+
+### Deleting a Variable
+
+Click "Delete" next to any variable to remove it. Remember that this will impact any workflows currently using this variable, so make sure nothing depends on it before deleting.
+
+---
+
+## Using Connections and Variables in Python
+
+Once you've set up your connections and variables, you can use them directly in your Python scripts through the Dataflow SDK.
+
+### Using a Database Connection
+
+Here's how to retrieve a connection and execute a query:
+
 ```python
 from dataflow.dataflow import Dataflow 
 from sqlalchemy import text 
 
-# Initialize Dataflow SDK 
+# Initialize the SDK
 dataflow = Dataflow() 
 
-# Retrieve the connection by specifying the connection ID 
+# Get the connection using its ID
 db = dataflow.connection("conn_id") 
 
-# Execute a simple SQL query 
+# Run a query
 result = db.execute(text("SELECT 1")) 
-
-# Fetch the first row 
-row = result.fetchone() print(row)
+row = result.fetchone() 
+print(row)
 ```
 
-### What This Does:
-✔ Fetches the database connection using the connection ID (`conn_id`).  
-✔ Executes a SQL query (`SELECT 1`).  
-✔ Retrieves and prints the result.
-
-💡 **Make sure the connection ID matches the one you created in Dataflow!**
+This fetches your database connection using the connection ID you set up, executes a SQL query, and retrieves the result. Just make sure the connection ID matches what you created in Dataflow.
 
 ---
 
-##  2. Using a Variable in Python
+### Using a Variable
 
-Variables in Dataflow can store **reusable values** such as **API keys, thresholds, or dynamic parameters**. You can fetch these variables in Python like this:
+Retrieving variables is just as straightforward:
 
-### **Example: Retrieving a Variable in Python**
 ```python
 from dataflow.dataflow import Dataflow 
-from sqlalchemy import text 
 
-# Initialize Dataflow SDK 
+# Initialize the SDK
 dataflow = Dataflow() 
 
-# Retrieve a variable by specifying its name
+# Get the variable value
 variable_value = dataflow.variable("variable_name")
-
-# Print the variable's value 
 print(variable_value)
 ```
 
-### What This Does:
-✔ Fetches the variable value using its name (`variable_name`).  
-✔ Prints the retrieved value.
-
-💡 **Make sure the variable name matches the one you created in Dataflow!**
+This fetches the variable value using its name. Again, make sure the variable name matches what you set up.
 
 ---
 
-## 💭 Final Thoughts
+## Wrapping Up
 
-Now that you know how to:
-- **Create, update, and delete** connections & variables  
-- **Use them in Python scripts** for database access & dynamic values  
+You now know how to create, update, and delete connections and variables in Dataflow, as well as how to use them in your Python scripts. This lets you keep credentials and configuration values secure and centralized, making your workflows more maintainable.
 
-You can start integrating them into your **Dataflow projects** to build flexible and scalable workflows! 🎯  
-
----
-
-## 💡 Next Steps:
-
-- Try **executing a real SQL query** using a database connection.  
-- Use variables to store **API keys, parameters, or configurations** dynamically.  
-- Experiment with **different database types** like **MySQL,  PostgreSQL**.
-
-
-
+Try executing some real queries using your database connections, or store your API keys and configuration parameters as variables. Experiment with different database types to see what works best for your use case.

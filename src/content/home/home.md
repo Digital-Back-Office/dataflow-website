@@ -268,7 +268,7 @@ developers_love:
       description: "Access comprehensive documentation, tutorials, and guides to get the most out of Dataflow."
       links:
         - text: "Read the documentation"
-          href: "https://docs.dataflow.com"
+          href: "https://docs.dataflow.zone"
           target: "_blank"
         - text: "Browse tutorials & blogs"
           href: "/blog"

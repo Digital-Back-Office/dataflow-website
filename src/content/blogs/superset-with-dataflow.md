@@ -3,7 +3,7 @@ title: 'Exploring Apache Superset with Dataflow: Enhancing Data Engineering and 
 description: 'An comprehensive guide for NextAuth'
 tags: ['superset', 'dataflow']
 date: '29 Sept, 2024'
-image: /assets/images/contactusimage.webp
+image: /assets/images/blog/explore-apache-superset.webp
 category: ["resources"]
 ---
 

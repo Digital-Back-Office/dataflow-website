@@ -46,7 +46,15 @@ document.addEventListener('DOMContentLoaded', function () {
         activeCategory = category;
         currentPage = 1;
         updateActivTab();
+        
+        // Add smooth transition when filtering
+        blogContainer.style.minHeight = blogContainer.offsetHeight + 'px';
         filterAndPaginate();
+        
+        // Reset min-height after transition
+        setTimeout(() => {
+          blogContainer.style.minHeight = '';
+        }, 500);
       }
     });
   });
@@ -169,22 +177,37 @@ document.addEventListener('DOMContentLoaded', function () {
     const endIdx = startIdx + POSTS_PER_PAGE;
 
     let visibleCount = 0;
+    
+    // First, fade out all articles
     allArticles.forEach(article => {
-      const index = filteredArticles.indexOf(article);
-      if (index >= startIdx && index < endIdx) {
-        article.classList.remove('hidden');
-        visibleCount++;
-      } else {
-        article.classList.add('hidden');
-      }
+      article.style.opacity = '0';
+      article.style.transform = 'translateY(10px)';
     });
 
-    // Show/hide no results message
-    if (visibleCount === 0) {
-      noResults.classList.remove('hidden');
-    } else {
-      noResults.classList.add('hidden');
-    }
+    // After a short delay, update visibility and fade in visible articles
+    setTimeout(() => {
+      allArticles.forEach(article => {
+        const index = filteredArticles.indexOf(article);
+        if (index >= startIdx && index < endIdx) {
+          article.classList.remove('hidden');
+          visibleCount++;
+          // Stagger the fade-in effect
+          setTimeout(() => {
+            article.style.opacity = '1';
+            article.style.transform = 'translateY(0)';
+          }, (index - startIdx) * 50);
+        } else {
+          article.classList.add('hidden');
+        }
+      });
+
+      // Show/hide no results message
+      if (visibleCount === 0) {
+        noResults.classList.remove('hidden');
+      } else {
+        noResults.classList.add('hidden');
+      }
+    }, 150);
 
     renderPageNumbers();
   }

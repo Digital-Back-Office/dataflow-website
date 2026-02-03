@@ -54,15 +54,15 @@ form:
       label: Phone number
       placeholder: Your Phone number
       type: text
-    - name_attr: entry.800910305
-      id: date
-      label: Date and Time
-      placeholder: Select a date
-      type: date
     - name_attr: entry.1056515558
       label: How do you intend to make use of Dataflow?
       placeholder: How do you intend to make use of Dataflow?
       type: textarea
+    - name_attr: entry.800910305
+      id: date
+      label: Date
+      placeholder: Select a date
+      type: date
   terms_text: I agree to the
   terms_link_text: Terms & Conditions
   button_text: Book Now

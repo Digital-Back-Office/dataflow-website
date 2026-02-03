@@ -40,7 +40,7 @@ async function submitToGoogleForm(email, pageSource) {
 function redirectToApp(email) {
   const url = new URL(REDIRECT_CONFIG.baseUrl)
   url.searchParams.set(REDIRECT_CONFIG.emailParam, email)
-  window.location.href = url.toString()
+  window.open(url.toString(), '_blank')
 }
 
 

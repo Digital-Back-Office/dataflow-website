@@ -41,13 +41,8 @@ sections:
 cta_section:
   title: "Ready to Move Faster?"
   description: "Join hundreds of startups building data products without the enterprise overhead. Start free, scale when ready."
-  should_redirect: false;
   button:
-    text: "Start Free Trial"
-    href: "/start-free-trail"
-  secondary_button:
-    text: "Talk to Sales"
-    href: "/book-demo"
+    text: "Start Free"
   note: 
     - "No credit card required"
     - "Free forever for personal projects"

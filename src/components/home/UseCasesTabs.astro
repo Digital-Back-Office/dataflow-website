@@ -125,12 +125,22 @@ const tabs: UseCaseTab[] = data?.use_cases || defaultTabs
                   </li>
                 ))}
               </ul>
-              <CustomButton
-                label={tab.cta_text || 'Learn more'}
-                href={tab.link}
+              <div class="flex gap-3 flex-wrap">
+                <CustomButton
+                label={"Get Started"}
+                href={"https://app.dataflow.zone/"}
                 variant="primary"
                 className="font-semibold"
-              />
+                iconSrc={null}
+                />
+                <CustomButton
+                  label={tab.cta_text || 'Learn more'}
+                  href={tab.link}
+                  variant="ghost"
+                  className="font-semibold"
+                  iconSrc="/assets/icons/icon-right-angular-arrow.svg"
+                />
+              </div>
             </div>
             <div class={`bg-white rounded-xl ${!tab.video && 'p-8'} flex items-center justify-center min-h-[300px]`}>
               {tab.video ? (

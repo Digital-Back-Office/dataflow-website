@@ -5,8 +5,10 @@ import { getCollection } from "astro:content";
 const blogs = await getCollection("blogs");
 const POSTS_PER_PAGE = 6;
 
-// Sort all blogs by blog_no (newest first)
-const allBlogs = blogs.sort((a, b) => b.data.blog_no - a.data.blog_no);
+// Sort all blogs by date (newest first)
+const allBlogs = blogs.sort(
+  (a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
+);
 
 // Show initial page
 const initialPosts = allBlogs;
@@ -51,9 +53,10 @@ const allBlogsJson = JSON.stringify(allBlogs.map(blog => ({
     <!-- Page Header -->
     <div
       class="flex justify-between items-center mb-12 max-sm:mb-8 max-sm:flex-col max-sm:gap-4"
+      data-aos="fade-up" data-aos-duration="100"
     >
       <!-- Tabs -->
-      <div class="flex-1">
+      <div class="flex-1" data-aos="fade-up" data-aos-delay="100">
         <nav
           id="category-tabs"
           class="flex items-center gap-6 overflow-x-auto max-w-full"
@@ -75,7 +78,7 @@ const allBlogsJson = JSON.stringify(allBlogs.map(blog => ({
       </div>
 
       <!-- Search Bar -->
-      <div class="w-[360px] max-sm:w-full mt-4 max-sm:mt-0">
+      <div class="w-[360px] max-sm:w-full mt-4 max-sm:mt-0" data-aos="fade-up" data-aos-delay="150">
         <div class="relative">
           <svg
             class="absolute text-gray-400 left-4 top-1/2 -translate-y-1/2 w-5 h-5"
@@ -104,10 +107,10 @@ const allBlogsJson = JSON.stringify(allBlogs.map(blog => ({
       id="blog-container"
       class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16"
       data-total-posts={allBlogs.length}
-      data-posts-per-page="6"
+      data-posts-per-page="6" 
     >
       {
-        initialPosts.map((post) => (
+        initialPosts.map((post, index) => (
           <article
             class="group bg-white rounded-2xl overflow-hidden border border-gray-100 hover:border-primary/30 hover:shadow-xl transition-all duration-300"
             data-slug={post.slug}
@@ -116,6 +119,8 @@ const allBlogsJson = JSON.stringify(allBlogs.map(blog => ({
                 ? post.data.category.map((tg) => tg.toLowerCase()).join(",")
                 : ""
             }
+            data-aos="fade-up"
+            data-aos-delay={index * 50}
           >
             {post.data.image && (
               <a
@@ -204,6 +209,7 @@ const allBlogsJson = JSON.stringify(allBlogs.map(blog => ({
       id="pagination-nav"
       class="flex justify-center items-center gap-2"
       aria-label="Blog pagination"
+      data-aos="fade-up" data-aos-delay="150"
     >
       {/* Previous Button */}
       <button
@@ -257,12 +263,13 @@ const allBlogsJson = JSON.stringify(allBlogs.map(blog => ({
 
   <!-- Newsletter Subscription Section -->
   <section
-    class="text-textDarker relative overflow-hidden bg-gradient-to-b from-white from-5% via-primary/90 via-50% to-white to-95% py-20 max-sm:py-12"
+    class="text-textDarker relative overflow-hidden bg-gradient-to-b from-white from-5% via-primary/75 via-50% to-white to-95% py-24 max-sm:py-12"
+    data-aos="fade-up" data-aos-duration="900"
   >
     <div class="relative px-[15%] max-sm:px-[20px]">
       <div class="max-w-4xl mx-auto">
         {/* Header */}
-        <div class="text-center mb-10">
+        <div class="text-center mb-10" data-aos="fade-up" data-aos-delay="100">
           <h2 class="text-4xl max-md:text-3xl max-sm:text-2xl font-bold leading-tight mb-4">
             Stay Updated with Latest Insights
           </h2>
@@ -272,7 +279,7 @@ const allBlogsJson = JSON.stringify(allBlogs.map(blog => ({
         </div>
 
         {/* Form */}
-        <form class="space-y-6" name="newsletter" method="POST" action="">
+        <form class="space-y-6" name="newsletter" method="POST" action="" data-aos="fade-up" data-aos-delay="200">
           {/* Subscription Options */}
           <div class="flex justify-center flex-wrap gap-6 max-sm:gap-4">
             {
@@ -358,7 +365,7 @@ const allBlogsJson = JSON.stringify(allBlogs.map(blog => ({
         </form>
 
         {/* Trust Indicators */}
-        <div class="mt-10 flex items-center justify-center gap-8 text-textDarker text-sm max-sm:flex-col max-sm:gap-4">
+        <div class="mt-10 flex items-center justify-center gap-8 text-textDarker text-sm max-sm:flex-col max-sm:gap-4" data-aos="fade-up" data-aos-delay="250">
           {
             trustIndicators.map((indicator) => (
               <div class="flex items-center gap-2">

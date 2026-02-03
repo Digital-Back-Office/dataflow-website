@@ -43,6 +43,5 @@ cta_section:
   description: "Join thousands of learners, hobbyists, and aspiring data professionals using Dataflow to accelerate their journey. 100% free, forever."
   button:
     text: "Get Started Free"
-    href: "https://app.dataflow.zone/login"
   note: "No credit card required • No time limits • Full platform access"
 ---

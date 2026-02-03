@@ -32,7 +32,7 @@ const { title, image, logo, link, mirror } = Astro.props
     >
       <img src={logo} alt={`${title} logo`} class='h-[60px] max-sm:h-[40px] w-max' />
       <p
-        class='text-2xl xl:text-2xl max-sm:text-2xl text-justify leading-tight text-[#303030]'
+        class='text-xl  max-sm:text-2xl text-justify leading-tight text-[#303030]'
         set:html={title.replace(/\*\*(.+?)\*\*/g, '<strong class="font-bold">$1</strong>')}
       ></p>
       <CustomButton

@@ -5,6 +5,7 @@ interface Props {
     target?: '_self' | '_blank'
     rel?: string
     type?: 'button' | 'submit' | 'reset'
+    onclick?: string
     iconSrc?: string
     iconAlt?: string
     variant?: 'primary' | 'ghost' | 'outlined'
@@ -21,6 +22,7 @@ const {
     iconAlt = 'Arrow icon',
     variant = 'primary',
     className = '',
+    onclick = undefined,
 } = Astro.props
 
 const baseClasses =
@@ -29,13 +31,13 @@ const variantClasses =
     variant === 'ghost'
         ? 'bg-transparent text-primary hover:bg-primary/10 shadow-none'
         : variant === 'outlined'
-        ? 'bg-white hover:bg-gray-50 text-gray-900 border-2 border-gray-200 hover:border-primary shadow-none'
+        ? 'bg-white hover:bg-gray-50 text-primary border-[1px] border-primary/75 hover:border-primary shadow-none'
         : 'bg-primary text-white shadow-md hover:bg-primary/95'
 const classes = `${baseClasses} ${variantClasses} ${className}`.trim()
 ---
 
 {href ? (
-    <a href={href} target={target} rel={rel} class={classes} aria-label={label}>
+    <a href={href} target={target} rel={rel} class={classes} aria-label={label} onclick={onclick}>
         {label}
         {iconSrc && (
             <img
@@ -47,7 +49,7 @@ const classes = `${baseClasses} ${variantClasses} ${className}`.trim()
         )}
     </a>
 ) : (
-    <button type={type} class={classes} aria-label={label}>
+    <button type={type} class={classes} aria-label={label} onclick={onclick}>
         {label}
         {iconSrc && (
             <img

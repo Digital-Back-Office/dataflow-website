@@ -34,14 +34,12 @@ sections:
     imageSide: "left"
 
 section_cta:
-  label: "Explore Enterprise Features"
-  href: "/book-demo"
+  label: "Get Started"
+  href: "https://app.dataflow.zone"
 
 cta_section:
   title: "Ready to standardize your data stack?"
   description: "Get a tailored package that fits your security and compliance needs."
-  should_redirect: false
   button:
     text: "Get Started"
-    href: "/book-demo"
 ---

@@ -187,7 +187,6 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     renderPageNumbers();
-    window.scrollTo({ top: blogContainer.offsetTop - 100, behavior: 'smooth' });
   }
 
   function goToPage(pageNum) {

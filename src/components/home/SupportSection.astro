@@ -66,11 +66,19 @@ const support = Data.data?.support_section || null
       </div>
     </div>
 
-    <div class='text-center mt-12' data-aos='fade-up' data-aos-delay='200'>
+    <div class='text-center mt-12 space-x-3' data-aos='fade-up' data-aos-delay='200'>
       <CustomButton
-        label="Talk to our team"
+        label="Get Started"
         href="/contact-us"
         variant="primary"
+        className="font-semibold"
+        iconSrc={null}
+      />
+      <CustomButton
+        label="Contact us"
+        href="/contact-us"
+        variant="outlined"
+        iconSrc="/assets/icons/icon-right-angular-arrow.svg"
         className="font-semibold"
       />
     </div>

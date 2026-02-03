@@ -126,11 +126,18 @@ let steps: Step[] = data?.steps || defaultSteps
     </div>
 
     <!-- CTA Button -->
-    <div class='flex justify-center mt-16'>
+    <div class='flex justify-center mt-16 gap-4' data-aos="fade-up" data-aos-delay="300">
       <CustomButton
         label={data?.cta_button?.label || 'Start Building Now'}
         href={data?.cta_button?.href || 'https://app.dataflow.zone'}
         variant="primary"
+        iconSrc={null}
+      />
+      <CustomButton
+        label={'Try Demo'}
+        iconSrc="/assets/icons/icon-right-angular-arrow.svg"
+        variant="outlined"
+        onclick="document.getElementById('arcadeModal').classList.remove('hidden')"
       />
     </div>
   </div>

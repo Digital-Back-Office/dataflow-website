@@ -1,14 +1,18 @@
 ---
 import { getEntry } from 'astro:content'
+import SocialIcon from '../common/SocialIcon.astro'
 
 const Data = await getEntry('home', 'home')
 const data = Data.data?.developers_love
 
 const defaultCards = [
   {
-    title: 'Community',
-    description: 'Connect with fellow developers, share knowledge, and get help from our active community.',
-    links: [{ text: 'Join Discourse community', href: 'https://discourse.dataflow.com', target: '_blank' }]
+    title: 'Try',
+    description: 'Experience Dataflow firsthand with our interactive demos and free trial.',
+    actions: [
+      { text: 'Watch interactive demo', onclick: "document.getElementById('arcadeModal').classList.remove('hidden')" },
+      { text: 'Start free trial', href: '/start-free-trail' }
+    ]
   },
   {
     title: 'Learn',
@@ -19,19 +23,19 @@ const defaultCards = [
     ]
   },
   {
-    title: 'Try',
-    description: 'Experience Dataflow firsthand with our interactive demos and free trial.',
-    actions: [
-      { text: 'Watch interactive demo', onclick: "document.getElementById('arcadeModal').classList.remove('hidden')" },
-      { text: 'Start free trial', href: '/start-free-trail' }
-    ]
-  },
-  {
     title: 'Support',
     description: 'Get help when you need it from our dedicated support team.',
     links: [
       { text: 'Contact support team', href: '/contact-us' },
       { text: 'Email us directly', href: 'mailto:support@dataflow.com' }
+    ]
+  },
+  {
+    title: 'Connect',
+    description: 'Follow us on social media for updates, tips, and community highlights.',
+    links: [
+      { text: 'Follow us on X', href: 'https://x.com/dataflow_zone', target: '_blank', platform: 'x' },
+      { text: 'Connect on LinkedIn', href: 'https://www.linkedin.com/company/dataflow-zone/about/', target: '_blank', platform: 'linkedin' }
     ]
   }
 ]
@@ -58,29 +62,21 @@ const cards = data?.cards || defaultCards
           <div class='space-y-3'>
             {card.links?.map((link) => (
               <a href={link.href} target={link.target} class='flex items-center gap-3 text-primary hover:text-primaryHover font-medium group'>
-                {card.title === 'Community' && (
-                  <svg class='w-5 h-5 transition-transform group-hover:translate-x-1' fill='currentColor' viewBox='0 0 24 24'>
-                    <path d='M12.103 0C18.666 0 24 5.485 24 11.997c0 6.51-5.33 11.99-11.9 11.99L0 24V11.79C0 5.28 5.532 0 12.103 0zm.116 4.563c-2.593-.003-4.996 1.352-6.337 3.57-1.33 2.208-1.387 4.957-.148 7.22L4.4 19.61l4.794-1.074c2.745 1.225 5.965.676 8.136-1.39 2.17-2.054 2.86-5.228 1.737-7.997-1.135-2.778-3.84-4.59-6.84-4.585h-.008z'></path>
-                  </svg>
-                )}
-                {card.title === 'Learn' && (
-                  <svg class='w-5 h-5 transition-transform group-hover:translate-x-1' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
-                    {link.text.includes('documentation') ? (
-                      <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253'></path>
-                    ) : (
-                      <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z'></path>
-                    )}
-                  </svg>
-                )}
-                {card.title === 'Support' && (
-                  <svg class='w-5 h-5 transition-transform group-hover:translate-x-1' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
-                    {link.text.includes('Email') ? (
-                      <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z'></path>
-                    ) : (
-                      <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z'></path>
-                    )}
-                  </svg>
-                )}
+                {link.platform ? (
+                  <SocialIcon platform={link.platform} className='w-5 h-5 transition-transform group-hover:translate-x-1' />
+                ) : card.title === 'Learn' ? (
+                  link.text.includes('documentation') ? (
+                    <SocialIcon platform='docs' className='w-5 h-5 transition-transform group-hover:translate-x-1' />
+                  ) : (
+                    <SocialIcon platform='blog' className='w-5 h-5 transition-transform group-hover:translate-x-1' />
+                  )
+                ) : card.title === 'Support' ? (
+                  link.text.includes('Email') ? (
+                    <SocialIcon platform='email' className='w-5 h-5 transition-transform group-hover:translate-x-1' />
+                  ) : (
+                    <SocialIcon platform='chat' className='w-5 h-5 transition-transform group-hover:translate-x-1' />
+                  )
+                ) : null}
                 {link.text}
                 <svg class='w-4 h-4 transition-transform group-hover:translate-x-1' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
                   <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M9 5l7 7-7 7'></path>
@@ -90,16 +86,7 @@ const cards = data?.cards || defaultCards
             {card.actions?.map((action) => (
               action.onclick ? (
                 <button onclick={action.onclick} class='flex items-center gap-3 text-primary hover:text-primaryHover font-medium group w-full'>
-                  <svg class='w-5 h-5 transition-transform group-hover:translate-x-1' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
-                    {action.text.includes('demo') ? (
-                      <Fragment>
-                        <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z'></path>
-                        <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M21 12a9 9 0 11-18 0 9 9 0 0118 0z'></path>
-                      </Fragment>
-                    ) : (
-                      <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M13 10V3L4 14h7v7l9-11h-7z'></path>
-                    )}
-                  </svg>
+                  <SocialIcon platform={action.text.includes('demo') ? 'demo' : 'lightning'} className='w-5 h-5 transition-transform group-hover:translate-x-1' />
                   {action.text}
                   <svg class='w-4 h-4 transition-transform group-hover:translate-x-1' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
                     <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M9 5l7 7-7 7'></path>
@@ -107,9 +94,7 @@ const cards = data?.cards || defaultCards
                 </button>
               ) : (
                 <a href={action.href} class='flex items-center gap-3 text-primary hover:text-primaryHover font-medium group'>
-                  <svg class='w-5 h-5 transition-transform group-hover:translate-x-1' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
-                    <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M13 10V3L4 14h7v7l9-11h-7z'></path>
-                  </svg>
+                  <SocialIcon platform='lightning' className='w-5 h-5 transition-transform group-hover:translate-x-1' />
                   {action.text}
                   <svg class='w-4 h-4 transition-transform group-hover:translate-x-1' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
                     <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M9 5l7 7-7 7'></path>

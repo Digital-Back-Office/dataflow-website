@@ -72,11 +72,19 @@ const cards = data?.cards || [
     </div>
 
     <!-- CTA Button -->
-    <div class='flex justify-center mt-12'>
+    <div class='flex justify-center mt-12 gap-4' data-aos='fade-up' data-aos-delay='500'>
       <CustomButton
-        label={data?.cta_button?.label || 'Learn More'}
-        href={data?.cta_button?.href || '/solutions/enterprise'}
+        label={data?.cta.primary.label || 'Get Started'}
+        href={data?.cta.primary.href || 'https://app.dataflow.zone/'}
+        target={'_blank'}
         variant="primary"
+        iconSrc={null}
+      />
+       <CustomButton
+        label={data?.cta.secondary.label || 'Learn More'}
+        href={data?.cta.secondary?.href || '/solutions/enterprise'}
+        variant="outlined"
+        iconSrc="/assets/icons/icon-right-angular-arrow.svg"
       />
     </div>
   </div>

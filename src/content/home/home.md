@@ -199,7 +199,7 @@ ship_apps_faster:
       icon: "/assets/icons/upload-cloud.svg"
       image: "/assets/images/how-it-works/deploy.webp"
   cta_button:
-    label: "Start Building Now"
+    label: "Get Started"
     href: "https://app.dataflow.zone"
 
 enterprise:
@@ -215,9 +215,13 @@ enterprise:
     - title: "Secure Access"
       description: "SSO integration, secret encryption. Share environments without exposing credentials."
       icon: "/assets/icons/icon-cloud.svg"
-  cta_button:
-    label: "Explore Enterprise"
-    href: "/solutions/enterprise"
+  cta:
+    primary:
+      label: Get Started
+      href: 'https://app.dataflow.zone/'
+    secondary:
+      label: "Explore Enterprise"
+      href: "/solutions/enterprise"    
 
 support_section:
   title: "We've Got Your Back"
@@ -244,7 +248,7 @@ gpu_compute:
     - "Scale from experimentation to production with flexible GPU resources."
   primary_cta:
     text: "Get Started"
-    href: "/start-free-trail"
+    href: "https://app.dataflow.zone/"
   secondary_cta:
     text: "Talk to an Expert"
     href: "/book-demo"
@@ -253,12 +257,13 @@ developers_love:
   title: "Developers love Dataflow"
   subtitle: "Join a growing community of data engineers and developers building with Dataflow."
   cards:
-    - title: "Community"
-      description: "Connect with fellow developers, share knowledge, and get help from our active community."
-      links:
-        - text: "Join Discourse community"
-          href: "https://discourse.dataflow.com"
-          target: "_blank"
+    - title: "Try"
+      description: "Experience Dataflow firsthand with our interactive demos and free trial."
+      actions:
+        - text: "Interactive demo"
+          onclick: "document.getElementById('arcadeModal').classList.remove('hidden')"
+        - text: "Start free"
+          href: "https://app.dataflow.zone/login"
     - title: "Learn"
       description: "Access comprehensive documentation, tutorials, and guides to get the most out of Dataflow."
       links:
@@ -267,13 +272,6 @@ developers_love:
           target: "_blank"
         - text: "Browse tutorials & blogs"
           href: "/blog"
-    - title: "Try"
-      description: "Experience Dataflow firsthand with our interactive demos and free trial."
-      actions:
-        - text: "Watch interactive demo"
-          onclick: "document.getElementById('arcadeModal').classList.remove('hidden')"
-        - text: "Start free trial"
-          href: "/start-free-trail"
     - title: "Support"
       description: "Get help when you need it from our dedicated support team."
       links:
@@ -281,6 +279,17 @@ developers_love:
           href: "/contact-us"
         - text: "Email us directly"
           href: "mailto:support@dataflow.com"
+    - title: "Connect"
+      description: "Follow us on social media for updates, tips, and community highlights."
+      links:
+        - text: "Follow us on X"
+          href: "https://x.com/dataflow_zone"
+          target: "_blank"
+          platform: "x"
+        - text: "Connect on LinkedIn"
+          href: "https://www.linkedin.com/company/dataflow-zone/about/"
+          target: "_blank"
+          platform: "linkedin"
 
 cta:
   title: Build your Data Application Today

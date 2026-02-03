@@ -86,9 +86,8 @@ header:
         href: "/pricing"
   ctas:
     primary:
-      label: "Try it free"
-      href: "https://app.dataflow.zone"
-      target: "_blank"
+      label: "Book Demo"
+      href: "/book-demo"
     secondary:
       label: "Get Started"
       href: "https://app.dataflow.zone"
@@ -124,8 +123,8 @@ footer:
           href: "/blog"
         - label: "YouTube"
           href: "https://www.youtube.com/@DataFlowZone"
-        - label: "Community"
-          href: "https://discourse.dataflow.com"
+        # - label: "Community"
+        #   href: "https://discourse.dataflow.com"
         - label: "Documentation"
           href: "https://docs.dataflow.zone/"
 

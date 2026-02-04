@@ -4,7 +4,7 @@ top_section:
   description: "Define connections and secrets in one secure vault. Access them instantly across Airflow, Jupyter, and VS Code without copying .env files or exposing keys in git."
   button:
     label: "Get Started"
-    href: "/book-demo"
+    href: "https://app.dataflow.zone"
   hero_image: "/assets/images/product/define-once-use-everywhere.webp"
 
 comparison:
@@ -45,14 +45,16 @@ grow_together_managing_connections:
   image: /assets/images/product/grow-together.webp
   button:
     label: "Get Started"
-    href: "/book-demo"
+    href: "https://app.dataflow.zone"
+    target: '_blank'
 
 core_features:
   title: Core Features of  Data Connection Management
   description: Our Data Connection Management offers automatic synchronization, secure data transfers, and customizable integrations for seamless data handling. With comprehensive monitoring and scalability, you can manage and optimize your data connections effortlessly.
   button:
     label: "Get Started"
-    href: "/book-demo"
+    href: "https://app.dataflow.zone"
+    target: '_blank'
   features:
     - title: Zero-Trust Security
       description: Secrets are encrypted at rest and in transit. We use industry-standard banking-grade encryption to ensure your credentials never leak.

@@ -250,7 +250,7 @@ gpu_compute:
     text: "Get Started"
     href: "https://app.dataflow.zone/"
   secondary_cta:
-    text: "Talk to an Expert"
+    text: "Book Demo"
     href: "/book-demo"
 
 developers_love:

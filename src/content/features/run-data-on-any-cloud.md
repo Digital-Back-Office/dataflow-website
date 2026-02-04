@@ -3,8 +3,8 @@ top_section:
   title: Your Data, Your Cloud. No Lock-In
   description: Deploy the full Dataflow stack on AWS, Azure, GCP. Switch providers without rewriting your pipelines.
   button:
-    label: "Read Documentation"
-    href: "https://docs.dataflow.zone/get-started/introduction-to-dataflow/"
+    label: "Get Started"
+    href: "https://app.dataflow.zone/login"
   hero_image: "/assets/images/runanycloud.webp"
   company_logos:
     title: 'Production-ready on all major providers'
@@ -35,7 +35,8 @@ core_capabilities:
   description: Running Dataflow on Any Cloud" enables seamless integration and execution of data processing pipelines across multiple cloud platforms, ensuring flexibility and scalability. This service allows users to harness the power of cloud-agnostic data flow management, optimizing resource use and reducing vendor lock-in.
   button:
     label: "Get Started"
-    href: "/book-demo"
+    href: "https://app.dataflow.zone"
+    target: '_blank'
   features:
     - title: Real-Time Processing
       description: Dataflow processes data instantly as it arrives, perfect for tasks needing immediate insights like fraud detection or real-time monitoring.
@@ -53,15 +54,15 @@ core_capabilities:
 cloud_providers:
   title: "Write Once, Run Anywhere"
   cloud_providers:
-    - title: "Discover **Azure** through detailed feature breakdowns, video tutorials, and real-world case studies. <br> Expandable sections and clear CTAs help users explore deeper and take action with confidence."
+    - description: "Discover **Azure** through detailed feature breakdowns, video tutorials, and real-world case studies. <br> Expandable sections and clear CTAs help users explore deeper and take action with confidence."
       logo: "/assets/images/azurelogo.webp"
       link: "https://azure.microsoft.com/"
       image: "/assets/images/macbookazure.webp"
-    - title: "Explore **Google Cloud** through visual aids, step-by-step guides, and detailed capability insights. <br> Customer testimonials and a clean, intuitive design help teams move forward with confidence."
+    - description: "Explore **Google Cloud** through visual aids, step-by-step guides, and detailed capability insights. <br> Customer testimonials and a clean, intuitive design help teams move forward with confidence."
       logo: "/assets/images/googlecloudlogo.webp"
       link: "https://cloud.google.com/"
       image: "/assets/images/macbookgooglecloud.webp"
-    - title: "Explore **AWS** through detailed feature insights, real-world case studies, and interactive experiences. <br> Clear call-to-action buttons and a structured layout help teams move faster and build with confidence."
+    - description: "Explore **AWS** through detailed feature insights, real-world case studies, and interactive experiences. <br> Clear call-to-action buttons and a structured layout help teams move faster and build with confidence."
       logo: "/assets/images/aws-logo.webp"
       link: "https://aws.amazon.com/"
       image: "/assets/images/macbookaws.webp"

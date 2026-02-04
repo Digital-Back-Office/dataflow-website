@@ -8,6 +8,7 @@ interface Props {
   imageAlt?: string;
   buttonText?: string;
   buttonHref?: string;
+  buttonTarget?: "_blank" | "_self";
   imageSide?: "left" | "right";
   bg?: "white" | "F8FAFC";
 }
@@ -19,6 +20,7 @@ const {
   imageAlt = title ?? "image",
   buttonText,
   buttonHref = "#",
+  buttonTarget = "_self",
   imageSide = "right",
   bg = "white",
 } = Astro.props as Props;
@@ -59,7 +61,7 @@ const reverseOnMobile =
         }
         {
           buttonText && (
-        <CustomButton href={buttonHref} label={buttonText} />
+        <CustomButton href={buttonHref} label={buttonText} target={buttonTarget} />
           )
         }
       </div>

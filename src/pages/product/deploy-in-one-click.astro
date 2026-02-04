@@ -22,6 +22,7 @@ const meta_description = top.description ?? 'Effortlessly manage and resolve Pyt
     image={top.hero_image}
     buttonText={top.button?.label}
     buttonHref={top.button?.href}
+    buttonTarget='_blank'
     imageSide="right"
     bg="white"
   />
@@ -31,6 +32,7 @@ const meta_description = top.description ?? 'Effortlessly manage and resolve Pyt
     image={two_column_section.image}
     buttonText={two_column_section.button.label}
     buttonHref={two_column_section.button.href}
+    buttonTarget={two_column_section.button.target ?? "_self"}
     imageSide={two_column_section.imageSide}
     bg="white"
   />

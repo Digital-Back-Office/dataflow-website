@@ -140,7 +140,7 @@ const relatedBlogs = allBlogs
               formId="blog-post-cta"
               pageSource="blog-post-bottom"
               placeholder="Enter your work email"
-              buttonText="Start Free Trial"
+              buttonText="Get Started"
               containerClass=""
             />
             
@@ -190,7 +190,7 @@ const relatedBlogs = allBlogs
             <h3 class='text-lg font-bold text-textblack mb-2'>Stay Updated</h3>
             <p class='text-sm text-gray-600 mb-4'>Get the latest articles delivered to your inbox</p>
             
-            <form class='space-y-3' name='blog-newsletter' method='POST'>
+            <form class='space-y-3' name='newsletter' method='POST'>
               <div class='relative'>
                 <svg class='absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
                   <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z'></path>
@@ -344,6 +344,8 @@ const relatedBlogs = allBlogs
   }
 </style>
 
+<script is:inline src="/assets/js/newsletter.js"></script>
+
 <script is:inline>
   // Table of Contents - Scroll Highlighting and Smooth Scroll
   document.addEventListener('DOMContentLoaded', function() {
@@ -419,48 +421,4 @@ const relatedBlogs = allBlogs
       observer.observe(heading);
     });
   });
-
-  // Newsletter form submission
-  const newsletterForm = document.querySelector('form[name="blog-newsletter"]');
-  if (newsletterForm) {
-    newsletterForm.addEventListener('submit', async function(e) {
-      e.preventDefault();
-      
-      const emailInput = this.querySelector('input[type="email"]');
-      const submitButton = this.querySelector('button[type="submit"]');
-      const email = emailInput.value;
-
-      // Disable form during submission
-      submitButton.disabled = true;
-      submitButton.textContent = 'Subscribing...';
-
-      try {
-        // Replace with your actual newsletter endpoint
-        const response = await fetch('/api/newsletter', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ email, source: 'blog-sidebar' })
-        });
-
-        if (response.ok) {
-          submitButton.textContent = 'Subscribed!';
-          submitButton.classList.add('bg-green-500');
-          emailInput.value = '';
-          
-          setTimeout(() => {
-            submitButton.textContent = 'Subscribe';
-            submitButton.classList.remove('bg-green-500');
-            submitButton.disabled = false;
-          }, 3000);
-        } else {
-          throw new Error('Subscription failed');
-        }
-      } catch (error) {
-        console.error('Newsletter subscription error:', error);
-        submitButton.textContent = 'Try Again';
-        submitButton.disabled = false;
-        alert('Failed to subscribe. Please try again.');
-      }
-    });
-  }
 </script>

@@ -1,10 +1,10 @@
 ---
 title: 'Understanding and Utilizing Connections & Variables in Dataflow'
 description: 'This guide will walk you through the step-by-step process of adding, editing, and testing connections and variables in Dataflow'
-tags: ['connections', 'dataflow', 'variables']
+tags: ['Connections', 'Variables', 'Database', 'Configuration']
 date: '30 Jan, 2025'
 image: /assets/images/blog/understanding-connections-variables.webp
-category: ["resources"]
+category: ["product"]
 ---
 
 Managing connections and variables efficiently is essential for any data workflow. In Dataflow, we've made it straightforward to set up database connections and define reusable variables across your projects. Let's walk through how to work with these features.

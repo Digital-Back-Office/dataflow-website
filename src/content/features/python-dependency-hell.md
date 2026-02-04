@@ -4,7 +4,7 @@ top_section:
   description: Forget virtual environments, conflicting paths, and "it works on my machine." Dataflow builds immutable, containerized Python environments that sync across your team instantly.
   button:
     label: 'Get Started'
-    href: "https://docs.dataflow.zone/get-started/introduction-to-dataflow/"
+    href: "https://app.dataflow.zone"
   hero_image: "/assets/images/product/goodbye-dependency-hell.webp"
 
 section:
@@ -13,7 +13,8 @@ section:
   image: "/assets/images/product/define-once-share-everywhere.webp"
   button:
     label: "Get Started"
-    href: "/book-demo"
+    href: "https://app.dataflow.zone"
+    target: '_blank'
   imageSide: "left"
 
 simplify_dependency_management:
@@ -21,7 +22,8 @@ simplify_dependency_management:
   description: "We simplify dependency management by automating version resolution and handling conflicts seamlessly. Our platform provides isolated environments for different projects to avoid interference and ensures consistent package versions across development and production. With intuitive apps for monitoring and managing dependencies, we make your development process more efficient and reliable."
   button:
     label: "Get Started"
-    href: "/book-demo"
+    href: "https://app.dataflow.zone"
+    target: '_blank'
   features:
     - title: "Smart Resolver"
       description: "We detect conflicts before the build starts. Our resolver checks PyPI for compatible versions and locks them to a hash for security."

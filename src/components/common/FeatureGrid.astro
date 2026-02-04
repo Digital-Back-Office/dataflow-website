@@ -13,6 +13,7 @@ interface Props {
   button?: {
     label: string
     href: string
+    target?: "_blank" | "_self"
   }
   bg?: string
   className?: string
@@ -32,6 +33,7 @@ const { title, description, features, button, bg = 'F8FAFC', className = '' } = 
       <CustomButton 
         label={button.label}
         href={button.href}
+        target={button.target ?? "_self"}
         className="mt-10"
       />
     )}

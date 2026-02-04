@@ -132,8 +132,8 @@ footer:
       links:
         - label: "+1 526 220 0444"
           href: "tel:+15262200444"
-        - label: "info@dataflow.zone"
-          href: "mailto:info@dataflow.zone"
+        - label: "support@dataflow.zone"
+          href: "mailto:support@dataflow.zone"
 
     - heading: "Help"
       links:

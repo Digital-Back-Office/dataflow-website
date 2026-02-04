@@ -34,7 +34,7 @@ const reverseOnMobile =
   class={`w-full px-[10%]   py-20 lg:min-h-[70vh] flex items-center justify-between max-sm:px-4 ${bgClass}`}
 >
     <div
-      class={`flex-1 w-full flex flex-col md:flex ${reverseOnMobile} items-center justify-center gap-15 lg:gap-20 `}
+      class={`flex-1 w-full flex flex-col md:flex ${reverseOnMobile} items-center justify-center gap-15 max-sm:gap-10 lg:gap-20 `}
     >
       <!-- Text Column -->
       <div
@@ -45,7 +45,7 @@ const reverseOnMobile =
         style="max-width: clamp(400px, 48vw, 600px);"
       >
         <h2
-          class="lg:text-4xl w-full font-bold text-textblack leading-tight mb-6"
+          class="lg:text-4xl text-2xl w-full font-bold text-textblack leading-tight mb-6"
           style="margin:0;"
         >
           {title}
@@ -68,7 +68,7 @@ const reverseOnMobile =
 
       <!-- Image Column -->
       <div
-        class="w-max flex justify-center md:justify-end px-1"
+        class="w-full flex justify-center md:justify-end px-1"
         
       >
         {
@@ -77,7 +77,7 @@ const reverseOnMobile =
               src={image}
               alt={imageAlt}
               loading="lazy"
-              class="rounded-xl object-contain w-[clamp(400px,48vw,650px)] max-w-full"
+              class="rounded-xl object-contain w-full md:w-[clamp(400px,48vw,650px)] max-w-full h-auto"
               data-aos="fade-up" data-aos-duration="600" data-aos-offset="300"
             />
           ) : null

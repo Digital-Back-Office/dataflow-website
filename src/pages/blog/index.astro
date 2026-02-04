@@ -55,11 +55,12 @@ const allBlogsJson = JSON.stringify(allBlogs.map(blog => ({
       data-aos="fade-up" data-aos-duration="100"
     >
       <!-- Tabs -->
-      <div class="flex-1" data-aos="fade-up" data-aos-delay="100">
+      <div class="flex-1 max-sm:w-full" data-aos="fade-up" data-aos-delay="100">
         <nav
           id="category-tabs"
-          class="flex items-center gap-6 overflow-x-auto max-w-full"
+          class="flex items-center gap-6 overflow-x-auto max-w-full scrollbar-hide max-sm:gap-4"
           aria-label="Blog categories"
+          style="-webkit-overflow-scrolling: touch;"
         >
           {
             blogTabsConfig.map((t) => (
@@ -312,7 +313,7 @@ const allBlogsJson = JSON.stringify(allBlogs.map(blog => ({
 
           {/* Email Input */}
           <div class="max-w-2xl mx-auto">
-            <div class="flex items-stretch gap-3 p-2 bg-white backdrop-blur-sm rounded-2xl border border-white/20 shadow-2xl max-sm:flex-col">
+            <div class="flex items-stretch gap-3 p-2 bg-white backdrop-blur-sm rounded-2xl border border-white/20 shadow-xl">
               <div class="flex-1 text-gray-400 flex items-center gap-3 px-4">
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path
@@ -332,7 +333,7 @@ const allBlogsJson = JSON.stringify(allBlogs.map(blog => ({
               </div>
               <button
                 type="submit"
-                class="group px-8 py-3.5 text-white bg-primary hover:bg-primary/90 rounded-xl font-semibold transition-all whitespace-nowrap max-sm:w-full flex items-center justify-center gap-2 shadow-lg hover:shadow-primary/25"
+                class="group  px-8 max-sm:px-2 py-3.5 text-white bg-primary hover:bg-primary/90 rounded-xl font-semibold transition-all whitespace-nowrap max-sm:w-max flex items-center justify-center gap-2 shadow-lg hover:shadow-primary/25"
               >
                 Subscribe
                 <svg
@@ -386,6 +387,16 @@ const allBlogsJson = JSON.stringify(allBlogs.map(blog => ({
   article.hidden,
   article.search-hidden {
     display: none !important;
+  }
+
+  /* Hide scrollbar for category tabs */
+  .scrollbar-hide {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
+  
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;  /* Chrome, Safari and Opera */
   }
 </style>
 

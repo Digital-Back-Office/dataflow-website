@@ -31,6 +31,9 @@ const {
   shouldRedirect = true,
   href = ""
 } = Astro.props
+
+// Get form ID from environment variable with fallback
+const ctaGoogleFormId = import.meta.env.PUBLIC_CTA_GOOGLE_FORM_ID || '1FAIpQLScm9m5YZa0bdolEh1Sk3siQZgC2scoDnjc7gYk7xodB3WP2Vw'
 ---
 
 <div
@@ -86,11 +89,11 @@ const {
   }
 </style>
 
-<script is:inline>
+<script is:inline define:vars={{ ctaGoogleFormId }}>
   (function() {
     // Google Form configuration
     const GOOGLE_FORM_CONFIG = {
-      formUrl: 'https://docs.google.com/forms/d/e/1FAIpQLScm9m5YZa0bdolEh1Sk3siQZgC2scoDnjc7gYk7xodB3WP2Vw/formResponse',
+      formUrl: `https://docs.google.com/forms/d/e/${ctaGoogleFormId}/formResponse`,
       emailEntryId: 'entry.1103074482',
       pageSourceEntryId: 'entry.1402974516'
     }

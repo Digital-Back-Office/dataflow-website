@@ -4,8 +4,8 @@ import { getEntry } from 'astro:content'
 const Data = await getEntry('common', 'contact')
 const data = Data.data
 
-// Pass environment variable to the client-side script
-const formId = import.meta.env.PUBLIC_GOOGLE_FORM_ID
+// Pass environment variable to the client-side script with fallback
+const formId = import.meta.env.PUBLIC_GOOGLE_FORM_ID || '1FAIpQLSeGjuyA_jjDmmT4jTY96s0CgCL_JKOJlNrTRqJ-9iqRmlEPKw'
 ---
 
 <Layout title='Contact Us'>

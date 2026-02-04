@@ -344,6 +344,10 @@ const relatedBlogs = allBlogs
   }
 </style>
 
+<script is:inline define:vars={{ newsletterFormId: import.meta.env.PUBLIC_NEWSLETTER_GOOGLE_FORM_ID }}>
+  // Make newsletter form ID available globally
+  window.NEWSLETTER_FORM_ID = newsletterFormId;
+</script>
 <script is:inline src="/assets/js/newsletter.js"></script>
 
 <script is:inline>

@@ -26,13 +26,13 @@ simplify_dependency_management:
     target: '_blank'
   features:
     - title: "Smart Resolver"
-      description: "We detect conflicts before the build starts. Our resolver checks PyPI for compatible versions and locks them to a hash for security."
+      description: "We detect conflicts before the build starts. Our resolver checks PyPI for compatible versions and locks them to a hash for security"
       image: "/assets/icons/icon-checklist.svg"
     - title: "Time Travel"
-      description: "Broke your environment? Roll back to the previous successful build instantly. Every environment snapshot is versioned and stored."
+      description: "Broke your environment? Roll back to the previous successful build instantly. Every environment snapshot is versioned and stored"
       image: "/assets/icons/icon-clock-loop.webp"
     - title: "Project Sandboxing"
-      description: "Every project gets its own isolated container & isolated compute. Run legacy Python 3.9 code alongside a Python 3.11 AI model in the same platform without interference"
+      description: "Each project runs in an isolated container and compute environment, supporting multiple Python versions without interference"
       image: "/assets/icons/icon-cubes.svg"
     - title: "Production Parity"
       description: "The environment you use in VS Code is the exact same binary used by the Airflow Scheduler. Eliminate environment drift completely"

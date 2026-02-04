@@ -57,13 +57,13 @@ core_features:
     target: '_blank'
   features:
     - title: Zero-Trust Security
-      description: Secrets are encrypted at rest and in transit. We use industry-standard banking-grade encryption to ensure your credentials never leak.
+      description: Secrets are encrypted at rest and in transit. We use industry-standard banking-grade encryption to ensure your credentials never leak
       image: /assets/icons/realtimeprocessing.webp
     - title: Audit Logs
-      description: Know exactly who accessed which secret and when. Full audit trails for compliance (SOC2/ISO 27001).
+      description: Know exactly who accessed which secret and when. Full audit trails for compliance (SOC2/ISO 27001)
       image: /assets/icons/autoscaling.webp
     - title: Scoped Permissions
-      description: Limit access by environment. Ensure Production_DB credentials can only be accessed by the Prod Airflow cluster, not by a developer's local notebook.
+      description: Restrict access by environment so Production_DB credentials are only available to the Prod Airflow cluster
       image: /assets/icons/batchprocessing.webp
     - title: Unified experience
       description: Connections created in Dataflow are automatically available to all the apps. Use dataflow.connection to access it easily

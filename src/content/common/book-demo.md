@@ -1,7 +1,7 @@
 ---
 hero:
   title: Schedule a live
-  subtitle: Demo Today
+  subtitle: demo today
 
 highlights:
   - image: /assets/images/bookdemoimage1.webp

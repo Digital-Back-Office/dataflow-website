@@ -283,31 +283,35 @@ const googleFormId = import.meta.env.PUBLIC_GOOGLE_FORM_ID || '1FAIpQLSeGjuyA_jj
                 disabled
                 class='w-full bg-gradient-to-r from-primary to-primary/90 hover:from-primary/90 hover:to-primary disabled:from-gray-300 disabled:to-gray-300 disabled:cursor-not-allowed text-white font-bold rounded-xl h-14 flex items-center justify-center gap-3 transition-all duration-300 shadow-lg hover:shadow-xl disabled:shadow-none transform hover:scale-[1.02] disabled:scale-100'
               >
-                <svg class='w-5 h-5' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
+                <svg id='calendar-icon' class='w-5 h-5' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
                   <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z'></path>
                 </svg>
-                <span>{submitLabel}</span>
+                <svg id='loading-spinner' class='w-5 h-5 animate-spin hidden' fill='none' viewBox='0 0 24 24'>
+                  <circle class='opacity-25' cx='12' cy='12' r='10' stroke='currentColor' stroke-width='4'></circle>
+                  <path class='opacity-75' fill='currentColor' d='M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z'></path>
+                </svg>
+                <span id='submit-text'>{submitLabel}</span>
               </button>
             </div>
           </form>
 
           <!-- Success Message (Hidden by Default) -->
           <div id='thank-you-message' class='hidden text-center'>
-            <div class='py-12'>
-              <div class='w-20 h-20 bg-gradient-to-br from-green-400 to-green-500 rounded-full flex items-center justify-center mx-auto mb-6 animate-bounce-slow'>
+            <div class='flex flex-col items-center justify-center p-16 text-center bg-gradient-to-br from-primary/5 to-primary/10 rounded-2xl'>
+              <div class='w-20 h-20 bg-primary rounded-full flex items-center justify-center mb-6'>
                 <svg class='w-10 h-10 text-white' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
-                  <path stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M5 13l4 4L19 7'></path>
+                  <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M5 13l4 4L19 7'></path>
                 </svg>
               </div>
-              <h3 class='text-3xl font-bold text-textblack mb-3'>Thank You!</h3>
-              <p class='text-gray-600 mb-8 max-w-sm mx-auto'>
+              <h3 class='text-2xl font-bold text-gray-900 mb-3'>Thank You!</h3>
+              <p class='text-gray-600 mb-8 max-w-md'>
                 Your demo request has been submitted successfully. Our team will reach out to you shortly.
               </p>
               <button
                 id='submit-another-form'
-                class='text-primary hover:text-primary/80 font-semibold underline underline-offset-4 transition-colors'
+                class='px-6 py-3 bg-primary hover:bg-primaryHover text-white font-semibold rounded-lg transition-all duration-200'
               >
-                Submit another request
+                Submit Another Form
               </button>
             </div>
           </div>
@@ -397,6 +401,17 @@ const googleFormId = import.meta.env.PUBLIC_GOOGLE_FORM_ID || '1FAIpQLSeGjuyA_jj
     .addEventListener('submit', async function (event) {
       event.preventDefault()
 
+      const submitBtn = document.getElementById('book-demo-btn')
+      const submitText = document.getElementById('submit-text')
+      const calendarIcon = document.getElementById('calendar-icon')
+      const loadingSpinner = document.getElementById('loading-spinner')
+
+      // Show loading state
+      submitBtn.disabled = true
+      submitText.textContent = 'Submitting...'
+      calendarIcon.classList.add('hidden')
+      loadingSpinner.classList.remove('hidden')
+
       const name = document.querySelector('input[name="entry.1291198894"]')
       const email = document.querySelector('input[name="entry.59580764"]')
       const phoneNumber = document.querySelector('input[name="entry.1798038289"]')
@@ -459,7 +474,7 @@ const googleFormId = import.meta.env.PUBLIC_GOOGLE_FORM_ID || '1FAIpQLSeGjuyA_jj
         //     throw error
         //   })
 
-        const formResponse = await fetch(googleFormUrl, {
+        await fetch(googleFormUrl, {
           method: 'POST',
           mode: 'no-cors',
           body: formData
@@ -468,19 +483,26 @@ const googleFormId = import.meta.env.PUBLIC_GOOGLE_FORM_ID || '1FAIpQLSeGjuyA_jj
           throw e
         })
 
-        if (formResponse.ok) {
-          const form = document.getElementById('myForm')
-          const thankYouMessage = document.getElementById('thank-you-message')
-          
-          // Hide form and show thank you message
-          form.classList.add('hidden')
-          thankYouMessage.classList.remove('hidden')
+        // With no-cors mode, we can't check response.ok, so if no error was thrown, assume success
+        const form = document.getElementById('myForm')
+        const thankYouMessage = document.getElementById('thank-you-message')
+        
+        // Hide form and show thank you message
+        form.classList.add('hidden')
+        thankYouMessage.classList.remove('hidden')
 
-          // Reset form in background
-          form.reset()
-        }
+        // Reset form in background
+        form.reset()
       } catch (error) {
         console.error('Form submission error:', error)
+        
+        // Reset loading state
+        submitBtn.disabled = false
+        submitText.textContent = 'Book Now'
+        calendarIcon.classList.remove('hidden')
+        loadingSpinner.classList.add('hidden')
+        
+        // Show error message
         alert('There was an error submitting your request. Please try again or contact us directly.')
       }
     })
@@ -608,20 +630,6 @@ const googleFormId = import.meta.env.PUBLIC_GOOGLE_FORM_ID || '1FAIpQLSeGjuyA_jj
   /* Selected option color */
   select option:not(:first-child) {
     color: #303030;
-  }
-
-  /* Smooth bounce animation */
-  @keyframes bounce-slow {
-    0%, 100% {
-      transform: translateY(0);
-    }
-    50% {
-      transform: translateY(-10px);
-    }
-  }
-
-  .animate-bounce-slow {
-    animation: bounce-slow 2s ease-in-out infinite;
   }
 
   /* Ensure form doesn't overflow */

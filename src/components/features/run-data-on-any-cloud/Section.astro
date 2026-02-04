@@ -26,13 +26,13 @@ const { description, image, logo, link, mirror } = Astro.props
   
 >
   <div class={`flex gap-28 max-md:gap-20 ${!mirror && 'flex-row-reverse'} max-md:px-[10%]  max-md:flex-col max-md:items-center`}>
-    <img data-aos='fade-bounce' src={image} alt={`${description} screenshot`} class='w-max max-h-[500px] max-sm:h-max' />
+    <img data-aos='fade-bounce' src={image} alt={`${description} screenshot`} class='w-max max-h-[500px] max-sm:h-auto max-sm:max-w-full object-contain' />
     <div
       class={`max-sm:py-10 h-full flex flex-col max-sm:items-center gap-10 max-sm:gap-6 ${!mirror && ''}`}
     >
       <img src={logo} alt={`${description} logo`} class='h-[60px] max-sm:h-[40px] w-max' />
       <p
-        class='text-lg  max-sm:text-2xl leading-tight text-[#303030]'
+        class='text-lg max-sm:text-base leading-tight text-[#303030]'
         set:html={description.replace(/\*\*(.+?)\*\*/g, '<strong class="font-bold">$1</strong>')}
       ></p>
       <CustomButton

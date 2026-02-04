@@ -39,7 +39,7 @@ const meta_description = top.description ?? 'Upgrade your data management and pr
       <div class="flex items-center justify-center flex-wrap gap-8 px-4">
         {companyLogos.logos.map((logo) => (
           <div class="flex items-center justify-center p-2">
-            <img src={logo.image} alt={logo.alt || ''} class="h-10 object-contain" />
+            <img src={logo.image} alt={logo.alt || ''} class="h-10 max-sm:h-6 object-contain" />
           </div>
         ))}
       </div>

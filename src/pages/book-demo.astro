@@ -13,6 +13,10 @@ const hiddenActionValue = form?.hidden_action_value || 'Book a demo'
 // Get supported by data
 const CommonData = await getEntry('common', 'common')
 const supportedBy = CommonData.data.supported_by
+
+// Pass environment variables to the client-side script
+const appScriptID = import.meta.env.PUBLIC_GOOGLE_APP_SCRIPT_ID
+const googleFormId = import.meta.env.PUBLIC_GOOGLE_FORM_ID
 ---
 
 <Layout title='Book Demo'>
@@ -38,13 +42,21 @@ const supportedBy = CommonData.data.supported_by
               {highlights?.map((item, index) => (
                 <div class='flex items-start gap-4'>
                   <div class='w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center shrink-0'>
-                    <img
-                      src={item.image}
-                      width='24'
-                      height='24'
-                      alt={item.title}
-                      class='w-6 h-6'
-                    />
+                    {index === 0 && (
+                      <svg class='w-6 h-6 text-primary' fill='currentColor' viewBox='0 0 20 20'>
+                        <path d='M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z'></path>
+                      </svg>
+                    )}
+                    {index === 1 && (
+                      <svg class='w-6 h-6 text-primary' fill='currentColor' viewBox='0 0 20 20'>
+                        <path fill-rule='evenodd' d='M3 5a2 2 0 012-2h10a2 2 0 012 2v8a2 2 0 01-2 2h-2.22l.123.489.804.804A1 1 0 0113 18H7a1 1 0 01-.707-1.707l.804-.804L7.22 15H5a2 2 0 01-2-2V5zm5.771 7H5V5h10v7H8.771z' clip-rule='evenodd'></path>
+                      </svg>
+                    )}
+                    {index === 2 && (
+                      <svg class='w-6 h-6 text-primary' fill='currentColor' viewBox='0 0 20 20'>
+                        <path d='M11 17a1 1 0 001.447.894l4-2A1 1 0 0017 15V9.236a1 1 0 00-1.447-.894l-4 2a1 1 0 00-.553.894V17zM15.211 6.276a1 1 0 000-1.788l-4.764-2.382a1 1 0 00-.894 0L4.789 4.488a1 1 0 000 1.788l4.764 2.382a1 1 0 00.894 0l4.764-2.382zM4.447 8.342A1 1 0 003 9.236V15a1 1 0 00.553.894l4 2A1 1 0 009 17v-5.764a1 1 0 00-.553-.894l-4-2z'></path>
+                      </svg>
+                    )}
                   </div>
                   <div>
                     <h3 class='font-semibold text-gray-900 mb-1'>{item.title}</h3>
@@ -310,104 +322,89 @@ const supportedBy = CommonData.data.supported_by
   href='https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css'
   crossorigin='anonymous'
 />
-<script src='https://cdn.jsdelivr.net/npm/flatpickr'></script>
+<script src='https://cdn.jsdelivr.net/npm/flatpickr' is:inline></script>
 
-<script>
-  import flatpickr from 'flatpickr'
-  try {
-    flatpickr('.date-picker', {
-      enableTime: false,
-      dateFormat: 'Y-m-d',
-      minDate: 'today',
-      onOpen: function (selectedDates, dateStr, instance) {
-        const calendarContainer = instance.calendarContainer
-        const monthElement = calendarContainer.querySelector(
-          '.flatpickr-month'
-        ) as HTMLElement
-        const monthDropDown = calendarContainer.querySelector(
-          '.flatpickr-monthDropdown-months'
-        ) as HTMLElement
-        const DropDownMonth = calendarContainer.querySelectorAll(
-          '.flatpickr-monthDropdown-month'
-        ) as NodeListOf<HTMLElement>
-        const weekdays = calendarContainer.querySelectorAll(
-          '.flatpickr-weekday'
-        ) as NodeListOf<HTMLElement>
-        const currMonth = calendarContainer.querySelector(
-          '.flatpickr-current-month'
-        ) as HTMLElement
+<script is:inline>
+  window.addEventListener('load', function() {
+    // Wait for flatpickr to be loaded from CDN
+    if (typeof flatpickr === 'undefined') {
+      console.error('flatpickr library not loaded')
+      return
+    }
+    
+    try {
+      flatpickr('.date-picker', {
+        enableTime: false,
+        dateFormat: 'Y-m-d',
+        minDate: 'today',
+        onOpen: function (selectedDates, dateStr, instance) {
+          const calendarContainer = instance.calendarContainer
+          const monthElement = calendarContainer.querySelector('.flatpickr-month')
+          const monthDropDown = calendarContainer.querySelector('.flatpickr-monthDropdown-months')
+          const DropDownMonth = calendarContainer.querySelectorAll('.flatpickr-monthDropdown-month')
+          const weekdays = calendarContainer.querySelectorAll('.flatpickr-weekday')
+          const currMonth = calendarContainer.querySelector('.flatpickr-current-month')
+          const dayContainer = calendarContainer.querySelectorAll('.dayContainer')
+          const disabledDays = calendarContainer.querySelectorAll('.flatpickr-disabled')
+          const selectedDate = calendarContainer.querySelectorAll('.flatpickr-day.selected')
+          const today = calendarContainer.querySelectorAll('.flatpickr-day.today')
 
-        const dayContainer = calendarContainer.querySelectorAll(
-          '.dayContainer'
-        ) as NodeListOf<HTMLElement>
-
-        const disabledDays = calendarContainer.querySelectorAll(
-          '.flatpickr-disabled'
-        ) as NodeListOf<HTMLElement>
-        const selectedDate = calendarContainer.querySelectorAll(
-          '.flatpickr-day.selected'
-        ) as NodeListOf<HTMLElement>
-        const today = calendarContainer.querySelectorAll(
-          '.flatpickr-day.today'
-        ) as NodeListOf<HTMLElement>
-
-        today[0].style.borderColor = '#1dd0d5'
-        today[0].style.color = '#1dd0d5'
-
-        disabledDays.forEach((day) => {
-          day.style.color = '#9c9b9a'
-        })
-
-        if (selectedDate) {
-          selectedDate.forEach((date) => {
-            date.style.backgroundColor = '#1dd0d5'
+          if (today[0]) {
             today[0].style.borderColor = '#1dd0d5'
-            date.style.color = '#fff'
-          })
-        }
-        if (
-          monthElement &&
-          monthDropDown &&
-          weekdays &&
-          DropDownMonth &&
-          dayContainer
-        ) {
-          monthElement.style.backgroundColor = '#fafafa'
-          monthDropDown.style.backgroundColor = '#fafafa'
-          currMonth.style.display = 'flex'
-          currMonth.style.justifyContent = 'space-between'
-          dayContainer[0].style.backgroundColor = '#fafafa'
+            today[0].style.color = '#1dd0d5'
+          }
 
-          weekdays.forEach((weekday) => {
-            weekday.style.backgroundColor = '#fafafa'
+          disabledDays.forEach(function(day) {
+            day.style.color = '#9c9b9a'
           })
-          DropDownMonth.forEach((month) => {
-            month.style.backgroundColor = '#fafafa'
-          })
+
+          if (selectedDate) {
+            selectedDate.forEach(function(date) {
+              date.style.backgroundColor = '#1dd0d5'
+              if (today[0]) {
+                today[0].style.borderColor = '#1dd0d5'
+              }
+              date.style.color = '#fff'
+            })
+          }
+          
+          if (monthElement && monthDropDown && weekdays && DropDownMonth && dayContainer) {
+            monthElement.style.backgroundColor = '#fafafa'
+            monthDropDown.style.backgroundColor = '#fafafa'
+            currMonth.style.display = 'flex'
+            currMonth.style.justifyContent = 'space-between'
+            dayContainer[0].style.backgroundColor = '#fafafa'
+
+            weekdays.forEach(function(weekday) {
+              weekday.style.backgroundColor = '#fafafa'
+            })
+            
+            DropDownMonth.forEach(function(month) {
+              month.style.backgroundColor = '#fafafa'
+            })
+          }
         }
-      }
-    })
-  } catch (error) {
-    console.log('error on flatpickr  :>> ', error)
-  }
+      })
+    } catch (error) {
+      console.log('error on flatpickr  :>> ', error)
+    }
+  })
 </script>
 
-<script>
-  var appScriptID = import.meta.env.PUBLIC_GOOGLE_APP_SCRIPT_ID
-  var googleFormId = import.meta.env.PUBLIC_GOOGLE_FORM_ID
+<script is:inline define:vars={{ appScriptID, googleFormId }}>
   document
     .getElementById('myForm')
     .addEventListener('submit', async function (event) {
       event.preventDefault()
 
-      const name= document.querySelector('input[name="entry.1291198894"]') as HTMLInputElement
-      const email = document.querySelector('input[name="entry.59580764"]') as HTMLInputElement
-      const phoneNumber = document.querySelector('input[name="entry.1798038289"]') as HTMLInputElement
-      const date = document.querySelector('input[name="entry.800910305"]') as HTMLInputElement
-      const timeSlot = document.querySelector('select[name="entry.1284317816"]') as HTMLSelectElement
-      const companyName = document.querySelector('input[name="entry.1637227755"]') as HTMLInputElement
-      const companySize = document.querySelector('select[name="entry.1061557718"]') as HTMLSelectElement
-      const message = document.querySelector('textarea[name="entry.1056515558"]') as HTMLInputElement
+      const name = document.querySelector('input[name="entry.1291198894"]')
+      const email = document.querySelector('input[name="entry.59580764"]')
+      const phoneNumber = document.querySelector('input[name="entry.1798038289"]')
+      const date = document.querySelector('input[name="entry.800910305"]')
+      const timeSlot = document.querySelector('select[name="entry.1284317816"]')
+      const companyName = document.querySelector('input[name="entry.1637227755"]')
+      const companySize = document.querySelector('select[name="entry.1061557718"]')
+      const message = document.querySelector('textarea[name="entry.1056515558"]')
 
 
       function parseTime(timeStr, year, month, day) {
@@ -472,7 +469,7 @@ const supportedBy = CommonData.data.supported_by
         })
 
         if (formResponse.ok) {
-          const form = document.getElementById('myForm') as HTMLFormElement
+          const form = document.getElementById('myForm')
           const thankYouMessage = document.getElementById('thank-you-message')
           
           // Hide form and show thank you message
@@ -489,7 +486,7 @@ const supportedBy = CommonData.data.supported_by
     })
   // Submit another form button handler
   document.addEventListener('click', function(e) {
-    if (e.target && (e.target as HTMLElement).id === 'submit-another-form') {
+    if (e.target && e.target.id === 'submit-another-form') {
       location.reload()
     }
   })
@@ -501,11 +498,11 @@ const supportedBy = CommonData.data.supported_by
   document.getElementById('date').addEventListener('change', async function () {
     this.style.color = '#303030'
 
-    const selectElement = document.getElementById('available-slots') as HTMLSelectElement
+    const selectElement = document.getElementById('available-slots')
     const slotsContainer = document.getElementById('available-slots-container')
-    const BookDemoBtn = document.getElementById('book-demo-btn') as HTMLButtonElement
+    const BookDemoBtn = document.getElementById('book-demo-btn')
 
-    let date = (document.getElementById('date') as HTMLInputElement).value 
+    let date = document.getElementById('date').value 
 
     let timezone = Intl.DateTimeFormat().resolvedOptions().timeZone
 
@@ -566,8 +563,8 @@ const supportedBy = CommonData.data.supported_by
 
   // Enable submit button when a slot is selected
   document.getElementById('available-slots').addEventListener('change', function () {
-    const BookDemoBtn = document.getElementById('book-demo-btn') as HTMLButtonElement
-    const selectElement = this as HTMLSelectElement
+    const BookDemoBtn = document.getElementById('book-demo-btn')
+    const selectElement = this
     
     if (selectElement.value) {
       BookDemoBtn.disabled = false

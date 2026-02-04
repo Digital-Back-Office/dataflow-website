@@ -3,6 +3,9 @@ import Layout from '../layouts/Layout.astro'
 import { getEntry } from 'astro:content'
 const Data = await getEntry('common', 'contact')
 const data = Data.data
+
+// Pass environment variable to the client-side script
+const formId = import.meta.env.PUBLIC_GOOGLE_FORM_ID
 ---
 
 <Layout title='Contact Us'>
@@ -176,8 +179,7 @@ const data = Data.data
     </div>
   </section>
 </Layout>
-<script type='module'>
-  var formId = import.meta.env.PUBLIC_GOOGLE_FORM_ID
+<script is:inline define:vars={{ formId }}>
   document
     .getElementById('myForm')
     .addEventListener('submit', async function (event) {

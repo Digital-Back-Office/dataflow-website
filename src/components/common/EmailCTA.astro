@@ -86,18 +86,95 @@ const {
   }
 </style>
 
-<script>
-  import { setupEmailForm } from '../../utils/emailSubmission.js'
-  
-  // Get all email CTA forms on the page
-  const forms = document.querySelectorAll('.email-cta-form')
-  
-  forms.forEach((form) => {
-    const formId = form.id
-    const emailInputId = `${formId}-email`
-    const pageSource = form.getAttribute('data-page-source') || 'unknown'
-    const shouldRedirect = form.getAttribute('data-should-redirect') === 'true'
-    const href = form.getAttribute('data-href') || ''
-    setupEmailForm(formId, emailInputId, pageSource, shouldRedirect, href)
-  })
+<script is:inline>
+  (function() {
+    // Google Form configuration
+    const GOOGLE_FORM_CONFIG = {
+      formUrl: 'https://docs.google.com/forms/d/e/1FAIpQLScm9m5YZa0bdolEh1Sk3siQZgC2scoDnjc7gYk7xodB3WP2Vw/formResponse',
+      emailEntryId: 'entry.1103074482',
+      pageSourceEntryId: 'entry.1402974516'
+    }
+
+    // Redirect URL configuration
+    const REDIRECT_CONFIG = {
+      baseUrl: 'https://app.dataflow.zone/hub/login',
+      emailParam: 'email'
+    }
+
+    function validateEmail(email) {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+      return emailRegex.test(email)
+    }
+
+    async function submitToGoogleForm(email, pageSource) {
+      try {
+        const formData = new FormData()
+        formData.append(GOOGLE_FORM_CONFIG.emailEntryId, email)
+        formData.append(GOOGLE_FORM_CONFIG.pageSourceEntryId, pageSource)
+        
+        await fetch(GOOGLE_FORM_CONFIG.formUrl, {
+          method: 'POST',
+          body: formData,
+          mode: 'no-cors'
+        })
+        
+        return true
+      } catch (error) {
+        console.log('Form submission error:', error)
+        return false
+      }
+    }
+
+    function redirectToApp(email) {
+      const url = new URL(REDIRECT_CONFIG.baseUrl)
+      url.searchParams.set(REDIRECT_CONFIG.emailParam, email)
+      window.open(url.toString(), '_blank')
+    }
+
+    async function handleEmailSubmit(email, pageSource, shouldRedirect, customHref) {
+      const trimmedEmail = email.trim()
+      
+      if (!validateEmail(trimmedEmail)) {
+        console.error('Invalid email format')
+        return
+      }
+      
+      await submitToGoogleForm(trimmedEmail, pageSource)
+      
+      if (shouldRedirect) {
+        redirectToApp(trimmedEmail)
+      } else if (customHref) {
+        window.location.href = customHref
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      const forms = document.querySelectorAll('.email-cta-form')
+      
+      forms.forEach((form) => {
+        // Skip if already initialized to prevent duplicate submissions
+        if (form.dataset.initialized === 'true') {
+          return
+        }
+        
+        const formId = form.id
+        const emailInputId = `${formId}-email`
+        const pageSource = form.getAttribute('data-page-source') || 'unknown'
+        const shouldRedirect = form.getAttribute('data-should-redirect') === 'true'
+        const href = form.getAttribute('data-href') || ''
+        
+        const emailInput = document.getElementById(emailInputId)
+        
+        if (form && emailInput) {
+          form.addEventListener('submit', async (e) => {
+            e.preventDefault()
+            await handleEmailSubmit(emailInput.value, pageSource, shouldRedirect, href)
+          })
+          
+          // Mark as initialized
+          form.dataset.initialized = 'true'
+        }
+      })
+    })
+  })()
 </script>

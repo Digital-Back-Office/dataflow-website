@@ -14,9 +14,9 @@ const hiddenActionValue = form?.hidden_action_value || 'Book a demo'
 const CommonData = await getEntry('common', 'common')
 const supportedBy = CommonData.data.supported_by
 
-// Pass environment variables to the client-side script
-const appScriptID = import.meta.env.PUBLIC_GOOGLE_APP_SCRIPT_ID
-const googleFormId = import.meta.env.PUBLIC_GOOGLE_FORM_ID
+// Pass environment variables to the client-side script with fallbacks
+const appScriptID = import.meta.env.PUBLIC_GOOGLE_APP_SCRIPT_ID || 'AKfycbwxuVvMe9pSazFyR5PA1eXiQHlHPnxE0CXdtyeXJCMzn-ZBYuTnmIPLJv2NTSfytl3v'
+const googleFormId = import.meta.env.PUBLIC_GOOGLE_FORM_ID || '1FAIpQLSeGjuyA_jjDmmT4jTY96s0CgCL_JKOJlNrTRqJ-9iqRmlEPKw'
 ---
 
 <Layout title='Book Demo'>

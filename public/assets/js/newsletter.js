@@ -3,8 +3,8 @@ document.addEventListener('DOMContentLoaded', function () {
   const form = document.querySelector('form[name="newsletter"]');
   if (!form) return;
 
-  // Google Form configuration
-  const GOOGLE_FORM_ID = '1FAIpQLSci4Z7XiJkLIXaR74abspyxq1ii3M7OGxh58d7S3LrEL1lCwQ';
+  // Google Form configuration - get from environment variable passed via window
+  const GOOGLE_FORM_ID = window.NEWSLETTER_FORM_ID || '1FAIpQLSci4Z7XiJkLIXaR74abspyxq1ii3M7OGxh58d7S3LrEL1lCwQ';
   const FORM_URL = `https://docs.google.com/forms/d/e/${GOOGLE_FORM_ID}/formResponse`;
  
   const FIELD_MAPPINGS = {

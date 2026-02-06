@@ -18,17 +18,17 @@ top_section:
 
 benefits:
   title: Benefits of Running Dataflow on Any Cloud
-  description: Running Dataflow on any cloud platform offers several key advantages that enhance your data processing capabilities. This approach provides unparalleled flexibility, allowing you to choose the cloud provider that best meets your needs, whether it’s AWS, Google Cloud, Azure, or another major service. This choice helps you avoid vendor lock-in and leverage the unique strengths of each platform.
+  description: Run Dataflow across AWS, Google Cloud, Azure, and more. Avoid vendor lock-in while leveraging each platform's unique strengths.
   features:
     - title: Flexibility
       description: Choose any cloud provider that fits your needs, such as AWS, Google Cloud, or Azure, without being locked into one vendor.
-      image: /assets/icons/flexibilityrundataanycloud.webp
+      image: /assets/icons/icon-cloud-flexibility.svg
     - title: Interoperability
       description: Easily integrate with a variety of cloud services and apps for a smooth and efficient data processing workflow.
-      image: /assets/icons/Interoperability.webp
+      image: /assets/icons/icon-cloud-interoperability.svg
     - title: Cost-Efficiency
       description: Save money by selecting the most cost-effective cloud provider and using resources only when necessary.
-      image: /assets/icons/cost-efficiency.webp
+      image: /assets/icons/icon-cloud-cost.svg
 
 core_capabilities:
   title: Core Capabilities
@@ -40,16 +40,16 @@ core_capabilities:
   features:
     - title: Real-Time Processing
       description: Dataflow processes data instantly as it arrives, perfect for tasks needing immediate insights like fraud detection or real-time monitoring.
-      image: /assets/icons/realtimeprocessing.webp
+      image: /assets/icons/icon-core-realtime.svg
     - title: Batch Processing
       description: Handles large volumes of data in scheduled chunks, suitable for daily reports and data warehousing.
-      image: /assets/icons/batchprocessing.webp
+      image: /assets/icons/icon-core-batch.svg
     - title: Auto-Scaling
       description: Automatically adjusts resources to match workload demands, ensuring efficient use of resources and cost savings.
-      image: /assets/icons/autoscaling.webp
+      image: /assets/icons/icon-core-autoscale.svg
     - title: Stream and Batch Analytics
       description: Provides apps to analyze both live data streams and historical data for complete insights and reporting.
-      image: /assets/icons/streamandbatchanalytics.webp
+      image: /assets/icons/icon-core-analytics.svg
 
 cloud_providers:
   title: "Write Once, Run Anywhere"
@@ -73,10 +73,10 @@ private_cloud:
   features:
     - title: Flexibility
       description: Choose any cloud provider that fits your needs, such as AWS, Google Cloud, or Azure, without being locked into one vendor.
-      image: '/assets/icons/flexibilityrundataanycloud.webp'
+      image: '/assets/icons/icon-private-flex.svg'
     - title: Security
       description: Maintain high security standards with end-to-end encryption and compliance with industry regulations.
-      image: '/assets/icons/security.webp'
+      image: '/assets/icons/icon-private-security.svg'
 
   feature1:
     title: Flexibility

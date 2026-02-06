@@ -43,17 +43,18 @@ const bgClass = bg === 'F8FAFC' ? 'bg-[#F8FAFC]' : 'bg-white'
 const reverseOnMd = imageSide === 'left' ? 'md:flex-row-reverse' : 'md:flex-row'
 ---
 
-<div class={`min-h-[80vh] px-[10%] w-full py-10 pt-16 flex flex-col md:${reverseOnMd} md:flex-row items-center justify-center gap-10 ${bgClass} max-sm:flex-col max-sm:py-[30px] max-sm:px-[20px] max-sm:justify-start max-sm:items-start max-sm:min-h-max max-sm:pt-28`}>
+<div class={`relative w-full px-[10%] ${bgClass}`}>
+  <div class={`max-w-7xl mx-auto min-h-[80vh] w-full py-10 pt-16 flex flex-col md:${reverseOnMd} md:flex-row items-center justify-center gap-10 max-sm:flex-col max-sm:py-[30px] max-sm:px-4 max-sm:justify-start max-sm:items-start max-sm:min-h-max max-sm:pt-28`}>
   <div class="absolute left-0 top-0 z-1" data-aos="fade-right" data-aos-duration="700" data-aos-offset="200">
     <img src="/assets/images/dataflow-bg-pattern.svg" alt="dataflow-bg-pattern" />
   </div>
 
-  <div data-aos="fade-right" data-aos-duration="700" data-aos-offset="200" class="md:w-1/2 w-full flex flex-col gap-8  max-sm:px-2 max-md:w-[90%] z-10">
+  <div data-aos="fade-right" data-aos-duration="700" data-aos-offset="200" class="md:w-1/2 w-full flex flex-col gap-8 max-sm:px-2 z-10 max-w-[640px]">
     <h1 class="text-5xl max-md:text-4xl max-sm:text-2xl leading-snug tracking-wide font-bold text-black">
       {title}
     </h1>
     {description && (
-      <p class="text-lg max-sm:text-sm text-textblack leading-tight max-w-[50rem]">
+      <p class="text-lg max-sm:text-sm text-textblack leading-tight">
         {description}
       </p>
     )}
@@ -64,10 +65,10 @@ const reverseOnMd = imageSide === 'left' ? 'md:flex-row-reverse' : 'md:flex-row'
   </div>
 
   {image ? (
-    <div data-aos="fade-left" data-aos-duration="700" data-aos-offset="200" class={`z-10 max-sm:mt-10 ${hideImageOnMobile ? 'max-md:hidden' : ''} md:block md:w-1/2 pt-10 max-w-5xl w-full `}>
-      <img src={image} alt={imageAlt ?? title} class="transition-all duration-400 ease-in-out rounded-lg w-full object-contain" />
+    <div data-aos="fade-left" data-aos-duration="700" data-aos-offset="200" class={`z-10 max-sm:mt-10 ${hideImageOnMobile ? 'max-md:hidden' : ''} md:block md:w-1/2 pt-10 w-full flex justify-center`}>
+      <img src={image} alt={imageAlt ?? title} class="transition-all duration-400 ease-in-out rounded-lg w-full max-w-[640px] object-contain" />
     </div>
   ) : null}
-
+  </div>
 </div>
 

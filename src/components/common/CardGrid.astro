@@ -1,0 +1,58 @@
+---
+interface Props {
+  title: string
+  description?: string
+  features: Array<{
+    title: string
+    description: string
+    image?: string
+    link?: string
+    linkText?: string
+  }>
+  columns?: number
+  bg?: string
+}
+
+const { title, description, features, columns = 2, bg = 'white' } = Astro.props
+const gridCols = columns === 3 ? 'md:grid-cols-3' : 'md:grid-cols-2'
+---
+
+<section class={`py-20 px-[10%] bg-${bg === 'white' ? 'white' : '[#F8FAFC]'}`}>
+  <div class="max-w-7xl mx-auto">
+    <div class="mb-12 text-center" data-aos="fade-up">
+      <h2 class="text-4xl md:text-5xl font-bold mb-4 text-textblack">{title}</h2>
+      {description && <p class="text-lg text-gray-600 max-w-4xl mx-auto">{description}</p>}
+    </div>
+
+    <div class={`grid grid-cols-1 ${gridCols} gap-6`}>
+      {features.map((feature, index) => (
+        <div 
+          class="group p-6 rounded-2xl bg-white border border-gray-200 hover:border-primary/60 hover:shadow-md transition-all duration-300"
+          data-aos="fade-up"
+          data-aos-delay={index * 100}
+        >
+          {feature.image && (
+            <div class="w-12 h-12 mb-4 flex items-center justify-center bg-gray-50 rounded-lg border border-gray-100">
+              <img src={feature.image} alt="" class="w-7 h-7" />
+            </div>
+          )}
+          <h3 class="text-xl font-semibold mb-3 text-textblack   transition-colors">
+            {feature.title}
+          </h3>
+          <p class="text-gray-600 leading-relaxed">{feature.description}</p>
+          {feature.link && feature.linkText && (
+            <a 
+              href={feature.link} 
+              class="inline-flex items-center mt-4 text-primary font-medium hover:underline"
+            >
+              {feature.linkText}
+              <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+              </svg>
+            </a>
+          )}
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

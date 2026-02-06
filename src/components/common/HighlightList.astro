@@ -1,0 +1,36 @@
+---
+interface Props {
+  title: string
+  description: string
+  items: Array<{
+    title: string
+    text: string
+  }>
+  bg?: string
+}
+
+const { title, description, items, bg = 'white' } = Astro.props
+---
+
+<section class={`py-20 px-[10%] bg-${bg === 'white' ? 'white' : '[#F8FAFC]'}`}>
+  <div class="max-w-5xl mx-auto">
+    <div class="text-center mb-12" data-aos="fade-up">
+      <h2 class="text-4xl md:text-5xl font-bold mb-6 text-textblack">{title}</h2>
+      <p class="text-lg text-gray-600">{description}</p>
+    </div>
+
+    <div class="space-y-4" data-aos="fade-up" data-aos-delay="200">
+      {items.map((item, index) => (
+        <div class="flex items-start gap-4 p-5 bg-white rounded-xl border-l-4 border-primary shadow-sm hover:shadow-md transition-shadow">
+          <div class="flex-shrink-0 w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center font-semibold text-sm">
+            {index + 1}
+          </div>
+          <div>
+            <h3 class="font-semibold text-lg text-textblack mb-1">{item.title}</h3>
+            <p class="text-gray-600">{item.text}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

@@ -1,16 +1,18 @@
 ---
-import Benefits from '../../components/features/manage-data-efficiently/Benefits.astro'
-import DataConnections from '../../components/features/manage-data-efficiently/DataConnections.astro'
-import FeatureGrid from '../../components/common/FeatureGrid.astro'
-import Comparison from '../../components/features/manage-data-efficiently/Comparison.astro'
-import TopSection from '../../components/common/TopSection.astro'
 import Layout from '../../layouts/Layout.astro'
+import TopSection from '../../components/common/TopSection.astro'
+import FeatureGrid from '../../components/common/FeatureGrid.astro'
+import CardGrid from '../../components/common/CardGrid.astro'
+import TwoColumnSection from '../../components/common/TwoColumnSection.astro'
+import Comparison from '../../components/features/shared-foundation/Comparison.astro'
 import { getEntry } from 'astro:content'
 
-const Data = await getEntry('features', 'manage-your-data-connections')
+const Data = await getEntry('features', 'shared-foundation')
 const top = Data?.data?.top_section || {}
-const coreFeatures = Data?.data?.core_features || {}
-const meta_description = top.description ?? 'Seamlessly manage your data connections across various apps and platforms with Dataflow.'
+const sharedPlatformLayer = Data?.data?.shared_platform_layer || {}
+const builtOnManagedDeps = Data?.data?.built_on_managed_dependencies || {}
+const keyBenefits = Data?.data?.key_benefits || {}
+const meta_description = top.description ?? 'A common platform layer shared across all applications. Unified environments, configuration, and zero duplication.'
 ---
 
 <Layout
@@ -27,14 +29,34 @@ const meta_description = top.description ?? 'Seamlessly manage your data connect
     imageSide="right"
     bg="white"
   />
-  <Comparison />
-  <Benefits />
-  <DataConnections />
+
   <FeatureGrid
-    title={coreFeatures.title}
-    description={coreFeatures.description}
-    features={coreFeatures.features}
-    button={coreFeatures.button}
-    className="pl-[5%] justify-evenly"
+    title={sharedPlatformLayer.title}
+    description={sharedPlatformLayer.description}
+    features={sharedPlatformLayer.features}
+    button={sharedPlatformLayer.button}
+    bg="F8FAFC"
   />
+
+  <TwoColumnSection
+    title={builtOnManagedDeps.title}
+    description={builtOnManagedDeps.description}
+    image={builtOnManagedDeps.image}
+    imageSide={builtOnManagedDeps.imageSide}
+    linkText={builtOnManagedDeps.linkText}
+    linkHref={builtOnManagedDeps.link}
+    linkTarget="_self"
+    bg="white"
+  />
+
+  <Comparison />
+
+  <CardGrid
+    title={keyBenefits.title}
+    description={keyBenefits.description}
+    features={keyBenefits.features}
+    columns={3}
+    bg="gray"
+  />
+
 </Layout>

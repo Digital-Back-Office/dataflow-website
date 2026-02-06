@@ -3,16 +3,17 @@ import Layout from '../../layouts/Layout.astro'
 import TopSection from '../../components/common/TopSection.astro'
 // InfiniteScrollLogos replaced with a simple flex logo list (client-side scrolling removed)
 import FeatureGrid from '../../components/common/FeatureGrid.astro'
+import CardGrid from '../../components/common/CardGrid.astro'
 import PrivateCloud from '../../components/features/run-data-on-any-cloud/PrivateCloud.astro'
 import { getEntry } from 'astro:content'
 import Section from '../../components/features/run-data-on-any-cloud/Section.astro'
-import Benefits from '../../components/features/run-data-on-any-cloud/Benefits.astro'
 
 const Data = await getEntry('features', 'run-data-on-any-cloud')
 const top = Data?.data?.top_section || {}
 const data = Data?.data?.cloud_providers || {}
 const cloud_providers = data?.cloud_providers || []
 const companyLogos = top?.company_logos || {}
+const benefits = Data?.data?.benefits || {}
 const coreCapabilities = Data?.data?.core_capabilities || {}
 const meta_description = top.description ?? 'Upgrade your data management and processing capabilities by using our service, which enables Dataflow on any cloud platform'
 ---
@@ -45,7 +46,13 @@ const meta_description = top.description ?? 'Upgrade your data management and pr
       </div>
     </section>
   )}
-  <Benefits />
+  <CardGrid
+    title={benefits.title}
+    description={benefits.description}
+    features={benefits.features}
+    columns={3}
+    bg="gray"
+  />
   <FeatureGrid
     title={coreCapabilities.title}
     description={coreCapabilities.description}

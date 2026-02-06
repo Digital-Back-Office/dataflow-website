@@ -22,39 +22,38 @@ interface Props {
 const { title, description, features, button, bg = 'F8FAFC', className = '' } = Astro.props
 ---
 
-<div
-  class={`w-full py-28 px-[6%] flex items-center justify-center max-md:flex-col max-sm:py-16 ${className} bg-[#${bg}]`}
-  
->
-  <div class='text-container max-md:w-4/5 w-2/5' data-aos="fade-right" data-aos-duration="850" data-aos-offset="200">
-    <h1 class='text-5xl max-md:text-4xl font-bold mb-8 text-textblack'>{title}</h1>
-    <p class='text-lg w-full text-textblack'>{description}</p>
-    {button && (
-      <CustomButton 
-        label={button.label}
-        href={button.href}
-        target={button.target ?? "_self"}
-        className="mt-10"
-      />
-    )}
-  </div>
-  <div
-    class='w-2/5 img-container flex flex-row flex-wrap items-between justify-between max-md:my-10'
-    data-aos="fade-left" data-aos-duration="850" data-aos-offset="200"
-  >
-    <div class="img-container grid grid-cols-2 max-md:grid-cols-1 gap-8 w-[620px]">
-      {
-        features.map((feature) => (
-          <Card
-            image={feature.image}
-            title={feature.title}
-            description={feature.description}
-          />
-        ))
-      }
+<section class={`w-full py-20 px-[6%] ${className} bg-[#${bg}]`}>
+  <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-[1fr_1.2fr] gap-12 items-start">
+    <div class='text-container' data-aos="fade-right" data-aos-duration="850" data-aos-offset="200">
+      <h2 class='text-4xl md:text-5xl font-bold mb-6 text-textblack'>{title}</h2>
+      <p class='text-lg text-gray-600'>{description}</p>
+      {button && (
+        <CustomButton 
+          label={button.label}
+          href={button.href}
+          target={button.target ?? "_self"}
+          className="mt-8"
+        />
+      )}
+    </div>
+    <div
+      class='img-container'
+      data-aos="fade-left" data-aos-duration="850" data-aos-offset="200"
+    >
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        {
+          features.map((feature) => (
+            <Card
+              image={feature.image}
+              title={feature.title}
+              description={feature.description}
+            />
+          ))
+        }
+      </div>
     </div>
   </div>
-</div>
+</section>
 <style>
   @media (max-width: 440px) {
     .container-top {

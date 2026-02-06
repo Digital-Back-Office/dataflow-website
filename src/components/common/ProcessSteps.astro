@@ -1,0 +1,43 @@
+---
+interface Props {
+  title: string
+  description: string
+  steps: Array<{
+    step: string
+    description: string
+  }>
+  bg?: string
+}
+
+const { title, description, steps, bg = 'white' } = Astro.props
+---
+
+<section class={`py-20 px-[10%] bg-${bg === 'white' ? 'white' : '[#F8FAFC]'}`}>
+  <div class="max-w-7xl mx-auto">
+    <div class="text-center mb-16" data-aos="fade-up">
+      <h2 class="text-4xl md:text-5xl font-bold mb-6 text-textblack">{title}</h2>
+      <p class="text-lg text-gray-600 max-w-3xl mx-auto">{description}</p>
+    </div>
+
+    <div class="relative" data-aos="fade-up" data-aos-delay="200">
+      <!-- Vertical line -->
+      <div class="absolute left-11 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary to-primary/30 hidden md:block"></div>
+      
+      <div class="space-y-12">
+        {steps.map((item, index) => (
+          <div class="relative pl-0 md:pl-24">
+            <!-- Step number circle -->
+            <div class="absolute left-0 md:left-3 top-0 w-16 h-16 bg-primary rounded-full flex items-center justify-center text-white font-bold text-xl shadow-lg max-md:relative max-md:mb-4">
+              {index + 1}
+            </div>
+            
+            <div class="bg-white p-6 rounded-2xl  border border-gray-200 transition-shadow">
+              <h3 class="text-xl font-semibold mb-3 text-textblack">{item.step}</h3>
+              <p class="text-gray-600">{item.description}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

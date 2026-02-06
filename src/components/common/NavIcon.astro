@@ -10,6 +10,22 @@ const baseClass = size === 'large' ? 'w-6 h-6' : 'w-5 h-5 mt-0.5 shrink-0'
   </svg>
 )}
 
+{id === 'python' && (
+  <svg class={`${baseClass} text-primary`} viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'>
+    <path d='M12 2L2 7L12 12L22 7L12 2Z' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/>
+    <path d='M2 17L12 22L22 17' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/>
+    <path d='M2 12L12 17L22 12' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/>
+  </svg>
+)}
+
+{id === 'workspace' && (
+  <svg class={`${baseClass} text-primary`} fill='none' stroke='currentColor' viewBox='0 0 24 24'>
+    <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M4 6a2 2 0 012-2h12a2 2 0 012 2v12a2 2 0 01-2 2H6a2 2 0 01-2-2V6z'></path>
+    <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M8 4v16'></path>
+    <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M12 9h6M12 13h6'></path>
+  </svg>
+)}
+
 {id === 'foundation' && (
   <svg class={`${baseClass} text-primary`} fill='none' stroke='currentColor' viewBox='0 0 24 24'>
     <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4'></path>

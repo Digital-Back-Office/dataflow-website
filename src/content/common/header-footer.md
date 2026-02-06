@@ -13,18 +13,26 @@ header:
           - heading: "Features"
             span: 3
             items:
-              - title: "Cloud Agnostic"
-                icon-id: "cloud"
-                description: "Deploy to AWS, Azure, or Google Cloud"
-                href: "/product/cloud-agnostic"
+              - title: "Managed Dependencies"
+                icon-id: "python"
+                description: "Say goodbye to dependency hell"
+                href: "/product/managed-dependencies"
+              - title: "Development-Ready Workspace"
+                icon-id: "workspace"
+                description: "Start building instantly"
+                href: "/product/development-ready-workspace"
               - title: "Shared Foundation"
                 icon-id: "foundation"
-                description: "Connect your data across apps"
+                description: "One foundation, shared everywhere"
                 href: "/product/shared-foundation"
-              - title: "Deploy in one click"
+              - title: "Deploy to Production"
                 icon-id: "deploy"
-                description: "Shared Python environments"
+                description: "Ship with confidence"
                 href: "/product/deploy-in-one-click"
+              - title: "Cloud-Agnostic"
+                icon-id: "cloud"
+                description: "Run on any cloud platform"
+                href: "/product/cloud-agnostic"
           - heading: "Product"
             span: 2
             items:
@@ -101,12 +109,16 @@ footer:
   sections:
     - heading: "Product"
       links:
-        - label: "Cloud Agnostics"
-          href: "/product/cloud-agnostic"
+        - label: "Managed Dependencies"
+          href: "/product/managed-dependencies"
+        - label: "Development-Ready Workspace"
+          href: "/product/development-ready-workspace"
         - label: "Shared Foundation"
           href: "/product/shared-foundation"
-        - label: "Deploy in one click"
+        - label: "Deploy to Production"
           href: "/product/deploy-in-one-click"
+        - label: "Cloud-Agnostic"
+          href: "/product/cloud-agnostic"
 
     - heading: "Solutions"
       links:

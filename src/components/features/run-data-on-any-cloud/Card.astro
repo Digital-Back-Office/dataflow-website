@@ -3,10 +3,10 @@ const { image, title, description, bg, height = null, width = null, href = null 
 ---
 
 <div
-  class={`card transition-all duration-100 ease-in-out ${width ? `w-[${width}]` : 'w-[280px]'} ${height ? `h-[${height}]` : 'h-[250px]'} p-7 py-6  text-textblack hover:text-white ${bg ? bg : "bg-white"} hover:bg-[#30baba] flex flex-col gap-2 items-start justify-evenly rounded-[36px] max-sm:rounded-3xl group`}
+  class={`card transition-all duration-200 ease-in-out ${width ? `w-[${width}]` : ''} ${height ? `h-[${height}]` : ''} min-w-[260px] min-h-[260px] p-7 py-6 text-textblack ${bg ? bg : "bg-white"} border border-gray-200 hover:border-primary/50 hover:shadow-md flex flex-col gap-2 items-start justify-evenly rounded-[28px] max-sm:rounded-3xl group`}
 >
-  <div class='size-[40px] max-sm:my-1 max-sm:size-[30px]'>
-    <img src={image} alt={title} class='w-full h-full object-contain image-container' />
+  <div class='size-[40px] max-sm:my-1 max-sm:size-[30px] bg-gray-50 rounded-lg border border-gray-100 flex items-center justify-center'>
+    <img src={image} alt={title} class='w-7 h-7 object-contain' />
   </div>
   <h3 class='text-xl max-sm:my-1 max-sm:text-lg font-semibold'>
     {title}
@@ -16,20 +16,14 @@ const { image, title, description, bg, height = null, width = null, href = null 
   </p>
   {
     href && label && (
-      <a href={href} class='mt-2 text-primary group-hover:text-white hover:underline' target={target}>
+      <a href={href} class='mt-2 text-primary hover:underline inline-flex items-center gap-1' target={target}>
         {label}
-        <img 
-          src='/assets/images/arrowright.webp' 
-          class='inline-block ml-2 group-hover:brightness-0 group-hover:invert'
-        />
+        <img src='/assets/images/arrowright.webp' class='inline-block w-4 h-4' />
       </a>
     )
   }
 </div>
 <style>
-  .card:hover .image-container {
-    filter: brightness(0) invert(1);
-  }
   @media (max-width: 500px) {
     .card {
       width: 100%;

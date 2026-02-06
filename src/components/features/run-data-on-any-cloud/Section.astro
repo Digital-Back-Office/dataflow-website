@@ -21,11 +21,9 @@ const { description, image, logo, link, mirror } = Astro.props
   }
 </style>
 
-<div
-  class={`min-h-[80vh] py-16 lg:px-[15%] max-md: ${mirror ? 'bg-white' : 'bg-[#F8FAFC]'} flex items-center justify-center max-sm:flex-col`}
-  
->
-  <div class={`flex gap-28 max-md:gap-20 ${!mirror && 'flex-row-reverse'} max-md:px-[10%]  max-md:flex-col max-md:items-center`}>
+<div class={`w-full ${mirror ? 'bg-white' : 'bg-[#F8FAFC]'}`}>
+  <div class={`max-w-7xl mx-auto min-h-[80vh] w-full  py-16 flex items-center justify-center max-sm:flex-col`}>
+    <div class={`flex gap-28 max-md:gap-20 ${!mirror && 'flex-row-reverse'} max-md:flex-col max-md:items-center`}>
     <img data-aos='fade-bounce' src={image} alt={`${description} screenshot`} class='w-max max-h-[500px] max-sm:h-auto max-sm:max-w-full object-contain' />
     <div
       class={`max-sm:py-10 h-full flex flex-col max-sm:items-center gap-10 max-sm:gap-6 ${!mirror && ''}`}

@@ -5,7 +5,7 @@ top_section:
   button:
     label: "Get Started"
     href: "https://app.dataflow.zone/login"
-  hero_image: "/assets/images/runanycloud.webp"
+  hero_image: "/assets/images/product/your-data-your-cloud.webp"
   company_logos:
     title: 'Production-ready on all major providers'
     logos:

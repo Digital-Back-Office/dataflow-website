@@ -5,7 +5,7 @@ top_section:
   button:
     label: "Get Started"
     href: "https://app.dataflow.zone"
-  hero_image: "/assets/images/product/define-once-use-everywhere.webp"
+  hero_image: "/assets/images/product/deploy-apps.webp"
 
 seamless_deployment:
   title: "From Development to Production, Instantly"
@@ -31,7 +31,7 @@ seamless_deployment:
 production_parity:
   title: "Production Parity by Design"
   description: "Traditional workflows have separate environments for development, staging, and production. This creates drift, bugs, and debugging nightmares. Dataflow eliminates that by using the same immutable environment everywhere."
-  image: "/assets/images/product/define-once-share-everywhere.webp"
+  image: "/assets/images/product/production-parity-design.webp"
   imageSide: "left"
   callout: "Because development and production use the exact same containerized environment, you eliminate an entire class of deployment bugs."
 

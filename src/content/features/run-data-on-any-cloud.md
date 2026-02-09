@@ -73,7 +73,7 @@ private_cloud:
   features:
     - title: Flexibility
       description: Choose any cloud provider that fits your needs, such as AWS, Google Cloud, or Azure, without being locked into one vendor.
-      image: '/assets/icons/icon-private-flex.svg'
+      image: '/assets/icons/icon-cloud-flexibility.svg'
     - title: Security
       description: Maintain high security standards with end-to-end encryption and compliance with industry regulations.
       image: '/assets/icons/icon-private-security.svg'

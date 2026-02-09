@@ -465,14 +465,14 @@ const googleFormId = import.meta.env.PUBLIC_GOOGLE_FORM_ID || '1FAIpQLSeGjuyA_jj
       const googleScriptURL = `https://script.google.com/macros/s/${appScriptID}/exec`
 
       try {
-        // const scriptResponse = await fetch(googleScriptURL, {
-        //   method: 'POST',
-        //   body: formData
-        // })
-        //   .catch((error) => {
-        //     console.error('calendar error:', error)
-        //     throw error
-        //   })
+        const scriptResponse = await fetch(googleScriptURL, {
+          method: 'POST',
+          body: formData
+        })
+          .catch((error) => {
+            console.error('calendar error:', error)
+            throw error
+          })
 
         await fetch(googleFormUrl, {
           method: 'POST',

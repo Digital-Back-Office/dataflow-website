@@ -5,7 +5,7 @@ top_section:
   button:
     label: 'Get Started'
     href: "https://app.dataflow.zone"
-  hero_image: "/assets/images/product/goodbye-dependency-hell.webp"
+  hero_image: "/assets/images/product/start-building-instantly.webp"
 
 what_you_get:
   title: "Everything You Need, Preconfigured"
@@ -37,7 +37,7 @@ what_you_get:
 instant_onboarding:
   title: "From Idea to Execution in Minutes"
   description: "Traditional setups take hours or days. Install Python, configure virtual environments, set up databases, install applications, manage credentials. Dataflow removes all of that. You go from zero to building in minutes."
-  image: "/assets/images/product/define-once-share-everywhere.webp"
+  image: "/assets/images/product/idea-to-execution.webp"
   button:
     label: "Get Started"
     href: "https://app.dataflow.zone"

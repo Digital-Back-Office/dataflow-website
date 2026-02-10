@@ -5,7 +5,10 @@ const Data = await getEntry('common', 'start-free-trail')
 const data = Data.data
 ---
 
-<Layout title='Start Free Trail'>
+<Layout
+  title='Start Free Trial | Dataflow Data Platform'
+  meta_description='Start a free Dataflow trial to build AI-ready data pipelines and workflows for your startup or data team.'
+>
   <div
     class='w-full min-h-screen bg-[#F8FAFC] flex justify-center max-sm:flex-col items-start py-20'
   >
@@ -21,19 +24,19 @@ const data = Data.data
           <span class='mt-[3px] max-sm:mt-[6px]'
             ><img
               src='/assets/images/check-box-icon.webp'
-              alt='point'
+              alt='Benefit checkmark'
               width='20px'
             /></span
           >{data.description[0]}
         </li>
         <li class='text-base mb-4 text-textblack flex items-start gap-2'>
           <span class='mt-[3px] max-sm:mt-[6px]'
-            ><img src='/assets/images/check-box-icon.webp' alt='point' /></span
+            ><img src='/assets/images/check-box-icon.webp' alt='Benefit checkmark' /></span
           >{data.description[1]}
         </li>
         <li class='text-base mb-4 text-textblack flex items-start gap-2'>
           <span class='mt-[3px] max-sm:mt-[6px]'
-            ><img src='/assets/images/check-box-icon.webp' alt='point' /></span
+            ><img src='/assets/images/check-box-icon.webp' alt='Benefit checkmark' /></span
           >{data.description[2]}
         </li>
         <li class='text-base mb-4 text-textblack flex items-start gap-2'>

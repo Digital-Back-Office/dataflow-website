@@ -10,6 +10,7 @@ const { data, mirror = false, image } = Astro.props
   <div class='w-1/2 flex items-center justify-center width100' data-aos="fade-right" data-aos-duration="850" data-aos-offset="200">
     <img 
       src={image} 
+      alt={`${data.title} illustration`}
       class='w-[80%] opacity-0 transition-opacity duration-700 fadein-image' 
       loading="lazy"
       onload="this.classList.add('opacity-100')"

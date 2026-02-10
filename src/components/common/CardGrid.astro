@@ -33,7 +33,7 @@ const gridCols = columns === 3 ? 'md:grid-cols-3' : 'md:grid-cols-2'
         >
           {feature.image && (
             <div class="w-12 h-12 mb-4 flex items-center justify-center bg-gray-50 rounded-lg border border-gray-100">
-              <img src={feature.image} alt="" class="w-7 h-7" />
+              <img src={feature.image} alt={`${feature.title} icon`} class="w-7 h-7" />
             </div>
           )}
           <h3 class="text-xl font-semibold mb-3 text-textblack   transition-colors">
@@ -41,8 +41,9 @@ const gridCols = columns === 3 ? 'md:grid-cols-3' : 'md:grid-cols-2'
           </h3>
           <p class="text-gray-600 leading-relaxed">{feature.description}</p>
           {feature.link && feature.linkText && (
-            <a 
-              href={feature.link} 
+            <a
+              href={feature.link}
+              title={feature.linkText ?? feature.title}
               class="inline-flex items-center mt-4 text-primary font-medium hover:underline"
             >
               {feature.linkText}

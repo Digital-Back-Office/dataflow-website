@@ -16,9 +16,9 @@ const { image, title, description, bg, height = null, width = null, href = null 
   </p>
   {
     href && label && (
-      <a href={href} class='mt-2 text-primary hover:underline inline-flex items-center gap-1' target={target}>
+      <a href={href} class='mt-2 text-primary hover:underline inline-flex items-center gap-1' target={target} title={title}>
         {label}
-        <img src='/assets/images/arrowright.webp' class='inline-block w-4 h-4' />
+        <img src='/assets/images/arrowright.webp' alt='Arrow right' class='inline-block w-4 h-4' />
       </a>
     )
   }

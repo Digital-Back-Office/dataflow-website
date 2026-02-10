@@ -71,7 +71,8 @@ const reverseOnMobile =
           linkText && (
             <a
               href={linkHref}
-              target={linkTarget}
+               target={linkTarget}
+               title={linkText}
               class="inline-flex items-center text-primary font-semibold hover:underline"
             >
               {linkText}
@@ -89,7 +90,7 @@ const reverseOnMobile =
           image ? (
             <img
               src={image}
-              alt={imageAlt}
+                alt={`${imageAlt} illustration`}
               loading="lazy"
               class="rounded-xl object-contain w-full max-w-[640px] h-auto"
               data-aos="fade-up" data-aos-duration="600" data-aos-offset="300"

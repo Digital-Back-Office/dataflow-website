@@ -37,7 +37,7 @@ const classes = `${baseClasses} ${variantClasses} ${className}`.trim()
 ---
 
 {href ? (
-    <a href={href} target={target} rel={rel} class={classes} aria-label={label} onclick={onclick}>
+    <a href={href} target={target} rel={rel} class={classes} aria-label={label} title={label} onclick={onclick}>
         {label}
         {iconSrc && (
             <img
@@ -49,7 +49,7 @@ const classes = `${baseClasses} ${variantClasses} ${className}`.trim()
         )}
     </a>
 ) : (
-    <button type={type} class={classes} aria-label={label} onclick={onclick}>
+    <button type={type} class={classes} aria-label={label} title={label} onclick={onclick}>
         {label}
         {iconSrc && (
             <img

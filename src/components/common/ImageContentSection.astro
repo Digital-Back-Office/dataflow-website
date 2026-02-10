@@ -30,6 +30,7 @@ const isRight = imageSide === 'right'
         {link && linkText && (
           <a 
             href={link}
+            title={linkText}
             class="inline-flex items-center text-primary font-semibold text-lg hover:underline group"
           >
             {linkText}
@@ -41,7 +42,7 @@ const isRight = imageSide === 'right'
       </div>
       
       <div class="flex-1" data-aos="fade-left">
-        <img src={image} alt="" class="w-full rounded-2xl shadow-2xl" />
+        <img src={image} alt={`${title} illustration`} class="w-full rounded-2xl shadow-2xl" />
       </div>
     </div>
   </div>

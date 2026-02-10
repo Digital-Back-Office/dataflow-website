@@ -46,7 +46,10 @@ const allBlogsJson = JSON.stringify(allBlogs.map(blog => ({
 })));
 ---
 
-<Layout title="Blog">
+<Layout
+  title="Dataflow Blog: Data Science, AI & Startups"
+  meta_description="Insights on data science, AI and ML in data, and startup growth. Practical guides and trends from Dataflow experts."
+>
   <!-- Main Content -->
   <div class="px-[10%] mt-20 max-sm:px-[20px] pt-16 pb-24 max-sm:pt-12 max-sm:pb-16">
     <!-- Page Header -->
@@ -126,6 +129,7 @@ const allBlogsJson = JSON.stringify(allBlogs.map(blog => ({
             {post.data.image && (
               <a
                 href={`/blog/${post.slug}`}
+                title={post.data.title}
                 class="block overflow-hidden"
               >
                 <img
@@ -152,7 +156,7 @@ const allBlogsJson = JSON.stringify(allBlogs.map(blog => ({
 
               {/* Title */}
               <h3 class="text-xl font-bold text-textblack mb-3 line-clamp-2 group-hover:text-primary transition-colors">
-                <a href={`/blog/${post.slug}`}>{post.data.title}</a>
+                <a href={`/blog/${post.slug}`} title={post.data.title}>{post.data.title}</a>
               </h3>
 
               {/* Description */}
@@ -163,6 +167,7 @@ const allBlogsJson = JSON.stringify(allBlogs.map(blog => ({
               {/* Read More Link */}
               <a
                 href={`/blog/${post.slug}`}
+                title={`Read ${post.data.title}`}
                 class="inline-flex items-center text-primary font-semibold text-sm hover:gap-2 transition-all group/link"
               >
                 Read More
@@ -355,11 +360,11 @@ const allBlogsJson = JSON.stringify(allBlogs.map(blog => ({
           {/* Terms */}
           <p class="text-center text-sm">
             By subscribing, you agree to our{" "}
-            <a href="/legal/terms-and-conditions" class="text-primary hover:text-primary/80 underline transition-colors">
+            <a href="/legal/terms-and-conditions" title="Terms and Conditions" class="text-primary hover:text-primary/80 underline transition-colors">
               Terms
             </a>{" "}
             and{" "}
-            <a href="/legal/terms-and-conditions" class="text-primary hover:text-primary/80 underline transition-colors">
+            <a href="/legal/privacy-policy" title="Privacy Policy" class="text-primary hover:text-primary/80 underline transition-colors">
               Privacy Policy
             </a>
           </p>

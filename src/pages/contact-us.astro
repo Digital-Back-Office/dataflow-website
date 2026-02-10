@@ -8,7 +8,10 @@ const data = Data.data
 const formId = import.meta.env.PUBLIC_GOOGLE_FORM_ID || '1FAIpQLSeGjuyA_jjDmmT4jTY96s0CgCL_JKOJlNrTRqJ-9iqRmlEPKw'
 ---
 
-<Layout title='Contact Us'>
+<Layout
+  title='Contact Dataflow | Talk to Data Platform Experts'
+  meta_description='Contact Dataflow to discuss your data platform needs. Get expert guidance on data science, AI, and modern data stack strategy.'
+>
   <section class='min-h-screen bg-gradient-to-b from-gray-50 to-white px-[5%] py-32 max-sm:py-24' >
     <div class='max-w-7xl mx-auto'>
       <div data-aos="fade-up" data-aos-duration="850" data-aos-offset="200" class='text-center mb-16'>
@@ -34,7 +37,7 @@ const formId = import.meta.env.PUBLIC_GOOGLE_FORM_ID || '1FAIpQLSeGjuyA_jjDmmT4j
                 </div>
                 <div>
                   <h3 class='font-semibold text-gray-900 mb-1'>Email Us</h3>
-                  <a href='mailto:support@dataflow.zone' class='text-primary hover:text-primaryHover transition-colors'>
+                  <a href='mailto:support@dataflow.zone' title='Email Dataflow support' class='text-primary hover:text-primaryHover transition-colors'>
                     support@dataflow.zone
                   </a>
                 </div>
@@ -58,7 +61,7 @@ const formId = import.meta.env.PUBLIC_GOOGLE_FORM_ID || '1FAIpQLSeGjuyA_jjDmmT4j
           <div class='hidden lg:block'>
             <img
               src='/assets/images/contact-us.webp'
-              alt='Contact Us'
+              alt='Contact Dataflow illustration'
               class='w-full max-w-xl mx-auto'
             />
           </div>

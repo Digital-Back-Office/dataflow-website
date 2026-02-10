@@ -8,14 +8,15 @@ interface Props {
 const {
   title,
   header = true,
-  meta_description = "AI ready data platform in less than 30 minutes",
+  meta_description = "Modern data platform for startups and AI teams.",
 } = Astro.props;
 
-const pageTitle = Astro.url.pathname === "/" 
-  ? "Dataflow | AI ready data platform" 
-  : title && title !== "Dataflow" 
-    ? title + " | Dataflow - AI ready data platform" 
-    : "Dataflow | AI ready data platform";
+const defaultTagline = "AI-ready data platform for startups";
+const pageTitle = title?.includes("|")
+  ? title
+  : title
+    ? `${title} | Dataflow`
+    : `Dataflow | ${defaultTagline}`;
 
 import Footer from "../components/common/Footer.astro";
 import Header from "../components/common/Header.astro";
@@ -69,15 +70,16 @@ import '../styles/global.css';
     <title>{pageTitle}</title>
 
     <!-- Open Graph Meta Tags -->
-    <meta property="og:title" content="Dataflow | AI ready data platform" />
+    <meta property="og:title" content={pageTitle} />
     <meta
       property="og:description"
-      content="AI ready data platform in less than 30 minutes"
+      content={meta_description}
     />
     <meta property="og:image" content="https://dataflow.zone/og-image.png" />
     <meta property="og:url" content="https://dataflow.zone" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="dataflow.zone" />
+    <slot name="head" />
   </head>
   <body
     class="font-jakarta overflow-x-hidden"
@@ -146,6 +148,16 @@ import '../styles/global.css';
             }
           });
         });
+    </script>
+    <script is:inline>
+      document.addEventListener('DOMContentLoaded', () => {
+        document.querySelectorAll('a:not([title])').forEach((anchor) => {
+          const label = anchor.getAttribute('aria-label') || anchor.textContent?.trim() || anchor.getAttribute('href');
+          if (label) {
+            anchor.setAttribute('title', label);
+          }
+        });
+      });
     </script>
   </body>
 </html>

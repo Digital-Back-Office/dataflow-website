@@ -1,0 +1,380 @@
+---
+import Layout from '../../layouts/Layout.astro'
+
+const content = {
+  hero: {
+    title: 'Get Free Dataflow Credits',
+    subtitle: 'Build faster. Spend nothing.',
+    description:
+      'Run Python, ML, and data workflows instantly — without setting up infrastructure.',
+    highlight: 'Get up to $1000 credits',
+    subHighlight: 'Apply once. Get credits. Earn more with referrals.',
+    primaryCta: { label: 'Apply for Free Credits', href: '#apply' },
+    secondaryCta: { label: 'Refer & Earn More', href: '#referral' }
+  },
+  trustStrip: [
+    'No Credit Card Required',
+    'Limited-Time Campaign',
+    'Reviewed Applications',
+    'Built for Builders'
+  ],
+  campaign: {
+    title: 'What is the Dataflow Credits Campaign?',
+    headline: 'Build without worrying about cloud costs',
+    description:
+      'The Dataflow Credits Campaign is a limited-time initiative to support builders who want to experiment, learn, and ship faster. We’re offering free platform credits so you can focus on building — not infrastructure.',
+    whoFor: [
+      'Students & researchers',
+      'Indie developers',
+      'Data teams',
+      'Startups & founders',
+      'Data & AI engineers'
+    ]
+  },
+  benefits: [
+    { title: 'Free Credits to Start', description: 'Launch with generous credits to explore workflows.' },
+    { title: 'CPU & GPU compute', description: 'Scale from notebooks to GPU experiments.' },
+    { title: 'Secure cloud storage', description: 'Keep datasets protected and accessible.' },
+    { title: 'Jupyter, Airflow, Streamlit, VS Code', description: 'All the tools you already use.' },
+    { title: 'Browser-based environment', description: 'Open, run, and ship from anywhere.' },
+    { title: 'No Setup. No Maintenance.', description: 'Run everything directly in your browser. No installs. No DevOps.' }
+  ],
+  referral: {
+    title: 'Earn More Credits by Referring Others',
+    description:
+      'Share your unique referral link and earn bonus credits for every approved signup.',
+    steps: [
+      'Invite friends or teammates',
+      'They apply using your referral link',
+      'Both of you get extra credits',
+      'No limits. No spam. Quality referrals only.'
+    ],
+    cta: { label: 'Get My Referral Link', href: '#apply' }
+  },
+  howItWorks: [
+    {
+      title: 'Apply',
+      description: 'Fill out a short application about your project and background.'
+    },
+    {
+      title: 'Review',
+      description: 'Our team reviews applications on a rolling basis.'
+    },
+    {
+      title: 'Get Credits',
+      description: 'Approved users receive credits directly in their Dataflow account.'
+    },
+    {
+      title: 'Refer & Earn',
+      description: 'Invite others and unlock more credits.'
+    }
+  ],
+  whoShouldApply: [
+    'Building an ML or AI project',
+    'Running data pipelines or experiments',
+    'Creating dashboards or prototypes',
+    'Launching a startup MVP',
+    'Learning data engineering hands-on',
+    'If you use Python — this is for you.'
+  ],
+  faq: [
+    {
+      q: 'How much free credit will I receive?',
+      a: 'Credits are allocated based on your project scope and requirements.'
+    },
+    {
+      q: 'Do I need a credit card?',
+      a: 'No. This campaign is completely free.'
+    },
+    {
+      q: 'How long are credits valid?',
+      a: 'Credits are valid for a limited period. Details are shared after approval.'
+    },
+    { q: 'Can teams or startups apply?', a: 'Yes. Individual builders and teams are welcome.' },
+    {
+      q: 'When will I hear back?',
+      a: 'Most applications are reviewed within 3–5 business days.'
+    }
+  ]
+}
+---
+
+<Layout title='Dataflow Credits Campaign | Variation 1'>
+  <section class='relative overflow-hidden bg-gradient-to-b from-[#f5fbfb] via-white to-white'>
+    <div class='absolute -top-32 -right-24 size-[420px] rounded-full bg-primary/10 blur-3xl'></div>
+    <div class='absolute -bottom-32 -left-24 size-[420px] rounded-full bg-secondary/10 blur-3xl'></div>
+    <div class='max-w-7xl mx-auto px-[5%] pt-32 pb-20 grid lg:grid-cols-[1.1fr_0.9fr] gap-16 items-center'>
+      <div class='space-y-8'>
+        <div class='inline-flex items-center gap-2 rounded-full bg-primary/10 px-4 py-2 text-sm font-semibold text-primary'>
+          <span class='size-2 rounded-full bg-primary'></span>
+          Limited-Time Credits Campaign
+        </div>
+        <div class='space-y-4'>
+          <h1 class='text-5xl max-sm:text-4xl font-bold text-textDarker leading-tight'>
+            {content.hero.title}
+          </h1>
+          <p class='text-xl text-textPrimary font-semibold'>{content.hero.subtitle}</p>
+          <p class='text-lg text-textPrimary/80 leading-relaxed'>{content.hero.description}</p>
+        </div>
+        <div class='flex flex-wrap gap-4 items-center'>
+          <div class='px-4 py-2 rounded-xl bg-white shadow-md border border-primary/10'>
+            <p class='text-sm uppercase text-textPrimary/70 tracking-wide'>Highlight</p>
+            <p class='text-lg font-semibold text-textDarker'>{content.hero.highlight}</p>
+          </div>
+          <p class='text-sm text-textPrimary/70 max-w-sm'>{content.hero.subHighlight}</p>
+        </div>
+        <div class='flex flex-wrap gap-4'>
+          <a
+            href={content.hero.primaryCta.href}
+            class='px-6 py-3 rounded-lg bg-primary text-white font-semibold shadow-lg hover:bg-primaryHover transition'
+          >
+            {content.hero.primaryCta.label}
+          </a>
+          <a
+            href={content.hero.secondaryCta.href}
+            class='px-6 py-3 rounded-lg border border-primary/30 text-primary font-semibold hover:border-primary transition'
+          >
+            {content.hero.secondaryCta.label}
+          </a>
+        </div>
+        <div class='flex flex-wrap gap-3 text-sm text-textPrimary/80'>
+          {content.trustStrip.map((item) => (
+            <span class='flex items-center gap-2 px-3 py-1 rounded-full bg-white/70 border border-primary/10'>
+              <span class='size-2 rounded-full bg-primary/80'></span>
+              {item}
+            </span>
+          ))}
+        </div>
+      </div>
+      <div class='relative'>
+        <div class='rounded-3xl bg-white shadow-xl border border-primary/10 p-8 space-y-6'>
+          <div class='flex items-center justify-between'>
+            <div>
+              <p class='text-sm text-textPrimary/70'>Campaign Focus</p>
+              <p class='text-2xl font-bold text-textDarker'>Credits for Builders</p>
+            </div>
+            <div class='size-14 rounded-2xl bg-primary/10 flex items-center justify-center'>
+              <svg class='w-7 h-7 text-primary' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
+                <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M12 8v8m4-4H8'></path>
+              </svg>
+            </div>
+          </div>
+          <div class='grid grid-cols-2 gap-4 text-sm'>
+            {content.campaign.whoFor.map((item) => (
+              <div class='flex items-center gap-2 rounded-xl bg-[#f7fbfb] px-3 py-2'>
+                <span class='size-2 rounded-full bg-primary'></span>
+                <span class='text-textPrimary'>{item}</span>
+              </div>
+            ))}
+          </div>
+          <div class='p-4 rounded-2xl bg-gradient-to-r from-primary/10 via-transparent to-secondary/10 text-sm text-textPrimary'>
+            Designed for quick experimentation, reliable pipelines, and data-first founders.
+          </div>
+        </div>
+        <div class='absolute -bottom-6 -left-6 hidden lg:block'>
+          <div class='rounded-2xl bg-white px-4 py-3 shadow-lg border border-primary/10 text-sm'>
+            <p class='text-primary font-semibold'>Rolling reviews</p>
+            <p class='text-textPrimary/70'>3–5 business days</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class='max-w-7xl mx-auto px-[5%] py-16'>
+    <div class='grid lg:grid-cols-[0.9fr_1.1fr] gap-12 items-start'>
+      <div class='space-y-5'>
+        <p class='text-sm font-semibold text-primary uppercase tracking-wide'>Campaign</p>
+        <h2 class='text-4xl font-bold text-textDarker'>{content.campaign.title}</h2>
+        <p class='text-xl text-textPrimary font-semibold'>{content.campaign.headline}</p>
+        <p class='text-textPrimary/80 leading-relaxed'>{content.campaign.description}</p>
+      </div>
+      <div class='grid sm:grid-cols-2 gap-5'>
+        {content.whoShouldApply.map((item) => (
+          <div class='rounded-2xl border border-primary/10 bg-white p-5 shadow-sm'>
+            <p class='font-semibold text-textDarker'>{item}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class='bg-[#f7fbfb] py-16'>
+    <div class='max-w-7xl mx-auto px-[5%]'>
+      <div class='flex items-center justify-between flex-wrap gap-6 mb-10'>
+        <div>
+          <p class='text-sm font-semibold text-primary uppercase tracking-wide'>What you get</p>
+          <h2 class='text-4xl font-bold text-textDarker'>Build with full power from day one</h2>
+        </div>
+        <div class='text-sm text-textPrimary/70 max-w-md'>
+          Credits unlock production-grade tooling without the overhead of infrastructure management.
+        </div>
+      </div>
+      <div class='grid md:grid-cols-3 gap-6'>
+        {content.benefits.map((benefit) => (
+          <div class='rounded-2xl bg-white p-6 border border-primary/10 shadow-sm hover:shadow-md transition'>
+            <div class='size-12 rounded-2xl bg-primary/10 flex items-center justify-center mb-4'>
+              <span class='size-3 rounded-full bg-primary'></span>
+            </div>
+            <h3 class='text-lg font-bold text-textDarker mb-2'>{benefit.title}</h3>
+            <p class='text-sm text-textPrimary/80'>{benefit.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section id='referral' class='max-w-7xl mx-auto px-[5%] py-16'>
+    <div class='grid lg:grid-cols-[1.1fr_0.9fr] gap-12 items-center'>
+      <div class='space-y-5'>
+        <p class='text-sm font-semibold text-primary uppercase tracking-wide'>Referral Program</p>
+        <h2 class='text-4xl font-bold text-textDarker'>{content.referral.title}</h2>
+        <p class='text-textPrimary/80 leading-relaxed'>{content.referral.description}</p>
+        <ul class='space-y-3 text-textPrimary'>
+          {content.referral.steps.map((step, index) => (
+            <li class='flex items-center gap-3'>
+              <span class='size-8 rounded-full bg-primary/10 flex items-center justify-center text-primary font-semibold'>
+                {index + 1}
+              </span>
+              {step}
+            </li>
+          ))}
+        </ul>
+        <a
+          href={content.referral.cta.href}
+          class='inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-primary text-white font-semibold shadow-lg hover:bg-primaryHover transition'
+        >
+          {content.referral.cta.label}
+          <svg class='w-4 h-4' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
+            <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M13 7l5 5m0 0l-5 5m5-5H6'></path>
+          </svg>
+        </a>
+      </div>
+      <div class='rounded-3xl border border-primary/10 bg-gradient-to-br from-primary/10 via-white to-secondary/10 p-8 shadow-lg'>
+        <h3 class='text-2xl font-bold text-textDarker mb-6'>How it works</h3>
+        <div class='space-y-4'>
+          {content.howItWorks.map((step, index) => (
+            <div class='flex gap-4'>
+              <div class='size-10 rounded-2xl bg-white shadow flex items-center justify-center font-bold text-primary'>
+                {index + 1}
+              </div>
+              <div>
+                <p class='font-semibold text-textDarker'>{step.title}</p>
+                <p class='text-sm text-textPrimary/80'>{step.description}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id='apply' class='bg-[#f7fbfb] py-16'>
+    <div class='max-w-7xl mx-auto px-[5%]'>
+      <div class='grid lg:grid-cols-[0.9fr_1.1fr] gap-12'>
+        <div class='space-y-5'>
+          <p class='text-sm font-semibold text-primary uppercase tracking-wide'>Application</p>
+          <h2 class='text-4xl font-bold text-textDarker'>Apply for Free Credits</h2>
+          <p class='text-textPrimary/80 leading-relaxed'>
+            Share a few details about what you’re building. We’ll review and respond in 3–5 business days.
+          </p>
+        </div>
+        <form class='bg-white rounded-3xl border border-primary/10 shadow-lg p-8 space-y-6'>
+          <div class='grid sm:grid-cols-2 gap-4'>
+            <div class='space-y-2'>
+              <label class='text-sm font-semibold text-textPrimary'>Full Name</label>
+              <input
+                type='text'
+                placeholder='Your name'
+                class='w-full h-11 rounded-lg border border-gray-200 px-3 focus:outline-none focus:ring-2 focus:ring-primary/30'
+              />
+            </div>
+            <div class='space-y-2'>
+              <label class='text-sm font-semibold text-textPrimary'>Email Address</label>
+              <input
+                type='email'
+                placeholder='you@email.com'
+                class='w-full h-11 rounded-lg border border-gray-200 px-3 focus:outline-none focus:ring-2 focus:ring-primary/30'
+              />
+            </div>
+            <div class='space-y-2'>
+              <label class='text-sm font-semibold text-textPrimary'>Country</label>
+              <input
+                type='text'
+                placeholder='Country'
+                class='w-full h-11 rounded-lg border border-gray-200 px-3 focus:outline-none focus:ring-2 focus:ring-primary/30'
+              />
+            </div>
+            <div class='space-y-2'>
+              <label class='text-sm font-semibold text-textPrimary'>Role</label>
+              <select class='w-full h-11 rounded-lg border border-gray-200 px-3 focus:outline-none focus:ring-2 focus:ring-primary/30'>
+                <option>Student</option>
+                <option>Developer</option>
+                <option>Researcher</option>
+                <option>Founder</option>
+                <option>Other</option>
+              </select>
+            </div>
+          </div>
+          <div class='grid sm:grid-cols-2 gap-4'>
+            <div class='space-y-2'>
+              <label class='text-sm font-semibold text-textPrimary'>Experience Level</label>
+              <select class='w-full h-11 rounded-lg border border-gray-200 px-3 focus:outline-none focus:ring-2 focus:ring-primary/30'>
+                <option>Beginner</option>
+                <option>Intermediate</option>
+                <option>Advanced</option>
+              </select>
+            </div>
+            <div class='space-y-2'>
+              <label class='text-sm font-semibold text-textPrimary'>GitHub / Portfolio / LinkedIn (Optional)</label>
+              <input
+                type='text'
+                placeholder='Link'
+                class='w-full h-11 rounded-lg border border-gray-200 px-3 focus:outline-none focus:ring-2 focus:ring-primary/30'
+              />
+            </div>
+          </div>
+          <button type='submit' class='w-full h-12 rounded-lg bg-primary text-white font-semibold shadow-md hover:bg-primaryHover transition'>
+            Submit Application
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <section class='max-w-7xl mx-auto px-[5%] py-16'>
+    <div class='grid lg:grid-cols-[1.1fr_0.9fr] gap-12 items-start'>
+      <div class='space-y-5'>
+        <p class='text-sm font-semibold text-primary uppercase tracking-wide'>FAQ</p>
+        <h2 class='text-4xl font-bold text-textDarker'>Questions, answered</h2>
+        <p class='text-textPrimary/80'>Everything you need to know before applying.</p>
+      </div>
+      <div class='space-y-4'>
+        {content.faq.map((item) => (
+          <details class='group rounded-2xl border border-primary/10 bg-white p-5'>
+            <summary class='flex items-center justify-between cursor-pointer text-textDarker font-semibold'>
+              {item.q}
+              <span class='transition group-open:rotate-45 text-primary text-xl'>+</span>
+            </summary>
+            <p class='mt-3 text-sm text-textPrimary/80'>{item.a}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class='bg-gradient-to-r from-primary to-secondary py-16'>
+    <div class='max-w-6xl mx-auto px-[5%] text-center text-white space-y-6'>
+      <h2 class='text-4xl font-bold'>Ready to Build Without Limits?</h2>
+      <p class='text-lg text-white/90'>Start experimenting, learning, and shipping — without worrying about cloud costs.</p>
+      <div class='flex flex-wrap justify-center gap-4'>
+        <a href='#apply' class='px-6 py-3 rounded-lg bg-white text-primary font-semibold shadow-lg'>
+          Apply for Free Credits
+        </a>
+        <a href='#referral' class='px-6 py-3 rounded-lg border border-white/70 text-white font-semibold'>
+          Refer Friends & Earn More
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>

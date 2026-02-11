@@ -35,11 +35,7 @@ const hero = Data.data?.hero || {
     >
     </div>
     <!-- Grid Pattern -->
-    <div
-      class="absolute inset-0"
-      style="background-image: radial-gradient(circle at 1px 1px, rgb(203 213 225 / 0.15) 1px, transparent 0); background-size: 40px 40px;"
-    >
-    </div>
+    <div class="absolute inset-0 hero-grid-pattern"></div>
 
     <!-- Animated Data Flow Nodes -->
     <svg
@@ -174,28 +170,19 @@ const hero = Data.data?.hero || {
       <!-- Gradient Definitions -->
       <defs>
         <linearGradient id="gradient1" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" style="stop-color:rgb(48 186 186);stop-opacity:0"
-          ></stop>
-          <stop offset="50%" style="stop-color:rgb(48 186 186);stop-opacity:0.7"
-          ></stop>
-          <stop offset="100%" style="stop-color:rgb(48 186 186);stop-opacity:0"
-          ></stop>
+          <stop offset="0%" class="hero-gradient-stop hero-gradient-stop-start"></stop>
+          <stop offset="50%" class="hero-gradient-stop hero-gradient-stop-mid"></stop>
+          <stop offset="100%" class="hero-gradient-stop hero-gradient-stop-end"></stop>
         </linearGradient>
         <linearGradient id="gradient2" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" style="stop-color:rgb(48 186 186);stop-opacity:0"
-          ></stop>
-          <stop offset="50%" style="stop-color:rgb(48 186 186);stop-opacity:0.7"
-          ></stop>
-          <stop offset="100%" style="stop-color:rgb(48 186 186);stop-opacity:0"
-          ></stop>
+          <stop offset="0%" class="hero-gradient-stop hero-gradient-stop-start"></stop>
+          <stop offset="50%" class="hero-gradient-stop hero-gradient-stop-mid"></stop>
+          <stop offset="100%" class="hero-gradient-stop hero-gradient-stop-end"></stop>
         </linearGradient>
         <linearGradient id="gradient3" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" style="stop-color:rgb(48 186 186);stop-opacity:0"
-          ></stop>
-          <stop offset="50%" style="stop-color:rgb(48 186 186);stop-opacity:0.7"
-          ></stop>
-          <stop offset="100%" style="stop-color:rgb(48 186 186);stop-opacity:0"
-          ></stop>
+          <stop offset="0%" class="hero-gradient-stop hero-gradient-stop-start"></stop>
+          <stop offset="50%" class="hero-gradient-stop hero-gradient-stop-mid"></stop>
+          <stop offset="100%" class="hero-gradient-stop hero-gradient-stop-end"></stop>
         </linearGradient>
       </defs>
 
@@ -625,7 +612,9 @@ const hero = Data.data?.hero || {
           class="w-full h-auto block"
           poster="/assets/images/app-screenshots/dashboard.webp"
         >
-          <!-- <source src="/assets/videos/data-exporation.webm" type="video/webm" /> -->
+          <!-- WebM format for better compression (preferred) -->
+          <source src="/assets/videos/hero-video.webm" type="video/webm" />
+          <!-- MP4 fallback for older browsers -->
           <source src="/assets/videos/hero-video.mp4" type="video/mp4" />
           <!-- Fallback to image if video doesn't load -->
           <img 
@@ -702,18 +691,3 @@ const hero = Data.data?.hero || {
       </div>
   </div>
 </section>
-
-<style>
-  @keyframes pointer-fade {
-    0%, 100% {
-      opacity: 0.6;
-    }
-    50% {
-      opacity: 1;
-    }
-  }
-
-  .pointer-animation {
-    animation: pointer-fade 2.5s ease-in-out infinite;
-  }
-</style>

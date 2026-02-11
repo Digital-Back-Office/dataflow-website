@@ -11,7 +11,7 @@ const meta_description = 'Page not found - Dataflow AI ready data platform'
   >
     <!-- Decorative blur elements -->
     <div class="absolute top-20 right-20 w-96 h-96 bg-primary/10 rounded-full blur-3xl animate-pulse"></div>
-    <div class="absolute bottom-20 left-20 w-96 h-96 bg-secondary/10 rounded-full blur-3xl animate-pulse" style="animation-delay: 1s;"></div>
+    <div class="absolute bottom-20 left-20 w-96 h-96 bg-secondary/10 rounded-full blur-3xl animate-pulse anim-delay-1000"></div>
     
     <div class="relative max-w-4xl mx-auto text-center z-10">
       <!-- 404 Number with animated gradient -->
@@ -20,8 +20,7 @@ const meta_description = 'Page not found - Dataflow AI ready data platform'
         data-aos="fade-down"
       >
         <h1 
-          class="text-[80px] max-md:text-[120px] max-sm:text-[80px] font-bold leading-none bg-gradient-to-r from-primary via-secondary to-primary bg-clip-text text-transparent"
-          style="background-size: 200% auto; animation: gradient-shift 3s ease infinite;"
+          class="text-[80px] max-md:text-[120px] max-sm:text-[80px] font-bold leading-none bg-gradient-to-r from-primary via-secondary to-primary bg-clip-text text-transparent gradient-shift-text"
         >
           404
         </h1>
@@ -47,10 +46,10 @@ const meta_description = 'Page not found - Dataflow AI ready data platform'
         <div class="relative inline-block">
           <!-- Animated rings -->
           <div class="absolute inset-0 flex items-center justify-center">
-            <div class="w-64 h-64 max-sm:w-48 max-sm:h-48 border-4 border-primary/20 rounded-full animate-ping" style="animation-duration: 3s;"></div>
+            <div class="w-64 h-64 max-sm:w-48 max-sm:h-48 border-4 border-primary/20 rounded-full animate-ping anim-duration-3000"></div>
           </div>
           <div class="absolute inset-0 flex items-center justify-center">
-            <div class="w-48 h-48 max-sm:w-36 max-sm:h-36 border-4 border-secondary/20 rounded-full animate-ping" style="animation-duration: 2s; animation-delay: 0.5s;"></div>
+            <div class="w-48 h-48 max-sm:w-36 max-sm:h-36 border-4 border-secondary/20 rounded-full animate-ping anim-duration-2000 anim-delay-500"></div>
           </div>
           
           <!-- Center icon -->
@@ -82,32 +81,18 @@ const meta_description = 'Page not found - Dataflow AI ready data platform'
     <!-- Floating elements for visual interest -->
     <div class="absolute top-1/4 left-10 max-sm:left-4">
       <div 
-        class="w-16 h-16 max-sm:w-12 max-sm:h-12 bg-primary/10 rounded-lg transform rotate-12 animate-bounce" 
-        style="animation-duration: 3s;"
+        class="w-16 h-16 max-sm:w-12 max-sm:h-12 bg-primary/10 rounded-lg transform rotate-12 animate-bounce anim-duration-3000" 
       ></div>
     </div>
     <div class="absolute top-1/3 right-10 max-sm:right-4">
       <div 
-        class="w-20 h-20 max-sm:w-16 max-sm:h-16 bg-secondary/10 rounded-full animate-bounce" 
-        style="animation-duration: 4s; animation-delay: 1s;"
+        class="w-20 h-20 max-sm:w-16 max-sm:h-16 bg-secondary/10 rounded-full animate-bounce anim-duration-4000 anim-delay-1000" 
       ></div>
     </div>
     <div class="absolute bottom-1/4 right-1/4 max-sm:right-8">
       <div 
-        class="w-12 h-12 max-sm:w-10 max-sm:h-10 bg-primary/10 rounded-lg transform -rotate-12 animate-bounce" 
-        style="animation-duration: 3.5s; animation-delay: 0.5s;"
+        class="w-12 h-12 max-sm:w-10 max-sm:h-10 bg-primary/10 rounded-lg transform -rotate-12 animate-bounce anim-duration-3500 anim-delay-500" 
       ></div>
     </div>
   </section>
 </Layout>
-
-<style>
-  @keyframes gradient-shift {
-    0%, 100% {
-      background-position: 0% 50%;
-    }
-    50% {
-      background-position: 100% 50%;
-    }
-  }
-</style>

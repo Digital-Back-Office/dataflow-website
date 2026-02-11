@@ -61,9 +61,8 @@ const allBlogsJson = JSON.stringify(allBlogs.map(blog => ({
       <div class="flex-1 max-sm:w-full" data-aos="fade-up" data-aos-delay="100">
         <nav
           id="category-tabs"
-          class="flex items-center gap-6 overflow-x-auto max-w-full scrollbar-hide max-sm:gap-4"
+          class="flex items-center gap-6 overflow-x-auto max-w-full scrollbar-hide max-sm:gap-4 scrolling-touch"
           aria-label="Blog categories"
-          style="-webkit-overflow-scrolling: touch;"
         >
           {
             blogTabsConfig.map((t) => (
@@ -115,8 +114,7 @@ const allBlogsJson = JSON.stringify(allBlogs.map(blog => ({
       {
         initialPosts.map((post, index) => (
           <article
-            class="group bg-white rounded-2xl overflow-hidden border border-gray-100 hover:border-primary/30 hover:shadow-xl transition-all duration-300"
-            style="transition: opacity 300ms ease-out, transform 300ms ease-out; will-change: opacity, transform;"
+            class="group bg-white rounded-2xl overflow-hidden border border-gray-100 hover:border-primary/30 hover:shadow-xl transition-all duration-300 blog-card-transition"
             data-slug={post.slug}
             data-categories={
               post.data.category

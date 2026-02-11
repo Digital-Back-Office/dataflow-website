@@ -57,7 +57,7 @@ const logos = data.company_logos.logos || [];
     </div>
 
     <!-- Company logos with dynamic map -->
-    <div class="scroll imgBox z-0" style="--time: 20s">
+    <div class="scroll imgBox z-0 scroll-time-20">
       <div class="flex items-baseline gap-10">
         {logos.map((logo) => <img src={logo.image} alt={logo.alt} />)}
         {logos.map((logo) => <img src={logo.image} alt={logo.alt} />)}
@@ -69,51 +69,3 @@ const logos = data.company_logos.logos || [];
     </div>
   </div>
 </div>
-
-<style>
-  .button-img {
-    filter: brightness(0) invert(1);
-  }
-
-  .scroll {
-    display: flex;
-    align-items: center;
-    overflow: hidden;
-  }
-
-  .scroll div {
-    white-space: nowrap;
-    animation: scroll var(--time) linear infinite;
-  }
-
-  .scroll img {
-    max-height: 60px;
-  }
-
-  @keyframes scroll {
-    0% {
-      transform: translateX(0%);
-    }
-
-    100% {
-      transform: translateX(-90%);
-    }
-  }
-
-  .scroll div span:hover {
-    background: #3fd2f9;
-    cursor: pointer;
-  }
-
-  .imgBox div {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 40px;
-  }
-
-  .imgBox img {
-    max-width: 200px;
-    /* scale: 0.8; */
-  }
-</style>

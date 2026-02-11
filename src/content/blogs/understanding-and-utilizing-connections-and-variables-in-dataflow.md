@@ -7,15 +7,15 @@ image: /assets/images/blog/understanding-connections-variables.webp
 category: ["product"]
 ---
 
-Managing connections and variables efficiently is essential for any data workflow. In Dataflow, we've made it straightforward to set up database connections and define reusable variables across your projects. Let's walk through how to work with these features.
+Managing connections and variables efficiently is essential for any data workflow. In [Dataflow](https://dataflow.zone/), we've made it straightforward to set up [database connections](https://docs.dataflow.zone/workspace/studio/connections/) and define reusable [variables and secrets](https://docs.dataflow.zone/workspace/studio/variables-and-secrets/) across your projects. Let's walk through how to work with these features.
 
 ---
 
 ## What Are Connections and Variables?
 
-**Connections** let you securely link to databases like PostgreSQL and MySQL. Once configured, you can retrieve and manipulate data directly within your workflows without hardcoding credentials.
+**[Connections](https://docs.dataflow.zone/workspace/studio/connections/)** let you securely link to databases like PostgreSQL and MySQL. Once configured, you can retrieve and manipulate data directly within your workflows without hardcoding credentials.
 
-**Variables** are reusable values that you can reference anywhere in your projects. Think API keys, access tokens, or any configuration values you want to manage centrally.
+**[Variables](https://docs.dataflow.zone/workspace/studio/variables-and-secrets/)** are reusable values that you can reference anywhere in your projects. Think API keys, access tokens, or any configuration values you want to manage centrally.
 
 This guide covers creating, updating, testing, and deleting both connections and variables.
 
@@ -93,7 +93,7 @@ Click "Delete" next to any variable to remove it. Remember that this will impact
 
 ## Using Connections and Variables in Python
 
-Once you've set up your connections and variables, you can use them directly in your Python scripts through the Dataflow SDK.
+Once you've set up your connections and variables, you can use them directly in your Python scripts through the [Dataflow SDK](https://docs.dataflow.zone/get-started/quickstart-guide/).
 
 ### Using a Database Connection
 
@@ -143,3 +143,10 @@ This fetches the variable value using its name. Again, make sure the variable na
 You now know how to create, update, and delete connections and variables in Dataflow, as well as how to use them in your Python scripts. This lets you keep credentials and configuration values secure and centralized, making your workflows more maintainable.
 
 Try executing some real queries using your database connections, or store your API keys and configuration parameters as variables. Experiment with different database types to see what works best for your use case.
+
+## Related topics
+- [Connections — Docs](https://docs.dataflow.zone/workspace/studio/connections/)
+- [Variables & Secrets — Docs](https://docs.dataflow.zone/workspace/studio/variables-and-secrets/)
+- [Dataflow SDK — Docs](https://docs.dataflow.zone/get-started/quickstart-guide/)
+- [Managed dependencies — Product](https://dataflow.zone/product/managed-dependencies)
+- [Deploy to production — Product](https://dataflow.zone/product/deploy-to-production)

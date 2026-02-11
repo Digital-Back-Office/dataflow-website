@@ -8,19 +8,61 @@ interface Props {
 const {
   title,
   header = true,
-  meta_description = "Modern data platform for startups and AI teams.",
+  meta_description,
 } = Astro.props;
 
-const defaultTagline = "AI-ready data platform for startups";
-const pageTitle = title?.includes("|")
+const baseTitle = "Dataflow | AI-Ready Data Platform for Startups and Teams";
+const resolvedTitle = title?.includes("|")
   ? title
   : title
     ? `${title} | Dataflow`
-    : `Dataflow | ${defaultTagline}`;
+    : baseTitle;
+const pageTitle = resolvedTitle;
 
+const defaultMetaDescription = "Dataflow is the AI-ready data platform that unifies Airflow, VS Code, and cloud deploys for faster, reliable data teams.";
+const metaDescription = meta_description && meta_description.length >= 120 && meta_description.length <= 130
+  ? meta_description
+  : defaultMetaDescription;
+
+const siteUrl = Astro.site?.toString() ?? "https://dataflow.zone";
+const canonicalUrl = new URL(Astro.url.pathname, siteUrl).toString();
+
+import { getEntry } from "astro:content";
 import Footer from "../components/common/Footer.astro";
 import Header from "../components/common/Header.astro";
-import '../styles/global.css';
+import "../styles/global.css";
+
+const headerFooter = await getEntry("common", "header-footer");
+const socialLinks = headerFooter?.data?.footer?.social_links ?? [];
+const socialUrls = socialLinks.map((link: { url?: string }) => link.url).filter(Boolean);
+const xProfile = socialUrls.find((url: string) => url.includes("x.com") || url.includes("twitter.com"));
+const twitterHandle = xProfile ? `@${xProfile.split("/").filter(Boolean).pop()}` : "@dataflow_zone";
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": `${siteUrl}#organization`,
+      name: "Dataflow",
+      url: siteUrl,
+      logo: `${siteUrl}/assets/images/dataflow-logo-green.svg`,
+      sameAs: socialUrls,
+    },
+    {
+      "@type": "SoftwareApplication",
+      "@id": `${siteUrl}#software`,
+      name: "Dataflow",
+      url: siteUrl,
+      applicationCategory: "BusinessApplication",
+      operatingSystem: "Web",
+      publisher: {
+        "@id": `${siteUrl}#organization`,
+      },
+    },
+  ],
+};
+const structuredDataJson = JSON.stringify(structuredData);
 ---
 
 <!doctype html>
@@ -55,9 +97,11 @@ import '../styles/global.css';
     <!-- End Google Tag Manager -->
     <script src="/src/scripts/cookie-consent.js"></script>
     <meta charset="UTF-8" />
-    <meta name="description" content={meta_description} />
+    <meta name="description" content={metaDescription} />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" type="image/svg+xml" href="/favicon.png" />
+    <link rel="canonical" href={canonicalUrl} />
+    <link rel="alternate" href={canonicalUrl} hreflang="en" />
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
 
@@ -71,12 +115,22 @@ import '../styles/global.css';
     <meta property="og:title" content={pageTitle} />
     <meta
       property="og:description"
-      content={meta_description}
+      content={metaDescription}
     />
     <meta property="og:image" content="https://dataflow.zone/og-image.png" />
-    <meta property="og:url" content="https://dataflow.zone" />
+    <meta property="og:url" content={canonicalUrl} />
     <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="dataflow.zone" />
+    <meta property="og:site_name" content="Dataflow" />
+
+    <!-- Twitter/X Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={metaDescription} />
+    <meta name="twitter:image" content="https://dataflow.zone/og-image.png" />
+    <meta name="twitter:site" content={twitterHandle} />
+    <meta name="twitter:creator" content={twitterHandle} />
+
+    <script type="application/ld+json" set:html={structuredDataJson}></script>
     <slot name="head" />
   </head>
   <body
@@ -84,7 +138,7 @@ import '../styles/global.css';
   >
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5BH2ZJRZ"
-    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    height="0" width="0" class="gtm-noscript-iframe"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
     {header && <Header pagename={title} />}
     <slot />
@@ -118,9 +172,7 @@ import '../styles/global.css';
           </svg>
         </button>
         <div class="p-6">
-          <div
-            style="position: relative; padding-bottom: calc(46.7188% + 41px); height: 0px; width: 100%;"
-          >
+          <div class="arcade-embed-wrapper">
             <iframe
               src="https://demo.arcade.software/TxVzl4hr8AGXnxq8XMNw?embed&embed_mobile=tab&embed_desktop=inline&show_copy_link=true"
               title="Dataflow Demo (under 2 mins)"
@@ -128,7 +180,7 @@ import '../styles/global.css';
               loading="lazy"
               allowfullscreen
               allow="clipboard-write"
-              style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; color-scheme: light;"
+              class="arcade-embed-iframe"
             ></iframe>
           </div>
         </div>
@@ -159,4 +211,3 @@ import '../styles/global.css';
     </script>
   </body>
 </html>
-<style></style>

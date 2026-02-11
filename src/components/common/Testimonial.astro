@@ -36,7 +36,6 @@ const testimonials = testimonialsData.testimonials || []
         {testimonials.map((t, i) => (
           <div 
         class="testimonial-card absolute w-full bg-white border border-slate-200 p-10 max-sm:p-6 rounded-3xl shadow-lg transition-all duration-500 cursor-pointer flex flex-col justify-center items-center text-center h-[18rem] max-sm:h-auto max-sm:min-h-[20rem]"
-        style={`z-index: ${testimonials.length - i}; transform: translateY(${i * 16}px) scale(${1 - i * 0.04});`}
         data-index={i}
           >
         {/* <!-- Person Info First --> */}
@@ -107,6 +106,13 @@ const testimonials = testimonialsData.testimonials || []
     const mobileNextBtn = document.getElementById('mobile-next');
     let currentIndex = 0;
 
+    function initializeStack() {
+      cards.forEach((card, idx) => {
+        card.style.zIndex = String(cards.length - idx);
+        card.style.transform = `translateY(${idx * 16}px) scale(${1 - idx * 0.04})`;
+      });
+    }
+
     function swap(direction = 'next') {
       const topCard = cards[currentIndex];
       
@@ -136,6 +142,8 @@ const testimonials = testimonialsData.testimonials || []
         currentIndex = (currentIndex + 1) % cards.length;
       }, 500);
     }
+
+    initializeStack();
 
     // Desktop Arrow button clicks
     nextBtn?.addEventListener('click', () => swap('next'));

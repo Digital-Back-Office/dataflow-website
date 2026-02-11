@@ -100,11 +100,11 @@ const relatedBlogs = allBlogs
           <!-- Featured Image -->
           {
             image && (
-              <figure class='overflow-hidden rounded-2xl shadow-xl border border-gray-100 mb-8' data-aos='fade-up' data-aos-delay='150'>
+              <figure class='overflow-hidden rounded-2xl shadow-sm mb-8' data-aos='fade-up' data-aos-delay='150'>
                 <img
                   src={image}
                   alt={`${title} cover image`}
-                  class='w-full h-[420px] object-cover'
+                  class='w-full min-h-[380px] max-h-[500px] object-cover'
                 />
               </figure>
             )

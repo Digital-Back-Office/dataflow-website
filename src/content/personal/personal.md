@@ -40,7 +40,7 @@ sections:
 
 cta_section:
   title: "Start Building Today"
-  description: "Join thousands of learners, hobbyists, and aspiring data professionals using Dataflow to accelerate their journey. 100% free, forever."
+  description: "Join thousands of learners, hobbyists, and aspiring data professionals using Dataflow to accelerate their journey."
   button:
     text: "Get Started Free"
   note: "No credit card required • No time limits • Full platform access"

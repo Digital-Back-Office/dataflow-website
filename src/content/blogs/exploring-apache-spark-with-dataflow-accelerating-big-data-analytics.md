@@ -9,7 +9,7 @@ category: ["data"]
 
 ## Introduction
 
-**Apache Spark** has revolutionized big data processing with its fast, in-memory processing capabilities. When paired with **Dataflow**, Spark becomes even more powerful, enabling fast data processing at scale. In this blog, we’ll dive into how Spark integrates with Dataflow to provide accelerated data analytics capabilities.
+**Apache Spark** has revolutionized big data processing with its fast, in-memory processing capabilities. When paired with **[Dataflow](https://dataflow.zone/)**, Spark becomes even more powerful, enabling fast data processing at scale. In this blog, we’ll dive into how Spark integrates with Dataflow to provide accelerated data analytics capabilities.
 
 ---
 
@@ -29,17 +29,25 @@ Apache Spark is an open-source, distributed computing system designed for big da
 Integrating Apache Spark with Dataflow offers powerful data processing capabilities:
 
 1. **Fast Processing**: Spark’s in-memory computing allows data engineers to run complex queries and transformations faster than traditional methods.
-2. **Scalable Pipelines**: Dataflow offers seamless scaling to handle larger datasets, which can then be processed efficiently by Spark.
-3. **Advanced Analytics**: With Dataflow handling data ingestion and transformation, Spark can be used to run machine learning models and perform deep analytics on large datasets.
+2. **Scalable Pipelines**: Dataflow offers [cloud-agnostic scaling](https://dataflow.zone/product/cloud-agnostic) to handle larger datasets, which can then be processed efficiently by Spark.
+3. **Advanced Analytics**: With Dataflow handling data ingestion and transformation in a [development-ready workspace](https://dataflow.zone/product/development-ready-workspace), Spark can be used to run machine learning models and perform deep analytics on large datasets.
 
 ---
 
 ## Using Spark and Dataflow Together
 
-Imagine you’re processing a large set of historical data for trend analysis. Dataflow handles the extraction and transformation of the data, while Spark handles the heavy lifting of performing complex computations and aggregations. This integration accelerates the overall processing pipeline and produces fast, reliable insights.
+Imagine you’re processing a large set of historical data for trend analysis. Dataflow handles the extraction and transformation of the data with [managed dependencies](https://dataflow.zone/product/managed-dependencies), while Spark handles the heavy lifting of performing complex computations and aggregations. This integration accelerates the overall processing pipeline and produces fast, reliable insights.
 
 ---
 
 ## Conclusion
 
-Leveraging Apache Spark with Dataflow is a powerful combination for big data processing. This integration enables faster data analytics, deeper insights, and better decision-making, making it a valuable tool for modern data engineering teams.
+Leveraging Apache Spark with **[Dataflow](https://dataflow.zone/)** is a powerful combination for big data processing. This integration enables faster data analytics, deeper insights, and better decision-making, making it a valuable tool for modern data engineering teams.
+
+## Related topics
+- [Dataflow — Overview](https://dataflow.zone/)
+- [Spark on Dataflow — Docs](https://docs.dataflow.zone/workspace/studio/spark/)
+- [Development workspace — Product](https://dataflow.zone/product/development-ready-workspace)
+- [Managed dependencies — Product](https://dataflow.zone/product/managed-dependencies)
+- [Workflows — Docs](https://docs.dataflow.zone/workspace/studio/workflows/)
+- [Deploy to production — Product](https://dataflow.zone/product/deploy-to-production)

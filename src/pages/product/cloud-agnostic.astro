@@ -1,0 +1,76 @@
+---
+import Layout from '../../layouts/Layout.astro'
+import TopSection from '../../components/common/TopSection.astro'
+// InfiniteScrollLogos replaced with a simple flex logo list (client-side scrolling removed)
+import FeatureGrid from '../../components/common/FeatureGrid.astro'
+import CardGrid from '../../components/common/CardGrid.astro'
+import PrivateCloud from '../../components/features/run-data-on-any-cloud/PrivateCloud.astro'
+import { getEntry } from 'astro:content'
+import Section from '../../components/features/run-data-on-any-cloud/Section.astro'
+
+const Data = await getEntry('features', 'run-data-on-any-cloud')
+const top = Data?.data?.top_section || {}
+const data = Data?.data?.cloud_providers || {}
+const cloud_providers = data?.cloud_providers || []
+const companyLogos = top?.company_logos || {}
+const benefits = Data?.data?.benefits || {}
+const coreCapabilities = Data?.data?.core_capabilities || {}
+const meta_description = top.description ?? 'Upgrade your data management and processing capabilities by using our service, which enables Dataflow on any cloud platform'
+---
+
+<Layout
+  title='Cloud Agnostic Platform | Deploy on Any Cloud'
+  meta_description={meta_description}
+>
+  <TopSection
+    title={top.title}
+    description={top.description}
+    image={top.hero_image}
+    buttonText={top.button?.label}
+    buttonHref={top.button?.href}
+    buttonTarget='_blank'
+    imageSide="right"
+    bg="white"
+  />
+  {companyLogos && companyLogos.logos && (
+    <section class="py-8" data-aos="fade-up">
+      {companyLogos.title && (
+        <h3 class="text-center text-lg font-semibold text-gray-700 mb-6">{companyLogos.title}</h3>
+      )}
+      <div class="flex items-center justify-center flex-wrap gap-8 px-4">
+        {companyLogos.logos.map((logo) => (
+          <div class="flex items-center justify-center p-2">
+            <img src={logo.image} alt={logo.alt || ''} class="h-10 max-sm:h-6 object-contain" />
+          </div>
+        ))}
+      </div>
+    </section>
+  )}
+  <CardGrid
+    title={benefits.title}
+    description={benefits.description}
+    features={benefits.features}
+    columns={3}
+    bg="gray"
+  />
+  <FeatureGrid
+    title={coreCapabilities.title}
+    description={coreCapabilities.description}
+    features={coreCapabilities.features}
+    button={coreCapabilities.button}
+    bg="white"
+    className="pl-[5%] justify-evenly"
+  />
+  {
+    cloud_providers.map((provider, idx) => (
+      <Section
+        mirror={idx % 2 !== 0}
+        logo={provider.logo}
+        description={provider.description}
+        image={provider.image}
+        link={provider.link}
+      />
+    ))
+  }
+  <PrivateCloud />
+</Layout>

@@ -1,0 +1,58 @@
+---
+import { getEntry } from 'astro:content'
+import CustomButton from '../../common/CustomButton.astro'
+
+const Data = await getEntry('features', 'python-dependency-hell')
+const data = Data.data.top_section
+const button = data.button
+---
+
+<div
+  class="container-top z-10 min-h-screen w-full py-32 px-[10%] flex items-center justify-center max-sm:flex-col max-sm:py-24 max-sm:min-h-max"
+>
+  <div class="absolute left-0 top-0 z-[-1]" data-aos="fade-right" data-aos-duration="850" data-aos-offset="400">
+    <img
+      src="/assets/images/dataflow-bg-pattern.svg"
+      alt="Abstract dataflow background pattern"
+    />
+  </div>
+  <div class="w-2/5 flex flex-col gap-8 max-md:w-[90%]" data-aos="fade-right" data-aos-duration="850" data-aos-offset="200">
+    <h1
+      class="text-5xl max-md:text-5xl max-sm:text-2xl leading-snug tracking-wide font-bold text-black"
+    >
+      {data.title}
+    </h1>
+    <p class="text-lg max-sm:text-sm w-10/12 text-textblack leading-tight">
+      {data.description}
+    </p>
+    <CustomButton href={button.href} label={button.label} target="_blank" />
+  </div>
+  <div class="img-container max-md:hidden w-2/5 bg-white h-auto" data-aos="fade-left" data-aos-duration="850" data-aos-offset="200">
+    <img
+      src="/assets/images/python-dependency.svg"
+      alt="Run on Any Cloud"
+      class="transition-all duration-400 ease-in-out group-hover:scale-125"
+    />
+  </div>
+</div>
+
+
+<style>
+  .custom-button:hover {
+    background-color: #30baba;
+  }
+
+  .button-img {
+    filter: brightness(0) invert(1);
+  }
+  @media (max-width: 440px) {
+    .text-container {
+      width: 100%;
+      margin-bottom: 40px;
+    }
+    .img-container {
+      width: 100%;
+      height: auto;
+    }
+  }
+</style>

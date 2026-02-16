@@ -1,0 +1,49 @@
+---
+interface Props {
+  title: string
+  description: string
+  callout?: string
+  image: string
+  imageSide?: 'left' | 'right'
+  link?: string
+  linkText?: string
+  bg?: string
+}
+
+const { title, description, callout, image, imageSide = 'right', link, linkText, bg = 'white' } = Astro.props
+const isRight = imageSide === 'right'
+---
+
+<section class={`py-20 px-[10%] bg-${bg === 'white' ? 'white' : '[#F8FAFC]'}`}>
+  <div class="max-w-7xl mx-auto">
+    <div class={`flex flex-col md:flex-row items-center gap-12 ${isRight ? '' : 'md:flex-row-reverse'}`}>
+      <div class="flex-1" data-aos="fade-right">
+        <h2 class="text-4xl md:text-5xl font-bold mb-6 text-textblack">{title}</h2>
+        <p class="text-lg text-gray-600 mb-6 leading-relaxed">{description}</p>
+        
+        {callout && (
+          <div class="bg-primary/10 border-l-4 border-primary p-4 rounded-r-lg mb-6">
+            <p class="text-sm font-medium text-gray-700">{callout}</p>
+          </div>
+        )}
+        
+        {link && linkText && (
+          <a 
+            href={link}
+            title={linkText}
+            class="inline-flex items-center text-primary font-semibold text-lg hover:underline group"
+          >
+            {linkText}
+            <svg class="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+            </svg>
+          </a>
+        )}
+      </div>
+      
+      <div class="flex-1" data-aos="fade-left">
+        <img src={image} alt={`${title} illustration`} class="w-full rounded-2xl shadow-2xl" />
+      </div>
+    </div>
+  </div>
+</section>

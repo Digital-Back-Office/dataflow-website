@@ -1,0 +1,128 @@
+---
+interface Step {
+  number: number
+  title: string
+  description: string
+  bullets: string[]
+  icon: string
+  image?: string
+}
+
+import { getEntry } from 'astro:content'
+import CustomButton from '../common/CustomButton.astro'
+
+const Data = await getEntry('home', 'home')
+
+let defaultSteps: Step[] = [
+  {
+    number: 1,
+    title: 'Define',
+    description: 'Define environment packages and connections once.',
+    bullets: [
+      'Connect databases, APIs, and cloud storage.',
+      'Manage environment variables and secrets.',
+      'Sync automatically across your entire stack.'
+    ],
+    icon: '/assets/icons/clipboard.svg'
+  },
+  {
+    number: 2,
+    title: 'Develop',
+    description: 'Code in persistent IDEs like VS Code and Jupyter.',
+    bullets: [
+      'Access pre-configured connections instantly.',
+      'Build pipelines, ML models, and dashboards.',
+      'Schedule Airflow jobs with zero manual config.'
+    ],
+    icon: '/assets/icons/code.svg'
+  },
+  {
+    number: 3,
+    title: 'Deploy',
+    description: 'Launch apps and APIs with one-click deployment.',
+    bullets: [
+      'Ensure dev-to-prod parity automatically.',
+      'Convert notebooks into live production APIs.',
+      'Eliminate Dockerfiles and CI/CD management.'
+    ],
+    icon: '/assets/icons/upload-cloud.svg'
+  }
+]
+
+const data = Data.data?.ship_apps_faster
+let steps: Step[] = data?.steps || defaultSteps
+---
+
+<section class='px-[5%] py-28 pt-16 max-sm:py-16' >
+  <div class='max-w-5xl mx-auto'>
+    <div class='text-center mb-20'>
+      <h2 class='text-4xl max-sm:text-3xl font-bold text-gray-900 mb-4' data-aos='fade-up'>
+        {data?.title || 'Ship data apps in a single flow.'}
+      </h2>
+      <p class='text-xl text-gray-600 max-w-3xl mx-auto' data-aos='fade-up' data-aos-delay='100'>
+        {data?.subtitle || 'Dataflow removes environment chaos and glue code across notebooks, pipelines, and apps.'}
+      </p>
+    </div>
+
+    <div class='relative'>
+      <!-- Timeline line -->
+      <div data-aos='fade-up' class='absolute left-[23px] top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary via-primary to-primary max-md:hidden'></div>
+      
+      <div class='space-y-16'>
+        {steps.map((step, index) => (
+          <div class='relative' data-aos='fade-up' data-aos-delay={200 + (index * 100)}>
+            <div class='flex gap-8 max-md:flex-col'>
+              <div class='flex-shrink-0'>
+                <div class='w-12 h-12 bg-primary rounded-full flex items-center justify-center relative z-10'>
+                  {step.number === 1 && (
+                    <svg class='w-6 h-6 text-white' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
+                      <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2'></path>
+                    </svg>
+                  )}
+                  {step.number === 2 && (
+                    <svg class='w-6 h-6 text-white' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
+                      <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4'></path>
+                    </svg>
+                  )}
+                  {step.number === 3 && (
+                    <svg class='w-6 h-6 text-white' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
+                      <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12'></path>
+                    </svg>
+                  )}
+                </div>
+              </div>
+              <div class='flex-1 bg-white rounded-2xl p-8 shadow-sm border border-gray-100'>
+                <div class='grid md:grid-cols-2 gap-8 items-center'>
+                  <div>
+                    <div class='flex items-center gap-3 mb-3'>
+                      <span class='text-sm font-bold text-primary bg-primary/10 px-3 py-1 rounded-full'>STEP {step.number}</span>
+                      <h3 class='text-2xl font-bold text-gray-900'>{step.title}</h3>
+                    </div>
+                    <p class='text-gray-700 leading-relaxed mb-4'>
+                      {step.description}
+                    </p>
+                    <ul class='space-y-2 text-gray-600'>
+                    {step.bullets.map(bullet => (
+                      <li class='flex items-start gap-2'>
+                        <svg class='w-5 h-5 text-primary mt-0.5 flex-shrink-0' fill='currentColor' viewBox='0 0 20 20'>
+                          <path fill-rule='evenodd' d='M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z' clip-rule='evenodd'></path>
+                        </svg>
+                        <span>{bullet}</span>
+                      </li>
+                    ))}
+                    </ul>
+                  </div>
+                  {step.image && (
+                    <div class='flex items-center justify-center max-md:hidden'>
+                      <img src={step.image} alt={step.title} class='w-64 h-48 object-contain' />
+                    </div>
+                  )}
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

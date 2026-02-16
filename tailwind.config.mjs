@@ -6,11 +6,8 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        helvetica: ['Helvetica', 'Arial', 'sans-serif'],
-        'helvetica-neue': ['Helvetica Neue', 'Arial', 'sans-serif'],
-        arimo: ['Arimo', ...defaultTheme.fontFamily.sans],
-        roboto: ['Roboto', 'Arial', 'sans-serif'],
-        inter: ['Inter', 'Arial', 'sans-serif']
+        jakarta: ['Plus Jakarta Sans Variable', 'sans-serif'],
+        montserrat: ['Montserrat Variable', 'sans-serif'],
       },
       fontSize: {
         '0calc': 'calc(0.8rem + 1vw)',
@@ -31,7 +28,9 @@ export default {
         secondary: '#1DD0D5',
         textblack: '#393939',
         textPrimary: '#364152',
-        primaryHover: '#0AA3A3'
+        primaryHover: '#0AA3A3',
+        lightPrimary: '#30baba10',
+        textDarker: "#1a1f26"
       },
       keyframes: {
         fadeIn: {

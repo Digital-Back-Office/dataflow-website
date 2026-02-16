@@ -1,0 +1,66 @@
+---
+import Layout from '../../layouts/Layout.astro'
+import TopSection from '../../components/common/TopSection.astro'
+import CardGrid from '../../components/common/CardGrid.astro'
+import FeatureGrid from '../../components/common/FeatureGrid.astro'
+import TwoColumnSection from '../../components/common/TwoColumnSection.astro'
+import ProcessSteps from '../../components/common/ProcessSteps.astro'
+import { getEntry } from 'astro:content'
+
+const Data = await getEntry('features', 'managed-dependencies')
+const top = Data?.data?.top_section || {}
+const problemSection = Data?.data?.problem_section || {}
+const solutionSection = Data?.data?.solution_section || {}
+const howItWorks = Data?.data?.how_it_works || {}
+const keyBenefits = Data?.data?.key_benefits || {}
+const meta_description = top.description ?? 'Eliminate Python dependency hell with managed, reproducible environments shared across your entire team.'
+--- 
+
+<Layout
+  title='Managed Dependencies | No Python Dependency Hell'
+  meta_description={meta_description}
+>
+  <TopSection
+    title={top.title}
+    description={top.description}
+    image={top.hero_image}
+    buttonText={top.button?.label}
+    buttonHref={top.button?.href}
+    buttonTarget='_blank'
+    imageSide="right"
+    bg="white"
+  />
+  
+  <FeatureGrid
+    title={problemSection.title}
+    description={problemSection.description}
+    features={problemSection.problems}
+    bg="gray"
+  />
+
+  <TwoColumnSection
+    title={solutionSection.title}
+    description={solutionSection.description}
+    image={solutionSection.image}
+    buttonText={solutionSection.button?.label}
+    buttonHref={solutionSection.button?.href}
+    buttonTarget={solutionSection.button?.target ?? "_blank"}
+    imageSide={solutionSection.imageSide}
+    bg="white"
+  />
+
+  <ProcessSteps
+    title={howItWorks.title}
+    description={howItWorks.description}
+    steps={howItWorks.features}
+    bg="gray"
+  />
+
+  <CardGrid
+    title={keyBenefits.title}
+    description={keyBenefits.description}
+    features={keyBenefits.features}
+    columns={3}
+    bg="white"
+  />
+</Layout>

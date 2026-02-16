@@ -1,0 +1,24 @@
+---
+import { getEntry } from 'astro:content'
+
+const Data = await getEntry('home', 'home')
+const tools = Data.data.tools
+---
+
+<div class="w-full lg:min-h-[300px] flex flex-col items-center justify-center gap-12">
+    <div data-aos="fade-up" data-aos-duration="700" data-aos-offset="200">
+        <h2 class="text-4xl text-textblack font-bold max-sm:px-3">{tools.title}</h2>
+    </div>
+    <div class="flex items-center justify-center gap-12 flex-wrap max-sm:flex-col" data-aos="fade-up" data-aos-duration="700" data-aos-offset="350">
+        {
+            tools.tool_items.map((item, index) => (
+                <div>
+                    <img 
+                        src={item.src} alt={item.name}
+                        class="h-[40px]"
+                     />
+                </div>
+            ))
+        }
+    </div>
+</div>

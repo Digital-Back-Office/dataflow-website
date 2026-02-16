@@ -2,50 +2,34 @@
 import { getEntry } from 'astro:content'
 import Card from '../run-data-on-any-cloud/Card.astro'
 
-const Data = await getEntry('features', 'manage-your-data')
-const data = Data.data.section1
+const Data = await getEntry('features', 'manage-your-data-connections')
+const data = Data.data.why_data_connection_matters
+const features = data.features || []
 ---
 
 <div
-  class='w-full py-24 bg-[#F8FAFC] px-[7%] flex flex-col items-center justify-center max-sm:flex-col max-sm:px-[20px] max-sm:py-[30px]'
+  class='w-full py-24 bg-[#F8FAFC] px-[10%] flex flex-col items-center justify-center max-sm:py-16'
 >
   <h2
-    class='text-calc font-bold mb-8 max-sm:mb-6 text-center max-sm:text-left text-textblack'
+    class='text-calc font-bold mb-8 max-sm:mb-6 text-center max-md:text-2xl max-sm:text-left text-textblack'
   >
     {data.title}
   </h2>
   <p
-    class='2xl:text-lg 2xl:w-3/4 lg:w-4/5 lg:text-base text-center max-sm:text-left pb-16 max-sm:pb-6 text-textblack'
+    class='2xl:text-lg  lg:text-base lg:w-3/4 max-sm:text-left pb-16 max-sm:pb-6 text-textblack'
   >
     {data.description}
   </p>
-  <div class='card-container mt-10 flex gap-10 flex-wrap justify-evenly'>
-    <Card
-      image='/assets/images/Interoperability.png'
-      title={data.featuretitle1}
-      description={data.featuredescription1}
-    />
-    <Card
-      image='/assets/images/manageyourdatafeature2.png'
-      title={data.featuretitle2}
-      description={data.featuredescription2}
-    />
-    <Card
-      image='/assets/images/manageyourdatafeature3.png'
-      title={data.featuretitle3}
-      description={data.featuredescription3}
-    />
+  <div class='card-container mt-10 flex gap-10 flex-wrap justify-evenly max-sm:flex-col max-sm:items-center'>
+    {
+      features.map((feature) => (
+        <Card
+          image={feature.image}
+          title={feature.title}
+          description={feature.description}
+          class='transition duration-300 hover:brightness-110'
+        />
+      ))
+    }
   </div>
 </div>
-<style>
-  .card:hover .image-container {
-    filter: brightness(0) invert(1);
-  }
-  @media (max-width: 440px) {
-    .card-container {
-      flex-direction: column;
-      align-items: center;
-      row-gap: 15px;
-    }
-  }
-</style>

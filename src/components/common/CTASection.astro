@@ -1,0 +1,62 @@
+---
+import EmailCTA from './EmailCTA.astro'
+
+interface Props {
+  title: string
+  description: string
+  buttonText?: string
+  formId: string
+  pageSource: string
+  note?: string
+  ctaRedirect?: boolean
+  buttonHref?: string
+}
+
+const { title, description, buttonText = "Get Started", formId, pageSource, note, ctaRedirect, buttonHref } = Astro.props
+---
+
+<section 
+  class="relative py-24 max-sm:py-10 flex flex-col gap-10 items-center justify-center bg-gradient-to-b from-white from-5% via-primary/75 via-50% to-white to-95% min-h-[800px]" 
+>
+  <!-- Decorative blur elements -->
+  <div class="absolute top-10 right-10 w-64 h-64 bg-white/20 rounded-full blur-3xl"></div>
+  <div class="absolute bottom-10 left-10 w-64 h-64 bg-white/10 rounded-full blur-3xl"></div>
+  
+  <div class="relative max-w-5xl mx-auto px-[5%] text-center w-full">
+    <div class="mb-8" data-aos="fade-up">
+      <h2 class="text-6xl max-md:text-5xl max-sm:text-3xl text-textDarker font-extrabold mb-6 leading-tight drop-shadow-sm">
+        {title}
+      </h2>
+      <p class="text-2xl max-md:text-xl max-sm:text-lg text-textDarker/95 max-w-3xl mx-auto leading-relaxed">
+        {description}
+      </p>
+    </div>
+    
+    <div class="max-w-2xl mx-auto drop-shadow-sm" data-aos="fade-up" data-aos-delay="100">
+      <EmailCTA 
+        formId={formId}
+        pageSource={pageSource}
+        buttonText={buttonText}
+        shouldRedirect={ctaRedirect ?? true}
+        href={buttonHref}
+      />
+    </div>
+    
+    {note && (
+      <div class='mt-8 flex items-center justify-center gap-8 text-sm text-gray-500 max-sm:flex-col' data-aos='fade-up' data-aos-delay='300'>
+        <div class='flex items-center gap-2'>
+          <svg class='w-5 h-5 text-primary' fill='currentColor' viewBox='0 0 20 20'>
+            <path fill-rule='evenodd' d='M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z' clip-rule='evenodd'/>
+          </svg>
+          <span class="text-textDarker">No credit card required</span>
+        </div>
+        <div class='flex items-center gap-2'>
+          <svg class='w-5 h-5 text-primary' fill='currentColor' viewBox='0 0 20 20'>
+            <path fill-rule='evenodd' d='M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z' clip-rule='evenodd'/>
+          </svg>
+          <span class="text-textDarker">Free consultation</span>
+        </div>
+      </div>
+    )}
+  </div>
+</section>

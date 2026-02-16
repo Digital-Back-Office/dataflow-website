@@ -6,7 +6,8 @@ const { photo,name,position } = Astro.props
   <img
     class='w-[320px] max-sm:h-max h-[427px] rounded-3xl contain'
     src={photo}
+    alt={name}
   />
-  <p class='mx-2 mt-2 text-base text-textblack'>{name}</p>
-  <p class='mx-2 text-base text-gray-400'>{position}</p>
+  <p class='mx-2 mt-2 text-lg text-textblack font-semibold'>{name}</p>
+  <p class='mx-2 text-md text-primary'>{position}</p>
 </div>

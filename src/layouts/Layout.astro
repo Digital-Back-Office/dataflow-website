@@ -1,83 +1,213 @@
 ---
 interface Props {
-  title: string
-  header?: boolean
-  meta_description?: string
+  title: string;
+  header?: boolean;
+  meta_description?: string;
 }
 
 const {
-  title = 'Dataflow | AI ready data platform',
+  title,
   header = true,
-  meta_description = 'AI ready data platform in less than 30 minutes'
-} = Astro.props
-import Footer from '../components/common/Footer.astro'
-import Header from '../components/common/Header.astro'
-import 'aos/dist/aos.css'
+  meta_description,
+} = Astro.props;
+
+const baseTitle = "Dataflow | AI-Ready Data Platform for Startups and Teams";
+const resolvedTitle = title?.includes("|")
+  ? title
+  : title
+    ? `${title} | Dataflow`
+    : baseTitle;
+const pageTitle = resolvedTitle;
+
+const defaultMetaDescription = "Dataflow is the AI-ready data platform that unifies Airflow, VS Code, and cloud deploys for faster, reliable data teams.";
+const metaDescription = meta_description && meta_description.length >= 120 && meta_description.length <= 130
+  ? meta_description
+  : defaultMetaDescription;
+
+const siteUrl = Astro.site?.toString() ?? "https://dataflow.zone";
+const canonicalUrl = new URL(Astro.url.pathname, siteUrl).toString();
+
+import { getEntry } from "astro:content";
+import Footer from "../components/common/Footer.astro";
+import Header from "../components/common/Header.astro";
+import "../styles/global.css";
+
+const headerFooter = await getEntry("common", "header-footer");
+const socialLinks = headerFooter?.data?.footer?.social_links ?? [];
+const socialUrls = socialLinks.map((link: { url?: string }) => link.url).filter(Boolean);
+const xProfile = socialUrls.find((url: string) => url.includes("x.com") || url.includes("twitter.com"));
+const twitterHandle = xProfile ? `@${xProfile.split("/").filter(Boolean).pop()}` : "@dataflow_zone";
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": `${siteUrl}#organization`,
+      name: "Dataflow",
+      url: siteUrl,
+      logo: `${siteUrl}/assets/images/dataflow-logo-green.svg`,
+      sameAs: socialUrls,
+    },
+    {
+      "@type": "SoftwareApplication",
+      "@id": `${siteUrl}#software`,
+      name: "Dataflow",
+      url: siteUrl,
+      applicationCategory: "BusinessApplication",
+      operatingSystem: "Web",
+      publisher: {
+        "@id": `${siteUrl}#organization`,
+      },
+    },
+  ],
+};
+const structuredDataJson = JSON.stringify(structuredData);
 ---
 
 <!doctype html>
-<html lang='en'>
+<html lang="en">
   <head>
     <!-- Google tag (gtag.js) -->
     <script is:inline> (function(ss,ex){ window.ldfdr=window.ldfdr||function(){(ldfdr._q=ldfdr._q||[]).push([].slice.call(arguments));}; (function(d,s){ fs=d.getElementsByTagName(s)[0]; function ce(src){ var cs=d.createElement(s); cs.src=src; cs.async=1; fs.parentNode.insertBefore(cs,fs); }; ce('https://sc.lfeeder.com/lftracker_v1_'+ss+(ex?'_'+ex:'')+'.js'); })(document,'script'); })('ywVkO4XmYXdaZ6Bj'); </script>
     <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-D5Y7ZFCM96"></script>
     <script is:inline>
       window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-D5Y7ZFCM96');
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-D5Y7ZFCM96");
     </script>
-    <script is:inline src="https://t.contentsquare.net/uxa/96d450d7e9094.js"></script>
-    <script src='/src/scripts/cookie-consent.js'></script>
-    <meta charset='UTF-8' />
-    <meta name='description' content={meta_description} />
-    <meta name='viewport' content='width=device-width' />
-    <link rel='icon' type='image/svg+xml' href='/favicon.png' />
+    <script is:inline src="https://t.contentsquare.net/uxa/96d450d7e9094.js"
+    ></script>
+    <!-- Google Tag Manager -->
+    <script is:inline>
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != "dataLayer" ? "&l=" + l : "";
+        j.async = true;
+        j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, "script", "dataLayer", "GTM-5BH2ZJRZ");
+    </script>
+    <!-- End Google Tag Manager -->
+    <script src="/src/scripts/cookie-consent.js"></script>
+    <meta charset="UTF-8" />
+    <meta name="description" content={metaDescription} />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/svg+xml" href="/favicon.png" />
+    <link rel="canonical" href={canonicalUrl} />
+    <link rel="alternate" href={canonicalUrl} hreflang="en" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
+
     <link
-      href='https://fonts.googleapis.com/css2?family=Helvetica+Neue:wght@400;700&display=swap'
-      rel='stylesheet'
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/orestbida/cookieconsent@3.0.1/dist/cookieconsent.css"
     />
-    <link
-      href='https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap'
-      rel='stylesheet'
-    />
-    <link
-      href='https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap'
-      rel='stylesheet'
-    />
-    <link
-      href='https://fonts.googleapis.com/css2?family=Arimo&display=swap'
-      rel='stylesheet'
-    />
-    <link
-      rel='stylesheet'
-      href='https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@400;700&display=swap'
-    />
-    <link
-      rel='stylesheet'
-      href='https://cdn.jsdelivr.net/gh/orestbida/cookieconsent@3.0.1/dist/cookieconsent.css'
-    />
-    <title>{title}</title>
+    <title>{pageTitle}</title>
 
     <!-- Open Graph Meta Tags -->
-    <meta property='og:title' content='Dataflow | AI ready data platform' />
+    <meta property="og:title" content={pageTitle} />
     <meta
-      property='og:description'
-      content='AI ready data platform in less than 30 minutes'
+      property="og:description"
+      content={metaDescription}
     />
-    <meta property='og:image' content='https://dataflow.zone/og-image.png' />
-    <meta property='og:url' content='https://dataflow.zone' />
-    <meta property='og:type' content='website' />
-    <meta property='og:site_name' content='dataflow.zone' />
+    <meta property="og:image" content="https://dataflow.zone/og-image.png" />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Dataflow" />
+
+    <!-- Twitter/X Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={metaDescription} />
+    <meta name="twitter:image" content="https://dataflow.zone/og-image.png" />
+    <meta name="twitter:site" content={twitterHandle} />
+    <meta name="twitter:creator" content={twitterHandle} />
+
+    <script type="application/ld+json" set:html={structuredDataJson}></script>
+    <slot name="head" />
   </head>
-  <body class='font-arimo overflow-x-hidden'>
+  <body
+    class="font-jakarta overflow-x-hidden"
+  >
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5BH2ZJRZ"
+    height="0" width="0" class="gtm-noscript-iframe"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
     {header && <Header pagename={title} />}
     <slot />
     <Footer />
-    <script>
-      import AOS from 'aos'
-      AOS.init()
+
+    <!-- Arcade Demo Modal -->
+    <div
+      id="arcadeModal"
+      class="hidden fixed inset-0 bg-black/60 backdrop-blur-sm z-[100] flex items-center justify-center p-4"
+      onclick="if(event.target.id === 'arcadeModal') this.classList.add('hidden')"
+    >
+      <div
+        class="relative bg-white rounded-2xl shadow-2xl max-w-6xl w-full max-h-[90vh] overflow-hidden"
+        onclick="event.stopPropagation()"
+      >
+        <button
+          onclick="document.getElementById('arcadeModal').classList.add('hidden')"
+          class="absolute top-4 right-4 z-10 w-10 h-10 bg-gray-900/80 hover:bg-gray-900 text-white rounded-full flex items-center justify-center transition-colors"
+        >
+          <svg
+            class="w-6 h-6"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </button>
+        <div class="p-6">
+          <div class="arcade-embed-wrapper">
+            <iframe
+              src="https://demo.arcade.software/TxVzl4hr8AGXnxq8XMNw?embed&embed_mobile=tab&embed_desktop=inline&show_copy_link=true"
+              title="Dataflow Demo (under 2 mins)"
+              frameborder="0"
+              loading="lazy"
+              allowfullscreen
+              allow="clipboard-write"
+              class="arcade-embed-iframe"
+            ></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script is:inline>
+      window.addEventListener('load', () => {
+          requestIdleCallback(() => {
+            if (window.AOS) {
+              AOS.init({
+                once: true,
+                disableMutationObserver: true,
+              });
+            }
+          });
+        });
+    </script>
+    <script is:inline>
+      document.addEventListener('DOMContentLoaded', () => {
+        document.querySelectorAll('a:not([title])').forEach((anchor) => {
+          const label = anchor.getAttribute('aria-label') || anchor.textContent?.trim() || anchor.getAttribute('href');
+          if (label) {
+            anchor.setAttribute('title', label);
+          }
+        });
+      });
     </script>
   </body>
 </html>
-<style></style>

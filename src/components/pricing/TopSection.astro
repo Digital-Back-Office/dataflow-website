@@ -3,7 +3,7 @@ import { getEntry } from 'astro:content'
 import FeatureCard from './FeatureCard.astro'
 import PlanDetailCard from './PlanDetailCard.astro'
 import PlanDetailCard2 from './PlanDetailCard2.astro'
-const Data = await getEntry('pricing', 'pricing')
+const Data = await getEntry('pricing', 'pricing-plans')
 const pricing = await getEntry('pricing', 'plancost')
 const pricingdata = JSON.stringify(pricing.data)
 const data = Data.data
@@ -20,6 +20,7 @@ const planfeature2 = data.table2
 <astro-greet data-message={pricingdata}> </astro-greet>
 <div
   class='py-24 max-sm:py-16 w-full flex flex-col items-center justify-center'
+  data-aos="fade-in" data-aos-duration="850" data-aos-offset="200"
 >
   <h1
     class='text-9calc font-bold text-textblack text-center px-3 w-3/5 max-sm:w-full leading-tight'
@@ -34,17 +35,18 @@ const planfeature2 = data.table2
   <div class='flex justify-center items-center gap-x-5 mt-10 toggle-container'>
     <p class='text-lg text-textblack font-bold'>{data.hostown}</p>
     <label class='switch'>
-      <input class='toggle' type='checkbox' />
+      <input class='toggle' type='checkbox' checked />
       <span class='slider round'></span>
     </label>
     <p class='text-lg text-textblack font-bold'>{data.hostdata}</p>
   </div>
 
   <!-- HOST ON YOUR OWN CLOUD -->
-  <div class='price1 flex flex-wrap justify-center gap-10 my-20'>
+  <div class='price1 flex flex-wrap justify-center gap-10 my-20 hidden'>
     <!-- Free Tier -->
     <div
       class='w-[380px] max-sm:w-[90%] min-h-[900px] rounded-3xl drop-shadow-[0_15px_20px_rgba(0,0,0,0.1)]'
+      data-aos="fade-up" data-aos-duration="850" data-aos-offset="400"
     >
       <div
         class='w-full min-h-[270px] bg-white rounded-t-3xl p-4 flex flex-col items-center height-auto pt-[28px]'
@@ -67,7 +69,7 @@ const planfeature2 = data.table2
           {owncloudplan1.duration}
         </p>
         <a
-          href='/get-started '
+          href='https://app.dataflow.zone/'
           class='w-full h-[50px] border-solid border-2 flex justify-center items-center rounded-md hover:opacity-80 my-[10px]'
         >
           <p class='text-textblack font-normal text-md'>
@@ -75,7 +77,7 @@ const planfeature2 = data.table2
           </p>
         </a>
       </div>
-      <div class='w-full bg-[#F6F8FA] h-[780px] rounded-b-3xl p-4'>
+      <div class='w-full bg-[#F6F8FA] h-[680px] rounded-b-3xl p-4'>
         {
           owncloudplan1.features.map((feature, i) => (
             <FeatureCard
@@ -89,7 +91,8 @@ const planfeature2 = data.table2
 
     <!-- Start Up -->
     <div
-      class='w-[380px] max-sm:w-[90%] min-h-[1050px] bg-primary border-b-8 border-x-8 max-sm:border-b-4 max-sm:border-x-4 border-solid border-primary rounded-3xl drop-shadow-[0_15px_20px_rgba(0,0,0,0.1)] -translate-y-4 overflow-hidden height-auto'
+      data-aos="fade-up" data-aos-duration="850" data-aos-offset="200"
+      class='w-[380px] max-sm:w-[90%] min-h-[950px] bg-primary border-b-8 border-x-8 max-sm:border-b-4 max-sm:border-x-4 border-solid border-primary rounded-3xl drop-shadow-[0_15px_20px_rgba(0,0,0,0.1)] -translate-y-4 overflow-hidden height-auto'
     >
       <div class='w-full flex justify-center bg-primary'>
         <div class='py-[8px]'>
@@ -119,7 +122,7 @@ const planfeature2 = data.table2
           {owncloudplan2.duration}
         </p>
         <a
-          href='/get-started'
+          href='https://app.dataflow.zone/'
           class='w-full h-[50px] flex justify-center items-center bg-primary border-primary border-solid border-2 rounded-md hover:opacity-95 my-[10px]'
         >
           <p class='text-white text-md'>
@@ -127,7 +130,7 @@ const planfeature2 = data.table2
           </p>
         </a>
       </div>
-      <div class='w-full bg-[#F6F8FA] h-[750px] p-4'>
+      <div class='w-full bg-[#F6F8FA] h-[650px] p-4'>
         {
           owncloudplan2.features.map((feature, i) => (
             <FeatureCard
@@ -141,6 +144,7 @@ const planfeature2 = data.table2
 
     <!-- Enterprise -->
     <div
+      data-aos="fade-up" data-aos-duration="850" data-aos-offset="400"
       class='w-[380px] max-sm:w-[90%] min-h-[900px] rounded-3xl drop-shadow-[0_15px_20px_rgba(0,0,0,0.1)] overflow-hidden'
     >
       <div class='w-full flex justify-end bg-white'>
@@ -173,7 +177,7 @@ const planfeature2 = data.table2
           {owncloudplan3.duration}
         </p>
         <a
-          href='/get-started'
+          href='https://app.dataflow.zone/'
           class='w-full h-[50px] flex justify-center items-center bg-primary border-primary border-solid border-2 rounded-md hover:opacity-80 my-[10px]'
         >
           <p class='text-white text-md'>
@@ -182,7 +186,7 @@ const planfeature2 = data.table2
         </a>
       </div>
       <div
-        class='w-full bg-[#F6F8FA] h-[750px] p-4 height-auto rounded-b-[30px] overflow-hidden'
+        class='w-full bg-[#F6F8FA] h-[650px] p-4 height-auto rounded-b-[30px] overflow-hidden'
       >
         {
           owncloudplan3.features.map((feature, i) => (
@@ -198,7 +202,7 @@ const planfeature2 = data.table2
 
   <!-- HOST ON DATAFLOW CLOUD -->
   <div
-    class='container-price2 price2 flex flex-wrap justify-center gap-8 my-20 hidden'
+    class='container-price2 price2 flex flex-wrap justify-center gap-8 my-20'
   >
     <!-- Cloud Hosted 1-->
     <div
@@ -559,7 +563,7 @@ const planfeature2 = data.table2
   </div>
 
   <!-- COMPARE PLANS -->
-  <div class='compare_plans_heading pb-20'>
+  <div class='compare_plans_heading pb-20 hidden' data-aos="fade-up" data-aos-duration="850" data-aos-offset="200">
     <p class='text-calc font-bold text-textblack text-center px-10'>
       {data.heading}
     </p>
@@ -567,7 +571,8 @@ const planfeature2 = data.table2
 
   <!-- HOST ON YOUR OWN CLOUD - TABLE -->
   <div
-    class='pricetable1 relative w-4/5 flex flex-col justify-center items-center width95 rounded-[30px] border-[#E6E9F5] border overflow-hidden'
+    data-aos="fade-up" data-aos-duration="850" data-aos-offset="400"
+    class='pricetable1 relative w-4/5 flex flex-col justify-center items-center width95 rounded-[30px] border-[#E6E9F5] border overflow-hidden hidden'
   >
     <div class='w-full flex bg-[#EEF2F6]'>
       <div
@@ -587,7 +592,7 @@ const planfeature2 = data.table2
           {planfeature1.tablehead2.cost}
         </p>
         <a
-          href='/get-started'
+          href='https://app.dataflow.zone/'
           class='flex justify-center  w-full py-2 max-sm:py-[4px] bg-primary rounded-md hover:opacity-90'
         >
           <p
@@ -610,7 +615,7 @@ const planfeature2 = data.table2
           >
         </p>
         <a
-          href='/get-started'
+          href='https://app.dataflow.zone/'
           class='flex justify-center  w-full py-2 max-sm:py-[4px] bg-primary rounded-md hover:opacity-90'
         >
           <p
@@ -633,7 +638,7 @@ const planfeature2 = data.table2
           >
         </p>
         <a
-          href='/get-started'
+          href='https://app.dataflow.zone/'
           class='flex justify-center  w-full py-2 max-sm:py-[4px] bg-primary rounded-md hover:opacity-90'
         >
           <p class='text-white font-medium text-center  text-base max-sm:text-xs'>
@@ -688,7 +693,7 @@ const planfeature2 = data.table2
       >
         <p
           class='text-0calc font-bold text-textblack mb-2'
-          style='font-family: Roboto;'
+          
         >
           {planfeature2.tablehead2.cost}
         </p>
@@ -701,7 +706,7 @@ const planfeature2 = data.table2
       <div
         class='planstatus2 w-1/4 h-[150px] border border-solid border-[#E6E9F5] flex flex-col items-center justify-between p-5 py-6 planstatus2'
       >
-        <p class='font-bold text-0calc' style='font-family: Roboto;'>
+        <p class='font-bold text-0calc' >
           {planfeature2.tablehead3.cost}
         </p>
         <button class='w-full py-2 bg-primary rounded-md hover:opacity-90'>
@@ -736,16 +741,16 @@ const planfeature2 = data.table2
   </div>
 </div>
 
-<script>
+<script is:inline>
   document.addEventListener('DOMContentLoaded', function () {
-    const checkbox = document.querySelector('.toggle') as HTMLInputElement
-    const price1 = document.querySelector('.price1') as HTMLElement
-    const price2 = document.querySelector('.price2') as HTMLElement
-    const pricetable1 = document.querySelector('.pricetable1') as HTMLElement
-    const pricetable2 = document.querySelector('.pricetable2') as HTMLElement
+    const checkbox = document.querySelector('.toggle')
+    const price1 = document.querySelector('.price1')
+    const price2 = document.querySelector('.price2')
+    const pricetable1 = document.querySelector('.pricetable1')
+    const pricetable2 = document.querySelector('.pricetable2')
     const compare_plans_heading = document.querySelector(
       '.compare_plans_heading'
-    ) as HTMLElement
+    )
 
     checkbox.addEventListener('change', function () {
       if (checkbox.checked === true) {
@@ -807,38 +812,38 @@ const planfeature2 = data.table2
           price = '£'
           const elements = document.querySelectorAll('.cost2')
           elements.forEach((element) => {
-            ;(element as HTMLElement).innerText = '99' //pricing.pricing.UK.standard
+            ;(element).innerText = '99' //pricing.pricing.UK.standard
           })
           const elements2 = document.querySelectorAll('.cost3')
           elements2.forEach((element) => {
-            ;(element as HTMLElement).innerText = '499' //pricing.pricing.UK.premium
+            ;(element).innerText = '499' //pricing.pricing.UK.premium
           })
         }
         // else if (euroCountries.includes(country)) {
         //   const elements = document.querySelectorAll('.cost2')
         //   elements.forEach((element) => {
-        //     ;(element as HTMLElement).innerText = pricing.pricing.EU.standard
+        //     ;(element).innerText = pricing.pricing.EU.standard
         //   })
         //   const elements2 = document.querySelectorAll('.cost3')
         //   elements2.forEach((element) => {
-        //     ;(element as HTMLElement).innerText = pricing.pricing.EU.premium
+        //     ;(element).innerText = pricing.pricing.EU.premium
         //   })
         //   price = '€'
         // }
         else {
           const elements = document.querySelectorAll('.cost2')
           elements.forEach((element) => {
-            ;(element as HTMLElement).innerText = '99' //pricing.pricing.US.standard
+            ;(element).innerText = '99' //pricing.pricing.US.standard
           })
           const elements2 = document.querySelectorAll('.cost3')
           elements2.forEach((element) => {
-            ;(element as HTMLElement).innerText = '499' //pricing.pricing.US.premium
+            ;(element).innerText = '499' //pricing.pricing.US.premium
           })
           price = '$'
         }
         const elements = document.querySelectorAll('.currency-symbol')
         elements.forEach((element) => {
-          ;(element as HTMLElement).innerText = price
+          ;(element).innerText = price
         })
       } catch (error) {}
     }

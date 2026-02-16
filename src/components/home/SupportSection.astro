@@ -1,0 +1,86 @@
+---
+import { getEntry } from 'astro:content'
+import CustomButton from '../common/CustomButton.astro'
+
+const Data = await getEntry('home', 'home')
+const support = Data.data?.support_section || null
+// Support Section - content-driven with fallbacks
+---
+
+<section class='px-[5%] py-20 bg-white max-sm:py-12' >
+  <div class='max-w-7xl mx-auto'>
+    <div class='text-center mb-16'>
+      <h2 class='text-4xl max-sm:text-3xl font-bold text-gray-900 mb-4' data-aos='fade-up'>
+        {support?.title || 'We\'ve Got Your Back'}
+      </h2>
+      <p class='text-xl text-gray-600 max-w-2xl mx-auto' data-aos='fade-up' data-aos-delay='100'>
+        {support?.subtitle || 'Get the support you need, when you need it—so your team can stay focused on building great data products.'}
+      </p>
+    </div>
+
+    <div class='grid md:grid-cols-2 gap-8 max-w-5xl mx-auto'>
+      <!-- 24hrs Support -->
+      <div class='bg-gradient-to-br from-primary/5 to-primary/10 rounded-2xl p-10 text-center' data-aos='fade-left' data-aos-delay='200'>
+        <div class='w-16 h-16 bg-primary rounded-2xl flex items-center justify-center mx-auto mb-6'>
+          <svg class='w-8 h-8 text-white' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
+            <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z'></path>
+          </svg>
+        </div>
+        <h3 class='text-2xl font-bold text-gray-900 mb-3'>{support?.items?.[0]?.title || '24/7 Support'}</h3>
+        <p class='text-gray-600 mb-6'>
+          {support?.items?.[0]?.description || 'Round-the-clock assistance from our expert team. Whether it\'s a critical bug or a quick question, we\'re here to help—anytime, anywhere.'}
+        </p>
+        <ul class='text-left space-y-3 text-gray-700'>
+          {(support?.items?.[0]?.bulltets || ['Live chat support', 'Email ticketing system', 'Dedicated Discord channel']).map((b) => (
+            <li class='flex items-start gap-2'>
+              <svg class='w-5 h-5 text-primary mt-0.5 shrink-0' fill='currentColor' viewBox='0 0 20 20'>
+                <path fill-rule='evenodd' d='M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z' clip-rule='evenodd'></path>
+              </svg>
+              <span>{b}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- On-Demand Feature Support -->
+      <div class='bg-gradient-to-br from-gray-50 to-gray-100 rounded-2xl p-10 text-center' data-aos='fade-right' data-aos-delay='300'>
+        <div class='w-16 h-16 bg-gray-900 rounded-2xl flex items-center justify-center mx-auto mb-6'>
+          <svg class='w-8 h-8 text-white' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
+            <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M13 10V3L4 14h7v7l9-11h-7z'></path>
+          </svg>
+        </div>
+        <h3 class='text-2xl font-bold text-gray-900 mb-3'>{support?.items?.[1]?.title || 'On-Demand Feature Support'}</h3>
+        <p class='text-gray-600 mb-6'>
+          {support?.items?.[1]?.description || 'Need a custom integration or feature? We build what you need—fast. Our team collaborates with yours to extend Dataflow\'s capabilities.'}
+        </p>
+        <ul class='text-left space-y-3 text-gray-700'>
+          {(support?.items?.[1]?.bulltets || ['Custom connector development', 'Priority feature requests', 'Dedicated engineering support']).map((b) => (
+            <li class='flex items-start gap-2'>
+              <svg class='w-5 h-5 text-gray-900 mt-0.5 shrink-0' fill='currentColor' viewBox='0 0 20 20'>
+          <path fill-rule='evenodd' d='M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z' clip-rule='evenodd'></path>
+              </svg>
+              <span>{b}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+
+    <div class='text-center mt-12 space-x-3' data-aos='fade-up' data-aos-delay='200'>
+      <CustomButton
+        label="Get Started"
+        href="/contact-us"
+        variant="primary"
+        className="font-semibold"
+        iconSrc={null}
+      />
+      <CustomButton
+        label="Contact us"
+        href="/contact-us"
+        variant="outlined"
+        iconSrc="/assets/icons/icon-right-angular-arrow.svg"
+        className="font-semibold"
+      />
+    </div>
+  </div>
+</section>

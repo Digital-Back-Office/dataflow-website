@@ -3,42 +3,47 @@ const { logo, title, image } = Astro.props
 import { getEntry } from 'astro:content'
 import Card from './Card.astro'
 const Data = await getEntry('features', 'run-data-on-any-cloud')
-const data = Data.data.Section6
+const data = Data.data.private_cloud
+const features = data.features || []
 ---
 
-<div
-  class='container-top min-h-screen w-full flex justify-center max-sm:flex-col items-center gap-4 max-sm:gap-0'
->
+<div class='w-full bg-white'>
   <div
-    class='img-container w-2/5 max-sm:w-full flex items-center justify-center py-24 max-sm:py-2'
+    class='container-top max-w-7xl mx-auto w-full  py-24 flex justify-between max-sm:flex-col items-center gap-8 max-sm:gap-0 max-md:flex-col'
   >
-    <img
-      class='image size-[32vw] max-sm:scale-110 rounded-3xl'
-      src='/assets/images/privatecloud.png'
-    />
-  </div>
-  <div
-    class='text-container w-2/5 flex flex-col items-center justify-center py-20 max-sm:py-8 pr-[3%] overflow-hidden'
-  >
-    <h2 class='text-2calc leading-tight font-bold pb-[2%] text-textblack'>
-      {data.title}
-    </h2>
-    <p class='text-lg mb-10 text-textblack'>
-      {data.description}
-    </p>
-    <div class='card-container flex justify-between gap-6 w-full'>
-      <Card
-        image='/assets/images/flexibilityrundataanycloud.png'
-        title={data.feature1.title}
-        description={data.feature1.description}
-        bg='bg-[#F8FAFC]'
+    <div
+      data-aos="fade-right" data-aos-duration="850" data-aos-offset="200"
+      class='img-container w-2/5 max-sm:w-full flex items-center justify-center py-16 max-sm:py-2'
+    >
+      <img
+        class='image w-full max-w-[640px] max-sm:scale-110 rounded-3xl object-contain'
+        src='/assets/images/privatecloud.webp'
+        alt='Private cloud infrastructure'
       />
-      <Card
-        image='/assets/images/security.png'
-        title={data.feature2.title}
-        description={data.feature2.description}
-        bg='bg-[#F8FAFC]'
-      />
+    </div>
+    <div
+      data-aos="fade-left" data-aos-duration="850" data-aos-offset="200"
+      class='text-container w-1/2 max-md:w-full flex flex-col items-center justify-center py-16 max-sm:py-8 overflow-hidden'
+    >
+      <h2 class='text-2calc leading-tight font-bold pb-[2%] text-textblack'>
+        {data.title}
+      </h2>
+      <p class='text-lg mb-10 text-textblack'>
+        {data.description}
+      </p>
+      <div class='card-container flex gap-6 w-full max-md:flex-col'>
+        {
+          features.map((feature) => (
+            <Card
+              image={feature.image}
+              title={feature.title}
+              description={feature.description}
+              bg='bg-[#F8FAFC]'
+              width='320px'
+            />
+          ))
+        }
+      </div>
     </div>
   </div>
 </div>

@@ -2,57 +2,44 @@
 import { getEntry } from 'astro:content'
 import AnimateCard from './AnimateCard.astro'
 import Card from './Card.astro'
+import CustomButton from '../../common/CustomButton.astro'
 const Data = await getEntry('features', 'run-data-on-any-cloud')
-const data = Data.data.Section2
-const button = Data.data.button1
+const data = Data.data.core_capabilities
+const button = data.button
+const features = data.features || []
+const cloud_providers = Data?.data?.cloud_providers || []
 ---
 
-<div class='container-top w-full py-[5%] flex items-center justify-center'>
-  <div class='text-container w-2/5 max-sm:w-[90%] h-full mt-10'>
-    <h1 class='text-4xl font-bold mb-[5%] text-textblack'>{data.title}</h1>
+<div class='container-top w-full py-24   flex items-center justify-center max-md:flex-col' >
+  <div class='text-container w-2/5 max-md:w-[90%] h-full mt-10' data-aos="fade-right" data-aos-duration="850" data-aos-offset="200">
+    <h1 class='text-4xl font-bold mb-[5%] text-black'>{data.title}</h1>
     <p class='w-[90%] max-sm:w-full max-sm:mt-10 text-lg text-textblack'>
       {data.description}
     </p>
-    <a href='/StartFreeTrail'>
-      <button
-        class='custom-button bg-primary hover:bg-[#30baba] px-3 py-2 duration-700 text-white rounded-lg shadow-md flex text-base items-center gap-x-2 mt-14'
-        style='font-family: Roboto;'
-        >{button}<img class='button-img' src='/assets/images/arrowright.svg' />
-      </button></a
-    >
+    <CustomButton
+      href={button.href}
+      label={button.label}
+      className='mt-10'
+      />
   </div>
   <div
-    class='card-container w-2/5 h-full flex justify-evenly items-evenly flex-wrap mt-5 gap-6 gap-x-4'
+  data-aos="fade-left" data-aos-duration="850" data-aos-offset="200"
+    class='card-container w-2/5 h-full flex justify-evenly items-evenly flex-wrap mt-5 gap-6 gap-x-4 max-md:w-full'
   >
-    <Card
-      image='/assets/images/realtimeprocessing.png'
-      title={data.feature1.title}
-      description={data.feature1.description}
+  
+    {features.map((feature) => (
+      <Card
+      image={feature.image}
+      title={feature.title}
+      description={feature.description}
       bg='bg-[#F8FAFC]'
-    />
-    <Card
-      image='/assets/images/batchprocessing.png'
-      title={data.feature2.title}
-      description={data.feature2.description}
-      bg='bg-[#F8FAFC]'
-    />
-    <Card
-      image='/assets/images/autoscaling.png'
-      title={data.feature3.title}
-      description={data.feature3.description}
-      bg='bg-[#F8FAFC]'
-    />
-    <Card
-      image='/assets/images/streamandbatchanalytics.png'
-      title={data.feature4.title}
-      description={data.feature4.description}
-      bg='bg-[#F8FAFC]'
-    />
+      />
+    ))}
   </div>
 </div>
 <div class='py-8 w-full bg-[#F8FAFC]'>
-  <h3 class='text-4xl max-sm:text-3xl pt-[8%] font-bold text-center text-textblack'>
-    {data.title2}
+  <h3 class='text-4xl max-sm:text-3xl pt-[8%] font-bold text-center text-black'>
+    {cloud_providers.title}
   </h3>
 </div>
 <style>

@@ -1,0 +1,63 @@
+---
+interface Props {
+    label: string
+    href?: string
+    target?: '_self' | '_blank'
+    rel?: string
+    type?: 'button' | 'submit' | 'reset'
+    onclick?: string
+    iconSrc?: string
+    iconAlt?: string
+    variant?: 'primary' | 'ghost' | 'outlined'
+    className?: string
+}
+
+const {
+    label,
+    href,
+    target = '_self',
+    rel = target === '_blank' ? 'noreferrer noopener' : undefined,
+    type = 'button',
+    iconSrc = '/assets/icons/icon-right-angular-arrow-white.svg',
+    iconAlt = 'Arrow icon',
+    variant = 'primary',
+    className = '',
+    onclick = undefined,
+} = Astro.props
+
+const baseClasses =
+    'w-max inline-flex hover:cursor-pointer items-center gap-x-2 px-4 py-3 min-h-[44px] min-w-[44px] rounded-lg text-base font-medium transition duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary group'
+const variantClasses =
+    variant === 'ghost'
+        ? 'bg-transparent text-primary hover:bg-primary/10 shadow-none'
+        : variant === 'outlined'
+        ? 'bg-white hover:bg-gray-50 text-primary border-[1px] border-primary/75 hover:border-primary shadow-none'
+        : 'bg-primary text-white shadow-md hover:bg-primary/95'
+const classes = `${baseClasses} ${variantClasses} ${className}`.trim()
+---
+
+{href ? (
+    <a href={href} target={target} rel={rel} class={classes} aria-label={label} title={label} onclick={onclick}>
+        {label}
+        {iconSrc && (
+            <img
+                class={variant === 'outlined' ? 'size-[20px] transition-transform group-hover:translate-x-1' : `size-[20px] transition-transform group-hover:translate-x-1`}
+                src={iconSrc}
+                alt={iconAlt}
+                loading='lazy'
+            />
+        )}
+    </a>
+) : (
+    <button type={type} class={classes} aria-label={label} title={label} onclick={onclick}>
+        {label}
+        {iconSrc && (
+            <img
+                class={variant === 'outlined' ? 'size-[20px] transition-transform group-hover:translate-x-1' : 'invert brightness-0 size-[20px] transition-transform group-hover:translate-x-1'}
+                src={iconSrc}
+                alt={iconAlt}
+                loading='lazy'
+            />
+        )}
+    </button>
+)}

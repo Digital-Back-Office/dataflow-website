@@ -1,0 +1,54 @@
+---
+import ClockAnimation from "../common/ClockAnimation.astro";
+import EmailCTA from "../common/EmailCTA.astro";
+import { getEntry } from "astro:content";
+
+const Data = await getEntry("home", "home");
+const hero = Data.data.cta;
+---
+
+<div
+  data-aos="fade-in"
+  data-aos-duration="700"
+  data-aos-offset="200"
+  class="py-20 flex items-center justify-center bg-gradient-to-b from-white from-5% via-[#30BABA] via-50% to-white to-95% min-h-[300px] lg:h-screen"
+>
+  <div class="flex justify-around items-center w-full gap-5 max-sm:w-[90%]">
+    <div class="w-max  p-4 max-sm:p-0">
+      <p
+        class="text-[70px] lg:w-[720px] max-sm:text-[30px] text-[#FFFF] font-semibold leading-none my-4 tracking-wide"
+      >
+        {hero.title1}
+      </p>
+      <p
+        class="text-[130px] max-sm:text-[65px] text-[#175C5C] font-bold leading-none my-4 lg:w-[200px]"
+      >
+        {hero.title2}
+      </p>
+      <div class="mb-[50px] w-full max-w-xl">
+        <EmailCTA formId="landingCtaForm" pageSource="homepage-landing-cta" buttonText={hero.cta_button || "Get Started →"} />
+      </div>
+    </div>
+    <div class="animations-container lg:scale-125">
+      <ClockAnimation />
+    </div>
+  </div>
+</div>
+<style>
+  @media (max-width: 1059px) {
+    .animations-container {
+      display: none;
+    }
+  }
+  @media (max-width: 500px) {
+    .animations-container {
+      display: none;
+    }
+    .text1 {
+      font-size: 30px;
+    }
+    .text2 {
+      font-size: 50px;
+    }
+  }
+</style>

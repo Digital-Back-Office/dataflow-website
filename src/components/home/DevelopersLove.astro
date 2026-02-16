@@ -1,0 +1,110 @@
+---
+import { getEntry } from 'astro:content'
+import SocialIcon from '../common/SocialIcon.astro'
+
+const Data = await getEntry('home', 'home')
+const data = Data.data?.developers_love
+
+const defaultCards = [
+  {
+    title: 'Try',
+    description: 'Experience Dataflow firsthand with our interactive demos and free trial.',
+    actions: [
+      { text: 'Watch interactive demo', onclick: "document.getElementById('arcadeModal').classList.remove('hidden')" },
+      { text: 'Start free trial', href: '/start-free-trail' }
+    ]
+  },
+  {
+    title: 'Learn',
+    description: 'Access comprehensive documentation, tutorials, and guides to get the most out of Dataflow.',
+    links: [
+      { text: 'Read the documentation', href: 'https://docs.dataflow.zone', target: '_blank' },
+      { text: 'Browse tutorials & blogs', href: '/blog' }
+    ]
+  },
+  {
+    title: 'Support',
+    description: 'Get help when you need it from our dedicated support team.',
+    links: [
+      { text: 'Contact support team', href: '/contact-us' },
+      { text: 'Email us directly', href: 'mailto:support@dataflow.com' }
+    ]
+  },
+  {
+    title: 'Connect',
+    description: 'Follow us on social media for updates, tips, and community highlights.',
+    links: [
+      { text: 'Follow us on X', href: 'https://x.com/dataflow_zone', target: '_blank', platform: 'x' },
+      { text: 'Connect on LinkedIn', href: 'https://www.linkedin.com/company/dataflow-zone/about/', target: '_blank', platform: 'linkedin' }
+    ]
+  }
+]
+
+const cards = data?.cards || defaultCards
+---
+
+<section class='px-[5%] py-20 bg-gray-50 max-sm:py-12' >
+  <div class='max-w-7xl mx-auto'>
+    <div class='text-center mb-12'>
+      <h2 class='text-4xl max-sm:text-3xl font-bold text-gray-900 mb-4' data-aos='slide-up'>
+        {data?.title || 'Developers love Dataflow'}
+      </h2>
+      <p class='text-xl text-gray-600 max-w-3xl mx-auto' data-aos='fade-up' data-aos-delay='100'>
+        {data?.subtitle || 'Join a growing community of data engineers and developers building with Dataflow.'}
+      </p>
+    </div>
+
+    <div class='grid md:grid-cols-2 gap-6'>
+      {cards.map((card, index) => (
+        <div class='bg-white rounded-2xl p-10 border border-primary/20 hover:border-primary/30 transition-shadow' data-aos='zoom-in-up' data-aos-delay={200 + index * 100}>
+          <h3 class='text-2xl font-bold text-gray-900 mb-3'>{card.title}</h3>
+          <p class='text-gray-600 mb-6'>{card.description}</p>
+          <div class='space-y-3'>
+            {card.links?.map((link) => (
+              <a href={link.href} target={link.target} class='flex items-center gap-3 text-primary hover:text-primaryHover font-medium group'>
+                {link.platform ? (
+                  <SocialIcon platform={link.platform} className='w-5 h-5 transition-transform group-hover:translate-x-1' />
+                ) : card.title === 'Learn' ? (
+                  link.text.includes('documentation') ? (
+                    <SocialIcon platform='docs' className='w-5 h-5 transition-transform group-hover:translate-x-1' />
+                  ) : (
+                    <SocialIcon platform='blog' className='w-5 h-5 transition-transform group-hover:translate-x-1' />
+                  )
+                ) : card.title === 'Support' ? (
+                  link.text.includes('Email') ? (
+                    <SocialIcon platform='email' className='w-5 h-5 transition-transform group-hover:translate-x-1' />
+                  ) : (
+                    <SocialIcon platform='chat' className='w-5 h-5 transition-transform group-hover:translate-x-1' />
+                  )
+                ) : null}
+                {link.text}
+                <svg class='w-4 h-4 transition-transform group-hover:translate-x-1' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
+                  <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M9 5l7 7-7 7'></path>
+                </svg>
+              </a>
+            ))}
+            {card.actions?.map((action) => (
+              action.onclick ? (
+                <button onclick={action.onclick} class='flex items-center gap-3 text-primary hover:text-primaryHover font-medium group w-full'>
+                  <SocialIcon platform={action.text.includes('demo') ? 'demo' : 'lightning'} className='w-5 h-5 transition-transform group-hover:translate-x-1' />
+                  {action.text}
+                  <svg class='w-4 h-4 transition-transform group-hover:translate-x-1' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
+                    <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M9 5l7 7-7 7'></path>
+                  </svg>
+                </button>
+              ) : (
+                <a href={action.href} class='flex items-center gap-3 text-primary hover:text-primaryHover font-medium group'>
+                  <SocialIcon platform='lightning' className='w-5 h-5 transition-transform group-hover:translate-x-1' />
+                  {action.text}
+                  <svg class='w-4 h-4 transition-transform group-hover:translate-x-1' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
+                    <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M9 5l7 7-7 7'></path>
+                  </svg>
+                </a>
+              )
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

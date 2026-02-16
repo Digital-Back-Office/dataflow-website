@@ -1,0 +1,101 @@
+---
+import CustomButton from './CustomButton.astro';
+
+interface Props {
+  title: string;
+  description?: string;
+  image?: string;
+  imageAlt?: string;
+  buttonText?: string;
+  buttonHref?: string;
+  buttonTarget?: "_blank" | "_self";
+  linkText?: string;
+  linkHref?: string;
+  linkTarget?: "_blank" | "_self";
+  imageSide?: "left" | "right";
+  bg?: "white" | "F8FAFC";
+}
+
+const {
+  title,
+  description = "",
+  image = "",
+  imageAlt = title ?? "image",
+  buttonText,
+  buttonHref = "#",
+  buttonTarget = "_self",
+  linkText,
+  linkHref = "#",
+  linkTarget = "_self",
+  imageSide = "right",
+  bg = "white",
+} = Astro.props as Props;
+
+const bgClass = bg === "F8FAFC" ? "bg-[#F8FAFC]" : "bg-white";
+const reverseOnMobile =
+  imageSide === "left" ? "md:flex-row-reverse" : "md:flex-row";
+---
+
+<section class={`w-full  px-[10%] ${bgClass}`}>
+    <div
+      class={`max-w-7xl mx-auto w-full py-20 lg:min-h-[70vh] flex flex-col md:flex ${reverseOnMobile} items-center justify-center gap-15 max-sm:gap-10 lg:gap-20 max-sm:px-4`}
+    >
+      <!-- Text Column -->
+      <div
+        class="w-full max-w-[640px] flex flex-col justify-center gap-4"
+        data-aos="fade-up"
+        data-aos-duration="700"
+        data-aos-offset="200"
+      >
+        <h2
+          class="lg:text-4xl text-2xl w-full font-bold text-textblack leading-tight mb-6 m-0"
+        >
+          {title}
+        </h2>
+        {
+          description && (
+        <p
+          class="text-xl text-gray-600 mb-8"
+        >
+          {description}
+        </p>
+          )
+        }
+        {
+          buttonText && (
+        <CustomButton href={buttonHref} label={buttonText} target={buttonTarget} />
+          )
+        }
+        {
+          linkText && (
+            <a
+              href={linkHref}
+               target={linkTarget}
+               title={linkText}
+              class="inline-flex items-center text-primary font-semibold hover:underline"
+            >
+              {linkText}
+              <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+              </svg>
+            </a>
+          )
+        }
+      </div>
+
+      <!-- Image Column -->
+      <div class="w-full flex justify-center md:justify-end px-1">
+        {
+          image ? (
+            <img
+              src={image}
+                alt={`${imageAlt} illustration`}
+              loading="lazy"
+              class="rounded-xl object-contain w-full max-w-[640px] h-auto"
+              data-aos="fade-up" data-aos-duration="600" data-aos-offset="300"
+            />
+          ) : null
+        }
+      </div>
+    </div>
+</section>

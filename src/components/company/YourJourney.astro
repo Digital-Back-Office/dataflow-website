@@ -2,43 +2,25 @@
 import { getEntry } from 'astro:content'
 import Card from './Card.astro'
 const Data = await getEntry('company', 'company')
-const data = Data.data.section4
+const data = Data.data.empower_your_journey
+const features = data.features || []
 ---
 
 <div class='w-full py-20 pt-10 flex flex-col items-center justify-center max-sm:px-[20px]'>
-  <h3 class='text-8calc text-textblack text-center max-sm:text-left font-bold mb-12'>
+  <h3 class='text-8calc text-textblack text-center max-sm:text-left font-bold mb-12' data-aos="fade-up" data-aos-duration="700" data-aos-offset="200">
     {data.title}
   </h3>
-  <div class='w-[80%] max-sm:w-full flex flex-wrap justify-center items-center gap-4'>
-    <Card
-      image='/assets/images/companysection4logo1.png'
-      title={data.featuretitle1}
-      description={data.featuredescription1}
-    />
-    <Card
-      image='/assets/images/companysection4logo2.png'
-      title={data.featuretitle2}
-      description={data.featuredescription2}
-    />
-    <Card
-      image='/assets/images/companysection4logo3.png'
-      title={data.featuretitle3}
-      description={data.featuredescription3}
-    />
-    <Card
-      image='/assets/images/companysection4logo4.png'
-      title={data.featuretitle4}
-      description={data.featuredescription4}
-    />
-    <Card
-      image='/assets/images/companysection4logo5.png'
-      title={data.featuretitle5}
-      description={data.featuredescription5}
-    />
-    <Card
-      image='/assets/images/companysection4logo6.png'
-      title={data.featuretitle6}
-      description={data.featuredescription6}
-    />
+  <div class='w-full flex justify-center' data-aos="fade-up" data-aos-duration="700" data-aos-offset="350">
+    <div class='grid grid-cols-3 max-md:grid-cols-1 gap-6 w-fit'>
+      {
+        features.map((feature: any) => (
+          <Card
+            image={feature.image}
+            title={feature.title}
+            description={feature.description}
+          />
+        ))
+      }
+    </div>
   </div>
 </div>

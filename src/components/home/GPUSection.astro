@@ -1,0 +1,56 @@
+---
+import { getEntry } from 'astro:content'
+import CustomButton from '../common/CustomButton.astro'
+
+const Data = await getEntry('home', 'home')
+const gpuData = Data.data.gpu_compute
+---
+
+<section class="px-[5%] py-20 pb-16 max-sm:py-16" >
+  <div class="max-w-6xl mx-auto">
+    <div class="relative overflow-hidden rounded-3xl bg-gradient-to-br from-primary/10 via-primary/5 to-primary/10 border-2 border-primary/20 shadow-xl">
+      <!-- Decorative Elements -->
+      <div class="absolute top-0 right-0 w-64 h-64 bg-primary/10 rounded-full blur-3xl"></div>
+      <div class="absolute bottom-0 left-0 w-64 h-64 bg-primary/5 rounded-full blur-3xl"></div>
+      
+      <!-- Grid Pattern -->
+      <div class="absolute inset-0 opacity-5 grid-pattern-primary"></div>
+      
+      <div class="relative p-10 max-sm:p-6">
+        <div class="max-w-4xl">
+          <h2 class="text-4xl max-sm:text-3xl font-extrabold text-gray-900 leading-tight mb-4" data-aos="zoom-in">
+            {gpuData.title}
+          </h2>
+          <div class="space-y-2 mb-8">
+            <p class="text-lg max-sm:text-base text-gray-700" data-aos="fade-right" data-aos-delay="100">
+              {gpuData.lines[0]}
+            </p>
+            <p class="text-lg max-sm:text-base text-gray-700" data-aos="fade-right" data-aos-delay="150">
+              {gpuData.lines[1]}
+            </p>
+            <p class="text-lg max-sm:text-base text-gray-700" data-aos="fade-right" data-aos-delay="200">
+              {gpuData.lines[2]}
+            </p>
+          </div>
+          <div class="flex items-center gap-4 max-sm:flex-col max-sm:items-start" data-aos="fade-right" data-aos-delay="250">
+            <CustomButton
+              label={gpuData.primary_cta.text}
+              href={gpuData.primary_cta.href}
+              target='_blank'
+              variant="primary"
+              className="font-semibold"
+              iconSrc={null}
+            />
+            <CustomButton
+              label={gpuData.secondary_cta.text}
+              href={gpuData.secondary_cta.href}
+              variant="outlined"
+              className="font-semibold"
+              iconSrc="/assets/icons/icon-right-angular-arrow.svg"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

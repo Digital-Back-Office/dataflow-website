@@ -1,53 +1,48 @@
 ---
-import ClockAnimation from '../common/ClockAnimation.astro'
-import { getEntry } from 'astro:content'
+import { getEntry } from "astro:content";
 
-const Data = await getEntry('home', 'home')
-const hero = Data.data.hero
+const Data = await getEntry("home", "home");
+const hero = Data.data.hero;
 ---
 
-<div class='py-20 flex items-center justify-center bg-[#30BABA] min-h-[300px]'>
-  <div class='flex items-center w-max gap-10 max-sm:w-[90%]'>
-    <div class='w-full font-helvetica-neue p-4 max-sm:p-0 max-sm:text-'>
-      <p
-        class='text-[70px] lg:w-[650px] max-sm:text-[30px] text-[#C0FFFF] font-medium leading-none my-4 traking-wide'
+<div
+  class="py-20 flex items-center justify-center bg-[#FAFAFA] min-h-[300px] relative w-full"
+>
+  <div class="z-10 flex items-center gap-10 w-full max-sm:w-[90%]">
+    <div class="lg:flex-1 flex items-start justify-center" data-aos="fade-right" data-aos-duration="700" data-aos-offset="200">
+      <div
+        class="w-full lg:w-[550px]  p-4 md:pl-6 max-sm:p-0 flex flex-col gap-3"
       >
-        {hero.title1}
-      </p>
-      <p
-        class='text-[130px] max-sm:text-[65px] text-[#175C5C] font-bold leading-none my-4 lg:w-[200px]'
-      >
-        {hero.title2}
-      </p>
-      <a href='/start-free-trail'>
-        <button
-          class='px-[20px] py-[10px] mb-[50px] bg-white hover:bg-[#f9f9f9] font-arimo rounded-md inline-flex items-center text-lg font-semibold tracking-wide shadow-md text-[#30BABA]'
+        <p
+          class="text-6xl max-sm:text-5xl text-gray-900 font-bold leading-none my-4 lg:w-[550px]"
         >
-          {hero.cta_button}
-          <img src='/assets/images/arrowright.svg' alt='' class='size-5 ml-1' />
-        </button>
-      </a>
+          {hero.title}
+        </p>
+        <p
+          class="text-2xl lg:w-[550px] text-textblack font-medium leading-normal my-4 traking-wider"
+        >
+          {hero.description}
+        </p>
+        <a href="/start-free-trail">
+          <button
+            class="px-[40px] max-sm:px-[20px] py-[15px] mb-[50px] text-white hover:text-[#f9f9f9] rounded-md inline-flex items-center text-lg font-semibold tracking-wide shadow-md bg-[#30BABA]"
+          >
+            {hero.cta_button}
+          </button>
+        </a>
+      </div>
     </div>
-    <div class='animations-container'>
-      <ClockAnimation />
+    <div class="lg:flex-1 w-full relative hero-fill-height" data-aos="fade-left" data-aos-duration="700" data-aos-offset="200">
+      <div class="hero-image">
+        <img src="/assets/images/landing/hero-image.webp" alt="Dataflow Dashboard" class="absolute right-0 h-full w-full"/>
+      </div>
     </div>
   </div>
+
+  <div class="absolute left-0 top-0 z-0" data-aos="fade-right" data-aos-duration="700" data-aos-offset="400">
+    <img
+      src="/assets/images/dataflow-bg-pattern.svg"
+      alt="Abstract dataflow background pattern"
+    />
+  </div>
 </div>
-<style>
-  @media (max-width: 1059px) {
-    .animations-container {
-      display: none;
-    }
-  }
-  @media (max-width: 500px) {
-    .animations-container {
-      display: none;
-    }
-    .text1 {
-      font-size: 30px;
-    }
-    .text2 {
-      font-size: 50px;
-    }
-  }
-</style>

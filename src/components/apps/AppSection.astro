@@ -25,29 +25,30 @@ const { title, image, logo, link, mirror } = Astro.props
 </style>
 
 <div
-  class={`min-h-screen ${mirror ? 'bg-white' : 'bg-[#F8FAFC]'} flex ${mirror && 'flex-row-reverse'} items-center justify-center max-sm:flex-col `}
+  class={`min-h-screen max-w-7xl mx-auto ${mirror ? 'bg-white' : 'bg-[#F8FAFC]'} flex ${mirror && 'flex-row-reverse'} items-center justify-center gap-8 max-sm:flex-col `}
 >
   <div
     data-aos='fade-bounce'
-    class='flex-[0.65] flex justify-center items-center max-sm:py-8'
+    class='flex-[0.5] flex justify-center gap-4 items-center max-sm:py-8'
   >
-    <img src={image} alt='' class='w-[85%] max-sm:w-[95%]' />
+    <img src={image} alt={`${title} screenshot`} class='' />
   </div>
   <div
-    class={`flex-[0.35] max-sm:pb-10 h-full flex flex-col max-sm:pl-[20px] gap-10 max-sm:gap-7 ${mirror && 'pl-[7%]'}`}
+    class={`flex-[0.5] max-sm:pb-10 h-full flex flex-col max-sm:pl-[20px] gap-10 max-sm:gap-7 `}
   >
-    <img src={logo} alt='airflow' class='w-max h-[80px] max-sm:h-[40px]' />
+    <img src={logo} alt={`${title} logo`} class='w-max h-[80px] max-sm:h-[40px]' />
     <p class='text-4xl max-sm:text-2xl font-bold w-[90%] leading-tight text-[#303030]'>
       {title}
     </p>
     <a
       href={link}
+      title={`Learn more about ${title}`}
       class='p-2 px-3 w-max font-light inline-flex rounded-lg text-sm bg-[#30baba] text-white mt-4 max-sm:mt-0'
     >
       Learn More
       <img
         class='filter brightness-0 invert pl-1'
-        src='/assets/images/arrowright.png'
+        src='/assets/images/arrowright.webp'
         alt='Arrow Right'
       />
     </a>

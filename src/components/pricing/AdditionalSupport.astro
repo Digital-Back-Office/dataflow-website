@@ -1,0 +1,47 @@
+---
+import { getEntry } from "astro:content";
+import CustomButton from "../common/CustomButton.astro";
+import Card from "../features/run-data-on-any-cloud/Card.astro";
+
+const pricingEntry = await getEntry("pricing", "pricing");
+const support = pricingEntry.data.additional_support;
+const cards = support?.cards ?? [];
+---
+
+<div
+  class="min-h-[500px] px-[10%] max-sm:min-h-[100px] flex flex-col justify-center gap-16 max-sm:gap-10 items-center bg-white py-20 "
+>
+  <p class="text-[45px] max-sm:text-3xl text-textblack font-bold" data-aos="fade-up" data-aos-duration="850" data-aos-offset="200">
+    {support.section_title}
+  </p>  
+  <div
+    data-aos="fade-up" data-aos-duration="850" data-aos-offset="400"
+    class="flex items-center  max-sm:flex-col gap-10 justify-between"
+  >
+    <div>
+      <h1 class="text-5xl max-sm:text-3xl max-sm:w-full font-bold w-full mb-5">{support.heading}</h1>
+      <p class="text-textblack tracking-wide mb-5">{support.descriptions}</p>
+      <CustomButton
+        label={support.button.label}
+        href={support.button.href}
+        target={support.button.hrefTarget}
+        iconSrc={support.button.icon}
+      />
+    </div>
+    <div class="flex items-center max-sm:flex-col gap-8">
+      {
+        cards.map((card) => (
+          <Card
+            image={card.image}
+            title={card.title}
+            description={card.description}
+            href={card.href}
+            label={card.label}
+            target={card.target}
+            width={card.width}
+          />
+        ))
+      }
+    </div>
+  </div>
+</div>

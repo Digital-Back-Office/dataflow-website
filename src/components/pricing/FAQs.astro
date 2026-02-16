@@ -7,6 +7,7 @@ interface FAQContentType {
   }>
 }
 import * as FAQContent from '../../content/pricing/faq.mdx'
+import CustomButton from '../common/CustomButton.astro'
 const faqContent = FAQContent as unknown as FAQContentType
 
 let heading = faqContent.heading
@@ -25,46 +26,82 @@ let faqs = faqContent.faqs
     cursor: pointer;
     border-radius: 10px;
     margin-top: 20px;
+    padding: 20px;
+    transition: all 0.3s ease;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .faq-question:hover {
+    background-color: rgba(0, 0, 0, 0.02);
   }
 
   .faq-answer {
     background-color: white;
     border-radius: 0 0 10px 10px;
     margin-bottom: 10px;
-    display: none;
-    transform: translateY(-5px);
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: max-height 0.35s ease, opacity 0.35s ease, padding 0.35s ease;
+    border-top: 1px solid #d2d2d27b;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.05);
+    will-change: max-height, opacity, padding;
+  }
+
+  .faq-answer.open {
+    max-height: 500px;
+    opacity: 1;
+    padding: 20px;
+  }
+
+  .faq-answer.closed {
+    padding: 0 20px;
+  }
+
+  .icon {
+    transition: transform 0.3s ease;
+    display: inline-block;
+    flex-shrink: 0;
+  }
+
+  .icon.open {
+    transform: rotate(180deg);
+  }
+
+  .faq-content {
+    transition: all 0.3s ease;
   }
 </style>
 
 <div
-  class='flex max-md:flex-col max-md:items-start gap-20 max-sm:gap-5 w-full max-sm:px-[10px] justify-center py-20 min-h-[600px]'
+  class='flex max-md:flex-col max-md:items-start gap-20 max-sm:gap-5 w-full px-[10%] max-sm:px-[10px] justify-center py-20 min-h-[600px]'
+  data-aos="fade-up" data-aos-duration="850" data-aos-offset="200"
 >
   <div class='mt-8 flex flex-col gap-4 max-sm:gap-2 p-2'>
     <p class='text-2calc font-bold text-textblack'>
       Any Question? <br /> Checkout the FAQ
     </p>
     <p>Feel free to reach out to us for more doubts</p>
-    <a
-      href='/contact-us'
-      class='p-2 px-3 w-max font-semibold rounded-lg text-sm bg-primary hover:bg-primaryHover duration-300 text-white mt-4'
-    >
-      Contact Us
-    </a>
+    <CustomButton label='Contact Us' href='/contact-us' iconSrc={null} />
   </div>
   <div id='faq-container' class='w-[50%] max-sm:w-full mb-20 max-sm:px-[5px]'>
     {
       faqs.map((faq, index) => (
         <div class='faq'>
           <div
-            class={`faq-question z-10 cursor-pointer flex justify-between items-center py-6 shadow-[0px_0px_80px_rgba(0,0,0,0.1)]`}
+            class={`faq-question z-10 cursor-pointer flex justify-between items-center`}
             data-index={index}
           >
-            <span class='ml-5 text-textblack text-xl font-bold'>
+            <span class='ml-5 text-textblack text-xl font-bold flex-1'>
               {faq.question}
             </span>
-            <i class='icon fas fa-chevron-down mr-5 text-textblack' />
+            <span class={`icon mr-4 ${index === 0 ? 'open' : ''}`} aria-hidden='true'>
+              <svg width='20' height='20' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'>
+                <path d='M6 9L12 15L18 9' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' />
+              </svg>
+            </span>
           </div>
-          <div class='faq-answer text-base text-textblack shadow-lg  border-t-[1px] border-[#d2d2d27b] p-5 py-6'>
+          <div class={`faq-answer text-base text-textblack ${index === 0 ? 'open' : 'closed'}`}>
             {faq.answer}
           </div>
         </div>
@@ -72,39 +109,44 @@ let faqs = faqContent.faqs
     }
   </div>
 </div>
-<script>
+<script is:inline>
   document.addEventListener('DOMContentLoaded', () => {
     const faqContainer = document.getElementById('faq-container')
 
     faqContainer?.addEventListener('click', (event) => {
-      const target = event.target as HTMLElement
-      const faqQuestion = target.closest('.faq-question') as HTMLElement
+      const target = event.target 
+      const faqQuestion = target.closest('.faq-question') 
       if (!faqQuestion) return
 
-      const index = faqQuestion.dataset.index
-      const faqAnswer = faqQuestion.nextElementSibling as HTMLElement
+      const faqAnswer = faqQuestion.nextElementSibling 
+      const icon = faqQuestion.querySelector('.icon')
 
-      if (faqAnswer.style.display === 'block') {
-        faqAnswer.style.display = 'none'
-        faqQuestion.querySelector('.icon')!.classList.remove('fa-chevron-up')
-        faqQuestion.querySelector('.icon')!.classList.add('fa-chevron-down')
-      } else {
-        const currentlyOpen = faqContainer.querySelector(
-          '.faq-answer[style*="display: block"]'
-        ) as HTMLElement
-        if (currentlyOpen) {
-          currentlyOpen.style.display = 'none'
-          currentlyOpen
-            .previousElementSibling!.querySelector('.icon')!
-            .classList.remove('fa-chevron-up')
-          currentlyOpen
-            .previousElementSibling!.querySelector('.icon')!
-            .classList.add('fa-chevron-down')
+      // Close all other open FAQs
+      const allAnswers = faqContainer.querySelectorAll('.faq-answer')
+      const allIcons = faqContainer.querySelectorAll('.faq-question .icon')
+      
+      allAnswers.forEach((answer) => {
+        if (answer !== faqAnswer) {
+          answer.classList.remove('open')
+          answer.classList.add('closed')
         }
+      })
 
-        faqAnswer.style.display = 'block'
-        faqQuestion.querySelector('.icon')!.classList.remove('fa-chevron-down')
-        faqQuestion.querySelector('.icon')!.classList.add('fa-chevron-up')
+      allIcons.forEach((i) => {
+        if (i !== icon) {
+          i.classList.remove('open')
+        }
+      })
+
+      // Toggle current FAQ
+      if (faqAnswer.classList.contains('open')) {
+        faqAnswer.classList.remove('open')
+        faqAnswer.classList.add('closed')
+        icon?.classList.remove('open')
+      } else {
+        faqAnswer.classList.remove('closed')
+        faqAnswer.classList.add('open')
+        icon?.classList.add('open')
       }
     })
   })

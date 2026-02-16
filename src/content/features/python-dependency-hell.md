@@ -1,13 +1,41 @@
 ---
-title1: Effortlessly manage and resolve Python dependencies with our platform.
-description: Simplify Python Dependency Management with our platform, which automates the resolution of package conflicts and ensures version compatibility. Enjoy a seamless development experience with isolated environments and intuitive apps that streamline your dependency handling, so you can focus more on building great applications.
-title2: Why Python Dependency Management Matters
-description2: Effective Python dependency management is crucial to avoid version conflicts and ensure package compatibility, which can prevent runtime errors and bugs. It simplifies maintaining consistent environments across development and production, enhancing stability and reliability. Proper management also streamlines the development process, saving time and reducing the risk of issues caused by mismatched dependencies.
-title3: How We Simplify Dependency Management
-description3: We simplify dependency management by automating version resolution and handling conflicts seamlessly. Our platform provides isolated environments for different projects to avoid interference and ensures consistent package versions across development and production. With intuitive apps for monitoring and managing dependencies, we make your development process more efficient and reliable.
-button: Get Started
-image1: Automated Dependency Resolution
-image2: Environment Isolation
-image3: Dependency Visualization
-image4: Version Control
+top_section:
+  title: "Goodbye, Dependency Hell"
+  description: Forget virtual environments, conflicting paths, and "it works on my machine." Dataflow builds immutable, containerized Python environments that sync across your team instantly.
+  button:
+    label: 'Get Started'
+    href: "https://app.dataflow.zone"
+  hero_image: "/assets/images/product/goodbye-dependency-hell.webp"
+
+section:
+  title: "Define Once. Share Everywhere."
+  description: "Select your Python version and libraries. Dataflow resolves the dependency tree, builds the environment for you in the background, and when built it can be activated to be used across the workspace."
+  image: "/assets/images/product/define-once-share-everywhere.webp"
+  button:
+    label: "Get Started"
+    href: "https://app.dataflow.zone"
+    target: '_blank'
+  imageSide: "left"
+
+simplify_dependency_management:
+  title: "How We Simplify Dependency Management"
+  description: "We simplify dependency management by automating version resolution and handling conflicts seamlessly. Our platform provides isolated environments for different projects to avoid interference and ensures consistent package versions across development and production. With intuitive apps for monitoring and managing dependencies, we make your development process more efficient and reliable."
+  button:
+    label: "Get Started"
+    href: "https://app.dataflow.zone"
+    target: '_blank'
+  features:
+    - title: "Smart Resolver"
+      description: "We detect conflicts before the build starts. Our resolver checks PyPI for compatible versions and locks them to a hash for security"
+      image: "/assets/icons/icon-checklist.svg"
+    - title: "Time Travel"
+      description: "Broke your environment? Roll back to the previous successful build instantly. Every environment snapshot is versioned and stored"
+      image: "/assets/icons/icon-clock-loop.webp"
+    - title: "Project Sandboxing"
+      description: "Each project runs in an isolated container and compute environment, supporting multiple Python versions without interference"
+      image: "/assets/icons/icon-cubes.svg"
+    - title: "Production Parity"
+      description: "The environment you use in VS Code is the exact same binary used by the Airflow Scheduler. Eliminate environment drift completely"
+      image: "/assets/icons/icon-dna.svg"
+
 ---

@@ -1,0 +1,216 @@
+---
+import { getEntry } from 'astro:content'
+import CustomButton from '../common/CustomButton.astro'
+
+const Data = await getEntry('home', 'home')
+
+interface UseCaseTab {
+  id: string
+  title: string
+  heading: string
+  description: string
+  features: string[]
+  link: string
+  image: string
+  imageAlt: string
+  cta_text?: string
+  video?: string  
+}
+
+const defaultTabs: UseCaseTab[] = [
+  {
+    id: 'exploration',
+    title: 'Data Exploration',
+    heading: 'Explore Your Data Interactively',
+    description: 'Dive deep into your data with Jupyter notebooks and interactive tools. Query, visualize, and understand your datasets with powerful exploration capabilities.',
+    features: [
+      'Interactive Jupyter notebooks with persistent workspaces',
+      'Pre-configured connections to all your data sources',
+      'Real-time collaboration with your team'
+    ],
+    link: '/product/shared-foundation',
+    image: '/assets/images/apps/jupyter.webp',
+    imageAlt: 'Data Exploration'
+  },
+  {
+    id: 'visualisation',
+    title: 'Data Visualisation',
+    heading: 'Create Stunning Visualizations',
+    description: 'Build interactive dashboards and visualizations with Streamlit, Dash, and other powerful tools. Share insights with stakeholders effortlessly.',
+    features: [
+      'Deploy Streamlit and Dash apps with one click',
+      'Instant access to live data connections',
+      'Share dashboards via secure URLs'
+    ],
+    link: '/apps',
+    image: '/assets/images/apps/streamlit-icon.svg',
+    imageAlt: 'Data Visualisation'
+  },
+  {
+    id: 'analytics',
+    title: 'Analytics',
+    heading: 'Advanced Analytics & ML',
+    description: 'Build and deploy machine learning models with MLflow. Run complex analytics pipelines with all the tools you need in one place.',
+    features: [
+      'MLflow integration for model tracking and deployment',
+      'GPU support for deep learning workloads',
+      'Reproducible experiments with environment management'
+    ],
+    link: '/product/shared-foundation',
+    image: '/assets/images/apps/mlflow.webp',
+    imageAlt: 'Analytics'
+  },
+  {
+    id: 'etl',
+    title: 'ETL',
+    heading: 'Orchestrate Data Pipelines',
+    description: 'Schedule and manage ETL workflows with Airflow. Transform and load data across your entire stack with zero configuration overhead.',
+    features: [
+      'Native Airflow with auto-synced environments',
+      'DBT integration for data transformations',
+      'Unified connection management across all pipelines'
+    ],
+    link: '/product/shared-foundation',
+    image: '/assets/images/apps/airflow-logo.svg',
+    imageAlt: 'ETL'
+  }
+]
+const data = Data.data?.use_cases
+const tabs: UseCaseTab[] = data?.use_cases || defaultTabs
+---
+
+<section class='px-[5%] py-20 lg:pb-2 bg-gray-50 max-sm:py-12'>
+  <div class='max-w-7xl mx-auto'>
+    <h2 class='text-4xl max-sm:text-3xl font-bold text-center text-gray-900 mb-12' data-aos='fade-up'>
+      {data?.title || 'Built for All Data Use Cases'}
+    </h2>
+    
+    <div class='flex justify-center gap-4 mb-12 max-sm:flex-wrap'>
+      {tabs.map((tab, index) => (
+        <button 
+          class={`use-case-tab px-6 py-3 rounded-lg font-medium transition-colors ${index === 0 ? 'bg-primary text-white' : 'bg-white text-gray-700 hover:bg-gray-100'}`}
+          data-tab={tab.id}
+          data-aos='fade-up'
+          data-aos-delay={200 + index * 100}
+        >
+          {tab.title}
+        </button>
+      ))}
+    </div>
+
+    <!-- Tab Contents -->
+    <div class='tab-content-wrapper relative h-[580px] max-md:h-auto'>
+      {tabs.map((tab, index) => (
+        <div 
+          class={`tab-content ${index === 0 ? 'active' : ''} bg-white rounded-2xl p-12 max-sm:p-6 shadow-sm`} 
+          data-content={tab.id}
+          data-aos='fade-left'
+          data-aos-delay='400'
+        >
+          <div class='grid md:grid-cols-2 gap-12 items-center'>
+            <div>
+              <h3 class='text-3xl font-bold text-gray-900 mb-4'>
+                {tab.heading}
+              </h3>
+              <p class='text-gray-600 mb-6'>
+                {tab.description}
+              </p>
+              <ul class='space-y-3 mb-6'>
+                {tab.features.map(feature => (
+                  <li class='flex items-start gap-3'>
+                    <svg class='w-6 h-6 text-primary mt-0.5 flex-shrink-0' fill='currentColor' viewBox='0 0 20 20'>
+                      <path fill-rule='evenodd' d='M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z' clip-rule='evenodd'></path>
+                    </svg>
+                    <span class='text-gray-700'>{feature}</span>
+                  </li>
+                ))}
+              </ul>
+              <div class="flex gap-3 flex-wrap">
+                <CustomButton
+                label={"Get Started"}
+                href={"https://app.dataflow.zone/"}
+                variant="primary"
+                className="font-semibold"
+                iconSrc={null}
+                />
+                <CustomButton
+                  label={tab.cta_text || 'Learn more'}
+                  href={tab.link}
+                  variant="ghost"
+                  className="font-semibold"
+                  iconSrc="/assets/icons/icon-right-angular-arrow.svg"
+                />
+              </div>
+            </div>
+            <div class={`bg-white rounded-xl ${!tab.video && 'p-8'} flex items-center justify-center min-h-[300px]`}>
+              {tab.video ? (
+                <video
+                  class='max-w-full h-full rounded-md'
+                  src={tab.video}
+                  autoplay
+                  muted
+                  playsinline
+                  poster={tab.image}
+                />
+              ) : (
+                <img src={tab.image} alt={tab.imageAlt} class='max-w-full h-auto' />
+              )}
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .tab-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: none;
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  @media (max-width: 768px) {
+    .tab-content {
+      position: relative;
+    }
+  }
+
+  .tab-content.active {
+    display: block;
+  }
+
+  .tab-content.fade-in {
+    animation: fadeIn 0.4s ease-in-out forwards;
+  }
+
+  .tab-content.fade-out {
+    animation: fadeOut 0.15s ease-in-out forwards;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fadeOut {
+    from {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    to {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+  }
+</style>

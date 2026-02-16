@@ -1,26 +1,43 @@
 ---
 import Layout from '../layouts/Layout.astro'
-import Testimonial from '../components/common/Testimonial'
-import Hero from '../components/home/Hero.astro'
-import BestInClassTools from '../components/home/BestInClassTools.astro'
-import Seventy from '../components/home/Seventy.astro'
-import Consultation from '../components/home/Consultation.astro'
-import FeatureSection from '../components/home/FeatureSection.astro'
+import HeroSection from '../components/home/HeroSection.astro'
+import UseCasesTabs from '../components/home/UseCasesTabs.astro'
+import GPUSection from '../components/home/GPUSection.astro'
+import ShipDataApps from '../components/home/ShipDataApps.astro'
+import EssentialFeatures from '../components/home/EssentialFeatures.astro'
+import EnterpriseReady from '../components/home/EnterpriseReady.astro'
+import Testimonial from '../components/common/Testimonial.astro'
+import SupportSection from '../components/home/SupportSection.astro'
+import DevelopersLove from '../components/home/DevelopersLove.astro'
+import FinalCTA from '../components/home/FinalCTA.astro'
 import { getEntry } from 'astro:content'
 
-const {data} = await getEntry('home', 'home')
-let features = data.features
+const Data = await getEntry('home', 'home')
+const data = Data.data
+const { hero, features } = data
 ---
 
-<Layout title='Dataflow | AI ready data platform'>
-  <Hero />
-  <BestInClassTools />
-  {
-    features.map((feature, index) => (
-      <FeatureSection {...feature} key={index} />
-    ))
-  }
-  <Seventy />
-  <Testimonial client:load />
-  <Consultation />
+<Layout
+  title='Data Platform for Startups & AI Teams | Dataflow'
+  meta_description='Dataflow is a modern data platform for startups and AI teams. Ship reliable data science workflows faster with secure, scalable infrastructure.'
+>
+  <HeroSection hero={hero} />
+  <GPUSection />
+  <UseCasesTabs />
+  <ShipDataApps />
+  <Testimonial />
+  <EssentialFeatures features={features} />
+  <EnterpriseReady />
+  <SupportSection />
+  <DevelopersLove />
+  <FinalCTA />
 </Layout>
+
+<script src="/assets/js/hero-parallax.js" is:inline></script>
+<script src="/assets/js/tab-switching.js" is:inline></script>
+
+<style>
+  section {
+    scroll-margin-top: 100px;
+  }
+</style>

@@ -1,34 +1,44 @@
 ---
-import { getEntry } from 'astro:content'
+import { getEntry } from "astro:content";
+import CustomButton from "../../common/CustomButton.astro";
 
-const Data = await getEntry('features', 'manage-your-data')
-const data = Data.data.TopSection
-const button = Data.data.button
+const Data = await getEntry("features", "manage-your-data-connections");
+const data = Data.data.top_section;
 ---
 
-<div class=' min-h-screen w-full flex items-center justify-center max-sm:flex-col max-sm:px-[20px] max-sm:py-[30px]'>
-  <div class='text-container w-2/5'>
-    <h1 class='text-2calc font-bold mb-8 text-textblack'>{data.title}</h1>
-    <p class='text-lg w-11/12 text-textblack'>{data.description}</p>
-    <a href='/start-free-trail'>
-      <button
-        class='custom-button bg-primary hover:bg-[#30abab] px-3 py-2 duration-700 text-white rounded-lg shadow-md flex text-base items-center gap-x-2 mt-14'
-        style='font-family: Roboto;'
+<div
+  class="min-h-screen w-full flex items-center justify-center px-[10%] max-md:flex-col max-md:px-[20px] max-md:py-[30px] z-10"
+>
+  <div class="flex-1 flex justify-center gap-8 max-md:w-[90%]">
+    <div class="w-full flex flex-col gap-6 lg:w-2/3">
+      <h1
+        class="text-6xl max-md:text-5xl max-sm:text-2xl leading-snug tracking-wide font-bold text-black"
       >
-        {button}
-        <img
-          class='button-img'
-          src='/assets/images/arrowright.svg'
-          alt='Arrow right'
-        />
-      </button>
-    </a>
+        {data.title}
+      </h1>
+      <p class="text-lg max-sm:text-sm text-textblack leading-tight">
+        {data.description}
+      </p>
+      <CustomButton
+        href={"https://docs.dataflow.zone/get-started/introduction-to-dataflow/"}
+        label={data.cta_text}
+        target="_blank"
+      />
+    </div>
   </div>
-  <div class='img-container w-[36%] h-auto flex items-center justify-center'>
+  <div class="flex-1 h-auto flex items-center justify-center">
     <img
-      src='/assets/images/rundata3.png'
-      class='h-full w-full object-contain'
-      alt='Description of image'
+      src="/assets/images/landing/hero-image.webp"
+      class="h-full w-full object-contain"
+      alt={`${data.title} illustration`}
+    />
+  </div>
+
+  <!-- BG Pattern -->
+  <div class="absolute left-0 top-0 z-[-1]">
+    <img
+      src="/assets/images/dataflow-bg-pattern.svg"
+      alt="Abstract dataflow background pattern"
     />
   </div>
 </div>

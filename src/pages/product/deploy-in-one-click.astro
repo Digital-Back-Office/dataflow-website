@@ -1,0 +1,56 @@
+---
+import Layout from '../../layouts/Layout.astro'
+import TopSection from '../../components/common/TopSection.astro'
+import FeatureGrid from '../../components/common/FeatureGrid.astro'
+import TwoColumnSection from '../../components/common/TwoColumnSection.astro'
+import Comparison from '../../components/features/deploy-to-production/Comparison.astro'
+import { getEntry } from 'astro:content'
+
+const Data = await getEntry('features', 'deploy-to-production')
+const top = Data?.data?.top_section || {}
+const seamlessDeployment = Data?.data?.seamless_deployment || {}
+const productionParity = Data?.data?.production_parity || {}
+const managedSecrets = Data?.data?.managed_secrets_in_production || {}
+const meta_description = top.description ?? 'Deploy applications to production seamlessly with zero environment drift and automatic scaling.'
+---
+
+<Layout
+  title='Deploy in One Click | Fast Data Platform Launch'
+  meta_description={meta_description}
+>
+  <TopSection
+    title={top.title}
+    description={top.description}
+    image={top.hero_image}
+    buttonText={top.button?.label}
+    buttonHref={top.button?.href}
+    buttonTarget='_blank'
+    imageSide="right"
+    bg="white"
+  />
+
+  <FeatureGrid
+    title={seamlessDeployment.title}
+    description={seamlessDeployment.description}
+    features={seamlessDeployment.features}
+    button={seamlessDeployment.button}
+    bg="F8FAFC"
+  />
+
+  <TwoColumnSection
+    title={productionParity.title}
+    description={productionParity.description}
+    image={productionParity.image}
+    imageSide={productionParity.imageSide}
+    bg="white"
+  />
+
+  <Comparison />
+
+  <FeatureGrid
+    title={managedSecrets.title}
+    description={managedSecrets.description}
+    features={managedSecrets.features}
+    bg="white"
+  />
+</Layout>

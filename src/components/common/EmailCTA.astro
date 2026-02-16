@@ -1,0 +1,183 @@
+---
+/**
+ * Reusable Email CTA Component
+ * 
+ * Props:
+ * - formId: Unique ID for the form (required)
+ * - pageSource: Page/source identifier for tracking (required)
+ * - placeholder: Placeholder text for email input (optional)
+ * - buttonText: Text for submit button (optional)
+ * - containerClass: Additional CSS classes for container (optional)
+ * - shouldRedirect: Whether to redirect to app after submission (default: true)
+ * - href: Custom redirect URL when shouldRedirect is false (optional)
+ */
+
+interface Props {
+  formId: string
+  pageSource: string
+  placeholder?: string
+  buttonText?: string
+  containerClass?: string
+  shouldRedirect?: boolean
+  href?: string
+}
+
+const { 
+  formId,
+  pageSource,
+  placeholder = "What's your work email?", 
+  buttonText = "Get Started",
+  containerClass = "",
+  shouldRedirect = true,
+  href = ""
+} = Astro.props
+
+// Get form ID from environment variable with fallback
+const ctaGoogleFormId = import.meta.env.PUBLIC_CTA_GOOGLE_FORM_ID || '1FAIpQLScm9m5YZa0bdolEh1Sk3siQZgC2scoDnjc7gYk7xodB3WP2Vw'
+---
+
+<div
+  class={`flex items-center justify-center w-full ${containerClass}`}
+>
+  <form id={formId} class="w-full max-w-2xl mx-auto email-cta-form" data-page-source={pageSource} data-should-redirect={shouldRedirect.toString()} data-href={href}>
+    <div class="relative email-input-wrapper">
+      <!-- Animated gradient background -->
+      <div class="absolute -inset-1 bg-gradient-to-r from-primary via-blue-500 to-primary opacity-0 group-hover:opacity-30 transition-opacity duration-500 rounded-2xl blur-md animate-gradient-xy"></div>
+      
+      <div class="relative overflow-hidden flex items-stretch bg-white rounded-2xl border-2 shadow-xl shadow-primary/15 border-primary/80 hover:border-primary/50 focus-within:border-primary focus-within:shadow-[0_0_0_4px_rgba(48,186,186,0.15)] transition-all duration-300 group max-sm:rounded-xl">
+        <!-- Subtle glow effect on focus -->
+        <div class="absolute inset-0 rounded-2xl opacity-0 focus-within:opacity-100 transition-opacity duration-300 pointer-events-none max-sm:rounded-xl">
+          <div class="absolute inset-0 rounded-2xl bg-gradient-to-r from-primary/10 via-blue-500/10 to-primary/10 blur-sm max-sm:rounded-xl"></div>
+        </div>
+        
+        <input
+          type="email"
+          id={`${formId}-email`}
+          name="email"
+          placeholder={placeholder}
+          required
+          class="relative z-10 flex-1 px-6 py-5 bg-transparent focus:outline-none text-gray-900 placeholder:text-gray-400 text-base transition-all duration-200 max-sm:px-2 max-sm:py-2.5 max-sm:text-sm"
+        />
+        <button
+          type="submit"
+          class="relative z-10 m-1 px-8 py-4 bg-primary hover:bg-primaryHover text-white rounded-xl font-semibold transition-all duration-300 hover:shadow-lg whitespace-nowrap max-sm:px-2 max-sm:py-3 max-sm:m-0.5 max-sm:text-sm max-sm:rounded-lg"
+        >
+          {buttonText}
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
+
+<style>
+  @keyframes gradient-xy {
+    0%, 100% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+  }
+  
+  .animate-gradient-xy {
+    background-size: 200% 200%;
+    animation: gradient-xy 3s ease infinite;
+  }
+  
+  .email-input-wrapper:hover .absolute.blur {
+    opacity: 0.2;
+  }
+</style>
+
+<script is:inline define:vars={{ ctaGoogleFormId }}>
+  (function() {
+    // Google Form configuration
+    const GOOGLE_FORM_CONFIG = {
+      formUrl: `https://docs.google.com/forms/d/e/${ctaGoogleFormId}/formResponse`,
+      emailEntryId: 'entry.1103074482',
+      pageSourceEntryId: 'entry.1402974516'
+    }
+
+    // Redirect URL configuration
+    const REDIRECT_CONFIG = {
+      baseUrl: 'https://app.dataflow.zone/hub/login',
+      emailParam: 'email'
+    }
+
+    function validateEmail(email) {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+      return emailRegex.test(email)
+    }
+
+    async function submitToGoogleForm(email, pageSource) {
+      try {
+        const formData = new FormData()
+        formData.append(GOOGLE_FORM_CONFIG.emailEntryId, email)
+        formData.append(GOOGLE_FORM_CONFIG.pageSourceEntryId, pageSource)
+        
+        await fetch(GOOGLE_FORM_CONFIG.formUrl, {
+          method: 'POST',
+          body: formData,
+          mode: 'no-cors'
+        })
+        
+        return true
+      } catch (error) {
+        console.log('Form submission error:', error)
+        return false
+      }
+    }
+
+    function redirectToApp(email) {
+      const url = new URL(REDIRECT_CONFIG.baseUrl)
+      url.searchParams.set(REDIRECT_CONFIG.emailParam, email)
+      window.open(url.toString(), '_blank')
+    }
+
+    async function handleEmailSubmit(email, pageSource, shouldRedirect, customHref) {
+      const trimmedEmail = email.trim()
+      
+      if (!validateEmail(trimmedEmail)) {
+        console.error('Invalid email format')
+        return
+      }
+      
+      await submitToGoogleForm(trimmedEmail, pageSource)
+      
+      if (shouldRedirect) {
+        redirectToApp(trimmedEmail)
+      } else if (customHref) {
+        window.location.href = customHref
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      const forms = document.querySelectorAll('.email-cta-form')
+      
+      forms.forEach((form) => {
+        // Skip if already initialized to prevent duplicate submissions
+        if (form.dataset.initialized === 'true') {
+          return
+        }
+        
+        const formId = form.id
+        const emailInputId = `${formId}-email`
+        const pageSource = form.getAttribute('data-page-source') || 'unknown'
+        const shouldRedirect = form.getAttribute('data-should-redirect') === 'true'
+        const href = form.getAttribute('data-href') || ''
+        
+        const emailInput = document.getElementById(emailInputId)
+        
+        if (form && emailInput) {
+          form.addEventListener('submit', async (e) => {
+            e.preventDefault()
+            await handleEmailSubmit(emailInput.value, pageSource, shouldRedirect, href)
+          })
+          
+          // Mark as initialized
+          form.dataset.initialized = 'true'
+        }
+      })
+    })
+  })()
+</script>

@@ -1,0 +1,59 @@
+---
+import Layout from '../../layouts/Layout.astro'
+import TopSection from '../../components/common/TopSection.astro'
+import CardGrid from '../../components/common/CardGrid.astro'
+import TwoColumnSection from '../../components/common/TwoColumnSection.astro'
+import { getEntry } from 'astro:content'
+
+const Data = await getEntry('features', 'development-ready-workspace')
+const top = Data?.data?.top_section || {}
+const whatYouGet = Data?.data?.what_you_get || {}
+const instantOnboarding = Data?.data?.instant_onboarding || {}
+const computeFlexibility = Data?.data?.compute_flexibility || {}
+const meta_description = top.description ?? 'Get a fully configured workspace with compute, environments, and applications ready to use in seconds.'
+---
+
+<Layout
+  title='Development-Ready Workspace | VS Code & Airflow'
+  meta_description={meta_description}
+>
+  <TopSection
+    title={top.title}
+    description={top.description}
+    image={top.hero_image}
+    buttonText={top.button?.label}
+    buttonHref={top.button?.href}
+    buttonTarget='_blank'
+    imageSide="right"
+    bg="white"
+  />
+
+  <CardGrid
+    title={whatYouGet.title}
+    description={whatYouGet.description}
+    features={whatYouGet.features}
+    columns={2}
+    bg="gray"
+  />
+
+  <TwoColumnSection
+    title={instantOnboarding.title}
+    description={instantOnboarding.description}
+    image={instantOnboarding.image}
+    buttonText={instantOnboarding.button?.label}
+    buttonHref={instantOnboarding.button?.href}
+    buttonTarget={instantOnboarding.button?.target ?? "_blank"}
+    imageSide={instantOnboarding.imageSide}
+    bg="white"
+  />
+
+  {computeFlexibility?.features && (
+    <CardGrid
+      title={computeFlexibility.title}
+      description={computeFlexibility.description}
+      features={computeFlexibility.features}
+      columns={3}
+      bg="white"
+    />
+  )}
+</Layout>

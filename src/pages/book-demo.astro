@@ -3,226 +3,325 @@ import Layout from '../layouts/Layout.astro'
 import { getEntry } from 'astro:content'
 const Data = await getEntry('common', 'book-demo')
 const data = Data.data
+const { hero, highlights, form } = data
+const formFields = form?.fields || []
+const termsText = form?.terms_text || ''
+const termsLinkText = form?.terms_link_text || ''
+const submitLabel = form?.button_text || 'Book Now'
+const hiddenActionValue = form?.hidden_action_value || 'Book a demo'
+
+// Get supported by data
+const CommonData = await getEntry('common', 'common')
+const supportedBy = CommonData.data.supported_by
+
+// Pass environment variables to the client-side script with fallbacks
+const appScriptID = import.meta.env.PUBLIC_GOOGLE_APP_SCRIPT_ID || 'AKfycbwxuVvMe9pSazFyR5PA1eXiQHlHPnxE0CXdtyeXJCMzn-ZBYuTnmIPLJv2NTSfytl3v'
+const googleFormId = import.meta.env.PUBLIC_GOOGLE_FORM_ID || '1FAIpQLSeGjuyA_jjDmmT4jTY96s0CgCL_JKOJlNrTRqJ-9iqRmlEPKw'
 ---
 
-<Layout title='Dataflow | Book a demo'>
-  <div
-    class='formcontainer w-full flex items-start justify-center py-24 bg-[#F8FAFC]'
-  >
-    <div class='container-child-1 flex flex-col w-2/6 pr-10 max-sm:pl-3'>
-      <div class='mb-14'>
-        <h2 class='text-10calc font-black text-textblack leading-none'>
-          {data.maintitle1}
-        </h2>
-        <h2 class='text-5calc font-black text-textblack leading-tight'>
-          {data.maintitle2}
-        </h2>
+<Layout
+  title='Book a Dataflow Demo | Data Platform Experts'
+  meta_description='Book a personalized Dataflow demo to see how startups and AI teams can build reliable data pipelines and ML workflows faster.'
+>
+  <section class='min-h-screen bg-gradient-to-b from-gray-50 to-white px-[5%] py-32 max-sm:py-24'>
+    <div class='max-w-7xl mx-auto'>
+      <div data-aos="fade-up" data-aos-duration="850" data-aos-offset="200" class='text-center mb-16'>
+        <h1 class='text-5xl max-sm:text-4xl font-bold text-gray-900 mb-6'>
+          {hero?.title} {hero?.subtitle}
+        </h1>
+        <p class='text-xl text-gray-600 max-w-2xl mx-auto'>
+          Experience the power of Dataflow with a personalized demo tailored to your needs
+        </p>
       </div>
-      <div class='h-full w-full flex flex-col'>
-        <div class='w-full flex items-start mb-10'>
-          <img
-            src='/assets/images/bookdemoimage1.png'
-            width='50px'
-            height='50px'
-            class='mr-5'
-          />
-          <div>
-            <h3 class='text-2xl font-bold 1 text-textblack'>
-              {data.title1}
-            </h3>
-            <p class='text-base text-textblack'>{data.description1}</p>
+
+      <div class='grid lg:grid-cols-2 gap-16 items-start'>
+        
+        <!-- Left Column - Benefits -->
+        <div data-aos="fade-right" data-aos-duration="850" data-aos-offset="200" class='space-y-6'>
+          <div class='bg-white rounded-2xl p-8 shadow-sm border border-gray-100'>
+            <h2 class='text-2xl font-bold text-gray-900 mb-6'>What to Expect</h2>
+            
+            <div class='space-y-6'>
+              {highlights?.map((item, index) => (
+                <div class='flex items-start gap-4'>
+                  <div class='w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center shrink-0'>
+                    {index === 0 && (
+                      <svg class='w-6 h-6 text-primary' fill='currentColor' viewBox='0 0 20 20'>
+                        <path d='M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z'></path>
+                      </svg>
+                    )}
+                    {index === 1 && (
+                      <svg class='w-6 h-6 text-primary' fill='currentColor' viewBox='0 0 20 20'>
+                        <path fill-rule='evenodd' d='M3 5a2 2 0 012-2h10a2 2 0 012 2v8a2 2 0 01-2 2h-2.22l.123.489.804.804A1 1 0 0113 18H7a1 1 0 01-.707-1.707l.804-.804L7.22 15H5a2 2 0 01-2-2V5zm5.771 7H5V5h10v7H8.771z' clip-rule='evenodd'></path>
+                      </svg>
+                    )}
+                    {index === 2 && (
+                      <svg class='w-6 h-6 text-primary' fill='currentColor' viewBox='0 0 20 20'>
+                        <path d='M11 17a1 1 0 001.447.894l4-2A1 1 0 0017 15V9.236a1 1 0 00-1.447-.894l-4 2a1 1 0 00-.553.894V17zM15.211 6.276a1 1 0 000-1.788l-4.764-2.382a1 1 0 00-.894 0L4.789 4.488a1 1 0 000 1.788l4.764 2.382a1 1 0 00.894 0l4.764-2.382zM4.447 8.342A1 1 0 003 9.236V15a1 1 0 00.553.894l4 2A1 1 0 009 17v-5.764a1 1 0 00-.553-.894l-4-2z'></path>
+                      </svg>
+                    )}
+                  </div>
+                  <div>
+                    <h3 class='font-semibold text-gray-900 mb-1'>{item.title}</h3>
+                    <p class='text-gray-600'>{item.description}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
-        </div>
-        <div class='w-full flex items-start mb-10'>
-          <img
-            src='/assets/images/bookdemoimage2.png'
-            width='50px'
-            height='50px'
-            class='mr-5'
-          />
-          <div>
-            <h3 class='text-2xl font-bold 1 text-textblack'>{data.title2}</h3>
-            <p class='text-base text-textblack'>{data.description2}</p>
+
+          <!-- Powered By Section -->
+          <div class='bg-white rounded-2xl p-8 shadow-sm border border-gray-100'>
+            <h2 class='text-2xl font-bold text-gray-900 mb-6'>Powered By</h2>
+            <div class='grid grid-cols-3 gap-4 items-center justify-items-center'>
+              {supportedBy?.incubators?.map((company) => (
+                <div class='flex items-center justify-center p-2'>
+                  <img 
+                    src={company.logo} 
+                    alt={company.name}
+                    class='h-8 max-w-full object-contain  transition-all duration-300'
+                    loading='lazy'
+                  />
+                </div>
+              ))}
+            </div>
           </div>
-        </div>
-        <div class='w-full flex items-start mb-10'>
-          <img
-            src='/assets/images/bookdemoimage3.png'
-            width='50px'
-            height='50px'
-            class='mr-5'
-          />
-          <div>
-            <h3 class='text-2xl font-bold 1 text-textblack'>{data.title3}</h3>
-            <p class='text-base text-textblack'>{data.description3}</p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div
-      id='formcontainer'
-      class='container-child-2 w-3/6 max-w-[600px] min-h-[550px] ml-10 border-[1.5px] border-[#E0E0E0] flex flex-col items-center justify-center rounded-2xl px-[3%] max-sm:px-3 bg-white py-12 max-sm:py-3'
-    >
-      <form id='myForm' class='w-full items-center justify-between'>
-        <div class='w-full colcontainerchild flex flex-col justify-evenly'>
-          <label class='text-base 2xl:text-lg font-bold text-textblack'
-            >{data.form.label1}</label
-          >
-          <input
-            required
-            placeholder={data.form.placeholder1}
-            class='custom-input border border-[#E0E0E0] rounded-lg h-10 p-2'
-            name='entry.1291198894'
-          />
-        </div>
-        <div class='w-full colcontainerchild flex flex-col justify-evenly'>
-          <label class='text-base 2xl:text-lg font-bold text-textblack'
-            >{data.form.label2}</label
-          >
-          <input
-            required
-            type='email'
-            placeholder={data.form.placeholder2}
-            class='custom-input border border-[#E0E0E0] rounded-lg h-10 p-2'
-            name='entry.59580764'
-          />
-        </div>
-        <div
-          class='h-full w-full colcontainerchild flex flex-col justify-evenly'
-        >
-          <label class='text-base 2xl:text-lg font-bold text-textblack'
-            >{data.form.label3}</label
-          >
-          <input
-            required
-            placeholder={data.form.placeholder3}
-            class='custom-input border border-[#E0E0E0] rounded-lg h-10 p-2'
-            name='entry.1637227755'
-          />
-        </div>
-        <div
-          class='h-full w-full colcontainerchild flex flex-col justify-evenly'
-        >
-          <label class='text-base 2xl:text-lg font-bold text-textblack'
-            >{data.form.label4}</label
-          >
-          <select
-            required
-            id='options'
-            class='custom-input border border-[#E0E0E0] rounded-lg h-10 p-2 text-[#9ca3b1] text-[14px]'
-            name='entry.1061557718'
-          >
-            <option value='' disabled selected>Company Size</option>
-            <option value='1-10'>1-10 employees</option>
-            <option value='11-50'>11-50 employees</option>
-            <option value='51-200'>51-200 employees</option>
-            <option value='201-500'>201-500 employees</option>
-            <option value='501-1000'>501-1000 employees</option>
-            <option value='1001-5000'>1001-5000 employees</option>
-            <option value='5001-10000'>5001-10,000 employees</option>
-            <option value='10001+'>10,001+ employees</option>
-          </select>
-        </div>
-        <div class='h-full w-full flex flex-col justify-evenly'>
-          <label class='text-base 2xl:text-lg font-bold text-textblack'
-            >{data.form.label5}</label
-          >
-          <input
-            required
-            placeholder={data.form.placeholder5}
-            class='custom-input border border-[#E0E0E0] rounded-lg h-10 p-2'
-            name='entry.1798038289'
-          />
-        </div>
-        <div class='h-full w-full flex flex-col justify-evenly'>
-          <label class='text-base 2xl:text-lg font-bold text-textblack'
-            >{data.form.label6}</label
-          >
-          <input
-            type='text'
-            id='date'
-            required
-            placeholder='Select a date'
-            class='date-picker custom-input border border-[#E0E0E0] rounded-lg h-10 p-2'
-            name='entry.800910305'
-          />
-        </div>
-        <div class='text-xs hidden' id='available-slots-container'>
-          <label
-            class='show-available-slots text-base 2xl:text-lg font-bold text-textblack'
-          >
-            Available slots
-          </label>
-          <div>
-            <select
-              required
-              id='available-slots'
-              name='entry.1284317816'
-              class='available-slots border border-[#E0E0E0] w-full rounded-lg h-10 p-2 text-[#9ca3b1] text-[14px]'
-            >
-            </select>
-          </div>
-        </div>
-        <input type='hidden' name='entry.664159867' value='Book a demo' />
-        <div class='w-full h-32 flex flex-col justify-between'>
-          <label class='text-base 2xl:text-lg font-bold text-textblack'
-            >{data.form.label7}</label
-          >
-          <textarea
-            required
-            name='entry.1056515558'
-            placeholder={data.form.placeholder7}
-            class='custom-input border border-[#E0E0E0] rounded-lg p-2'
-            rows='10'
-            cols='30'
-            style='resize:none'></textarea>
-        </div>
-        <div class='w-full flex items-center justify-start mb-3'>
-          <input
-            type='checkbox'
-            required
-            class='ml-3 size-3'
-            style='margin-bottom: 0;'
-          />
-          <p class='text-gray-500 ml-1 text-sm'>
-            {data.form.terms}<span
-              ><a
-                href='/terms-and-conditions'
-                class='underline underline-offset-4 text-gray-700 ml-[2px]'
-                >{data.form.link}</a
-              ></span
-            >
-          </p>
         </div>
 
-        <button
-          type='submit'
-          id='book-demo-btn'
-          disabled
-          class='bg-primary disabled:bg-primary/60 disabled:hover:bg-primary/60 hover:bg-primaryHover w-full h-14 justify-center duration-300 text-white font-bold rounded-lg shadow-md flex text-base items-center gap-x-2'
-          style='font-family: Roboto;'
-        >
-          {data.form.button}
-        </button>
-      </form>
-      <div id='thank-you-message' class='w-full h-full hidden text-center'>
-        <img
-          src='/assets/images/circle-tick.svg'
-          alt='Success'
-          class='mx-auto mb-4'
-        />
-        <p class='text-white text-xl font-bold'>Thank You</p>
-        <p class='text-white text-base'>
-          Form Submitted Successfully. We will reach you shortly.
-        </p>
-        <button
-          id='submit-another-form'
-          class='text-white text-lg text-center underline mt-5'
-          >Submit another form</button
-        >
+        <!-- Right Column - Form -->
+        <div data-aos="fade-left" data-aos-duration="850" data-aos-offset="200">
+          <div id='formcontainer' class='bg-white rounded-2xl p-8 shadow-sm border border-gray-100'>
+            <h3 class='text-2xl font-bold text-gray-900 mb-6'>Schedule Your Demo</h3>
+
+          <form id='myForm' class='space-y-4'>
+            <!-- Personal Information Section -->
+            <div class='space-y-3'>
+              <div class='flex items-center gap-2 pb-2 border-b border-gray-200'>
+                <svg class='w-5 h-5 text-primary' fill='currentColor' viewBox='0 0 20 20'>
+                  <path fill-rule='evenodd' d='M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z' clip-rule='evenodd'></path>
+                </svg>
+                <h3 class='text-sm font-semibold text-gray-700 uppercase tracking-wide'>Personal Information</h3>
+              </div>
+              
+              <div class='grid grid-cols-1 gap-4'>
+                <div class='form-group'>
+                  <label class='block text-sm font-semibold text-textblack mb-1.5'>
+                    Name <span class='text-red-500'>*</span>
+                  </label>
+                  <input
+                    required
+                    type='text'
+                    placeholder='Your full name'
+                    class='custom-input w-full border-2 border-gray-200 rounded-xl h-12 px-4 text-sm focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all duration-200'
+                    name='entry.1291198894'
+                  />
+                </div>
+                
+                <div class='grid sm:grid-cols-2 gap-4'>
+                  <div class='form-group'>
+                    <label class='block text-sm font-semibold text-textblack mb-1.5'>
+                      Email <span class='text-red-500'>*</span>
+                    </label>
+                    <input
+                      required
+                      type='email'
+                      placeholder='your.email@company.com'
+                      class='custom-input w-full border-2 border-gray-200 rounded-xl h-12 px-4 text-sm focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all duration-200'
+                      name='entry.59580764'
+                    />
+                  </div>
+                  
+                  <div class='form-group'>
+                    <label class='block text-sm font-semibold text-textblack mb-1.5'>
+                      Phone Number <span class='text-red-500'>*</span>
+                    </label>
+                    <input
+                      required
+                      type='tel'
+                      placeholder='+1 (555) 000-0000'
+                      class='custom-input w-full border-2 border-gray-200 rounded-xl h-12 px-4 text-sm focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all duration-200'
+                      name='entry.1798038289'
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Company Information Section -->
+            <div class='space-y-3 pt-1'>
+              <div class='flex items-center gap-2 pb-2 border-b border-gray-200'>
+                <svg class='w-5 h-5 text-primary' fill='currentColor' viewBox='0 0 20 20'>
+                  <path fill-rule='evenodd' d='M4 4a2 2 0 012-2h8a2 2 0 012 2v12a1 1 0 110 2h-3a1 1 0 01-1-1v-2a1 1 0 00-1-1H9a1 1 0 00-1 1v2a1 1 0 01-1 1H4a1 1 0 110-2V4zm3 1h2v2H7V5zm2 4H7v2h2V9zm2-4h2v2h-2V5zm2 4h-2v2h2V9z' clip-rule='evenodd'></path>
+                </svg>
+                <h3 class='text-sm font-semibold text-gray-700 uppercase tracking-wide'>Company Information</h3>
+              </div>
+              
+              <div class='grid grid-cols-1 gap-3'>
+                <div class='form-group'>
+                  <label class='block text-sm font-semibold text-textblack mb-1.5'>
+                    Company Name <span class='text-red-500'>*</span>
+                  </label>
+                  <input
+                    required
+                    type='text'
+                    placeholder='Your company name'
+                    class='custom-input w-full border-2 border-gray-200 rounded-xl h-12 px-4 text-sm focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all duration-200'
+                    name='entry.1637227755'
+                  />
+                </div>
+                
+                <div class='form-group'>
+                  <label class='block text-sm font-semibold text-textblack mb-1.5'>
+                    Company Size <span class='text-red-500'>*</span>
+                  </label>
+                  <select
+                    required
+                    id='options'
+                    class='custom-input w-full border-2 border-gray-200 rounded-xl h-12 px-4 text-sm text-gray-500 bg-white focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all duration-200 appearance-none bg-select-icon'
+                    name='entry.1061557718'
+                  >
+                    <option value='' disabled selected>Select company size</option>
+                    {formFields.find(f => f.type === 'select')?.options?.map((option) => (
+                      <option value={option.value} class='text-textblack'>{option.label}</option>
+                    ))}
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <!-- Scheduling Section -->
+            <div class='space-y-3 pt-1'>
+              <div class='flex items-center gap-2 pb-2 border-b border-gray-200'>
+                <svg class='w-5 h-5 text-primary' fill='currentColor' viewBox='0 0 20 20'>
+                  <path fill-rule='evenodd' d='M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z' clip-rule='evenodd'></path>
+                </svg>
+                <h3 class='text-sm font-semibold text-gray-700 uppercase tracking-wide'>Schedule Your Demo</h3>
+              </div>
+              
+              <div class='grid grid-cols-1 gap-3'>
+                <div class='form-group'>
+                  <label class='block text-sm font-semibold text-textblack mb-1.5'>
+                    Preferred Date <span class='text-red-500'>*</span>
+                  </label>
+                  <input
+                    type='text'
+                    id='date'
+                    required
+                    placeholder='Select a date'
+                    class='date-picker custom-input w-full border-2 border-gray-200 rounded-xl h-12 px-4 text-sm focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all duration-200'
+                    name='entry.800910305'
+                  />
+                </div>
+                
+                <div class='form-group'>
+                  <label class='block text-sm font-semibold text-textblack mb-1.5'>
+                    Available Time Slots <span class='text-red-500'>*</span>
+                  </label>
+                  <select
+                    required
+                    id='available-slots'
+                    name='entry.1284317816'
+                    disabled
+                    class='custom-input w-full border-2 border-gray-200 rounded-xl h-12 px-4 text-sm text-gray-500 bg-white focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all duration-200 disabled:bg-gray-50 disabled:cursor-not-allowed appearance-none bg-select-icon'
+                  >
+                    <option value='' selected disabled>
+                      Select date to get available slots
+                    </option>
+                  </select>
+                  <p class='text-xs text-gray-500 mt-1.5 flex items-center gap-1'>
+                    <svg class='w-3.5 h-3.5' fill='currentColor' viewBox='0 0 20 20'>
+                      <path fill-rule='evenodd' d='M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z' clip-rule='evenodd'></path>
+                    </svg>
+                    Select a date first to see available time slots
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Additional Information -->
+            <div class='space-y-3 pt-1'>
+              <div class='flex items-center gap-2 pb-2 border-b border-gray-200'>
+                <svg class='w-5 h-5 text-primary' fill='currentColor' viewBox='0 0 20 20'>
+                  <path fill-rule='evenodd' d='M18 13V5a2 2 0 00-2-2H4a2 2 0 00-2 2v8a2 2 0 002 2h3l3 3 3-3h3a2 2 0 002-2zM5 7a1 1 0 011-1h8a1 1 0 110 2H6a1 1 0 01-1-1zm1 3a1 1 0 100 2h3a1 1 0 100-2H6z' clip-rule='evenodd'></path>
+                </svg>
+                <h3 class='text-sm font-semibold text-gray-700 uppercase tracking-wide'>Tell Us More</h3>
+              </div>
+              
+              <div class='form-group'>
+                <label class='block text-sm font-semibold text-textblack mb-1.5'>
+                  How do you intend to use Dataflow? <span class='text-red-500'>*</span>
+                </label>
+                <textarea
+                  required
+                  name='entry.1056515558'
+                  placeholder='Tell us about your data processing needs and what you hope to achieve with Dataflow...'
+                  class='custom-input w-full border-2 border-gray-200 rounded-xl p-4 text-sm focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all duration-200 resize-none'
+                  rows='3'
+                ></textarea>
+              </div>
+            </div>
+
+            <input type='hidden' name='entry.664159867' value={hiddenActionValue} />
+            
+            <!-- Terms and Submit -->
+            <div class='space-y-3 pt-1'>
+              <div class='flex items-start gap-3 p-4 bg-gray-50 rounded-xl'>
+                <input
+                  type='checkbox'
+                  required
+                  id='terms-checkbox'
+                  class='mt-1 w-4 h-4 rounded border-gray-300 text-primary focus:ring-primary focus:ring-2'
+                />
+                <label for='terms-checkbox' class='text-sm text-gray-600 leading-relaxed'>
+                  {termsText} <a
+                    href='/legal/terms-and-conditions'
+                    class='text-primary hover:text-primary/80 underline underline-offset-2 font-medium'
+                    >{termsLinkText}</a>
+                </label>
+              </div>
+
+              <button
+                type='submit'
+                id='book-demo-btn'
+                disabled
+                class='w-full bg-gradient-to-r from-primary to-primary/90 hover:from-primary/90 hover:to-primary disabled:from-gray-300 disabled:to-gray-300 disabled:cursor-not-allowed text-white font-bold rounded-xl h-14 flex items-center justify-center gap-3 transition-all duration-300 shadow-lg hover:shadow-xl disabled:shadow-none transform hover:scale-[1.02] disabled:scale-100'
+              >
+                <svg id='calendar-icon' class='w-5 h-5' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
+                  <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z'></path>
+                </svg>
+                <svg id='loading-spinner' class='w-5 h-5 animate-spin hidden' fill='none' viewBox='0 0 24 24'>
+                  <circle class='opacity-25' cx='12' cy='12' r='10' stroke='currentColor' stroke-width='4'></circle>
+                  <path class='opacity-75' fill='currentColor' d='M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z'></path>
+                </svg>
+                <span id='submit-text'>{submitLabel}</span>
+              </button>
+            </div>
+          </form>
+
+          <!-- Success Message (Hidden by Default) -->
+          <div id='thank-you-message' class='hidden text-center'>
+            <div class='flex flex-col items-center justify-center p-16 text-center bg-gradient-to-br from-primary/5 to-primary/10 rounded-2xl'>
+              <div class='w-20 h-20 bg-primary rounded-full flex items-center justify-center mb-6'>
+                <svg class='w-10 h-10 text-white' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
+                  <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M5 13l4 4L19 7'></path>
+                </svg>
+              </div>
+              <h3 class='text-2xl font-bold text-gray-900 mb-3'>Thank You!</h3>
+              <p class='text-gray-600 mb-8 max-w-md'>
+                Your demo request has been submitted successfully. Our team will reach out to you shortly.
+              </p>
+              <button
+                id='submit-another-form'
+                class='px-6 py-3 bg-primary hover:bg-primaryHover text-white font-semibold rounded-lg transition-all duration-200'
+              >
+                Submit Another Form
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
+  </section>
 </Layout>
 
 <link
@@ -230,104 +329,100 @@ const data = Data.data
   href='https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css'
   crossorigin='anonymous'
 />
-<script src='https://cdn.jsdelivr.net/npm/flatpickr'></script>
+<script src='https://cdn.jsdelivr.net/npm/flatpickr' is:inline></script>
 
-<script>
-  import flatpickr from 'flatpickr'
-  try {
-    flatpickr('.date-picker', {
-      enableTime: false,
-      dateFormat: 'Y-m-d',
-      minDate: 'today',
-      onOpen: function (selectedDates, dateStr, instance) {
-        const calendarContainer = instance.calendarContainer
-        const monthElement = calendarContainer.querySelector(
-          '.flatpickr-month'
-        ) as HTMLElement
-        const monthDropDown = calendarContainer.querySelector(
-          '.flatpickr-monthDropdown-months'
-        ) as HTMLElement
-        const DropDownMonth = calendarContainer.querySelectorAll(
-          '.flatpickr-monthDropdown-month'
-        ) as NodeListOf<HTMLElement>
-        const weekdays = calendarContainer.querySelectorAll(
-          '.flatpickr-weekday'
-        ) as NodeListOf<HTMLElement>
-        const currMonth = calendarContainer.querySelector(
-          '.flatpickr-current-month'
-        ) as HTMLElement
+<script is:inline>
+  window.addEventListener('load', function() {
+    // Wait for flatpickr to be loaded from CDN
+    if (typeof flatpickr === 'undefined') {
+      console.error('flatpickr library not loaded')
+      return
+    }
+    
+    try {
+      flatpickr('.date-picker', {
+        enableTime: false,
+        dateFormat: 'Y-m-d',
+        minDate: 'today',
+        onOpen: function (selectedDates, dateStr, instance) {
+          const calendarContainer = instance.calendarContainer
+          const monthElement = calendarContainer.querySelector('.flatpickr-month')
+          const monthDropDown = calendarContainer.querySelector('.flatpickr-monthDropdown-months')
+          const DropDownMonth = calendarContainer.querySelectorAll('.flatpickr-monthDropdown-month')
+          const weekdays = calendarContainer.querySelectorAll('.flatpickr-weekday')
+          const currMonth = calendarContainer.querySelector('.flatpickr-current-month')
+          const dayContainer = calendarContainer.querySelectorAll('.dayContainer')
+          const disabledDays = calendarContainer.querySelectorAll('.flatpickr-disabled')
+          const selectedDate = calendarContainer.querySelectorAll('.flatpickr-day.selected')
+          const today = calendarContainer.querySelectorAll('.flatpickr-day.today')
 
-        const dayContainer = calendarContainer.querySelectorAll(
-          '.dayContainer'
-        ) as NodeListOf<HTMLElement>
-
-        const disabledDays = calendarContainer.querySelectorAll(
-          '.flatpickr-disabled'
-        ) as NodeListOf<HTMLElement>
-        const selectedDate = calendarContainer.querySelectorAll(
-          '.flatpickr-day.selected'
-        ) as NodeListOf<HTMLElement>
-        const today = calendarContainer.querySelectorAll(
-          '.flatpickr-day.today'
-        ) as NodeListOf<HTMLElement>
-
-        today[0].style.borderColor = '#1dd0d5'
-        today[0].style.color = '#1dd0d5'
-
-        disabledDays.forEach((day) => {
-          day.style.color = '#9c9b9a'
-        })
-
-        if (selectedDate) {
-          selectedDate.forEach((date) => {
-            date.style.backgroundColor = '#1dd0d5'
+          if (today[0]) {
             today[0].style.borderColor = '#1dd0d5'
-            date.style.color = '#fff'
-          })
-        }
-        if (
-          monthElement &&
-          monthDropDown &&
-          weekdays &&
-          DropDownMonth &&
-          dayContainer
-        ) {
-          monthElement.style.backgroundColor = '#fafafa'
-          monthDropDown.style.backgroundColor = '#fafafa'
-          currMonth.style.display = 'flex'
-          currMonth.style.justifyContent = 'space-between'
-          dayContainer[0].style.backgroundColor = '#fafafa'
+            today[0].style.color = '#1dd0d5'
+          }
 
-          weekdays.forEach((weekday) => {
-            weekday.style.backgroundColor = '#fafafa'
+          disabledDays.forEach(function(day) {
+            day.style.color = '#9c9b9a'
           })
-          DropDownMonth.forEach((month) => {
-            month.style.backgroundColor = '#fafafa'
-          })
+
+          if (selectedDate) {
+            selectedDate.forEach(function(date) {
+              date.style.backgroundColor = '#1dd0d5'
+              if (today[0]) {
+                today[0].style.borderColor = '#1dd0d5'
+              }
+              date.style.color = '#fff'
+            })
+          }
+          
+          if (monthElement && monthDropDown && weekdays && DropDownMonth && dayContainer) {
+            monthElement.style.backgroundColor = '#fafafa'
+            monthDropDown.style.backgroundColor = '#fafafa'
+            currMonth.style.display = 'flex'
+            currMonth.style.justifyContent = 'space-between'
+            dayContainer[0].style.backgroundColor = '#fafafa'
+
+            weekdays.forEach(function(weekday) {
+              weekday.style.backgroundColor = '#fafafa'
+            })
+            
+            DropDownMonth.forEach(function(month) {
+              month.style.backgroundColor = '#fafafa'
+            })
+          }
         }
-      }
-    })
-  } catch (error) {
-    console.log('error on flatpickr  :>> ', error)
-  }
+      })
+    } catch (error) {
+      console.log('error on flatpickr  :>> ', error)
+    }
+  })
 </script>
 
-<script>
-  var appScriptID = import.meta.env.PUBLIC_GOOGLE_APP_SCRIPT_ID
-  var googleFormId = import.meta.env.PUBLIC_GOOGLE_FORM_ID
+<script is:inline define:vars={{ appScriptID, googleFormId }}>
   document
     .getElementById('myForm')
     .addEventListener('submit', async function (event) {
       event.preventDefault()
 
-      const name= document.querySelector('input[name="entry.1291198894"]') as HTMLInputElement
-      const email = document.querySelector('input[name="entry.59580764"]') as HTMLInputElement
-      const phoneNumber = document.querySelector('input[name="entry.1798038289"]') as HTMLInputElement
-      const date = document.querySelector('input[name="entry.800910305"]') as HTMLInputElement
-      const timeSlot = document.querySelector('select[name="entry.1284317816"]') as HTMLSelectElement
-      const companyName = document.querySelector('input[name="entry.1637227755"]') as HTMLInputElement
-      const companySize = document.querySelector('select[name="entry.1061557718"]') as HTMLSelectElement
-      const message = document.querySelector('textarea[name="entry.1056515558"]') as HTMLInputElement
+      const submitBtn = document.getElementById('book-demo-btn')
+      const submitText = document.getElementById('submit-text')
+      const calendarIcon = document.getElementById('calendar-icon')
+      const loadingSpinner = document.getElementById('loading-spinner')
+
+      // Show loading state
+      submitBtn.disabled = true
+      submitText.textContent = 'Submitting...'
+      calendarIcon.classList.add('hidden')
+      loadingSpinner.classList.remove('hidden')
+
+      const name = document.querySelector('input[name="entry.1291198894"]')
+      const email = document.querySelector('input[name="entry.59580764"]')
+      const phoneNumber = document.querySelector('input[name="entry.1798038289"]')
+      const date = document.querySelector('input[name="entry.800910305"]')
+      const timeSlot = document.querySelector('select[name="entry.1284317816"]')
+      const companyName = document.querySelector('input[name="entry.1637227755"]')
+      const companySize = document.querySelector('select[name="entry.1061557718"]')
+      const message = document.querySelector('textarea[name="entry.1056515558"]')
 
 
       function parseTime(timeStr, year, month, day) {
@@ -373,13 +468,13 @@ const data = Data.data
       const googleScriptURL = `https://script.google.com/macros/s/${appScriptID}/exec`
 
       try {
-        await fetch(googleScriptURL, {
+        const scriptResponse = await fetch(googleScriptURL, {
           method: 'POST',
           body: formData
         })
           .catch((error) => {
             console.error('calendar error:', error)
-            return
+            throw error
           })
 
         await fetch(googleFormUrl, {
@@ -388,35 +483,39 @@ const data = Data.data
           body: formData
         }).catch((e) => {
           console.error('Error while saving to google form : ', e)
+          throw e
         })
 
-        const formContainer = document.getElementById('formcontainer')
+        // With no-cors mode, we can't check response.ok, so if no error was thrown, assume success
+        const form = document.getElementById('myForm')
+        const thankYouMessage = document.getElementById('thank-you-message')
+        
+        // Hide form and show thank you message
+        form.classList.add('hidden')
+        thankYouMessage.classList.remove('hidden')
 
-        formContainer.style.border = '0'
-
-        formContainer.innerHTML = `
-        <div class="w-full h-[500px] text-center bg-white flex flex-col items-center justify-center rounded-2xl">
-          <img src="/assets/images/circle-tickprimary.svg" alt="Success" class="mx-auto mb-4"/>
-          <p class="text-primary text-calc font-bold" >Thank You</p> 
-          <p class="text-primary text-base" >Form Submitted Successfully. We will reach you shortly.</p> 
-          <button id="submit-another-form" class="text-primary text-lg text-center underline mt-5" >Submit another form</button>
-        </div>
-      `
-
-        document
-          .getElementById('submit-another-form')
-          .addEventListener('click', function () {
-            location.reload()
-          })
-
-        const form = document.getElementById('myForm') as HTMLFormElement
+        // Reset form in background
         form.reset()
       } catch (error) {
-        let text = 'Error in form Submission'
-        document.getElementById('result').style.color = 'red'
-        document.getElementById('result').innerHTML = text
+        console.error('Form submission error:', error)
+        
+        // Reset loading state
+        submitBtn.disabled = false
+        submitText.textContent = 'Book Now'
+        calendarIcon.classList.remove('hidden')
+        loadingSpinner.classList.add('hidden')
+        
+        // Show error message
+        alert('There was an error submitting your request. Please try again or contact us directly.')
       }
     })
+  // Submit another form button handler
+  document.addEventListener('click', function(e) {
+    if (e.target && e.target.id === 'submit-another-form') {
+      location.reload()
+    }
+  })
+  
   document.getElementById('options').addEventListener('change', function () {
     this.style.color = '#303030'
   })
@@ -426,13 +525,18 @@ const data = Data.data
 
     const selectElement = document.getElementById('available-slots')
     const slotsContainer = document.getElementById('available-slots-container')
-    const BookDemoBtn = document.getElementById('book-demo-btn') as HTMLButtonElement
+    const BookDemoBtn = document.getElementById('book-demo-btn')
 
-    let date = (document.getElementById('date') as HTMLInputElement).value 
+    let date = document.getElementById('date').value 
 
     let timezone = Intl.DateTimeFormat().resolvedOptions().timeZone
 
     var url = `https://script.google.com/macros/s/${appScriptID}/exec`
+
+    // Show loading state
+    selectElement.innerHTML = '<option value="" selected disabled>Loading available slots...</option>'
+    selectElement.disabled = false
+    selectElement.style.color = '#9ca3b1'
 
     fetch(`${url}?date=${date}&timezone=${timezone}`)
       .then((res) => res.json())
@@ -444,19 +548,22 @@ const data = Data.data
 
         if (availableSlots.length === 0) {
           const option = document.createElement('option')
-          option.value = null
+          option.value = ''
           option.textContent = 'No Available Slots'
           option.selected = true
-          option.style.color = '#393939'
+          option.disabled = true
+          option.style.color = '#9ca3b1'
           selectElement.appendChild(option)
-          slotsContainer.classList.remove('hidden')
+          selectElement.disabled = true
+          BookDemoBtn.disabled = true
           return
         } else {
           const option = document.createElement('option')
-          option.value = null
+          option.value = ''
           option.textContent = 'Select a slot'
-          option.style.color = '#393939'
+          option.style.color = '#9ca3b1'
           option.selected = true
+          option.disabled = true
           selectElement.appendChild(option)
         }
 
@@ -467,91 +574,102 @@ const data = Data.data
           option.style.color = '#393939'
           selectElement.appendChild(option)
         })
-        slotsContainer.classList.remove('hidden')
-        BookDemoBtn.disabled = false
+        
+        // Enable the dropdown for user selection
+        selectElement.disabled = false
       })
       .catch((err) => {
         console.log('err here :>> ', err)
+        selectElement.innerHTML = '<option value="" selected disabled>Error loading slots. Please try again.</option>'
+        selectElement.disabled = true
+        BookDemoBtn.disabled = true
       })
+  })
+
+  // Enable submit button when a slot is selected
+  document.getElementById('available-slots').addEventListener('change', function () {
+    const BookDemoBtn = document.getElementById('book-demo-btn')
+    const selectElement = this
+    
+    if (selectElement.value) {
+      BookDemoBtn.disabled = false
+      selectElement.style.color = '#303030'
+    } else {
+      BookDemoBtn.disabled = true
+    }
   })
 </script>
 
 <style>
-  .custom-button:hover {
-    background-color: #1dd0d5;
+  /* Background grid pattern */
+  .bg-grid-pattern {
+    background-image: 
+      linear-gradient(to right, #e5e7eb 1px, transparent 1px),
+      linear-gradient(to bottom, #e5e7eb 1px, transparent 1px);
+    background-size: 40px 40px;
   }
 
-  .button-img {
-    filter: brightness(0) invert(1);
+  /* Custom select dropdown icon */
+  .bg-select-icon {
+    background-image: url('/assets/icons/Icon-select-down.svg');
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    background-size: 16px;
   }
 
-  .custom-input:focus {
-    border-color: #1dd0d5;
-    outline: none;
-  }
-  input[type='checkbox'] {
-    accent-color: rgb(0, 164, 156);
-  }
-
-  input,
-  select,
-  textarea {
-    margin-bottom: 20px;
-  }
-
-  /* @media (max-width: 500px) {
-    input,
-    select,
-    textarea {
-      margin-bottom: 10px;
-    }
-  } */
-
-  input::placeholder,
-  textarea::placeholder {
+  /* Form input styles */
+  .custom-input {
     font-size: 14px;
   }
 
-  select {
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    background: url('/assets/icons/Icon-select-down.svg') no-repeat 98.5% 50%;
+  .custom-input:focus {
+    outline: none;
   }
 
-  label {
-    margin-bottom: 2px;
+  .custom-input::placeholder {
+    color: #9ca3b1;
   }
 
-  @media (max-width: 800px) {
-    .formcontainer {
-      flex-direction: column;
-      padding-left: 10px;
-      padding-right: 10px;
-    }
+  /* Selected option color */
+  select option:not(:first-child) {
+    color: #303030;
+  }
 
-    .container-child-1 {
-      width: 100%;
-    }
+  /* Ensure form doesn't overflow */
+  #formcontainer {
+    max-width: 100%;
+  }
 
-    .container-child-2 {
-      width: 100%;
-      margin: 0%;
-    }
+  /* Checkbox styling */
+  input[type='checkbox'] {
+    accent-color: #1dd0d5;
+  }
 
-    .colcontainer {
-      flex-direction: column;
-      height: auto;
-      column-gap: 20px;
-    }
+  /* Remove margin from form groups for cleaner spacing */
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    margin-bottom: 0;
+  }
 
-    .colcontainerchild {
-      width: 100%;
-      margin-top: 20px;
-    }
+  /* Flatpickr calendar customization */
+  .flatpickr-calendar {
+    border-radius: 16px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e5e7eb;
+  }
 
-    .hidden {
-      display: none;
-    }
+  .flatpickr-day.selected {
+    background: #1dd0d5 !important;
+    border-color: #1dd0d5 !important;
+  }
+
+  .flatpickr-day.today {
+    border-color: #1dd0d5 !important;
+  }
+
+  .flatpickr-day:hover:not(.selected) {
+    background: rgba(29, 208, 213, 0.1);
+    border-color: #1dd0d5;
   }
 </style>

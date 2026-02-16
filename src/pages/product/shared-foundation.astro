@@ -1,0 +1,62 @@
+---
+import Layout from '../../layouts/Layout.astro'
+import TopSection from '../../components/common/TopSection.astro'
+import FeatureGrid from '../../components/common/FeatureGrid.astro'
+import CardGrid from '../../components/common/CardGrid.astro'
+import TwoColumnSection from '../../components/common/TwoColumnSection.astro'
+import Comparison from '../../components/features/shared-foundation/Comparison.astro'
+import { getEntry } from 'astro:content'
+
+const Data = await getEntry('features', 'shared-foundation')
+const top = Data?.data?.top_section || {}
+const sharedPlatformLayer = Data?.data?.shared_platform_layer || {}
+const builtOnManagedDeps = Data?.data?.built_on_managed_dependencies || {}
+const keyBenefits = Data?.data?.key_benefits || {}
+const meta_description = top.description ?? 'A common platform layer shared across all applications. Unified environments, configuration, and zero duplication.'
+---
+
+<Layout
+  title='Shared Foundation | Unified Data Infrastructure'
+  meta_description={meta_description}
+>
+  <TopSection
+    title={top.title}
+    description={top.description}
+    image={top.hero_image}
+    buttonText={top.button?.label}
+    buttonHref={top.button?.href}
+    buttonTarget='_blank'
+    imageSide="right"
+    bg="white"
+  />
+
+  <FeatureGrid
+    title={sharedPlatformLayer.title}
+    description={sharedPlatformLayer.description}
+    features={sharedPlatformLayer.features}
+    button={sharedPlatformLayer.button}
+    bg="F8FAFC"
+  />
+
+  <TwoColumnSection
+    title={builtOnManagedDeps.title}
+    description={builtOnManagedDeps.description}
+    image={builtOnManagedDeps.image}
+    imageSide={builtOnManagedDeps.imageSide}
+    linkText={builtOnManagedDeps.linkText}
+    linkHref={builtOnManagedDeps.link}
+    linkTarget="_self"
+    bg="white"
+  />
+
+  <Comparison />
+
+  <CardGrid
+    title={keyBenefits.title}
+    description={keyBenefits.description}
+    features={keyBenefits.features}
+    columns={3}
+    bg="gray"
+  />
+
+</Layout>

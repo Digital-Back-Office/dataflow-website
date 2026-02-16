@@ -1,0 +1,106 @@
+---
+import { getEntry } from 'astro:content'
+import CustomButton from '../common/CustomButton.astro'
+
+const Data = await getEntry('home', 'home')
+const data = Data.data?.features
+const features = data?.features || Astro.props?.features || []
+---
+
+<section class='px-[5%] py-20 bg-gray-50 max-sm:py-12' >
+  <div class='max-w-7xl mx-auto'>
+    <h2 class='text-4xl max-sm:text-3xl font-bold text-center text-gray-900 mb-4' data-aos='fade-up'>
+      {data?.title || 'Essential Features'}
+    </h2>
+    <p class='text-center text-gray-600 mb-12' data-aos='fade-up' data-aos-delay='100'>
+      {data?.subtitle || 'Everything you need to build, ship, and scale data products with ease.'}
+    </p>
+
+    <div class='grid md:grid-cols-6 gap-6 max-md:grid-cols-1'>
+      {/* Feature 1: Define Once, Use Everywhere - Large Hero Card */}
+      <div class='md:col-span-4 bg-gradient-to-br from-primary/5 via-primary/10 to-primary/5 rounded-3xl p-10 max-md:p-8 group  transition-all duration-300' data-aos='fade-right' data-aos-delay='200'>
+        <div class='flex items-start justify-between max-md:flex-col gap-6'>
+          <div class='flex-1'>
+            <div class='w-14 h-14 bg-primary rounded-2xl flex items-center justify-center mb-5 transition-transform duration-300'>
+              <img src={features[0].icon} alt={features[0].title} class='w-7 h-7 brightness-0 invert' />
+            </div>
+            <h3 class='text-3xl max-md:text-2xl font-bold text-gray-900 mb-4'>{features[0].title}</h3>
+            <p class='text-gray-700 text-lg mb-6 leading-relaxed'>{features[0].description}</p>
+            {features[0].href && (
+              <CustomButton
+                label="Learn more"
+                href={features[0].href}
+                variant="primary"
+                className="font-semibold"
+              />
+            )}
+          </div>
+          <div class='hidden md:block w-32 h-32 bg-primary/20 rounded-full blur-3xl absolute right-10 top-10 -z-0'></div>
+        </div>
+      </div>
+
+      {/* Feature 2: Goodbye, Dependency Hell - Tall Right Card */}
+      <div class='md:col-span-2 md:row-span-2 bg-white rounded-3xl p-8 border-2 border-primary/20 hover:border-primary/30 group  transition-all duration-300 flex flex-col' data-aos='fade-left' data-aos-delay='300'>
+        <div class='w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-5 transition-colors duration-300'>
+          <img src={features[1].icon} alt={features[1].title} class='w-6 h-6' />
+        </div>
+        <h3 class='text-2xl font-bold text-gray-900 mb-4'>{features[1].title}</h3>
+        <p class='text-gray-600 mb-6 flex-1 leading-relaxed'>{features[1].description}</p>
+        
+        {/* Bottom decorative element */}
+        {/* <div class='flex items-center gap-2 text-xs text-gray-500'>
+          <svg class='w-4 h-4 text-primary' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
+            <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z'></path>
+          </svg>
+          <span>Containerized & Immutable</span>
+        </div> */}
+        
+        {features[1].href && (
+          <CustomButton
+            label="Learn more"
+            href={features[1].href}
+            variant="ghost"
+            iconSrc="/assets/icons/icon-right-angular-arrow.svg"
+            className="font-semibold"
+          />
+        )}
+      </div>
+
+      {/* Feature 3: Share Apps Instantly - Bottom Left */}
+      <div class='md:col-span-2 bg-white rounded-3xl p-8 border border-gray-200 group  hover:border-primary/30 transition-all duration-300' data-aos='fade-up' data-aos-delay='400'>
+        <div class='w-12 h-12 bg-gradient-to-br from-primary/10 to-primary/20 rounded-xl flex items-center justify-center mb-5 transition-transform duration-300'>
+          <img src={features[3].icon} alt={features[3].title} class='w-6 h-6' />
+        </div>
+        <h3 class='text-xl font-bold text-gray-900 mb-3'>{features[3].title}</h3>
+        <p class='text-gray-600 text-sm mb-4 leading-relaxed'>{features[3].description}</p>
+        {features[3].href && (
+          <CustomButton
+            label="Learn more"
+            href={features[3].href}
+            variant="ghost"
+            iconSrc="/assets/icons/icon-right-angular-arrow.svg"
+            className="font-semibold"
+          />
+        )}
+      </div>
+
+      {/* Feature 4: Bring your team - Bottom Right */}
+      <div class='md:col-span-2 bg-white rounded-3xl p-8 border border-gray-200 group  hover:border-primary/30 transition-all duration-300' data-aos='fade-up' data-aos-delay='500'>
+        <div class='w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-5 transition-colors duration-300'>
+          <img src={features[4].icon} alt={features[4].title} class='w-6 h-6' />
+        </div>
+        <h3 class='text-xl font-bold text-gray-900 mb-3'>{features[4].title}</h3>
+        <p class='text-gray-600 text-sm mb-4 leading-relaxed'>{features[4].description}</p>
+        {features[4].href && (
+          <CustomButton
+            label="Learn more"
+            href={features[4].href}
+            variant="ghost"
+            iconSrc="/assets/icons/icon-right-angular-arrow.svg"
+            className="font-semibold"
+          />
+        )}
+      </div>
+    </div>
+  </div>
+</section>

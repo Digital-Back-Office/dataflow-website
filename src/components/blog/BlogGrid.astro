@@ -1,110 +1,68 @@
 ---
 const { updatedposts } = Astro.props
-// import { posts } from '../../content/blog/data'
 ---
 
-<style>
-  .masonry-grid {
-    display: flex;
-    margin-left: -15px;
-    flex-wrap: wrap;
-  }
-  .masonry-grid-sizer,
-  .masonry-grid-item {
-    width: 33.333%;
-    padding-left: 15px;
-    box-sizing: border-box;
-  }
-  .masonry-grid-item {
-    margin-bottom: 30px;
-  }
-  .masonry-grid-item img {
-    width: 100%;
-    height: auto;
-    display: block;
-  }
-
-  .active {
-    color: #30baba;
-  }
-</style>
-
-<script>
-  import Masonry from 'masonry-layout'
-
-  document.addEventListener('DOMContentLoaded', () => {
-    const masonryGrid = document.querySelector('#blog-grid')
-    new Masonry(masonryGrid, {
-      percentPosition: true,
-      itemSelector: '.masonry-grid-item',
-      columnWidth: '.masonry-grid-sizer'
-    })
-  })
-
-  document.querySelector('.page-link').addEventListener('click', () => {
-    document.querySelector('.page-link').classList.add('active')
-    document.querySelector('.page-link').classList.add('text-primary')
-  })
-</script>
-
-<div class=''>
-  <div
-    id='blog-grid'
-    class='masonry-grid mb-2 mb-md-4 pb-lg-3 mt-[20px]'
-    data-columns='3'
-  >
-    <div class='masonry-grid-sizer'></div>
-
-    {
-      updatedposts.map((post, i) => (
-        <article class='masonry-grid-item'>
-          <div class='card border-0 bg-secondary'>
-            {post.data.image && (
-              <a href={`/blogs/blog/${post.slug}`} class='cursor-pointer'>
-                <img class='card-img-top' src={post.data.image} alt='Post' />
-              </a>
+<div class='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'>
+  {
+    updatedposts.map((post) => (
+      <article class='group bg-white rounded-2xl overflow-hidden border border-gray-100 hover:border-primary/30 hover:shadow-xl transition-all duration-300'>
+        {post.data.image && (
+          <a href={`/blog/${post.slug}`} class='block overflow-hidden' title={post.data.title}>
+            <img
+              src={post.data.image}
+              alt={post.data.title}
+              class='w-full h-56 object-cover group-hover:scale-105 transition-transform duration-300'
+            />
+          </a>
+        )}
+        
+        <div class='p-6'>
+          {/* Date and Tags */}
+          <div class='flex items-center gap-3 mb-4 text-sm text-gray-500'>
+            <time datetime={post.data.date}>{post.data.date}</time>
+            {post.data.tags && post.data.tags.length > 0 && (
+              <>
+                <span class='text-gray-300'>|</span>
+                <span class='px-2 py-1 bg-primary/10 text-primary rounded-md text-xs font-medium'>
+                  {post.data.tags[0]}
+                </span>
+              </>
             )}
-            <div class='card-body pb-4'>
-              <div class='d-flex align-items-center mb-4 mt-n1'>
-                <a class='badge text-nav fs-xs border' href='#'>
-                  {post.data.date} 
-                </a>
-              </div>
-              <h3 class='h4 card-title'>
-                <a
-                  href={`/blogs/blog/${post.slug}`}
-                  class='hover:text-primary cursor-pointer'
-                >
-                  {post.data.title}
-                </a>
-              </h3>
-              <p class='card-text'>{post.data.description}</p>
-            </div>
-            <div class='card-footer pt-3'>
-              <a href={`/blogs/blog/${post.slug}`}>
-                <p
-                  class='font-bold text-lg hover:text-primary'
-                  style='font-family:Arimo;'
-                >
-                  Know more
-                </p>
-              </a>
-            </div>
           </div>
-        </article>
-      ))
-    }
-  </div>
-  <div
-    class='flex justify-content-center align-items-center text-center mb-20 mt-10'
-  >
-    <!-- <button
-      id='load-more'
-      class='btn btn-primary w-md-auto w-80 p-2 px-3 my-2 rounded-xl text-sm'
-      type='button'
-      onClick={() => handleLoadMore}
-    >
-      Load more posts
-    </button> -->
-  </div>
+
+          {/* Title */}
+          <h3 class='text-xl font-bold text-textblack mb-3 line-clamp-2 group-hover:text-primary transition-colors'>
+            <a href={`/blog/${post.slug}`} title={post.data.title}>{post.data.title}</a>
+          </h3>
+
+          {/* Description */}
+          <p class='text-gray-600 text-sm line-clamp-3 mb-4'>
+            {post.data.description}
+          </p>
+
+          {/* Read More Link */}
+          <a
+            href={`/blog/${post.slug}`}
+            title={`Read ${post.data.title}`}
+            class='inline-flex items-center text-primary font-semibold text-sm hover:gap-2 transition-all group/link'
+          >
+            Read More
+            <svg
+              class='w-4 h-4 ml-1 group-hover/link:translate-x-1 transition-transform'
+              fill='none'
+              stroke='currentColor'
+              viewBox='0 0 24 24'
+            >
+              <path
+                stroke-linecap='round'
+                stroke-linejoin='round'
+                stroke-width='2'
+                d='M9 5l7 7-7 7'
+              />
+            </svg>
+          </a>
+        </div>
+      </article>
+    ))
+  }
 </div>

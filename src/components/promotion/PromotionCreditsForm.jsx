@@ -26,8 +26,7 @@ export default function PromotionCreditsForm() {
   const [isSubmitted, setIsSubmitted] = useState(false)
   const [errorMessage, setErrorMessage] = useState('')
 
-  console.log('Step1 1', STEP_1_FORM_URL)
-    console.log('Step2 1', STEP_2_FORM_URL)
+  
 
   const handleChange = (event) => {
     const { name, value } = event.target

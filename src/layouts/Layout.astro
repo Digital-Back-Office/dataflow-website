@@ -30,6 +30,7 @@ const canonicalUrl = new URL(Astro.url.pathname, siteUrl).toString();
 import { getEntry } from "astro:content";
 import Footer from "../components/common/Footer.astro";
 import Header from "../components/common/Header.astro";
+import CreditsNotificationBanner from "../components/common/CreditsNotificationBanner.jsx";
 import "../styles/global.css";
 
 const headerFooter = await getEntry("common", "header-footer");
@@ -140,6 +141,10 @@ const structuredDataJson = JSON.stringify(structuredData);
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5BH2ZJRZ"
     height="0" width="0" class="gtm-noscript-iframe"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
+    
+    <!-- Credits Notification Banner -->
+    <CreditsNotificationBanner client:load />
+    
     {header && <Header pagename={title} />}
     <slot />
     <Footer />

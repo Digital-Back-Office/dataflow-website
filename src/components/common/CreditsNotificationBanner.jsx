@@ -8,6 +8,12 @@ export default function CreditsNotificationBanner() {
   useEffect(() => {
     // Check if user has already closed the banner in this session
     const bannerClosed = sessionStorage.getItem('creditsBannerClosed')
+    const InCampaignPage = window.location.pathname === '/free-dataflow-credits'
+
+    // Don't show banner if user is on the campaign page
+    if (InCampaignPage) {
+      return
+    }
     
     if (!bannerClosed) {
       // Show banner after 10 seconds

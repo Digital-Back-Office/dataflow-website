@@ -256,9 +256,6 @@ export default function PromotionCreditsForm() {
       <div className='p-8 space-y-6'>
         <div className='mb-4'>
           <span className='text-sm font-semibold text-primary'>Step 1 of 2</span>
-          <div className='h-2 bg-gray-200 rounded-full mt-2'>
-            <div className='h-2 bg-primary rounded-full' style={{ width: '50%' }}></div>
-          </div>
         </div>
         <div className='grid sm:grid-cols-2 gap-4'>
           <div className='space-y-2'>
@@ -356,7 +353,7 @@ export default function PromotionCreditsForm() {
           className='w-full h-12 rounded-2xl bg-primary text-white font-semibold shadow-md hover:bg-primaryHover transition disabled:opacity-70'
           disabled={isSubmitting}
         >
-          {isSubmitting ? 'Continuing...' : 'Continue to Step 2'}
+          {isSubmitting ? 'Continuing...' : 'Continue'}
         </button>
         {errorMessage && <p className='text-sm text-red-600 text-center'>{errorMessage}</p>}
       </div>

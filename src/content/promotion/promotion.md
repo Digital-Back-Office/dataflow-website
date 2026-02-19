@@ -73,10 +73,11 @@ referral:
   description: Share your unique referral link and earn bonus credits for every approved signup.
   cta:
     label: Get My Referral Link
-    href: "#apply"
+    href: "https://app.dataflow.zone/"
   steps:
-    - Invite friends or teammates
-    - They apply using your referral link
+    - Login to Dataflow
+    - Find referral section in settings page
+    - Share your referral link
     - Both of you get extra credits
     - No limits. No spam. Quality referrals only.
   how_it_works_title: How it works

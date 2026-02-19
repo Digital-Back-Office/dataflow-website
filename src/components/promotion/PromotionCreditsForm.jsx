@@ -180,16 +180,6 @@ export default function PromotionCreditsForm() {
           <div className='mb-4'>
             <div className='flex items-center justify-between mb-2'>
               <span className='text-sm font-semibold text-primary'>Step 2 of 2</span>
-              <button
-                type='button'
-                onClick={() => setCurrentStep(1)}
-                className='text-sm text-textPrimary/60 hover:text-textPrimary'
-              >
-                ← Back
-              </button>
-            </div>
-            <div className='h-2 bg-gray-200 rounded-full'>
-              <div className='h-2 bg-primary rounded-full' style={{ width: '100%' }}></div>
             </div>
           </div>
 

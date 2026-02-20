@@ -1,0 +1,502 @@
+---
+import Layout from '../layouts/Layout.astro'
+import { getEntry } from 'astro:content'
+
+type SupportedCompany = {
+  name: string
+  logo: string
+}
+
+const { data: commonData } = await getEntry('common', 'common')
+const supportedBy = (commonData?.supported_by?.incubators ?? []) as SupportedCompany[]
+
+const partnerStats = [
+  { value: '4+', label: 'Active partners' },
+  { value: '100%', label: 'Satisfaction rate' },
+  { value: '5+', label: 'Countries served' }
+]
+
+const advantages = [
+  {
+    icon: '/assets/icons/partners/tech.svg',
+    title: 'Advanced technology access',
+    description: 'Early access to new platform features, APIs, and co-built solutions.'
+  },
+  {
+    icon: '/assets/icons/partners/comarketing.svg',
+    title: 'Co-marketing opportunities',
+    description: 'Joint campaigns, case studies, webinars, and partner spotlights.'
+  },
+  {
+    icon: '/assets/icons/partners/revenue.svg',
+    title: 'Revenue growth',
+    description: 'Clear revenue sharing and incentives for qualified referrals.'
+  },
+  {
+    icon: '/assets/icons/partners/guidance.svg',
+    title: 'Partner guidance',
+    description: 'Guided enablement, onboarding, and solution architecture support.'
+  },
+  {
+    icon: '/assets/icons/partners/network.svg',
+    title: 'Global network',
+    description: 'Collaborate with a global ecosystem of data and AI leaders.'
+  },
+  {
+    icon: '/assets/icons/partners/support.svg',
+    title: 'Dedicated support',
+    description: 'Priority support, partner success manager, and onboarding.'
+  }
+]
+
+const tiers = [
+  {
+    title: 'Technology Partner',
+    price: 'Free',
+    description: 'For technology vendors and solution providers building on Dataflow.',
+    cta: { label: 'Apply now', href: '/contact-us' },
+    features: [
+      'Access to partner documentation',
+      'Technical support channel',
+      'Partner portal access',
+      'Co-marketing opportunities',
+      'Quarterly business reviews'
+    ]
+  },
+  {
+    title: 'Solution Partner',
+    price: 'Custom',
+    badge: 'Most popular',
+    description: 'For consultancies and solution providers serving enterprise clients.',
+    cta: { label: 'Get started', href: '/contact-us' },
+    features: [
+      'Everything in Technology Partner',
+      'Dedicated partner manager',
+      'Priority technical support',
+      'Sales enablement resources',
+      'Lead sharing program',
+      'Guided solution enablement'
+    ]
+  },
+  {
+    title: 'Strategic Partner',
+    price: 'Custom',
+    description: 'For strategic alliances delivering large-scale transformations.',
+    cta: { label: 'Contact sales', href: '/contact-us' },
+    features: [
+      'Executive sponsorship',
+      'Custom integration roadmap',
+      'Joint go-to-market planning',
+      'Advanced revenue sharing',
+      'Strategic account planning'
+    ]
+  }
+]
+
+const faqs = [
+  {
+    q: 'What types of partnerships do you offer?',
+    a: 'We offer Technology, Solution, and Strategic partnerships based on how you build, sell, and deliver with Dataflow.'
+  },
+  {
+    q: 'How long does the application process take?',
+    a: 'Most applications are reviewed within 7-10 business days. Strategic partnerships may require additional alignment.'
+  },
+  {
+    q: 'Is there a cost to become a partner?',
+    a: 'Technology partnerships are free. Higher tiers are customized based on program scope and joint initiatives.'
+  },
+  {
+    q: 'What kind of support do partners receive?',
+    a: 'All tiers receive enablement and support. Higher tiers receive dedicated success and solution architecture support.'
+  },
+  {
+    q: 'Can I resell Dataflow?',
+    a: 'Yes. Approved Solution and Strategic partners can resell Dataflow as part of their delivery model.'
+  }
+]
+---
+
+<Layout
+  title='Partners | Dataflow Partnership Program'
+  meta_description='Join the Dataflow partner ecosystem. Unlock co-marketing, enablement, and growth opportunities for your business.'
+>
+  <section class='relative overflow-hidden bg-[#0c2021] text-white'>
+    <div class='absolute inset-0 opacity-70'>
+      <div class='hero-glow hero-glow-left'></div>
+      <div class='hero-glow hero-glow-right'></div>
+    </div>
+    <div class='relative max-w-7xl mx-auto px-[5%] pt-32 pb-24'>
+      <div class='grid lg:grid-cols-[1.05fr_0.95fr] gap-16 items-center'>
+        <div class='space-y-8' data-aos='fade-up'>
+          <span class='inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 py-2 text-sm font-semibold'>
+            <span class='size-2 rounded-full bg-secondary'></span>
+            Partner program
+          </span>
+          <div class='space-y-4'>
+            <h1 class='text-5xl max-sm:text-4xl font-bold leading-tight'>
+              Partner with Dataflow
+            </h1>
+            <p class='text-xl text-white/80 font-semibold'>
+              Build, sell, and deliver data solutions together.
+            </p>
+            <p class='text-white/70 leading-relaxed'>
+              Join a global ecosystem of forward-looking partners shaping how teams build, deploy, and scale data products.
+            </p>
+          </div>
+          <div class='flex flex-wrap gap-3'>
+            <a
+              href='mailto:partners@dataflow.zone'
+              class='px-8 py-4 rounded-lg bg-primary text-white font-semibold shadow-lg hover:bg-primaryHover transition'
+            >
+              Join as a partner
+            </a>
+            <a
+              href='#tiers'
+              class='px-8 py-4 rounded-lg border border-white/20 text-white font-semibold hover:bg-white/10 transition'
+            >
+              View tiers
+            </a>
+          </div>
+          <p class='text-sm text-white/70'>
+            To join as a partner, email
+            <a class='text-white underline underline-offset-4' href='mailto:partners@dataflow.zone'>
+              partners@dataflow.zone
+            </a>.
+          </p>
+          <div class='flex flex-wrap gap-6 text-sm text-white/70'>
+            {partnerStats.map((stat) => (
+              <div class='space-y-1'>
+                <p class='text-2xl font-semibold text-white'>{stat.value}</p>
+                <p class='uppercase tracking-wide text-xs text-white/60'>{stat.label}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+        <div class='relative' data-aos='fade-left'>
+          <div class='absolute -top-8 -left-8 size-32 rounded-full bg-primary/30 blur-3xl'></div>
+          <div class='absolute -bottom-10 -right-10 size-40 rounded-full bg-secondary/30 blur-3xl'></div>
+          <div class='hero-graphic rounded-3xl bg-gradient-to-br from-[#0f2b2c] via-[#0c2425] to-[#0b1f20] border border-white/10 shadow-[0_30px_70px_rgba(0,0,0,0.35)] p-6'>
+            <div class='rounded-2xl bg-white/10 border border-white/10 p-4'>
+              <div class='flex items-center justify-between'>
+                <div>
+                  <p class='text-xs uppercase tracking-widest text-white/60'>Partner cockpit</p>
+                  <p class='text-lg font-semibold'>Launch-ready ecosystem</p>
+                </div>
+                <span class='rounded-full bg-secondary/20 px-3 py-1 text-xs font-semibold text-secondary'>Live</span>
+              </div>
+              <div class='mt-4 grid grid-cols-3 gap-3 text-center text-xs'>
+                <div class='rounded-xl bg-white/10 border border-white/10 p-3'>
+                  <p class='text-lg font-semibold'>72h</p>
+                  <p class='text-white/60'>Lead response</p>
+                </div>
+                <div class='rounded-xl bg-white/10 border border-white/10 p-3'>
+                  <p class='text-lg font-semibold'>18</p>
+                  <p class='text-white/60'>Co-sell wins</p>
+                </div>
+                <div class='rounded-xl bg-white/10 border border-white/10 p-3'>
+                  <p class='text-lg font-semibold'>6</p>
+                  <p class='text-white/60'>Active regions</p>
+                </div>
+              </div>
+            </div>
+            <div class='mt-4 grid sm:grid-cols-2 gap-4'>
+              <div class='rounded-2xl bg-white/10 border border-white/10 p-4'>
+                <p class='text-sm font-semibold'>Go-to-market blueprint</p>
+                <div class='mt-3 space-y-2 text-xs text-white/70'>
+                  <div class='flex items-center gap-2'>
+                    <span class='size-2 rounded-full bg-secondary'></span>
+                    Co-branded messaging
+                  </div>
+                  <div class='flex items-center gap-2'>
+                    <span class='size-2 rounded-full bg-secondary'></span>
+                    Partner enablement kits
+                  </div>
+                  <div class='flex items-center gap-2'>
+                    <span class='size-2 rounded-full bg-secondary'></span>
+                    Joint pipeline reviews
+                  </div>
+                </div>
+                <div class='mt-4 flex flex-wrap gap-2 text-xs'>
+                  <span class='rounded-full bg-white/10 border border-white/15 px-3 py-1'>Playbooks</span>
+                  <span class='rounded-full bg-white/10 border border-white/15 px-3 py-1'>Workshops</span>
+                </div>
+              </div>
+              <div class='rounded-2xl bg-white/10 border border-white/10 p-4'>
+                <p class='text-sm font-semibold'>Pipeline momentum</p>
+                <div class='mt-3 space-y-2 text-xs text-white/70'>
+                  <div class='flex items-center justify-between'>
+                    <span>Qualified leads</span>
+                    <span>82%</span>
+                  </div>
+                  <div class='h-2 rounded-full bg-white/10 overflow-hidden'>
+                    <div class='h-full w-[82%] bg-secondary/60'></div>
+                  </div>
+                  <div class='flex items-center justify-between'>
+                    <span>Solution fit</span>
+                    <span>90%</span>
+                  </div>
+                  <div class='h-2 rounded-full bg-white/10 overflow-hidden'>
+                    <div class='h-full w-[90%] bg-primary/60'></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class='mt-4 rounded-2xl bg-white/10 border border-white/10 p-4'>
+              <div class='flex items-center justify-between'>
+                <p class='text-sm font-semibold'>Enablement timeline</p>
+                <span class='text-xs text-white/60'>Next 30 days</span>
+              </div>
+              <div class='mt-4 grid grid-cols-3 gap-3 text-xs text-white/70'>
+                <div class='rounded-xl border border-white/10 bg-white/5 px-3 py-3'>
+                  <p class='text-white text-sm font-semibold'>Week 1</p>
+                  Kickoff + alignment
+                </div>
+                <div class='rounded-xl border border-white/10 bg-white/5 px-3 py-3'>
+                  <p class='text-white text-sm font-semibold'>Week 2</p>
+                  Enablement sprints
+                </div>
+                <div class='rounded-xl border border-white/10 bg-white/5 px-3 py-3'>
+                  <p class='text-white text-sm font-semibold'>Week 3-4</p>
+                  Joint launch plan
+                </div>
+              </div>
+            </div>
+            <div class='mt-4 rounded-2xl bg-white/10 border border-white/10 p-4'>
+              <p class='text-xs uppercase tracking-widest text-white/60'>Powered by</p>
+              <div class='mt-3 flex flex-wrap gap-4 items-center'>
+                {supportedBy.map((company: SupportedCompany) => (
+                  <img
+                    src={company.logo}
+                    alt={company.name}
+                    class='h-5 w-auto brightness-0 invert'
+                    loading='lazy'
+                  />
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class='bg-white'>
+    <div class='max-w-7xl mx-auto px-[5%] py-16'>
+      <div class='text-center space-y-4' data-aos='fade-up'>
+        <p class='text-sm font-semibold text-primary uppercase tracking-wide'>Trusted by partners</p>
+        <h2 class='text-4xl font-bold text-textDarker'>Accelerate growth with Dataflow</h2>
+        <p class='text-textPrimary/70 max-w-2xl mx-auto'>
+          Build joint solutions, drive pipeline, and deliver outcomes faster with shared go-to-market momentum.
+        </p>
+      </div>
+      <div class='mt-10 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 items-center justify-items-center'>
+        {supportedBy.map((company: SupportedCompany) => (
+          <div class='rounded-xl border border-primary/10 bg-[#f7fbfb] px-6 py-5 flex items-center justify-center w-full'>
+            <img
+              src={company.logo}
+              alt={company.name}
+              class='h-7 w-auto object-contain'
+              loading='lazy'
+            />
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class='bg-[#f7fbfb]'>
+    <div class='max-w-7xl mx-auto px-[5%] py-16'>
+      <div class='text-center space-y-4' data-aos='fade-up'>
+        <p class='text-sm font-semibold text-primary uppercase tracking-wide'>Partner advantages</p>
+        <h2 class='text-4xl font-bold text-textDarker'>Why teams partner with Dataflow</h2>
+        <p class='text-textPrimary/70 max-w-2xl mx-auto'>
+          Unlock curated enablement, sales support, and a platform your customers already trust.
+        </p>
+      </div>
+      <div class='mt-12 grid md:grid-cols-2 lg:grid-cols-3 gap-6'>
+        {advantages.map((item) => (
+          <div class='rounded-3xl border border-primary/10 bg-white p-6 shadow-sm hover:shadow-lg transition' data-aos='fade-up'>
+            <div class='size-12 rounded-2xl bg-primary/10 flex items-center justify-center'>
+              <img src={item.icon} alt='' class='size-6' aria-hidden='true' loading='lazy' />
+            </div>
+            <h3 class='mt-4 text-lg font-semibold text-textDarker'>{item.title}</h3>
+            <p class='mt-2 text-textPrimary/70 text-sm leading-relaxed'>{item.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section id='tiers' class='bg-white'>
+    <div class='max-w-7xl mx-auto px-[5%] py-16'>
+      <div class='text-center space-y-4' data-aos='fade-up'>
+        <p class='text-sm font-semibold text-primary uppercase tracking-wide'>Partnership tiers</p>
+        <h2 class='text-4xl font-bold text-textDarker'>Choose the right level</h2>
+        <p class='text-textPrimary/70 max-w-2xl mx-auto'>
+          Whether you are building integrations or delivering full data programs, there is a tier for you.
+        </p>
+      </div>
+      <div class='mt-12 grid lg:grid-cols-3 gap-6'>
+        {tiers.map((tier) => (
+          <div class={`rounded-3xl border ${tier.badge ? 'border-primary' : 'border-primary/10'} bg-white p-8 shadow-lg relative`} data-aos='fade-up'>
+            {tier.badge && (
+              <span class='absolute -top-4 left-6 rounded-full bg-primary px-3 py-1 text-xs font-semibold text-white'>
+                {tier.badge}
+              </span>
+            )}
+            <p class='text-sm font-semibold text-primary uppercase tracking-wide'>{tier.title}</p>
+            <p class='mt-2 text-3xl font-bold text-textDarker'>{tier.price}</p>
+            <p class='mt-3 text-textPrimary/70 text-sm'>{tier.description}</p>
+            <a
+              href={tier.cta.href}
+              class={`mt-6 inline-flex items-center justify-center w-full rounded-lg px-6 py-3 text-sm font-semibold ${tier.badge ? 'bg-primary text-white' : 'border border-primary/20 text-primary hover:bg-primary/10'} transition`}
+            >
+              {tier.cta.label}
+            </a>
+            <ul class='mt-6 space-y-3 text-sm text-textPrimary'>
+              {tier.features.map((feature) => (
+                <li class='flex items-center gap-2'>
+                  <span class='size-2 rounded-full bg-primary'></span>
+                  {feature}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class='bg-[#f7fbfb]'>
+    <div class='max-w-7xl mx-auto px-[5%] py-16 grid lg:grid-cols-[0.9fr_1.1fr] gap-12 items-start'>
+      <div class='space-y-4' data-aos='fade-up'>
+        <p class='text-sm font-semibold text-primary uppercase tracking-wide'>FAQ</p>
+        <h2 class='text-4xl font-bold text-textDarker'>Questions, answered</h2>
+        <p class='text-textPrimary/70'>Everything you need to know before applying.</p>
+      </div>
+      <div class='space-y-4'>
+        {faqs.map((item) => (
+          <details class='group rounded-2xl border border-primary/10 bg-white p-5'>
+            <summary class='flex items-center justify-between cursor-pointer text-textDarker font-semibold'>
+              {item.q}
+              <span class='transition group-open:rotate-45 text-primary text-xl'>+</span>
+            </summary>
+            <p class='mt-3 text-sm text-textPrimary/80'>{item.a}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class='cta-surface relative overflow-hidden text-white'>
+    <div class='cta-glow cta-glow-left'></div>
+    <div class='cta-glow cta-glow-right'></div>
+    <div class='max-w-7xl mx-auto px-[5%] py-16 grid lg:grid-cols-[1.1fr_0.9fr] gap-10 items-center'>
+      <div class='space-y-5'>
+        <p class='text-sm font-semibold uppercase tracking-wide text-white/70'>Partner with Dataflow</p>
+        <h2 class='text-4xl font-bold'>Let us build the partner roadmap together</h2>
+        <p class='text-white/80 max-w-xl'>
+          We will align on your goals, provide guidance, and help you launch joint solutions that grow your business.
+        </p>
+        <div class='flex flex-wrap gap-3 text-sm text-white/70'>
+          <span class='rounded-full border border-white/20 px-4 py-2'>24/7 partner support</span>
+          <span class='rounded-full border border-white/20 px-4 py-2'>100+ resources</span>
+          <span class='rounded-full border border-white/20 px-4 py-2'>90-day onboarding</span>
+        </div>
+      </div>
+      <div class='rounded-3xl bg-white/10 border border-white/10 p-8 backdrop-blur'>
+        <p class='text-sm uppercase tracking-widest text-white/60'>Join the program</p>
+        <h3 class='mt-3 text-2xl font-semibold'>Email our partner team</h3>
+        <p class='mt-3 text-white/70'>
+          To join as a partner, mail
+          <a class='text-white underline underline-offset-4' href='mailto:partners@dataflow.zone'>
+            partners@dataflow.zone
+          </a>.
+        </p>
+        <a
+          href='mailto:partners@dataflow.zone'
+          class='mt-6 inline-flex items-center justify-center w-full rounded-lg bg-white text-[#0b1f20] font-semibold px-6 py-4 shadow-lg hover:bg-white/90 transition'
+        >
+          Email to join
+        </a>
+        <a
+          href='/book-demo'
+          class='mt-4 inline-flex items-center justify-center w-full rounded-lg border border-white/40 text-white font-semibold px-6 py-4 hover:bg-white/10 transition'
+        >
+          Book a demo
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+
+  :global(html) {
+    scroll-behavior: smooth;
+  }
+
+  .hero-glow {
+    position: absolute;
+    border-radius: 999px;
+    filter: blur(80px);
+    opacity: 0.9;
+    animation: float 12s ease-in-out infinite;
+  }
+
+  .hero-glow-left {
+    width: 320px;
+    height: 320px;
+    background: rgba(48, 186, 186, 0.35);
+    top: -80px;
+    left: -60px;
+  }
+
+  .hero-glow-right {
+    width: 360px;
+    height: 360px;
+    background: rgba(21, 163, 166, 0.35);
+    bottom: -120px;
+    right: -80px;
+    animation-delay: -3s;
+  }
+
+  .cta-surface {
+    background: radial-gradient(circle at top, rgba(21, 163, 166, 0.25), transparent 55%),
+      linear-gradient(135deg, #0b1f20 0%, #0f2c2d 45%, #10292a 100%);
+  }
+
+  .cta-glow {
+    position: absolute;
+    border-radius: 999px;
+    filter: blur(90px);
+    opacity: 0.8;
+  }
+
+  .cta-glow-left {
+    width: 260px;
+    height: 260px;
+    background: rgba(48, 186, 186, 0.35);
+    top: -80px;
+    left: -60px;
+  }
+
+  .cta-glow-right {
+    width: 320px;
+    height: 320px;
+    background: rgba(13, 148, 136, 0.4);
+    bottom: -120px;
+    right: -80px;
+  }
+
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(18px);
+    }
+  }
+</style>

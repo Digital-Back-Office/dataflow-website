@@ -57,7 +57,7 @@ const {
         <div class='relative hero-layer-stack'>
           <div class='absolute -top-16 -right-12 size-40 rounded-full bg-gradient-to-br from-primary/40 via-secondary/20 to-transparent blur-2xl'></div>
           <div class='absolute -bottom-10 -left-8 size-36 rounded-full bg-gradient-to-tr from-secondary/40 via-primary/20 to-transparent blur-2xl'></div>
-          <div class='relative grid gap-5'>
+          <div class='relative grid gap-5 z-0'>
             <div class='hero-layer-card rounded-3xl bg-gradient-to-br from-white via-[#f7fbfb] to-[#eefbff] text-textDarker p-8 shadow-[0_25px_60px_rgba(15,23,42,0.35)] border border-white/30'>
               <div class='flex items-center justify-between'>
                 <div>
@@ -98,16 +98,16 @@ const {
               </div>
             </div>
           </div>
-          <div class='absolute -bottom-8 -left-8 hidden lg:block'>
+          <div class='absolute -bottom-8 -left-8 hidden lg:block z-10'>
             <div class='rounded-2xl  bg-gradient-to-br from-[#d9fbfb] via-[#f7fbfb] to-[#d9fbfb] px-4 py-3 border border-primary/10 text-textPrimary text-sm'>
               <p class='font-semibold text-textDarker'>{hero.review_time.title}</p>
               <p class='text-textPrimary/70'>{hero.review_time.subtitle}</p>
             </div>
           </div>
-          <div class='absolute -top-6 -right-2 hidden lg:block'>
+          <div class='absolute -top-6 -right-2 hidden lg:block z-10'>
             <div class='rounded-2xl bg-gradient-to-br from-[#d9fbfb] via-[#f7fbfb] to-[#d9fbfb]  px-4 py-3 border border-primary/10 text-textPrimary text-sm shadow-[0_12px_26px_rgba(48,186,186,0.1)]'>
               <p class='font-semibold text-textDarker'>{hero.limited_time.title}</p>
-              <p class='text-textPrimary/70'>{hero.limited_time.subtitle}</p>
+              <a href="#apply" class='text-primary cursor-pointer hover:underline hover:text-primaryHover transition'>{hero.limited_time.subtitle}</a>
             </div>
           </div>
         </div>

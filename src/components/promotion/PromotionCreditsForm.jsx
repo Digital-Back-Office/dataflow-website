@@ -36,8 +36,15 @@ export default function PromotionCreditsForm() {
     }
   }
 
-  const isGmailAddress = (email) =>
-    typeof email === 'string' && email.trim().toLowerCase().endsWith('@gmail.com')
+    const isCompanyAddress = (email) => {
+      const personalEmailDomains = ['@gmail.com', '@yahoo.com', '@outlook.com', '@hotmail.com', '@aol.com', '@icloud.com', '@protonmail.com']
+      return typeof email === 'string' && personalEmailDomains.some(domain => email.trim().toLowerCase().endsWith(domain))
+    }
+
+    const isValidEmail = (email) => {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+      return emailRegex.test(email)
+    }
 
   const isValidProfileUrl = (value) => {
     if (!value) return true
@@ -70,8 +77,13 @@ export default function PromotionCreditsForm() {
       return
     }
 
-    if (isGmailAddress(trimmedState.email)) {
-      setErrorMessage('Please use a non-Gmail email address.')
+    if (!isValidEmail(trimmedState.email)) {
+      setErrorMessage('Please provide a valid email address.')
+      return
+    }
+
+    if (isCompanyAddress(trimmedState.email)) {
+      setErrorMessage('Please use your company email address.')
       return
     }
 

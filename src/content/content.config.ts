@@ -387,6 +387,101 @@ const homeCollection = defineCollection({
   })
 })
 
+// Promotion Collection Schema
+const promotionCollection = defineCollection({
+  type: 'content',
+  schema: z.object({
+    meta: z.object({
+      title: z.string()
+    }),
+    hero: z.object({
+      badge: z.string(),
+      title: z.string(),
+      subtitle: z.string(),
+      description: z.string(),
+      primary_cta: z.object({
+        label: z.string(),
+        href: z.string()
+      }),
+      pill_badges: z.array(z.string()),
+      card: z.object({
+        label: z.string(),
+        value: z.string(),
+        description: z.string()
+      }),
+      mini_left: z.object({
+        title: z.string(),
+        subtitle: z.string()
+      }),
+      mini_right: z.object({
+        title: z.string()
+      }),
+      review_time: z.object({
+        title: z.string(),
+        subtitle: z.string()
+      }),
+      limited_time: z.object({
+        title: z.string(),
+        subtitle: z.string()
+      })
+    }),
+    stats: z.array(z.object({
+      label: z.string(),
+      value: z.string()
+    })),
+    who_for: z.array(z.string()),
+    what_is_it: z.object({
+      eyebrow: z.string(),
+      title: z.string(),
+      description: z.string()
+    }),
+    benefits: z.object({
+      eyebrow: z.string(),
+      title: z.string(),
+      description: z.string(),
+      items: z.array(z.string())
+    }),
+    application: z.object({
+      eyebrow: z.string(),
+      title: z.string(),
+      description: z.string()
+    }),
+    referral: z.object({
+      eyebrow: z.string(),
+      title: z.string(),
+      description: z.string(),
+      cta: z.object({
+        label: z.string(),
+        href: z.string()
+      }),
+      steps: z.array(z.string()),
+      how_it_works_title: z.string(),
+      how_it_works: z.array(z.object({
+        title: z.string(),
+        description: z.string()
+      }))
+    }),
+    faq: z.object({
+      eyebrow: z.string(),
+      title: z.string(),
+      description: z.string(),
+      items: z.array(z.object({
+        q: z.string(),
+        a: z.string()
+      }))
+    }),
+    final_cta: z.object({
+      kicker: z.string(),
+      title: z.string(),
+      description: z.string(),
+      primary_cta: z.object({
+        label: z.string(),
+        href: z.string()
+      })
+    })
+  })
+})
+
 // Features Collection Schema
 const featuresCollection = defineCollection({
   type: 'content',
@@ -536,5 +631,6 @@ export const collections = {
   common: commonCollection,
   company: companyCollection,
   home: homeCollection,
+  promotion: promotionCollection,
   features: featuresCollection
 }

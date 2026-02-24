@@ -8,7 +8,7 @@ export default function CreditsNotificationBanner() {
   useEffect(() => {
     // Check if user has already closed the banner in this session
     const bannerClosed = sessionStorage.getItem('creditsBannerClosed')
-    const InCampaignPage = window.location.pathname.includes('/free-dataflow-credits')
+    const InCampaignPage = window.location.pathname.includes('/free-credits')
 
     // Don't show banner if user is on the campaign page
     if (InCampaignPage) {
@@ -67,7 +67,7 @@ export default function CreditsNotificationBanner() {
           <div className='max-w-7xl mx-auto flex items-center justify-between gap-4'>
             <div className='flex items-center gap-4 flex-1'>
               <a
-                href='/free-dataflow-credits'
+                href='/free-credits'
                 className='text-sm font-medium hover:underline flex-1'
               >
                 🎉 Get upto $1000 Free Dataflow Credits! Limited spots available. Apply now →
@@ -107,7 +107,7 @@ export default function CreditsNotificationBanner() {
             </button>
 
             {/* Banner Content */}
-            <a href='/free-dataflow-credits' className='block'>
+            <a href='/free-credits' className='block'>
               <div className=' p-6 pr-12'>
                 <div className='flex items-start gap-4'>
                   <div className='flex-shrink-0 w-12 h-12 rounded-xl bg-gradient-to-br from-primary to-secondary flex items-center justify-center shadow-lg'>

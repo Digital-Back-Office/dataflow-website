@@ -4,7 +4,7 @@ meta:
 
 hero:
   badge: Limited-Time Campaign
-  title: Get Free Dataflow Credits
+  title: Get Free Credits
   subtitle: Build faster. Spend nothing.
   description: Run Python, ML, and data workflows instantly - without setting up infrastructure.
   primary_cta:
@@ -109,7 +109,7 @@ faq:
 
 final_cta:
   kicker: Ready to build without limits?
-  title: Start shipping with Dataflow Credits
+  title: Start shipping with Free Credits
   description: Apply for free credits today or invite a friend to unlock bonus credits together.
   primary_cta:
     label: Apply for Free Credits

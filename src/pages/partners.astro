@@ -1,0 +1,392 @@
+---
+import Layout from '../layouts/Layout.astro'
+import { getEntry } from 'astro:content'
+
+type SupportedCompany = {
+  name: string
+  logo: string
+}
+
+const { data: commonData } = await getEntry('common', 'common')
+const supportedBy = (commonData?.supported_by?.incubators ?? []) as SupportedCompany[]
+
+const problemPoints = [
+  {
+    icon: '/assets/icons/partners/tech.svg',
+    title: 'Fragmented Tooling',
+    description: 'Data teams manually integrate Jupyter, Airflow, and other disparate tools'
+  },
+  {
+    icon: '/assets/icons/partners/guidance.svg',
+    title: 'No Unified Platform',
+    description: 'Absence of a single source of truth for building, previewing, and deploying data applications'
+  },
+  {
+    icon: '/assets/icons/partners/revenue.svg',
+    title: 'Customer Churn',
+    description: 'Without a managed layer, users revert to hyperscalers who bundle compute with integrated platforms'
+  }
+]
+
+const capabilities = [
+  {
+    icon: '/assets/icons/partners/tech.svg',
+    title: 'Unified Development Environment',
+    description: 'Build, preview, and deploy data applications in a single, integrated platform'
+  },
+  {
+    icon: '/assets/icons/partners/comarketing.svg',
+    title: 'Managed Tooling Integration',
+    description: 'Seamlessly integrate Jupyter, Airflow, and containerized deployment without manual configuration'
+  },
+  {
+    icon: '/assets/icons/partners/support.svg',
+    title: 'Automated Orchestration',
+    description: 'Deploy data applications with confidence on compliant infrastructure with zero manual overhead'
+  }
+]
+
+const benefits = [
+  {
+    icon: '/assets/icons/partners/tech.svg',
+    title: 'Faster Time to Production',
+    description: 'Accelerate deployment from development to production, enabling users to realize value faster'
+  },
+  {
+    icon: '/assets/icons/partners/revenue.svg',
+    title: 'Reduce Customer Churn',
+    description: 'Eliminate the need for manual tool stitching and competitor migrations'
+  },
+  {
+    icon: '/assets/icons/partners/comarketing.svg',
+    title: 'Enterprise Deal Security',
+    description: 'Bundle compliant compute with a managed platform to capture market share from hyperscalers'
+  },
+  {
+    icon: '/assets/icons/partners/network.svg',
+    title: 'Competitive Differentiation',
+    description: 'Offer a comprehensive full-stack solution comparable to AWS SageMaker and GCP Vertex'
+  },
+  {
+    icon: '/assets/icons/partners/guidance.svg',
+    title: 'Simplified Lifecycle Management',
+    description: 'From development to production without requiring end-users to manage servers'
+  },
+  {
+    icon: '/assets/icons/partners/support.svg',
+    title: 'Retain High-Value Teams',
+    description: 'Build long-term partnerships with data teams who need both sovereignty and usability'
+  }
+]
+
+const faqs = [
+  {
+    q: 'What makes this different from building tools ourselves?',
+    a: 'Dataflow provides a production-ready managed platform that has been battle-tested and optimized. Rather than building from scratch, partners can leverage our specialized platform and focus on sales, support, and GTM.'
+  },
+  {
+    q: 'How does this work on our compliant infrastructure?',
+    a: 'The managed application layer runs on top of your compliant infrastructure. We handle platform operations while you maintain full data residency and compliance control.'
+  },
+  {
+    q: 'What is the timeline for integration?',
+    a: 'Integration timelines vary based on infrastructure specifics. We typically work through architecture alignment, pilot deployment, and production launch within a structured engagement.'
+  },
+  {
+    q: 'How does pricing work?',
+    a: 'Pricing is customized based on compute consumption and deployment scale. We offer flexible models that align with your go-to-market strategy.'
+  },
+  {
+    q: 'What kind of support do we receive?',
+    a: 'We provide dedicated partnership support, solution architecture guidance, co-marketing enablement, and shared success metrics throughout the engagement.'
+  }
+]
+---
+
+<Layout
+  title='Partners | Dataflow Partnership Program'
+  meta_description='Join the Dataflow partner ecosystem. Unlock co-marketing, enablement, and growth opportunities for your business.'
+>
+  <section class='relative overflow-hidden bg-[#0c2021] text-white'>
+    <div class='absolute inset-0 opacity-70'>
+      <div class='hero-glow hero-glow-left'></div>
+      <div class='hero-glow hero-glow-right'></div>
+    </div>
+    <div class='relative max-w-7xl mx-auto px-[5%] pt-32 pb-24'>
+      <div class='grid lg:grid-cols-[1.15fr_0.85fr] gap-16 items-center'>
+        <div class='space-y-8' data-aos='fade-up'>
+          <span class='inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 py-2 text-sm font-semibold'>
+            <span class='size-2 rounded-full bg-secondary'></span>
+            Managed data platform partnership
+          </span>
+          <div class='space-y-4'>
+            <h1 class='text-5xl max-sm:text-4xl font-bold leading-tight'>
+              Infrastructure is solved. The application layer is missing.
+            </h1>
+            <p class='text-xl text-white/80 font-semibold'>
+              Bridge the gap between compliant infrastructure and production-ready data applications.
+            </p>
+          </div>
+          <div class='flex flex-wrap gap-3'>
+            <a
+              href='mailto:partners@dataflow.zone'
+              class='px-8 py-4 rounded-lg bg-primary text-white font-semibold shadow-lg hover:bg-primaryHover transition'
+            >
+              Explore partnership
+            </a>
+            <a
+              href='#benefits'
+              class='px-8 py-4 rounded-lg border border-white/20 text-white font-semibold hover:bg-white/10 transition'
+            >
+              Learn the benefits
+            </a>
+          </div>
+          <p class='text-sm text-white/70'>
+            Questions? Email our partnership team at
+            <a class='text-white underline underline-offset-4' href='mailto:partners@dataflow.zone'>
+              partners@dataflow.zone
+            </a>
+          </p>
+        </div>
+        <div class='relative hidden lg:block' data-aos='fade-left'>
+          <div class='absolute -top-8 -left-8 size-32 rounded-full bg-primary/30 blur-3xl'></div>
+          <div class='absolute -bottom-10 -right-10 size-40 rounded-full bg-secondary/30 blur-3xl'></div>
+          <div class='hero-graphic rounded-3xl bg-gradient-to-br from-[#0f2b2c] via-[#0c2425] to-[#0b1f20] border border-white/10 shadow-[0_30px_70px_rgba(0,0,0,0.35)] p-6'>
+            <div class='rounded-2xl bg-white/10 border border-white/10 p-4'>
+              <p class='text-xs uppercase tracking-widest text-white/60'>Unified platform stack</p>
+              <div class='mt-4 space-y-3'>
+                <div class='rounded-xl bg-white/5 border border-white/10 p-4'>
+                  <p class='text-sm font-semibold text-secondary'>Application Layer</p>
+                  <p class='text-xs text-white/70 mt-2'>Managed Jupyter, Airflow, containerized deployment</p>
+                </div>
+                <div class='rounded-xl bg-white/5 border border-white/10 p-4'>
+                  <p class='text-sm font-semibold text-primary'>Orchestration</p>
+                  <p class='text-xs text-white/70 mt-2'>Automated workflows with zero manual configuration</p>
+                </div>
+                <div class='rounded-xl bg-white/5 border border-white/10 p-4'>
+                  <p class='text-sm font-semibold'>Compliant Infrastructure</p>
+                  <p class='text-xs text-white/70 mt-2'>Your sovereign cloud with full data residency</p>
+                </div>
+              </div>
+            </div>
+            <div class='mt-4 rounded-2xl bg-white/10 border border-white/10 p-4'>
+              <p class='text-sm font-semibold'>The result:</p>
+              <ul class='mt-3 space-y-2 text-xs text-white/70'>
+                <li class='flex items-center gap-2'>
+                  <span class='size-1.5 rounded-full bg-secondary'></span>
+                  Faster time to production
+                </li>
+                <li class='flex items-center gap-2'>
+                  <span class='size-1.5 rounded-full bg-secondary'></span>
+                  Reduced customer churn
+                </li>
+                <li class='flex items-center gap-2'>
+                  <span class='size-1.5 rounded-full bg-secondary'></span>
+                  Competitive differentiation
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <section class='bg-white'>
+    <div class='max-w-7xl mx-auto px-[5%] py-16'>
+      <div class='text-center space-y-4' data-aos='fade-up'>
+        <p class='text-sm font-semibold text-primary uppercase tracking-wide'>The Problem</p>
+        <h2 class='text-4xl font-bold text-textDarker'>Current market pain points</h2>
+        <p class='text-textPrimary/70 max-w-2xl mx-auto'>
+          Data teams face significant challenges when deploying on compliant infrastructure.
+        </p>
+      </div>
+      <div class='mt-12 grid md:grid-cols-2 lg:grid-cols-3 gap-6'>
+        {problemPoints.map((item) => (
+          <div class='rounded-3xl border border-primary/10 bg-white p-6 shadow-sm hover:shadow-lg transition' data-aos='fade-up'>
+            <div class='size-12 rounded-2xl bg-primary/10 flex items-center justify-center'>
+              <img src={item.icon} alt='' class='size-6' aria-hidden='true' loading='lazy' />
+            </div>
+            <h3 class='mt-4 text-lg font-semibold text-textDarker'>{item.title}</h3>
+            <p class='mt-2 text-textPrimary/70 text-sm leading-relaxed'>{item.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class='bg-[#f7fbfb]'>
+    <div class='max-w-7xl mx-auto px-[5%] py-16'>
+      <div class='text-center space-y-4' data-aos='fade-up'>
+        <p class='text-sm font-semibold text-primary uppercase tracking-wide'>What We Offer</p>
+        <h2 class='text-4xl font-bold text-textDarker'>Integrated managed data platform</h2>
+        <p class='text-textPrimary/70 max-w-2xl mx-auto'>
+          A complete solution for building, previewing, and deploying data applications on compliant infrastructure.
+        </p>
+      </div>
+      <div class='mt-12 grid md:grid-cols-2 lg:grid-cols-3 gap-6'>
+        {capabilities.map((item) => (
+          <div class='rounded-3xl border border-primary/10 bg-white p-6 shadow-sm hover:shadow-lg transition' data-aos='fade-up'>
+            <div class='size-12 rounded-2xl bg-primary/10 flex items-center justify-center'>
+              <img src={item.icon} alt='' class='size-6' aria-hidden='true' loading='lazy' />
+            </div>
+            <h3 class='mt-4 text-lg font-semibold text-textDarker'>{item.title}</h3>
+            <p class='mt-2 text-textPrimary/70 text-sm leading-relaxed'>{item.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section id='benefits' class='bg-white'>
+    <div class='max-w-7xl mx-auto px-[5%] py-16'>
+      <div class='text-center space-y-4' data-aos='fade-up'>
+        <p class='text-sm font-semibold text-primary uppercase tracking-wide'>Partner Benefits</p>
+        <h2 class='text-4xl font-bold text-textDarker'>Strategic value and ecosystem growth</h2>
+        <p class='text-textPrimary/70 max-w-2xl mx-auto'>
+          Transform how your customers build and deploy data applications while capturing market share from hyperscalers.
+        </p>
+      </div>
+      <div class='mt-12 grid md:grid-cols-2 lg:grid-cols-3 gap-6'>
+        {benefits.map((item) => (
+          <div class='rounded-3xl border border-primary/10 bg-white p-6 shadow-sm hover:shadow-lg transition' data-aos='fade-up'>
+            <div class='size-12 rounded-2xl bg-primary/10 flex items-center justify-center'>
+              <img src={item.icon} alt='' class='size-6' aria-hidden='true' loading='lazy' />
+            </div>
+            <h3 class='mt-4 text-lg font-semibold text-textDarker'>{item.title}</h3>
+            <p class='mt-2 text-textPrimary/70 text-sm leading-relaxed'>{item.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class='bg-[#f7fbfb]'>
+    <div class='max-w-7xl mx-auto px-[5%] py-16 grid lg:grid-cols-[0.9fr_1.1fr] gap-12 items-start'>
+      <div class='space-y-4' data-aos='fade-up'>
+        <p class='text-sm font-semibold text-primary uppercase tracking-wide'>FAQ</p>
+        <h2 class='text-4xl font-bold text-textDarker'>Questions, answered</h2>
+        <p class='text-textPrimary/70'>Everything you need to know before applying.</p>
+      </div>
+      <div class='space-y-4'>
+        {faqs.map((item) => (
+          <details class='group rounded-2xl border border-primary/10 bg-white p-5'>
+            <summary class='flex items-center justify-between cursor-pointer text-textDarker font-semibold'>
+              {item.q}
+              <span class='transition group-open:rotate-45 text-primary text-xl'>+</span>
+            </summary>
+            <p class='mt-3 text-sm text-textPrimary/80'>{item.a}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class='cta-surface relative overflow-hidden text-white'>
+    <div class='cta-glow cta-glow-left'></div>
+    <div class='cta-glow cta-glow-right'></div>
+    <div class='max-w-7xl mx-auto px-[5%] py-16 grid lg:grid-cols-[1.1fr_0.9fr] gap-10 items-center'>
+      <div class='space-y-5'>
+        <p class='text-sm font-semibold uppercase tracking-wide text-white/70'>Managed data platform partnership</p>
+        <h2 class='text-4xl font-bold'>Let's build your data platform together</h2>
+        <p class='text-white/80 max-w-xl'>
+          We will work with your team to integrate our managed platform on your compliant infrastructure, provide technical support, and co-market your solution to data teams.
+        </p>
+        <div class='flex flex-wrap gap-3 text-sm text-white/70'>
+          <span class='rounded-full border border-white/20 px-4 py-2'>Architecture alignment</span>
+          <span class='rounded-full border border-white/20 px-4 py-2'>Dedicated support</span>
+          <span class='rounded-full border border-white/20 px-4 py-2'>Co-marketing</span>
+        </div>
+      </div>
+      <div class='rounded-3xl bg-white/10 border border-white/10 p-8 backdrop-blur'>
+        <p class='text-sm uppercase tracking-widest text-white/60'>Ready to partner?</p>
+        <h3 class='mt-3 text-2xl font-semibold'>Start the conversation</h3>
+        <p class='mt-3 text-white/70'>
+          Reach out to discuss how Dataflow can enhance your platform offering and accelerate adoption.
+        </p>
+        <a
+          href='mailto:partners@dataflow.zone'
+          class='mt-6 inline-flex items-center justify-center w-full rounded-lg bg-white text-[#0b1f20] font-semibold px-6 py-4 shadow-lg hover:bg-white/90 transition'
+        >
+          Email partnerships team
+        </a>
+        <a
+          href='/book-demo'
+          class='mt-4 inline-flex items-center justify-center w-full rounded-lg border border-white/40 text-white font-semibold px-6 py-4 hover:bg-white/10 transition'
+        >
+          Schedule a demo
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+
+  :global(html) {
+    scroll-behavior: smooth;
+  }
+
+  .hero-glow {
+    position: absolute;
+    border-radius: 999px;
+    filter: blur(80px);
+    opacity: 0.9;
+    animation: float 12s ease-in-out infinite;
+  }
+
+  .hero-glow-left {
+    width: 320px;
+    height: 320px;
+    background: rgba(48, 186, 186, 0.35);
+    top: -80px;
+    left: -60px;
+  }
+
+  .hero-glow-right {
+    width: 360px;
+    height: 360px;
+    background: rgba(21, 163, 166, 0.35);
+    bottom: -120px;
+    right: -80px;
+    animation-delay: -3s;
+  }
+
+  .cta-surface {
+    background: radial-gradient(circle at top, rgba(21, 163, 166, 0.25), transparent 55%),
+      linear-gradient(135deg, #0b1f20 0%, #0f2c2d 45%, #10292a 100%);
+  }
+
+  .cta-glow {
+    position: absolute;
+    border-radius: 999px;
+    filter: blur(90px);
+    opacity: 0.8;
+  }
+
+  .cta-glow-left {
+    width: 260px;
+    height: 260px;
+    background: rgba(48, 186, 186, 0.35);
+    top: -80px;
+    left: -60px;
+  }
+
+  .cta-glow-right {
+    width: 320px;
+    height: 320px;
+    background: rgba(13, 148, 136, 0.4);
+    bottom: -120px;
+    right: -80px;
+  }
+
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(18px);
+    }
+  }
+</style>

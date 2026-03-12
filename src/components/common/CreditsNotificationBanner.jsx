@@ -8,6 +8,7 @@ export default function CreditsNotificationBanner() {
   useEffect(() => {
     // Check if user has already closed the banner in this session
     const bannerClosed = sessionStorage.getItem('creditsBannerClosed')
+    const stripBannerClosed = sessionStorage.getItem('creditsStripBannerClosed')
     const InCampaignPage = window.location.pathname.includes('/free-credits')
 
     // Don't show banner if user is on the campaign page
@@ -25,7 +26,11 @@ export default function CreditsNotificationBanner() {
       return () => clearTimeout(timer)
     } else {
       // If banner was closed, show the strip
-      setShowStrip(true)
+      if (!stripBannerClosed) {
+        setShowStrip(true)
+      } else {
+        setShowStrip(false)
+      }
     }
   }, [])
 
@@ -53,6 +58,7 @@ export default function CreditsNotificationBanner() {
   const handleStripClose = () => {
     setShowStrip(false)
     sessionStorage.setItem('creditsBannerClosed', 'true')
+    sessionStorage.setItem('creditsStripBannerClosed', 'true')
   }
 
   if (!showBanner && !showStrip) return null

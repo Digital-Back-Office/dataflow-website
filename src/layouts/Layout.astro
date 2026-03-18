@@ -1,4 +1,11 @@
 ---
+
+import { getEntry } from "astro:content";
+import Footer from "../components/common/Footer.astro";
+import Header from "../components/common/Header.astro";
+import CreditsNotificationBanner from "../components/common/CreditsNotificationBanner.jsx";
+import "../styles/global.css";
+
 interface Props {
   title: string;
   header?: boolean;
@@ -18,6 +25,7 @@ const resolvedTitle = title?.includes("|")
     ? `${title} | Dataflow`
     : baseTitle;
 const pageTitle = resolvedTitle;
+const appUrl = (import.meta.env.PUBLIC_APP_URL ?? 'https://app.dataflow.zone').replace(/\/$/, '');
 
 const defaultMetaDescription = "Dataflow is the AI-ready data platform that unifies Airflow, VS Code, and cloud deploys for faster, reliable data teams.";
 const metaDescription = meta_description && meta_description.length >= 120 && meta_description.length <= 130
@@ -27,11 +35,6 @@ const metaDescription = meta_description && meta_description.length >= 120 && me
 const siteUrl = Astro.site?.toString() ?? "https://dataflow.zone";
 const canonicalUrl = new URL(Astro.url.pathname, siteUrl).toString();
 
-import { getEntry } from "astro:content";
-import Footer from "../components/common/Footer.astro";
-import Header from "../components/common/Header.astro";
-import CreditsNotificationBanner from "../components/common/CreditsNotificationBanner.jsx";
-import "../styles/global.css";
 
 const headerFooter = await getEntry("common", "header-footer");
 const socialLinks = headerFooter?.data?.footer?.social_links ?? [];
@@ -69,6 +72,7 @@ const structuredDataJson = JSON.stringify(structuredData);
 <!doctype html>
 <html lang="en">
   <head>
+    <meta name="df:app-url" content={appUrl} />
     <!-- Google tag (gtag.js) -->
     <script is:inline> (function(ss,ex){ window.ldfdr=window.ldfdr||function(){(ldfdr._q=ldfdr._q||[]).push([].slice.call(arguments));}; (function(d,s){ fs=d.getElementsByTagName(s)[0]; function ce(src){ var cs=d.createElement(s); cs.src=src; cs.async=1; fs.parentNode.insertBefore(cs,fs); }; ce('https://sc.lfeeder.com/lftracker_v1_'+ss+(ex?'_'+ex:'')+'.js'); })(document,'script'); })('ywVkO4XmYXdaZ6Bj'); </script>
     <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-D5Y7ZFCM96"></script>
@@ -213,6 +217,66 @@ const structuredDataJson = JSON.stringify(structuredData);
           }
         });
       });
+    </script>
+
+    <!-- UTM Forwarding  -->
+    <script is:inline>
+      (function() {
+        var appUrl = (document.querySelector('meta[name="df:app-url"]') || {}).content || 'https://app.dataflow.zone';
+        var registeredUrl = appUrl.replace(/\/$/, '');
+        var registeredHost;
+        try { registeredHost = new URL(registeredUrl).hostname; } catch(e) { registeredHost = 'app.dataflow.zone'; }
+
+        if (registeredHost !== 'app.dataflow.zone') {
+          document.querySelectorAll('a[href*="app.dataflow.zone"]').forEach(function(link) {
+            link.href = link.href.replace('https://app.dataflow.zone', registeredUrl);
+          });
+        }
+
+        var utmKeys = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content'];
+        var params = new URLSearchParams(window.location.search);
+        var utmParams = new URLSearchParams();
+        utmKeys.forEach(function(key) {
+          var val = params.get(key);
+          if (val) utmParams.set(key, val);
+        });
+        if (utmParams.toString() !== '') {
+          document.querySelectorAll('a[href*="' + registeredHost + '"]').forEach(function(link) {
+            var url = new URL(link.href);
+            utmKeys.forEach(function(key) {
+              var val = utmParams.get(key);
+              if (val) url.searchParams.set(key, val);
+            });
+            link.href = url.toString();
+          });
+          
+          utmKeys.forEach(function(key) {
+            var val = utmParams.get(key);
+            if (val) sessionStorage.setItem(key, val);
+          });
+        }
+      })();
+    </script>
+
+    <!-- CTA Click Tracking -->
+    <script is:inline>
+      (function() {
+        var appUrl = (document.querySelector('meta[name="df:app-url"]') || {}).content || 'https://app.dataflow.zone';
+        var registeredHost;
+        try { registeredHost = new URL(appUrl).hostname; } catch(e) { registeredHost = 'app.dataflow.zone'; }
+        document.addEventListener('click', function(e) {
+          var link = e.target.closest('a[href*="' + registeredHost + '"]') ||
+                     e.target.closest('a[href*="app.dataflow.zone"]');
+          if (!link) return;
+          if (typeof gtag === 'function') {
+            gtag('event', 'cta_click', {
+              cta_text: link.textContent.trim(),
+              cta_url: link.href,
+              page_location: window.location.href
+            });
+          }
+        });
+      })();
     </script>
   </body>
 </html>

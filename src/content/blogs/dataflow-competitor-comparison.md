@@ -1,7 +1,7 @@
 ---
 title: 'Dataflow vs. The Competition: A Feature-by-Feature Comparison'
 description: 'A detailed comparison of Dataflow against other data platforms like Deepnote, Databricks, and more, focusing on collaboration, reproducibility, and orchestration.'
-tags: ['Dataflow', 'Comparison', 'DataBricks', 'Deepnote', 'Prefect', 'GitLab', 'CoCalc']
+tags: ['Dataflow', 'Comparison', 'DataBricks', 'Deepnote', 'Prefect', 'CoCalc']
 date: '18 Mar, 2026'
 image: '/assets/images/blog/dataflow-competitor-comparison.webp'
 category: ["product"]

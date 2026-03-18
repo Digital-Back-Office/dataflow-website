@@ -345,6 +345,21 @@ const relatedBlogs = allBlogs
       position: static;
     }
   }
+
+  /* Prevent markdown tables from overlapping on zoom/smaller viewports */
+  :global(#blog-content table) {
+    display: block;
+    width: max-content;
+    min-width: 100%;
+    max-width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  :global(#blog-content th),
+  :global(#blog-content td) {
+    white-space: nowrap;
+  }
 </style>
 
 <script is:inline define:vars={{ newsletterFormId: import.meta.env.PUBLIC_NEWSLETTER_GOOGLE_FORM_ID }}>

@@ -100,7 +100,7 @@ const ctaGoogleFormId = import.meta.env.PUBLIC_CTA_GOOGLE_FORM_ID || '1FAIpQLScm
 
     // Redirect URL configuration
     const REDIRECT_CONFIG = {
-      baseUrl: 'https://app.dataflow.zone/hub/login',
+      baseUrl: ((document.querySelector('meta[name="df:app-url"]') || {}).content || 'https://app.dataflow.zone').replace(/\/$/, '') + '/hub/login',
       emailParam: 'email'
     }
 

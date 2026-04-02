@@ -9,6 +9,7 @@ const docsUrl = isProduction ? 'https://docs.dataflow.zone' : 'https://docs-data
 
 // https://astro.build/config
 export default defineConfig({
+  site: process.env.BUILD_TYPE === 'production' ? 'https://dataflow.zone' : 'http://localhost:4321',
   devToolbar: {
     enabled: false
   },

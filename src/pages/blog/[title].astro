@@ -49,9 +49,11 @@ const relatedBlogs = allBlogs
   .filter((blog) => blog.slug !== Astro.props.slug)
   .sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime())
   .slice(0, 3)
+const siteUrl = Astro.site?.toString() ?? "https://dataflow.zone";
+const ogImage = image ? new URL(image, siteUrl).toString() : undefined;
 ---
 
-<Layout title={`${title} | Dataflow Blog`} meta_description={meta_description}>
+<Layout title={`${title} | Dataflow Blog`} meta_description={meta_description} ogImage={ogImage}>
   <!-- Hero Section -->
   <section class='relative overflow-hidden px-[10%] max-sm:px-[20px] pt-[10%] pb-[40px] max-sm:pb-[30px]'>
     <div class='absolute inset-0 -z-10 bg-gradient-to-b from-primary/5 via-white to-white'></div>
@@ -344,6 +346,22 @@ const relatedBlogs = allBlogs
     aside {
       position: static;
     }
+  }
+
+  /* Prevent markdown tables from overlapping on zoom/smaller viewports */
+  :global(#blog-content table) {
+    display: block;
+    width: max-content;
+    min-width: 100%;
+    max-width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    font-size: 1rem;
+  }
+
+  :global(#blog-content th),
+  :global(#blog-content td) {
+    white-space: nowrap;
   }
 </style>
 

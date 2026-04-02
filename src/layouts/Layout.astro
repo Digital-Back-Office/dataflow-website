@@ -1,14 +1,23 @@
 ---
+
+import { getEntry } from "astro:content";
+import Footer from "../components/common/Footer.astro";
+import Header from "../components/common/Header.astro";
+import CreditsNotificationBanner from "../components/common/CreditsNotificationBanner.jsx";
+import "../styles/global.css";
+
 interface Props {
   title: string;
   header?: boolean;
   meta_description?: string;
+  ogImage?: string;
 }
 
 const {
   title,
   header = true,
   meta_description,
+  ogImage,
 } = Astro.props;
 
 const baseTitle = "Dataflow | AI-Ready Data Platform for Startups and Teams";
@@ -18,6 +27,7 @@ const resolvedTitle = title?.includes("|")
     ? `${title} | Dataflow`
     : baseTitle;
 const pageTitle = resolvedTitle;
+const appUrl = (import.meta.env.PUBLIC_APP_URL ?? 'https://app.dataflow.zone').replace(/\/$/, '');
 
 const defaultMetaDescription = "Dataflow is the AI-ready data platform that unifies Airflow, VS Code, and cloud deploys for faster, reliable data teams.";
 const metaDescription = meta_description && meta_description.length >= 120 && meta_description.length <= 130
@@ -27,11 +37,6 @@ const metaDescription = meta_description && meta_description.length >= 120 && me
 const siteUrl = Astro.site?.toString() ?? "https://dataflow.zone";
 const canonicalUrl = new URL(Astro.url.pathname, siteUrl).toString();
 
-import { getEntry } from "astro:content";
-import Footer from "../components/common/Footer.astro";
-import Header from "../components/common/Header.astro";
-import CreditsNotificationBanner from "../components/common/CreditsNotificationBanner.jsx";
-import "../styles/global.css";
 
 const headerFooter = await getEntry("common", "header-footer");
 const socialLinks = headerFooter?.data?.footer?.social_links ?? [];
@@ -69,6 +74,7 @@ const structuredDataJson = JSON.stringify(structuredData);
 <!doctype html>
 <html lang="en">
   <head>
+    <meta name="df:app-url" content={appUrl} />
     <!-- Google tag (gtag.js) -->
     <script is:inline> (function(ss,ex){ window.ldfdr=window.ldfdr||function(){(ldfdr._q=ldfdr._q||[]).push([].slice.call(arguments));}; (function(d,s){ fs=d.getElementsByTagName(s)[0]; function ce(src){ var cs=d.createElement(s); cs.src=src; cs.async=1; fs.parentNode.insertBefore(cs,fs); }; ce('https://sc.lfeeder.com/lftracker_v1_'+ss+(ex?'_'+ex:'')+'.js'); })(document,'script'); })('ywVkO4XmYXdaZ6Bj'); </script>
     <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-D5Y7ZFCM96"></script>
@@ -118,7 +124,7 @@ const structuredDataJson = JSON.stringify(structuredData);
       property="og:description"
       content={metaDescription}
     />
-    <meta property="og:image" content="https://dataflow.zone/og-image.png" />
+    <meta property="og:image" content={ogImage ?? `${siteUrl}/og-image.png`} />
     <meta property="og:url" content={canonicalUrl} />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Dataflow" />
@@ -127,7 +133,7 @@ const structuredDataJson = JSON.stringify(structuredData);
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={pageTitle} />
     <meta name="twitter:description" content={metaDescription} />
-    <meta name="twitter:image" content="https://dataflow.zone/og-image.png" />
+    <meta name="twitter:image" content={ogImage ?? `${siteUrl}/og-image.png`} />
     <meta name="twitter:site" content={twitterHandle} />
     <meta name="twitter:creator" content={twitterHandle} />
 
@@ -213,6 +219,104 @@ const structuredDataJson = JSON.stringify(structuredData);
           }
         });
       });
+    </script>
+
+    <!-- UTM Forwarding  -->
+    <script is:inline>
+      (function() {
+        var appUrl = (document.querySelector('meta[name="df:app-url"]') || {}).content || 'https://app.dataflow.zone';
+        var registeredUrl = appUrl.replace(/\/$/, '');
+        var registeredHost;
+        try { registeredHost = new URL(registeredUrl).hostname; } catch(e) { registeredHost = 'app.dataflow.zone'; }
+
+        if (registeredHost !== 'app.dataflow.zone') {
+          document.querySelectorAll('a[href*="app.dataflow.zone"]').forEach(function(link) {
+            link.href = link.href.replace('https://app.dataflow.zone', registeredUrl);
+          });
+        }
+
+        var utmKeys = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content'];
+        var params = new URLSearchParams(window.location.search);
+        var sessionParams = new URLSearchParams();
+
+        // Store UTM params from URL in session storage
+        var hasNewUtms = false;
+        utmKeys.forEach(function(key) {
+          var val = params.get(key);
+          if (val) {
+            sessionStorage.setItem(key, val);
+            hasNewUtms = true;
+          }
+        });
+
+        // Load UTMs from session storage
+        utmKeys.forEach(function(key) {
+          var val = sessionStorage.getItem(key);
+          if (val) {
+            sessionParams.set(key, val);
+          }
+        });
+
+        function addUtmToLink(link) {
+          try {
+            var url = new URL(link.href);
+            var existingParams = new URLSearchParams(url.search);
+            var paramsToSet = new URLSearchParams(sessionParams);
+
+            // Add utm_content from button text if not present
+            if (!paramsToSet.has('utm_content')) {
+              var buttonText = (link.textContent || '').trim().toLowerCase().replace(/\s+/g, '_');
+              if (buttonText) {
+                paramsToSet.set('utm_content', buttonText);
+              }
+            }
+            
+            paramsToSet.forEach((value, key) => {
+              if (!existingParams.has(key)) {
+                url.searchParams.set(key, value);
+              }
+            });
+
+            link.href = url.toString();
+          } catch (e) {
+            console.error('Failed to process link:', link.href, e);
+          }
+        }
+
+        if (sessionParams.toString() !== '') {
+          document.querySelectorAll('a[href*="' + registeredHost + '"]').forEach(addUtmToLink);
+        }
+
+        // Also handle clicks, for buttons that might not be app links initially
+        document.body.addEventListener('click', function(e) {
+          var link = e.target.closest('a[href*="' + registeredHost + '"]');
+          if (link) {
+            addUtmToLink(link);
+          }
+        }, true);
+
+      })();
+    </script>
+
+    <!-- CTA Click Tracking -->
+    <script is:inline>
+      (function() {
+        var appUrl = (document.querySelector('meta[name="df:app-url"]') || {}).content || 'https://app.dataflow.zone';
+        var registeredHost;
+        try { registeredHost = new URL(appUrl).hostname; } catch(e) { registeredHost = 'app.dataflow.zone'; }
+        document.addEventListener('click', function(e) {
+          var link = e.target.closest('a[href*="' + registeredHost + '"]') ||
+                     e.target.closest('a[href*="app.dataflow.zone"]');
+          if (!link) return;
+          if (typeof gtag === 'function') {
+            gtag('event', 'cta_click', {
+              cta_text: link.textContent.trim(),
+              cta_url: link.href,
+              page_location: window.location.href
+            });
+          }
+        });
+      })();
     </script>
   </body>
 </html>

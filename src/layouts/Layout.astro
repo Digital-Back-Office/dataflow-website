@@ -237,26 +237,64 @@ const structuredDataJson = JSON.stringify(structuredData);
 
         var utmKeys = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content'];
         var params = new URLSearchParams(window.location.search);
-        var utmParams = new URLSearchParams();
+        var sessionParams = new URLSearchParams();
+
+        // Store UTM params from URL in session storage
+        var hasNewUtms = false;
         utmKeys.forEach(function(key) {
           var val = params.get(key);
-          if (val) utmParams.set(key, val);
+          if (val) {
+            sessionStorage.setItem(key, val);
+            hasNewUtms = true;
+          }
         });
-        if (utmParams.toString() !== '') {
-          document.querySelectorAll('a[href*="' + registeredHost + '"]').forEach(function(link) {
+
+        // Load UTMs from session storage
+        utmKeys.forEach(function(key) {
+          var val = sessionStorage.getItem(key);
+          if (val) {
+            sessionParams.set(key, val);
+          }
+        });
+
+        function addUtmToLink(link) {
+          try {
             var url = new URL(link.href);
-            utmKeys.forEach(function(key) {
-              var val = utmParams.get(key);
-              if (val) url.searchParams.set(key, val);
+            var existingParams = new URLSearchParams(url.search);
+            var paramsToSet = new URLSearchParams(sessionParams);
+
+            // Add utm_content from button text if not present
+            if (!paramsToSet.has('utm_content')) {
+              var buttonText = (link.textContent || '').trim().toLowerCase().replace(/\s+/g, '_');
+              if (buttonText) {
+                paramsToSet.set('utm_content', buttonText);
+              }
+            }
+            
+            paramsToSet.forEach((value, key) => {
+              if (!existingParams.has(key)) {
+                url.searchParams.set(key, value);
+              }
             });
+
             link.href = url.toString();
-          });
-          
-          utmKeys.forEach(function(key) {
-            var val = utmParams.get(key);
-            if (val) sessionStorage.setItem(key, val);
-          });
+          } catch (e) {
+            console.error('Failed to process link:', link.href, e);
+          }
         }
+
+        if (sessionParams.toString() !== '') {
+          document.querySelectorAll('a[href*="' + registeredHost + '"]').forEach(addUtmToLink);
+        }
+
+        // Also handle clicks, for buttons that might not be app links initially
+        document.body.addEventListener('click', function(e) {
+          var link = e.target.closest('a[href*="' + registeredHost + '"]');
+          if (link) {
+            addUtmToLink(link);
+          }
+        }, true);
+
       })();
     </script>
 

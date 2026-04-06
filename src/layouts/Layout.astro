@@ -13,6 +13,7 @@ interface Props {
   ogImage?: string;
   pageSchema?: Record<string, unknown> | Array<Record<string, unknown>>;
   noindex?: boolean;
+  canonicalPath?: string;
 }
 
 const {
@@ -22,6 +23,7 @@ const {
   ogImage,
   pageSchema,
   noindex = false,
+  canonicalPath,
 } = Astro.props;
 
 const baseTitle = "Dataflow | AI-Ready Data Platform for Startups and Teams";
@@ -41,9 +43,11 @@ const metaDescription = normalizedMetaDescription && normalizedMetaDescription.l
   : defaultMetaDescription;
 
 const siteOrigin = (Astro.site?.toString() ?? "https://dataflow.zone").replace(/\/$/, "");
+const assetUrl = (pathname: string) => new URL(pathname.replace(/^\/+/, ""), `${siteOrigin}/`).toString();
 // SEO: Normalize canonical paths to avoid duplicate trailing-slash variants.
 const normalizedPath = Astro.url.pathname === "/" ? "/" : Astro.url.pathname.replace(/\/+$/, "");
-const canonicalUrl = new URL(normalizedPath, `${siteOrigin}/`).toString();
+const resolvedCanonicalPath = canonicalPath ?? normalizedPath;
+const canonicalUrl = new URL(resolvedCanonicalPath, `${siteOrigin}/`).toString();
 
 
 const headerFooter = await getEntry("common", "header-footer");
@@ -58,7 +62,7 @@ const organizationSchema: Record<string, unknown> = {
   "@id": `${siteOrigin}#organization`,
   name: "Dataflow",
   url: `${siteOrigin}/`,
-  logo: `${siteOrigin}/assets/images/dataflow-logo-green.svg`,
+  logo: assetUrl('/assets/images/dataflow-logo-green.svg'),
   sameAs: socialUrls,
 };
 
@@ -250,7 +254,7 @@ const structuredDataJson = JSON.stringify(structuredData);
       property="og:description"
       content={metaDescription}
     />
-    <meta property="og:image" content={ogImage ?? `${siteOrigin}/og-image.png`} />
+    <meta property="og:image" content={ogImage ?? assetUrl('/og-image.png')} />
     <meta property="og:url" content={canonicalUrl} />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Dataflow" />
@@ -259,7 +263,7 @@ const structuredDataJson = JSON.stringify(structuredData);
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={pageTitle} />
     <meta name="twitter:description" content={metaDescription} />
-    <meta name="twitter:image" content={ogImage ?? `${siteOrigin}/og-image.png`} />
+    <meta name="twitter:image" content={ogImage ?? assetUrl('/og-image.png')} />
     <meta name="twitter:site" content={twitterHandle} />
     <meta name="twitter:creator" content={twitterHandle} />
 

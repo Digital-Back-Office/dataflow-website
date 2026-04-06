@@ -10,7 +10,7 @@ const STATIC_ROUTES: Array<{ path: string; changefreq: string; priority: string 
   { path: "/partners", changefreq: "monthly", priority: "0.6" },
   { path: "/book-demo", changefreq: "monthly", priority: "0.6" },
   { path: "/get-started", changefreq: "monthly", priority: "0.6" },
-  { path: "/start-free-trail", changefreq: "monthly", priority: "0.6" },
+  { path: "/start-free-trial", changefreq: "monthly", priority: "0.6" },
   { path: "/free-credits", changefreq: "monthly", priority: "0.6" },
   { path: "/solutions/startups-smes", changefreq: "monthly", priority: "0.6" },
   { path: "/solutions/enterprise", changefreq: "monthly", priority: "0.6" },

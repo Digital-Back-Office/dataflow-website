@@ -4,7 +4,7 @@ top_section:
   description: "Built for lean teams who refuse to compromise. Get the power of an enterprise data platform without the enterprise price tag, complexity, or months-long setup. Ship data products faster, validate ideas cheaper, and scale only when you're ready."
   button:
     label: "Start Free Trial"
-    href: "/start-free-trail"
+    href: "/start-free-trial"
   hero_image: "/assets/images/startups/hero-image.webp"
 
 sections:

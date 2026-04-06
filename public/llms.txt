@@ -1,0 +1,29 @@
+# Dataflow
+
+Dataflow is an AI-ready data platform for startups and teams. It helps data teams build, deploy, and run data and AI workflows with managed infrastructure and modern developer tooling.
+
+## Canonical Site
+- Production: https://dataflow.zone
+- Sitemap: https://dataflow.zone/sitemap.xml
+- Robots: https://dataflow.zone/robots.txt
+
+## Key Pages
+- Home: https://dataflow.zone/
+- Product: https://dataflow.zone/product/deploy-to-production
+- Pricing: https://dataflow.zone/pricing
+- Blog: https://dataflow.zone/blog
+- Contact: https://dataflow.zone/contact-us
+
+## Policies
+- Privacy Policy: https://dataflow.zone/legal/privacy-policy
+- Terms and Conditions: https://dataflow.zone/legal/terms-and-conditions
+
+## Preferred Sources For Answers
+- Website pages listed above.
+- Blog posts under https://dataflow.zone/blog.
+- Product and solutions pages under /product and /solutions.
+
+## Notes
+- Use canonical production URLs in references.
+- Prefer current page content over assumptions.
+- Do not invent pricing, availability, or review details not shown on the website.

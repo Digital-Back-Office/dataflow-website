@@ -86,7 +86,7 @@ features:
       description: No more pip install errors or dependency issues. Dataflow allows you to create, manage, and share custom Python environments with a single click. Whether you are building legacy data pipelines or cutting-edge GenAI models, your dependencies are containerized, portable, and immutable. Focus on your code, not your config files.
       cta_text: Learn more
       icon: "/assets/icons/icon-link-attached.svg"
-      href: /product/deploy-in-one-click
+      href: /product/deploy-to-production
 
     - title: Run on Any Cloud
       description: Deploy Dataflow on AWS, Google Cloud, Azure, or your private on-premise cloud. Spin up persistent workspaces with the exact compute power you need—from standard CPUs to high-performance GPUs—and never worry about losing your work.
@@ -98,7 +98,7 @@ features:
       description: Turn your notebooks and scripts into live, shareable URLs in minutes. Forget complex Dockerfiles and CI/CD pipelines—Dataflow automates the entire production deployment process. You build the logic; we handle the DevOps.
       cta_text: Learn more
       icon: "/assets/icons/icon-forward.svg"
-      href: /product/deploy-in-one-click
+      href: /product/deploy-to-production
 
     - title: Bring your team in one place
       description: Scale securely with robust governance. Manage permissions via RBAC, audit actions with comprehensive logs, and share environments across teams without exposing sensitive credentials.

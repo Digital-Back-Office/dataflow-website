@@ -28,7 +28,7 @@ header:
               - title: "Deploy to Production"
                 icon-id: "deploy"
                 description: "Ship with confidence"
-                href: "/product/deploy-in-one-click"
+                href: "/product/deploy-to-production"
               - title: "Cloud-Agnostic"
                 icon-id: "cloud"
                 description: "Run on any cloud platform"
@@ -116,7 +116,7 @@ footer:
         - label: "Shared Foundation"
           href: "/product/shared-foundation"
         - label: "Deploy to Production"
-          href: "/product/deploy-in-one-click"
+          href: "/product/deploy-to-production"
         - label: "Cloud-Agnostic"
           href: "/product/cloud-agnostic"
 

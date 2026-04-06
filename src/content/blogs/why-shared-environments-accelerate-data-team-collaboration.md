@@ -189,6 +189,6 @@ Ready to accelerate your team's collaboration? [Get started with Dataflow](https
 - [Dataflow Documentation](https://docs.dataflow.zone/)
 - [Managed Dependencies Feature](https://dataflow.zone/product/managed-dependencies)
 - [Development-Ready Workspace](https://dataflow.zone/product/development-ready-workspace)
-- [Deploy to Production Guide](https://dataflow.zone/product/deploy-in-one-click)
+- [Deploy to Production Guide](https://dataflow.zone/product/deploy-to-production)
 - [Environments Documentation](https://docs.dataflow.zone/workspace/studio/environments/)
 - [Studio Server Launch Guide](https://docs.dataflow.zone/workspace/studio/launch-studio-server/)

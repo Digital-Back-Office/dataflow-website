@@ -16,7 +16,6 @@ const STATIC_ROUTES: Array<{ path: string; changefreq: string; priority: string 
   { path: "/solutions/enterprise", changefreq: "monthly", priority: "0.6" },
   { path: "/solutions/personal", changefreq: "monthly", priority: "0.6" },
   { path: "/product/deploy-to-production", changefreq: "monthly", priority: "0.6" },
-  { path: "/product/deploy-in-one-click", changefreq: "monthly", priority: "0.6" },
   { path: "/product/cloud-agnostic", changefreq: "monthly", priority: "0.6" },
   { path: "/product/development-ready-workspace", changefreq: "monthly", priority: "0.6" },
   { path: "/product/managed-dependencies", changefreq: "monthly", priority: "0.6" },

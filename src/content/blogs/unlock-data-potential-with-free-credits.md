@@ -11,7 +11,7 @@ Are you looking to accelerate your data projects without the upfront financial c
 
 ## What is the Free Credits Program?
 
-The Dataflow Free Credits Program provides access to our comprehensive data science and analytics platform, allowing you to build, deploy, and manage data workflows seamlessly. This program is our way of investing in the next generation of data innovators. We want to empower teams to achieve their goals by removing the barrier of cost. You can use these credits to explore everything Dataflow has to offer, from our [development-ready workspace](/product/development-ready-workspace) to our [one-click production deployments](/product/deploy-in-one-click).
+The Dataflow Free Credits Program provides access to our comprehensive data science and analytics platform, allowing you to build, deploy, and manage data workflows seamlessly. This program is our way of investing in the next generation of data innovators. We want to empower teams to achieve their goals by removing the barrier of cost. You can use these credits to explore everything Dataflow has to offer, from our [development-ready workspace](/product/development-ready-workspace) to our [one-click production deployments](/product/deploy-to-production).
 
 ## Who is This For?
 

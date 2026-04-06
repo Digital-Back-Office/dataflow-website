@@ -44,9 +44,17 @@ const metaDescription = normalizedMetaDescription && normalizedMetaDescription.l
 
 const siteOrigin = (Astro.site?.toString() ?? "https://dataflow.zone").replace(/\/$/, "");
 const assetUrl = (pathname: string) => new URL(pathname.replace(/^\/+/, ""), `${siteOrigin}/`).toString();
-// SEO: Normalize canonical paths to avoid duplicate trailing-slash variants.
 const normalizedPath = Astro.url.pathname === "/" ? "/" : Astro.url.pathname.replace(/\/+$/, "");
-const resolvedCanonicalPath = canonicalPath ?? normalizedPath;
+const normalizeCanonicalPath = (pathname: string) => {
+  const trimmed = pathname.trim();
+  if (!trimmed || trimmed === "/") {
+    return "/";
+  }
+
+  const withLeadingSlash = trimmed.startsWith("/") ? trimmed : `/${trimmed}`;
+  return `${withLeadingSlash.replace(/\/+$/, "")}/`;
+};
+const resolvedCanonicalPath = normalizeCanonicalPath(canonicalPath ?? normalizedPath);
 const canonicalUrl = new URL(resolvedCanonicalPath, `${siteOrigin}/`).toString();
 
 

@@ -24,7 +24,15 @@ const STATIC_ROUTES: Array<{ path: string; changefreq: string; priority: string 
   { path: "/legal/terms-and-conditions", changefreq: "yearly", priority: "0.4" },
 ];
 
-const toAbsoluteUrl = (origin: string, routePath: string) => `${origin}${routePath}`;
+const toSitemapPath = (routePath: string) => {
+  if (routePath === "/") {
+    return "/";
+  }
+
+  return `${routePath.replace(/\/+$/, "")}/`;
+};
+
+const toAbsoluteUrl = (origin: string, routePath: string) => `${origin}${toSitemapPath(routePath)}`;
 
 export const GET: APIRoute = async ({ site }) => {
   const origin = (site?.toString() ?? "https://dataflow.zone").replace(/\/$/, "");

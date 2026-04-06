@@ -87,7 +87,20 @@ const slugToTitle = (path: string) =>
     .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
     .join(" ") ?? "";
 
+const segmentLabelMap: Record<string, string> = {
+  "about-us": "About Us",
+  "contact-us": "Contact Us",
+  "book-demo": "Book Demo",
+  "get-started": "Get Started",
+  "start-free-trial": "Start Free Trial",
+  "free-credits": "Free Credits",
+  "startups-smes": "Startups & SMEs",
+};
+
+const toSegmentLabel = (segment: string) => segmentLabelMap[segment] ?? slugToTitle(`/${segment}`);
+
 const path = normalizedPath;
+const pathSegments = path.split("/").filter(Boolean);
 const pageType = path === "/"
   ? "WebPage"
   : path === "/about-us"
@@ -99,6 +112,30 @@ const pageType = path === "/"
         : "WebPage";
 
 // JSON-LD: Default page schema used when a page does not provide custom pageSchema.
+const breadcrumbSchema: Record<string, unknown> | null = pathSegments.length > 0
+  ? {
+      "@type": "BreadcrumbList",
+      "@id": `${canonicalUrl}#breadcrumb`,
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Home",
+          item: `${siteOrigin}/`,
+        },
+        ...pathSegments.map((segment, index) => {
+          const cumulativePath = `/${pathSegments.slice(0, index + 1).join("/")}`;
+          return {
+            "@type": "ListItem",
+            position: index + 2,
+            name: toSegmentLabel(segment),
+            item: new URL(cumulativePath, `${siteOrigin}/`).toString(),
+          };
+        }),
+      ],
+    }
+  : null;
+
 const defaultPageSchema: Array<Record<string, unknown>> = [
   {
     "@type": pageType,
@@ -112,6 +149,13 @@ const defaultPageSchema: Array<Record<string, unknown>> = [
     about: {
       "@id": `${siteOrigin}#organization`,
     },
+    ...(breadcrumbSchema
+      ? {
+          breadcrumb: {
+            "@id": `${canonicalUrl}#breadcrumb`,
+          },
+        }
+      : {}),
   },
 ];
 
@@ -177,7 +221,12 @@ const pageSchemas = customPageSchemas.length > 0 ? customPageSchemas : defaultPa
 
 const structuredData = {
   "@context": "https://schema.org",
-  "@graph": [organizationSchema, websiteSchema, ...pageSchemas],
+  "@graph": [
+    organizationSchema,
+    websiteSchema,
+    ...pageSchemas,
+    ...(breadcrumbSchema ? [breadcrumbSchema] : []),
+  ],
 };
 const structuredDataJson = JSON.stringify(structuredData);
 ---
@@ -240,7 +289,7 @@ const structuredDataJson = JSON.stringify(structuredData);
     <link rel="canonical" href={canonicalUrl} />
     <link rel="alternate" href={canonicalUrl} hreflang="en" />
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
+    <script is:inline src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
 
     <link
       rel="stylesheet"
@@ -267,7 +316,7 @@ const structuredDataJson = JSON.stringify(structuredData);
     <meta name="twitter:site" content={twitterHandle} />
     <meta name="twitter:creator" content={twitterHandle} />
 
-    <script type="application/ld+json" set:html={structuredDataJson}></script>
+    <script is:inline type="application/ld+json" set:html={structuredDataJson}></script>
     <slot name="head" />
   </head>
   <body

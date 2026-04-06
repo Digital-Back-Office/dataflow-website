@@ -46,21 +46,59 @@ const allBlogsJson = JSON.stringify(allBlogs.map(blog => ({
 })));
 const siteOrigin = (Astro.site?.toString() ?? "https://dataflow.zone").replace(/\/$/, "");
 const blogIndexUrl = new URL(Astro.url.pathname, `${siteOrigin}/`).toString();
+const blogId = `${siteOrigin}/blog#blog`;
+const collectionPageId = `${blogIndexUrl}#collectionpage`;
+const itemListId = `${blogIndexUrl}#itemlist`;
 
 const pageSchema = [
   {
-    "@type": "CollectionPage",
-    "@id": `${blogIndexUrl}#collectionpage`,
+    "@type": "WebPage",
+    "@id": `${blogIndexUrl}#webpage`,
     url: blogIndexUrl,
     name: "Dataflow Blog",
     description: "Insights on data science, AI and ML in data, and startup growth.",
+    isPartOf: {
+      "@id": `${siteOrigin}#website`,
+    },
+    about: {
+      "@id": `${siteOrigin}#organization`,
+    },
     mainEntity: {
-      "@id": `${blogIndexUrl}#itemlist`,
+      "@id": collectionPageId,
+    },
+    breadcrumb: {
+      "@id": `${blogIndexUrl}#breadcrumb`,
+    },
+  },
+  {
+    "@type": "Blog",
+    "@id": blogId,
+    url: blogIndexUrl,
+    name: "Dataflow Blog",
+    description: "Insights on data science, AI and ML in data, and startup growth.",
+    publisher: {
+      "@id": `${siteOrigin}#organization`,
+    },
+    blogPost: allBlogs.map((post) => ({
+      "@id": `${siteOrigin}/blog/${post.slug}#blogposting`,
+    })),
+  },
+  {
+    "@type": "CollectionPage",
+    "@id": collectionPageId,
+    url: blogIndexUrl,
+    name: "Dataflow Blog",
+    description: "Insights on data science, AI and ML in data, and startup growth.",
+    isPartOf: {
+      "@id": blogId,
+    },
+    mainEntity: {
+      "@id": itemListId,
     },
   },
   {
     "@type": "ItemList",
-    "@id": `${blogIndexUrl}#itemlist`,
+    "@id": itemListId,
     itemListOrder: "https://schema.org/ItemListOrderDescending",
     numberOfItems: allBlogs.length,
     itemListElement: allBlogs.map((post, index) => ({

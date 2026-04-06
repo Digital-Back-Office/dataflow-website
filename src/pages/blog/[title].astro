@@ -52,29 +52,64 @@ const relatedBlogs = allBlogs
 const siteOrigin = (Astro.site?.toString() ?? "https://dataflow.zone").replace(/\/$/, "");
 const ogImage = image ? new URL(image, `${siteOrigin}/`).toString() : undefined;
 const articleUrl = new URL(Astro.url.pathname, `${siteOrigin}/`).toString();
+const blogCollectionId = `${siteOrigin}/blog#collectionpage`;
+const cleanedBodyText = body
+  .replace(/```[\s\S]*?```/g, " ")
+  .replace(/`[^`]*`/g, " ")
+  .replace(/!\[[^\]]*\]\([^)]*\)/g, " ")
+  .replace(/\[([^\]]+)\]\([^)]*\)/g, "$1")
+  .replace(/<[^>]*>/g, " ")
+  .replace(/[#>*_~\-]/g, " ")
+  .replace(/\s+/g, " ")
+  .trim();
+const wordCount = cleanedBodyText ? cleanedBodyText.split(" ").length : undefined;
 
-const pageSchema = {
-  "@type": "BlogPosting",
-  "@id": `${articleUrl}#blogposting`,
-  mainEntityOfPage: {
+const pageSchema = [
+  {
+    "@type": "WebPage",
     "@id": `${articleUrl}#webpage`,
+    url: articleUrl,
+    name: `${title} | Dataflow Blog`,
+    description: meta_description,
+    isPartOf: {
+      "@id": `${siteOrigin}#website`,
+    },
+    about: {
+      "@id": `${siteOrigin}#organization`,
+    },
+    breadcrumb: {
+      "@id": `${articleUrl}#breadcrumb`,
+    },
   },
-  headline: title,
-  description: meta_description,
-  datePublished: new Date(date).toISOString(),
-  dateModified: new Date(date).toISOString(),
-  image: ogImage ? [ogImage] : undefined,
-  author: {
-    "@type": "Organization",
-    "@id": `${siteOrigin}#organization`,
-    name: "Dataflow",
+  {
+    "@type": "BlogPosting",
+    "@id": `${articleUrl}#blogposting`,
+    mainEntityOfPage: {
+      "@id": `${articleUrl}#webpage`,
+    },
+    headline: title,
+    description: meta_description,
+    datePublished: new Date(date).toISOString(),
+    dateModified: new Date(date).toISOString(),
+    image: ogImage ? [ogImage] : undefined,
+    author: {
+      "@type": "Organization",
+      "@id": `${siteOrigin}#organization`,
+      name: "Dataflow",
+    },
+    publisher: {
+      "@id": `${siteOrigin}#organization`,
+    },
+    isPartOf: {
+      "@id": blogCollectionId,
+    },
+    inLanguage: "en",
+    articleSection: tags,
+    keywords: tags?.join(", "),
+    wordCount,
+    url: articleUrl,
   },
-  publisher: {
-    "@id": `${siteOrigin}#organization`,
-  },
-  keywords: tags?.join(", "),
-  url: articleUrl,
-};
+];
 ---
 
 <Layout

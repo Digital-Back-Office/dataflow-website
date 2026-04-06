@@ -101,11 +101,50 @@ const faqs = [
     a: 'We provide dedicated partnership support, solution architecture guidance, co-marketing enablement, and shared success metrics throughout the engagement.'
   }
 ]
+
+const pageSchema = [
+  {
+    '@type': 'WebPage',
+    '@id': 'https://dataflow.zone/partners#webpage',
+    url: 'https://dataflow.zone/partners',
+    name: 'Partners | Dataflow Partnership Program',
+    description:
+      'Join the Dataflow partner ecosystem. Unlock co-marketing, enablement, and growth opportunities for your business.',
+    isPartOf: {
+      '@id': 'https://dataflow.zone#website'
+    },
+    about: {
+      '@id': 'https://dataflow.zone#organization'
+    },
+    breadcrumb: {
+      '@id': 'https://dataflow.zone/partners#breadcrumb'
+    },
+    mainEntity: {
+      '@id': 'https://dataflow.zone/partners#faq'
+    }
+  },
+  {
+    '@type': 'FAQPage',
+    '@id': 'https://dataflow.zone/partners#faq',
+    mainEntityOfPage: {
+      '@id': 'https://dataflow.zone/partners#webpage'
+    },
+    mainEntity: faqs.map((item) => ({
+      '@type': 'Question',
+      name: item.q,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: item.a
+      }
+    }))
+  }
+]
 ---
 
 <Layout
   title='Partners | Dataflow Partnership Program'
   meta_description='Join the Dataflow partner ecosystem. Unlock co-marketing, enablement, and growth opportunities for your business.'
+  pageSchema={pageSchema}
 >
   <section class='relative overflow-hidden bg-[#0c2021] text-white'>
     <div class='absolute inset-0 opacity-70'>
@@ -316,6 +355,12 @@ const faqs = [
         >
           Schedule a demo
         </a>
+        <p class='mt-4 text-sm text-white/70 text-center'>
+          Also see
+          <a href='/pricing' class='underline underline-offset-4 hover:text-white ml-1'>pricing</a>,
+          <a href='/product/deploy-to-production' class='underline underline-offset-4 hover:text-white ml-1'>deployment capabilities</a>, and
+          <a href='/blog' class='underline underline-offset-4 hover:text-white ml-1'>our blog</a>.
+        </p>
       </div>
     </div>
   </section>

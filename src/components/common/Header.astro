@@ -109,7 +109,7 @@ const mobileCtas = desktopCtas
                             item.action ? (
                               <button
                                 class='w-full flex items-start gap-3 p-3 rounded-lg hover:bg-gray-50 transition-colors group/item text-left'
-                                onclick="document.getElementById('arcadeModal').classList.remove('hidden')"
+                                onclick="document.getElementById('arcadeModal').classList.remove('modal-hidden')"
                               >
                                 <div class='p-2 bg-primary/10 rounded-lg shrink-0 flex items-center justify-center'>
                                   <NavIcon title={item.title} size='small' />
@@ -285,7 +285,7 @@ const mobileCtas = desktopCtas
           {section.items?.map((item) => (
             item.action ? (
               <button
-                onclick="document.getElementById('arcadeModal').classList.remove('hidden'); document.getElementById('mobileMenu').classList.remove('translate-x-0'); document.getElementById('mobileMenu').classList.add('-translate-x-full')"
+                onclick="document.getElementById('arcadeModal').classList.remove('modal-hidden'); document.getElementById('mobileMenu').classList.remove('translate-x-0'); document.getElementById('mobileMenu').classList.add('-translate-x-full')"
                 class='block w-full text-left px-3 py-2 text-sm text-gray-700 hover:bg-gray-50 rounded-md'
               >
                 {item.label}

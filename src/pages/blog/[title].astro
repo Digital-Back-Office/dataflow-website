@@ -49,11 +49,40 @@ const relatedBlogs = allBlogs
   .filter((blog) => blog.slug !== Astro.props.slug)
   .sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime())
   .slice(0, 3)
-const siteUrl = Astro.site?.toString() ?? "https://dataflow.zone";
-const ogImage = image ? new URL(image, siteUrl).toString() : undefined;
+const siteOrigin = (Astro.site?.toString() ?? "https://dataflow.zone").replace(/\/$/, "");
+const ogImage = image ? new URL(image, `${siteOrigin}/`).toString() : undefined;
+const articleUrl = new URL(Astro.url.pathname, `${siteOrigin}/`).toString();
+
+const pageSchema = {
+  "@type": "BlogPosting",
+  "@id": `${articleUrl}#blogposting`,
+  mainEntityOfPage: {
+    "@id": `${articleUrl}#webpage`,
+  },
+  headline: title,
+  description: meta_description,
+  datePublished: new Date(date).toISOString(),
+  dateModified: new Date(date).toISOString(),
+  image: ogImage ? [ogImage] : undefined,
+  author: {
+    "@type": "Organization",
+    "@id": `${siteOrigin}#organization`,
+    name: "Dataflow",
+  },
+  publisher: {
+    "@id": `${siteOrigin}#organization`,
+  },
+  keywords: tags?.join(", "),
+  url: articleUrl,
+};
 ---
 
-<Layout title={`${title} | Dataflow Blog`} meta_description={meta_description} ogImage={ogImage}>
+<Layout
+  title={`${title} | Dataflow Blog`}
+  meta_description={meta_description}
+  ogImage={ogImage}
+  pageSchema={pageSchema}
+>
   <!-- Hero Section -->
   <section class='relative overflow-hidden px-[10%] max-sm:px-[20px] pt-[10%] pb-[40px] max-sm:pb-[30px]'>
     <div class='absolute inset-0 -z-10 bg-gradient-to-b from-primary/5 via-white to-white'></div>
@@ -106,6 +135,8 @@ const ogImage = image ? new URL(image, siteUrl).toString() : undefined;
                 <img
                   src={image}
                   alt={`${title} cover image`}
+                  loading='eager'
+                  fetchpriority='high'
                   class='w-full min-h-[380px] max-h-[500px] object-cover'
                 />
               </figure>
@@ -230,6 +261,7 @@ const ogImage = image ? new URL(image, siteUrl).toString() : undefined;
                         <img 
                           src={blog.data.image} 
                           alt={blog.data.title}
+                          loading='lazy'
                           class='w-20 h-20 object-cover rounded-lg flex-shrink-0'
                         />
                       )}

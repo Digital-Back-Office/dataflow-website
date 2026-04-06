@@ -44,11 +44,39 @@ const allBlogsJson = JSON.stringify(allBlogs.map(blog => ({
   image: blog.data.image,
   tags: blog.data.tags || [],
 })));
+const siteOrigin = (Astro.site?.toString() ?? "https://dataflow.zone").replace(/\/$/, "");
+const blogIndexUrl = new URL(Astro.url.pathname, `${siteOrigin}/`).toString();
+
+const pageSchema = [
+  {
+    "@type": "CollectionPage",
+    "@id": `${blogIndexUrl}#collectionpage`,
+    url: blogIndexUrl,
+    name: "Dataflow Blog",
+    description: "Insights on data science, AI and ML in data, and startup growth.",
+    mainEntity: {
+      "@id": `${blogIndexUrl}#itemlist`,
+    },
+  },
+  {
+    "@type": "ItemList",
+    "@id": `${blogIndexUrl}#itemlist`,
+    itemListOrder: "https://schema.org/ItemListOrderDescending",
+    numberOfItems: allBlogs.length,
+    itemListElement: allBlogs.map((post, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      url: `${siteOrigin}/blog/${post.slug}`,
+      name: post.data.title,
+    })),
+  },
+];
 ---
 
 <Layout
   title="Dataflow Blog: Data Science, AI & Startups"
   meta_description="Insights on data science, AI and ML in data, and startup growth. Practical guides and trends from Dataflow experts."
+  pageSchema={pageSchema}
 >
   <!-- Main Content -->
   <div class="px-[10%] mt-20 max-sm:px-[20px] pt-16 pb-24 max-sm:pt-12 max-sm:pb-16">
@@ -58,7 +86,7 @@ const allBlogsJson = JSON.stringify(allBlogs.map(blog => ({
       data-aos="fade-up" data-aos-duration="100"
     >
       <!-- Tabs -->
-      <div class="flex-1 max-sm:w-full" data-aos="fade-up" data-aos-delay="100">
+      <div class="flex-1 max-sm:w-full" data-aos="fade-up" data-aos-delay="50">
         <nav
           id="category-tabs"
           class="flex items-center gap-6 overflow-x-auto max-w-full scrollbar-hide max-sm:gap-4 scrolling-touch"
@@ -133,6 +161,7 @@ const allBlogsJson = JSON.stringify(allBlogs.map(blog => ({
                 <img
                   src={post.data.image}
                   alt={post.data.title}
+                  loading="lazy"
                   class="w-full h-56 object-cover group-hover:scale-[1.015] transition-transform duration-300"
                 />
               </a>

@@ -9,6 +9,7 @@ import { getEntry } from 'astro:content'
 
 const Data = await getEntry('features', 'shared-foundation')
 const top = Data?.data?.top_section || {}
+const seo = Data?.data?.seo
 const sharedPlatformLayer = Data?.data?.shared_platform_layer || {}
 const builtOnManagedDeps = Data?.data?.built_on_managed_dependencies || {}
 const keyBenefits = Data?.data?.key_benefits || {}
@@ -16,8 +17,8 @@ const meta_description = top.description ?? 'A common platform layer shared acro
 ---
 
 <Layout
-  title='Shared Foundation | Unified Data Infrastructure'
-  meta_description={meta_description}
+  title={seo?.title ?? 'One Shared Python Environment for Your Whole Data Team | Dataflow'}
+  meta_description={seo?.description ?? 'Define your environment once sync it automatically across notebooks, pipelines and dashboards. Manage secrets, connections & RBAC from a single foundation.'}
 >
   <TopSection
     title={top.title}

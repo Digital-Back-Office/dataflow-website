@@ -9,6 +9,7 @@ import { getEntry } from 'astro:content'
 
 const Data = await getEntry('features', 'managed-dependencies')
 const top = Data?.data?.top_section || {}
+const seo = Data?.data?.seo
 const problemSection = Data?.data?.problem_section || {}
 const solutionSection = Data?.data?.solution_section || {}
 const howItWorks = Data?.data?.how_it_works || {}
@@ -17,8 +18,8 @@ const meta_description = top.description ?? 'Eliminate Python dependency hell wi
 --- 
 
 <Layout
-  title='Managed Dependencies | No Python Dependency Hell'
-  meta_description={meta_description}
+  title={seo?.title ?? 'Managed Python Dependencies | No More pip Errors | Dataflow'}
+  meta_description={seo?.description ?? 'Say goodbye to dependency hell. Dataflow creates containerised, immutable Python environments in one click. Share across Jupyter, Airflow & VS Code seamlessly.'}
 >
   <TopSection
     title={top.title}

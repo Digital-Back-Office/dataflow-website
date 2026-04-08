@@ -1,4 +1,8 @@
 ---
+seo:
+  title: "Data Platform for Startups & Small Teams | Scale Fast | Dataflow"
+  description: "Go from zero to a production data stack in under 30 minutes. No DevOps hire needed. Dataflow gives startups and SMEs enterprise-grade tools at startup prices."
+
 top_section:
   title: "Data Infrastructure That Scales with Your Ambitions"
   description: "Built for lean teams who refuse to compromise. Get the power of an enterprise data platform without the enterprise price tag, complexity, or months-long setup. Ship data products faster, validate ideas cheaper, and scale only when you're ready."

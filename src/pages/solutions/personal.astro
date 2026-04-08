@@ -8,12 +8,16 @@ import CTASection from '../../components/common/CTASection.astro'
 
 const Data = await getEntry('personal', 'personal')
 const top = Data?.data?.top_section || {}
+const seo = Data?.data?.seo
 const meta_description = top.description ?? 'Personal Data Platform'
 const sections = Data?.data?.sections || []
 const cta = Data?.data?.cta_section || {}
 ---
 
-<Layout title={`Personal Data Platform | For Individual Projects`} meta_description={meta_description}>
+<Layout
+	title={seo?.title ?? 'Free Data Science Platform | Learn, Build & Experiment | Dataflow'}
+	meta_description={seo?.description ?? 'Get a free Jupyter notebook environment with Airflow, Streamlit and MLflow - no credit card, no setup. Perfect for learning data engineering and side projects.'}
+>
 	<TopSection
 		title={top.title}
 		description={top.description}

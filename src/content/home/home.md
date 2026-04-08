@@ -1,4 +1,8 @@
 ---
+seo:
+  title: "Dataflow | AI-Ready Data Platform for Startups & Teams"
+  description: "Build, run & deploy data pipelines, ML models and Streamlit apps without DevOps. Jupyter, Airflow & VS Code in one managed Python platform. Free trial."
+
 hero:
   title: "Focus on Data Logic, <br> Not Glue Code."
   title_part_2: "Not Glue Code."

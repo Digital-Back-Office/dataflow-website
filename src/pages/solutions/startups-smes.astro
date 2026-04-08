@@ -9,12 +9,16 @@ import Card from '../../components/blog/Card.astro'
 
 const Data = await getEntry('startups-smes', 'startups-smes')
 const top = Data?.data?.top_section || {}
+const seo = Data?.data?.seo
 const meta_description = top.description ?? 'Data Infrastructure for Startups and SMEs'
 const sections = Data?.data?.sections || []
 const cta = Data?.data?.cta_section || {}
 ---
 
-<Layout title={`Startups & SMEs Data Platform | Dataflow for Teams`} meta_description={meta_description}>
+<Layout
+	title={seo?.title ?? 'Data Platform for Startups & Small Teams | Scale Fast | Dataflow'}
+	meta_description={seo?.description ?? 'Go from zero to a production data stack in under 30 minutes. No DevOps hire needed. Dataflow gives startups and SMEs enterprise-grade tools at startup prices.'}
+>
 	<TopSection
 		title={top.title}
 		description={top.description}

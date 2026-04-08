@@ -6,11 +6,15 @@ import Layout from '../layouts/Layout.astro'
 import JoinTeam from '../components/company/JoinTeam.astro'
 import YourJourney from '../components/company/YourJourney.astro'
 import SupportedBy from '../components/common/SupportedBy.astro'
+import { getEntry } from 'astro:content'
+
+const companyData = await getEntry('company', 'company')
+const seo = companyData?.data?.seo
 ---
 
 <Layout
-  title='About Dataflow | Modern Data Platform Company'
-  meta_description='Learn how Dataflow helps data teams and startups deliver trusted data and AI outcomes with a modern, scalable platform.'
+  title={seo?.title ?? 'About Dataflow | Built by Data Engineers, for Data Engineers'}
+  meta_description={seo?.description ?? "Dataflow was founded in 2023 to give engineers their time back. Learn about our mission, team and why we're building the OS for modern data teams."}
 >
   <TopSection />
   <OurJourney />

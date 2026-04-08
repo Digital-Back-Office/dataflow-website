@@ -8,6 +8,7 @@ import { getEntry } from 'astro:content'
 
 const Data = await getEntry('features', 'deploy-to-production')
 const top = Data?.data?.top_section || {}
+const seo = Data?.data?.seo
 const seamlessDeployment = Data?.data?.seamless_deployment || {}
 const productionParity = Data?.data?.production_parity || {}
 const managedSecrets = Data?.data?.managed_secrets_in_production || {}
@@ -15,8 +16,8 @@ const meta_description = top.description ?? 'Deploy applications to production s
 ---
 
 <Layout
-  title='Deploy in One Click | Fast Data Platform Launch'
-  meta_description={meta_description}
+  title={seo?.title ?? 'Deploy Notebooks & Streamlit Apps to Production in One Click | Dataflow'}
+  meta_description={seo?.description ?? 'Turn Jupyter notebooks into live APIs and Streamlit apps into shareable URLs no Dockerfiles, no CI/CD setup. Ship data apps in minutes, not days.'}
   noindex={true}
   canonicalPath='/product/deploy-to-production'
 >

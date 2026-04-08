@@ -15,6 +15,10 @@ const blogsCollection = defineCollection({
 
 // Solution Pages Schema (Enterprise, Startups-SMEs, Personal)
 const solutionSchema = z.object({
+  seo: z.object({
+    title: z.string(),
+    description: z.string(),
+  }).optional(),
   top_section: z.object({
     title: z.string(),
     description: z.string(),
@@ -201,6 +205,10 @@ const commonCollection = defineCollection({
 const companyCollection = defineCollection({
   type: 'content',
   schema: z.object({
+    seo: z.object({
+      title: z.string(),
+      description: z.string(),
+    }).optional(),
     top_section: z.object({
       title: z.string(),
       description: z.string(),
@@ -248,6 +256,10 @@ const companyCollection = defineCollection({
 const homeCollection = defineCollection({
   type: 'content',
   schema: z.object({
+    seo: z.object({
+      title: z.string(),
+      description: z.string(),
+    }).optional(),
     hero: z.object({
       title: z.string(),
       title_part_2: z.string(),
@@ -486,6 +498,10 @@ const promotionCollection = defineCollection({
 const featuresCollection = defineCollection({
   type: 'content',
   schema: z.object({
+    seo: z.object({
+      title: z.string(),
+      description: z.string(),
+    }).optional(),
     top_section: z.object({
       title: z.string(),
       description: z.string(),

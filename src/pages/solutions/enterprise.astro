@@ -9,13 +9,17 @@ import CustomButton from '../../components/common/CustomButton.astro'
 
 const Data = await getEntry('enterprise', 'enterprise')
 const top = Data?.data?.top_section || {}
+const seo = Data?.data?.seo
 const meta_description = top.description ?? 'Enterprise'
 const sections = Data?.data?.sections || []
 const sectionCta = Data?.data?.section_cta || {}
 const cta = Data?.data?.cta_section || {}
 ---
 
-<Layout title={`Enterprise Data Platform | Scalable AI Solutions`} meta_description={meta_description}>
+<Layout
+	title={seo?.title ?? 'Enterprise Data Platform | Secure, Scalable & Governed | Dataflow'}
+	meta_description={seo?.description ?? 'Built for enterprise data teams. RBAC permissions, audit logs, SSO, dedicated support and scalable GPU compute. Get a custom demo for your organisation.'}
+>
 	<TopSection
 		title={top.title}
 		description={top.description}

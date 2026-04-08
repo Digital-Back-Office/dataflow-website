@@ -1,4 +1,8 @@
 ---
+seo:
+  title: "One Shared Python Environment for Your Whole Data Team | Dataflow"
+  description: "Define your environment once sync it automatically across notebooks, pipelines and dashboards. Manage secrets, connections & RBAC from a single foundation."
+
 top_section:
   title: "One Foundation, Shared Everywhere"
   description: A common platform layer across all applications. Shared environments, unified configuration, and zero duplication.

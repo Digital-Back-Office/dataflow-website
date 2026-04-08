@@ -15,11 +15,12 @@ import { getEntry } from 'astro:content'
 const Data = await getEntry('home', 'home')
 const data = Data.data
 const { hero, features } = data
+const seo = data.seo
 ---
 
 <Layout
-  title='Data Platform for Startups & AI Teams | Dataflow'
-  meta_description='Dataflow is a modern data platform for startups and AI teams. Ship reliable data science workflows faster with secure, scalable infrastructure.'
+  title={seo?.title ?? 'Dataflow | AI-Ready Data Platform for Startups & Teams'}
+  meta_description={seo?.description ?? 'Build, run & deploy data pipelines, ML models and Streamlit apps without DevOps. Jupyter, Airflow & VS Code in one managed Python platform. Free trial.'}
 >
   <HeroSection hero={hero} />
   <GPUSection />

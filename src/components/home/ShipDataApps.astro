@@ -114,7 +114,7 @@ let steps: Step[] = data?.steps || defaultSteps
                   </div>
                   {step.image && (
                     <div class='flex items-center justify-center max-md:hidden'>
-                      <img src={step.image} alt={step.title} class='w-64 h-48 object-contain' />
+                      <img src={step.image} loading="lazy" alt={step.title} class='w-64 h-48 object-contain' />
                     </div>
                   )}
                 </div>

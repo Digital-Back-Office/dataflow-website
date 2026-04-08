@@ -1,7 +1,7 @@
 ---
 seo:
   title: "Data Platform for Startups & Small Teams | Scale Fast | Dataflow"
-  description: "Go from zero to a production data stack in under 30 minutes. No DevOps hire needed. Dataflow gives startups and SMEs enterprise-grade tools at startup prices."
+  description: "One managed Python platform for startups. Jupyter notebooks, Airflow pipelines and Streamlit apps - pre-wired, no DevOps, no config files"
 
 top_section:
   title: "Data Infrastructure That Scales with Your Ambitions"

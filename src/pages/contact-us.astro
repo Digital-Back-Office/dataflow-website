@@ -22,7 +22,7 @@ const formId = import.meta.env.PUBLIC_GOOGLE_FORM_ID || '1FAIpQLSeGjuyA_jjDmmT4j
           {data.description}
         </p>
         <p class='text-sm text-gray-500 max-w-3xl mx-auto mt-4'>
-          Looking to evaluate plans first? Visit <a href='/pricing' class='text-primary hover:text-primaryHover underline underline-offset-2'>Pricing</a>, explore real implementations in the <a href='/blog' class='text-primary hover:text-primaryHover underline underline-offset-2'>Blog</a>, or book a tailored walkthrough on the <a href='/book-demo' class='text-primary hover:text-primaryHover underline underline-offset-2'>Demo page</a>.
+          Looking to evaluate plans first? Visit <a href='/pricing' title='View pricing plans' class='text-primary hover:text-primaryHover underline underline-offset-2'>Pricing</a>, explore real implementations in the <a href='/blog' title='Read implementation examples in the blog' class='text-primary hover:text-primaryHover underline underline-offset-2'>Blog</a>, or book a tailored walkthrough on the <a href='/book-demo' title='Book a tailored demo' class='text-primary hover:text-primaryHover underline underline-offset-2'>Demo page</a>.
         </p>
       </div>
 
@@ -162,6 +162,7 @@ const formId = import.meta.env.PUBLIC_GOOGLE_FORM_ID || '1FAIpQLSeGjuyA_jjDmmT4j
                   {data.form.terms}
                   <a
                     href='/legal/terms-and-conditions'
+                    title='Read terms and conditions'
                     class='text-primary hover:text-primaryHover underline underline-offset-2'
                   >
                     {data.form.link}

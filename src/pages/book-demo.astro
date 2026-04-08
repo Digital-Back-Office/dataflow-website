@@ -69,7 +69,7 @@ const googleFormId = import.meta.env.PUBLIC_GOOGLE_FORM_ID || '1FAIpQLSeGjuyA_jj
               ))}
             </div>
             <p class='text-sm text-gray-500 mt-6'>
-              Before scheduling, you can review <a href='/pricing' class='text-primary hover:text-primaryHover underline underline-offset-2'>Pricing</a>, compare product capabilities such as <a href='/product/deploy-to-production' class='text-primary hover:text-primaryHover underline underline-offset-2'>Deployment</a> and <a href='/product/managed-dependencies' class='text-primary hover:text-primaryHover underline underline-offset-2'>Dependency Management</a>, and read customer-focused guides in the <a href='/blog' class='text-primary hover:text-primaryHover underline underline-offset-2'>Blog</a>.
+              Before scheduling, you can review <a href='/pricing' title='Review pricing plans' class='text-primary hover:text-primaryHover underline underline-offset-2'>Pricing</a>, compare product capabilities such as <a href='/product/deploy-to-production' title='Explore deployment features' class='text-primary hover:text-primaryHover underline underline-offset-2'>Deployment</a> and <a href='/product/managed-dependencies' title='Explore managed dependency features' class='text-primary hover:text-primaryHover underline underline-offset-2'>Dependency Management</a>, and read customer-focused guides in the <a href='/blog' title='Read customer-focused guides in the blog' class='text-primary hover:text-primaryHover underline underline-offset-2'>Blog</a>.
             </p>
           </div>
 
@@ -278,6 +278,7 @@ const googleFormId = import.meta.env.PUBLIC_GOOGLE_FORM_ID || '1FAIpQLSeGjuyA_jj
                 <label for='terms-checkbox' class='text-sm text-gray-600 leading-relaxed'>
                   {termsText} <a
                     href='/legal/terms-and-conditions'
+                    title='Read terms and conditions'
                     class='text-primary hover:text-primary/80 underline underline-offset-2 font-medium'
                     >{termsLinkText}</a>
                 </label>

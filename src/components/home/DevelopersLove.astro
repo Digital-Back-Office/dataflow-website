@@ -60,8 +60,19 @@ const cards = data?.cards || defaultCards
           <h3 class='text-2xl font-bold text-gray-900 mb-3'>{card.title}</h3>
           <p class='text-gray-600 mb-6'>{card.description}</p>
           <div class='space-y-3'>
-            {card.links?.map((link) => (
-              <a href={link.href} target={link.target} class='flex items-center gap-3 text-primary hover:text-primaryHover font-medium group'>
+            {card.links?.map((link) => {
+              const opensNewTab = link.target === '_blank'
+              const label = opensNewTab ? `${link.text} (opens in a new tab)` : link.text
+
+              return (
+              <a
+                href={link.href}
+                target={link.target}
+                rel={opensNewTab ? 'noopener noreferrer' : undefined}
+                title={link.text}
+                aria-label={label}
+                class='flex items-center gap-3 text-primary hover:text-primaryHover font-medium group'
+              >
                 {link.platform ? (
                   <SocialIcon platform={link.platform} className='w-5 h-5 transition-transform group-hover:translate-x-1' />
                 ) : card.title === 'Learn' ? (
@@ -82,7 +93,8 @@ const cards = data?.cards || defaultCards
                   <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M9 5l7 7-7 7'></path>
                 </svg>
               </a>
-            ))}
+              )
+            })}
             {card.actions?.map((action) => (
               action.onclick ? (
                 <button onclick={action.onclick} class='flex items-center gap-3 text-primary hover:text-primaryHover font-medium group w-full'>
@@ -93,7 +105,7 @@ const cards = data?.cards || defaultCards
                   </svg>
                 </button>
               ) : (
-                <a href={action.href} class='flex items-center gap-3 text-primary hover:text-primaryHover font-medium group'>
+                <a href={action.href} title={action.text} aria-label={action.text} class='flex items-center gap-3 text-primary hover:text-primaryHover font-medium group'>
                   <SocialIcon platform='lightning' className='w-5 h-5 transition-transform group-hover:translate-x-1' />
                   {action.text}
                   <svg class='w-4 h-4 transition-transform group-hover:translate-x-1' fill='none' stroke='currentColor' viewBox='0 0 24 24'>

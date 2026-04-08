@@ -79,7 +79,7 @@ const mobileCtas = desktopCtas
             href={navItem.href}
             title={navItem.label}
             target={isExternal(navItem.href) ? '_blank' : undefined}
-            rel={isExternal(navItem.href) ? 'noreferrer' : undefined}
+            rel={isExternal(navItem.href) ? 'noopener noreferrer' : undefined}
           >
             {navItem.label}
           </a>
@@ -125,7 +125,7 @@ const mobileCtas = desktopCtas
                                 title={item.title}
                                 class='flex items-start gap-3 p-3 rounded-lg hover:bg-gray-50 transition-colors group/item'
                                 target={isExternal(item.href) ? '_blank' : undefined}
-                                rel={isExternal(item.href) ? 'noreferrer' : undefined}
+                                rel={isExternal(item.href) ? 'noopener noreferrer' : undefined}
                               >
                                 <div class='p-2 bg-primary/10 rounded-lg shrink-0 flex items-center justify-center'>
                                   <NavIcon iconId={item['icon-id']} title={item.title} size='small' />
@@ -152,7 +152,7 @@ const mobileCtas = desktopCtas
                             title={item.title}
                             class='flex items-start gap-4 p-3 rounded-lg hover:bg-gray-50 transition-colors group/item'
                             target={isExternal(item.href) ? '_blank' : undefined}
-                            rel={isExternal(item.href) ? 'noreferrer' : undefined}
+                            rel={isExternal(item.href) ? 'noopener noreferrer' : undefined}
                           >
                             <div class='p-2.5 bg-primary/10 rounded-lg shrink-0 flex items-center justify-center'>
                               <NavIcon iconId={item['icon-id']} title={item.title} size='large' />
@@ -177,7 +177,7 @@ const mobileCtas = desktopCtas
                       title={item.title}
                       class='flex items-start gap-4 p-3 rounded-lg hover:bg-gray-50 transition-colors group/item'
                       target={isExternal(item.href) ? '_blank' : undefined}
-                      rel={isExternal(item.href) ? 'noreferrer' : undefined}
+                      rel={isExternal(item.href) ? 'noopener noreferrer' : undefined}
                     >
                       <div class='p-2.5 bg-primary/10 rounded-lg shrink-0 flex items-center justify-center'>
                         <NavIcon iconId={item['icon-id']} title={item.title} size='large' />
@@ -208,7 +208,7 @@ const mobileCtas = desktopCtas
       </a>
     )} -->
     {desktopCtas?.secondary && (
-      <a href={desktopCtas.secondary.href} title={desktopCtas.secondary.label}>
+      <div class='flex items-center gap-3'>
         {/* <button
           class='px-7 py-3 bg-primary hover:bg-primaryHover text-white rounded-md text-md font-medium transition-all duration-200'
         >
@@ -229,17 +229,25 @@ const mobileCtas = desktopCtas
           iconSrc={null}
           className="py-[8px] text-sm"
         />
-      </a>
+      </div>
     )}
   </div>
 
   <div class='lg:hidden flex items-center z-50'>
-    <button id='burgerMenuButton' class='text-gray-700 focus:outline-none'>
+    <button
+      id='burgerMenuButton'
+      class='text-gray-700 focus:outline-none'
+      type='button'
+      aria-label='Open mobile menu'
+      aria-controls='mobileMenu'
+      aria-expanded='false'
+    >
       <svg
         class='w-6 h-6'
         fill='none'
         stroke='currentColor'
         viewBox='0 0 24 24'
+        aria-hidden='true'
       >
         <path
           stroke-linecap='round'
@@ -261,12 +269,13 @@ const mobileCtas = desktopCtas
     <a href='/' title='Dataflow home'>
       <img src='/assets/images/dataflow-logo-green.svg' alt='Dataflow Logo' class='h-9' />
     </a>
-    <button id='closeMenuButton' class='text-gray-700 focus:outline-none'>
+    <button id='closeMenuButton' class='text-gray-700 focus:outline-none' type='button' aria-label='Close mobile menu'>
       <svg
         class='w-6 h-6'
         fill='none'
         stroke='currentColor'
         viewBox='0 0 24 24'
+        aria-hidden='true'
       >
         <path
           stroke-linecap='round'
@@ -277,7 +286,7 @@ const mobileCtas = desktopCtas
     </button>
   </div>
   
-  <nav class='bg-white px-6 py-6'>
+  <nav id='mobile-nav' class='bg-white px-6 py-6'>
     {mobileSections.map((section) => (
       <div class='mb-6'>
         <p class='text-xs font-semibold text-gray-500 uppercase tracking-wider mb-3'>{section.heading}</p>
@@ -296,7 +305,7 @@ const mobileCtas = desktopCtas
                 title={item.label}
                 class='block px-3 py-2 text-sm text-gray-700 hover:bg-gray-50 rounded-md'
                 target={isExternal(item.href) ? '_blank' : undefined}
-                rel={isExternal(item.href) ? 'noreferrer' : undefined}
+                rel={isExternal(item.href) ? 'noopener noreferrer' : undefined}
               >
                 {item.label}
               </a>
@@ -309,17 +318,25 @@ const mobileCtas = desktopCtas
     {mobileCtas && (
       <div class='flex flex-col gap-3 mt-8'>
         {mobileCtas.primary && (
-          <a href={mobileCtas.primary.href} title={mobileCtas.primary.label}>
-            <button class='w-full px-5 py-3 text-primary border border-primary rounded-md font-medium hover:bg-primary/5 transition-all'>
-              {mobileCtas.primary.label}
-            </button>
+          <a
+            href={mobileCtas.primary.href}
+            title={mobileCtas.primary.label}
+            aria-label={mobileCtas.primary.label}
+            class='w-full px-5 py-3 text-primary border border-primary rounded-md font-medium hover:bg-primary/5 transition-all text-center'
+          >
+            {mobileCtas.primary.label}
           </a>
         )}
         {mobileCtas.secondary && (
-          <a href={mobileCtas.secondary.href} title={mobileCtas.secondary.label}>
-            <button class='w-full px-5 py-3 bg-primary hover:bg-primaryHover text-white rounded-md font-medium transition-all'>
-              {mobileCtas.secondary.label}
-            </button>
+          <a
+            href={mobileCtas.secondary.href}
+            title={mobileCtas.secondary.label}
+            aria-label={mobileCtas.secondary.label}
+            class='w-full px-5 py-3 bg-primary hover:bg-primaryHover text-white rounded-md font-medium transition-all text-center'
+            target={isExternal(mobileCtas.secondary.href) ? '_blank' : undefined}
+            rel={isExternal(mobileCtas.secondary.href) ? 'noopener noreferrer' : undefined}
+          >
+            {mobileCtas.secondary.label}
           </a>
         )}
       </div>
@@ -336,11 +353,13 @@ const mobileCtas = desktopCtas
     burgerMenuButton.addEventListener('click', () => {
       mobileMenu.classList.remove('-translate-x-full')
       mobileMenu.classList.add('translate-x-0')
+      burgerMenuButton.setAttribute('aria-expanded', 'true')
     })
 
     closeMenuButton.addEventListener('click', () => {
       mobileMenu.classList.remove('translate-x-0')
       mobileMenu.classList.add('-translate-x-full')
+      burgerMenuButton.setAttribute('aria-expanded', 'false')
     })
   })
 </script>

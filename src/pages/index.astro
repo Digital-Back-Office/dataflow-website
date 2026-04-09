@@ -16,11 +16,57 @@ const Data = await getEntry('home', 'home')
 const data = Data.data
 const { hero, features } = data
 const seo = data.seo
+const siteOrigin = (Astro.site?.toString() ?? 'https://dataflow.zone').replace(/\/$/, '')
+const normalizedPath = Astro.url.pathname === '/' ? '/' : `${Astro.url.pathname.replace(/\/+$/, '')}/`
+const homeUrl = new URL(normalizedPath, `${siteOrigin}/`).toString()
+
+const pageSchema = [
+  {
+    '@type': 'WebPage',
+    '@id': `${homeUrl}#webpage`,
+    url: homeUrl,
+    name: seo?.title ?? 'Dataflow | AI-Ready Data Platform for Startups & Teams',
+    description:
+      seo?.description ??
+      'Build, run & deploy data pipelines, ML models and Streamlit apps without DevOps. Jupyter, Airflow & VS Code in one managed Python platform. Free trial.',
+    isPartOf: {
+      '@id': `${siteOrigin}#website`,
+    },
+    about: {
+      '@id': `${siteOrigin}#organization`,
+    },
+    mainEntity: {
+      '@id': `${homeUrl}#softwareapplication`,
+    },
+  },
+  {
+    '@type': 'SoftwareApplication',
+    '@id': `${homeUrl}#softwareapplication`,
+    name: 'Dataflow',
+    applicationCategory: 'BusinessApplication',
+    applicationSubCategory: 'Data Platform',
+    operatingSystem: 'Web',
+    url: homeUrl,
+    description:
+      'AI-ready data platform to build, orchestrate, and deploy data and ML workloads using tools like Airflow, Jupyter, and VS Code.',
+    offers: {
+      '@type': 'Offer',
+      url: `${siteOrigin}/pricing/`,
+      price: '0',
+      priceCurrency: 'USD',
+      availability: 'https://schema.org/InStock',
+    },
+    publisher: {
+      '@id': `${siteOrigin}#organization`,
+    },
+  },
+]
 ---
 
 <Layout
   title={seo?.title ?? 'Dataflow | AI-Ready Data Platform for Startups & Teams'}
   meta_description={seo?.description ?? 'Build, run & deploy data pipelines, ML models and Streamlit apps without DevOps. Jupyter, Airflow & VS Code in one managed Python platform. Free trial.'}
+  pageSchema={pageSchema}
 >
   <HeroSection hero={hero} />
   <GPUSection />

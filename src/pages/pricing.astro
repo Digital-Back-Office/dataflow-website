@@ -16,20 +16,49 @@ const { data: All_in_one_solution_data } = await getEntry(
   'all-in-one-solution'
 )
 const siteOrigin = (Astro.site?.toString() ?? 'https://dataflow.zone').replace(/\/$/, '')
-const pricingUrl = new URL(Astro.url.pathname, `${siteOrigin}/`).toString()
+const normalizedPath = Astro.url.pathname === '/' ? '/' : `${Astro.url.pathname.replace(/\/+$/, '')}/`
+const pricingUrl = new URL(normalizedPath, `${siteOrigin}/`).toString()
 const faqContent = FAQContent as unknown as {
   faqs: Array<{ question: string; answer: string }>
 }
 
 const pageSchema = [
   {
+    '@type': 'WebPage',
+    '@id': `${pricingUrl}#webpage`,
+    url: pricingUrl,
+    name: 'Dataflow Pricing | Free, Startup & Enterprise Plans',
+    description:
+      'Start free, no credit card needed. Compare Dataflow plans for startups and enterprise teams.',
+    isPartOf: {
+      '@id': `${siteOrigin}#website`,
+    },
+    about: {
+      '@id': `${siteOrigin}#organization`,
+    },
+    breadcrumb: {
+      '@id': `${pricingUrl}#breadcrumb`,
+    },
+    mainEntity: {
+      '@id': `${pricingUrl}#softwareapplication`,
+    },
+  },
+  {
     '@type': 'SoftwareApplication',
     '@id': `${pricingUrl}#softwareapplication`,
     name: 'Dataflow',
     applicationCategory: 'BusinessApplication',
+    applicationSubCategory: 'Data Platform',
     operatingSystem: 'Web',
     url: pricingUrl,
     description: 'Flexible pricing for startups and data teams with AI-ready data workflows.',
+    offers: {
+      '@type': 'Offer',
+      url: pricingUrl,
+      price: '0',
+      priceCurrency: 'USD',
+      availability: 'https://schema.org/InStock',
+    },
     publisher: {
       '@id': `${siteOrigin}#organization`,
     },

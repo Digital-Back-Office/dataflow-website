@@ -1,68 +1,26 @@
 ---
-import Footer from '../components/common/Footer.astro'
-import Header from '../components/common/Header.astro'
+import Layout from "./Layout.astro";
 
-// import '../styles/global.css'
 export interface Props {
-  title?: string
+  title?: string;
+  meta_description?: string;
+  ogImage?: string;
+  pageSchema?: Record<string, unknown> | Array<Record<string, unknown>>;
 }
 
-const { title = 'AI ready data platform' } = Astro.props
+const {
+  title = "AI-ready data platform blog",
+  meta_description = "Read practical insights on data engineering, AI, and modern data workflows from Dataflow.",
+  ogImage,
+  pageSchema,
+} = Astro.props;
 ---
 
-<script src='/src/scripts/cookie-consent.js'></script>
-<!-- <script src="/src/scripts/chat-bot.js"></script> -->
-<html lang='en' data-bs-theme='light'>
-  <head>
-    <script is:inline> (function(ss,ex){ window.ldfdr=window.ldfdr||function(){(ldfdr._q=ldfdr._q||[]).push([].slice.call(arguments));}; (function(d,s){ fs=d.getElementsByTagName(s)[0]; function ce(src){ var cs=d.createElement(s); cs.src=src; cs.async=1; fs.parentNode.insertBefore(cs,fs); }; ce('https://sc.lfeeder.com/lftracker_v1_'+ss+(ex?'_'+ex:'')+'.js'); })(document,'script'); })('ywVkO4XmYXdaZ6Bj'); </script>
-    <!-- Google tag (gtag.js) -->
-    <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-D5Y7ZFCM96"></script>
-    <script is:inline>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-D5Y7ZFCM96');
-    </script>
-    <script is:inline src="https://t.contentsquare.net/uxa/96d450d7e9094.js"></script>
-    <meta charset='UTF-8' />
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel='icon' type='image/x-icon' href='/favicon.webp' />
-    <!-- AOS Animations -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
-    
-    <!-- Import Google fonts -->
-    <link rel='preconnect' href='https://fonts.googleapis.com' />
-    <link rel='preconnect' href='https://fonts.gstatic.com' crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Helvetica+Neue:wght@400;700&family=Roboto:wght@400;700&family=Arimo:wght@400;700&display=swap"
-      rel="stylesheet"
-    />
-
-    <title>{title}</title>
-    <!-- Open Graph Meta Tags -->
-    <meta property='og:title' content='AI ready data platform' />
-    <meta
-      property='og:description'
-      content='AI ready data platform in less than 30 minutes'
-    />
-    <meta property='og:image' content='https://dataflow.zone/og-image.webp' />
-    <meta property='og:url' content='https://dataflow.zone' />
-    <meta property='og:type' content='website' />
-    <meta property='og:site_name' content='dataflow.zone' />
-  </head>
-  <body id='body'>
-    <Header />
-    <div class=''>
-      <slot />
-    </div>
-    <Footer />
-    <script is:inline>
-      document.addEventListener('DOMContentLoaded', () => {
-        if (window.AOS) {
-          AOS.init();
-        }
-      });
-    </script>
-  </body>
-</html>
+<Layout
+  title={title}
+  meta_description={meta_description}
+  ogImage={ogImage}
+  pageSchema={pageSchema}
+>
+  <slot />
+</Layout>

@@ -21,6 +21,9 @@ const formId = import.meta.env.PUBLIC_GOOGLE_FORM_ID || '1FAIpQLSeGjuyA_jjDmmT4j
         <p class='text-xl text-gray-600 max-w-2xl mx-auto'>
           {data.description}
         </p>
+        <p class='text-sm text-gray-500 max-w-3xl mx-auto mt-4'>
+          Looking to evaluate plans first? Visit <a href='/pricing' title='View pricing plans' class='text-primary hover:text-primaryHover underline underline-offset-2'>Pricing</a>, explore real implementations in the <a href='/blog' title='Read implementation examples in the blog' class='text-primary hover:text-primaryHover underline underline-offset-2'>Blog</a>, or book a tailored walkthrough on the <a href='/book-demo' title='Book a tailored demo' class='text-primary hover:text-primaryHover underline underline-offset-2'>Demo page</a>.
+        </p>
       </div>
 
       <div class='grid lg:grid-cols-2 gap-16 items-start'>
@@ -37,7 +40,7 @@ const formId = import.meta.env.PUBLIC_GOOGLE_FORM_ID || '1FAIpQLSeGjuyA_jjDmmT4j
                 </div>
                 <div>
                   <h3 class='font-semibold text-gray-900 mb-1'>Email Us</h3>
-                  <a href='mailto:support%40dataflow.zone' title='Email Dataflow support' class='text-primary hover:text-primaryHover transition-colors' set:html={'support&#64;dataflow&#46;zone'}></a>
+                  <a href='mailto:support%40dataflow.zone' title='Email Dataflow support' class='text-primary hover:text-primaryHover transition-colors'>support@dataflow.zone</a>
                 </div>
               </div>
 
@@ -159,6 +162,7 @@ const formId = import.meta.env.PUBLIC_GOOGLE_FORM_ID || '1FAIpQLSeGjuyA_jjDmmT4j
                   {data.form.terms}
                   <a
                     href='/legal/terms-and-conditions'
+                    title='Read terms and conditions'
                     class='text-primary hover:text-primaryHover underline underline-offset-2'
                   >
                     {data.form.link}

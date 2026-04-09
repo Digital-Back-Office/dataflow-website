@@ -16,7 +16,7 @@ Key principles:
 - Use the exact development environment in production: [Shared foundation](https://dataflow.zone/product/shared-foundation)
 - Reuse managed environments across VS Code, Jupyter, and Airflow: [Managed dependencies](https://dataflow.zone/product/managed-dependencies)
 - Configure connections and secrets centrally: [Connections docs](https://docs.dataflow.zone/workspace/studio/connections/)
-- Deploy apps and DAGs with a click: [Deploy in one click](https://dataflow.zone/product/deploy-in-one-click)
+- Deploy apps and DAGs with a click: [Deploy to production](https://dataflow.zone/product/deploy-to-production)
 
 Example flow:
 

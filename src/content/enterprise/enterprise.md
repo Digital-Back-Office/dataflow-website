@@ -1,4 +1,8 @@
 ---
+seo:
+  title: "Enterprise Data Platform | Secure, Scalable & Governed | Dataflow"
+  description: "Built for enterprise data teams. RBAC permissions, audit logs, SSO, dedicated support and scalable GPU compute. Get a custom demo for your organisation."
+
 top_section:
   title: "Scale Your Data Operations with Total Control"
   description: "The unified data operating system designed for the enterprise. Enforce governance, manage costs, and secure your data stack with granular controls and bank-grade compliance."

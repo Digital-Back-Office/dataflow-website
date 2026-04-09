@@ -16,9 +16,51 @@ const {
   faq,
   final_cta: finalCta
 } = data
+
+const pageSchema = [
+  {
+    '@type': 'WebPage',
+    '@id': 'https://dataflow.zone/free-credits#webpage',
+    url: 'https://dataflow.zone/free-credits',
+    name: 'Free Credits for Data Teams | Dataflow',
+    description:
+      'Apply for Dataflow free credits to run AI, ML, and data workflows without upfront infrastructure costs.',
+    isPartOf: {
+      '@id': 'https://dataflow.zone#website'
+    },
+    about: {
+      '@id': 'https://dataflow.zone#organization'
+    },
+    breadcrumb: {
+      '@id': 'https://dataflow.zone/free-credits#breadcrumb'
+    },
+    mainEntity: {
+      '@id': 'https://dataflow.zone/free-credits#faq'
+    }
+  },
+  {
+    '@type': 'FAQPage',
+    '@id': 'https://dataflow.zone/free-credits#faq',
+    mainEntityOfPage: {
+      '@id': 'https://dataflow.zone/free-credits#webpage'
+    },
+    mainEntity: faq.items.map((item: { q: string; a: string }) => ({
+      '@type': 'Question',
+      name: item.q,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: item.a
+      }
+    }))
+  }
+]
 ---
 
-<Layout title={meta.title}>
+<Layout
+  title='Free Credits for Data Teams | Dataflow'
+  meta_description='Apply for Dataflow free credits to run AI, ML, and data workflows without upfront infrastructure costs.'
+  pageSchema={pageSchema}
+>
   <section class='relative bg-[#0d1f1f] text-white overflow-hidden'>
     <div class='absolute inset-0 opacity-30'>
       <div class='absolute -top-20 -left-10 size-72 rounded-full bg-primary/40 blur-3xl'></div>
@@ -43,6 +85,8 @@ const {
           <div class='flex flex-wrap gap-3'>
             <a
               href={hero.primary_cta.href}
+              title={hero.primary_cta.label}
+              aria-label={hero.primary_cta.label}
               class='px-8 py-4 rounded-lg bg-primary text-white font-semibold shadow-lg hover:bg-primaryHover transition'
             >
               {hero.primary_cta.label}
@@ -107,7 +151,7 @@ const {
           <div class='absolute -top-6 -right-2 hidden lg:block z-10'>
             <div class='rounded-2xl bg-gradient-to-br from-[#d9fbfb] via-[#f7fbfb] to-[#d9fbfb]  px-4 py-3 border border-primary/10 text-textPrimary text-sm shadow-[0_12px_26px_rgba(48,186,186,0.1)]'>
               <p class='font-semibold text-textDarker'>{hero.limited_time.title}</p>
-              <a href="#apply" class='text-primary cursor-pointer hover:underline hover:text-primaryHover transition'>{hero.limited_time.subtitle}</a>
+              <a href="#apply" title='Apply for free credits' aria-label='Apply for free credits' class='text-primary cursor-pointer hover:underline hover:text-primaryHover transition'>{hero.limited_time.subtitle}</a>
             </div>
           </div>
         </div>
@@ -195,6 +239,9 @@ const {
         <a
           href={referral.cta.href}
           target="_blank"
+          rel='noopener noreferrer'
+          title={referral.cta.label}
+          aria-label={`${referral.cta.label} (opens in a new tab)`}
           class='inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-primary text-white font-semibold shadow-lg hover:bg-primaryHover transition'
         >
           {referral.cta.label}
@@ -250,10 +297,16 @@ const {
           {finalCta.description}
         </p>
         <div class='flex flex-wrap justify-center gap-4 mt-8'>
-          <a href={finalCta.primary_cta.href} class='px-8 py-4 rounded-lg bg-primary text-white font-semibold shadow-lg'>
+          <a href={finalCta.primary_cta.href} title={finalCta.primary_cta.label} aria-label={finalCta.primary_cta.label} class='px-8 py-4 rounded-lg bg-primary text-white font-semibold shadow-lg'>
             {finalCta.primary_cta.label}
           </a>
         </div>
+        <p class='text-sm text-textPrimary/70 mt-6'>
+          Explore
+          <a href='/pricing' title='View Dataflow pricing plans' class='text-primary hover:underline ml-1'>pricing</a>,
+          <a href='/book-demo' title='Book a Dataflow demo' class='text-primary hover:underline ml-1'>book a demo</a>, or
+          <a href='/blog' title='Read Dataflow technical guides' class='text-primary hover:underline ml-1'>read technical guides</a>.
+        </p>
       </div>
     </div>
   </section>

@@ -1,4 +1,8 @@
 ---
+seo:
+  title: "Deploy Notebooks & Streamlit Apps to Production in One Click | Dataflow"
+  description: "Turn Jupyter notebooks into live APIs and Streamlit apps into shareable URLs no Dockerfiles, no CI/CD setup. Ship data apps in minutes, not days."
+
 top_section:
   title: "Deploy Apps to Production"
   description: Move from development to production seamlessly. No environment drift, no missing dependencies, no surprises.

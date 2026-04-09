@@ -15,7 +15,7 @@ Here’s a detailed look at how Dataflow stacks up against the competition, high
 |:---|:---|:---|:---|:---|:---|
 | [**Collaboration**](/product/shared-foundation) | High (live share) | High (notebook co-edit) | Medium (collab notebooks) | Low (dev-team only) | High (real-time) |
 | [**Reproducibility**](/product/managed-dependencies) | High (containerized env) | Medium (commit history) | High (notebook revision) | Medium (workflow versioning) | High (continuous versioning) |
-| [**Orchestration**](/product/deploy-in-one-click) | Native Airflow, MLflow | No built-in scheduler | Spark jobs, MLflow | High (workflow engine) | None (manual tasks) |
+| [**Orchestration**](/product/deploy-to-production) | Native Airflow, MLflow | No built-in scheduler | Spark jobs, MLflow | High (workflow engine) | None (manual tasks) |
 | [**Security/Compliance**](/solutions/enterprise) | Enterprise-grade (SSO, audit) | Medium (cloud auth) | Enterprise (on AWS/Azure) | Medium | Medium (compliance) |
 | **Multi-language** | Python | Python/R | Python/Scala/SQL | Python/YAML | Multiple (R/Julia/Sage) |
 | [**Pricing Model**](/pricing) | Per-user + usage | Subscription/Freemium | Compute-based | Open source/Enterprise | Project-based |

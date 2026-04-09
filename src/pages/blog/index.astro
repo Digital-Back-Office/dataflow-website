@@ -44,11 +44,77 @@ const allBlogsJson = JSON.stringify(allBlogs.map(blog => ({
   image: blog.data.image,
   tags: blog.data.tags || [],
 })));
+const siteOrigin = (Astro.site?.toString() ?? "https://dataflow.zone").replace(/\/$/, "");
+const blogIndexUrl = new URL(Astro.url.pathname, `${siteOrigin}/`).toString();
+const blogId = `${siteOrigin}/blog#blog`;
+const collectionPageId = `${blogIndexUrl}#collectionpage`;
+const itemListId = `${blogIndexUrl}#itemlist`;
+
+const pageSchema = [
+  {
+    "@type": "WebPage",
+    "@id": `${blogIndexUrl}#webpage`,
+    url: blogIndexUrl,
+    name: "Dataflow Blog",
+    description: "Insights on data science, AI and ML in data, and startup growth.",
+    isPartOf: {
+      "@id": `${siteOrigin}#website`,
+    },
+    about: {
+      "@id": `${siteOrigin}#organization`,
+    },
+    mainEntity: {
+      "@id": collectionPageId,
+    },
+    breadcrumb: {
+      "@id": `${blogIndexUrl}#breadcrumb`,
+    },
+  },
+  {
+    "@type": "Blog",
+    "@id": blogId,
+    url: blogIndexUrl,
+    name: "Dataflow Blog",
+    description: "Insights on data science, AI and ML in data, and startup growth.",
+    publisher: {
+      "@id": `${siteOrigin}#organization`,
+    },
+    blogPost: allBlogs.map((post) => ({
+      "@id": `${siteOrigin}/blog/${post.slug}#blogposting`,
+    })),
+  },
+  {
+    "@type": "CollectionPage",
+    "@id": collectionPageId,
+    url: blogIndexUrl,
+    name: "Dataflow Blog",
+    description: "Insights on data science, AI and ML in data, and startup growth.",
+    isPartOf: {
+      "@id": blogId,
+    },
+    mainEntity: {
+      "@id": itemListId,
+    },
+  },
+  {
+    "@type": "ItemList",
+    "@id": itemListId,
+    itemListOrder: "https://schema.org/ItemListOrderDescending",
+    numberOfItems: allBlogs.length,
+    itemListElement: allBlogs.map((post, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      url: `${siteOrigin}/blog/${post.slug}`,
+      name: post.data.title,
+    })),
+  },
+];
 ---
 
 <Layout
-  title="Dataflow Blog: Data Science, AI & Startups"
-  meta_description="Insights on data science, AI and ML in data, and startup growth. Practical guides and trends from Dataflow experts."
+  title="Dataflow Blog | Data Engineering Tutorials & Insights"
+  meta_description="Practical tutorials on Python environments, Apache Airflow, Streamlit deployment, ETL pipelines and GenAI engineering. Written for data engineers and ML teams."
+  pageSchema={pageSchema}
 >
   <!-- Main Content -->
   <div class="px-[10%] mt-20 max-sm:px-[20px] pt-16 pb-24 max-sm:pt-12 max-sm:pb-16">
@@ -58,7 +124,7 @@ const allBlogsJson = JSON.stringify(allBlogs.map(blog => ({
       data-aos="fade-up" data-aos-duration="100"
     >
       <!-- Tabs -->
-      <div class="flex-1 max-sm:w-full" data-aos="fade-up" data-aos-delay="100">
+      <div class="flex-1 max-sm:w-full" data-aos="fade-up" data-aos-delay="50">
         <nav
           id="category-tabs"
           class="flex items-center gap-6 overflow-x-auto max-w-full scrollbar-hide max-sm:gap-4 scrolling-touch"
@@ -133,6 +199,7 @@ const allBlogsJson = JSON.stringify(allBlogs.map(blog => ({
                 <img
                   src={post.data.image}
                   alt={post.data.title}
+                  loading="lazy"
                   class="w-full h-56 object-cover group-hover:scale-[1.015] transition-transform duration-300"
                 />
               </a>
@@ -169,6 +236,7 @@ const allBlogsJson = JSON.stringify(allBlogs.map(blog => ({
                 class="inline-flex items-center text-primary font-semibold text-sm hover:gap-2 transition-all group/link"
               >
                 Read More
+                <span class='sr-only'>about {post.data.title}</span>
                 <svg
                   class="w-4 h-4 ml-1 group-hover/link:translate-x-1 transition-transform"
                   fill="none"

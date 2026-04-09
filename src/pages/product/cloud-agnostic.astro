@@ -10,6 +10,7 @@ import Section from '../../components/features/run-data-on-any-cloud/Section.ast
 
 const Data = await getEntry('features', 'run-data-on-any-cloud')
 const top = Data?.data?.top_section || {}
+const seo = Data?.data?.seo
 const data = Data?.data?.cloud_providers || {}
 const cloud_providers = data?.cloud_providers || []
 const companyLogos = top?.company_logos || {}
@@ -19,8 +20,8 @@ const meta_description = top.description ?? 'Upgrade your data management and pr
 ---
 
 <Layout
-  title='Cloud Agnostic Platform | Deploy on Any Cloud'
-  meta_description={meta_description}
+  title={seo?.title ?? 'Run Your Data Platform on Any Cloud | AWS, GCP or Azure | Dataflow'}
+  meta_description={seo?.description ?? 'No vendor lock-in. Deploy Dataflow on AWS, Google Cloud or Azure. Portable Python environments and pipelines that move with you across cloud providers.'}
 >
   <TopSection
     title={top.title}
@@ -73,4 +74,9 @@ const meta_description = top.description ?? 'Upgrade your data management and pr
     ))
   }
   <PrivateCloud />
+  <section class='px-[5%] pb-16 bg-white'>
+    <div class='max-w-5xl mx-auto text-center text-sm text-gray-600'>
+      Combine cloud flexibility with <a href='/product/shared-foundation' title='Explore shared foundation' class='text-primary hover:text-primaryHover underline underline-offset-2'>Shared Foundation</a> and <a href='/product/deploy-to-production' title='Explore deploy to production' class='text-primary hover:text-primaryHover underline underline-offset-2'>Deploy to Production</a>, compare plans on <a href='/pricing' title='Compare pricing plans' class='text-primary hover:text-primaryHover underline underline-offset-2'>Pricing</a>, or <a href='/book-demo' title='Book a cloud architecture demo' class='text-primary hover:text-primaryHover underline underline-offset-2'>Book a Demo</a> for architecture guidance.
+    </div>
+  </section>
 </Layout>

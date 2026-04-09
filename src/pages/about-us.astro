@@ -6,11 +6,15 @@ import Layout from '../layouts/Layout.astro'
 import JoinTeam from '../components/company/JoinTeam.astro'
 import YourJourney from '../components/company/YourJourney.astro'
 import SupportedBy from '../components/common/SupportedBy.astro'
+import { getEntry } from 'astro:content'
+
+const companyData = await getEntry('company', 'company')
+const seo = companyData?.data?.seo
 ---
 
 <Layout
-  title='About Dataflow | Modern Data Platform Company'
-  meta_description='Learn how Dataflow helps data teams and startups deliver trusted data and AI outcomes with a modern, scalable platform.'
+  title={seo?.title ?? 'About Dataflow | Built by Data Engineers, for Data Engineers'}
+  meta_description={seo?.description ?? "Dataflow was founded in 2023 to give engineers their time back. Learn about our mission, team and why we're building the OS for modern data teams."}
 >
   <TopSection />
   <OurJourney />
@@ -18,4 +22,9 @@ import SupportedBy from '../components/common/SupportedBy.astro'
   <JoinTeam />
   <YourJourney />
   <SupportedBy />
+  <section class='px-[5%] pb-20'>
+    <div class='max-w-5xl mx-auto text-center text-sm text-gray-600'>
+      Explore what we build on <a href='/product/deploy-to-production' title='Learn about deployment to production' class='text-primary hover:text-primaryHover underline underline-offset-2'>Deploy to Production</a>, see plans on <a href='/pricing' title='View pricing plans' class='text-primary hover:text-primaryHover underline underline-offset-2'>Pricing</a>, read engineering insights on the <a href='/blog' title='Read the Dataflow blog' class='text-primary hover:text-primaryHover underline underline-offset-2'>Blog</a>, or <a href='/contact-us' title='Contact Dataflow' class='text-primary hover:text-primaryHover underline underline-offset-2'>Contact us</a> for collaboration.
+    </div>
+  </section>
 </Layout>

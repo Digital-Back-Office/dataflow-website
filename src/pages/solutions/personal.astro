@@ -8,12 +8,16 @@ import CTASection from '../../components/common/CTASection.astro'
 
 const Data = await getEntry('personal', 'personal')
 const top = Data?.data?.top_section || {}
+const seo = Data?.data?.seo
 const meta_description = top.description ?? 'Personal Data Platform'
 const sections = Data?.data?.sections || []
 const cta = Data?.data?.cta_section || {}
 ---
 
-<Layout title={`Personal Data Platform | For Individual Projects`} meta_description={meta_description}>
+<Layout
+	title={seo?.title ?? 'Free Data Science Platform | Learn, Build & Experiment | Dataflow'}
+	meta_description={seo?.description ?? 'Get a free Jupyter notebook environment with Airflow, Streamlit and MLflow - no credit card, no setup. Perfect for learning data engineering and side projects.'}
+>
 	<TopSection
 		title={top.title}
 		description={top.description}
@@ -43,4 +47,9 @@ const cta = Data?.data?.cta_section || {}
 		pageSource="personal-cta"
 		note={cta.note}
 	/>
+	<section class='px-[5%] pb-16 bg-white'>
+		<div class='max-w-5xl mx-auto text-center text-sm text-gray-600'>
+			Want to go deeper? See <a href='/product/managed-dependencies' title='Explore managed dependencies' class='text-primary hover:text-primaryHover underline underline-offset-2'>Managed Dependencies</a>, learn how to ship faster with <a href='/product/deploy-to-production' title='Explore deploy to production' class='text-primary hover:text-primaryHover underline underline-offset-2'>Deploy to Production</a>, read practical guides in the <a href='/blog' title='Read practical guides in the blog' class='text-primary hover:text-primaryHover underline underline-offset-2'>Blog</a>, or compare plans on <a href='/pricing' title='Compare personal and team plans' class='text-primary hover:text-primaryHover underline underline-offset-2'>Pricing</a>.
+		</div>
+	</section>
 </Layout>

@@ -3,7 +3,7 @@
 import { getEntry } from "astro:content";
 import Footer from "../components/common/Footer.astro";
 import Header from "../components/common/Header.astro";
-import CreditsNotificationBanner from "../components/common/CreditsNotificationBanner.jsx";
+import CreditsNotificationBanner from "../components/common/CreditsNotificationBanner.astro";
 import "../styles/global.css";
 
 interface Props {
@@ -11,6 +11,9 @@ interface Props {
   header?: boolean;
   meta_description?: string;
   ogImage?: string;
+  pageSchema?: Record<string, unknown> | Array<Record<string, unknown>>;
+  noindex?: boolean;
+  canonicalPath?: string;
 }
 
 const {
@@ -18,6 +21,9 @@ const {
   header = true,
   meta_description,
   ogImage,
+  pageSchema,
+  noindex = false,
+  canonicalPath,
 } = Astro.props;
 
 const baseTitle = "Dataflow | AI-Ready Data Platform for Startups and Teams";
@@ -30,12 +36,26 @@ const pageTitle = resolvedTitle;
 const appUrl = (import.meta.env.PUBLIC_APP_URL ?? 'https://app.dataflow.zone').replace(/\/$/, '');
 
 const defaultMetaDescription = "Dataflow is the AI-ready data platform that unifies Airflow, VS Code, and cloud deploys for faster, reliable data teams.";
-const metaDescription = meta_description && meta_description.length >= 120 && meta_description.length <= 130
-  ? meta_description
+// SEO: Keep descriptions concise and valid for search snippets while allowing natural copy.
+const normalizedMetaDescription = meta_description?.trim();
+const metaDescription = normalizedMetaDescription && normalizedMetaDescription.length <= 160
+  ? normalizedMetaDescription
   : defaultMetaDescription;
 
-const siteUrl = Astro.site?.toString() ?? "https://dataflow.zone";
-const canonicalUrl = new URL(Astro.url.pathname, siteUrl).toString();
+const siteOrigin = (Astro.site?.toString() ?? "https://dataflow.zone").replace(/\/$/, "");
+const assetUrl = (pathname: string) => new URL(pathname.replace(/^\/+/, ""), `${siteOrigin}/`).toString();
+const normalizedPath = Astro.url.pathname === "/" ? "/" : Astro.url.pathname.replace(/\/+$/, "");
+const normalizeCanonicalPath = (pathname: string) => {
+  const trimmed = pathname.trim();
+  if (!trimmed || trimmed === "/") {
+    return "/";
+  }
+
+  const withLeadingSlash = trimmed.startsWith("/") ? trimmed : `/${trimmed}`;
+  return `${withLeadingSlash.replace(/\/+$/, "")}/`;
+};
+const resolvedCanonicalPath = normalizeCanonicalPath(canonicalPath ?? normalizedPath);
+const canonicalUrl = new URL(resolvedCanonicalPath, `${siteOrigin}/`).toString();
 
 
 const headerFooter = await getEntry("common", "header-footer");
@@ -44,28 +64,176 @@ const socialUrls = socialLinks.map((link: { url?: string }) => link.url).filter(
 const xProfile = socialUrls.find((url: string) => url.includes("x.com") || url.includes("twitter.com"));
 const twitterHandle = xProfile ? `@${xProfile.split("/").filter(Boolean).pop()}` : "@dataflow_zone";
 
+// JSON-LD: Always emit one Organization entity across the site.
+const organizationSchema: Record<string, unknown> = {
+  "@type": "Organization",
+  "@id": `${siteOrigin}#organization`,
+  name: "Dataflow",
+  url: `${siteOrigin}/`,
+  logo: assetUrl('/assets/images/dataflow-logo-green.svg'),
+  sameAs: socialUrls,
+};
+
+// JSON-LD: Global WebSite entity for all pages; search action intentionally omitted because
+// there is no indexable server-side search URL yet.
+const websiteSchema: Record<string, unknown> = {
+  "@type": "WebSite",
+  "@id": `${siteOrigin}#website`,
+  url: `${siteOrigin}/`,
+  name: "Dataflow",
+  publisher: {
+    "@id": `${siteOrigin}#organization`,
+  },
+};
+
+const slugToTitle = (path: string) =>
+  path
+    .split("/")
+    .filter(Boolean)
+    .pop()
+    ?.split("-")
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(" ") ?? "";
+
+const segmentLabelMap: Record<string, string> = {
+  "about-us": "About Us",
+  "contact-us": "Contact Us",
+  "book-demo": "Book Demo",
+  "get-started": "Get Started",
+  "start-free-trial": "Start Free Trial",
+  "free-credits": "Free Credits",
+  "startups-smes": "Startups & SMEs",
+};
+
+const toSegmentLabel = (segment: string) => segmentLabelMap[segment] ?? slugToTitle(`/${segment}`);
+
+const path = normalizedPath;
+const pathSegments = path.split("/").filter(Boolean);
+const pageType = path === "/"
+  ? "WebPage"
+  : path === "/about-us"
+    ? "AboutPage"
+    : path === "/contact-us"
+      ? "ContactPage"
+      : path === "/blog"
+        ? "CollectionPage"
+        : "WebPage";
+
+// JSON-LD: Default page schema used when a page does not provide custom pageSchema.
+const breadcrumbSchema: Record<string, unknown> | null = pathSegments.length > 0
+  ? {
+      "@type": "BreadcrumbList",
+      "@id": `${canonicalUrl}#breadcrumb`,
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Home",
+          item: `${siteOrigin}/`,
+        },
+        ...pathSegments.map((segment, index) => {
+          const cumulativePath = `/${pathSegments.slice(0, index + 1).join("/")}`;
+          return {
+            "@type": "ListItem",
+            position: index + 2,
+            name: toSegmentLabel(segment),
+            item: new URL(cumulativePath, `${siteOrigin}/`).toString(),
+          };
+        }),
+      ],
+    }
+  : null;
+
+const defaultPageSchema: Array<Record<string, unknown>> = [
+  {
+    "@type": pageType,
+    "@id": `${canonicalUrl}#webpage`,
+    url: canonicalUrl,
+    name: pageTitle,
+    description: metaDescription,
+    isPartOf: {
+      "@id": `${siteOrigin}#website`,
+    },
+    about: {
+      "@id": `${siteOrigin}#organization`,
+    },
+    ...(breadcrumbSchema
+      ? {
+          breadcrumb: {
+            "@id": `${canonicalUrl}#breadcrumb`,
+          },
+        }
+      : {}),
+  },
+];
+
+if (path.startsWith("/solutions/")) {
+  // JSON-LD: Solutions pages expose Service schema aligned to visible service-led content.
+  defaultPageSchema.push({
+    "@type": "Service",
+    "@id": `${canonicalUrl}#service`,
+    name: `${slugToTitle(path)} Solution`,
+    serviceType: "Data Platform Service",
+    provider: {
+      "@id": `${siteOrigin}#organization`,
+    },
+    url: canonicalUrl,
+    description: metaDescription,
+    areaServed: "Worldwide",
+  });
+}
+
+if (path.startsWith("/product/")) {
+  // JSON-LD: Product pages include truthful Product schema without fabricated offer/review data.
+  defaultPageSchema.push({
+    "@type": "Product",
+    "@id": `${canonicalUrl}#product`,
+    name: slugToTitle(path),
+    brand: {
+      "@id": `${siteOrigin}#organization`,
+    },
+    description: metaDescription,
+    url: canonicalUrl,
+    category: "Data Platform",
+  });
+}
+
+if (path === "/contact-us") {
+  // JSON-LD: Contact page includes LocalBusiness with visible contact channel.
+  defaultPageSchema.push({
+    "@type": "LocalBusiness",
+    "@id": `${siteOrigin}#localbusiness`,
+    name: "Dataflow",
+    url: `${siteOrigin}/`,
+    email: "support@dataflow.zone",
+    areaServed: "Worldwide",
+    contactPoint: {
+      "@type": "ContactPoint",
+      contactType: "customer support",
+      email: "support@dataflow.zone",
+      availableLanguage: ["English"],
+    },
+    parentOrganization: {
+      "@id": `${siteOrigin}#organization`,
+    },
+  });
+}
+
+const customPageSchemas = Array.isArray(pageSchema)
+  ? pageSchema
+  : pageSchema
+    ? [pageSchema]
+    : [];
+
+const pageSchemas = customPageSchemas.length > 0 ? customPageSchemas : defaultPageSchema;
+
 const structuredData = {
   "@context": "https://schema.org",
   "@graph": [
-    {
-      "@type": "Organization",
-      "@id": `${siteUrl}#organization`,
-      name: "Dataflow",
-      url: siteUrl,
-      logo: `${siteUrl}/assets/images/dataflow-logo-green.svg`,
-      sameAs: socialUrls,
-    },
-    {
-      "@type": "SoftwareApplication",
-      "@id": `${siteUrl}#software`,
-      name: "Dataflow",
-      url: siteUrl,
-      applicationCategory: "BusinessApplication",
-      operatingSystem: "Web",
-      publisher: {
-        "@id": `${siteUrl}#organization`,
-      },
-    },
+    organizationSchema,
+    websiteSchema,
+    ...pageSchemas,
+    ...(breadcrumbSchema ? [breadcrumbSchema] : []),
   ],
 };
 const structuredDataJson = JSON.stringify(structuredData);
@@ -75,8 +243,27 @@ const structuredDataJson = JSON.stringify(structuredData);
 <html lang="en">
   <head>
     <meta name="df:app-url" content={appUrl} />
-    <!-- Google tag (gtag.js) -->
-    <script is:inline> (function(ss,ex){ window.ldfdr=window.ldfdr||function(){(ldfdr._q=ldfdr._q||[]).push([].slice.call(arguments));}; (function(d,s){ fs=d.getElementsByTagName(s)[0]; function ce(src){ var cs=d.createElement(s); cs.src=src; cs.async=1; fs.parentNode.insertBefore(cs,fs); }; ce('https://sc.lfeeder.com/lftracker_v1_'+ss+(ex?'_'+ex:'')+'.js'); })(document,'script'); })('ywVkO4XmYXdaZ6Bj'); </script>
+    <script is:inline>
+      window.addEventListener("load", function () {
+        (function (ss, ex) {
+          window.ldfdr =
+            window.ldfdr ||
+            function () {
+              (ldfdr._q = ldfdr._q || []).push([].slice.call(arguments));
+            };
+          (function (d, s) {
+            var fs = d.getElementsByTagName(s)[0];
+            function ce(src) {
+              var cs = d.createElement(s);
+              cs.src = src;
+              cs.async = 1;
+              fs.parentNode.insertBefore(cs, fs);
+            }
+            ce("https://sc.lfeeder.com/lftracker_v1_" + ss + (ex ? "_" + ex : "") + ".js");
+          })(document, "script");
+        })("ywVkO4XmYXdaZ6Bj");
+      });
+    </script>
     <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-D5Y7ZFCM96"></script>
     <script is:inline>
       window.dataLayer = window.dataLayer || [];
@@ -86,8 +273,7 @@ const structuredDataJson = JSON.stringify(structuredData);
       gtag("js", new Date());
       gtag("config", "G-D5Y7ZFCM96");
     </script>
-    <script is:inline src="https://t.contentsquare.net/uxa/96d450d7e9094.js"
-    ></script>
+    <script is:inline async src="https://t.contentsquare.net/uxa/96d450d7e9094.js"></script>
     <!-- Google Tag Manager -->
     <script is:inline>
       (function (w, d, s, l, i) {
@@ -102,20 +288,29 @@ const structuredDataJson = JSON.stringify(structuredData);
       })(window, document, "script", "dataLayer", "GTM-5BH2ZJRZ");
     </script>
     <!-- End Google Tag Manager -->
-    <script src="/src/scripts/cookie-consent.js"></script>
     <meta charset="UTF-8" />
     <meta name="description" content={metaDescription} />
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" type="image/svg+xml" href="/favicon.png" />
     <link rel="canonical" href={canonicalUrl} />
     <link rel="alternate" href={canonicalUrl} hreflang="en" />
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
-
     <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/gh/orestbida/cookieconsent@3.0.1/dist/cookieconsent.css"
+      rel="preload"
+      href="/assets/css/aos.css"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
     />
+    <noscript><link href="/assets/css/aos.css" rel="stylesheet" /></noscript>
+    <script is:inline src="/assets/js/aos.js" defer></script>
+    <link
+      rel="preload"
+      href="/assets/css/cookieconsent.css"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
+    />
+    <noscript><link rel="stylesheet" href="/assets/css/cookieconsent.css" /></noscript>
+    <script src="/assets/js/cookie-consent.js" defer></script>
     <title>{pageTitle}</title>
 
     <!-- Open Graph Meta Tags -->
@@ -124,7 +319,7 @@ const structuredDataJson = JSON.stringify(structuredData);
       property="og:description"
       content={metaDescription}
     />
-    <meta property="og:image" content={ogImage ?? `${siteUrl}/og-image.png`} />
+    <meta property="og:image" content={ogImage ?? assetUrl('/og-image.png')} />
     <meta property="og:url" content={canonicalUrl} />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Dataflow" />
@@ -133,11 +328,11 @@ const structuredDataJson = JSON.stringify(structuredData);
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={pageTitle} />
     <meta name="twitter:description" content={metaDescription} />
-    <meta name="twitter:image" content={ogImage ?? `${siteUrl}/og-image.png`} />
+    <meta name="twitter:image" content={ogImage ?? assetUrl('/og-image.png')} />
     <meta name="twitter:site" content={twitterHandle} />
     <meta name="twitter:creator" content={twitterHandle} />
 
-    <script type="application/ld+json" set:html={structuredDataJson}></script>
+    <script is:inline type="application/ld+json" set:html={structuredDataJson}></script>
     <slot name="head" />
   </head>
   <body
@@ -148,25 +343,26 @@ const structuredDataJson = JSON.stringify(structuredData);
     height="0" width="0" class="gtm-noscript-iframe"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
     
-    <!-- Credits Notification Banner -->
-    <CreditsNotificationBanner client:load />
+    <CreditsNotificationBanner />
     
     {header && <Header pagename={title} />}
-    <slot />
+    <main id="main-content">
+      <slot />
+    </main>
     <Footer />
 
     <!-- Arcade Demo Modal -->
     <div
       id="arcadeModal"
-      class="hidden fixed inset-0 bg-black/60 backdrop-blur-sm z-[100] flex items-center justify-center p-4"
-      onclick="if(event.target.id === 'arcadeModal') this.classList.add('hidden')"
+      class="modal-hidden fixed inset-0 bg-black/60 backdrop-blur-sm z-[100] flex items-center justify-center p-4"
+      onclick="if(event.target.id === 'arcadeModal') this.classList.add('modal-hidden')"
     >
       <div
         class="relative bg-white rounded-2xl shadow-2xl max-w-6xl w-full max-h-[90vh] overflow-hidden"
         onclick="event.stopPropagation()"
       >
         <button
-          onclick="document.getElementById('arcadeModal').classList.add('hidden')"
+          onclick="document.getElementById('arcadeModal').classList.add('modal-hidden')"
           class="absolute top-4 right-4 z-10 w-10 h-10 bg-gray-900/80 hover:bg-gray-900 text-white rounded-full flex items-center justify-center transition-colors"
         >
           <svg
@@ -220,6 +416,12 @@ const structuredDataJson = JSON.stringify(structuredData);
         });
       });
     </script>
+
+    <style is:global>
+      .modal-hidden {
+        display: none;
+      }
+    </style>
 
     <!-- UTM Forwarding  -->
     <script is:inline>

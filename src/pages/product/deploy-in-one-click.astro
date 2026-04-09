@@ -8,6 +8,7 @@ import { getEntry } from 'astro:content'
 
 const Data = await getEntry('features', 'deploy-to-production')
 const top = Data?.data?.top_section || {}
+const seo = Data?.data?.seo
 const seamlessDeployment = Data?.data?.seamless_deployment || {}
 const productionParity = Data?.data?.production_parity || {}
 const managedSecrets = Data?.data?.managed_secrets_in_production || {}
@@ -15,8 +16,10 @@ const meta_description = top.description ?? 'Deploy applications to production s
 ---
 
 <Layout
-  title='Deploy in One Click | Fast Data Platform Launch'
-  meta_description={meta_description}
+  title={seo?.title ?? 'Deploy Notebooks & Streamlit Apps to Production in One Click | Dataflow'}
+  meta_description={seo?.description ?? 'Turn Jupyter notebooks into live APIs and Streamlit apps into shareable URLs no Dockerfiles, no CI/CD setup. Ship data apps in minutes, not days.'}
+  noindex={true}
+  canonicalPath='/product/deploy-to-production'
 >
   <TopSection
     title={top.title}
@@ -53,4 +56,9 @@ const meta_description = top.description ?? 'Deploy applications to production s
     features={managedSecrets.features}
     bg="white"
   />
+  <section class='px-[5%] pb-16 bg-white'>
+    <div class='max-w-5xl mx-auto text-center text-sm text-gray-600'>
+      Continue with <a href='/product/development-ready-workspace' title='Explore development-ready workspace' class='text-primary hover:text-primaryHover underline underline-offset-2'>Development-Ready Workspace</a> and <a href='/product/managed-dependencies' title='Explore managed dependencies' class='text-primary hover:text-primaryHover underline underline-offset-2'>Managed Dependencies</a>, review <a href='/pricing' title='Review pricing plans' class='text-primary hover:text-primaryHover underline underline-offset-2'>Pricing</a>, or get implementation help via <a href='/book-demo' title='Book an implementation demo' class='text-primary hover:text-primaryHover underline underline-offset-2'>Book Demo</a>.
+    </div>
+  </section>
 </Layout>

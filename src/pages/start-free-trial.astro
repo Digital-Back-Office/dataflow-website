@@ -1,0 +1,218 @@
+---
+import Layout from '../layouts/Layout.astro'
+import { getEntry } from 'astro:content'
+const Data = await getEntry('common', 'start-free-trail')
+const data = Data.data
+---
+
+<Layout
+  title='Start Free Trial | Dataflow Data Platform'
+  meta_description='Start a free Dataflow trial to build AI-ready data pipelines and workflows for your startup or data team.'
+>
+  <div
+    class='w-full min-h-screen bg-[#F8FAFC] flex justify-center max-sm:flex-col items-start py-20'
+  >
+    <div class='mt-[50px] max-sm:mt-0 max-sm:mb-6 max-sm:pl-8'>
+      <h1 class='text-9calc font-black mb-10 text-textblack'>
+        {data.title1}<br />{data.title2}
+      </h1>
+      <ul class='w-[85%] font-semibold tracking-wide list-none'>
+        <li class='text-base mb-4 text-textblack flex items-start gap-2'>
+          <span class='mt-[3px] max-sm:mt-[6px]'
+            ><img
+              src='/assets/images/check-box-icon.webp'
+              alt='Benefit checkmark'
+              width='20px'
+            /></span
+          >{data.description[0]}
+        </li>
+        <li class='text-base mb-4 text-textblack flex items-start gap-2'>
+          <span class='mt-[3px] max-sm:mt-[6px]'
+            ><img src='/assets/images/check-box-icon.webp' alt='Benefit checkmark' /></span
+          >{data.description[1]}
+        </li>
+        <li class='text-base mb-4 text-textblack flex items-start gap-2'>
+          <span class='mt-[3px] max-sm:mt-[6px]'
+            ><img src='/assets/images/check-box-icon.webp' alt='Benefit checkmark' /></span
+          >{data.description[2]}
+        </li>
+        <li class='text-base mb-4 text-textblack flex items-start gap-2'>
+          <span class='mt-[3px] max-sm:mt-[6px]'
+            ><img src='/assets/images/check-box-icon.webp' alt='point' /></span
+          >{data.description[3]}
+        </li>
+      </ul>
+    </div>
+    <div
+      class='flip-card w-[580px] max-sm:w-[90%] h-max ml-10 max-sm:ml-4 bg-white rounded-[30px] border-[#E0E0E0] border-[1px] p-8 max-sm:p-4 max-sm:py-6'
+    >
+      <div class='flip-card-inner w-full h-full'>
+        <div id='flip-card-front' class=''>
+          <form id='myForm' class='w-full lead-form'>
+            <div class='h-full w-full flex flex-col justify-evenly'>
+              <label class='text-base font-bold text-textblack'
+                >{data.form.label1}</label
+              >
+              <input
+                required
+                placeholder={data.form.placeholder1}
+                class='custom-input border-[1px] border-[#E0E0E0] rounded-lg h-10 p-2 placeholder:text-sm'
+                name='entry.1291198894'
+              />
+            </div>
+            <div class='h-full w-full flex flex-col justify-evenly'>
+              <label class='text-base font-bold text-textblack'
+                >{data.form.label2}</label
+              >
+              <input
+                required
+                type='email'
+                placeholder={data.form.placeholder2}
+                class='custom-input border-[1px] border-[#E0E0E0] rounded-lg h-10 p-2 placeholder:text-sm'
+                name='entry.59580764'
+              />
+            </div>
+            <div class='h-full w-full flex flex-col justify-evenly'>
+              <label class='text-base font-bold text-textblack'
+                >{data.form.label3}</label
+              >
+              <input
+                required
+                placeholder={data.form.placeholder3}
+                class='custom-input border-[1px] border-[#E0E0E0] rounded-lg h-10 p-2 placeholder:text-sm'
+                name='entry.1637227755'
+              />
+            </div>
+            <div class='h-full w-full flex flex-col justify-evenly'>
+              <label class='text-base font-bold text-textblack'
+                >{data.form.label4}</label
+              >
+              <select
+                required
+                id='option1'
+                class='custom-input border-[1px] border-[#E0E0E0] rounded-lg h-10 p-2 text-[14px] select-icon select-placeholder'
+                name='entry.1061557718'
+              >
+                <option value='' class='' disabled selected>Company Size</option
+                >
+                <option value='1-10'>1-10 employees</option>
+                <option value='11-50'>11-50 employees</option>
+                <option value='51-200'>51-200 employees</option>
+                <option value='201-500'>201-500 employees</option>
+                <option value='501-1000'>501-1000 employees</option>
+                <option value='1001-5000'>1001-5000 employees</option>
+                <option value='5001-10000'>5001-10,000 employees</option>
+                <option value='10001+'>10,001+ employees</option>
+              </select>
+            </div>
+            <div class='w-full flex flex-col justify-between'>
+              <label
+                class='text-base font-bold text-textblack'
+                >{data.form.label5}</label
+              >
+              <select
+                required
+                id='option2'
+                class='custom-input border-[1px] border-[#E0E0E0] rounded-lg h-10 p-2 text-[14px] select-icon select-placeholder'
+                name='entry.154861476'
+              >
+                <option value='' class='' disabled selected
+                  >{data.form.placeholder5}</option
+                >
+                <option value='search Engine'>Search Engine</option>
+                <option value='social Media'>Social Media</option>
+                <option value='referral'>Referral</option>
+                <option value='advertisement'>Advertisement</option>
+                <option value='other'>Other</option>
+              </select>
+            </div>
+            <div class='w-full h-32 flex flex-col justify-between mb-[15px]'>
+              <label class='text-base font-bold text-textblack'
+                >{data.form.label6}</label
+              >
+              <textarea
+                required
+                name='entry.1056515558'
+                placeholder={data.form.placeholder6}
+                class='custom-input border-[1px] border-[#E0E0E0] rounded-lg h-24 p-2 placeholder:text-sm resize-none mb-2.5'
+                rows='20'
+                cols='30'></textarea>
+            </div>
+            <input type='hidden' name='entry.664159867' value='Get Started' />
+            <button
+              type='submit'
+              class='bottom-0 bg-primary hover:bg-primaryHover w-full h-[50px] max-sm:h-[40px] justify-center duration-300 text-white font-bold rounded-lg shadow-md flex text-base items-center gap-x-2'
+            >
+              Get Started
+              <span class='sr-only'>with Dataflow</span>
+            </button>
+          </form>
+        </div>
+        <div class='mb-10 flip-card-back'>
+          <img src='/assets/images/circle-tick.svg' alt='Success checkmark' />
+          <p class='text-white text-calc font-bold text-center mt-7'>
+            Thank You
+          </p>
+          <p class='text-white text-xl text-center'>
+            Form Submitted Successfully. We will reach you shortly.
+          </p>
+          <button
+            id='submit-another-form'
+            class='text-white text-base text-center underline mt-5'
+            >Submit an another form</button
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+</Layout>
+
+<script type='module'>
+  document
+    .getElementById('myForm')
+    .addEventListener('submit', async function (event) {
+      event.preventDefault()
+
+      const formData = new FormData(this)
+      const url =
+        'https://docs.google.com/forms/u/0/d/e/1FAIpQLSeGjuyA_jjDmmT4jTY96s0CgCL_JKOJlNrTRqJ-9iqRmlEPKw/formResponse'
+
+      try {
+        const response = await fetch(url, {
+          method: 'POST',
+          mode: 'no-cors',
+          body: formData
+        })
+
+        // Add class to show the back of the card
+        document
+          .getElementById('flip-card-front')
+          .classList.add('flip-card-front')
+        document.querySelector('.flip-card-inner').classList.add('flipped')
+
+        // Display success message
+        let text = 'Form Submitted Successfully. We will reach you shortly.'
+        document.getElementById('result').innerHTML = text
+        document.getElementById('myForm').reset()
+      } catch (error) {
+        // Display error message
+        let text = 'Error in form Submission'
+        document.getElementById('result').style.color = 'red'
+        document.getElementById('result').innerHTML = text
+      }
+    })
+  document
+    .getElementById('submit-another-form')
+    .addEventListener('click', function () {
+      return location.reload() // Reload the page
+    })
+
+  document.getElementById('option1').addEventListener('change', function () {
+    this.classList.remove('select-placeholder')
+    this.classList.add('select-selected')
+  })
+  document.getElementById('option2').addEventListener('change', function () {
+    this.classList.remove('select-placeholder')
+    this.classList.add('select-selected')
+  })
+</script>

@@ -8,17 +8,51 @@ import SupportSection from '../components/pricing/SupportSection.astro'
 import { getEntry } from 'astro:content'
 import FAQs from '../components/pricing/FAQs.astro'
 import AdditionalSupport from '../components/pricing/AdditionalSupport.astro'
+import * as FAQContent from '../content/pricing/faq.mdx'
 
 const { data: Help_24_7_data } = await getEntry('pricing', '24-7-help')
 const { data: All_in_one_solution_data } = await getEntry(
   'pricing',
   'all-in-one-solution'
 )
+const siteOrigin = (Astro.site?.toString() ?? 'https://dataflow.zone').replace(/\/$/, '')
+const pricingUrl = new URL(Astro.url.pathname, `${siteOrigin}/`).toString()
+const faqContent = FAQContent as unknown as {
+  faqs: Array<{ question: string; answer: string }>
+}
+
+const pageSchema = [
+  {
+    '@type': 'SoftwareApplication',
+    '@id': `${pricingUrl}#softwareapplication`,
+    name: 'Dataflow',
+    applicationCategory: 'BusinessApplication',
+    operatingSystem: 'Web',
+    url: pricingUrl,
+    description: 'Flexible pricing for startups and data teams with AI-ready data workflows.',
+    publisher: {
+      '@id': `${siteOrigin}#organization`,
+    },
+  },
+  {
+    '@type': 'FAQPage',
+    '@id': `${pricingUrl}#faq`,
+    mainEntity: faqContent.faqs.map((faq) => ({
+      '@type': 'Question',
+      name: faq.question,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: faq.answer,
+      },
+    })),
+  },
+]
 ---
 
 <Layout
-  title='Pricing Plans | Dataflow AI-Ready Data Platform'
-  meta_description='Flexible pricing for startups and data teams. Choose a Dataflow plan built for reliable data science and AI workflows.'
+  title='Dataflow Pricing | Free, Startup & Enterprise Plans'
+  meta_description='Start free, no credit card needed. Compare Dataflow plans vs Astronomer, Prefect & Databricks. Affordable managed data platform for teams of any size.'
+  pageSchema={pageSchema}
 >
   <TopSection />
   <PricingConsulation />

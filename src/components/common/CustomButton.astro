@@ -10,6 +10,7 @@ interface Props {
     iconAlt?: string
     variant?: 'primary' | 'ghost' | 'outlined'
     className?: string
+    srText?: string
 }
 
 const {
@@ -23,7 +24,52 @@ const {
     variant = 'primary',
     className = '',
     onclick = undefined,
+    srText = undefined,
 } = Astro.props
+
+const normalizeLabel = (value: string) => value.replace(/[→↗↘»]+/g, '').trim()
+const normalizedLabel = normalizeLabel(label)
+const genericLabel = /^(learn more|get started|read more|view more|explore|contact us)$/i.test(normalizedLabel)
+
+const getDestinationText = () => {
+    if (!href) return 'about Dataflow'
+
+    if (href.startsWith('mailto:')) return 'to contact Dataflow'
+
+    if (href.startsWith('http')) {
+        try {
+            const url = new URL(href)
+            if (url.hostname.includes('app.dataflow.zone')) return 'in the Dataflow app'
+            if (url.hostname.includes('docs.dataflow.zone')) return 'in the Dataflow documentation'
+        } catch {
+            return 'about Dataflow'
+        }
+    }
+
+    const path = href.split('?')[0].replace(/\/+$/, '')
+    const routeMap: Record<string, string> = {
+        '/': 'about Dataflow',
+        '/apps': 'about supported Dataflow apps',
+        '/blog': 'about the Dataflow blog',
+        '/book-demo': 'to book a Dataflow demo',
+        '/contact-us': 'to contact Dataflow',
+        '/get-started': 'to get started with Dataflow',
+        '/pricing': 'about Dataflow pricing plans',
+        '/product/cloud-agnostic': 'about cloud-agnostic deployments',
+        '/product/deploy-in-one-click': 'about one-click deployment',
+        '/product/deploy-to-production': 'about deployment to production',
+        '/product/development-ready-workspace': 'about the development-ready workspace',
+        '/product/managed-dependencies': 'about managed dependencies',
+        '/product/shared-foundation': 'about Shared Foundation',
+        '/solutions/enterprise': 'about the Enterprise solution',
+        '/solutions/personal': 'about the Personal solution',
+        '/solutions/startups-smes': 'about the Startups and SMEs solution',
+    }
+
+    return routeMap[path] ?? 'about Dataflow'
+}
+
+const hiddenText = srText ?? (genericLabel ? getDestinationText() : undefined)
 
 const baseClasses =
     'w-max inline-flex hover:cursor-pointer items-center gap-x-2 px-4 py-3 min-h-[44px] min-w-[44px] rounded-lg text-base font-medium transition duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary group'
@@ -37,8 +83,9 @@ const classes = `${baseClasses} ${variantClasses} ${className}`.trim()
 ---
 
 {href ? (
-    <a href={href} target={target} rel={rel} class={classes} aria-label={label} title={label} onclick={onclick}>
+    <a href={href} target={target} rel={rel} class={classes} title={label} onclick={onclick}>
         {label}
+        {hiddenText && <span class='sr-only'>{hiddenText}</span>}
         {iconSrc && (
             <img
                 class={variant === 'outlined' ? 'size-[20px] transition-transform group-hover:translate-x-1' : `size-[20px] transition-transform group-hover:translate-x-1`}
@@ -49,8 +96,9 @@ const classes = `${baseClasses} ${variantClasses} ${className}`.trim()
         )}
     </a>
 ) : (
-    <button type={type} class={classes} aria-label={label} title={label} onclick={onclick}>
+    <button type={type} class={classes} title={label} onclick={onclick}>
         {label}
+        {hiddenText && <span class='sr-only'>{hiddenText}</span>}
         {iconSrc && (
             <img
                 class={variant === 'outlined' ? 'size-[20px] transition-transform group-hover:translate-x-1' : 'invert brightness-0 size-[20px] transition-transform group-hover:translate-x-1'}

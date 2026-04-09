@@ -1,4 +1,8 @@
 ---
+seo:
+  title: "Free Data Science Platform | Learn, Build & Experiment | Dataflow"
+  description: "Get a free Jupyter notebook environment with Airflow, Streamlit and MLflow - no credit card, no setup. Perfect for learning data engineering and side projects."
+
 top_section:
   title: "Your Personal Data Playground, Professionally Powered"
   description: "Whether you're learning data science, building side projects, or experimenting with ML models, get the same tools Fortune 500 companies use—completely free. No credit card, no setup headaches, no limits on your curiosity."

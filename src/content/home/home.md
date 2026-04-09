@@ -1,4 +1,8 @@
 ---
+seo:
+  title: "Dataflow | AI-Ready Data Platform for Startups & Teams"
+  description: "Build, run & deploy data pipelines, ML models and Streamlit apps without DevOps. Jupyter, Airflow & VS Code in one managed Python platform. Free trial."
+
 hero:
   title: "Focus on Data Logic, <br> Not Glue Code."
   title_part_2: "Not Glue Code."
@@ -18,15 +22,15 @@ hero:
     - "Free consultation"
   supported_by:
     - name: "Google Cloud"
-      logo: "/assets/images/googlecloudlogo.webp"
+      logo: "/assets/images/supported-by/googlecloudlogo_30.webp"
     - name: "AWS"
-      logo: "/assets/images/aws-logo.webp"
+      logo: "/assets/images/supported-by/aws-logo_30.webp"
     - name: "NatWest"
-      logo: "/assets/images/nat-west-logo.webp"
+      logo: "/assets/images/supported-by/nat-west-logo_30.webp"
     - name: "NVIDIA"
-      logo: "/assets/images/nvidia-logo.webp"
+      logo: "/assets/images/supported-by/nvidia-logo_30.webp"
     - name: "Barclays"
-      logo: "/assets/images/barclays-logo.webp"
+      logo: "/assets/images/supported-by/barclays-logo_30.webp"
 
 tools:
   title: "Native integration with the tools"
@@ -86,7 +90,7 @@ features:
       description: No more pip install errors or dependency issues. Dataflow allows you to create, manage, and share custom Python environments with a single click. Whether you are building legacy data pipelines or cutting-edge GenAI models, your dependencies are containerized, portable, and immutable. Focus on your code, not your config files.
       cta_text: Learn more
       icon: "/assets/icons/icon-link-attached.svg"
-      href: /product/deploy-in-one-click
+      href: /product/deploy-to-production
 
     - title: Run on Any Cloud
       description: Deploy Dataflow on AWS, Google Cloud, Azure, or your private on-premise cloud. Spin up persistent workspaces with the exact compute power you need—from standard CPUs to high-performance GPUs—and never worry about losing your work.
@@ -98,7 +102,7 @@ features:
       description: Turn your notebooks and scripts into live, shareable URLs in minutes. Forget complex Dockerfiles and CI/CD pipelines—Dataflow automates the entire production deployment process. You build the logic; we handle the DevOps.
       cta_text: Learn more
       icon: "/assets/icons/icon-forward.svg"
-      href: /product/deploy-in-one-click
+      href: /product/deploy-to-production
 
     - title: Bring your team in one place
       description: Scale securely with robust governance. Manage permissions via RBAC, audit actions with comprehensive logs, and share environments across teams without exposing sensitive credentials.
@@ -120,7 +124,7 @@ use_cases:
       link: "/product/shared-foundation"
       cta_text: "Learn more"
       image: "/assets/images/app-screenshots/dashboard.webp"
-      video: "/assets/videos/jupyter.mp4"
+      video: "/assets/videos/jupyter.webm"
       imageAlt: "Data Exploration"
 
     - id: "etl"
@@ -134,7 +138,7 @@ use_cases:
       link: "/product/shared-foundation"
       cta_text: "Learn more"
       image: "/assets/images/app-screenshots/dashboard.webp"
-      video: "/assets/videos/airflow.mp4"
+      video: "/assets/videos/airflow.webm"
       imageAlt: "ETL"
 
     - id: "visualisation"
@@ -147,7 +151,7 @@ use_cases:
         - "Share dashboards via secure URLs"
       link: "/apps"
       cta_text: "Learn more"
-      video: "/assets/videos/data-visualisation.webm"
+      video: "/assets/videos/data-visualisation_720.webm"
       image: "/assets/images/app-screenshots/dashboard.webp"
       imageAlt: "Data Visualisation"
 
@@ -161,7 +165,7 @@ use_cases:
         - "Reproducible experiments with environment management"
       link: "/product/shared-foundation"
       cta_text: "Learn more"
-      video: "/assets/videos/analysis.webm"
+      video: "/assets/videos/analysis_720.webm"
       image: "/assets/images/app-screenshots/dashboard.webp"
       imageAlt: "Analytics"
 

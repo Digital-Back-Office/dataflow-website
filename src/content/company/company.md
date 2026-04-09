@@ -1,4 +1,8 @@
 ---
+seo:
+  title: "About Dataflow | Built by Data Engineers, for Data Engineers"
+  description: "Dataflow was founded in 2023 to give engineers their time back. Learn about our mission, team and why we're building the OS for modern data teams."
+
 top_section:
   title: "Engineering the Future of Data Operations"
   description: "Headquartered in London, trusted globally. We are a team of systems engineers, data scientists, and architects building the unified data stack."

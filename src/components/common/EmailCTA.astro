@@ -20,6 +20,7 @@ interface Props {
   containerClass?: string
   shouldRedirect?: boolean
   href?: string
+  srText?: string
 }
 
 const { 
@@ -29,8 +30,32 @@ const {
   buttonText = "Get Started",
   containerClass = "",
   shouldRedirect = true,
-  href = ""
+  href = "",
+  srText = undefined,
 } = Astro.props
+
+const normalizedButtonText = buttonText.replace(/[→↗↘»]+/g, '').trim()
+const genericButton = /^(get started|start now|learn more|view more|explore)$/i.test(normalizedButtonText)
+
+const inferEmailCtaText = () => {
+  if (srText) return srText
+  if (!genericButton) return undefined
+
+  if (href) {
+    if (href.startsWith('/contact-us')) return 'to contact Dataflow'
+    if (href.startsWith('/get-started')) return 'to get started with Dataflow'
+    if (href.startsWith('/book-demo')) return 'to book a Dataflow demo'
+    if (href.includes('app.dataflow.zone')) return 'in the Dataflow app'
+  }
+
+  if (pageSource.includes('hero') || pageSource.includes('landing') || pageSource.includes('final')) {
+    return 'to get started with Dataflow'
+  }
+
+  return 'with Dataflow'
+}
+
+const hiddenText = inferEmailCtaText()
 
 // Get form ID from environment variable with fallback
 const ctaGoogleFormId = import.meta.env.PUBLIC_CTA_GOOGLE_FORM_ID || '1FAIpQLScm9m5YZa0bdolEh1Sk3siQZgC2scoDnjc7gYk7xodB3WP2Vw'
@@ -63,6 +88,7 @@ const ctaGoogleFormId = import.meta.env.PUBLIC_CTA_GOOGLE_FORM_ID || '1FAIpQLScm
           class="relative z-10 m-1 px-8 py-4 bg-primary hover:bg-primaryHover text-white rounded-xl font-semibold transition-all duration-300 hover:shadow-lg whitespace-nowrap max-sm:px-2 max-sm:py-3 max-sm:m-0.5 max-sm:text-sm max-sm:rounded-lg"
         >
           {buttonText}
+          {hiddenText && <span class='sr-only'>{hiddenText}</span>}
         </button>
       </div>
     </div>

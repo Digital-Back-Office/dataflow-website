@@ -81,7 +81,17 @@ const pageSchema = [
       "@id": `${siteOrigin}#organization`,
     },
     blogPost: allBlogs.map((post) => ({
-      "@id": `${siteOrigin}/blog/${post.slug}#blogposting`,
+      "@type": ["BlogPosting", "Article"],
+      "@id": `${siteOrigin}/blog/${post.slug}/#blogposting`,
+      headline: post.data.title,
+      author: {
+        "@type": "Organization",
+        "@id": `${siteOrigin}#organization`,
+      },
+      image: post.data.image
+        ? [new URL(post.data.image, `${siteOrigin}/`).toString()]
+        : [new URL('/og-image.png', `${siteOrigin}/`).toString()],
+      url: `${siteOrigin}/blog/${post.slug}/`,
     })),
   },
   {

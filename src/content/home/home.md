@@ -22,15 +22,15 @@ hero:
     - "Free consultation"
   supported_by:
     - name: "Google Cloud"
-      logo: "/assets/images/googlecloudlogo.webp"
+      logo: "/assets/images/supported-by/googlecloudlogo_30.webp"
     - name: "AWS"
-      logo: "/assets/images/aws-logo.webp"
+      logo: "/assets/images/supported-by/aws-logo_30.webp"
     - name: "NatWest"
-      logo: "/assets/images/nat-west-logo.webp"
+      logo: "/assets/images/supported-by/nat-west-logo_30.webp"
     - name: "NVIDIA"
-      logo: "/assets/images/nvidia-logo.webp"
+      logo: "/assets/images/supported-by/nvidia-logo_30.webp"
     - name: "Barclays"
-      logo: "/assets/images/barclays-logo.webp"
+      logo: "/assets/images/supported-by/barclays-logo_30.webp"
 
 tools:
   title: "Native integration with the tools"
@@ -124,7 +124,7 @@ use_cases:
       link: "/product/shared-foundation"
       cta_text: "Learn more"
       image: "/assets/images/app-screenshots/dashboard.webp"
-      video: "/assets/videos/jupyter.mp4"
+      video: "/assets/videos/jupyter.webm"
       imageAlt: "Data Exploration"
 
     - id: "etl"
@@ -138,7 +138,7 @@ use_cases:
       link: "/product/shared-foundation"
       cta_text: "Learn more"
       image: "/assets/images/app-screenshots/dashboard.webp"
-      video: "/assets/videos/airflow.mp4"
+      video: "/assets/videos/airflow.webm"
       imageAlt: "ETL"
 
     - id: "visualisation"
@@ -151,7 +151,7 @@ use_cases:
         - "Share dashboards via secure URLs"
       link: "/apps"
       cta_text: "Learn more"
-      video: "/assets/videos/data-visualisation.webm"
+      video: "/assets/videos/data-visualisation_720.webm"
       image: "/assets/images/app-screenshots/dashboard.webp"
       imageAlt: "Data Visualisation"
 
@@ -165,7 +165,7 @@ use_cases:
         - "Reproducible experiments with environment management"
       link: "/product/shared-foundation"
       cta_text: "Learn more"
-      video: "/assets/videos/analysis.webm"
+      video: "/assets/videos/analysis_720.webm"
       image: "/assets/images/app-screenshots/dashboard.webp"
       imageAlt: "Analytics"
 

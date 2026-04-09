@@ -183,21 +183,6 @@ if (path.startsWith("/solutions/")) {
   });
 }
 
-if (path.startsWith("/product/")) {
-  // JSON-LD: Product pages include truthful Product schema without fabricated offer/review data.
-  defaultPageSchema.push({
-    "@type": "Product",
-    "@id": `${canonicalUrl}#product`,
-    name: slugToTitle(path),
-    brand: {
-      "@id": `${siteOrigin}#organization`,
-    },
-    description: metaDescription,
-    url: canonicalUrl,
-    category: "Data Platform",
-  });
-}
-
 if (path === "/contact-us") {
   // JSON-LD: Contact page includes LocalBusiness with visible contact channel.
   defaultPageSchema.push({
@@ -226,6 +211,14 @@ const customPageSchemas = Array.isArray(pageSchema)
     : [];
 
 const pageSchemas = customPageSchemas.length > 0 ? customPageSchemas : defaultPageSchema;
+const hasCustomBreadcrumbSchema = customPageSchemas.some((schema) => {
+  const typeValue = schema?.["@type"];
+  if (Array.isArray(typeValue)) {
+    return typeValue.includes("BreadcrumbList");
+  }
+
+  return typeValue === "BreadcrumbList";
+});
 
 const structuredData = {
   "@context": "https://schema.org",
@@ -233,7 +226,7 @@ const structuredData = {
     organizationSchema,
     websiteSchema,
     ...pageSchemas,
-    ...(breadcrumbSchema ? [breadcrumbSchema] : []),
+    ...(breadcrumbSchema && !hasCustomBreadcrumbSchema ? [breadcrumbSchema] : []),
   ],
 };
 const structuredDataJson = JSON.stringify(structuredData);

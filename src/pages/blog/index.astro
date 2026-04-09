@@ -45,8 +45,9 @@ const allBlogsJson = JSON.stringify(allBlogs.map(blog => ({
   tags: blog.data.tags || [],
 })));
 const siteOrigin = (Astro.site?.toString() ?? "https://dataflow.zone").replace(/\/$/, "");
-const blogIndexUrl = new URL(Astro.url.pathname, `${siteOrigin}/`).toString();
-const blogId = `${siteOrigin}/blog#blog`;
+const normalizedPath = Astro.url.pathname === '/' ? '/' : `${Astro.url.pathname.replace(/\/+$/, '')}/`;
+const blogIndexUrl = new URL(normalizedPath, `${siteOrigin}/`).toString();
+const blogId = `${blogIndexUrl}#blog`;
 const collectionPageId = `${blogIndexUrl}#collectionpage`;
 const itemListId = `${blogIndexUrl}#itemlist`;
 
@@ -104,7 +105,7 @@ const pageSchema = [
     itemListElement: allBlogs.map((post, index) => ({
       "@type": "ListItem",
       position: index + 1,
-      url: `${siteOrigin}/blog/${post.slug}`,
+      url: `${siteOrigin}/blog/${post.slug}/`,
       name: post.data.title,
     })),
   },

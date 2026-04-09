@@ -101,33 +101,36 @@ const faqs = [
     a: 'We provide dedicated partnership support, solution architecture guidance, co-marketing enablement, and shared success metrics throughout the engagement.'
   }
 ]
+const siteOrigin = (Astro.site?.toString() ?? 'https://dataflow.zone').replace(/\/$/, '')
+const normalizedPath = Astro.url.pathname === '/' ? '/' : `${Astro.url.pathname.replace(/\/+$/, '')}/`
+const pageUrl = new URL(normalizedPath, `${siteOrigin}/`).toString()
 
 const pageSchema = [
   {
     '@type': 'WebPage',
-    '@id': 'https://dataflow.zone/partners#webpage',
-    url: 'https://dataflow.zone/partners',
+    '@id': `${pageUrl}#webpage`,
+    url: pageUrl,
     name: 'Partners | Dataflow Partnership Program',
     description:
       'Join the Dataflow partner ecosystem. Unlock co-marketing, enablement, and growth opportunities for your business.',
     isPartOf: {
-      '@id': 'https://dataflow.zone#website'
+      '@id': `${siteOrigin}#website`
     },
     about: {
-      '@id': 'https://dataflow.zone#organization'
+      '@id': `${siteOrigin}#organization`
     },
     breadcrumb: {
-      '@id': 'https://dataflow.zone/partners#breadcrumb'
+      '@id': `${pageUrl}#breadcrumb`
     },
     mainEntity: {
-      '@id': 'https://dataflow.zone/partners#faq'
+      '@id': `${pageUrl}#faq`
     }
   },
   {
     '@type': 'FAQPage',
-    '@id': 'https://dataflow.zone/partners#faq',
+    '@id': `${pageUrl}#faq`,
     mainEntityOfPage: {
-      '@id': 'https://dataflow.zone/partners#webpage'
+      '@id': `${pageUrl}#webpage`
     },
     mainEntity: faqs.map((item) => ({
       '@type': 'Question',

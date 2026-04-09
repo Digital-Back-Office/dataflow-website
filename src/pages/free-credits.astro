@@ -16,33 +16,36 @@ const {
   faq,
   final_cta: finalCta
 } = data
+const siteOrigin = (Astro.site?.toString() ?? 'https://dataflow.zone').replace(/\/$/, '')
+const normalizedPath = Astro.url.pathname === '/' ? '/' : `${Astro.url.pathname.replace(/\/+$/, '')}/`
+const pageUrl = new URL(normalizedPath, `${siteOrigin}/`).toString()
 
 const pageSchema = [
   {
     '@type': 'WebPage',
-    '@id': 'https://dataflow.zone/free-credits#webpage',
-    url: 'https://dataflow.zone/free-credits',
+    '@id': `${pageUrl}#webpage`,
+    url: pageUrl,
     name: 'Free Credits for Data Teams | Dataflow',
     description:
       'Apply for Dataflow free credits to run AI, ML, and data workflows without upfront infrastructure costs.',
     isPartOf: {
-      '@id': 'https://dataflow.zone#website'
+      '@id': `${siteOrigin}#website`
     },
     about: {
-      '@id': 'https://dataflow.zone#organization'
+      '@id': `${siteOrigin}#organization`
     },
     breadcrumb: {
-      '@id': 'https://dataflow.zone/free-credits#breadcrumb'
+      '@id': `${pageUrl}#breadcrumb`
     },
     mainEntity: {
-      '@id': 'https://dataflow.zone/free-credits#faq'
+      '@id': `${pageUrl}#faq`
     }
   },
   {
     '@type': 'FAQPage',
-    '@id': 'https://dataflow.zone/free-credits#faq',
+    '@id': `${pageUrl}#faq`,
     mainEntityOfPage: {
-      '@id': 'https://dataflow.zone/free-credits#webpage'
+      '@id': `${pageUrl}#webpage`
     },
     mainEntity: faq.items.map((item: { q: string; a: string }) => ({
       '@type': 'Question',

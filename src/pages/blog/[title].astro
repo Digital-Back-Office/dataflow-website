@@ -51,8 +51,10 @@ const relatedBlogs = allBlogs
   .slice(0, 3)
 const siteOrigin = (Astro.site?.toString() ?? "https://dataflow.zone").replace(/\/$/, "");
 const ogImage = image ? new URL(image, `${siteOrigin}/`).toString() : undefined;
-const articleUrl = new URL(Astro.url.pathname, `${siteOrigin}/`).toString();
-const blogCollectionId = `${siteOrigin}/blog#collectionpage`;
+const normalizedPath = Astro.url.pathname === '/' ? '/' : `${Astro.url.pathname.replace(/\/+$/, '')}/`;
+const articleUrl = new URL(normalizedPath, `${siteOrigin}/`).toString();
+const blogCollectionId = `${siteOrigin}/blog/#collectionpage`;
+const fallbackOgImage = new URL('/og-image.png', `${siteOrigin}/`).toString();
 const cleanedBodyText = body
   .replace(/```[\s\S]*?```/g, " ")
   .replace(/`[^`]*`/g, " ")
@@ -82,7 +84,7 @@ const pageSchema = [
     },
   },
   {
-    "@type": "BlogPosting",
+    "@type": ["BlogPosting", "Article"],
     "@id": `${articleUrl}#blogposting`,
     mainEntityOfPage: {
       "@id": `${articleUrl}#webpage`,
@@ -91,7 +93,7 @@ const pageSchema = [
     description: meta_description,
     datePublished: new Date(date).toISOString(),
     dateModified: new Date(date).toISOString(),
-    image: ogImage ? [ogImage] : undefined,
+    image: ogImage ? [ogImage] : [fallbackOgImage],
     author: {
       "@type": "Organization",
       "@id": `${siteOrigin}#organization`,
@@ -104,7 +106,7 @@ const pageSchema = [
       "@id": blogCollectionId,
     },
     inLanguage: "en",
-    articleSection: tags,
+    articleSection: tags?.length ? tags : ["Data Engineering"],
     keywords: tags?.join(", "),
     wordCount,
     url: articleUrl,

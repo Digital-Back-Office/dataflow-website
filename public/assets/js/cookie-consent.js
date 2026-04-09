@@ -1,6 +1,4 @@
-import 'https://cdn.jsdelivr.net/gh/orestbida/cookieconsent@3.0.1/dist/cookieconsent.umd.js';
-
-CookieConsent.run({
+const cookieConsentConfig = {
     guiOptions: {
         consentModal: {
             layout: "bar wide",
@@ -10,8 +8,8 @@ CookieConsent.run({
 
     categories: {
         necessary: {
-            enabled: true, // this category is enabled by default
-            readOnly: true, // this category cannot be disabled
+            enabled: true,
+            readOnly: true,
         },
         analytics: {},
     },
@@ -23,7 +21,6 @@ CookieConsent.run({
                 consentModal: {
                     title:
                         "This website uses cookies to ensure you get the best experience on our website.",
-                    // description: 'Cookie modal description',
 
                     acceptAllBtn: "Accept all",
                     acceptNecessaryBtn: "Reject all",
@@ -44,8 +41,6 @@ CookieConsent.run({
                             title: "Strictly Necessary cookies",
                             description:
                                 "These cookies are essential for the proper functioning of the website and cannot be disabled.",
-
-                            //this field will generate a toggle linked to the 'necessary' category
                             linkedCategory: "necessary",
                         },
                         {
@@ -64,4 +59,27 @@ CookieConsent.run({
             },
         },
     },
-});
+}
+
+function runCookieConsent() {
+    if (window.CookieConsent && typeof window.CookieConsent.run === 'function') {
+        window.CookieConsent.run(cookieConsentConfig)
+    }
+}
+
+if (window.CookieConsent && typeof window.CookieConsent.run === 'function') {
+    runCookieConsent()
+} else {
+    const existingScript = document.querySelector('script[data-cookie-consent-lib="true"]')
+
+    if (existingScript) {
+        existingScript.addEventListener('load', runCookieConsent, { once: true })
+    } else {
+        const script = document.createElement('script')
+        script.src = '/assets/js/cookieconsent.umd.js'
+        script.defer = true
+        script.dataset.cookieConsentLib = 'true'
+        script.addEventListener('load', runCookieConsent, { once: true })
+        document.head.appendChild(script)
+    }
+}

@@ -3,7 +3,7 @@
 import { getEntry } from "astro:content";
 import Footer from "../components/common/Footer.astro";
 import Header from "../components/common/Header.astro";
-import CreditsNotificationBanner from "../components/common/CreditsNotificationBanner.jsx";
+import CreditsNotificationBanner from "../components/common/CreditsNotificationBanner.astro";
 import "../styles/global.css";
 
 interface Props {
@@ -288,7 +288,6 @@ const structuredDataJson = JSON.stringify(structuredData);
       })(window, document, "script", "dataLayer", "GTM-5BH2ZJRZ");
     </script>
     <!-- End Google Tag Manager -->
-    <script src="/src/scripts/cookie-consent.js"></script>
     <meta charset="UTF-8" />
     <meta name="description" content={metaDescription} />
     {noindex && <meta name="robots" content="noindex, nofollow" />}
@@ -296,13 +295,22 @@ const structuredDataJson = JSON.stringify(structuredData);
     <link rel="icon" type="image/svg+xml" href="/favicon.png" />
     <link rel="canonical" href={canonicalUrl} />
     <link rel="alternate" href={canonicalUrl} hreflang="en" />
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
-    <script is:inline src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
-
     <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/gh/orestbida/cookieconsent@3.0.1/dist/cookieconsent.css"
+      rel="preload"
+      href="/assets/css/aos.css"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
     />
+    <noscript><link href="/assets/css/aos.css" rel="stylesheet" /></noscript>
+    <script is:inline src="/assets/js/aos.js" defer></script>
+    <link
+      rel="preload"
+      href="/assets/css/cookieconsent.css"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
+    />
+    <noscript><link rel="stylesheet" href="/assets/css/cookieconsent.css" /></noscript>
+    <script src="/assets/js/cookie-consent.js" defer></script>
     <title>{pageTitle}</title>
 
     <!-- Open Graph Meta Tags -->
@@ -335,7 +343,7 @@ const structuredDataJson = JSON.stringify(structuredData);
     height="0" width="0" class="gtm-noscript-iframe"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
     
-    <CreditsNotificationBanner client:idle />
+    <CreditsNotificationBanner />
     
     {header && <Header pagename={title} />}
     <main id="main-content">

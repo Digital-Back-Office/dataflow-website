@@ -1,0 +1,181 @@
+---
+---
+
+<div id='credits-strip' class='hidden fixed top-0 left-0 right-0 z-[60] bg-gradient-to-r from-primary to-secondary text-white px-3 py-2 text-center'>
+  <style is:inline>
+    body.has-notification-strip header { top: 35px !important; }
+  </style>
+  <div class='max-w-7xl mx-auto flex items-center justify-between gap-3'>
+    <a
+      id='credits-strip-link'
+      href='/free-credits'
+      class='text-xs md:text-sm font-medium hover:underline flex-1'
+      aria-label='Apply for free Dataflow credits'
+      title='Apply for free Dataflow credits'
+    >
+      🎉 Get upto $1000 Free Dataflow Credits! Limited spots available. Apply now →
+    </a>
+    <button
+      id='credits-strip-close'
+      type='button'
+      class='text-white hover:text-gray-200 transition-colors flex-shrink-0'
+      aria-label='Close notification'
+      title='Close notification'
+    >
+      <svg class='w-5 h-5' fill='none' stroke='currentColor' viewBox='0 0 24 24' aria-hidden='true'>
+        <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M6 18L18 6M6 6l12 12' />
+      </svg>
+    </button>
+  </div>
+</div>
+
+<div id='credits-banner' class='hidden fixed top-24 right-4 z-50 w-full max-w-md translate-x-full opacity-0 transition-[transform,opacity] duration-300 ease-out will-change-transform'>
+  <div class='bg-white rounded-2xl'>
+    <div class='bg-gradient-to-br from-primary/10 via-white to-secondary/10 rounded-2xl shadow-xl border border-primary/20 overflow-hidden'>
+      <button
+        id='credits-banner-close'
+        type='button'
+        class='absolute top-3 right-3 text-gray-400 hover:text-gray-600 transition-colors z-10'
+        aria-label='Close banner'
+        title='Close banner'
+      >
+        <svg class='w-5 h-5' fill='none' stroke='currentColor' viewBox='0 0 24 24' aria-hidden='true'>
+          <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M6 18L18 6M6 6l12 12' />
+        </svg>
+      </button>
+
+      <a href='/free-credits' class='block' title='Apply for free credits' aria-label='Apply for free credits'>
+        <div class='p-6 pr-12'>
+          <div class='flex items-start gap-4'>
+            <div class='flex-shrink-0 w-12 h-12 rounded-xl bg-gradient-to-br from-primary to-secondary flex items-center justify-center shadow-lg'>
+              <svg class='w-7 h-7 text-white' fill='none' stroke='currentColor' viewBox='0 0 24 24' aria-hidden='true'>
+                <path
+                  stroke-linecap='round'
+                  stroke-linejoin='round'
+                  stroke-width='2'
+                  d='M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z'
+                />
+              </svg>
+            </div>
+            <div class='flex-1'>
+              <h3 class='text-lg font-bold text-textDarker mb-1'>
+                Get upto $1000 Free Credits! 🎉
+              </h3>
+              <p class='text-sm text-textPrimary/80 mb-3'>
+                Limited spots available for our Dataflow Free Credits Program. Perfect for Startups and Indie developers!
+              </p>
+              <div class='flex items-center gap-2'>
+                <span class='inline-flex items-center gap-1 text-sm font-semibold text-primary'>
+                  Apply Now
+                  <svg class='w-4 h-4' fill='none' stroke='currentColor' viewBox='0 0 24 24' aria-hidden='true'>
+                    <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M13 7l5 5m0 0l-5 5m5-5H6' />
+                  </svg>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </a>
+
+      <div class='px-6 py-2 flex items-center justify-between text-xs text-textPrimary/60'>
+        <span>🔥 Hurry! Limited spots</span>
+        <span class='font-semibold text-primary'>Free Credits</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script is:inline>
+  (() => {
+    const path = window.location.pathname
+    if (path.includes('/free-credits')) return
+
+    const strip = document.getElementById('credits-strip')
+    const banner = document.getElementById('credits-banner')
+    const stripLink = document.getElementById('credits-strip-link')
+    const stripClose = document.getElementById('credits-strip-close')
+    const bannerClose = document.getElementById('credits-banner-close')
+
+    if (!strip || !banner || !stripLink || !stripClose || !bannerClose) return
+
+    const isMobile = () => window.matchMedia('(max-width: 767px)').matches
+
+    const showStrip = () => {
+      strip.classList.remove('hidden')
+      document.body.classList.add('has-notification-strip')
+      stripLink.textContent = isMobile()
+        ? '🎉 Free credits up to $1000. Apply now →'
+        : '🎉 Get upto $1000 Free Dataflow Credits! Limited spots available. Apply now →'
+    }
+
+    const hideStrip = () => {
+      strip.classList.add('hidden')
+      document.body.classList.remove('has-notification-strip')
+    }
+
+    const showBanner = () => {
+      // Ensure a stable initial frame so transition runs consistently across browsers.
+      banner.classList.remove('translate-x-0', 'opacity-100')
+      banner.classList.add('translate-x-full', 'opacity-0')
+      banner.classList.remove('hidden')
+      // Force style calculation before applying final state.
+      banner.getBoundingClientRect()
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          banner.classList.remove('translate-x-full', 'opacity-0')
+          banner.classList.add('translate-x-0', 'opacity-100')
+        })
+      })
+    }
+
+    const hideBanner = (toStrip = false) => {
+      banner.classList.remove('translate-x-0', 'opacity-100')
+      banner.classList.add('translate-x-full', 'opacity-0')
+      setTimeout(() => {
+        banner.classList.add('hidden')
+        if (toStrip) showStrip()
+      }, 300)
+    }
+
+    const bannerClosed = sessionStorage.getItem('creditsBannerClosed')
+    const stripClosed = sessionStorage.getItem('creditsStripBannerClosed')
+
+    if (!bannerClosed) {
+      setTimeout(() => {
+        if (isMobile()) {
+          showStrip()
+        } else {
+          showBanner()
+        }
+      }, 10000)
+    } else if (!stripClosed) {
+      showStrip()
+    }
+
+    bannerClose.addEventListener('click', () => {
+      sessionStorage.setItem('creditsBannerClosed', 'true')
+      hideBanner(true)
+    })
+
+    stripClose.addEventListener('click', () => {
+      sessionStorage.setItem('creditsBannerClosed', 'true')
+      sessionStorage.setItem('creditsStripBannerClosed', 'true')
+      hideStrip()
+    })
+
+    const mq = window.matchMedia('(max-width: 767px)')
+    const onViewportChange = () => {
+      if (!strip.classList.contains('hidden')) {
+        stripLink.textContent = isMobile()
+          ? '🎉 Free credits up to $1000. Apply now →'
+          : '🎉 Get upto $1000 Free Dataflow Credits! Limited spots available. Apply now →'
+      }
+    }
+
+    if (mq.addEventListener) {
+      mq.addEventListener('change', onViewportChange)
+    } else {
+      mq.addListener(onViewportChange)
+    }
+  })()
+</script>

@@ -4,23 +4,44 @@ export default function CreditsNotificationBanner() {
   const [showBanner, setShowBanner] = useState(false)
   const [showStrip, setShowStrip] = useState(false)
   const [isVisible, setIsVisible] = useState(false)
+  const [isMobile, setIsMobile] = useState(false)
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(max-width: 767px)')
+    const updateViewport = () => setIsMobile(mediaQuery.matches)
+
+    updateViewport()
+
+    if (mediaQuery.addEventListener) {
+      mediaQuery.addEventListener('change', updateViewport)
+      return () => mediaQuery.removeEventListener('change', updateViewport)
+    }
+
+    mediaQuery.addListener(updateViewport)
+    return () => mediaQuery.removeListener(updateViewport)
+  }, [])
 
   useEffect(() => {
     // Check if user has already closed the banner in this session
     const bannerClosed = sessionStorage.getItem('creditsBannerClosed')
     const stripBannerClosed = sessionStorage.getItem('creditsStripBannerClosed')
-    const InCampaignPage = window.location.pathname.includes('/free-credits')
+    const inCampaignPage = window.location.pathname.includes('/free-credits')
 
     // Don't show banner if user is on the campaign page
-    if (InCampaignPage) {
+    if (inCampaignPage) {
       return
     }
     
     if (!bannerClosed) {
       // Show banner after 10 seconds
       const timer = setTimeout(() => {
-        setShowBanner(true)
-        setTimeout(() => setIsVisible(true), 100)
+        if (window.matchMedia('(max-width: 767px)').matches) {
+          // Mobile: avoid large overlay and show only compact strip.
+          setShowStrip(true)
+        } else {
+          setShowBanner(true)
+          setTimeout(() => setIsVisible(true), 100)
+        }
       }, 10000)
 
       return () => clearTimeout(timer)
@@ -34,7 +55,7 @@ export default function CreditsNotificationBanner() {
     }
   }, [])
 
-  // Add/remove body class for header offset when strip is visible
+  // Add/remove body class for header offset whenever strip is visible.
   useEffect(() => {
     if (showStrip) {
       document.body.classList.add('has-notification-strip')
@@ -50,6 +71,7 @@ export default function CreditsNotificationBanner() {
     setIsVisible(false)
     setTimeout(() => {
       setShowBanner(false)
+      // Mobile should never show the slide-in banner fallback.
       setShowStrip(true)
       sessionStorage.setItem('creditsBannerClosed', 'true')
     }, 300) // Wait for slide-out animation
@@ -67,16 +89,19 @@ export default function CreditsNotificationBanner() {
     <>
       {/* Top Strip Notification */}
       {showStrip && (
-        <div className='fixed top-0 text-center left-0 right-0 z-[60] bg-gradient-to-r from-primary to-secondary text-white py-2 px-4'>          <style>{
+        <div className='fixed top-0 text-center left-0 right-0 z-[60] bg-gradient-to-r from-primary to-secondary text-white px-3 py-2'>
+          <style>{
             `body.has-notification-strip header { top: 35px !important; }`
           }</style>
-          <div className='max-w-7xl mx-auto flex items-center justify-between gap-4'>
+          <div className='max-w-7xl mx-auto flex items-center justify-between gap-3'>
             <div className='flex items-center gap-4 flex-1'>
               <a
                 href='/free-credits'
-                className='text-sm font-medium hover:underline flex-1'
+                className='text-xs md:text-sm font-medium hover:underline flex-1'
               >
-                🎉 Get upto $1000 Free Dataflow Credits! Limited spots available. Apply now →
+                {isMobile
+                  ? '🎉 Free credits up to $1000. Apply now →'
+                  : '🎉 Get upto $1000 Free Dataflow Credits! Limited spots available. Apply now →'}
               </a>
             </div>
             <button
@@ -93,7 +118,7 @@ export default function CreditsNotificationBanner() {
       )}
 
       {/* Slide-in Banner from Top Right */}
-      {showBanner && (
+      {showBanner && !isMobile && (
         <div
           className={`fixed top-24 right-4 z-50 w-full max-w-md transition-all duration-300 ease-out ${
             isVisible ? 'translate-x-0 opacity-100' : 'translate-x-full opacity-0'

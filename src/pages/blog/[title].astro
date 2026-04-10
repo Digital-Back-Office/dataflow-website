@@ -333,6 +333,29 @@ const pageSchema = [
 </Layout>
 
 <style>
+  /* Make iframes (embedded videos/iframed content) responsive and full-width */
+  :global(#blog-content iframe) {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    aspect-ratio: 16/9;
+    display: block;
+    border: 0;
+    border-radius: 0.5rem;
+  }
+
+  /* Ensure figure wrappers don't constrain iframe width */
+  :global(#blog-content figure) {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  /* Support common embed wrappers (if used by markdown plugins) */
+  :global(#blog-content .embed, #blog-content .video-wrapper) {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
   /* Smooth scroll behavior for TOC links */
   html {
     scroll-behavior: smooth;

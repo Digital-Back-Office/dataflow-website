@@ -7,8 +7,6 @@ image: '/assets/images/blog/skip-devops.webp'
 category: ["product"]
 ---
 
-## Deploy without DevOps overhead
-
 Deploying data apps shouldn't require deep DevOps expertise. Dataflow provides a managed platform where the development environment is the production environment. Define your packages once (managed dependencies), use shared connections and secrets, and deploy with one click.
 
 Key principles:

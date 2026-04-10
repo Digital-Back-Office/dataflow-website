@@ -1,6 +1,6 @@
 ---
 title: 'Real-time Server Sharing in Dataflow Studio'
-description: "Collaborate live on shared servers and accelerate data engineering workflows"
+description: "Collaborate on data pipelines, ML models & Airflow DAGs on a shared cloud server - RBAC access control, no duplicate environments. Try free today."
 tags: ['Collaboration', 'Server Sharing', 'Real-time', 'Data Engineering']
 date: '10 April, 2026'
 image: /assets/images/blog/real-time-server-sharing-in-dataflow-studio.webp

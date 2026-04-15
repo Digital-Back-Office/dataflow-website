@@ -587,6 +587,21 @@ const featuresCollection = defineCollection({
       }))
     }).optional(),
 
+    colab_comparison: z.object({
+      title: z.string(),
+      bullets: z.array(z.object({
+        title: z.string(),
+        text: z.string()
+      })),
+      paragraphs: z.array(z.string()).optional(),
+      cta: z.object({
+        label: z.string(),
+        href: z.string(),
+        target: z.string().optional()
+      }).optional(),
+      bg: z.enum(['white', 'F8FAFC']).optional()
+    }).optional(),
+
     // Run Data on Any Cloud specific
     benefits: z.object({
       title: z.string(),

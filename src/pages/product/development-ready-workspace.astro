@@ -12,25 +12,8 @@ const seo = Data?.data?.seo
 const whatYouGet = Data?.data?.what_you_get || {}
 const instantOnboarding = Data?.data?.instant_onboarding || {}
 const computeFlexibility = Data?.data?.compute_flexibility || {}
+const colabComparison = Data?.data?.colab_comparison || {}
 const meta_description = top.description ?? 'Get a fully configured workspace with compute, environments, and applications ready to use in seconds.'
-const colabComparisonBullets = [
-  {
-    title: 'Team environments',
-    text: 'Dataflow gives every teammate the same managed environment instead of ad-hoc notebook-level package installs.'
-  },
-  {
-    title: 'Persistent workspaces',
-    text: 'Your files, apps, and dependencies stay available between sessions so teams do not rebuild context every day.'
-  },
-  {
-    title: 'Pipeline integration',
-    text: 'Jupyter work connects directly to Airflow orchestration and production deployment without hand-offs.'
-  },
-  {
-    title: 'EU data residency',
-    text: 'You can deploy on sovereign European cloud providers to satisfy strict governance requirements.'
-  }
-]
 ---
 
 <Layout
@@ -68,11 +51,11 @@ const colabComparisonBullets = [
   />
 
   <BulletComparisonSection
-    title="How Dataflow compares to Google Colab"
-    bullets={colabComparisonBullets}
-    paragraph="For smaller data teams that find Databricks too expensive or operationally heavy, Dataflow is a cost-effective alternative with pre-configured tooling, faster onboarding, and less platform overhead."
-    cta={{ label: 'Try Dataflow Free', href: 'https://app.dataflow.zone', target: '_blank' }}
-    bg="F8FAFC"
+    title={colabComparison.title}
+    bullets={colabComparison.bullets || []}
+    paragraph={(colabComparison.paragraphs || []).join(' ')}
+    cta={colabComparison.cta}
+    bg={colabComparison.bg || 'F8FAFC'}
   />
 
   {computeFlexibility?.features && (

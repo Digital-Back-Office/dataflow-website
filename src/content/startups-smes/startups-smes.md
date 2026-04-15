@@ -4,7 +4,7 @@ seo:
   description: "One managed Python platform for startups. Jupyter notebooks, Airflow pipelines and Streamlit apps - pre-wired, no DevOps, no config files"
 
 top_section:
-  title: "The Data Platform for Startups and Small Teams / Jupyter, Airflow and Streamlit, No DevOps"
+  title: "The Data Platform for Startups and Small Teams - Jupyter, Airflow and Streamlit, No DevOps"
   description: "Scale fast, start lean. Built for lean teams who need one managed Python platform for startups with Jupyter notebooks, Airflow pipelines and Streamlit apps pre-wired, no DevOps, and no config files."
   button:
     label: "Start Free Trial"

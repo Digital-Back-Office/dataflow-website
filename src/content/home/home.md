@@ -1,6 +1,6 @@
 ---
 seo:
-  title: "Dataflow | AI-Ready Data Platform for Startups / Jupyter, Airflow and Streamlit, Managed"
+  title: "Dataflow | AI-Ready Data Platform for Startups - Jupyter, Airflow and Streamlit, Managed"
   description: "Build, run & deploy data pipelines, ML models and Streamlit apps without DevOps. Jupyter, Airflow & VS Code in one managed Python platform. Free trial."
 
 hero:

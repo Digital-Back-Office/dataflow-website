@@ -4,7 +4,7 @@ seo:
   description: "Built for enterprise data teams. RBAC permissions, audit logs, SSO, dedicated support and scalable GPU compute. Get a custom demo for your organisation."
 
 top_section:
-  title: "Enterprise Data Platform Built for EU Compliance / DORA, EU AI Act and GDPR Ready"
+  title: "Enterprise Data Platform Built for EU Compliance - DORA, EU AI Act and GDPR Ready"
   description: "The unified data operating system designed for the enterprise. Enforce governance, manage costs, and secure your data stack with granular controls and bank-grade compliance."
   button:
     label: "Book an Enterprise Demo"

@@ -4,7 +4,7 @@ seo:
   description: "Start building instantly. Pre-configured Jupyter notebooks, VS Code & MLflow all connected to your data sources with zero setup. Better than Google Colab."
 
 top_section:
-  title: "Cloud Data Science Workspace / Jupyter, VS Code and MLflow, Pre-Configured"
+  title: "Cloud Data Science Workspace - Jupyter, VS Code and MLflow, Pre-Configured"
   description: Start Building Instantly. Skip the setup and get a fully configured workspace with the compute, environments, and apps you need in seconds.
   button:
     label: 'Get Started'
@@ -47,6 +47,26 @@ instant_onboarding:
     href: "https://app.dataflow.zone"
     target: '_blank'
   imageSide: "right"
+
+colab_comparison:
+  title: "How Dataflow compares to Google Colab"
+  bullets:
+    - title: "Team environments"
+      text: "Dataflow gives every teammate the same managed environment instead of ad-hoc notebook-level package installs."
+    - title: "Persistent workspaces"
+      text: "Your files, apps, and dependencies stay available between sessions so teams do not rebuild context every day."
+    - title: "Pipeline integration"
+      text: "Jupyter work connects directly to Airflow orchestration and production deployment without hand-offs."
+    - title: "EU data residency"
+      text: "You can deploy on sovereign European cloud providers to satisfy strict governance requirements."
+  paragraphs:
+    - "For Google Colab users, Dataflow keeps the notebook experience but adds persistent team workspaces, shared environments, and production-grade deployment paths."
+    - "For Databricks users, it is a cost-effective alternative with pre-configured tooling, faster onboarding, and less platform overhead."
+  cta:
+    label: "Try Dataflow Free"
+    href: "https://app.dataflow.zone"
+    target: '_blank'
+  bg: "F8FAFC"
 
 why_it_matters:
   title: "Why a Development-Ready Workspace Matters"

@@ -4,7 +4,7 @@ seo:
   description: "No vendor lock-in. Deploy Dataflow on AWS, Google Cloud or Azure. Portable Python environments and pipelines that move with you across cloud providers."
 
 top_section:
-  title: Run Your Data Platform on Any Cloud / AWS, GCP, Azure or European Sovereign Cloud
+  title: Run Your Data Platform on Any Cloud - AWS, GCP, Azure or European Sovereign Cloud
   description: Deploy the full Dataflow stack on AWS, Azure, GCP. Switch providers without rewriting your pipelines.
   button:
     label: "Get Started"

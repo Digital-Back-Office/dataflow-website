@@ -8,6 +8,7 @@ import SupportSection from '../components/pricing/SupportSection.astro'
 import { getEntry } from 'astro:content'
 import FAQs from '../components/pricing/FAQs.astro'
 import AdditionalSupport from '../components/pricing/AdditionalSupport.astro'
+import DataTableSection from '../components/common/DataTableSection.astro'
 import * as FAQContent from '../content/pricing/faq.mdx'
 
 const { data: Help_24_7_data } = await getEntry('pricing', '24-7-help')
@@ -21,6 +22,51 @@ const pricingUrl = new URL(normalizedPath, `${siteOrigin}/`).toString()
 const faqContent = FAQContent as unknown as {
   faqs: Array<{ question: string; answer: string }>
 }
+const pricingComparisonColumns = ['Platform', 'Monthly cost', 'Free tier', 'EU data residency', 'Setup time', 'Airflow included']
+const pricingComparisonRows = [
+  {
+    label: 'Dataflow',
+    highlight: true,
+    values: [
+      'From $0, then usage-based paid plans',
+      'Yes',
+      'Yes, including sovereign cloud options',
+      'Low',
+      'Yes'
+    ]
+  },
+  {
+    label: 'Astronomer',
+    values: [
+      'Paid plans, typically higher for production teams',
+      'Limited trial',
+      'Available on selected plans and regions',
+      'Medium',
+      'Yes'
+    ]
+  },
+  {
+    label: 'Prefect',
+    striped: true,
+    values: [
+      'Free open-source option, paid cloud tiers',
+      'Yes',
+      'Plan-dependent',
+      'Medium',
+      'No'
+    ]
+  },
+  {
+    label: 'Databricks',
+    values: [
+      'Usage-based enterprise pricing',
+      'Limited trial',
+      'Available in supported EU regions',
+      'High',
+      'No'
+    ]
+  }
+]
 
 const pageSchema = [
   {
@@ -88,5 +134,13 @@ const pageSchema = [
   <AdditionalSupport />
   <SecurityComplaince />
   <Testimonial />
+  <DataTableSection
+    title="Dataflow vs Astronomer vs Prefect vs Databricks"
+    description="Snapshot comparison for teams evaluating managed orchestration and data app delivery platforms."
+    columns={pricingComparisonColumns}
+    rows={pricingComparisonRows}
+    minWidthClass="min-w-[900px]"
+    bg="white"
+  />
   <FAQs />
 </Layout>

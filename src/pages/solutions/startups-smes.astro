@@ -2,6 +2,7 @@
 import Layout from '../../layouts/Layout.astro'
 import TopSection from '../../components/common/TopSection.astro'
 import TwoColumnSection from '../../components/common/TwoColumnSection.astro'
+import SectionCallout from '../../components/common/SectionCallout.astro'
 import { getEntry } from 'astro:content'
 import Testimonial from '../../components/common/Testimonial.astro'
 import CTASection from '../../components/common/CTASection.astro'
@@ -38,6 +39,7 @@ const cta = Data?.data?.cta_section || {}
 			/>
 		))
 	}
+	<SectionCallout text="Sovereign deployment options give startups built-in compliance support for EU AI Act high-risk classifications while keeping day-to-day delivery simple." />
 	<Testimonial />
 	<CTASection
 		title={cta.title}

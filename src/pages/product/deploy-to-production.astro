@@ -3,6 +3,7 @@ import Layout from '../../layouts/Layout.astro'
 import TopSection from '../../components/common/TopSection.astro'
 import FeatureGrid from '../../components/common/FeatureGrid.astro'
 import TwoColumnSection from '../../components/common/TwoColumnSection.astro'
+import CardsWithBulletsSection from '../../components/common/CardsWithBulletsSection.astro'
 import Comparison from '../../components/features/deploy-to-production/Comparison.astro'
 import { getEntry } from 'astro:content'
 
@@ -13,6 +14,33 @@ const seamlessDeployment = Data?.data?.seamless_deployment || {}
 const productionParity = Data?.data?.production_parity || {}
 const managedSecrets = Data?.data?.managed_secrets_in_production || {}
 const meta_description = top.description ?? 'Deploy applications to production seamlessly with zero environment drift and automatic scaling.'
+const deployCards = [
+  {
+    title: 'Deploy Jupyter notebooks to production',
+    bullets: [
+      'Publish notebook logic as production workloads without rebuilding your environment.',
+      'Use the same dependencies and secrets from development to avoid release-time regressions.',
+      'Schedule and monitor notebook runs with operational controls your team can share.'
+    ]
+  },
+  {
+    title: 'Deploy Streamlit and Dash apps',
+    bullets: [
+      'Ship interactive apps with one click and secure URLs for internal or customer access.',
+      'Keep app runtimes aligned with shared team environments to reduce breakage between contributors.',
+      'Scale application compute based on demand instead of hand-managing container infrastructure.'
+    ]
+  },
+  {
+    title: 'Turn notebooks into live APIs',
+    bullets: [
+      'Expose validated notebook workflows as live API endpoints for product and analytics use cases.',
+      'Version API deployments using immutable environments so rollbacks stay predictable.',
+      'Connect APIs to pipeline schedules and shared credentials without writing custom glue services.'
+    ]
+  }
+]
+const streamlitAlternative = 'Dataflow is a practical Streamlit Cloud alternative for teams that need shared environments, native Airflow integration, and sovereign cloud deployment options. These capabilities let you move from prototype to production with fewer platform gaps across engineering, analytics, and compliance.'
 ---
 
 <Layout
@@ -29,6 +57,8 @@ const meta_description = top.description ?? 'Deploy applications to production s
     imageSide="right"
     bg="white"
   />
+
+  <CardsWithBulletsSection cards={deployCards} calloutText={streamlitAlternative} bg="white" />
 
   <FeatureGrid
     title={seamlessDeployment.title}

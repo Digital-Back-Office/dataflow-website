@@ -4,8 +4,8 @@ seo:
   description: "Start building instantly. Pre-configured Jupyter notebooks, VS Code & MLflow all connected to your data sources with zero setup. Better than Google Colab."
 
 top_section:
-  title: "Start Building Instantly"
-  description: Skip the setup. Get a fully configured workspace with the compute, environments, and apps you need—ready in seconds.
+  title: "Cloud Data Science Workspace / Jupyter, VS Code and MLflow, Pre-Configured"
+  description: Start Building Instantly. Skip the setup and get a fully configured workspace with the compute, environments, and apps you need in seconds.
   button:
     label: 'Get Started'
     href: "https://app.dataflow.zone"

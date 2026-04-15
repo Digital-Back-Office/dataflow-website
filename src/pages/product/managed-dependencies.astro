@@ -5,6 +5,7 @@ import CardGrid from '../../components/common/CardGrid.astro'
 import FeatureGrid from '../../components/common/FeatureGrid.astro'
 import TwoColumnSection from '../../components/common/TwoColumnSection.astro'
 import ProcessSteps from '../../components/common/ProcessSteps.astro'
+import DataTableSection from '../../components/common/DataTableSection.astro'
 import { getEntry } from 'astro:content'
 
 const Data = await getEntry('features', 'managed-dependencies')
@@ -15,6 +16,47 @@ const solutionSection = Data?.data?.solution_section || {}
 const howItWorks = Data?.data?.how_it_works || {}
 const keyBenefits = Data?.data?.key_benefits || {}
 const meta_description = top.description ?? 'Eliminate Python dependency hell with managed, reproducible environments shared across your entire team.'
+const dependencyTableColumns = ['Tool', 'Reproducibility', 'Team sharing', 'Cloud support', 'Setup time']
+const dependencyTableRows = [
+  {
+    label: 'conda',
+    values: [
+      'Moderate; can drift between channels and OS builds.',
+      'Manual export/import of environment files.',
+      'Works in cloud VMs; extra setup in managed runtimes.',
+      'Medium'
+    ]
+  },
+  {
+    label: 'venv + pip',
+    striped: true,
+    values: [
+      'Low to moderate; lock files are often incomplete.',
+      'Depends on developers reproducing local steps.',
+      'Common but fragile across notebook, scheduler, and app runtimes.',
+      'Medium'
+    ]
+  },
+  {
+    label: 'Docker',
+    values: [
+      'High when images are pinned and rebuilt consistently.',
+      'Strong via registries, but requires Docker workflow knowledge.',
+      'Strong across cloud providers and orchestrators.',
+      'High'
+    ]
+  },
+  {
+    label: 'Dataflow',
+    highlight: true,
+    values: [
+      'High with immutable, shared environment snapshots.',
+      'Built-in team sharing across workspace and deployed workloads.',
+      'Designed for managed cloud and sovereign cloud deployments.',
+      'Low'
+    ]
+  }
+]
 --- 
 
 <Layout
@@ -30,6 +72,14 @@ const meta_description = top.description ?? 'Eliminate Python dependency hell wi
     buttonTarget='_blank'
     imageSide="right"
     bg="white"
+  />
+
+  <DataTableSection
+    title="Why pip install keeps failing and what Dataflow does instead"
+    intro="Local dependency workflows break because each machine resolves packages differently and teams mix ad-hoc fixes over time. Dataflow replaces this with containerized, immutable environments that are built once and reused across Jupyter, Airflow, and deployed apps. Every run uses the same locked environment, so version conflicts and works-on-my-machine issues stop blocking delivery."
+    columns={dependencyTableColumns}
+    rows={dependencyTableRows}
+    bg="F8FAFC"
   />
   
   <FeatureGrid

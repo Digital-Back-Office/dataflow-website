@@ -4,7 +4,7 @@ seo:
   description: "Dataflow creates containerised, immutable Python environments in one click. Share across Jupyter, Airflow & VS Code seamlessly."
 
 top_section:
-  title: "Say Goodbye to Dependency Hell"
+  title: "Managed Python Dependencies / No More pip Errors or Version Conflicts"
   description: No more version conflicts, broken environments, or "works on my machine" problems. Get shared, reproducible Python environments that just work—for everyone, every time.
   button:
     label: 'Get Started'

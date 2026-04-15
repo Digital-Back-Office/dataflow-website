@@ -3,6 +3,7 @@ import Layout from '../../layouts/Layout.astro'
 import TopSection from '../../components/common/TopSection.astro'
 import CardGrid from '../../components/common/CardGrid.astro'
 import TwoColumnSection from '../../components/common/TwoColumnSection.astro'
+import BulletComparisonSection from '../../components/common/BulletComparisonSection.astro'
 import { getEntry } from 'astro:content'
 
 const Data = await getEntry('features', 'development-ready-workspace')
@@ -12,6 +13,24 @@ const whatYouGet = Data?.data?.what_you_get || {}
 const instantOnboarding = Data?.data?.instant_onboarding || {}
 const computeFlexibility = Data?.data?.compute_flexibility || {}
 const meta_description = top.description ?? 'Get a fully configured workspace with compute, environments, and applications ready to use in seconds.'
+const colabComparisonBullets = [
+  {
+    title: 'Team environments',
+    text: 'Dataflow gives every teammate the same managed environment instead of ad-hoc notebook-level package installs.'
+  },
+  {
+    title: 'Persistent workspaces',
+    text: 'Your files, apps, and dependencies stay available between sessions so teams do not rebuild context every day.'
+  },
+  {
+    title: 'Pipeline integration',
+    text: 'Jupyter work connects directly to Airflow orchestration and production deployment without hand-offs.'
+  },
+  {
+    title: 'EU data residency',
+    text: 'You can deploy on sovereign European cloud providers to satisfy strict governance requirements.'
+  }
+]
 ---
 
 <Layout
@@ -46,6 +65,14 @@ const meta_description = top.description ?? 'Get a fully configured workspace wi
     buttonTarget={instantOnboarding.button?.target ?? "_blank"}
     imageSide={instantOnboarding.imageSide}
     bg="white"
+  />
+
+  <BulletComparisonSection
+    title="How Dataflow compares to Google Colab"
+    bullets={colabComparisonBullets}
+    paragraph="For smaller data teams that find Databricks too expensive or operationally heavy, Dataflow is a cost-effective alternative with pre-configured tooling, faster onboarding, and less platform overhead."
+    cta={{ label: 'Try Dataflow Free', href: 'https://app.dataflow.zone', target: '_blank' }}
+    bg="F8FAFC"
   />
 
   {computeFlexibility?.features && (

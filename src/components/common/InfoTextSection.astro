@@ -1,0 +1,21 @@
+---
+interface Props {
+  title: string
+  paragraphs: string[]
+  bg?: 'white' | 'F8FAFC'
+}
+
+const { title, paragraphs, bg = 'F8FAFC' } = Astro.props as Props
+const bgClass = bg === 'F8FAFC' ? 'bg-[#F8FAFC]' : 'bg-white'
+---
+
+<section class={`px-[5%] py-16 flex justify-center ${bgClass}`}>
+  <div class="max-w-7xl mt-10 rounded-3xl border border-primary/20 bg-gradient-to-br from-primary/5 via-white to-primary/10 p-6 md:p-7" data-aos="fade-up" data-aos-duration="700" data-aos-offset="180">
+    <h2 class="text-3xl md:text-4xl font-bold text-textblack mb-4">{title}</h2>
+    {paragraphs.map((paragraph, index) => (
+      <p class={`text-lg text-gray-700 leading-relaxed ${index < paragraphs.length - 1 ? 'mb-4' : ''}`}>
+        {paragraph}
+      </p>
+    ))}
+  </div>
+</section>

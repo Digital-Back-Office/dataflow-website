@@ -1,7 +1,7 @@
 ---
 title: 'From Code to Production: Introducing ML LifeCycle on Dataflow'
-description: 'Learn how Dataflow streamlines the entire data project lifecycle from development to production deployment with zero configuration overhead.'
-tags: ['Data Projects', 'Development', 'Deployment', 'Best Practices']
+description: 'Deploy ML models from Jupyter notebooks to production APIs without Dockerfiles or Kubernetes. Dataflow integrates MLflow, GPU compute, and click-to-deploy inference for data science teams.'
+tags: [ML model deployment, data science platform, AI data platform, cloud GPU notebook]
 date: '15 April, 2026'
 image: '/assets/images/blog/ml-lifecycle.webp'
 category: ["product", "ai-ml"]

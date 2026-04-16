@@ -1,13 +1,11 @@
 ---
-title: 'Don't Get Caught Off Guard: The EU AI Act Compliance Checklist Your Data Team Needs Now'
+title: "Don't Get Caught Off Guard: The EU AI Act Compliance Checklist Your Data Team Needs Now"
 description: 'Your practical EU AI Act compliance checklist for data teams — covering high-risk AI, data governance, model docs, and audit trails. Start complying today.'
 tags: ['EU AI Act', 'AI Compliance', 'Data Governance', 'MLOps']
 date: '16 Apr, 2026'
-image: '/assets/images/blog/eu-ai-act-compliance-checklist-for-data-teams.webp'
+image: '/assets/images/blog/eu-ai.webp'
 category: ['ai-ml']
 ---
-
-# Don't Get Caught Off Guard: The EU AI Act Compliance Checklist Your Data Team Needs Now
 
 If your data team is still treating the EU AI Act as a legal department problem, you're already behind. The regulation puts real, technical obligations squarely on the people building and managing AI systems — that means your pipelines, your models, your data. This EU AI Act compliance checklist isn't a legal summary; it's a practical guide for the engineers and data practitioners doing the actual work. And the stakes are real: non-compliance fines can reach €35 million or 7% of global annual turnover.
 

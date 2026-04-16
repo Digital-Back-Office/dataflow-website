@@ -3,7 +3,7 @@ title: 'Cracking the Code: What DORA Data Pipeline Requirements Mean for Your Fu
 description: 'Understand DORA data pipeline requirements and how to build a DORA compliant data platform. Future-proof your financial institution with resilient data architecture.'
 tags: ['DORA', 'Data Pipelines', 'Financial Services', 'Compliance', 'Cloud Architecture']
 date: '16 Apr, 2026'
-image: '/assets/images/blog/dora-data-pipeline-requirements.webp'
+image: '/assets/images/blog/dora-data-pipeline.webp'
 category: ['data']
 ---
 

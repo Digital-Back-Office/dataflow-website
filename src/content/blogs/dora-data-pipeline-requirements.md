@@ -3,7 +3,7 @@ title: 'Beyond the Buzzwords: What DORA Data Pipeline Requirements *Really* Mean
 description: 'Unpack DORA data pipeline requirements for financial institutions. Learn how to build a DORA compliant data platform and transform your data architecture for resilience.'
 tags: ['DORA', 'Data Pipelines', 'Financial Services', 'Compliance', 'Data Architecture']
 date: '16 Apr, 2026'
-image: '/assets/images/blog/dora-data-pipeline-requirements.webp'
+image: '/assets/images/blog/dora-data-pipeline.webp'
 category: ['data']
 ---
 

@@ -2,7 +2,7 @@
 import { getCollection } from 'astro:content'
 import Layout from '../../layouts/Layout.astro'
 import EmailCTA from '../../components/common/EmailCTA.astro'
-import SocialIcon from '../../components/common/SocialIcon.astro'
+import SocialIcon, { type Platform } from '../../components/common/SocialIcon.astro'
 import { resolveBlogAuthor } from '../../utils/blogAuthors'
 
 export async function getStaticPaths() {
@@ -76,7 +76,14 @@ const cleanedBodyText = body
 const wordCount = cleanedBodyText ? cleanedBodyText.split(" ").length : undefined;
 const encodedArticleUrl = encodeURIComponent(articleUrl);
 const encodedTitle = encodeURIComponent(title);
-const shareLinks = [
+
+type ShareLink = {
+  icon: Platform;
+  label: string;
+  href: string;
+};
+
+const shareLinks: ShareLink[] = [
   {
     icon: 'x',
     label: 'X',

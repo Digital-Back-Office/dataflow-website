@@ -46,7 +46,7 @@ const BLOG_AUTHORS: Record<string, BlogAuthor> = {
   'dinesh': {
     id: 'dinesh',
     name: 'Dinesh',
-    headshot: '/assets/images/company/dinesh-dbo.webp',
+    headshot: '/assets/images/authors/dinesh.webp',
     bio: 'A driven individual learning new cutting edge technologies in the field of DevOps and DevSecOps for deploying scalable microservices applications securely in cloud environments.',
     socials: [
       {
@@ -59,7 +59,7 @@ const BLOG_AUTHORS: Record<string, BlogAuthor> = {
   'hari-govind': {
     id: 'hari-govind',
     name: 'Hari Govind',
-    headshot: '/assets/images/company/harigovind-dbo.webp',
+    headshot: '/assets/images/authors/hari-govind.webp',
     bio: 'Software Engineer specializing in building scalable backend systems and robust APIs. I enjoy tackling complex problems and developing solutions that make a real impact through modern frameworks and cloud technologies.',
     socials: [
       {

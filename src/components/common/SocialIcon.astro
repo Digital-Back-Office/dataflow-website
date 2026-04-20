@@ -4,7 +4,7 @@ interface Props {
   className?: string
 }
 
-export type Platform = 'x' | 'twitter' | 'facebook' | 'linkedin' | 'youtube' | 'discourse' | 'email' | 'chat' | 'docs' | 'blog' | 'demo' | 'lightning';
+export type Platform = 'x' | 'twitter' | 'facebook' | 'linkedin' | 'youtube' | 'discourse' | 'email' | 'chat' | 'docs' | 'blog' | 'demo' | 'lightning' | string;
 
 const { platform, className = 'w-5 h-5' } = Astro.props
 ---

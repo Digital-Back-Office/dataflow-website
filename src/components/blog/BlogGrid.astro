@@ -1,11 +1,14 @@
 ---
 const { updatedposts } = Astro.props
+import { resolveBlogAuthor } from '../../utils/blogAuthors'
 ---
 
 <div class='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'>
   {
-    updatedposts.map((post) => (
-      <article class='group bg-white rounded-2xl overflow-hidden border border-gray-100 hover:border-primary/30 hover:shadow-xl transition-all duration-300'>
+    updatedposts.map((post) => {
+      const author = resolveBlogAuthor(post.data)
+
+      return (<article class='group bg-white rounded-2xl overflow-hidden border border-gray-100 hover:border-primary/30 hover:shadow-xl transition-all duration-300'>
         {post.data.image && (
           <a href={`/blog/${post.slug}`} class='block overflow-hidden' title={post.data.title}>
             <img
@@ -35,6 +38,11 @@ const { updatedposts } = Astro.props
             <a href={`/blog/${post.slug}`} title={post.data.title}>{post.data.title}</a>
           </h3>
 
+          {/* Author */}
+          <p class='text-sm text-gray-600 mb-3'>
+            By <span class='font-medium text-textblack'>{author.name}</span>
+          </p>
+
           {/* Description */}
           <p class='text-gray-600 text-sm line-clamp-3 mb-4'>
             {post.data.description}
@@ -63,7 +71,7 @@ const { updatedposts } = Astro.props
             </svg>
           </a>
         </div>
-      </article>
-    ))
+      </article>)
+    })
   }
 </div>

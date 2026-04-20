@@ -10,6 +10,18 @@ const blogsCollection = defineCollection({
     date: z.string(),
     image: z.string().optional(),
     blog_no: z.number(),
+    author_id: z.string().optional(),
+    author: z.object({
+      id: z.string().optional(),
+      name: z.string(),
+      headshot: z.string().optional(),
+      bio: z.string().optional(),
+      socials: z.array(z.object({
+        platform: z.enum(['x', 'twitter', 'linkedin', 'youtube', 'email']),
+        url: z.string(),
+        label: z.string().optional()
+      })).optional()
+    }).optional(),
   })
 })
 

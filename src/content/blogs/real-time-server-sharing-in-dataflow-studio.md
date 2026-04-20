@@ -5,6 +5,7 @@ tags: ['Collaboration', 'Server Sharing', 'Real-time', 'Data Engineering']
 date: '10 April, 2026'
 image: /assets/images/blog/real-time-server-sharing-in-dataflow-studio.webp
 category: ["product"]
+author_id: 'hari-govind'
 ---
 
 Dataflow Studio servers are something a lot of our users rely on for building data pipelines and training models. As a [cloud data workspace](https://dataflow.zone/product/shared-foundation/) built for modern data engineering platform needs, one thing that kept coming up, especially from teams, was the lack of a simple way to collaborate on the same server.

@@ -2,6 +2,8 @@
 import { getCollection } from 'astro:content'
 import Layout from '../../layouts/Layout.astro'
 import EmailCTA from '../../components/common/EmailCTA.astro'
+import SocialIcon, { type Platform } from '../../components/common/SocialIcon.astro'
+import { resolveBlogAuthor } from '../../utils/blogAuthors'
 
 export async function getStaticPaths() {
   const blogs = await getCollection('blogs')
@@ -18,6 +20,13 @@ export async function getStaticPaths() {
 
 const { data, body, render } = Astro.props
 const { title, date, tags, image, description } = data
+const author = resolveBlogAuthor(data)
+const authorInitials = author.name
+  .split(' ')
+  .filter(Boolean)
+  .slice(0, 2)
+  .map((namePart: string) => namePart.charAt(0).toUpperCase())
+  .join('')
 const meta_description = description ?? `Read ${title} on the Dataflow blog about data science and AI for startups.`
 const { Content } = await Astro.props.render()
 
@@ -40,7 +49,7 @@ while ((match = headingRegex.exec(body)) !== null) {
     .toLowerCase()
     .replace(/[^a-z0-9]+/g, '-')
     .replace(/^-+|-+$/g, '')
-  headings.push({ depth, text: cleanText, slug })
+  headings.push({ depth, text: cleanText, slug }) 
 }
 
 // Get all blogs for "Related Posts" section
@@ -65,6 +74,37 @@ const cleanedBodyText = body
   .replace(/\s+/g, " ")
   .trim();
 const wordCount = cleanedBodyText ? cleanedBodyText.split(" ").length : undefined;
+const encodedArticleUrl = encodeURIComponent(articleUrl);
+const encodedTitle = encodeURIComponent(title);
+
+type ShareLink = {
+  icon: Platform;
+  label: string;
+  href: string;
+};
+
+const shareLinks: ShareLink[] = [
+  {
+    icon: 'x',
+    label: 'X',
+    href: `https://twitter.com/intent/tweet?url=${encodedArticleUrl}&text=${encodedTitle}`,
+  },
+  {
+    icon: 'linkedin',
+    label: 'LinkedIn',
+    href: `https://www.linkedin.com/sharing/share-offsite/?url=${encodedArticleUrl}`,
+  },
+  {
+    icon: 'facebook',
+    label: 'Facebook',
+    href: `https://www.facebook.com/sharer/sharer.php?u=${encodedArticleUrl}`,
+  },
+  {
+    icon: 'email',
+    label: 'Email',
+    href: `mailto:?subject=${encodedTitle}&body=${encodedArticleUrl}`,
+  },
+];
 
 const pageSchema = [
   {
@@ -95,9 +135,8 @@ const pageSchema = [
     dateModified: new Date(date).toISOString(),
     image: ogImage ? [ogImage] : [fallbackOgImage],
     author: {
-      "@type": "Organization",
-      "@id": `${siteOrigin}#organization`,
-      name: "Dataflow",
+      "@type": "Person",
+      name: author.name,
     },
     publisher: {
       "@id": `${siteOrigin}#organization`,
@@ -141,6 +180,8 @@ const pageSchema = [
         {title}
       </h1>
       <div class='flex flex-wrap items-center gap-3 mb-8' data-aos='fade-up' data-aos-delay='250'>
+        <span class='text-sm text-gray-600'>By <a href="#author" class='font-semibold text-textblack underline'>{author.name}</a></span>
+        <span class='text-gray-300'>|</span>
         <time datetime={date} class='text-sm text-gray-600'>{date}</time>
         {tags && tags.length > 0 && (
           <>
@@ -181,8 +222,76 @@ const pageSchema = [
           }
           
           <div class='bg-white/90 backdrop-blur rounded-2xl shadow-sm border border-gray-100 p-8 md:p-12' data-aos='fade-up' data-aos-delay='200'>
-            <div id='blog-content' class='prose w-full max-w-none md:prose-img:max-w-[70%] prose-img:mx-auto prose-img:rounded-xl prose-headings:scroll-mt-24 prose-h2:mt-10 prose-h3:mt-8 prose-p:leading-relaxed'>
+            <div id='blog-content' class='prose w-full max-w-none md:prose-img:max-w-[70%] prose-img:mx-auto prose-img:rounded-xl prose-headings:scroll-mt-24 prose-h2:mt-10 prose-h3:mt-8 prose-p:leading-relaxed prose-blockquote:border-primary/80 prose-li:marker:text-primary/80 prose-ol:marker:text-primary/80 prose-ul:marker:text-primary/80'>
               <Content />
+            </div>
+          </div>
+
+          <div id="author" class='mt-8 rounded-2xl border border-gray-100 bg-white p-6 md:p-8 shadow-sm' data-aos='fade-up' data-aos-delay='220'>
+            <div class='flex flex-col gap-5 md:flex-row md:items-start md:justify-between'>
+              <div class='flex items-start gap-4'>
+                {author.headshot ? (
+                  <img
+                    src={author.headshot}
+                    alt={`${author.name} headshot`}
+                    loading='lazy'
+                    class='h-16 w-16 rounded-full object-cover border border-gray-200'
+                  />
+                ) : (
+                  <div class='h-16 w-16 rounded-full bg-primary/10 border border-primary/20 text-primary font-bold flex items-center justify-center'>
+                    {authorInitials}
+                  </div>
+                )}
+
+                <div>
+                  <p class='text-xs uppercase tracking-wide text-gray-500 font-semibold mb-1'>Written by</p>
+                  <h3 class='text-xl font-bold text-textblack'>{author.name}</h3>
+                  <p class='mt-2 text-sm text-gray-600 max-w-2xl'>{author.bio}</p>
+                  {author.socials && author.socials.length > 0 && (
+                    <div class='mt-3 flex flex-wrap items-center gap-2'>
+                      {author.socials.map((social) => (
+                        <a
+                          href={social.url}
+                          target='_blank'
+                          rel='noopener noreferrer'
+                          title={social.label || `Follow ${author.name} on ${social.platform}`}
+                          class='inline-flex items-center gap-2 rounded-full border border-gray-200 px-3 py-1.5 text-xs font-medium text-gray-700 hover:text-primary hover:border-primary/40 transition-colors'
+                        >
+                          <SocialIcon platform={social.platform} className='w-3.5 h-3.5' />
+                          <span>{social.label || social.platform}</span>
+                        </a>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              </div>
+
+              <div class='md:text-right md:pl-6'>
+                <p class='text-sm uppercase tracking-wide text-gray-500 font-semibold mb-2'>Also share to</p>
+                <div class='flex flex-wrap gap-2 md:justify-end'>
+                  {shareLinks.map((share) => (
+                    <a
+                      href={share.href}
+                      target='_blank'
+                      rel='noopener noreferrer'
+                      class='inline-flex items-center gap-2 rounded-full border border-gray-200 p-2 text-xs font-semibold text-gray-700 hover:text-primary hover:border-primary/40 transition-colors'
+                      title={`Share this article on ${share.label}`}
+                      aria-label={`Share this article on ${share.label}`}
+                    >
+                      <SocialIcon platform={share.icon} className='w-4 h-4' />
+                    </a>
+                  ))}
+                  <button
+                    type='button'
+                    id='copy-link-btn'
+                    class='inline-flex items-center gap-2 rounded-full border border-gray-200 p-2 text-xs font-semibold text-gray-700 hover:text-primary hover:border-primary/40 transition-colors'
+                    data-copy-url={articleUrl}
+                    aria-label='Copy article link'
+                  >
+                    <SocialIcon platform='copy' className='w-4 h-4' />
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
 
@@ -443,7 +552,7 @@ const pageSchema = [
   /* Prevent markdown tables from overlapping on zoom/smaller viewports */
   :global(#blog-content table) {
     display: block;
-    width: max-content;
+    width: 100%;
     min-width: 100%;
     max-width: 100%;
     overflow-x: auto;
@@ -462,6 +571,40 @@ const pageSchema = [
   window.NEWSLETTER_FORM_ID = newsletterFormId;
 </script>
 <script is:inline src="/assets/js/newsletter.js"></script>
+
+<script is:inline>
+  document.addEventListener('DOMContentLoaded', function() {
+    const copyLinkButton = document.getElementById('copy-link-btn');
+    if (!copyLinkButton) return;
+
+    const originalText = copyLinkButton.innerHTML;
+
+    copyLinkButton.addEventListener('click', async function() {
+      const linkToCopy = copyLinkButton.getAttribute('data-copy-url') || window.location.href;
+
+      try {
+        await navigator.clipboard.writeText(linkToCopy);
+        copyLinkButton.innerHTML = `
+        <svg class='h-4 w-4 text-primary' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
+          <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M5 13l4 4L19 7'></path>
+        </svg>
+        `;
+      } catch (error) {
+        const tempInput = document.createElement('input');
+        tempInput.value = linkToCopy;
+        document.body.appendChild(tempInput);
+        tempInput.select();
+        document.execCommand('copy');
+        document.body.removeChild(tempInput);
+        copyLinkButton.textContent = 'Copied';
+      }
+
+      window.setTimeout(function() {
+        copyLinkButton.innerHTML = originalText;
+      }, 3000);
+    });
+  });
+</script>
 
 <script is:inline>
   // Table of Contents - Scroll Highlighting and Smooth Scroll

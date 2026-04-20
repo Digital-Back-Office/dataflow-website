@@ -1,6 +1,7 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import { getCollection } from "astro:content";
+import { resolveBlogAuthor } from "../../utils/blogAuthors";
 
 const blogs = await getCollection("blogs");
 const POSTS_PER_PAGE = 6;
@@ -42,6 +43,7 @@ const allBlogsJson = JSON.stringify(allBlogs.map(blog => ({
   description: blog.data.description,
   date: blog.data.date,
   image: blog.data.image,
+  authorName: resolveBlogAuthor(blog.data).name,
   tags: blog.data.tags || [],
 })));
 const siteOrigin = (Astro.site?.toString() ?? "https://dataflow.zone").replace(/\/$/, "");
@@ -81,13 +83,18 @@ const pageSchema = [
       "@id": `${siteOrigin}#organization`,
     },
     blogPost: allBlogs.map((post) => ({
+      ...(() => {
+        const author = resolveBlogAuthor(post.data);
+        return {
+          author: {
+            "@type": "Person",
+            name: author.name,
+          },
+        };
+      })(),
       "@type": ["BlogPosting", "Article"],
       "@id": `${siteOrigin}/blog/${post.slug}/#blogposting`,
       headline: post.data.title,
-      author: {
-        "@type": "Organization",
-        "@id": `${siteOrigin}#organization`,
-      },
       image: post.data.image
         ? [new URL(post.data.image, `${siteOrigin}/`).toString()]
         : [new URL('/og-image.png', `${siteOrigin}/`).toString()],
@@ -189,8 +196,10 @@ const pageSchema = [
       data-posts-per-page="6" 
     >
       {
-        initialPosts.map((post, index) => (
-          <article
+        initialPosts.map((post, index) => {
+          const author = resolveBlogAuthor(post.data);
+
+          return (<article
             class="group bg-white rounded-2xl overflow-hidden border border-gray-100 hover:border-primary/30 hover:shadow-xl transition-all duration-300 blog-card-transition"
             data-slug={post.slug}
             data-categories={
@@ -235,6 +244,11 @@ const pageSchema = [
                 <a href={`/blog/${post.slug}`} title={post.data.title}>{post.data.title}</a>
               </h3>
 
+              {/* Author */}
+              <p class="text-sm text-gray-600 mb-3">
+                By <span class="font-medium text-textblack">{author.name}</span>
+              </p>
+
               {/* Description */}
               <p class="text-gray-600 text-sm line-clamp-3 mb-4">
                 {post.data.description}
@@ -263,8 +277,8 @@ const pageSchema = [
                 </svg>
               </a>
             </div>
-          </article>
-        ))
+          </article>);
+        })
       }
     </div>
 

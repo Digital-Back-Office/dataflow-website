@@ -72,7 +72,7 @@ const BLOG_AUTHORS: Record<string, BlogAuthor> = {
   'yaswanth-ampolu' : {
     id: 'yaswanth-ampolu',
     name: 'Yaswanth Ampolu',
-    headshot: '/assets/images/authors/author-dp.png',
+    headshot: '/assets/images/authors/yaswanth-ampolu.webp',
     bio: 'AI Engineer specializing in LLMs and building  applications',
     socials: [
       {

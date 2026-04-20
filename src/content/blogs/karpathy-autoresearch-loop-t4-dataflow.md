@@ -48,5 +48,5 @@ So the difference is: Karpathy's repo proves the clean H100 agent loop; my versi
 
 **Want to run this yourself?**
 
-Dataflow gives you managed GPU instances, persistent shared storage, and a cloud Jupyter environment — everything this workflow needs. Visit [dataflow.zone](https://dataflow.zone/) to get started.
+Dataflow gives you managed GPU instances, persistent shared storage, and a cloud Jupyter environment — everything this workflow needs. Visit [dataflow.zone](https://dataflow.zone/) to get started, and see the code in [Yaswanth-ampolu/auto-research-t4](https://github.com/Yaswanth-ampolu/auto-research-t4).
 

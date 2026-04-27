@@ -1,0 +1,76 @@
+---
+interface BulletItem {
+  title: string
+  text: string
+}
+
+interface Props {
+  title: string
+  bullets: BulletItem[]
+  paragraph?: string
+  cta?: {
+    label: string
+    href: string
+    target?: '_blank' | '_self'
+  }
+  bg?: 'white' | 'F8FAFC'
+}
+
+const { title, bullets, paragraph, cta, bg = 'F8FAFC' } = Astro.props as Props
+const bgClass = bg === 'F8FAFC' ? 'bg-[#F8FAFC]' : 'bg-white'
+---
+
+<section class={`px-[5%] py-16 md:py-20 ${bgClass}`}>
+  <div class="max-w-7xl mx-auto">
+    <div class="mx-auto mb-10 md:mb-12 max-w-4xl text-center" data-aos="fade-up" data-aos-duration="700" data-aos-offset="180">
+      <p class="text-sm font-semibold uppercase tracking-[0.18em] text-primary mb-3">Comparison</p>
+      <h2 class="text-3xl md:text-4xl font-bold text-textblack leading-tight">
+        {title}
+      </h2>
+      {paragraph && (
+        <p class="max-w-4xl mt-4 text-lg text-gray-700 leading-relaxed">
+          {paragraph}
+        </p>
+      )}
+    </div>
+
+    <div class="mx-auto grid max-w-7xl grid-cols-1 md:grid-cols-2 gap-6">
+      {bullets.map((item, index) => (
+        <article
+          class="group rounded-2xl border border-gray-200 bg-white p-6 md:p-7 shadow-[0_1px_0_rgba(15,23,42,0.02)] transition-all duration-300 hover:border-primary/30"
+          data-aos="fade-up"
+          data-aos-duration="700"
+          data-aos-offset="180"
+          data-aos-delay={index * 80}
+        >
+          <div class="flex items-start gap-4">
+            <div class="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary font-semibold ring-1 ring-primary/10">
+              {index + 1}
+            </div>
+            <div class="min-w-0">
+              <h3 class="text-xl font-semibold text-textblack mb-2 leading-tight">
+                {item.title}
+              </h3>
+              <p class="text-gray-700 leading-relaxed">
+                {item.text}
+              </p>
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+
+    {cta && (
+      <div class="mt-10 flex justify-center" data-aos="fade-up" data-aos-duration="700" data-aos-offset="180" data-aos-delay="140">
+        <a
+          href={cta.href}
+          target={cta.target ?? '_self'}
+          rel={cta.target === '_blank' ? 'noopener noreferrer' : undefined}
+          class="inline-flex items-center justify-center rounded-md bg-primary px-6 py-3 text-white font-medium hover:opacity-95 transition"
+        >
+          {cta.label}
+        </a>
+      </div>
+    )}
+  </div>
+</section>

@@ -10,6 +10,7 @@ import Testimonial from '../components/common/Testimonial.astro'
 import SupportSection from '../components/home/SupportSection.astro'
 import DevelopersLove from '../components/home/DevelopersLove.astro'
 import FinalCTA from '../components/home/FinalCTA.astro'
+import SectionCallout from '../components/common/SectionCallout.astro'
 import { getEntry } from 'astro:content'
 
 const Data = await getEntry('home', 'home')
@@ -25,7 +26,7 @@ const pageSchema = [
     '@type': 'WebPage',
     '@id': `${homeUrl}#webpage`,
     url: homeUrl,
-    name: seo?.title ?? 'Dataflow | AI-Ready Data Platform for Startups & Teams',
+    name: seo?.title ?? 'Dataflow | AI-Ready Data Platform for Startups / Jupyter, Airflow and Streamlit, Managed',
     description:
       seo?.description ??
       'Build, run & deploy data pipelines, ML models and Streamlit apps without DevOps. Jupyter, Airflow & VS Code in one managed Python platform. Free trial.',
@@ -64,11 +65,12 @@ const pageSchema = [
 ---
 
 <Layout
-  title={seo?.title ?? 'Dataflow | AI-Ready Data Platform for Startups & Teams'}
+  title={seo?.title ?? 'Dataflow | AI-Ready Data Platform for Startups / Jupyter, Airflow and Streamlit, Managed'}
   meta_description={seo?.description ?? 'Build, run & deploy data pipelines, ML models and Streamlit apps without DevOps. Jupyter, Airflow & VS Code in one managed Python platform. Free trial.'}
   pageSchema={pageSchema}
 >
   <HeroSection hero={hero} />
+  <SectionCallout text="Built for EU compliance. Dataflow deploys on European sovereign cloud providers, making it the right choice for teams working under DORA, the EU AI Act, or GDPR requirements." className="pt-0" />
   <GPUSection />
   <UseCasesTabs />
   <ShipDataApps />

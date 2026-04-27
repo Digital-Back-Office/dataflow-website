@@ -5,6 +5,7 @@ import TopSection from '../../components/common/TopSection.astro'
 import FeatureGrid from '../../components/common/FeatureGrid.astro'
 import CardGrid from '../../components/common/CardGrid.astro'
 import PrivateCloud from '../../components/features/run-data-on-any-cloud/PrivateCloud.astro'
+import InfoTextSection from '../../components/common/InfoTextSection.astro'
 import { getEntry } from 'astro:content'
 import Section from '../../components/features/run-data-on-any-cloud/Section.astro'
 
@@ -17,6 +18,10 @@ const companyLogos = top?.company_logos || {}
 const benefits = Data?.data?.benefits || {}
 const coreCapabilities = Data?.data?.core_capabilities || {}
 const meta_description = top.description ?? 'Upgrade your data management and processing capabilities by using our service, which enables Dataflow on any cloud platform'
+const sovereignCloudParagraphs = [
+  'Dataflow supports deployments on European sovereign cloud providers including Civo, IONOS, and Cleura. This gives teams more control over data location and operational governance while keeping the same developer workflow.',
+  'For organisations working under DORA and GDPR obligations, sovereign cloud options help align platform architecture with compliance and residency requirements from day one.'
+]
 ---
 
 <Layout
@@ -73,6 +78,11 @@ const meta_description = top.description ?? 'Upgrade your data management and pr
       />
     ))
   }
+  <InfoTextSection
+    title="Run Dataflow on European sovereign cloud"
+    paragraphs={sovereignCloudParagraphs}
+    bg="F8FAFC"
+  />
   <PrivateCloud />
   <section class='px-[5%] pb-16 bg-white'>
     <div class='max-w-5xl mx-auto text-center text-sm text-gray-600'>

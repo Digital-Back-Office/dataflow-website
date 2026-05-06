@@ -4,11 +4,10 @@ seo:
   description: "Build, run & deploy data pipelines, ML models and Streamlit apps without DevOps. Jupyter, Airflow & VS Code in one managed Python platform. Free trial."
 
 hero:
-  title: "The AI-Ready Data Platform for Startups <br> Jupyter, Airflow and Streamlit, Managed"
-  title_part_2: "Not Glue Code."
+  title: "The AI-Ready Data Platform <br> for Startups"
   description: All your data tools, finally working together—without breaking environments. <br>
         AI ready and Open source tools.
-  subtitle: "All your data tools, finally working together—without breaking environments. AI ready and open-source friendly."
+  subtitle: "All your data tools Jupyter, Airflow and Streamlit finally working together"
   primary_cta:
     text: "Try it free"
     href: "https://app.dataflow.zone/hub/login"

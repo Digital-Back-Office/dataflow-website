@@ -5,9 +5,7 @@ seo:
 
 hero:
   title: "The AI-Ready Data Platform <br> for Startups"
-  description: All your data tools, finally working together—without breaking environments. <br>
-        AI ready and Open source tools.
-  subtitle: "All your data tools Jupyter, Airflow and Streamlit finally working together"
+  description: "All your data tools Jupyter, Airflow and Streamlit - finally working together"
   primary_cta:
     text: "Try it free"
     href: "https://app.dataflow.zone/hub/login"

@@ -4,8 +4,8 @@ seo:
   description: "One managed Python platform for startups. Jupyter notebooks, Airflow pipelines and Streamlit apps - pre-wired, no DevOps, no config files"
 
 top_section:
-  title: "Data Infrastructure That Scales with Your Ambitions"
-  description: "Built for lean teams who refuse to compromise. Get the power of an enterprise data platform without the enterprise price tag, complexity, or months-long setup. Ship data products faster, validate ideas cheaper, and scale only when you're ready."
+  title: "The Data Platform for Startups and Small Teams - Jupyter, Airflow and Streamlit, No DevOps"
+  description: "Scale fast, start lean. Built for lean teams who need one managed Python platform for startups with Jupyter notebooks, Airflow pipelines and Streamlit apps pre-wired, no DevOps, and no config files."
   button:
     label: "Start Free Trial"
     href: "/start-free-trial"
@@ -13,7 +13,7 @@ top_section:
 
 sections:
   - title: "Move Fast Without Breaking Things"
-    description: "Your team doesn't have time for dependency hell or infrastructure firefighting. Dataflow gives you pre-configured, isolated environments for Jupyter, Airflow, dbt, and more—so you can validate product ideas in days, not months. No DevOps PhD required."
+    description: "Your team doesn't have time for dependency hell or infrastructure firefighting. Dataflow gives you pre-configured, isolated environments for Jupyter notebooks, Airflow pipelines, and Streamlit apps so you can validate product ideas in days, not months with no DevOps burden and no config-file sprawl."
     image: "/assets/images/startups/move-fast.webp"
     imageSide: "left"
     

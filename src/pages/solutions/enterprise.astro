@@ -2,6 +2,7 @@
 import Layout from '../../layouts/Layout.astro'
 import TopSection from '../../components/common/TopSection.astro'
 import TwoColumnSection from '../../components/common/TwoColumnSection.astro'
+import CardsWithBulletsSection from '../../components/common/CardsWithBulletsSection.astro'
 import { getEntry } from 'astro:content'
 import Testimonial from '../../components/common/Testimonial.astro'
 import CTASection from '../../components/common/CTASection.astro'
@@ -14,6 +15,32 @@ const meta_description = top.description ?? 'Enterprise'
 const sections = Data?.data?.sections || []
 const sectionCta = Data?.data?.section_cta || {}
 const cta = Data?.data?.cta_section || {}
+const enterpriseComplianceCards = [
+	{
+		title: 'DORA compliance',
+		bullets: [
+			'Deploy on self-hosted or sovereign cloud infrastructure to keep operational control in your hands.',
+			'Standardize production environments and access boundaries across internal teams and vendors.',
+			'Reduce platform risk by using auditable, repeatable workflows for critical data operations.'
+		]
+	},
+	{
+		title: 'EU AI Act readiness',
+		bullets: [
+			'Track model and pipeline activity with audit logs that support internal and external review.',
+			'Maintain data lineage visibility from ingestion through transformation and production outputs.',
+			'Use reproducible environments to document and repeat high-risk AI workflows consistently.'
+		]
+	},
+	{
+		title: 'GDPR-native deployment',
+		bullets: [
+			'Run workloads on European providers such as Civo, IONOS, and Cleura for stronger residency control.',
+			'Keep secrets and credentials centrally managed with role-based access across teams.',
+			'Support privacy governance requirements without adding custom deployment complexity.'
+		]
+	}
+]
 ---
 
 <Layout
@@ -39,6 +66,12 @@ const cta = Data?.data?.cta_section || {}
 			/>
 		))
 	}
+
+	<CardsWithBulletsSection
+		title="Compliance foundations for EU-regulated enterprises"
+		cards={enterpriseComplianceCards}
+		bg="F8FAFC"
+	/>
 	
 	{sectionCta && sectionCta.label && (
 		<div class='flex justify-center py-16 bg-white'>

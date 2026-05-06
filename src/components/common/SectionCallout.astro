@@ -1,0 +1,21 @@
+---
+interface Props {
+  text: string
+  bg?: 'white' | 'F8FAFC'
+  tone?: 'neutral' | 'primary'
+  className?: string
+}
+
+const { text, bg = 'white', tone = 'primary', className = '' } = Astro.props as Props
+const bgClass = bg === 'F8FAFC' ? 'bg-[#F8FAFC]' : 'bg-white'
+const toneClass =
+  tone === 'primary'
+    ? 'border-primary/20 bg-primary/5'
+    : 'border-gray-200 bg-[#F8FAFC]'
+---
+
+<section class={`px-[5%] py-10 ${bgClass} ${className}`} data-aos="fade-up" data-aos-duration="700" data-aos-offset="160">
+  <div class={`max-w-5xl mx-auto rounded-2xl border px-6 py-6 text-center ${toneClass}`}>
+    <p class="text-base md:text-lg text-gray-700 leading-relaxed">{text}</p>
+  </div>
+</section>

@@ -3,6 +3,7 @@ import Layout from '../../layouts/Layout.astro'
 import TopSection from '../../components/common/TopSection.astro'
 import CardGrid from '../../components/common/CardGrid.astro'
 import TwoColumnSection from '../../components/common/TwoColumnSection.astro'
+import BulletComparisonSection from '../../components/common/BulletComparisonSection.astro'
 import { getEntry } from 'astro:content'
 
 const Data = await getEntry('features', 'development-ready-workspace')
@@ -11,6 +12,7 @@ const seo = Data?.data?.seo
 const whatYouGet = Data?.data?.what_you_get || {}
 const instantOnboarding = Data?.data?.instant_onboarding || {}
 const computeFlexibility = Data?.data?.compute_flexibility || {}
+const colabComparison = Data?.data?.colab_comparison || {}
 const meta_description = top.description ?? 'Get a fully configured workspace with compute, environments, and applications ready to use in seconds.'
 ---
 
@@ -46,6 +48,14 @@ const meta_description = top.description ?? 'Get a fully configured workspace wi
     buttonTarget={instantOnboarding.button?.target ?? "_blank"}
     imageSide={instantOnboarding.imageSide}
     bg="white"
+  />
+
+  <BulletComparisonSection
+    title={colabComparison.title}
+    bullets={colabComparison.bullets || []}
+    paragraph={(colabComparison.paragraphs || []).join(' ')}
+    cta={colabComparison.cta}
+    bg={colabComparison.bg || 'F8FAFC'}
   />
 
   {computeFlexibility?.features && (

@@ -98,8 +98,12 @@ const baseClass = size === 'large' ? 'w-6 h-6' : 'w-5 h-5 mt-0.5 shrink-0'
 )}
 
 {id === 'compare' && (
-  <svg class={`${baseClass} text-primary`} fill='none' stroke='currentColor' viewBox='0 0 24 24'>
-    <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M9 6h10M9 12h10M9 18h10M5 6h.01M5 12h.01M5 18h.01'></path>
+  <svg xmlns="http://www.w3.org/2000/svg" class={`${baseClass} text-primary`} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-components">
+    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+    <path d="M3 12l3 3l3 -3l-3 -3l-3 3" />
+    <path d="M15 12l3 3l3 -3l-3 -3l-3 3" />
+    <path d="M9 6l3 3l3 -3l-3 -3l-3 3" />
+    <path d="M9 18l3 3l3 -3l-3 -3l-3 3" />
   </svg>
 )}
 

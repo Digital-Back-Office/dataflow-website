@@ -96,9 +96,7 @@ const pageSchema = [
   title="Dataflow Comparisons | Compare with Leading Data Tools"
   meta_description="Compare Dataflow with CoCalc, Deepnote, Databricks, Prefect, Argo, and other popular data platforms. Find the best solution for your workflow."
   pageSchema={pageSchema}
->
-  <Header />
-  
+> 
   <main>
     <section class="px-[5%] pt-32 bg-gradient-to-b from-slate-50 to-white">
       <div class="max-w-6xl mx-auto text-center">
@@ -119,7 +117,7 @@ const pageSchema = [
           {comparisons.map((comparison, index) => (
             <a
               href={`/compare/dataflow-vs-${comparison.slug}`}
-              class="group block rounded-2xl border border-slate-200 bg-white p-6 md:p-7 shadow-[0_8px_24px_rgba(2,8,20,0.04)] transition-all duration-300 hover:-translate-y-0.5 hover:border-primary/40 hover:shadow-[0_16px_36px_rgba(2,8,20,0.10)]"
+              class="group block rounded-2xl border border-slate-200 bg-white p-6 md:p-7 hover:border-primary/40"
               data-aos="fade-up"
               data-aos-delay={index * 80}
             >
@@ -250,6 +248,4 @@ const pageSchema = [
 		pageSource="comparisons-cta"
 	/>
   </main>
-
-  <Footer />
 </Layout>

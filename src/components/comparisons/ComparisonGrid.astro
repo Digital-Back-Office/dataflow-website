@@ -1,0 +1,49 @@
+---
+interface ComparisonCard {
+  app: string
+  description: string
+  link: string
+  icon?: string
+}
+
+interface Props {
+  cards: ComparisonCard[]
+}
+
+const { cards } = Astro.props as Props
+---
+
+<section class="px-[5%] py-16 md:py-20 bg-gray-50">
+  <div class="max-w-7xl mx-auto">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
+      {cards.map((card, index) => (
+        <a
+          href={card.link}
+          class="group block p-6 md:p-8 rounded-2xl bg-white border border-gray-200 hover:border-primary/40 hover:shadow-lg transition-all duration-300"
+          data-aos="fade-up"
+          data-aos-delay={index * 80}
+        >
+          <div class="flex items-start justify-between mb-4">
+            <div class="flex-1">
+              <h3 class="text-xl md:text-2xl font-bold text-gray-900 group-hover:text-primary transition-colors">
+                Dataflow vs {card.app}
+              </h3>
+            </div>
+            <svg class="w-6 h-6 text-gray-400 group-hover:text-primary transition-colors flex-shrink-0 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+            </svg>
+          </div>
+          <p class="text-gray-600 leading-relaxed mb-4">
+            {card.description}
+          </p>
+          <span class="inline-flex items-center text-primary font-medium text-sm">
+            View Comparison
+            <svg class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+            </svg>
+          </span>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>

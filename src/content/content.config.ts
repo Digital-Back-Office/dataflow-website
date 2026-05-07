@@ -681,6 +681,57 @@ const featuresCollection = defineCollection({
   })
 })
 
+// Comparisons Collection Schema
+const comparisonsCollection = defineCollection({
+  type: 'content',
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    app_name: z.string(),
+    app_logo: z.string().optional(),
+    app_website: z.string().optional(),
+    features: z.array(z.object({
+      category: z.string(),
+      items: z.array(z.object({
+        feature: z.string(),
+        dataflow: z.string().optional(),
+        competitor: z.string().optional(),
+        dataflow_icon: z.string().optional(),
+        competitor_icon: z.string().optional()
+      }))
+    })).optional(),
+    comparison_table: z.array(z.object({
+      feature: z.string(),
+      dataflow: z.union([z.string(), z.boolean()]),
+      competitor: z.union([z.string(), z.boolean()])
+    })).optional(),
+    pros: z.object({
+      dataflow: z.array(z.string()).optional(),
+      competitor: z.array(z.string()).optional()
+    }).optional(),
+    cons: z.object({
+      dataflow: z.array(z.string()).optional(),
+      competitor: z.array(z.string()).optional()
+    }).optional(),
+    cta_section: z.object({
+      title: z.string(),
+      description: z.string(),
+      button: z.object({
+        text: z.string(),
+        href: z.string()
+      }),
+      secondary_button: z.object({
+        text: z.string(),
+        href: z.string()
+      }).optional()
+    }).optional(),
+    faqs: z.array(z.object({
+      question: z.string(),
+      answer: z.string()
+    })).optional()
+  })
+})
+
 export const collections = {
   blogs: blogsCollection,
   'startups-smes': startupsSmesCollection,
@@ -691,5 +742,6 @@ export const collections = {
   home: homeCollection,
   promotion: promotionCollection,
   features: featuresCollection,
-  press: pressCollection
+  press: pressCollection,
+  comparisons: comparisonsCollection
 }

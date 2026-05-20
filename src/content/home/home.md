@@ -1,11 +1,11 @@
 ---
 seo:
-  title: "Dataflow | AI-Ready Data Platform for Startups - Jupyter, Airflow and Streamlit, Managed"
+  title: "Dataflow | AI-Ready Data Platform for Sovereign Cloud - Jupyter, Airflow and Streamlit, Managed"
   description: "Build, run & deploy data pipelines, ML models and Streamlit apps without DevOps. Jupyter, Airflow & VS Code in one managed Python platform. Free trial."
 
 hero:
-  title: "The AI-Ready Data Platform <br> for Startups"
-  description: "All your data tools Jupyter, Airflow and Streamlit - finally working together"
+  title: "The AI-Ready Data Platform <br> for UK and Europe"
+  description: "All your data tools Jupyter, Airflow and Streamlit - finally working together on Sovereign Infrastructure"
   primary_cta:
     text: "Try it free"
     href: "https://app.dataflow.zone/hub/login"

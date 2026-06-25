@@ -5,7 +5,7 @@ app_name: Prefect
 app_logo: /assets/images/comparisons/prefect.png
 app_website: https://prefect.io
 faqs:
-  - question: Is Prefect and Dataflow solving the same problem?
+  - question: Are Prefect and Dataflow solving the same problem?
     answer: They overlap on orchestration, but Dataflow is generally broader as a unified data workflow platform.
   - question: When should a Python-first team choose Prefect?
     answer: Prefect is a good choice when orchestration is the main goal and the team is fully committed to a Python-centric toolchain.
@@ -36,7 +36,7 @@ Prefect is a strong workflow orchestrator, especially for Python teams. Dataflow
 | --- | --- | --- |
 | Orchestration | Native | Native |
 | Data integration | Broad | More limited |
-| Language focus | Flexible | Python-first |
+| Language focus | Python-centric | Python-first |
 | UI | Unified | More segmented |
 | Best for | Data teams | Python workflow teams |
 | Stack sprawl | Lower | Higher |

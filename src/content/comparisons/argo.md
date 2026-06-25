@@ -34,7 +34,7 @@ Argo is excellent when your orchestration world already lives inside Kubernetes.
 
 | Capability | Dataflow | Argo |
 | --- | --- | --- |
-| Workflow model | Visual + declarative | Kubernetes-native YAML |
+| Workflow model | Python-based DAGs | Kubernetes-native YAML |
 | Setup effort | Lower | Higher |
 | Data tool integration | Broad | Narrower |
 | Learning curve | Gentler | Steeper |

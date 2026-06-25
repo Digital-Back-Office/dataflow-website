@@ -1,0 +1,306 @@
+---
+import Layout from "../../layouts/Layout.astro"
+import { getCollection } from "astro:content"
+import SocialIcon from "../../components/common/SocialIcon.astro"
+
+const pressReleases = await getCollection("press")
+
+// Sort press releases by date (newest first)
+const allPress = pressReleases.sort(
+  (a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
+)
+
+// Serialize press data for client-side search
+const allPressJson = JSON.stringify(allPress.map(p => ({
+  slug: p.slug,
+  title: p.data.title,
+  description: p.data.description,
+  date: p.data.date,
+  location: p.data.location,
+  image: p.data.image,
+  tags: p.data.tags || [],
+})))
+
+const siteOrigin = (Astro.site?.toString() ?? "https://dataflow.zone").replace(/\/$/, "");
+const normalizedPath = Astro.url.pathname === '/' ? '/' : `${Astro.url.pathname.replace(/\/+$/, '')}/`;
+const pressIndexUrl = new URL(normalizedPath, `${siteOrigin}/`).toString();
+
+const pageSchema = [
+  {
+    "@type": "WebPage",
+    "@id": `${pressIndexUrl}#webpage`,
+    url: pressIndexUrl,
+    name: "Dataflow Pressroom",
+    description: "Official press releases, announcements, and media resources from Dataflow.",
+    isPartOf: {
+      "@id": `${siteOrigin}#website`,
+    },
+    about: {
+      "@id": `${siteOrigin}#organization`,
+    }
+  }
+];
+---
+
+<Layout
+  title="Dataflow Pressroom | Corporate Announcements & Media Kit"
+  meta_description="Read official corporate announcements, technology partnerships, and download media kit resources from Dataflow, the enterprise data integration platform."
+  pageSchema={pageSchema}
+>
+  <!-- Hero Section -->
+  <section class="relative overflow-hidden pt-32 pb-16 px-[10%] max-sm:px-[20px] bg-gradient-to-b from-primary/5 via-white to-white">
+    <!-- Grid Pattern Background -->
+    <div class="absolute inset-0 -z-10 opacity-[0.03] pointer-events-none bg-[radial-gradient(#30BABA_1px,transparent_1px)] [background-size:16px_16px]"></div>
+    
+    <div class="max-w-6xl mx-auto text-center" data-aos="fade-up">
+      <span class="px-3 py-1 bg-primary/10 text-primary rounded-full text-xs font-semibold uppercase tracking-wider mb-4 inline-block">
+        Newsroom
+      </span>
+      <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-textblack mb-6">
+        Dataflow Press & Media
+      </h1>
+      <p class="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
+        Discover our latest technology partnerships, enterprise breakthroughs, and corporate developments.
+      </p>
+    </div>
+  </section>
+
+  <!-- Search and Main Content Grid -->
+  <section class="px-[10%] max-sm:px-[20px] pb-24">
+    <div class="max-w-[1400px] mx-auto">
+      
+      <!-- Search Bar -->
+      <div class="mb-12 max-w-xl" data-aos="fade-up" data-aos-delay="50">
+        <div class="relative">
+          <svg class="absolute text-gray-400 left-4 top-1/2 -translate-y-1/2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+          </svg>
+          <input
+            id="search-input"
+            type="text"
+            placeholder="Search press releases..."
+            class="w-full pl-12 pr-4 py-3.5 border border-gray-200 rounded-full focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
+          />
+        </div>
+      </div>
+
+      <!-- Content Split Layout -->
+      <div class="flex flex-col lg:flex-row gap-12 items-start">
+        
+        <!-- Left Side: Press Releases List -->
+        <div class="flex-1 w-full lg:max-w-[calc(100%-400px)] space-y-8" id="press-container">
+          {
+            allPress.map((press, index) => (
+              <article
+                class="group bg-white rounded-2xl overflow-hidden border border-gray-150 hover:border-primary/30 hover:shadow-xl transition-all duration-300 p-6 md:p-8 flex flex-col md:flex-row gap-6 items-stretch press-card"
+                data-slug={press.slug}
+                data-aos="fade-up"
+                data-aos-delay={index * 100}
+              >
+                <!-- Thumbnail -->
+                {press.data.image && (
+                  <div class="w-full md:w-56 h-40 md:h-auto overflow-hidden rounded-xl flex-shrink-0 border border-gray-100">
+                    <a href={`/press/${press.slug}`} title={press.data.title}>
+                      <img
+                        src={press.data.image}
+                        alt={press.data.title}
+                        loading="lazy"
+                        class="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-300"
+                      />
+                    </a>
+                  </div>
+                )}
+
+                <!-- Card Content -->
+                <div class="flex-1 flex flex-col justify-between">
+                  <div>
+                    <!-- Date & Dateline -->
+                    <div class="flex flex-wrap items-center gap-2 mb-3 text-xs font-semibold text-gray-500">
+                      <span class="text-textblack uppercase tracking-wider">{press.data.location}</span>
+                      <span>•</span>
+                      <time datetime={press.data.date}>{press.data.date}</time>
+                    </div>
+
+                    <!-- Title -->
+                    <h3 class="text-xl font-bold text-textblack group-hover:text-primary transition-colors mb-3 leading-snug">
+                      <a href={`/press/${press.slug}`} title={press.data.title}>{press.data.title}</a>
+                    </h3>
+
+                    <!-- Description -->
+                    <p class="text-gray-600 text-sm line-clamp-3 mb-4 leading-relaxed">
+                      {press.data.description}
+                    </p>
+                  </div>
+
+                  <!-- Footer / Tags -->
+                  <div class="flex flex-wrap items-center justify-between gap-4 pt-3 border-t border-gray-50">
+                    <div class="flex flex-wrap gap-1.5">
+                      {press.data.tags?.slice(0, 3).map((tag: string) => (
+                        <span class="px-2 py-0.5 bg-gray-100 text-gray-600 rounded text-[10px] font-semibold">
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                    
+                    <a
+                      href={`/press/${press.slug}`}
+                      title={`Read press release`}
+                      class="inline-flex items-center text-primary font-bold text-xs hover:gap-1.5 transition-all group/link"
+                    >
+                      Read Full Release
+                      <svg class="w-3.5 h-3.5 ml-1 group-hover/link:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                      </svg>
+                    </a>
+                  </div>
+                </div>
+              </article>
+            ))
+          }
+
+          {/* No Results Message */}
+          <div id="no-results" class="hidden text-center py-20 bg-white border border-gray-100 rounded-2xl shadow-sm">
+            <svg class="w-16 h-16 mx-auto mb-4 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+            <h3 class="text-xl font-semibold text-gray-700 mb-2">No press releases found</h3>
+            <p class="text-gray-500">Try adjusting your search criteria</p>
+          </div>
+        </div>
+
+        <!-- Right Side: Sidebar Panel -->
+        <aside class="w-full lg:w-[380px] space-y-6 flex-shrink-0" data-aos="fade-up" data-aos-delay="150">
+          
+          <!-- Media Contact Card -->
+          <div class="bg-gradient-to-br from-primary/10 to-primary/5 rounded-2xl p-6 border border-primary/20 shadow-sm">
+            <h3 class="text-lg font-bold text-textblack mb-3">Press Contacts</h3>
+            <p class="text-sm text-gray-600 mb-6">
+              For all media inquiries, interview requests, and press statements, reach out directly:
+            </p>
+            <div class="space-y-4">
+              <div class="flex items-start gap-3">
+                <svg class="w-5 h-5 text-primary mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                </svg>
+                <div>
+                  <h4 class="text-xs uppercase tracking-wider text-gray-500 font-semibold mb-0.5">Media Desk</h4>
+                  <a href="mailto:press@dataflow.zone" class="text-sm text-primary hover:underline font-semibold">press@dataflow.zone</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Brand Kit Card -->
+          <div class="bg-white border border-gray-150 rounded-2xl p-6 shadow-sm">
+            <h3 class="text-lg font-bold text-textblack mb-3">Brand Kit</h3>
+            <p class="text-sm text-gray-600 mb-6">
+              Download the official Dataflow logo pack containing vector SVG and transparent PNG formats.
+            </p>
+            <a
+              href="/assets/downloads/dataflow-logo-pack.zip"
+              download="dataflow-logo-pack.zip"
+              class="flex items-center justify-between p-3.5 border border-gray-100 hover:border-primary/30 rounded-xl transition-all group bg-gray-50/50 hover:bg-white cursor-pointer shadow-sm hover:shadow-md"
+            >
+              <div>
+                <span class="text-sm font-bold text-textblack group-hover:text-primary transition-colors block">Logo Assets Pack</span>
+                <span class="text-[10px] font-semibold text-gray-400">ZIP (SVG & PNG) • 25 KB</span>
+              </div>
+              <svg class="w-5 h-5 text-gray-400 group-hover:text-primary transition-colors flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+              </svg>
+            </a>
+          </div>
+
+          <!-- Social Channels Card -->
+          <div class="bg-white border border-gray-150 rounded-2xl p-6 shadow-sm">
+            <h3 class="text-lg font-bold text-textblack mb-3">Social Channels</h3>
+            <p class="text-sm text-gray-600 mb-5">
+              Stay updated with our latest releases, announcements, and developer discussions.
+            </p>
+            <div class="space-y-3">
+              <a href="https://www.linkedin.com/company/dataflow-zone/about/" target="_blank" rel="noopener noreferrer" class="flex items-center gap-3 p-3 border border-gray-100 hover:border-primary/20 rounded-xl hover:bg-gray-50/50 transition-all group">
+                <div class="w-8 h-8 rounded-full bg-gray-50 group-hover:bg-primary/10 text-gray-600 group-hover:text-primary flex items-center justify-center transition-colors">
+                  <SocialIcon platform="linkedin" className="w-4 h-4" />
+                </div>
+                <div>
+                  <span class="text-sm font-semibold text-textblack block leading-none mb-1">LinkedIn</span>
+                  <span class="text-xs text-gray-400">@dataflow-zone</span>
+                </div>
+              </a>
+              <a href="https://x.com/dataflow_zone" target="_blank" rel="noopener noreferrer" class="flex items-center gap-3 p-3 border border-gray-100 hover:border-primary/20 rounded-xl hover:bg-gray-50/50 transition-all group">
+                <div class="w-8 h-8 rounded-full bg-gray-50 group-hover:bg-primary/10 text-gray-600 group-hover:text-primary flex items-center justify-center transition-colors">
+                  <SocialIcon platform="x" className="w-4 h-4" />
+                </div>
+                <div>
+                  <span class="text-sm font-semibold text-textblack block leading-none mb-1">X / Twitter</span>
+                  <span class="text-xs text-gray-400">@dataflow_zone</span>
+                </div>
+              </a>
+              <a href="https://www.youtube.com/@DataFlowZone" target="_blank" rel="noopener noreferrer" class="flex items-center gap-3 p-3 border border-gray-100 hover:border-primary/20 rounded-xl hover:bg-gray-50/50 transition-all group">
+                <div class="w-8 h-8 rounded-full bg-gray-50 group-hover:bg-primary/10 text-gray-600 group-hover:text-primary flex items-center justify-center transition-colors">
+                  <SocialIcon platform="youtube" className="w-4 h-4" />
+                </div>
+                <div>
+                  <span class="text-sm font-semibold text-textblack block leading-none mb-1">YouTube</span>
+                  <span class="text-xs text-gray-400">@DataFlowZone</span>
+                </div>
+              </a>
+            </div>
+          </div>
+
+        </aside>
+
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<script is:inline define:vars={{ allPressJson }}>
+  document.addEventListener('DOMContentLoaded', function() {
+    const searchInput = document.getElementById('search-input');
+    const pressContainer = document.getElementById('press-container');
+    const noResults = document.getElementById('no-results');
+    const pressCards = document.querySelectorAll('.press-card');
+
+    if (!searchInput || !pressContainer) return;
+
+    const data = JSON.parse(allPressJson);
+
+    searchInput.addEventListener('input', function(e) {
+      const query = e.target.value.toLowerCase().trim();
+      let visibleCount = 0;
+
+      pressCards.forEach(card => {
+        const slug = card.getAttribute('data-slug');
+        const item = data.find(p => p.slug === slug);
+
+        if (!item) return;
+
+        const matches = 
+          item.title.toLowerCase().includes(query) ||
+          item.description.toLowerCase().includes(query) ||
+          item.location.toLowerCase().includes(query) ||
+          item.tags.some(tag => tag.toLowerCase().includes(query));
+
+        if (matches) {
+          card.classList.remove('hidden');
+          visibleCount++;
+        } else {
+          card.classList.add('hidden');
+        }
+      });
+
+      if (visibleCount === 0) {
+        noResults.classList.remove('hidden');
+      } else {
+        noResults.classList.add('hidden');
+      }
+    });
+  });
+</script>
+
+<style>
+  .hidden {
+    display: none !important;
+  }
+</style>

@@ -71,6 +71,10 @@ header:
                 icon-id: "blog"
                 description: "Data engineering insights"
                 href: "/blog"
+              - title: "Pressroom"
+                icon-id: "press"
+                description: "Official announcements & media"
+                href: "/press"
               - title: "YouTube"
                 icon-id: "youtube"
                 description: "Video tutorials"
@@ -160,6 +164,8 @@ footer:
           href: "/about-us"
         - label: "Our team"
           href: "/about-us#team"
+        - label: "Pressroom"
+          href: "/press"
 
 
   bottom_bar:

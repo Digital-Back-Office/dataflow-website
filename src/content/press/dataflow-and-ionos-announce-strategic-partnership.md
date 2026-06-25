@@ -56,7 +56,7 @@ Dataflow's pipeline technology, combined with IONOS's GDPR-native cloud, directl
 The Dataflow–IONOS integrated offering is available immediately for enterprise customers. A joint go-to-market motion includes co-sold packages, a certified implementation partner programme, and dedicated solution engineering support across DACH, Benelux, and the UK.
 
 ### About Dataflow
-Dataflow is an enterprise data integration platform that enables data teams to build, orchestrate, and monitor pipelines across cloud, on-premises, and hybrid environments. Dataflow's architecture prioritises data governance, lineage, and operational reliability — purpose-built for enterprises in regulated industries. For more information, visit [dataflow.io](https://dataflow.zone/).
+Dataflow is an enterprise data integration platform that enables data teams to build, orchestrate, and monitor pipelines across cloud, on-premises, and hybrid environments. Dataflow's architecture prioritises data governance, lineage, and operational reliability — purpose-built for enterprises in regulated industries. For more information, visit [dataflow.zone](https://dataflow.zone/).
 
 ### About IONOS Group SE
 IONOS Group SE (FSE: IOS) is Europe's leading cloud and hosting provider, serving 6.63 million customers across 18 markets. With data centres in Germany and across the EU, IONOS delivers cloud compute, managed databases, AI infrastructure, and digital workplace solutions under a 100% European legal framework. Revenue reached €1.32 billion in FY2025, with Adjusted EBITDA of €485 million. For more information, visit [ionos.com](https://www.ionos.com).

@@ -20,6 +20,7 @@ const STATIC_ROUTES: Array<{ path: string; changefreq: string; priority: string 
   { path: "/product/development-ready-workspace", changefreq: "monthly", priority: "0.6" },
   { path: "/product/managed-dependencies", changefreq: "monthly", priority: "0.6" },
   { path: "/product/shared-foundation", changefreq: "monthly", priority: "0.6" },
+  { path: "/compare", changefreq: "monthly", priority: "0.6" },
   { path: "/legal/privacy-policy", changefreq: "yearly", priority: "0.4" },
   { path: "/legal/terms-and-conditions", changefreq: "yearly", priority: "0.4" },
 ];
@@ -37,6 +38,7 @@ const toAbsoluteUrl = (origin: string, routePath: string) => `${origin}${toSitem
 export const GET: APIRoute = async ({ site }) => {
   const origin = (site?.toString() ?? "https://dataflow.zone").replace(/\/$/, "");
   const blogs = await getCollection("blogs");
+  const comparisons = await getCollection("comparisons");
 
   // SEO: Include all publishable blog detail pages to avoid sitemap orphaning.
   const blogRoutes = blogs
@@ -47,6 +49,13 @@ export const GET: APIRoute = async ({ site }) => {
       date: new Date(entry.data.date),
     }))
     .sort((a, b) => b.date.getTime() - a.date.getTime());
+
+  // SEO: Include all comparison pages dynamically.
+  const comparisonRoutes = comparisons.map((entry) => ({
+    path: `/compare/dataflow-vs-${entry.slug}`,
+    changefreq: "monthly",
+    priority: "0.6",
+  }));
 
   const xmlRows = [
     ...STATIC_ROUTES.map((route) => {
@@ -59,6 +68,10 @@ export const GET: APIRoute = async ({ site }) => {
         ? ""
         : `<lastmod>${route.date.toISOString().split("T")[0]}</lastmod>`;
       return `<url><loc>${loc}</loc>${lastmod}<changefreq>${route.changefreq}</changefreq><priority>${route.priority}</priority></url>`;
+    }),
+    ...comparisonRoutes.map((route) => {
+      const loc = toAbsoluteUrl(origin, route.path);
+      return `<url><loc>${loc}</loc><changefreq>${route.changefreq}</changefreq><priority>${route.priority}</priority></url>`;
     }),
   ].join("");
 

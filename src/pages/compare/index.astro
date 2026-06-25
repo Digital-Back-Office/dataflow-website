@@ -5,6 +5,7 @@ import Footer from '../../components/common/Footer.astro'
 import { getCollection } from 'astro:content'
 import CTASection from '../../components/common/CTASection.astro'
 import ComparisonFaqs from '../../components/comparisons/ComparisonFaqs.astro'
+import FaqSection from '../../components//common/FaqSection.astro'
 
 
 const comparisons = await getCollection('comparisons')
@@ -214,7 +215,12 @@ const pageSchema = [
       </div>
     </section>
 
-    <ComparisonFaqs faqs={faqs} />
+    <FaqSection
+      items={faqs}
+      title={'Questions, answered'}
+      description={'Common questions teams ask before choosing a data platform.'}
+      sectionClass={'max-w-6xl mx-auto py-16'}
+    />
 
     <CTASection
 		title={"Ready to Unify Your Data Stack?"}

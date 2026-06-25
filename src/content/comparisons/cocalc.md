@@ -15,7 +15,7 @@ faqs:
 
 ## Quick take
 
-CoCalc is built for collaborative computing and shared notebook-style workspaces. Dataflow is better when collaboration needs to extend beyond the notebook and into pipelines, integrations, and production workflows.
+CoCalc is built for collaborative computing, research workflows, and shared workspaces. Dataflow is designed for teams whose collaboration extends into production pipelines, integrations, and workflow orchestration.
 
 ## Where Dataflow is stronger
 
@@ -26,20 +26,22 @@ CoCalc is built for collaborative computing and shared notebook-style workspaces
 
 ## Where CoCalc is stronger
 
-- Strong collaborative notebook experience.
-- Good for math, statistics, and teaching environments.
-- Simple shared workspace model.
+- Excellent collaborative workspaces designed for teaching, research, mathematics, and notebook computing.
+- Strong support for SageMath, LaTeX, and mathematical/scientific computation.
+- Built-in course management tools for teaching and educational environments.
 
 ## Side-by-side view
 
-| Capability | Dataflow | CoCalc |
-| --- | --- | --- |
-| Collaboration | Team workflows | Shared notebooks |
-| Notebook support | Yes | Yes |
-| Data orchestration | Built in | Limited |
-| Environment management | Automated | Workspace-based |
-| Production fit | Strong | Limited |
-| Extensibility | Broad | Moderate |
+| Capability             | Dataflow                                                          | CoCalc                                                                                   |
+| ---------------------- | ----------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
+| Collaboration          | Team-oriented workflows with operational governance               | Shared notebooks and real-time collaborative documents                                   |
+| Notebook Support       | Integrated notebook experience alongside production pipelines     | Strong notebook-centric environment                                                      |
+| Data Orchestration     | Built-in workflow orchestration for data pipelines and automation | Not primarily designed for workflow orchestration                                        |
+| Environment Management | Automated and scalable environment management                     | Workspace-based environment management                                                   |
+| Production Readiness   | Designed for production-grade data and analytics workloads        | Primarily focused on research, teaching, and collaborative computing                     |
+| Scalability            | Supports operational data workflows at organizational scale       | Best suited for interactive and collaborative workloads                                  |
+| Extensibility          | Broad integration ecosystem and workflow customization            | Extensibility focused on notebooks, computing environments, and collaborative workspaces |
+| Ideal Users            | Data engineering, analytics, and platform teams                   | Researchers, educators, students, and collaborative computing teams                      |
 
 ## When to choose Dataflow
 
@@ -47,6 +49,6 @@ Choose Dataflow if your team needs a collaborative platform that still scales in
 
 ## When to choose CoCalc
 
-Choose CoCalc if the primary goal is collaborative notebook work, teaching, or shared mathematical computing.
+Choose CoCalc if the primary focus is collaborative workspaces, teaching, academic research, mathematics, and notebook computing.
 
 

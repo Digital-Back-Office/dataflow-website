@@ -32,14 +32,16 @@ Argo is excellent when your orchestration world already lives inside Kubernetes.
 
 ## Side-by-side view
 
-| Capability | Dataflow | Argo |
-| --- | --- | --- |
-| Workflow model | Python-based DAGs | Kubernetes-native YAML |
-| Setup effort | Lower | Higher |
-| Data tool integration | Broad | Narrower |
-| Learning curve | Gentler | Steeper |
-| Best for | Data teams | Platform and DevOps teams |
-| Deployment style | Flexible | Kubernetes-centric |
+| Capability                 | Dataflow                                                            | Argo                                                         |
+| -------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------ |
+| Workflow Model             | Python-native DAGs that align with data engineering practices       | YAML-first workflows with Python SDK options                 |
+| Development Speed          | Faster iteration and debugging for Python teams                     | Kubernetes-native workflow authoring and operations          |
+| Setup Effort               | Lower operational overhead and quicker adoption                     | Requires familiarity with Kubernetes concepts and operations |
+| Data Ecosystem Integration | Extensive integrations for data, analytics, and ML workflows        | Strong ecosystem centered around Kubernetes-native tooling   |
+| Learning Curve             | Familiar for data engineers and analysts                            | Moderate to steep for teams unfamiliar with Kubernetes       |
+| Team Productivity          | Enables teams to focus on business logic rather than infrastructure | Designed around Kubernetes-native workflow management        |
+| Deployment Flexibility     | Can fit diverse deployment environments                             | Kubernetes-centric deployment model                          |
+| Best Fit                   | Data engineering, analytics, and ML platforms                       | Platform engineering and cloud-native operations             |
 
 ## When to choose Dataflow
 

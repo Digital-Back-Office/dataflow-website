@@ -99,6 +99,9 @@ const pageSchema = [
     <section class="px-[5%] pt-32 bg-gradient-to-b from-slate-50 to-white">
       <div class="max-w-6xl mx-auto text-center">
         <div data-aos="fade-up">
+          <span class="inline-block px-3.5 py-1.5 bg-primary/10 text-primary rounded-full text-xs font-bold uppercase tracking-widest mb-4">
+            Platform Comparison
+          </span>
           <h1 class="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
             How Dataflow Compares
           </h1>
@@ -169,38 +172,40 @@ const pageSchema = [
               <div class="mb-4 inline-flex h-11 w-11 items-center justify-center rounded-lg text-primary">
                 {item.icon === 'integration' && (
                   <svg class="h-8 w-8" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M7 7h4v4H7zM13 13h4v4h-4z" />
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M11 9h2m-8 4h8m2 2h4" />
+                    <circle cx="18" cy="5" r="3" />
+                    <circle cx="6" cy="12" r="3" />
+                    <circle cx="18" cy="19" r="3" />
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M8.5 10.5l7-3.5m-7 5l7 3.5" />
                   </svg>
                 )}
                 {item.icon === 'automation' && (
                   <svg class="h-8 w-8" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12M6 12h12" />
-                    <circle cx="12" cy="12" r="8" />
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                    <circle cx="12" cy="12" r="3" />
                   </svg>
                 )}
                 {item.icon === 'rocket' && (
                   <svg class="h-8 w-8" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 19c3-1 4-2 5-5l5-5a5 5 0 014 4l-5 5c-3 1-4 2-5 5-1-2-2-3-4-4z" />
-                    <circle cx="15" cy="9" r="1.2" />
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 2s-4 4.5-4 9.5c0 3.038 1.462 5.25 4 6.5 2.538-1.25 4-3.462 4-6.5C16 6.5 12 2 12 2zM9 15.5H6.5c-1.5 0-2.5 1-2.5 2.5v1.5h8m-3-4V12m9 3.5h2.5c1.5 0 2.5 1 2.5 2.5v1.5h-8m3-4V12" />
                   </svg>
                 )}
                 {item.icon === 'opensource' && (
                   <svg class="h-8 w-8" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 3l7 4v10l-7 4-7-4V7z" />
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6" />
+                    <circle cx="18" cy="18" r="3" />
+                    <circle cx="6" cy="6" r="3" />
+                    <circle cx="6" cy="18" r="3" />
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 9v6m0 0a3 3 0 003 3h6" />
                   </svg>
                 )}
                 {item.icon === 'pricing' && (
                   <svg class="h-8 w-8" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true">
-                    <rect x="4" y="6" width="16" height="12" rx="2" />
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M8 10h8M8 14h4" />
+                    <rect x="2" y="5" width="20" height="14" rx="2" />
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M2 10h20M6 14h4" />
                   </svg>
                 )}
                 {item.icon === 'ai' && (
                   <svg class="h-8 w-8" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true">
-                    <circle cx="12" cy="12" r="3" />
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 2v3m0 14v3m10-10h-3M5 12H2m16.95-6.95l-2.12 2.12M7.17 16.83l-2.12 2.12m0-13.9l2.12 2.12m9.66 9.66l2.12 2.12" />
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 21l-.813-5.096L3 15l5.187-.813L9 9l.813 5.187L15 15l-5.187.813zM19 6.5l-.5 2-.5-2-2-.5 2-.5.5-2 .5 2 2 .5-2 .5zM19 19.5l-.5 2-.5-2-2-.5 2-.5.5-2 .5 2 2 .5-2 .5z" />
                   </svg>
                 )}
               </div>

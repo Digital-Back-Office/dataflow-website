@@ -158,3 +158,68 @@ const pageSchema = faqs.length
     </section>
   </main>
 </Layout>
+
+<style is:global>
+  /* Premium styling to make comparison tables pop and look very prominent */
+  .prose table {
+    width: 100% !important;
+    border-collapse: separate !important;
+    border-spacing: 0 !important;
+    border: 1px solid #e2e8f0 !important;
+    border-radius: 16px !important;
+    overflow: hidden !important;
+    margin: 3.5rem 0 !important;
+  }
+
+  .prose th {
+    background-color: #f8fafc !important;
+    color: #0f172a !important;
+    font-weight: 700 !important;
+    font-size: 0.875rem !important;
+    letter-spacing: 0.05em !important;
+    text-transform: uppercase !important;
+    padding: 1.25rem 1.5rem !important;
+    border-bottom: 2px solid #e2e8f0 !important;
+  }
+
+  .prose td {
+    padding: 1.25rem 1.5rem !important;
+    font-size: 0.95rem !important;
+    border-bottom: 1px solid #f1f5f9 !important;
+    vertical-align: middle !important;
+    color: #475569 !important;
+    line-height: 1.6 !important;
+  }
+
+  .prose tr:last-child td {
+    border-bottom: none !important;
+  }
+
+  /* Highlight the "Dataflow" column (second column) for extra prominence */
+  .prose tr td:nth-child(2) {
+    font-weight: 600 !important;
+    color: #0f172a !important;
+    background-color: rgba(48, 186, 186, 0.02) !important; /* Subtle theme accent background */
+    border-left: 1px solid rgba(48, 186, 186, 0.08) !important;
+    border-right: 1px solid rgba(48, 186, 186, 0.08) !important;
+  }
+
+  .prose tr th:nth-child(2) {
+    background-color: rgba(48, 186, 186, 0.05) !important;
+    color: #30baba !important;
+    font-weight: 800 !important;
+    border-left: 1px solid rgba(48, 186, 186, 0.08) !important;
+    border-right: 1px solid rgba(48, 186, 186, 0.08) !important;
+  }
+
+  /* Hover state for rows */
+  .prose tr:hover td {
+    background-color: #f8fafc !important;
+    transition: background-color 0.2s ease !important;
+  }
+  
+  .prose tr:hover td:nth-child(2) {
+    background-color: rgba(48, 186, 186, 0.04) !important;
+  }
+</style>
+

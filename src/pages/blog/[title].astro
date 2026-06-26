@@ -19,7 +19,7 @@ export async function getStaticPaths() {
 }
 
 const { data, body, render } = Astro.props
-const { title, date, tags, image, description } = data
+const { title, date, tags, image, description, seo_title, seo_description } = data
 const author = resolveBlogAuthor(data)
 const authorInitials = author.name
   .split(' ')
@@ -27,7 +27,8 @@ const authorInitials = author.name
   .slice(0, 2)
   .map((namePart: string) => namePart.charAt(0).toUpperCase())
   .join('')
-const meta_description = description ?? `Read ${title} on the Dataflow blog about data science and AI for startups.`
+const meta_title = seo_title ? seo_title : `${title} | Dataflow Blog`
+const meta_description = seo_description ?? description ?? `Read ${title} on the Dataflow blog about data science and AI for startups.`
 const { Content } = await Astro.props.render()
 
 // Extract headings from markdown body for TOC
@@ -111,7 +112,7 @@ const pageSchema = [
     "@type": "WebPage",
     "@id": `${articleUrl}#webpage`,
     url: articleUrl,
-    name: `${title} | Dataflow Blog`,
+    name: meta_title,
     description: meta_description,
     isPartOf: {
       "@id": `${siteOrigin}#website`,
@@ -154,7 +155,7 @@ const pageSchema = [
 ---
 
 <Layout
-  title={`${title} | Dataflow Blog`}
+  title={meta_title}
   meta_description={meta_description}
   ogImage={ogImage}
   pageSchema={pageSchema}

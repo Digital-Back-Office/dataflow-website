@@ -25,6 +25,21 @@ const blogsCollection = defineCollection({
   })
 })
 
+// Press Collection Schema
+const pressCollection = defineCollection({
+  type: 'content',
+  schema: z.object({
+    title: z.string(),
+    seo_title: z.string().optional(),
+    description: z.string(),
+    seo_description: z.string().optional(),
+    date: z.string(),
+    location: z.string(),
+    tags: z.array(z.string()).optional(),
+    image: z.string().optional()
+  })
+})
+
 // Solution Pages Schema (Enterprise, Startups-SMEs, Personal)
 const solutionSchema = z.object({
   seo: z.object({
@@ -675,5 +690,6 @@ export const collections = {
   company: companyCollection,
   home: homeCollection,
   promotion: promotionCollection,
-  features: featuresCollection
+  features: featuresCollection,
+  press: pressCollection
 }

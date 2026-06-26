@@ -30,7 +30,9 @@ const pressCollection = defineCollection({
   type: 'content',
   schema: z.object({
     title: z.string(),
+    seo_title: z.string().optional(),
     description: z.string(),
+    seo_description: z.string().optional(),
     date: z.string(),
     location: z.string(),
     tags: z.array(z.string()).optional(),

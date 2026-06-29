@@ -24,8 +24,40 @@ const compareUrl = new URL(normalizedPath, `${siteOrigin}/`).toString()
 
 // Fetch all comparisons for "Other Comparisons" section
 const allComparisons = await getCollection('comparisons')
+
+const categories: Record<string, string[]> = {
+  'sagemaker': ['enterprise', 'ml'],
+  'vertex-ai': ['enterprise', 'ml'],
+  'databricks': ['enterprise', 'ml', 'data-eng'],
+  'dataiku': ['enterprise', 'analytics'],
+  'colab': ['notebooks', 'interactive'],
+  'kaggle': ['notebooks', 'interactive'],
+  'deepnote': ['notebooks', 'collaboration'],
+  'cocalc': ['notebooks', 'collaboration'],
+  'datalore': ['notebooks', 'collaboration'],
+  'marimo': ['notebooks', 'reactive'],
+  'jupyterhub': ['notebooks', 'infrastructure'],
+  'hex': ['analytics', 'notebooks'],
+  'mode': ['analytics', 'notebooks'],
+  'prefect': ['orchestration', 'data-eng']
+}
+
+const currentTags = categories[comparison.slug] ?? []
+
 const otherComparisons = allComparisons
   .filter((c) => c.slug !== comparison.slug)
+  .map((c) => {
+    const tags = categories[c.slug] ?? []
+    const score = tags.filter(t => currentTags.includes(t)).length
+    return { c, score }
+  })
+  .sort((a, b) => {
+    if (b.score !== a.score) {
+      return b.score - a.score
+    }
+    return a.c.slug.localeCompare(b.c.slug)
+  })
+  .map(item => item.c)
   .slice(0, 3)
 
 const pageSchema = faqs.length

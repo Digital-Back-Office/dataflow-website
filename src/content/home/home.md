@@ -4,7 +4,7 @@ seo:
   description: "Build, run & deploy data pipelines, ML models and Streamlit apps without DevOps. Jupyter, Airflow & VS Code in one managed Python platform. Free trial."
 
 hero:
-  title: "The AI-Ready Data Platform <br> for UK and Europe"
+  title: "The AI-Ready Data Platform <br> for Europe"
   description: "All your data tools Jupyter, Airflow and Streamlit - finally working together on Sovereign Infrastructure"
   primary_cta:
     text: "Try it free"

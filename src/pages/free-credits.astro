@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro'
 import PromotionCreditsForm from '../components/promotion/PromotionCreditsForm.jsx'
+import FaqSection from '../components/common/FaqSection.astro'
 import { getEntry } from 'astro:content'
 
 const { data } = await getEntry('promotion', 'promotion')
@@ -270,26 +271,13 @@ const pageSchema = [
     </div>
   </section>
   
-  <section class='max-w-7xl mx-auto px-[5%] py-16'>
-    <div class='grid lg:grid-cols-[1.1fr_0.9fr] gap-12 items-start'>
-      <div class='space-y-5'>
-        <p class='text-sm font-semibold text-primary uppercase tracking-wide'>FAQ</p>
-        <h2 class='text-4xl font-bold text-textDarker'>Questions, answered</h2>
-        <p class='text-textPrimary/80'>Everything you need to know before applying.</p>
-      </div>
-      <div class='space-y-4'>
-        {faq.items.map((item) => (
-          <details class='group rounded-2xl border border-primary/10 bg-white p-5'>
-            <summary class='flex items-center justify-between cursor-pointer text-textDarker font-semibold'>
-              {item.q}
-              <span class='transition group-open:rotate-45 text-primary text-xl'>+</span>
-            </summary>
-            <p class='mt-3 text-sm text-textPrimary/80'>{item.a}</p>
-          </details>
-        ))}
-      </div>
-    </div>
-  </section>
+  <FaqSection
+    items={faq.items.map((item) => ({ question: item.q, answer: item.a }))}
+    eyebrow='FAQ'
+    title='Questions, answered'
+    description='Everything you need to know before applying.'
+    sectionClass='max-w-7xl mx-auto px-[5%] py-16'
+  />
 
   <section class='bg-[#f7fbfb] py-16'>
     <div class='max-w-7xl mx-auto px-[5%]'>
@@ -340,31 +328,4 @@ const pageSchema = [
     transform: translateZ(0) rotateX(1.4deg) rotateY(1.8deg);
   }
 
-  details.faq-card summary::-webkit-details-marker {
-    display: none;
-  }
-
-  details.faq-card .faq-content {
-    display: grid;
-    grid-template-rows: 0fr;
-    transition: grid-template-rows 0.6s ease;
-  }
-
-  details.faq-card .faq-inner {
-    overflow: hidden;
-    opacity: 0;
-    transition: opacity 0.5s ease;
-  }
-
-  details.faq-card[open] .faq-content {
-    grid-template-rows: 1fr;
-  }
-
-  details.faq-card[open] .faq-inner {
-    opacity: 1;
-  }
-
-  details.faq-card[open] summary span {
-    transform: rotate(45deg);
-  }
 </style>

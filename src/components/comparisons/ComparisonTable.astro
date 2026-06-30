@@ -1,0 +1,75 @@
+---
+interface ComparisonItem {
+  feature: string
+  dataflow: string | boolean
+  competitor: string | boolean
+}
+
+interface Props {
+  items: ComparisonItem[]
+  competitorName: string
+}
+
+const { items, competitorName } = Astro.props as Props
+---
+
+<section class="px-[5%] py-16 md:py-20 bg-white">
+  <div class="max-w-6xl mx-auto">
+    <div class="overflow-x-auto">
+      <table class="w-full border-collapse">
+        <thead>
+          <tr class="border-b-2 border-gray-200">
+            <th class="text-left py-4 px-6 font-semibold text-gray-900">Feature</th>
+            <th class="text-center py-4 px-6 font-semibold text-primary">Dataflow</th>
+            <th class="text-center py-4 px-6 font-semibold text-gray-600">{competitorName}</th>
+          </tr>
+        </thead>
+        <tbody>
+          {items.map((item, index) => (
+            <tr class={`border-b border-gray-100 ${index % 2 === 0 ? 'bg-gray-50' : 'bg-white'}`}>
+              <td class="py-4 px-6 font-medium text-gray-900">{item.feature}</td>
+              <td class="py-4 px-6 text-center">
+                {typeof item.dataflow === 'boolean' ? (
+                  item.dataflow ? (
+                    <span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-green-100">
+                      <svg class="w-4 h-4 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                      </svg>
+                    </span>
+                  ) : (
+                    <span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-red-100">
+                      <svg class="w-4 h-4 text-red-600" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
+                      </svg>
+                    </span>
+                  )
+                ) : (
+                  <span class="text-gray-700">{item.dataflow}</span>
+                )}
+              </td>
+              <td class="py-4 px-6 text-center">
+                {typeof item.competitor === 'boolean' ? (
+                  item.competitor ? (
+                    <span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-green-100">
+                      <svg class="w-4 h-4 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                      </svg>
+                    </span>
+                  ) : (
+                    <span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-red-100">
+                      <svg class="w-4 h-4 text-red-600" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
+                      </svg>
+                    </span>
+                  )
+                ) : (
+                  <span class="text-gray-700">{item.competitor}</span>
+                )}
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>

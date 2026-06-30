@@ -1,0 +1,257 @@
+---
+import { getCollection } from 'astro:content'
+import Layout from '../../layouts/Layout.astro'
+import FaqSection from '../../components/common/FaqSection.astro'
+
+export async function getStaticPaths() {
+  const comparisons = await getCollection('comparisons')
+  return comparisons.map(comparison => ({
+    params: { app: comparison.slug },
+    props: { comparison }
+  }))
+}
+
+interface Props {
+  comparison: any
+}
+
+const { comparison } = Astro.props
+const { Content } = await comparison.render()
+const { title, description, app_name, app_logo, app_website, faqs = [] } = comparison.data
+const siteOrigin = (Astro.site?.toString() ?? 'https://dataflow.zone').replace(/\/$/, '')
+const normalizedPath = Astro.url.pathname === '/' ? '/' : `${Astro.url.pathname.replace(/\/+$/, '')}/`
+const compareUrl = new URL(normalizedPath, `${siteOrigin}/`).toString()
+
+// Fetch all comparisons for "Other Comparisons" section
+const allComparisons = await getCollection('comparisons')
+
+const categories: Record<string, string[]> = {
+  'sagemaker': ['enterprise', 'ml'],
+  'vertex-ai': ['enterprise', 'ml'],
+  'databricks': ['enterprise', 'ml', 'data-eng'],
+  'dataiku': ['enterprise', 'analytics'],
+  'colab': ['notebooks', 'interactive'],
+  'kaggle': ['notebooks', 'interactive'],
+  'deepnote': ['notebooks', 'collaboration'],
+  'cocalc': ['notebooks', 'collaboration'],
+  'datalore': ['notebooks', 'collaboration'],
+  'marimo': ['notebooks', 'reactive'],
+  'jupyterhub': ['notebooks', 'infrastructure'],
+  'hex': ['analytics', 'notebooks'],
+  'mode': ['analytics', 'notebooks'],
+  'prefect': ['orchestration', 'data-eng']
+}
+
+const currentTags = categories[comparison.slug] ?? []
+
+const otherComparisons = allComparisons
+  .filter((c) => c.slug !== comparison.slug)
+  .map((c) => {
+    const tags = categories[c.slug] ?? []
+    const score = tags.filter(t => currentTags.includes(t)).length
+    return { c, score }
+  })
+  .sort((a, b) => {
+    if (b.score !== a.score) {
+      return b.score - a.score
+    }
+    return a.c.slug.localeCompare(b.c.slug)
+  })
+  .map(item => item.c)
+  .slice(0, 3)
+
+const pageSchema = faqs.length
+  ? [
+      {
+        '@type': 'FAQPage',
+        '@id': `${compareUrl}#faq`,
+        mainEntity: faqs.map((faq) => ({
+          '@type': 'Question',
+          name: faq.question,
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: faq.answer
+          }
+        }))
+      }
+    ]
+  : undefined
+---
+
+<Layout
+  title={title}
+  meta_description={description}
+  pageSchema={pageSchema}
+>
+  <main>
+    <section class="px-[5%] pt-32 py-16 md:pb-20 bg-gradient-to-b from-slate-50 to-white">
+      <div class="max-w-6xl mx-auto">
+        <div class="max-w-6xl" data-aos="fade-up">
+          <a href="/compare" class="inline-flex items-center text-primary hover:text-primary/80 mb-6">
+            <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+            </svg>
+            Back to all comparisons
+          </a>
+          <div class="flex items-center gap-4 mb-6">
+            {app_logo && (
+              <img src={app_logo} alt={app_name} class="h-14 w-14 rounded-2xl object-contain bg-white" />
+            )}
+            <div>
+              <h1 class="text-4xl md:text-6xl font-bold text-gray-900 leading-tight">
+                Dataflow vs {app_name}
+              </h1>
+            </div>
+          </div>
+          <p class="text-xl md:text-2xl text-gray-600 max-w-3xl mb-6">
+            {description}
+          </p>
+          {app_website && (
+            <a href={app_website} target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-primary font-medium hover:opacity-80">
+              Visit {app_name}
+              <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h6m0 0v6m0-6L10 16m-4 0h4v-4"></path>
+              </svg>
+            </a>
+          )}
+        </div>
+      </div>
+    </section>
+
+    <section class="px-[5%] bg-white"  data-aos="fade-up">
+      <div class="max-w-6xl mx-auto">
+        <article class="prose prose-slate max-w-none space-y-8 text-gray-700 leading-7">
+          <Content />
+        </article>
+      </div>
+    </section>
+
+    <FaqSection
+      items={faqs}
+      eyebrow={null}
+      title={`FAQs: Dataflow vs ${app_name}`}
+      description={`Answers to common questions when comparing Dataflow and ${app_name}.`}
+      sectionClass={'max-w-6xl mx-auto my-32'}
+    />
+
+    <section class="px-[5%] py-16 md:py-20 bg-gray-50">
+      <div class="max-w-6xl mx-auto">
+        <div class="text-center mb-12">
+          <h2 class="text-2xl md:text-3xl font-bold text-gray-900">Other Comparisons</h2>
+        </div>
+        
+        {otherComparisons.length > 0 && (
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+            {otherComparisons.map((comp) => (
+              <a
+                href={`/compare/dataflow-vs-${comp.slug}`}
+                class="group rounded-xl border border-slate-200 bg-white p-5 hover:border-primary/40 transition-colors"
+              >
+                <div class="flex items-start gap-3 mb-3">
+                  {comp.data.app_logo && (
+                    <img
+                      src={comp.data.app_logo}
+                      alt={comp.data.app_name}
+                      class="h-8 w-8 rounded-lg object-contain ring-1 ring-gray-200 bg-white"
+                    />
+                  )}
+                  <div class="flex-1 min-w-0">
+                    <h3 class="text-lg font-semibold text-gray-900 group-hover:text-primary transition-colors">
+                      Dataflow vs {comp.data.app_name}
+                    </h3>
+                  </div>
+                </div>
+                <p class="text-sm text-gray-600 leading-relaxed line-clamp-2 mb-3">
+                  {comp.data.description}
+                </p>
+                <span class="inline-flex items-center text-primary font-medium text-sm">
+                  View comparison
+                  <svg class="w-3 h-3 ml-1 transition-transform group-hover:translate-x-1" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                  </svg>
+                </span>
+              </a>
+            ))}
+          </div>
+        )}
+        
+        <div class="flex justify-center">
+          <a
+            href="/compare"
+            class="inline-flex items-center justify-center px-8 py-3 rounded-lg bg-white border border-gray-200 text-gray-900 font-medium hover:border-primary hover:text-primary transition-colors"
+          >
+            View All Comparisons
+            <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>
+
+<style is:global>
+  /* Premium styling to make comparison tables pop and look very prominent */
+  .prose table {
+    width: 100% !important;
+    border-collapse: separate !important;
+    border-spacing: 0 !important;
+    border: 1px solid #e2e8f0 !important;
+    border-radius: 16px !important;
+    overflow: hidden !important;
+    margin: 3.5rem 0 !important;
+  }
+
+  .prose th {
+    background-color: #f8fafc !important;
+    color: #0f172a !important;
+    font-weight: 700 !important;
+    font-size: 0.875rem !important;
+    letter-spacing: 0.05em !important;
+    text-transform: uppercase !important;
+    padding: 1.25rem 1.5rem !important;
+    border-bottom: 2px solid #e2e8f0 !important;
+  }
+
+  .prose td {
+    padding: 1.25rem 1.5rem !important;
+    font-size: 0.95rem !important;
+    border-bottom: 1px solid #f1f5f9 !important;
+    vertical-align: middle !important;
+    color: #475569 !important;
+    line-height: 1.6 !important;
+  }
+
+  .prose tr:last-child td {
+    border-bottom: none !important;
+  }
+
+  /* Highlight the "Dataflow" column (second column) for extra prominence */
+  .prose tr td:nth-child(2) {
+    font-weight: 600 !important;
+    color: #0f172a !important;
+    background-color: rgba(48, 186, 186, 0.02) !important; /* Subtle theme accent background */
+    border-left: 1px solid rgba(48, 186, 186, 0.08) !important;
+    border-right: 1px solid rgba(48, 186, 186, 0.08) !important;
+  }
+
+  .prose tr th:nth-child(2) {
+    background-color: rgba(48, 186, 186, 0.05) !important;
+    color: #30baba !important;
+    font-weight: 800 !important;
+    border-left: 1px solid rgba(48, 186, 186, 0.08) !important;
+    border-right: 1px solid rgba(48, 186, 186, 0.08) !important;
+  }
+
+  /* Hover state for rows */
+  .prose tr:hover td {
+    background-color: #f8fafc !important;
+    transition: background-color 0.2s ease !important;
+  }
+  
+  .prose tr:hover td:nth-child(2) {
+    background-color: rgba(48, 186, 186, 0.04) !important;
+  }
+</style>
+

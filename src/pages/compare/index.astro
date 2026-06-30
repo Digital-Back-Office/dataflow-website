@@ -1,0 +1,256 @@
+---
+import Layout from '../../layouts/Layout.astro'
+import { getCollection } from 'astro:content'
+import CTASection from '../../components/common/CTASection.astro'
+import FaqSection from '../../components/common/FaqSection.astro'
+
+
+const slugOrderRank: Record<string, number> = {
+  'sagemaker': 1,
+  'deepnote': 2,
+  'hex': 3,
+  'dataiku': 4,
+  'databricks': 5,
+  'colab': 6,
+  'jupyterhub': 7,
+  'kaggle': 8,
+  'cocalc': 9,
+  'datalore': 10,
+  'marimo': 11,
+  'prefect': 12,
+  'vertex-ai': 13,
+  'mode': 14,
+}
+
+const comparisons = (await getCollection('comparisons')).sort((a, b) => {
+  const rankA = slugOrderRank[a.slug] ?? 99
+  const rankB = slugOrderRank[b.slug] ?? 99
+  return rankA - rankB
+})
+
+const benefits = [
+  {
+    icon: 'integration',
+    title: 'Universal Integration',
+    description: 'Connect your tools without glue code. Dataflow supports broad integrations out of the box.'
+  },
+  {
+    icon: 'automation',
+    title: 'Zero Environment Overhead',
+    description: 'Automatic dependency handling keeps environments stable so teams can focus on shipping value.'
+  },
+  {
+    icon: 'rocket',
+    title: 'Production Ready',
+    description: 'Scale from notebook exploration to dependable workflows and deployment in one platform.'
+  },
+  {
+    icon: 'opensource',
+    title: 'Open Source Foundation',
+    description: 'Built on open standards to reduce lock-in and increase transparency for engineering teams.'
+  },
+  {
+    icon: 'pricing',
+    title: 'Predictable Pricing',
+    description: 'Usage-aware pricing with better visibility and fewer surprises as teams grow.'
+  },
+  {
+    icon: 'ai',
+    title: 'AI Ready Workflows',
+    description: 'Orchestrate modern AI and ML workflows while keeping your data stack unified.'
+  }
+]
+
+const faqs = [
+  {
+    question: 'What does Dataflow comparison include?',
+    answer: 'Each comparison explains product fit, strengths, trade-offs, and a side-by-side capability view to help teams choose quickly.'
+  },
+  {
+    question: 'Are these comparison pages biased?',
+    answer: 'The pages are written to be practical and decision-oriented, showing where Dataflow is strong and where alternatives may be a better fit.'
+  },
+  {
+    question: 'Can I request another Dataflow vs tool comparison?',
+    answer: 'Yes. You can contact the team to request additional comparison pages based on your stack and workflow requirements.'
+  },
+  {
+    question: 'How should I evaluate tools for my team?',
+    answer: 'Focus on your deployment model, integration needs, orchestration requirements, and total operational complexity instead of feature checklists alone.'
+  }
+]
+
+const siteOrigin = (Astro.site?.toString() ?? 'https://dataflow.zone').replace(/\/$/, '')
+const normalizedPath = Astro.url.pathname === '/' ? '/' : `${Astro.url.pathname.replace(/\/+$/, '')}/`
+const compareUrl = new URL(normalizedPath, `${siteOrigin}/`).toString()
+
+const pageSchema = [
+  {
+    '@type': 'WebPage',
+    '@id': `${compareUrl}#webpage`,
+    url: compareUrl,
+    name: 'Dataflow Comparisons',
+    description: 'Compare Dataflow with leading data tools for orchestration, integration, and production workflows.',
+    isPartOf: {
+      '@id': `${siteOrigin}#website`
+    }
+  },
+  {
+    '@type': 'FAQPage',
+    '@id': `${compareUrl}#faq`,
+    mainEntity: faqs.map((faq) => ({
+      '@type': 'Question',
+      name: faq.question,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: faq.answer
+      }
+    }))
+  }
+]
+
+---
+
+<Layout
+  title="Dataflow Comparisons | Compare with Leading Data Tools"
+  meta_description="Compare Dataflow with SageMaker, Colab, Kaggle, Databricks, CoCalc, Deepnote, and other popular data platforms. Find the best solution for your workflow."
+  pageSchema={pageSchema}
+> 
+  <main>
+    <section class="px-[5%] pt-32 bg-gradient-to-b from-slate-50 to-white">
+      <div class="max-w-6xl mx-auto text-center">
+        <div data-aos="fade-up">
+          <span class="inline-block px-3.5 py-1.5 bg-primary/10 text-primary rounded-full text-xs font-bold uppercase tracking-widest mb-4">
+            Platform Comparison
+          </span>
+          <h1 class="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
+            How Dataflow Compares
+          </h1>
+          <p class="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto mb-8">
+            See why teams choose Dataflow for seamless data orchestration across all their tools
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="px-[5%] md:py-20 bg-white">
+      <div class="max-w-6xl mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {comparisons.map((comparison, index) => (
+            <a
+              href={`/compare/dataflow-vs-${comparison.slug}`}
+              class="group block rounded-2xl border border-slate-200 bg-white p-6 md:p-7 hover:border-primary/40"
+              data-aos="fade-up"
+              data-aos-delay={index * 80}
+            >
+              <div class="flex items-start gap-4">
+                {comparison.data.app_logo && (
+                  <img
+                    src={comparison.data.app_logo}
+                    alt={comparison.data.app_name}
+                    class="h-10 w-10 rounded-xl object-contain ring-1 ring-gray-200 bg-white"
+                  />
+                )}
+                <div class="min-w-0 flex-1">
+                  <h2 class="text-2xl font-bold text-gray-900 mb-2 group-hover:text-primary transition-colors">
+                    Dataflow vs {comparison.data.app_name}
+                  </h2>
+                  <p class="text-gray-600 leading-relaxed mb-4">
+                    {comparison.data.description}
+                  </p>
+                  <span class="inline-flex items-center text-primary font-medium text-sm">
+                    View comparison
+                    <svg class="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                    </svg>
+                  </span>
+                </div>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="px-[5%] py-16 md:py-20 bg-white">
+      <div class="max-w-6xl mx-auto">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4" data-aos="fade-up">
+            Why Choose Dataflow?
+          </h2>
+          <p class="text-lg text-gray-600 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="100">
+            Dataflow stands out by combining the best of both worlds
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {benefits.map((item, index) => (
+            <div
+              class="p-6 rounded-xl border border-slate-200 hover:border-primary/30"
+              data-aos="fade-up"
+              data-aos-delay={index * 80}
+            >
+              <div class="mb-4 inline-flex h-11 w-11 items-center justify-center rounded-lg text-primary">
+                {item.icon === 'integration' && (
+                  <svg class="h-8 w-8" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true">
+                    <circle cx="18" cy="5" r="3" />
+                    <circle cx="6" cy="12" r="3" />
+                    <circle cx="18" cy="19" r="3" />
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M8.5 10.5l7-3.5m-7 5l7 3.5" />
+                  </svg>
+                )}
+                {item.icon === 'automation' && (
+                  <svg class="h-8 w-8" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                    <circle cx="12" cy="12" r="3" />
+                  </svg>
+                )}
+                {item.icon === 'rocket' && (
+                  <svg class="h-8 w-8" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 2s-4 4.5-4 9.5c0 3.038 1.462 5.25 4 6.5 2.538-1.25 4-3.462 4-6.5C16 6.5 12 2 12 2zM9 15.5H6.5c-1.5 0-2.5 1-2.5 2.5v1.5h8m-3-4V12m9 3.5h2.5c1.5 0 2.5 1 2.5 2.5v1.5h-8m3-4V12" />
+                  </svg>
+                )}
+                {item.icon === 'opensource' && (
+                  <svg class="h-8 w-8" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true">
+                    <circle cx="18" cy="18" r="3" />
+                    <circle cx="6" cy="6" r="3" />
+                    <circle cx="6" cy="18" r="3" />
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 9v6m0 0a3 3 0 003 3h6" />
+                  </svg>
+                )}
+                {item.icon === 'pricing' && (
+                  <svg class="h-8 w-8" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true">
+                    <rect x="2" y="5" width="20" height="14" rx="2" />
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M2 10h20M6 14h4" />
+                  </svg>
+                )}
+                {item.icon === 'ai' && (
+                  <svg class="h-8 w-8" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 21l-.813-5.096L3 15l5.187-.813L9 9l.813 5.187L15 15l-5.187.813zM19 6.5l-.5 2-.5-2-2-.5 2-.5.5-2 .5 2 2 .5-2 .5zM19 19.5l-.5 2-.5-2-2-.5 2-.5.5-2 .5 2 2 .5-2 .5z" />
+                  </svg>
+                )}
+              </div>
+              <h3 class="text-xl font-semibold text-gray-900 mb-2">{item.title}</h3>
+              <p class="text-gray-600 leading-relaxed">{item.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <FaqSection
+      items={faqs}
+      title={'Questions, answered'}
+      description={'Common questions teams ask before choosing a data platform.'}
+      sectionClass={'max-w-6xl mx-auto py-16'}
+    />
+
+    <CTASection
+		title={"Ready to Unify Your Data Stack?"}
+		description={"Join teams that have moved from fragmented tools to seamless data orchestration."}
+		buttonText={"Start Free"}
+		formId="comparisonsCtaForm"
+		pageSource="comparisons-cta"
+	/>
+  </main>
+</Layout>

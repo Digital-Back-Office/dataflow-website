@@ -10,6 +10,16 @@ import FAQs from '../components/pricing/FAQs.astro'
 import AdditionalSupport from '../components/pricing/AdditionalSupport.astro'
 import DataTableSection from '../components/common/DataTableSection.astro'
 import * as FAQContent from '../content/pricing/faq.mdx'
+import FaqSection from '../components/common/FaqSection.astro'
+
+interface FAQContentType {
+  heading: string
+  faqs: Array<{
+    question: string
+    answer: string
+  }>
+}
+
 
 const { data: Help_24_7_data } = await getEntry('pricing', '24-7-help')
 const { data: All_in_one_solution_data } = await getEntry(
@@ -19,9 +29,7 @@ const { data: All_in_one_solution_data } = await getEntry(
 const siteOrigin = (Astro.site?.toString() ?? 'https://dataflow.zone').replace(/\/$/, '')
 const normalizedPath = Astro.url.pathname === '/' ? '/' : `${Astro.url.pathname.replace(/\/+$/, '')}/`
 const pricingUrl = new URL(normalizedPath, `${siteOrigin}/`).toString()
-const faqContent = FAQContent as unknown as {
-  faqs: Array<{ question: string; answer: string }>
-}
+const faqContent = FAQContent as unknown as FAQContentType
 const pricingComparisonColumns = ['Platform', 'Monthly cost', 'Free tier', 'EU data residency', 'Setup time', 'Airflow included']
 const pricingComparisonRows = [
   {
@@ -122,6 +130,9 @@ const pageSchema = [
     })),
   },
 ]
+
+const heading = faqContent.heading
+const faqs = faqContent.faqs
 ---
 
 <Layout
@@ -142,5 +153,12 @@ const pageSchema = [
     minWidthClass="min-w-[900px]"
     bg="white"
   />
-  <FAQs />
+  <FaqSection
+    items={faqs}
+    eyebrow='FAQ'
+    title='Questions, answered'
+    description={heading}
+    sectionClass='max-w-6xl mx-auto py-32'
+  />
+
 </Layout>

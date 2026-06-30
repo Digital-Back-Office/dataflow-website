@@ -1,7 +1,7 @@
 ---
 title: 'Dataflow vs. The Competition: A Feature-by-Feature Comparison'
 description: 'A detailed comparison of Dataflow against other data platforms like Deepnote, Databricks, and more, focusing on collaboration, reproducibility, and orchestration.'
-tags: ['Dataflow', 'Comparison', 'DataBricks', 'Deepnote', 'Prefect', 'CoCalc']
+tags: ['Dataflow', 'Comparison', 'DataBricks', 'Deepnote', 'Prefect', 'CoCalc', 'Hex']
 date: '18 Mar, 2026'
 image: '/assets/images/blog/dataflow-competitor-comparison.webp'
 category: ["product"]
@@ -11,14 +11,14 @@ Choosing the right data platform is critical for team productivity and project s
 
 Here’s a detailed look at how Dataflow stacks up against the competition, highlighting the unique advantages of a fully integrated environment.
 
-| Feature | **Dataflow** | Deepnote | Databricks | Prefect/Argo | CoCalc |
-|:---|:---|:---|:---|:---|:---|
-| [**Collaboration**](/product/shared-foundation) | High (live share) | High (notebook co-edit) | Medium (collab notebooks) | Low (dev-team only) | High (real-time) |
-| [**Reproducibility**](/product/managed-dependencies) | High (containerized env) | Medium (commit history) | High (notebook revision) | Medium (workflow versioning) | High (continuous versioning) |
-| [**Orchestration**](/product/deploy-to-production) | Native Airflow, MLflow | No built-in scheduler | Spark jobs, MLflow | High (workflow engine) | None (manual tasks) |
-| [**Security/Compliance**](/solutions/enterprise) | Enterprise-grade (SSO, audit) | Medium (cloud auth) | Enterprise (on AWS/Azure) | Medium | Medium (compliance) |
-| **Multi-language** | Python | Python/R | Python/Scala/SQL | Python/YAML | Multiple (R/Julia/Sage) |
-| [**Pricing Model**](/pricing) | Per-user + usage | Subscription/Freemium | Compute-based | Open source/Enterprise | Project-based |
+| Feature | **Dataflow** | Deepnote | Databricks | Prefect | Hex | CoCalc |
+|:---|:---|:---|:---|:---|:---|:---|
+| [**Collaboration**](/product/shared-foundation) | High (live share) | High (notebook co-edit) | Medium (collab notebooks) | Low (dev-team only) | High (notebook co-edit) | High (real-time) |
+| [**Reproducibility**](/product/managed-dependencies) | High (containerized env) | Medium (commit history) | High (notebook revision) | Medium (workflow versioning) | Medium (notebook versioning) | High (continuous versioning) |
+| [**Orchestration**](/product/deploy-to-production) | Native Airflow, MLflow | Limited (notebook scheduler) | Databricks Workflows, MLflow | High (workflow engine) | Limited (notebook scheduler) | None (crontab-based) |
+| [**Security/Compliance**](/solutions/enterprise) | Enterprise-grade (SSO, audit) | Medium (cloud auth) | Enterprise (on AWS/Azure) | Medium | Medium (cloud auth) | Medium (compliance) |
+| **Multi-language** | Python | Python/R | Python/Scala/SQL | Python/YAML | Python/SQL | Multiple (R/Julia/Sage) |
+| [**Pricing Model**](/pricing) | Per-user + usage | Subscription/Freemium | Compute-based | Open source/Enterprise | Subscription/Usage | Project-based |
 
 ## Key Takeaways
 

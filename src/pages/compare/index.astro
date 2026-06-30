@@ -5,7 +5,28 @@ import CTASection from '../../components/common/CTASection.astro'
 import FaqSection from '../../components/common/FaqSection.astro'
 
 
-const comparisons = await getCollection('comparisons')
+const slugOrderRank: Record<string, number> = {
+  'sagemaker': 1,
+  'deepnote': 2,
+  'hex': 3,
+  'dataiku': 4,
+  'databricks': 5,
+  'colab': 6,
+  'jupyterhub': 7,
+  'kaggle': 8,
+  'cocalc': 9,
+  'datalore': 10,
+  'marimo': 11,
+  'prefect': 12,
+  'vertex-ai': 13,
+  'mode': 14,
+}
+
+const comparisons = (await getCollection('comparisons')).sort((a, b) => {
+  const rankA = slugOrderRank[a.slug] ?? 99
+  const rankB = slugOrderRank[b.slug] ?? 99
+  return rankA - rankB
+})
 
 const benefits = [
   {

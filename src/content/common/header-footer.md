@@ -206,12 +206,14 @@ footer:
           href: "/about-us#team"
         - label: "Pressroom"
           href: "/press"
+        - label: "Privacy Policy"
+          href: "/privacy-policy"
 
 
   bottom_bar:
     links:
       - label: "Privacy Policy"
-        href: "/legal/privacy-policy"
+        href: "/privacy-policy"
       - label: "Terms and Conditions"
         href: "/legal/terms-and-conditions"
 

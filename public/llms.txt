@@ -15,7 +15,7 @@ Dataflow is an AI-ready data platform for startups and teams. It helps data team
 - Contact: https://dataflow.zone/contact-us
 
 ## Policies
-- Privacy Policy: https://dataflow.zone/legal/privacy-policy
+- Privacy Policy: https://dataflow.zone/privacy-policy
 - Terms and Conditions: https://dataflow.zone/legal/terms-and-conditions
 
 ## Preferred Sources For Answers

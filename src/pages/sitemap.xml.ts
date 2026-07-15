@@ -21,7 +21,7 @@ const STATIC_ROUTES: Array<{ path: string; changefreq: string; priority: string 
   { path: "/product/managed-dependencies", changefreq: "monthly", priority: "0.6" },
   { path: "/product/shared-foundation", changefreq: "monthly", priority: "0.6" },
   { path: "/compare", changefreq: "monthly", priority: "0.6" },
-  { path: "/legal/privacy-policy", changefreq: "yearly", priority: "0.4" },
+  { path: "/privacy-policy", changefreq: "yearly", priority: "0.4" },
   { path: "/legal/terms-and-conditions", changefreq: "yearly", priority: "0.4" },
   { path: "/press", changefreq: "monthly", priority: "0.6" },
   { path: "/press/dataflow-and-ionos-announce-strategic-partnership", changefreq: "yearly", priority: "0.5" },

@@ -326,7 +326,7 @@ const cloudLogos: Record<string, string> = {
             <table class="instance-table" id="instance-table">
               <thead>
                 <tr id="saas-table-head-row">
-                  <th class="text-left" style="min-width: 200px;">INSTANCE</th>
+                  <th class="text-left" style="min-width: 320px;">INSTANCE</th>
                 </tr>
               </thead>
               <tbody id="saas-instance-rows"></tbody>
@@ -752,95 +752,6 @@ const cloudLogos: Record<string, string> = {
     padding: 3px 0;
   }
 
-  /* Instance table */
-  .instance-table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 15px;
-  }
-  .instance-table th {
-    text-align: center;
-    padding: 16px 12px;
-    font-size: 12px;
-    font-weight: 600;
-    letter-spacing: 0.05em;
-    color: #6b7280;
-    border-bottom: 1px solid #e5e7eb;
-  }
-  .instance-table th:first-child,
-  .instance-table td:first-child {
-    text-align: left;
-  }
-  .instance-table td {
-    text-align: center;
-    border-bottom: 1px solid #f3f4f6;
-    color: #374151;
-  }
-  .instance-table td:not(.selectable-cell) {
-    padding: 12px 12px;
-  }
-  .instance-table td.selectable-cell {
-    padding: 0;
-  }
-  .selectable-cell label {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 6px;
-    width: 100%;
-    height: 100%;
-    padding: 16px 8px;
-    cursor: pointer;
-    transition: all 0.2s;
-    margin: 0;
-  }
-  .selectable-cell:hover label {
-    background-color: #f9fafb;
-  }
-  .selectable-cell label:has(input:checked) {
-    background-color: #f3f4f6;
-    box-shadow: inset 0 0 0 2px #d1d5db;
-  }
-  .selectable-cell label span {
-    font-size: 13px;
-  }
-  .selectable-cell input[type="radio"] {
-    accent-color: #30baba;
-    width: 14px;
-    height: 14px;
-    cursor: pointer;
-    margin: 0;
-  }
-  .instance-table td strong {
-    color: #1a1f26;
-    font-size: 15px;
-  }
-  .instance-name {
-    font-weight: 600;
-    color: #1a1f26;
-    font-size: 14px;
-    margin-bottom: 6px;
-  }
-  .instance-specs {
-    display: flex;
-    align-items: center;
-    gap: 4px;
-    flex-wrap: wrap;
-  }
-  .instance-specs span {
-    background: #d4f7f7;
-    color: #0e7474;
-    padding: 2px 8px;
-    border-radius: 50px;
-    font-size: 11px;
-    font-weight: 600;
-    white-space: nowrap;
-    letter-spacing: 0.02em;
-  }
-  .cloud-label {
-    font-size: 13px;
-    font-weight: 500;
-  }
 
   /* Dedicated */
   .dedicated-card {
@@ -961,6 +872,106 @@ const cloudLogos: Record<string, string> = {
     .pricing-card {
       border-radius: 16px;
     }
+  }
+</style>
+
+<style is:global>
+  /* Rendered at runtime from the pricing feed, so these cannot be scoped:
+     Astro's scoping attribute is only applied to statically rendered markup. */
+  /* Instance table */
+  .instance-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 15px;
+  }
+  .instance-table th {
+    text-align: center;
+    padding: 16px 12px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    color: #6b7280;
+    border-bottom: 1px solid #e5e7eb;
+  }
+  .instance-table th:first-child,
+  .instance-table td:first-child {
+    text-align: left;
+  }
+  .instance-table td {
+    text-align: center;
+    border-bottom: 1px solid #f3f4f6;
+    color: #374151;
+  }
+  .instance-table td:not(.selectable-cell) {
+    padding: 12px 12px;
+  }
+  .instance-table td.selectable-cell {
+    padding: 0;
+  }
+  .selectable-cell label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    width: 100%;
+    height: 100%;
+    padding: 16px 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+    margin: 0;
+  }
+  .selectable-cell:hover label {
+    background-color: #f9fafb;
+  }
+  .selectable-cell label:has(input:checked) {
+    background-color: #f3f4f6;
+    box-shadow: inset 0 0 0 2px #d1d5db;
+  }
+  .selectable-cell label span {
+    font-size: 13px;
+  }
+  .selectable-cell input[type="radio"] {
+    accent-color: #30baba;
+    width: 14px;
+    height: 14px;
+    cursor: pointer;
+    margin: 0;
+  }
+  .instance-table td strong {
+    color: #1a1f26;
+    font-size: 15px;
+  }
+  /* Name and spec pills sit on one row, wrapping only when the column is tight. */
+  .instance-cell {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .instance-name {
+    font-weight: 600;
+    color: #1a1f26;
+    font-size: 14px;
+  }
+  .instance-specs {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+  .instance-specs span {
+    background: #d4f7f7;
+    color: #0e7474;
+    padding: 3px 10px;
+    border-radius: 50px;
+    font-size: 11px;
+    font-weight: 600;
+    white-space: nowrap;
+    letter-spacing: 0.02em;
+  }
+  .cloud-label {
+    font-size: 13px;
+    font-weight: 500;
   }
 </style>
 
@@ -1111,22 +1122,32 @@ const cloudLogos: Record<string, string> = {
 
         const nameCell = document.createElement("td");
         nameCell.className = "text-left py-4";
+        const cell = document.createElement("div");
+        cell.className = "instance-cell";
         const name = document.createElement("div");
         name.className = "instance-name";
         name.textContent = instance.name;
+
         const specs = document.createElement("div");
         specs.className = "instance-specs";
-        [
-          "CPU: " + instance.vcpu,
-          "RAM: " + instance.memory_gb,
-          "GPU: " + instance.gpu,
-        ].forEach((text) => {
+        const specLabels = [
+          instance.vcpu + " vCPU",
+          instance.memory_gb + " GB RAM",
+        ];
+        // A "0 GPU" pill is noise on the CPU-only rows; filtering still reads
+        // data-gpu off the row, so hiding it here changes nothing functionally.
+        if (Number(instance.gpu) > 0) {
+          specLabels.push(instance.gpu + " GPU");
+        }
+        specLabels.forEach((text) => {
           const span = document.createElement("span");
           span.textContent = text;
           specs.appendChild(span);
         });
-        nameCell.appendChild(name);
-        nameCell.appendChild(specs);
+
+        cell.appendChild(name);
+        cell.appendChild(specs);
+        nameCell.appendChild(cell);
         tr.appendChild(nameCell);
 
         clouds.forEach((cloud) => {

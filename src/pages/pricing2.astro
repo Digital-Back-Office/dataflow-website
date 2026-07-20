@@ -1,0 +1,78 @@
+---
+import Layout from '../layouts/Layout.astro'
+import DeploymentToggle from '../components/pricing/DeploymentToggle.astro'
+import InstancePricing from '../components/pricing/InstancePricing.astro'
+import PricingConsulation from '../components/pricing/PricingConsulation.astro'
+import Testimonial from '../components/common/Testimonial.astro'
+import SecurityComplaince from '../components/pricing/SecurityComplaince.astro'
+import AdditionalSupport from '../components/pricing/AdditionalSupport.astro'
+import DataTableSection from '../components/common/DataTableSection.astro'
+import * as FAQContent from '../content/pricing/faq.mdx'
+import FaqSection from '../components/common/FaqSection.astro'
+
+interface FAQContentType {
+  heading: string
+  faqs: Array<{
+    question: string
+    answer: string
+  }>
+}
+
+const siteOrigin = (Astro.site?.toString() ?? 'https://dataflow.zone').replace(/\/$/, '')
+const normalizedPath = Astro.url.pathname === '/' ? '/' : `${Astro.url.pathname.replace(/\/+$/, '')}/`
+const pricingUrl = new URL(normalizedPath, `${siteOrigin}/`).toString()
+const faqContent = FAQContent as unknown as FAQContentType
+
+const pricingComparisonColumns = ['Platform', 'Monthly cost', 'Free tier', 'EU data residency', 'Setup time', 'Airflow included']
+const pricingComparisonRows = [
+  {
+    label: 'Dataflow',
+    highlight: true,
+    values: ['From $0, then usage-based paid plans', 'Yes', 'Yes, including sovereign cloud options', 'Low', 'Yes']
+  },
+  {
+    label: 'Astronomer',
+    values: ['Paid plans, typically higher for production teams', 'Limited trial', 'Available on selected plans and regions', 'Medium', 'Yes']
+  },
+  {
+    label: 'Prefect',
+    striped: true,
+    values: ['Free open-source option, paid cloud tiers', 'Yes', 'Plan-dependent', 'Medium', 'No']
+  },
+  {
+    label: 'Databricks',
+    values: ['Usage-based enterprise pricing', 'Limited trial', 'Available in supported EU regions', 'High', 'No']
+  }
+]
+
+const heading = faqContent.heading
+const faqs = faqContent.faqs
+---
+
+<Layout
+  title='Dataflow Pricing | Free, Startup & Enterprise Plans'
+  meta_description='Start free, no credit card needed. Compare Dataflow plans vs Astronomer, Prefect & Databricks. Affordable managed data platform for teams of any size.'
+  noindex={true}
+>
+  <DeploymentToggle />
+  <InstancePricing />
+  <PricingConsulation />
+  <AdditionalSupport />
+  <SecurityComplaince />
+  <Testimonial />
+  <DataTableSection
+    title="Dataflow vs Astronomer vs Prefect vs Databricks"
+    description="Snapshot comparison for teams evaluating managed orchestration and data app delivery platforms."
+    columns={pricingComparisonColumns}
+    rows={pricingComparisonRows}
+    minWidthClass="min-w-[900px]"
+    bg="white"
+  />
+  <FaqSection
+    items={faqs}
+    eyebrow='FAQ'
+    title='Questions, answered'
+    description={heading}
+    sectionClass='max-w-6xl mx-auto py-32'
+  />
+</Layout>

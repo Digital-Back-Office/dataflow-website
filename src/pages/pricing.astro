@@ -1,12 +1,10 @@
 ---
-import TopSection from '../components/pricing/TopSection.astro'
-import SecurityComplaince from '../components/pricing/SecurityComplaince.astro'
 import Layout from '../layouts/Layout.astro'
+import DeploymentToggle from '../components/pricing/DeploymentToggle.astro'
+import InstancePricing from '../components/pricing/InstancePricing.astro'
 import PricingConsulation from '../components/pricing/PricingConsulation.astro'
 import Testimonial from '../components/common/Testimonial.astro'
-import SupportSection from '../components/pricing/SupportSection.astro'
-import { getEntry } from 'astro:content'
-import FAQs from '../components/pricing/FAQs.astro'
+import SecurityComplaince from '../components/pricing/SecurityComplaince.astro'
 import AdditionalSupport from '../components/pricing/AdditionalSupport.astro'
 import DataTableSection from '../components/common/DataTableSection.astro'
 import * as FAQContent from '../content/pricing/faq.mdx'
@@ -20,59 +18,30 @@ interface FAQContentType {
   }>
 }
 
-
-const { data: Help_24_7_data } = await getEntry('pricing', '24-7-help')
-const { data: All_in_one_solution_data } = await getEntry(
-  'pricing',
-  'all-in-one-solution'
-)
 const siteOrigin = (Astro.site?.toString() ?? 'https://dataflow.zone').replace(/\/$/, '')
 const normalizedPath = Astro.url.pathname === '/' ? '/' : `${Astro.url.pathname.replace(/\/+$/, '')}/`
 const pricingUrl = new URL(normalizedPath, `${siteOrigin}/`).toString()
 const faqContent = FAQContent as unknown as FAQContentType
+
 const pricingComparisonColumns = ['Platform', 'Monthly cost', 'Free tier', 'EU data residency', 'Setup time', 'Airflow included']
 const pricingComparisonRows = [
   {
     label: 'Dataflow',
     highlight: true,
-    values: [
-      'From $0, then usage-based paid plans',
-      'Yes',
-      'Yes, including sovereign cloud options',
-      'Low',
-      'Yes'
-    ]
+    values: ['From $0, then usage-based paid plans', 'Yes', 'Yes, including sovereign cloud options', 'Low', 'Yes']
   },
   {
     label: 'Astronomer',
-    values: [
-      'Paid plans, typically higher for production teams',
-      'Limited trial',
-      'Available on selected plans and regions',
-      'Medium',
-      'Yes'
-    ]
+    values: ['Paid plans, typically higher for production teams', 'Limited trial', 'Available on selected plans and regions', 'Medium', 'Yes']
   },
   {
     label: 'Prefect',
     striped: true,
-    values: [
-      'Free open-source option, paid cloud tiers',
-      'Yes',
-      'Plan-dependent',
-      'Medium',
-      'No'
-    ]
+    values: ['Free open-source option, paid cloud tiers', 'Yes', 'Plan-dependent', 'Medium', 'No']
   },
   {
     label: 'Databricks',
-    values: [
-      'Usage-based enterprise pricing',
-      'Limited trial',
-      'Available in supported EU regions',
-      'High',
-      'No'
-    ]
+    values: ['Usage-based enterprise pricing', 'Limited trial', 'Available in supported EU regions', 'High', 'No']
   }
 ]
 
@@ -140,7 +109,8 @@ const faqs = faqContent.faqs
   meta_description='Start free, no credit card needed. Compare Dataflow plans vs Astronomer, Prefect & Databricks. Affordable managed data platform for teams of any size.'
   pageSchema={pageSchema}
 >
-  <TopSection />
+  <DeploymentToggle />
+  <InstancePricing />
   <PricingConsulation />
   <AdditionalSupport />
   <SecurityComplaince />
@@ -160,5 +130,4 @@ const faqs = faqContent.faqs
     description={heading}
     sectionClass='max-w-6xl mx-auto py-32'
   />
-
 </Layout>

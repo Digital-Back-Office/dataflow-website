@@ -133,6 +133,12 @@ const providerLogos = {
         if (!data || !Array.isArray(data.providers) || data.providers.length === 0) {
           throw new Error('Empty pricing response')
         }
+        // AWS/Azure are temporarily hidden (flagged in the feed, not deleted) while
+        // only GCP/IONOS pricing is kept current — filter them out of the tabs.
+        data = { ...data, providers: data.providers.filter((provider) => !provider.hidden) }
+        if (data.providers.length === 0) {
+          throw new Error('No visible providers in pricing response')
+        }
         pricingData = data
         loadingEl.classList.add('hidden')
         tableWrapEl.classList.remove('hidden')

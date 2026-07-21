@@ -24,3 +24,7 @@ pnpm-debug.log*
 .idea/
 
 .vscode
+
+# python (fetch_pricing.py)
+__pycache__/
+*.pyc

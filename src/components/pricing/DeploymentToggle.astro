@@ -38,17 +38,17 @@ const cloudLogos: Record<string, string> = {
   <!-- Folder-style tabs -->
   <div class="folder-tabs" role="tablist">
     <button
-      class="folder-tab active"
+      class="folder-tab"
       role="tab"
       data-tab="licensed"
-      aria-selected="true"
+      aria-selected="false"
       id="tab-licensed">Licensed Deployment</button
     >
     <button
-      class="folder-tab"
+      class="folder-tab active"
       role="tab"
       data-tab="saas"
-      aria-selected="false"
+      aria-selected="true"
       id="tab-saas">Dataflow Zone Deployment</button
     >
     <button
@@ -61,7 +61,7 @@ const cloudLogos: Record<string, string> = {
   </div>
 
   <!-- Licensed Panel -->
-  <div class="tab-panel active" id="panel-licensed" role="tabpanel">
+  <div class="tab-panel" id="panel-licensed" role="tabpanel">
     <div class="pricing-card licensed-card">
       <div class="card-col card-col-price">
         <p class="label-tag">STUDIO LICENSE</p>
@@ -183,7 +183,7 @@ const cloudLogos: Record<string, string> = {
   </div>
 
   <!-- SaaS Panel -->
-  <div class="tab-panel" id="panel-saas" role="tabpanel">
+  <div class="tab-panel active" id="panel-saas" role="tabpanel">
     <div class="pricing-card saas-card">
       <div class="saas-top-row">
         <div class="card-col card-col-saas-left">
@@ -342,7 +342,7 @@ const cloudLogos: Record<string, string> = {
       </div>
 
       <!-- Checkout Bar -->
-      <div class="saas-checkout-bar">
+      <div class="saas-checkout-bar" id="saas-checkout-bar">
         <div
           class="checkout-details"
           style="display: flex; flex-direction: column;"
@@ -729,13 +729,16 @@ const cloudLogos: Record<string, string> = {
   }
   .saas-checkout-bar {
     padding: 24px 40px;
+    max-height: fit-content;
     border-top: 1px solid #e5e7eb;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
     gap: 16px;
+    transition: box-shadow 0.3s ease, border-radius 0.3s ease;
   }
+
   .saas-divider {
     height: 1px;
     background: #e5e7eb;
@@ -972,6 +975,28 @@ const cloudLogos: Record<string, string> = {
   .cloud-label {
     font-size: 13px;
     font-weight: 500;
+  }
+  /* Sticky checkout bar — must be global because the classes are toggled by JS
+     and the placeholder is created dynamically (no Astro scoping attribute). */
+  .saas-checkout-bar.is-sticky {
+    position: fixed;
+    max-height: fit-content;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    background: #fff;
+    border-top: 1px solid #e5e7eb;
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.08);
+    border-radius: 0;
+    max-width: 100%;
+    padding: 20px 40px;
+  }
+  .saas-checkout-placeholder {
+    display: none;
+  }
+  .saas-checkout-placeholder.is-active {
+    display: block;
   }
 </style>
 
@@ -1312,11 +1337,83 @@ const cloudLogos: Record<string, string> = {
         filterTable();
         loadingEl.classList.add("hidden");
         tableWrapEl.classList.remove("hidden");
+        // Signal that the table is now rendered so the sticky bar can re-measure
+        window.dispatchEvent(new CustomEvent('saas-table-ready'));
       })
       .catch((error) => {
         console.error("Failed to load SaaS pricing", error);
         loadingEl.classList.add("hidden");
         errorEl.classList.remove("hidden");
       });
+
+    // ── Sticky checkout bar ──────────────────────────────────────────────
+    // The bar sticks to the viewport bottom until the user scrolls it into
+    // its natural position inside the card.  Uses a scroll listener with a
+    // cached offset to avoid the flicker that IntersectionObserver caused
+    // (sticky ↔ unsticky toggling shifted layout in a feedback loop).
+    const checkoutBar = document.getElementById('saas-checkout-bar');
+    if (checkoutBar) {
+      // Create a placeholder to prevent layout shift when the bar is fixed
+      const placeholder = document.createElement('div');
+      placeholder.className = 'saas-checkout-placeholder';
+      checkoutBar.parentNode.insertBefore(placeholder, checkoutBar.nextSibling);
+
+      let isSticky = false;
+      // Cache the bar's natural bottom-edge offset (relative to document).
+      // Recalculated on resize since the page layout can change.
+      let naturalBottom = 0;
+      let barHeight = 0;
+
+      function measureNaturalPosition() {
+        // Temporarily un-stick so we can measure the real position
+        const wasSticky = isSticky;
+        if (wasSticky) {
+          checkoutBar.classList.remove('is-sticky');
+          placeholder.classList.remove('is-active');
+        }
+        barHeight = checkoutBar.offsetHeight;
+        // getBoundingClientRect is viewport-relative; add scrollY for document-relative
+        const rect = checkoutBar.getBoundingClientRect();
+        naturalBottom = rect.bottom + window.scrollY;
+        if (wasSticky) {
+          checkoutBar.classList.add('is-sticky');
+          placeholder.style.height = barHeight + 'px';
+          placeholder.classList.add('is-active');
+        }
+      }
+
+      function onScroll() {
+        const viewportBottom = window.scrollY + window.innerHeight;
+        // The bar's natural bottom is below the viewport → stick it
+        if (viewportBottom < naturalBottom) {
+          if (!isSticky) {
+            isSticky = true;
+            placeholder.style.height = barHeight + 'px';
+            placeholder.classList.add('is-active');
+            checkoutBar.classList.add('is-sticky');
+          }
+        } else {
+          if (isSticky) {
+            isSticky = false;
+            checkoutBar.classList.remove('is-sticky');
+            placeholder.classList.remove('is-active');
+          }
+        }
+      }
+
+      measureNaturalPosition();
+      onScroll(); // set initial state
+
+      window.addEventListener('scroll', onScroll, { passive: true });
+      window.addEventListener('resize', () => {
+        measureNaturalPosition();
+        onScroll();
+      });
+      // Re-measure after async pricing table renders (changes page height)
+      window.addEventListener('saas-table-ready', () => {
+        measureNaturalPosition();
+        onScroll();
+      });
+    }
   });
 </script>

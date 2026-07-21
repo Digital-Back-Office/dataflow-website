@@ -13,7 +13,7 @@ const providerLogos = {
 }
 ---
 
-<section class="instance-pricing-section py-24 w-full flex flex-col items-center bg-white">
+<section class="instance-pricing-section py-24 max-sm:py-14 w-full flex flex-col items-center bg-white">
   <span
     class="inline-block px-5 py-1.5 rounded-full border border-primary text-primary text-sm font-semibold tracking-widest uppercase mb-6"
     >Compute Pricing</span
@@ -43,7 +43,7 @@ const providerLogos = {
 
     <!-- Table -->
     <div id="instance-pricing-table-wrap" class="hidden overflow-x-auto rounded-2xl border border-gray-200 shadow-sm">
-      <table class="w-full min-w-[640px] text-left">
+      <table class="instance-pricing-table w-full min-w-[560px] text-left">
         <thead>
           <tr class="bg-gray-50 text-gray-600 text-sm uppercase tracking-wider">
             <th class="px-6 py-4 font-semibold">Instance</th>
@@ -180,5 +180,21 @@ const providerLogos = {
     border-color: #30baba;
     background: rgba(48, 186, 186, 0.08);
     color: #30baba;
+  }
+  @media (max-width: 640px) {
+    .instance-pricing-tab {
+      padding: 0.45rem 0.9rem;
+      font-size: 0.8rem;
+    }
+    /* Rows are built as HTML strings in JS, so the mobile density is applied
+       here rather than by adding responsive classes to every cell. */
+    .instance-pricing-table th,
+    .instance-pricing-table td {
+      padding-left: 0.85rem;
+      padding-right: 0.85rem;
+      padding-top: 0.75rem;
+      padding-bottom: 0.75rem;
+      font-size: 0.8rem;
+    }
   }
 </style>

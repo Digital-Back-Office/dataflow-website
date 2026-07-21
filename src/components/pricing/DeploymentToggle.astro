@@ -1302,9 +1302,10 @@ const cloudLogos: Record<string, string> = {
         ) {
           throw new Error("Empty pricing response");
         }
-        // AWS/Azure are temporarily hidden (flagged in the feed, not deleted) while
-        // only GCP/IONOS pricing is kept current — filter them out of the columns.
-        clouds = data.clouds.filter((cloud) => !cloud.hidden);
+        clouds = data.clouds;
+        // // AWS/Azure are temporarily hidden (flagged in the feed, not deleted) while
+        // // only GCP/IONOS pricing is kept current — filter them out of the columns.
+        // clouds = data.clouds.filter((cloud) => !cloud.hidden);
         renderHead();
         renderFacets(instances);
         renderRows(instances);

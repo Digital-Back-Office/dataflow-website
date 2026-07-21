@@ -8,16 +8,6 @@
             "name": "GCP"
         },
         {
-            "id": "aws",
-            "name": "AWS",
-            "hidden": true
-        },
-        {
-            "id": "azure",
-            "name": "Azure",
-            "hidden": true
-        },
-        {
             "id": "ionos",
             "name": "IONOS"
         }
@@ -30,8 +20,6 @@
             "gpu": 0,
             "prices": {
                 "gcp": 0.083,
-                "aws": 0.05,
-                "azure": 0.06,
                 "ionos": 0.049
             }
         },
@@ -42,8 +30,6 @@
             "gpu": 0,
             "prices": {
                 "gcp": 0.095,
-                "aws": 0.11,
-                "azure": 0.12,
                 "ionos": 0.058
             }
         },
@@ -54,8 +40,6 @@
             "gpu": 0,
             "prices": {
                 "gcp": 0.162,
-                "aws": 0.22,
-                "azure": 0.24,
                 "ionos": 0.101
             }
         },
@@ -66,8 +50,6 @@
             "gpu": 1,
             "prices": {
                 "gcp": 0.473,
-                "aws": 0.38,
-                "azure": 0.4,
                 "ionos": 0.357
             }
         },
@@ -78,8 +60,6 @@
             "gpu": 1,
             "prices": {
                 "gcp": 0.568,
-                "aws": 0.48,
-                "azure": 0.5,
                 "ionos": 0.399
             }
         },
@@ -90,8 +70,6 @@
             "gpu": 1,
             "prices": {
                 "gcp": 0.735,
-                "aws": 0.8,
-                "azure": 0.85,
                 "ionos": 0.751
             }
         },
@@ -102,74 +80,11 @@
             "gpu": 1,
             "prices": {
                 "gcp": 3.701,
-                "aws": 2.8,
-                "azure": 2.9,
                 "ionos": 2.557
             }
         }
     ],
     "providers": [
-        {
-            "id": "aws",
-            "name": "Amazon Web Services",
-            "hidden": true,
-            "instances": [
-                {
-                    "instance_type": "t3.medium",
-                    "display_name": "General Purpose - Small",
-                    "category": "general",
-                    "vcpu": 2,
-                    "memory_gb": 4,
-                    "gpu": 0,
-                    "price_per_hour": 0.0416
-                },
-                {
-                    "instance_type": "t3.xlarge",
-                    "display_name": "General Purpose - Medium",
-                    "category": "general",
-                    "vcpu": 4,
-                    "memory_gb": 16,
-                    "gpu": 0,
-                    "price_per_hour": 0.1664
-                },
-                {
-                    "instance_type": "m5.2xlarge",
-                    "display_name": "General Purpose - Large",
-                    "category": "general",
-                    "vcpu": 8,
-                    "memory_gb": 32,
-                    "gpu": 0,
-                    "price_per_hour": 0.384
-                },
-                {
-                    "instance_type": "c5.4xlarge",
-                    "display_name": "Compute Optimized",
-                    "category": "compute",
-                    "vcpu": 16,
-                    "memory_gb": 32,
-                    "gpu": 0,
-                    "price_per_hour": 0.68
-                },
-                {
-                    "instance_type": "r5.4xlarge",
-                    "display_name": "Memory Optimized",
-                    "category": "memory",
-                    "vcpu": 16,
-                    "memory_gb": 128,
-                    "gpu": 0,
-                    "price_per_hour": 1.008
-                },
-                {
-                    "instance_type": "g4dn.xlarge",
-                    "display_name": "GPU - NVIDIA T4",
-                    "category": "gpu",
-                    "vcpu": 4,
-                    "memory_gb": 16,
-                    "gpu": 1,
-                    "price_per_hour": 0.526
-                }
-            ]
-        },
         {
             "id": "gcp",
             "name": "Google Cloud Platform",
@@ -227,67 +142,6 @@
                     "memory_gb": 16,
                     "gpu": 1,
                     "price_per_hour": 0.735
-                }
-            ]
-        },
-        {
-            "id": "azure",
-            "name": "Microsoft Azure",
-            "hidden": true,
-            "instances": [
-                {
-                    "instance_type": "B2s",
-                    "display_name": "General Purpose - Small",
-                    "category": "general",
-                    "vcpu": 2,
-                    "memory_gb": 4,
-                    "gpu": 0,
-                    "price_per_hour": 0.0416
-                },
-                {
-                    "instance_type": "D4s_v5",
-                    "display_name": "General Purpose - Medium",
-                    "category": "general",
-                    "vcpu": 4,
-                    "memory_gb": 16,
-                    "gpu": 0,
-                    "price_per_hour": 0.192
-                },
-                {
-                    "instance_type": "D8s_v5",
-                    "display_name": "General Purpose - Large",
-                    "category": "general",
-                    "vcpu": 8,
-                    "memory_gb": 32,
-                    "gpu": 0,
-                    "price_per_hour": 0.384
-                },
-                {
-                    "instance_type": "F16s_v2",
-                    "display_name": "Compute Optimized",
-                    "category": "compute",
-                    "vcpu": 16,
-                    "memory_gb": 32,
-                    "gpu": 0,
-                    "price_per_hour": 0.677
-                },
-                {
-                    "instance_type": "E16s_v5",
-                    "display_name": "Memory Optimized",
-                    "category": "memory",
-                    "vcpu": 16,
-                    "memory_gb": 128,
-                    "gpu": 0,
-                    "price_per_hour": 1.008
-                },
-                {
-                    "instance_type": "NC4as_T4_v3",
-                    "display_name": "GPU - NVIDIA T4",
-                    "category": "gpu",
-                    "vcpu": 4,
-                    "memory_gb": 28,
-                    "gpu": 1,
-                    "price_per_hour": 0.526
                 }
             ]
         },

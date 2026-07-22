@@ -194,11 +194,6 @@ const cloudLogos: Record<string, string> = {
             per cloud.
           </p>
           <div class="saas-divider"></div>
-          <p class="font-semibold text-textblack">No setup fees</p>
-          <p class="text-gray-500 text-sm">
-            Start now, no credit card required
-          </p>
-          <div class="saas-divider"></div>
           <p class="label-tag mt-2">ALL APPS INCLUDED</p>
           <ul class="saas-apps-list">
             <li>✓ Jupyterhub</li>
@@ -341,28 +336,17 @@ const cloudLogos: Record<string, string> = {
         </div>
       </div>
 
-      <!-- Checkout Bar -->
-      <div class="saas-checkout-bar" id="saas-checkout-bar">
-        <div class="checkout-details">
-          <span class="checkout-label">Selected Configuration</span>
-          <span class="checkout-value" id="checkout-selection"
-            >None selected</span
-          >
+      <!-- Bottom bar -->
+      <div class="saas-cta-row">
+        <div class="saas-cta-copy">
+          <p class="font-semibold text-textblack">No setup fees</p>
+          <p class="text-gray-500 text-sm">
+            Start now, no credit card required
+          </p>
         </div>
-        <div class="checkout-actions">
-          <div class="checkout-price-wrap">
-            <span class="checkout-label">Estimated Cost</span>
-            <span class="checkout-price" id="checkout-price"
-              >$0.00 <span class="checkout-price-unit">/hr</span></span
-            >
-          </div>
-          <a
-            href="https://app.dataflow.zone/"
-            id="saas-checkout-btn"
-            class="btn-primary checkout-btn is-disabled"
-            >Proceed to checkout</a
-          >
-        </div>
+        <a href="https://app.dataflow.zone/" class="btn-primary saas-cta-btn"
+          >Get Started</a
+        >
       </div>
     </div>
   </div>
@@ -727,6 +711,23 @@ const cloudLogos: Record<string, string> = {
   .saas-apps-list li {
     padding: 3px 0;
   }
+  .saas-cta-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+    padding: 24px 40px;
+    border-top: 1px solid #e5e7eb;
+  }
+  .saas-cta-copy {
+    min-width: 0;
+  }
+  .saas-cta-btn {
+    padding: 12px 36px;
+    font-size: 14px;
+    flex-shrink: 0;
+  }
 
 
   /* Dedicated */
@@ -889,6 +890,16 @@ const cloudLogos: Record<string, string> = {
       display: block;
       width: 100%;
     }
+    /* Copy and button stay side by side; the button just gives up its
+       generous horizontal padding rather than dropping to its own row. */
+    .saas-cta-row {
+      padding: 20px 18px;
+      gap: 12px;
+      flex-wrap: nowrap;
+    }
+    .saas-cta-btn {
+      padding: 12px 20px;
+    }
   }
 </style>
 
@@ -925,41 +936,12 @@ const cloudLogos: Record<string, string> = {
     text-align: center;
     border-bottom: 1px solid #f3f4f6;
     color: #374151;
-  }
-  .instance-table td:not(.selectable-cell) {
     padding: 12px 12px;
   }
-  .instance-table td.selectable-cell {
-    padding: 0;
-  }
-  .selectable-cell label {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 6px;
-    width: 100%;
-    height: 100%;
-    padding: 16px 8px;
-    cursor: pointer;
-    transition: all 0.2s;
-    margin: 0;
-  }
-  .selectable-cell:hover label {
-    background-color: #f9fafb;
-  }
-  .selectable-cell label:has(input:checked) {
-    background-color: #f3f4f6;
-    box-shadow: inset 0 0 0 2px #d1d5db;
-  }
-  .selectable-cell label span {
+  .instance-table td.price-cell {
     font-size: 13px;
-  }
-  .selectable-cell input[type="radio"] {
-    accent-color: #30baba;
-    width: 14px;
-    height: 14px;
-    cursor: pointer;
-    margin: 0;
+    color: #6b7280;
+    white-space: nowrap;
   }
   .instance-table td strong {
     color: #1a1f26;
@@ -997,93 +979,6 @@ const cloudLogos: Record<string, string> = {
     font-size: 13px;
     font-weight: 500;
   }
-  /* Checkout bar — global because the sticky/disabled classes are toggled by JS,
-     the placeholder is created dynamically, and the price unit is re-rendered on
-     selection (none of which carry an Astro scoping attribute). */
-  .saas-checkout-bar {
-    padding: 24px 40px;
-    max-height: fit-content;
-    border-top: 1px solid #e5e7eb;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-between;
-    gap: 16px;
-    background: #fff;
-    transition: box-shadow 0.3s ease, border-radius 0.3s ease;
-  }
-  .checkout-details {
-    display: flex;
-    flex-direction: column;
-    min-width: 0;
-  }
-  .checkout-label {
-    font-size: 13px;
-    color: #6b7280;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    margin-bottom: 4px;
-  }
-  .checkout-value {
-    font-size: 18px;
-    font-weight: 600;
-    color: #1a1f26;
-  }
-  .checkout-actions {
-    display: flex;
-    align-items: center;
-    gap: 32px;
-    flex-wrap: wrap;
-  }
-  .checkout-price-wrap {
-    text-align: right;
-  }
-  .checkout-price-wrap .checkout-label {
-    display: block;
-  }
-  .checkout-price {
-    font-size: 28px;
-    font-weight: 800;
-    color: #1a1f26;
-    line-height: 1;
-  }
-  .checkout-price-unit {
-    font-size: 14px;
-    font-weight: 400;
-    color: #6b7280;
-  }
-  .checkout-btn.is-disabled {
-    opacity: 0.5;
-    pointer-events: none;
-  }
-  .saas-checkout-bar.is-sticky {
-    position: fixed;
-    max-height: fit-content;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    z-index: 100;
-    border-top: 1px solid #e5e7eb;
-    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.08);
-    border-radius: 0;
-    max-width: 100%;
-    padding: 20px 40px;
-  }
-  .saas-checkout-placeholder {
-    display: none;
-  }
-  .saas-checkout-placeholder.is-active {
-    display: block;
-  }
-
-  @media (max-width: 900px) {
-    .saas-checkout-bar,
-    .saas-checkout-bar.is-sticky {
-      padding: 20px 24px;
-    }
-  }
-
   @media (max-width: 640px) {
     .instance-table th.instance-col {
       min-width: 190px;
@@ -1094,59 +989,9 @@ const cloudLogos: Record<string, string> = {
       align-items: flex-start;
       gap: 6px;
     }
-    .instance-table th {
+    .instance-table th,
+    .instance-table td {
       padding: 12px 8px;
-    }
-    .instance-table td:not(.selectable-cell) {
-      padding: 12px 8px;
-    }
-    .selectable-cell label {
-      padding: 14px 6px;
-    }
-
-    /* A fixed bar this tall would swallow a phone viewport, so the label is
-       dropped and the price sits inline with the button. */
-    .saas-checkout-bar {
-      padding: 16px;
-      gap: 12px;
-      align-items: stretch;
-    }
-    .saas-checkout-bar.is-sticky {
-      padding: 12px 16px;
-      padding-bottom: calc(12px + env(safe-area-inset-bottom, 0px));
-    }
-    .checkout-details {
-      width: 100%;
-    }
-    .checkout-details .checkout-label {
-      display: none;
-    }
-    .checkout-value {
-      font-size: 14px;
-      line-height: 1.35;
-    }
-    .checkout-actions {
-      width: 100%;
-      gap: 14px;
-      flex-wrap: nowrap;
-      justify-content: space-between;
-    }
-    .checkout-price-wrap {
-      text-align: left;
-      flex-shrink: 0;
-    }
-    .checkout-price-wrap .checkout-label {
-      font-size: 10px;
-      margin-bottom: 2px;
-    }
-    .checkout-price {
-      font-size: 22px;
-    }
-    .checkout-btn {
-      flex: 1;
-      min-width: 0;
-      padding: 13px 14px;
-      font-size: 14px;
     }
   }
 </style>
@@ -1188,15 +1033,9 @@ const cloudLogos: Record<string, string> = {
           heading.textContent = headings[target].h;
           subheading.textContent = headings[target].s;
         }
-        // Panels differ wildly in height, so the sticky bar's cached offset is
-        // stale the moment a tab changes.
-        window.dispatchEvent(new CustomEvent("saas-layout-changed"));
       });
     });
 
-    const checkoutSelection = document.getElementById("checkout-selection");
-    const checkoutPrice = document.getElementById("checkout-price");
-    const checkoutBtn = document.getElementById("saas-checkout-btn");
     const loadingEl = document.getElementById("saas-pricing-loading");
     const errorEl = document.getElementById("saas-pricing-error");
     const tableWrapEl = document.getElementById("saas-table-wrap");
@@ -1331,7 +1170,7 @@ const cloudLogos: Record<string, string> = {
 
         clouds.forEach((cloud) => {
           const td = document.createElement("td");
-          td.className = "selectable-cell";
+          td.className = "price-cell";
           const price = instance.prices ? instance.prices[cloud.id] : undefined;
 
           if (price === undefined || price === null) {
@@ -1340,22 +1179,10 @@ const cloudLogos: Record<string, string> = {
             return;
           }
 
-          const label = document.createElement("label");
-          const radio = document.createElement("input");
-          radio.type = "radio";
-          radio.name = "saas-plan";
-          radio.setAttribute("data-instance", instance.name);
-          radio.setAttribute("data-ram", "RAM: " + instance.memory_gb);
-          radio.setAttribute("data-cloud", cloud.name);
-          radio.setAttribute("data-price", Number(price).toFixed(2));
-          const text = document.createElement("span");
           const strong = document.createElement("strong");
           strong.textContent = formatPrice(price);
-          text.appendChild(strong);
-          text.appendChild(document.createTextNode("/hr"));
-          label.appendChild(radio);
-          label.appendChild(text);
-          td.appendChild(label);
+          td.appendChild(strong);
+          td.appendChild(document.createTextNode("/hr"));
           tr.appendChild(td);
         });
 
@@ -1447,23 +1274,6 @@ const cloudLogos: Record<string, string> = {
       filterTable();
     });
 
-    // Rows are rendered after fetch, so checkout selection is delegated too.
-    rowsEl.addEventListener("change", (e) => {
-      const radio = e.target;
-      if (!radio.matches('input[name="saas-plan"]') || !radio.checked) return;
-      checkoutSelection.textContent =
-        radio.getAttribute("data-instance") +
-        " (" +
-        radio.getAttribute("data-ram") +
-        ") on " +
-        radio.getAttribute("data-cloud");
-      checkoutPrice.innerHTML =
-        "$" +
-        radio.getAttribute("data-price") +
-        ' <span class="checkout-price-unit">/hr</span>';
-      checkoutBtn.classList.remove("is-disabled");
-    });
-
     fetch(saasPricingUrl)
       .then((response) => {
         if (!response.ok)
@@ -1490,84 +1300,11 @@ const cloudLogos: Record<string, string> = {
         filterTable();
         loadingEl.classList.add("hidden");
         tableWrapEl.classList.remove("hidden");
-        // Signal that the table is now rendered so the sticky bar can re-measure
-        window.dispatchEvent(new CustomEvent('saas-layout-changed'));
       })
       .catch((error) => {
         console.error("Failed to load SaaS pricing", error);
         loadingEl.classList.add("hidden");
         errorEl.classList.remove("hidden");
       });
-
-    // ── Sticky checkout bar ──────────────────────────────────────────────
-    // The bar sticks to the viewport bottom until the user scrolls it into
-    // its natural position inside the card.  Uses a scroll listener with a
-    // cached offset to avoid the flicker that IntersectionObserver caused
-    // (sticky ↔ unsticky toggling shifted layout in a feedback loop).
-    const checkoutBar = document.getElementById('saas-checkout-bar');
-    if (checkoutBar) {
-      // Create a placeholder to prevent layout shift when the bar is fixed
-      const placeholder = document.createElement('div');
-      placeholder.className = 'saas-checkout-placeholder';
-      checkoutBar.parentNode.insertBefore(placeholder, checkoutBar.nextSibling);
-
-      let isSticky = false;
-      // Cache the bar's natural bottom-edge offset (relative to document).
-      // Recalculated on resize since the page layout can change.
-      let naturalBottom = 0;
-      let barHeight = 0;
-
-      function measureNaturalPosition() {
-        // Temporarily un-stick so we can measure the real position
-        const wasSticky = isSticky;
-        if (wasSticky) {
-          checkoutBar.classList.remove('is-sticky');
-          placeholder.classList.remove('is-active');
-        }
-        barHeight = checkoutBar.offsetHeight;
-        // getBoundingClientRect is viewport-relative; add scrollY for document-relative
-        const rect = checkoutBar.getBoundingClientRect();
-        naturalBottom = rect.bottom + window.scrollY;
-        if (wasSticky) {
-          checkoutBar.classList.add('is-sticky');
-          placeholder.style.height = barHeight + 'px';
-          placeholder.classList.add('is-active');
-        }
-      }
-
-      function onScroll() {
-        const viewportBottom = window.scrollY + window.innerHeight;
-        // The bar's natural bottom is below the viewport → stick it
-        if (viewportBottom < naturalBottom) {
-          if (!isSticky) {
-            isSticky = true;
-            placeholder.style.height = barHeight + 'px';
-            placeholder.classList.add('is-active');
-            checkoutBar.classList.add('is-sticky');
-          }
-        } else {
-          if (isSticky) {
-            isSticky = false;
-            checkoutBar.classList.remove('is-sticky');
-            placeholder.classList.remove('is-active');
-          }
-        }
-      }
-
-      measureNaturalPosition();
-      onScroll(); // set initial state
-
-      window.addEventListener('scroll', onScroll, { passive: true });
-      window.addEventListener('resize', () => {
-        measureNaturalPosition();
-        onScroll();
-      });
-      // Re-measure after the async pricing table renders or a tab switch swaps
-      // panels — both change page height.
-      window.addEventListener('saas-layout-changed', () => {
-        measureNaturalPosition();
-        onScroll();
-      });
-    }
   });
 </script>

@@ -1,5 +1,4 @@
 ---
-
 import { getEntry } from "astro:content";
 import Footer from "../components/common/Footer.astro";
 import Header from "../components/common/Header.astro";
@@ -33,18 +32,27 @@ const resolvedTitle = title?.includes("|")
     ? `${title} | Dataflow`
     : baseTitle;
 const pageTitle = resolvedTitle;
-const appUrl = (import.meta.env.PUBLIC_APP_URL ?? 'https://app.dataflow.zone').replace(/\/$/, '');
+const appUrl = (
+  import.meta.env.PUBLIC_APP_URL ?? "https://app.dataflow.zone"
+).replace(/\/$/, "");
 
-const defaultMetaDescription = "Dataflow is the AI-ready data platform that unifies Airflow, VS Code, and cloud deploys for faster, reliable data teams.";
+const defaultMetaDescription =
+  "Dataflow is the AI-ready data platform that unifies Airflow, VS Code, and cloud deploys for faster, reliable data teams.";
 // SEO: Keep descriptions concise and valid for search snippets while allowing natural copy.
 const normalizedMetaDescription = meta_description?.trim();
-const metaDescription = normalizedMetaDescription && normalizedMetaDescription.length <= 160
-  ? normalizedMetaDescription
-  : defaultMetaDescription;
+const metaDescription =
+  normalizedMetaDescription && normalizedMetaDescription.length <= 160
+    ? normalizedMetaDescription
+    : defaultMetaDescription;
 
-const siteOrigin = (Astro.site?.toString() ?? "https://dataflow.zone").replace(/\/$/, "");
-const assetUrl = (pathname: string) => new URL(pathname.replace(/^\/+/, ""), `${siteOrigin}/`).toString();
-const normalizedPath = Astro.url.pathname === "/" ? "/" : Astro.url.pathname.replace(/\/+$/, "");
+const siteOrigin = (Astro.site?.toString() ?? "https://dataflow.zone").replace(
+  /\/$/,
+  "",
+);
+const assetUrl = (pathname: string) =>
+  new URL(pathname.replace(/^\/+/, ""), `${siteOrigin}/`).toString();
+const normalizedPath =
+  Astro.url.pathname === "/" ? "/" : Astro.url.pathname.replace(/\/+$/, "");
 const normalizeCanonicalPath = (pathname: string) => {
   const trimmed = pathname.trim();
   if (!trimmed || trimmed === "/") {
@@ -54,15 +62,25 @@ const normalizeCanonicalPath = (pathname: string) => {
   const withLeadingSlash = trimmed.startsWith("/") ? trimmed : `/${trimmed}`;
   return `${withLeadingSlash.replace(/\/+$/, "")}/`;
 };
-const resolvedCanonicalPath = normalizeCanonicalPath(canonicalPath ?? normalizedPath);
-const canonicalUrl = new URL(resolvedCanonicalPath, `${siteOrigin}/`).toString();
-
+const resolvedCanonicalPath = normalizeCanonicalPath(
+  canonicalPath ?? normalizedPath,
+);
+const canonicalUrl = new URL(
+  resolvedCanonicalPath,
+  `${siteOrigin}/`,
+).toString();
 
 const headerFooter = await getEntry("common", "header-footer");
 const socialLinks = headerFooter?.data?.footer?.social_links ?? [];
-const socialUrls = socialLinks.map((link: { url?: string }) => link.url).filter(Boolean);
-const xProfile = socialUrls.find((url: string) => url.includes("x.com") || url.includes("twitter.com"));
-const twitterHandle = xProfile ? `@${xProfile.split("/").filter(Boolean).pop()}` : "@dataflow_zone";
+const socialUrls = socialLinks
+  .map((link: { url?: string }) => link.url)
+  .filter(Boolean);
+const xProfile = socialUrls.find(
+  (url: string) => url.includes("x.com") || url.includes("twitter.com"),
+);
+const twitterHandle = xProfile
+  ? `@${xProfile.split("/").filter(Boolean).pop()}`
+  : "@dataflow_zone";
 
 // JSON-LD: Always emit one Organization entity across the site.
 const organizationSchema: Record<string, unknown> = {
@@ -70,7 +88,7 @@ const organizationSchema: Record<string, unknown> = {
   "@id": `${siteOrigin}#organization`,
   name: "Dataflow",
   url: `${siteOrigin}/`,
-  logo: assetUrl('/assets/images/dataflow-logo-green.svg'),
+  logo: assetUrl("/assets/images/dataflow-logo-green.svg"),
   sameAs: socialUrls,
 };
 
@@ -106,44 +124,47 @@ const segmentLabelMap: Record<string, string> = {
   "startups-smes": "Startups & SMEs",
 };
 
-const toSegmentLabel = (segment: string) => segmentLabelMap[segment] ?? slugToTitle(`/${segment}`);
+const toSegmentLabel = (segment: string) =>
+  segmentLabelMap[segment] ?? slugToTitle(`/${segment}`);
 
 const path = normalizedPath;
 const pathSegments = path.split("/").filter(Boolean);
-const pageType = path === "/"
-  ? "WebPage"
-  : path === "/about-us"
-    ? "AboutPage"
-    : path === "/contact-us"
-      ? "ContactPage"
-      : path === "/blog"
-        ? "CollectionPage"
-        : "WebPage";
+const pageType =
+  path === "/"
+    ? "WebPage"
+    : path === "/about-us"
+      ? "AboutPage"
+      : path === "/contact-us"
+        ? "ContactPage"
+        : path === "/blog"
+          ? "CollectionPage"
+          : "WebPage";
 
 // JSON-LD: Default page schema used when a page does not provide custom pageSchema.
-const breadcrumbSchema: Record<string, unknown> | null = pathSegments.length > 0
-  ? {
-      "@type": "BreadcrumbList",
-      "@id": `${canonicalUrl}#breadcrumb`,
-      itemListElement: [
-        {
-          "@type": "ListItem",
-          position: 1,
-          name: "Home",
-          item: `${siteOrigin}/`,
-        },
-        ...pathSegments.map((segment, index) => {
-          const cumulativePath = `/${pathSegments.slice(0, index + 1).join("/")}`;
-          return {
+const breadcrumbSchema: Record<string, unknown> | null =
+  pathSegments.length > 0
+    ? {
+        "@type": "BreadcrumbList",
+        "@id": `${canonicalUrl}#breadcrumb`,
+        itemListElement: [
+          {
             "@type": "ListItem",
-            position: index + 2,
-            name: toSegmentLabel(segment),
-            item: new URL(cumulativePath, `${siteOrigin}/`).toString(),
-          };
-        }),
-      ],
-    }
-  : null;
+            position: 1,
+            name: "Home",
+            item: `${siteOrigin}/`,
+          },
+          ...pathSegments.map((segment, index) => {
+            const cumulativePath = `/${pathSegments.slice(0, index + 1).join("/")}`;
+            return {
+              "@type": "ListItem",
+              position: index + 2,
+              name: toSegmentLabel(segment),
+              item: new URL(cumulativePath, `${siteOrigin}/`).toString(),
+            };
+          }),
+        ],
+      }
+    : null;
 
 const defaultPageSchema: Array<Record<string, unknown>> = [
   {
@@ -211,7 +232,8 @@ const customPageSchemas = Array.isArray(pageSchema)
     ? [pageSchema]
     : [];
 
-const pageSchemas = customPageSchemas.length > 0 ? customPageSchemas : defaultPageSchema;
+const pageSchemas =
+  customPageSchemas.length > 0 ? customPageSchemas : defaultPageSchema;
 const hasCustomBreadcrumbSchema = customPageSchemas.some((schema) => {
   const typeValue = schema?.["@type"];
   if (Array.isArray(typeValue)) {
@@ -227,7 +249,9 @@ const structuredData = {
     organizationSchema,
     websiteSchema,
     ...pageSchemas,
-    ...(breadcrumbSchema && !hasCustomBreadcrumbSchema ? [breadcrumbSchema] : []),
+    ...(breadcrumbSchema && !hasCustomBreadcrumbSchema
+      ? [breadcrumbSchema]
+      : []),
   ],
 };
 const structuredDataJson = JSON.stringify(structuredData);
@@ -253,12 +277,20 @@ const structuredDataJson = JSON.stringify(structuredData);
               cs.async = 1;
               fs.parentNode.insertBefore(cs, fs);
             }
-            ce("https://sc.lfeeder.com/lftracker_v1_" + ss + (ex ? "_" + ex : "") + ".js");
+            ce(
+              "https://sc.lfeeder.com/lftracker_v1_" +
+                ss +
+                (ex ? "_" + ex : "") +
+                ".js",
+            );
           })(document, "script");
         })("ywVkO4XmYXdaZ6Bj");
       });
     </script>
-    <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-D5Y7ZFCM96"></script>
+    <script
+      is:inline
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-D5Y7ZFCM96"></script>
     <script is:inline>
       window.dataLayer = window.dataLayer || [];
       function gtag() {
@@ -267,7 +299,10 @@ const structuredDataJson = JSON.stringify(structuredData);
       gtag("js", new Date());
       gtag("config", "G-D5Y7ZFCM96");
     </script>
-    <script is:inline async src="https://t.contentsquare.net/uxa/96d450d7e9094.js"></script>
+    <script
+      is:inline
+      async
+      src="https://t.contentsquare.net/uxa/96d450d7e9094.js"></script>
     <!-- Google Tag Manager -->
     <script is:inline>
       (function (w, d, s, l, i) {
@@ -282,14 +317,28 @@ const structuredDataJson = JSON.stringify(structuredData);
       })(window, document, "script", "dataLayer", "GTM-5BH2ZJRZ");
     </script>
     <!-- End Google Tag Manager -->
-    <script is:inline>function initApollo(){var n=Math.random().toString(36).substring(7),o=document.createElement("script");
-    o.src="https://assets.apollo.io/micro/website-tracker/tracker.iife.js?nocache="+n,o.async=!0,o.defer=!0,
-    o.onload=function(){window.trackingFunctions.onLoad({appId:"68f4816761812300150a5eff"})},
-    document.head.appendChild(o)}initApollo();</script>
+    <script is:inline>
+      function initApollo() {
+        var n = Math.random().toString(36).substring(7),
+          o = document.createElement("script");
+        ((o.src =
+          "https://assets.apollo.io/micro/website-tracker/tracker.iife.js?nocache=" +
+          n),
+          (o.async = !0),
+          (o.defer = !0),
+          (o.onload = function () {
+            window.trackingFunctions.onLoad({
+              appId: "68f4816761812300150a5eff",
+            });
+          }),
+          document.head.appendChild(o));
+      }
+      initApollo();
+    </script>
     <meta charset="UTF-8" />
     <meta name="description" content={metaDescription} />
     {noindex && <meta name="robots" content="noindex, nofollow" />}
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" type="image/svg+xml" href="/favicon.png" />
     <link rel="canonical" href={canonicalUrl} />
     <link rel="alternate" href={canonicalUrl} hreflang="en" />
@@ -307,17 +356,16 @@ const structuredDataJson = JSON.stringify(structuredData);
       as="style"
       onload="this.onload=null;this.rel='stylesheet'"
     />
-    <noscript><link rel="stylesheet" href="/assets/css/cookieconsent.css" /></noscript>
+    <noscript
+      ><link rel="stylesheet" href="/assets/css/cookieconsent.css" /></noscript
+    >
     <script src="/assets/js/cookie-consent.js" defer></script>
     <title>{pageTitle}</title>
 
     <!-- Open Graph Meta Tags -->
     <meta property="og:title" content={pageTitle} />
-    <meta
-      property="og:description"
-      content={metaDescription}
-    />
-    <meta property="og:image" content={ogImage ?? assetUrl('/og-image.png')} />
+    <meta property="og:description" content={metaDescription} />
+    <meta property="og:image" content={ogImage ?? assetUrl("/og-image.png")} />
     <meta property="og:url" content={canonicalUrl} />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Dataflow" />
@@ -326,23 +374,32 @@ const structuredDataJson = JSON.stringify(structuredData);
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={pageTitle} />
     <meta name="twitter:description" content={metaDescription} />
-    <meta name="twitter:image" content={ogImage ?? assetUrl('/og-image.png')} />
+    <meta name="twitter:image" content={ogImage ?? assetUrl("/og-image.png")} />
     <meta name="twitter:site" content={twitterHandle} />
     <meta name="twitter:creator" content={twitterHandle} />
 
-    <script is:inline type="application/ld+json" set:html={structuredDataJson}></script>
+    <script
+      is:inline
+      type="application/ld+json"
+      set:html={structuredDataJson}
+    />
     <slot name="head" />
-  </head>
-  <body
-    class="font-jakarta overflow-x-hidden"
+    <script src="../scripts/chat-bot.js"></script></head
   >
+
+  <body class="font-jakarta overflow-x-hidden">
     <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5BH2ZJRZ"
-    height="0" width="0" class="gtm-noscript-iframe"></iframe></noscript>
+    <noscript
+      ><iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-5BH2ZJRZ"
+        height="0"
+        width="0"
+        class="gtm-noscript-iframe"></iframe></noscript
+    >
     <!-- End Google Tag Manager (noscript) -->
-    
+
     <CreditsNotificationBanner />
-    
+
     {header && <Header pagename={title} />}
     <main id="main-content">
       <slot />
@@ -385,31 +442,33 @@ const structuredDataJson = JSON.stringify(structuredData);
               loading="lazy"
               allowfullscreen
               allow="clipboard-write"
-              class="arcade-embed-iframe"
-            ></iframe>
+              class="arcade-embed-iframe"></iframe>
           </div>
         </div>
       </div>
     </div>
 
     <script is:inline>
-      window.addEventListener('load', () => {
-          requestIdleCallback(() => {
-            if (window.AOS) {
-              AOS.init({
-                once: true,
-                disableMutationObserver: true,
-              });
-            }
-          });
+      window.addEventListener("load", () => {
+        requestIdleCallback(() => {
+          if (window.AOS) {
+            AOS.init({
+              once: true,
+              disableMutationObserver: true,
+            });
+          }
         });
+      });
     </script>
     <script is:inline>
-      document.addEventListener('DOMContentLoaded', () => {
-        document.querySelectorAll('a:not([title])').forEach((anchor) => {
-          const label = anchor.getAttribute('aria-label') || anchor.textContent?.trim() || anchor.getAttribute('href');
+      document.addEventListener("DOMContentLoaded", () => {
+        document.querySelectorAll("a:not([title])").forEach((anchor) => {
+          const label =
+            anchor.getAttribute("aria-label") ||
+            anchor.textContent?.trim() ||
+            anchor.getAttribute("href");
           if (label) {
-            anchor.setAttribute('title', label);
+            anchor.setAttribute("title", label);
           }
         });
       });
@@ -423,25 +482,42 @@ const structuredDataJson = JSON.stringify(structuredData);
 
     <!-- UTM Forwarding  -->
     <script is:inline>
-      (function() {
-        var appUrl = (document.querySelector('meta[name="df:app-url"]') || {}).content || 'https://app.dataflow.zone';
-        var registeredUrl = appUrl.replace(/\/$/, '');
+      (function () {
+        var appUrl =
+          (document.querySelector('meta[name="df:app-url"]') || {}).content ||
+          "https://app.dataflow.zone";
+        var registeredUrl = appUrl.replace(/\/$/, "");
         var registeredHost;
-        try { registeredHost = new URL(registeredUrl).hostname; } catch(e) { registeredHost = 'app.dataflow.zone'; }
-
-        if (registeredHost !== 'app.dataflow.zone') {
-          document.querySelectorAll('a[href*="app.dataflow.zone"]').forEach(function(link) {
-            link.href = link.href.replace('https://app.dataflow.zone', registeredUrl);
-          });
+        try {
+          registeredHost = new URL(registeredUrl).hostname;
+        } catch (e) {
+          registeredHost = "app.dataflow.zone";
         }
 
-        var utmKeys = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content'];
+        if (registeredHost !== "app.dataflow.zone") {
+          document
+            .querySelectorAll('a[href*="app.dataflow.zone"]')
+            .forEach(function (link) {
+              link.href = link.href.replace(
+                "https://app.dataflow.zone",
+                registeredUrl,
+              );
+            });
+        }
+
+        var utmKeys = [
+          "utm_source",
+          "utm_medium",
+          "utm_campaign",
+          "utm_term",
+          "utm_content",
+        ];
         var params = new URLSearchParams(window.location.search);
         var sessionParams = new URLSearchParams();
 
         // Store UTM params from URL in session storage
         var hasNewUtms = false;
-        utmKeys.forEach(function(key) {
+        utmKeys.forEach(function (key) {
           var val = params.get(key);
           if (val) {
             sessionStorage.setItem(key, val);
@@ -450,7 +526,7 @@ const structuredDataJson = JSON.stringify(structuredData);
         });
 
         // Load UTMs from session storage
-        utmKeys.forEach(function(key) {
+        utmKeys.forEach(function (key) {
           var val = sessionStorage.getItem(key);
           if (val) {
             sessionParams.set(key, val);
@@ -464,13 +540,16 @@ const structuredDataJson = JSON.stringify(structuredData);
             var paramsToSet = new URLSearchParams(sessionParams);
 
             // Add utm_content from button text if not present
-            if (!paramsToSet.has('utm_content')) {
-              var buttonText = (link.textContent || '').trim().toLowerCase().replace(/\s+/g, '_');
+            if (!paramsToSet.has("utm_content")) {
+              var buttonText = (link.textContent || "")
+                .trim()
+                .toLowerCase()
+                .replace(/\s+/g, "_");
               if (buttonText) {
-                paramsToSet.set('utm_content', buttonText);
+                paramsToSet.set("utm_content", buttonText);
               }
             }
-            
+
             paramsToSet.forEach((value, key) => {
               if (!existingParams.has(key)) {
                 url.searchParams.set(key, value);
@@ -479,40 +558,52 @@ const structuredDataJson = JSON.stringify(structuredData);
 
             link.href = url.toString();
           } catch (e) {
-            console.error('Failed to process link:', link.href, e);
+            console.error("Failed to process link:", link.href, e);
           }
         }
 
-        if (sessionParams.toString() !== '') {
-          document.querySelectorAll('a[href*="' + registeredHost + '"]').forEach(addUtmToLink);
+        if (sessionParams.toString() !== "") {
+          document
+            .querySelectorAll('a[href*="' + registeredHost + '"]')
+            .forEach(addUtmToLink);
         }
 
         // Also handle clicks, for buttons that might not be app links initially
-        document.body.addEventListener('click', function(e) {
-          var link = e.target.closest('a[href*="' + registeredHost + '"]');
-          if (link) {
-            addUtmToLink(link);
-          }
-        }, true);
-
+        document.body.addEventListener(
+          "click",
+          function (e) {
+            var link = e.target.closest('a[href*="' + registeredHost + '"]');
+            if (link) {
+              addUtmToLink(link);
+            }
+          },
+          true,
+        );
       })();
     </script>
 
     <!-- CTA Click Tracking -->
     <script is:inline>
-      (function() {
-        var appUrl = (document.querySelector('meta[name="df:app-url"]') || {}).content || 'https://app.dataflow.zone';
+      (function () {
+        var appUrl =
+          (document.querySelector('meta[name="df:app-url"]') || {}).content ||
+          "https://app.dataflow.zone";
         var registeredHost;
-        try { registeredHost = new URL(appUrl).hostname; } catch(e) { registeredHost = 'app.dataflow.zone'; }
-        document.addEventListener('click', function(e) {
-          var link = e.target.closest('a[href*="' + registeredHost + '"]') ||
-                     e.target.closest('a[href*="app.dataflow.zone"]');
+        try {
+          registeredHost = new URL(appUrl).hostname;
+        } catch (e) {
+          registeredHost = "app.dataflow.zone";
+        }
+        document.addEventListener("click", function (e) {
+          var link =
+            e.target.closest('a[href*="' + registeredHost + '"]') ||
+            e.target.closest('a[href*="app.dataflow.zone"]');
           if (!link) return;
-          if (typeof gtag === 'function') {
-            gtag('event', 'cta_click', {
+          if (typeof gtag === "function") {
+            gtag("event", "cta_click", {
               cta_text: link.textContent.trim(),
               cta_url: link.href,
-              page_location: window.location.href
+              page_location: window.location.href,
             });
           }
         });

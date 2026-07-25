@@ -1,0 +1,200 @@
+{
+    "currency": "USD",
+    "unit": "per_hour",
+    "last_updated": "2026-07-21",
+    "clouds": [
+        {
+            "id": "gcp",
+            "name": "GCP"
+        },
+        {
+            "id": "ionos",
+            "name": "IONOS"
+        }
+    ],
+    "saas_instances": [
+        {
+            "name": "Small Server",
+            "vcpu": 2,
+            "memory_gb": 4,
+            "gpu": 0,
+            "prices": {
+                "gcp": 0.083,
+                "ionos": 0.049
+            }
+        },
+        {
+            "name": "Medium Server",
+            "vcpu": 2,
+            "memory_gb": 8,
+            "gpu": 0,
+            "prices": {
+                "gcp": 0.095,
+                "ionos": 0.058
+            }
+        },
+        {
+            "name": "Large Server",
+            "vcpu": 4,
+            "memory_gb": 16,
+            "gpu": 0,
+            "prices": {
+                "gcp": 0.162,
+                "ionos": 0.101
+            }
+        },
+        {
+            "name": "GPU T4 1x",
+            "vcpu": 2,
+            "memory_gb": 7.5,
+            "gpu": 1,
+            "prices": {
+                "gcp": 0.473,
+                "ionos": 0.357
+            }
+        },
+        {
+            "name": "GPU T4 Plus 1x",
+            "vcpu": 4,
+            "memory_gb": 15,
+            "gpu": 1,
+            "prices": {
+                "gcp": 0.568,
+                "ionos": 0.399
+            }
+        },
+        {
+            "name": "GPU L4 1x",
+            "vcpu": 4,
+            "memory_gb": 16,
+            "gpu": 1,
+            "prices": {
+                "gcp": 0.735,
+                "ionos": 0.751
+            }
+        },
+        {
+            "name": "GPU A100 1x",
+            "vcpu": 12,
+            "memory_gb": 85,
+            "gpu": 1,
+            "prices": {
+                "gcp": 3.701,
+                "ionos": 2.557
+            }
+        }
+    ],
+    "providers": [
+        {
+            "id": "gcp",
+            "name": "Google Cloud Platform",
+            "instances": [
+                {
+                    "instance_type": "e2-medium",
+                    "display_name": "General Purpose - Small",
+                    "category": "general",
+                    "vcpu": 2,
+                    "memory_gb": 4,
+                    "gpu": 0,
+                    "price_per_hour": 0.083
+                },
+                {
+                    "instance_type": "e2-standard-4",
+                    "display_name": "General Purpose - Medium",
+                    "category": "general",
+                    "vcpu": 4,
+                    "memory_gb": 16,
+                    "gpu": 0,
+                    "price_per_hour": 0.162
+                },
+                {
+                    "instance_type": "n2-standard-8",
+                    "display_name": "General Purpose - Large",
+                    "category": "general",
+                    "vcpu": 8,
+                    "memory_gb": 32,
+                    "gpu": 0,
+                    "price_per_hour": 0.416
+                },
+                {
+                    "instance_type": "c2-standard-16",
+                    "display_name": "Compute Optimized",
+                    "category": "compute",
+                    "vcpu": 16,
+                    "memory_gb": 64,
+                    "gpu": 0,
+                    "price_per_hour": 0.863
+                },
+                {
+                    "instance_type": "n2-highmem-16",
+                    "display_name": "Memory Optimized",
+                    "category": "memory",
+                    "vcpu": 16,
+                    "memory_gb": 128,
+                    "gpu": 0,
+                    "price_per_hour": 1.076
+                },
+                {
+                    "instance_type": "g2-standard-4",
+                    "display_name": "GPU - NVIDIA L4",
+                    "category": "gpu",
+                    "vcpu": 4,
+                    "memory_gb": 16,
+                    "gpu": 1,
+                    "price_per_hour": 0.735
+                }
+            ]
+        },
+        {
+            "id": "ionos",
+            "name": "IONOS Cloud",
+            "instances": [
+                {
+                    "instance_type": "S-2-4",
+                    "display_name": "General Purpose - Small",
+                    "category": "general",
+                    "vcpu": 2,
+                    "memory_gb": 4,
+                    "gpu": 0,
+                    "price_per_hour": 0.049
+                },
+                {
+                    "instance_type": "M-4-16",
+                    "display_name": "General Purpose - Medium",
+                    "category": "general",
+                    "vcpu": 4,
+                    "memory_gb": 16,
+                    "gpu": 0,
+                    "price_per_hour": 0.101
+                },
+                {
+                    "instance_type": "L-8-32",
+                    "display_name": "General Purpose - Large",
+                    "category": "general",
+                    "vcpu": 8,
+                    "memory_gb": 32,
+                    "gpu": 0,
+                    "price_per_hour": 0.189
+                },
+                {
+                    "instance_type": "XL-16-64",
+                    "display_name": "Compute Optimized",
+                    "category": "compute",
+                    "vcpu": 16,
+                    "memory_gb": 64,
+                    "gpu": 0,
+                    "price_per_hour": 0.363
+                },
+                {
+                    "instance_type": "XL-MEM-16-128",
+                    "display_name": "Memory Optimized",
+                    "category": "memory",
+                    "vcpu": 16,
+                    "memory_gb": 128,
+                    "gpu": 0,
+                    "price_per_hour": 0.504
+                }
+            ]
+        }
+    ]
+}

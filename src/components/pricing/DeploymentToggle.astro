@@ -1,0 +1,1310 @@
+---
+// Temporary source: the pricing JSON is served straight from the repo instead of
+// the app API. Fetched at runtime — prices are never inlined into the build.
+const saasPricingUrl =
+  import.meta.env.PUBLIC_PRICING_DATA_URL ??
+  'https://raw.githubusercontent.com/Digital-Back-Office/dataflow-website/pricing_branch/src/data/pricing2.json'
+
+// Kept in the component rather than the feed so remote data can never set an <img src>.
+const cloudLogos: Record<string, string> = {
+  gcp: '/assets/images/pricing/GCP.png',
+  aws: '/assets/images/pricing/AWS.png',
+  azure: '/assets/images/pricing/Azure.png',
+  ionos: '/assets/images/pricing/IONOS.png',
+}
+---
+
+<section
+  class="deployment-toggle-section px-4 sm:px-6 py-24 mt-20 max-sm:py-12 max-sm:mt-10 w-full flex flex-col items-center"
+>
+  <span
+    class="inline-block px-5 py-1.5 rounded-full border border-primary text-primary text-sm font-semibold tracking-widest uppercase mb-6"
+    >Pricing</span
+  >
+  <h1
+    id="deployment-heading"
+    class="text-9calc font-bold text-textblack text-center px-3 leading-tight mb-4"
+  >
+    Simple, transparent pricing
+  </h1>
+  <p
+    id="deployment-subheading"
+    class="text-xl max-sm:text-sm text-gray-500 text-center max-w-2xl mb-12"
+  >
+    One flat studio license. Pay only for the compute you use — per hour, per
+    cloud.
+  </p>
+
+  <!-- Folder-style tabs -->
+  <div class="folder-tabs" role="tablist">
+    <button
+      class="folder-tab"
+      role="tab"
+      data-tab="licensed"
+      aria-selected="false"
+      id="tab-licensed">Licensed Deployment</button
+    >
+    <button
+      class="folder-tab active"
+      role="tab"
+      data-tab="saas"
+      aria-selected="true"
+      id="tab-saas">Dataflow Zone Deployment</button
+    >
+    <button
+      class="folder-tab"
+      role="tab"
+      data-tab="dedicated"
+      aria-selected="false"
+      id="tab-dedicated">Dedicated Deployment</button
+    >
+  </div>
+
+  <!-- Licensed Panel -->
+  <div class="tab-panel" id="panel-licensed" role="tabpanel">
+    <div class="pricing-card licensed-card">
+      <div class="card-col card-col-price">
+        <p class="label-tag">STUDIO LICENSE</p>
+        <p class="price-big">$99<span class="price-unit">/user/mo</span></p>
+        <div class="addon-badge">+ $9 per data app/mo</div>
+        <a
+          href="/contact-us"
+          class="btn-primary mt-auto whitespace-nowrap text-center text-[15px] px-6"
+          >Deploy on Your Cloud</a
+        >
+      </div>
+      <div class="card-col card-col-providers">
+        <p class="label-tag">SUPPORTED PROVIDERS</p>
+        <div class="provider-grid">
+          <div class="provider-item">
+            <img
+              src="/assets/images/pricing/GCP.png"
+              alt="GCP"
+              class="h-8 object-contain mb-1"
+            /><span>GCP</span>
+          </div>
+          <div class="provider-item">
+            <img
+              src="/assets/images/pricing/AWS.png"
+              alt="AWS"
+              class="h-8 object-contain mb-1"
+            /><span>AWS</span>
+          </div>
+          <div class="provider-item">
+            <img
+              src="/assets/images/pricing/Azure.png"
+              alt="Azure"
+              class="h-8 object-contain mb-1"
+            /><span>Azure</span>
+          </div>
+          <div class="provider-item">
+            <img
+              src="/assets/images/pricing/IONOS.png"
+              alt="IONOS"
+              class="h-8 object-contain mb-1"
+            /><span>IONOS</span>
+          </div>
+        </div>
+        <p class="text-gray-500 text-sm mt-4 leading-relaxed">
+          Deploy the platform directly into your own cloud account. Maintain
+          complete ownership and control over your infrastructure.
+        </p>
+      </div>
+      <div class="card-col card-col-features">
+        <p class="label-tag">INCLUDES</p>
+        <ul class="feature-list">
+          <li>
+            <svg class="check-icon" viewBox="0 0 20 20" fill="currentColor"
+              ><circle cx="10" cy="10" r="10" fill="#30BABA" opacity="0.15"
+              ></circle><path
+                d="M8.5 13.5l-3-3 1-1 2 2 5-5 1 1-6 6z"
+                fill="#30BABA"></path></svg
+            >AI ready python environment
+          </li>
+          <li>
+            <svg class="check-icon" viewBox="0 0 20 20" fill="currentColor"
+              ><circle cx="10" cy="10" r="10" fill="#30BABA" opacity="0.15"
+              ></circle><path
+                d="M8.5 13.5l-3-3 1-1 2 2 5-5 1 1-6 6z"
+                fill="#30BABA"></path></svg
+            >Unlimited shared data connections
+          </li>
+          <li>
+            <svg class="check-icon" viewBox="0 0 20 20" fill="currentColor"
+              ><circle cx="10" cy="10" r="10" fill="#30BABA" opacity="0.15"
+              ></circle><path
+                d="M8.5 13.5l-3-3 1-1 2 2 5-5 1 1-6 6z"
+                fill="#30BABA"></path></svg
+            >Git integration
+          </li>
+          <li>
+            <svg class="check-icon" viewBox="0 0 20 20" fill="currentColor"
+              ><circle cx="10" cy="10" r="10" fill="#30BABA" opacity="0.15"
+              ></circle><path
+                d="M8.5 13.5l-3-3 1-1 2 2 5-5 1 1-6 6z"
+                fill="#30BABA"></path></svg
+            >Jupyterhub, Airflow, Superset
+          </li>
+          <li>
+            <svg class="check-icon" viewBox="0 0 20 20" fill="currentColor"
+              ><circle cx="10" cy="10" r="10" fill="#30BABA" opacity="0.15"
+              ></circle><path
+                d="M8.5 13.5l-3-3 1-1 2 2 5-5 1 1-6 6z"
+                fill="#30BABA"></path></svg
+            >Dash Apps & VS Code
+          </li>
+          <li>
+            <svg class="check-icon" viewBox="0 0 20 20" fill="currentColor"
+              ><circle cx="10" cy="10" r="10" fill="#30BABA" opacity="0.15"
+              ></circle><path
+                d="M8.5 13.5l-3-3 1-1 2 2 5-5 1 1-6 6z"
+                fill="#30BABA"></path></svg
+            >Premium Support
+          </li>
+          <li>
+            <svg class="check-icon" viewBox="0 0 20 20" fill="currentColor"
+              ><circle cx="10" cy="10" r="10" fill="#30BABA" opacity="0.15"
+              ></circle><path
+                d="M8.5 13.5l-3-3 1-1 2 2 5-5 1 1-6 6z"
+                fill="#30BABA"></path></svg
+            >Self Install
+          </li>
+          <li>
+            <svg class="check-icon" viewBox="0 0 20 20" fill="currentColor"
+              ><circle cx="10" cy="10" r="10" fill="#30BABA" opacity="0.15"
+              ></circle><path
+                d="M8.5 13.5l-3-3 1-1 2 2 5-5 1 1-6 6z"
+                fill="#30BABA"></path></svg
+            >Automatic security and version updates
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- SaaS Panel -->
+  <div class="tab-panel active" id="panel-saas" role="tabpanel">
+    <div class="pricing-card saas-card">
+      <div class="saas-top-row">
+        <div class="card-col card-col-saas-left">
+          <p class="label-tag">PAY AS YOU GO</p>
+          <p class="price-big">$0<span class="price-unit"> upfront</span></p>
+          <p class="text-gray-500 text-sm mt-2 leading-relaxed">
+            Start free. Pay only for the compute resources you use, per hour,
+            per cloud.
+          </p>
+          <div class="saas-divider"></div>
+          <p class="label-tag mt-2">ALL APPS INCLUDED</p>
+          <ul class="saas-apps-list">
+            <li>✓ Jupyterhub</li>
+            <li>✓ Airflow</li>
+            <li>✓ Superset</li>
+            <li>✓ Dash Apps</li>
+            <li>✓ VS Code</li>
+          </ul>
+        </div>
+        <div class="card-col card-col-saas-table">
+          <!-- Filters -->
+          <div class="flex items-center justify-end gap-4 filter-bar pr-4 mb-4">
+            <div
+              class="custom-filter flex flex-col flex-1 max-w-[140px] relative"
+            >
+              <label
+                class="text-xs font-semibold text-gray-500 mb-1.5 tracking-wider uppercase"
+                >CPU</label
+              >
+              <div
+                class="filter-trigger flex items-center justify-between bg-white border border-[#e5e7eb] hover:border-[#30BABA] transition-colors rounded-xl px-3 py-2.5 cursor-pointer shadow-sm text-sm font-medium text-gray-700"
+              >
+                <span class="filter-label">Any CPU</span>
+                <svg
+                  class="w-4 h-4 text-gray-400 transition-transform duration-200 filter-arrow"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  ><path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M19 9l-7 7-7-7"></path></svg
+                >
+              </div>
+              <ul
+                class="filter-options absolute top-full left-0 mt-1.5 w-full bg-white border border-[#e5e7eb] rounded-xl shadow-[0_10px_25px_-5px_rgba(0,0,0,0.1)] opacity-0 pointer-events-none transform -translate-y-2 transition-all duration-200 z-50 py-1.5 overflow-hidden"
+                data-facet="cpu"
+              >
+              </ul>
+              <input type="hidden" id="filter-cpu" value="any" />
+            </div>
+
+            <div
+              class="custom-filter flex flex-col flex-1 max-w-[140px] relative"
+            >
+              <label
+                class="text-xs font-semibold text-gray-500 mb-1.5 tracking-wider uppercase"
+                >RAM</label
+              >
+              <div
+                class="filter-trigger flex items-center justify-between bg-white border border-[#e5e7eb] hover:border-[#30BABA] transition-colors rounded-xl px-3 py-2.5 cursor-pointer shadow-sm text-sm font-medium text-gray-700"
+              >
+                <span class="filter-label">Any RAM</span>
+                <svg
+                  class="w-4 h-4 text-gray-400 transition-transform duration-200 filter-arrow"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  ><path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M19 9l-7 7-7-7"></path></svg
+                >
+              </div>
+              <ul
+                class="filter-options absolute top-full left-0 mt-1.5 w-full bg-white border border-[#e5e7eb] rounded-xl shadow-[0_10px_25px_-5px_rgba(0,0,0,0.1)] opacity-0 pointer-events-none transform -translate-y-2 transition-all duration-200 z-50 py-1.5 overflow-hidden"
+                data-facet="ram"
+              >
+              </ul>
+              <input type="hidden" id="filter-ram" value="any" />
+            </div>
+
+            <div
+              class="custom-filter flex flex-col flex-1 max-w-[140px] relative"
+            >
+              <label
+                class="text-xs font-semibold text-gray-500 mb-1.5 tracking-wider uppercase"
+                >GPU</label
+              >
+              <div
+                class="filter-trigger flex items-center justify-between bg-white border border-[#e5e7eb] hover:border-[#30BABA] transition-colors rounded-xl px-3 py-2.5 cursor-pointer shadow-sm text-sm font-medium text-gray-700"
+              >
+                <span class="filter-label">Any GPU</span>
+                <svg
+                  class="w-4 h-4 text-gray-400 transition-transform duration-200 filter-arrow"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  ><path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M19 9l-7 7-7-7"></path></svg
+                >
+              </div>
+              <ul
+                class="filter-options absolute top-full left-0 mt-1.5 w-full bg-white border border-[#e5e7eb] rounded-xl shadow-[0_10px_25px_-5px_rgba(0,0,0,0.1)] opacity-0 pointer-events-none transform -translate-y-2 transition-all duration-200 z-50 py-1.5 overflow-hidden"
+                data-facet="gpu"
+              >
+              </ul>
+              <input type="hidden" id="filter-gpu" value="any" />
+            </div>
+
+            <button
+              id="reset-filters"
+              class="mt-[26px] px-4 py-2.5 rounded-xl text-sm text-[#30BABA] font-medium bg-[#f0fbfb] hover:bg-[#e2f5f5] transition-colors cursor-pointer border border-[#d4f7f7]"
+              >Reset</button
+            >
+          </div>
+          <div id="saas-pricing-loading" class="text-center text-gray-500 py-12">
+            Loading pricing…
+          </div>
+          <div
+            id="saas-pricing-error"
+            class="hidden text-center text-gray-500 py-12"
+          >
+            Pricing is temporarily unavailable. Please <a
+              href="/contact-us"
+              class="text-primary underline">contact us</a
+            > for current rates.
+          </div>
+          <div id="saas-table-wrap" class="hidden">
+            <table class="instance-table" id="instance-table">
+              <thead>
+                <tr id="saas-table-head-row">
+                  <th class="text-left instance-col">INSTANCE</th>
+                </tr>
+              </thead>
+              <tbody id="saas-instance-rows"></tbody>
+            </table>
+            <p
+              id="saas-no-match"
+              class="hidden text-center text-gray-400 text-sm py-8"
+            >
+              No instances match those filters.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom bar -->
+      <div class="saas-cta-row">
+        <div class="saas-cta-copy">
+          <p class="font-semibold text-textblack">No setup fees</p>
+          <p class="text-gray-500 text-sm">
+            Start now, no credit card required
+          </p>
+        </div>
+        <a href="https://app.dataflow.zone/" class="btn-primary saas-cta-btn"
+          >Get Started</a
+        >
+      </div>
+    </div>
+  </div>
+
+  <!-- Dedicated Panel -->
+  <div class="tab-panel" id="panel-dedicated" role="tabpanel">
+    <div class="pricing-card dedicated-card">
+      <div class="card-col card-col-dedicated-left">
+        <div
+          class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#f0fbfb] border border-[#d4f7f7] mb-6"
+        >
+          <span
+            class="w-2 h-2 rounded-full bg-[#30BABA] shadow-[0_0_6px_#30BABA]"
+          ></span>
+          <span
+            class="text-xs font-bold tracking-widest text-[#0e7474] uppercase"
+            >Enterprise Grade</span
+          >
+        </div>
+        <h2 class="text-4xl md:text-5xl font-bold text-textblack mb-4">
+          Dedicated Setup
+        </h2>
+        <p class="text-sm text-gray-500 mb-8 max-w-xl leading-relaxed">
+          For organizations with strict security, compliance, or extreme scale
+          requirements. Get a fully managed, single-tenant environment tailored
+          to your exact needs.
+        </p>
+
+        <ul
+          class="feature-list-modern grid grid-cols-1 md:grid-cols-2 gap-y-5 gap-x-8"
+        >
+          <li>
+            <div class="icon-wrap">
+              <svg
+                class="w-5 h-5 text-[#30BABA]"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                ><path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M5 13l4 4L19 7"></path></svg
+              >
+            </div>
+            <span>Dedicated Infrastructure</span>
+          </li>
+          <li>
+            <div class="icon-wrap">
+              <svg
+                class="w-5 h-5 text-[#30BABA]"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                ><path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M5 13l4 4L19 7"></path></svg
+              >
+            </div>
+            <span>Managed by Dataflow</span>
+          </li>
+          <li>
+            <div class="icon-wrap">
+              <svg
+                class="w-5 h-5 text-[#30BABA]"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                ><path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M5 13l4 4L19 7"></path></svg
+              >
+            </div>
+            <span>Additional Cloud Services</span>
+          </li>
+          <li>
+            <div class="icon-wrap">
+              <svg
+                class="w-5 h-5 text-[#30BABA]"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                ><path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M5 13l4 4L19 7"></path></svg
+              >
+            </div>
+            <span>Transparent pricing</span>
+          </li>
+        </ul>
+      </div>
+      <div class="card-col card-col-dedicated-right">
+        <!-- <div class="w-16 h-16 rounded-2xl bg-white shadow-sm border border-[#d4f7f7] flex items-center justify-center mx-auto mb-6">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-[#30BABA]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+          </svg> 
+        </div> -->
+        <p
+          class="text-sm font-semibold tracking-widest text-[#0e7474] uppercase mb-2"
+        >
+          Custom Plan
+        </p>
+        <h3 class="text-3xl font-extrabold text-textblack mb-4">
+          Talk to Sales
+        </h3>
+        <p class="text-gray-600 mb-8 text-sm leading-relaxed max-w-[280px]">
+          Let's design a bespoke solution that fits your specific enterprise
+          scale and requirements.
+        </p>
+        <a
+          href="/contact-us"
+          class="btn-primary w-full shadow-[0_4px_14px_0_rgba(48,186,186,0.2)] hover:shadow-[0_6px_20px_rgba(48,186,186,0.3)] block"
+          >Contact Our Team</a
+        >
+      </div>
+    </div>
+  </div>
+
+  <p class="text-sm text-gray-400 mt-8 text-center max-w-xl">
+    All prices are per hour of active compute. Instances are billed only when
+    running.
+  </p>
+</section>
+
+<style>
+  .deployment-toggle-section {
+    background: #fff;
+  }
+
+  .folder-tabs {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 8px; /* Added a small gap instead of negative margins */
+    margin-bottom: -1px; /* Overlap the bottom border */
+    position: relative;
+    z-index: 2;
+  }
+  .folder-tab {
+    padding: 14px 32px;
+    font-size: 15px;
+    font-weight: 500;
+    color: #6b7280;
+    background: #f3f4f6;
+    border: 1px solid #e5e7eb;
+    border-bottom: none;
+    border-radius: 12px 12px 0 0;
+    cursor: pointer;
+    transition: all 0.2s;
+    position: relative;
+    z-index: 1;
+    font-family: inherit;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 52px; /* Fixed height to ensure they are all horizontally aligned */
+  }
+  .folder-tab:hover {
+    background: #e8fafa;
+    color: #30baba;
+  }
+  .folder-tab.active {
+    background: #30baba;
+    color: #fff;
+    border-color: #30baba;
+    z-index: 3;
+    font-weight: 600;
+    height: 54px; /* Make active tab slightly taller so it pops up */
+  }
+
+  /* Tab Panels */
+  .tab-panel {
+    display: none;
+    width: 100%;
+    max-width: 1300px;
+    animation: fadeInPanel 0.4s ease;
+  }
+  .tab-panel.active {
+    display: block;
+  }
+  @keyframes fadeInPanel {
+    from {
+      opacity: 0;
+      transform: translateY(12px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Pricing Card */
+  .pricing-card {
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 0 0 24px 24px;
+    display: flex;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
+    overflow: hidden;
+  }
+  .card-col {
+    flex: 1;
+  }
+
+  /* Labels */
+  .label-tag {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    color: #30baba;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .price-big {
+    font-size: clamp(2.5rem, 4vw, 3.5rem);
+    font-weight: 800;
+    color: #1a1f26;
+    line-height: 1.1;
+  }
+  .price-unit {
+    font-size: 16px;
+    font-weight: 400;
+    color: #6b7280;
+  }
+
+  /* Addon badge */
+  .addon-badge {
+    display: inline-block;
+    padding: 8px 20px;
+    background: rgba(48, 186, 186, 0.08);
+    border: 1px solid rgba(48, 186, 186, 0.2);
+    border-radius: 8px;
+    color: #30baba;
+    font-weight: 600;
+    font-size: 14px;
+    margin: 16px 0;
+  }
+
+  /* Buttons */
+  .btn-primary {
+    display: inline-block;
+    padding: 14px 32px;
+    background: #30baba;
+    color: #fff;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 15px;
+    text-decoration: none;
+    text-align: center;
+    transition: background 0.2s;
+    border: none;
+    cursor: pointer;
+  }
+  .btn-primary:hover {
+    background: #0aa3a3;
+  }
+  .btn-outline {
+    display: inline-block;
+    padding: 14px 32px;
+    background: #fff;
+    color: #1a1f26;
+    border: 2px solid #1a1f26;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 15px;
+    text-decoration: none;
+    text-align: center;
+    transition: all 0.2s;
+    cursor: pointer;
+  }
+  .btn-outline:hover {
+    background: #1a1f26;
+    color: #fff;
+  }
+
+  /* Provider grid */
+  .provider-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-top: 8px;
+  }
+  .provider-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    padding: 16px 8px;
+    background: #f9fafb;
+    /* border: 1px solid #e5e7eb; */
+    border-radius: 12px;
+    font-size: 13px;
+    font-weight: 500;
+    color: #374151;
+  }
+  .provider-icon {
+    font-size: 24px;
+  }
+
+  /* Feature list */
+  .feature-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .feature-list li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 0;
+    font-size: 15px;
+    color: #374151;
+  }
+  .check-icon {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+  }
+
+  /* SaaS specific */
+  .saas-card {
+    flex-direction: column;
+  }
+  .saas-top-row {
+    display: flex;
+    width: 100%;
+    align-items: stretch;
+  }
+  .card-col-saas-left {
+    flex: 0 0 280px;
+    border-right: 1px solid #e5e7eb;
+    padding: 48px 40px;
+    background: #ecf9f9;
+  }
+  .card-col-saas-table {
+    flex: 1;
+    /* min-width:0 lets this flex child shrink so the table scrolls inside it
+       instead of stretching the card. Scrolling lives on #saas-table-wrap —
+       an overflow context here would clip the filter dropdowns. */
+    min-width: 0;
+    padding: 24px 40px 48px;
+  }
+
+  .saas-divider {
+    height: 1px;
+    background: #e5e7eb;
+    margin: 16px 0;
+  }
+  .saas-apps-list {
+    list-style: none;
+    padding: 0;
+    margin: 4px 0 0;
+    font-size: 15px;
+    color: #374151;
+  }
+  .saas-apps-list li {
+    padding: 3px 0;
+  }
+  .saas-cta-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+    padding: 24px 40px;
+    border-top: 1px solid #e5e7eb;
+  }
+  .saas-cta-copy {
+    min-width: 0;
+  }
+  .saas-cta-btn {
+    padding: 12px 36px;
+    font-size: 14px;
+    flex-shrink: 0;
+  }
+
+
+  /* Dedicated */
+  .dedicated-card {
+    align-items: stretch;
+  }
+  .card-col-dedicated-left {
+    flex: 1.5;
+    padding: 48px 40px;
+  }
+  .card-col-dedicated-right {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: linear-gradient(180deg, #f0fbfb 0%, #e2f5f5 100%);
+    border-left: 1px solid #d4f7f7;
+    padding: 48px 40px;
+  }
+  .feature-list-modern li {
+    display: flex;
+    align-items: center;
+    color: #4b5563;
+    font-size: 15px;
+    font-weight: 500;
+  }
+  .feature-list-modern .icon-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    background: #e2f5f5;
+    border-radius: 50%;
+    margin-right: 12px;
+    flex-shrink: 0;
+  }
+
+  /* Licensed */
+  .licensed-card .card-col-price {
+    flex: 0 0 280px;
+    border-right: 1px solid #e5e7eb;
+    padding: 48px 40px;
+    background: #ecf9f9;
+  }
+  .licensed-card .card-col-providers {
+    flex: 1.2;
+    padding: 48px 40px;
+    border-right: 1px solid #e5e7eb;
+  }
+  .licensed-card .card-col-features {
+    flex: 1;
+    padding: 48px 40px;
+  }
+
+  /* Responsive */
+  @media (max-width: 900px) {
+    .pricing-card:not(.dedicated-card) {
+      flex-direction: column;
+    }
+    .dedicated-card {
+      flex-direction: column;
+    }
+    .card-col-dedicated-left {
+      padding: 32px 24px;
+      border-right: none;
+    }
+    .card-col-dedicated-right {
+      padding: 40px 24px;
+      border-left: none;
+      border-top: 1px solid #d4f7f7;
+    }
+    .saas-top-row {
+      flex-direction: column;
+    }
+    .card-col-saas-left,
+    .licensed-card .card-col-price {
+      flex: unset;
+      border-right: none;
+      border-bottom: 1px solid #e5e7eb;
+      padding: 32px 24px;
+    }
+    .licensed-card .card-col-providers {
+      border-right: none;
+      border-bottom: 1px solid #e5e7eb;
+      padding: 32px 24px;
+    }
+    .card-col-saas-table,
+    .licensed-card .card-col-features {
+      padding: 32px 24px;
+    }
+    .folder-tab {
+      padding: 10px 16px;
+      font-size: 13px;
+    }
+    .provider-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (max-width: 640px) {
+    /* The folder metaphor doesn't survive stacking, so the tabs become a plain
+       segmented list that spans the card width instead of notching into it. */
+    .folder-tabs {
+      flex-direction: column;
+      align-items: stretch;
+      width: 100%;
+      max-width: 1300px;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+    .folder-tab {
+      border: 1px solid #e5e7eb;
+      border-radius: 12px;
+      transform: none;
+      text-align: center;
+      height: 46px;
+      padding: 10px 14px;
+    }
+    .folder-tab.active {
+      transform: none;
+      height: 46px;
+    }
+    .pricing-card {
+      border-radius: 16px;
+    }
+
+    .card-col-saas-left,
+    .licensed-card .card-col-price,
+    .licensed-card .card-col-providers,
+    .card-col-saas-table,
+    .licensed-card .card-col-features,
+    .card-col-dedicated-left,
+    .card-col-dedicated-right {
+      padding: 28px 18px;
+    }
+
+    /* Three dropdowns plus Reset can't share one row at phone widths; a 2-up
+       grid keeps every control at a tappable size. */
+    .filter-bar {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      padding-right: 0;
+    }
+    .filter-bar .custom-filter {
+      max-width: none;
+    }
+
+    .provider-item {
+      padding: 12px 6px;
+    }
+    .feature-list li,
+    .saas-apps-list,
+    .feature-list-modern li {
+      font-size: 14px;
+    }
+    .licensed-card .card-col-price .btn-primary {
+      display: block;
+      width: 100%;
+    }
+    /* Copy and button stay side by side; the button just gives up its
+       generous horizontal padding rather than dropping to its own row. */
+    .saas-cta-row {
+      padding: 20px 18px;
+      gap: 12px;
+      flex-wrap: nowrap;
+    }
+    .saas-cta-btn {
+      padding: 12px 20px;
+    }
+  }
+</style>
+
+<style is:global>
+  /* Rendered at runtime from the pricing feed, so these cannot be scoped:
+     Astro's scoping attribute is only applied to statically rendered markup. */
+  /* Instance table */
+  .instance-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 15px;
+  }
+  .instance-table th {
+    text-align: center;
+    padding: 16px 12px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    color: #6b7280;
+    border-bottom: 1px solid #e5e7eb;
+  }
+  .instance-table th:first-child,
+  .instance-table td:first-child {
+    text-align: left;
+  }
+  #saas-table-wrap {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .instance-table th.instance-col {
+    min-width: 320px;
+  }
+  .instance-table td {
+    text-align: center;
+    border-bottom: 1px solid #f3f4f6;
+    color: #374151;
+    padding: 12px 12px;
+  }
+  .instance-table td.price-cell {
+    font-size: 13px;
+    color: #6b7280;
+    white-space: nowrap;
+  }
+  .instance-table td strong {
+    color: #1a1f26;
+    font-size: 15px;
+  }
+  /* Name and spec pills sit on one row, wrapping only when the column is tight. */
+  .instance-cell {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .instance-name {
+    font-weight: 600;
+    color: #1a1f26;
+    font-size: 14px;
+  }
+  .instance-specs {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+  .instance-specs span {
+    background: #d4f7f7;
+    color: #0e7474;
+    padding: 3px 10px;
+    border-radius: 50px;
+    font-size: 11px;
+    font-weight: 600;
+    white-space: nowrap;
+    letter-spacing: 0.02em;
+  }
+  .cloud-label {
+    font-size: 13px;
+    font-weight: 500;
+  }
+  @media (max-width: 640px) {
+    .instance-table th.instance-col {
+      min-width: 190px;
+    }
+    /* Name over pills — at 190px they'd otherwise wrap mid-row. */
+    .instance-cell {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 6px;
+    }
+    .instance-table th,
+    .instance-table td {
+      padding: 12px 8px;
+    }
+  }
+</style>
+
+<script is:inline define:vars={{ saasPricingUrl, cloudLogos }}>
+  document.addEventListener("DOMContentLoaded", function () {
+    const tabs = document.querySelectorAll(".folder-tab");
+    const panels = document.querySelectorAll(".tab-panel");
+    const heading = document.getElementById("deployment-heading");
+    const subheading = document.getElementById("deployment-subheading");
+    const headings = {
+      licensed: {
+        h: "License your deployment",
+        s: "Full control over your infrastructure. Deploy directly to AWS, Google Cloud, Azure, or IONOS.",
+      },
+      saas: {
+        h: "Simple, transparent pricing",
+        s: "One flat studio license. Pay only for the compute you use — per hour, per cloud.",
+      },
+      dedicated: {
+        h: "Simple, transparent pricing",
+        s: "One flat studio license. Pay only for the compute you use — per hour, per cloud.",
+      },
+    };
+    tabs.forEach(function (tab) {
+      tab.addEventListener("click", function () {
+        var target = tab.getAttribute("data-tab");
+        tabs.forEach(function (t) {
+          t.classList.remove("active");
+          t.setAttribute("aria-selected", "false");
+        });
+        panels.forEach(function (p) {
+          p.classList.remove("active");
+        });
+        tab.classList.add("active");
+        tab.setAttribute("aria-selected", "true");
+        document.getElementById("panel-" + target).classList.add("active");
+        if (headings[target]) {
+          heading.textContent = headings[target].h;
+          subheading.textContent = headings[target].s;
+        }
+      });
+    });
+
+    const loadingEl = document.getElementById("saas-pricing-loading");
+    const errorEl = document.getElementById("saas-pricing-error");
+    const tableWrapEl = document.getElementById("saas-table-wrap");
+    const headRowEl = document.getElementById("saas-table-head-row");
+    const rowsEl = document.getElementById("saas-instance-rows");
+    const noMatchEl = document.getElementById("saas-no-match");
+
+    const filterCpu = document.getElementById("filter-cpu");
+    const filterRam = document.getElementById("filter-ram");
+    const filterGpu = document.getElementById("filter-gpu");
+    const resetFiltersBtn = document.getElementById("reset-filters");
+    const customFilters = document.querySelectorAll(".custom-filter");
+
+    let clouds = [];
+
+    function formatPrice(value) {
+      return "$" + Number(value).toFixed(2);
+    }
+
+    function uniqueSorted(values) {
+      return Array.from(new Set(values)).sort((a, b) => a - b);
+    }
+
+    function renderHead() {
+      // Keep the static INSTANCE column, drop any previously rendered clouds.
+      while (headRowEl.children.length > 1) {
+        headRowEl.removeChild(headRowEl.lastElementChild);
+      }
+      clouds.forEach((cloud) => {
+        const th = document.createElement("th");
+        const wrap = document.createElement("div");
+        wrap.className = "flex flex-col items-center gap-2";
+        const logo = cloudLogos[cloud.id];
+        if (logo) {
+          const img = document.createElement("img");
+          img.src = logo;
+          img.alt = cloud.name;
+          img.className = "h-6 object-contain";
+          wrap.appendChild(img);
+        }
+        const label = document.createElement("span");
+        label.className = "cloud-label";
+        label.textContent = cloud.name;
+        wrap.appendChild(label);
+        th.appendChild(wrap);
+        headRowEl.appendChild(th);
+      });
+    }
+
+    // Facet options follow the data instead of a hardcoded list that silently
+    // desyncs whenever the feed changes.
+    function renderFacets(instances) {
+      const facets = {
+        cpu: {
+          anyLabel: "Any CPU",
+          values: uniqueSorted(instances.map((i) => i.vcpu)),
+          format: (v) => v + " Cores",
+        },
+        ram: {
+          anyLabel: "Any RAM",
+          values: uniqueSorted(instances.map((i) => i.memory_gb)),
+          format: (v) => v + " GB",
+        },
+        gpu: {
+          anyLabel: "Any GPU",
+          values: uniqueSorted(instances.map((i) => i.gpu)),
+          format: (v) => (Number(v) === 0 ? "None" : v + " GPU"),
+        },
+      };
+
+      Object.keys(facets).forEach((key) => {
+        const facet = facets[key];
+        const list = document.querySelector(
+          '.filter-options[data-facet="' + key + '"]',
+        );
+        if (!list) return;
+        list.innerHTML = "";
+
+        const options = [{ value: "any", text: facet.anyLabel }].concat(
+          facet.values.map((v) => ({ value: String(v), text: facet.format(v) })),
+        );
+
+        options.forEach((option) => {
+          const li = document.createElement("li");
+          li.className =
+            "px-4 py-2 text-sm text-gray-700 hover:bg-[#f0fbfb] hover:text-[#30BABA] cursor-pointer transition-colors";
+          li.setAttribute("data-value", option.value);
+          li.textContent = option.text;
+          list.appendChild(li);
+        });
+      });
+    }
+
+    function renderRows(instances) {
+      rowsEl.innerHTML = "";
+      instances.forEach((instance) => {
+        const tr = document.createElement("tr");
+        tr.className = "instance-row";
+        tr.setAttribute("data-cpu", String(instance.vcpu));
+        tr.setAttribute("data-ram", String(instance.memory_gb));
+        tr.setAttribute("data-gpu", String(instance.gpu));
+
+        const nameCell = document.createElement("td");
+        nameCell.className = "text-left py-4";
+        const cell = document.createElement("div");
+        cell.className = "instance-cell";
+        const name = document.createElement("div");
+        name.className = "instance-name";
+        name.textContent = instance.name;
+
+        const specs = document.createElement("div");
+        specs.className = "instance-specs";
+        const specLabels = [
+          instance.vcpu + " vCPU",
+          instance.memory_gb + " GB RAM",
+        ];
+        // A "0 GPU" pill is noise on the CPU-only rows; filtering still reads
+        // data-gpu off the row, so hiding it here changes nothing functionally.
+        if (Number(instance.gpu) > 0) {
+          specLabels.push(instance.gpu + " GPU");
+        }
+        specLabels.forEach((text) => {
+          const span = document.createElement("span");
+          span.textContent = text;
+          specs.appendChild(span);
+        });
+
+        cell.appendChild(name);
+        cell.appendChild(specs);
+        nameCell.appendChild(cell);
+        tr.appendChild(nameCell);
+
+        clouds.forEach((cloud) => {
+          const td = document.createElement("td");
+          td.className = "price-cell";
+          const price = instance.prices ? instance.prices[cloud.id] : undefined;
+
+          if (price === undefined || price === null) {
+            td.textContent = "\u2014";
+            tr.appendChild(td);
+            return;
+          }
+
+          const strong = document.createElement("strong");
+          strong.textContent = formatPrice(price);
+          td.appendChild(strong);
+          td.appendChild(document.createTextNode("/hr"));
+          tr.appendChild(td);
+        });
+
+        rowsEl.appendChild(tr);
+      });
+    }
+
+    function filterTable() {
+      const cpu = filterCpu.value;
+      const ram = filterRam.value;
+      const gpu = filterGpu.value;
+      let visible = 0;
+
+      rowsEl.querySelectorAll("tr").forEach((row) => {
+        const match =
+          (cpu === "any" || row.getAttribute("data-cpu") === cpu) &&
+          (ram === "any" || row.getAttribute("data-ram") === ram) &&
+          (gpu === "any" || row.getAttribute("data-gpu") === gpu);
+        row.style.display = match ? "" : "none";
+        if (match) visible += 1;
+      });
+
+      noMatchEl.classList.toggle("hidden", visible > 0);
+    }
+
+    function closeDropdown(filter) {
+      const optionsMenu = filter.querySelector(".filter-options");
+      optionsMenu.classList.replace("opacity-100", "opacity-0");
+      optionsMenu.classList.replace(
+        "pointer-events-auto",
+        "pointer-events-none",
+      );
+      optionsMenu.classList.replace("translate-y-0", "-translate-y-2");
+      filter.querySelector(".filter-arrow").classList.remove("rotate-180");
+      filter
+        .querySelector(".filter-trigger")
+        .classList.remove("border-[#30BABA]");
+    }
+
+    // Options are rendered from the feed, so selection is delegated to the list
+    // rather than bound per <li> at load time.
+    customFilters.forEach((filter) => {
+      const trigger = filter.querySelector(".filter-trigger");
+      const optionsMenu = filter.querySelector(".filter-options");
+      const label = filter.querySelector(".filter-label");
+      const input = filter.querySelector('input[type="hidden"]');
+      const arrow = filter.querySelector(".filter-arrow");
+
+      trigger.addEventListener("click", (e) => {
+        e.stopPropagation();
+        const isOpen = optionsMenu.classList.contains("opacity-100");
+        customFilters.forEach((f) => closeDropdown(f));
+        if (isOpen) return;
+        optionsMenu.classList.replace("opacity-0", "opacity-100");
+        optionsMenu.classList.replace(
+          "pointer-events-none",
+          "pointer-events-auto",
+        );
+        optionsMenu.classList.replace("-translate-y-2", "translate-y-0");
+        arrow.classList.add("rotate-180");
+        trigger.classList.add("border-[#30BABA]");
+      });
+
+      optionsMenu.addEventListener("click", (e) => {
+        const opt = e.target.closest("li[data-value]");
+        if (!opt) return;
+        e.stopPropagation();
+        input.value = opt.getAttribute("data-value");
+        label.textContent = opt.textContent;
+        closeDropdown(filter);
+        filterTable();
+      });
+    });
+
+    document.addEventListener("click", () => {
+      customFilters.forEach((f) => closeDropdown(f));
+    });
+
+    resetFiltersBtn.addEventListener("click", () => {
+      customFilters.forEach((f) => {
+        const input = f.querySelector('input[type="hidden"]');
+        const label = f.querySelector(".filter-label");
+        const defaultOpt = f.querySelector(
+          '.filter-options li[data-value="any"]',
+        );
+        input.value = "any";
+        if (defaultOpt) label.textContent = defaultOpt.textContent;
+      });
+      filterTable();
+    });
+
+    fetch(saasPricingUrl)
+      .then((response) => {
+        if (!response.ok)
+          throw new Error("Pricing request failed: " + response.status);
+        return response.json();
+      })
+      .then((data) => {
+        const instances = data && data.saas_instances;
+        if (
+          !data ||
+          !Array.isArray(data.clouds) ||
+          !Array.isArray(instances) ||
+          instances.length === 0
+        ) {
+          throw new Error("Empty pricing response");
+        }
+        clouds = data.clouds;
+        // // AWS/Azure are temporarily hidden (flagged in the feed, not deleted) while
+        // // only GCP/IONOS pricing is kept current — filter them out of the columns.
+        // clouds = data.clouds.filter((cloud) => !cloud.hidden);
+        renderHead();
+        renderFacets(instances);
+        renderRows(instances);
+        filterTable();
+        loadingEl.classList.add("hidden");
+        tableWrapEl.classList.remove("hidden");
+      })
+      .catch((error) => {
+        console.error("Failed to load SaaS pricing", error);
+        loadingEl.classList.add("hidden");
+        errorEl.classList.remove("hidden");
+      });
+  });
+</script>

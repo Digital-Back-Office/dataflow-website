@@ -1,0 +1,200 @@
+---
+// Temporary source: the pricing JSON is served straight from the repo instead of
+// the app API. Fetched at runtime — prices are never inlined into the build.
+const pricingApiUrl =
+  import.meta.env.PUBLIC_PRICING_DATA_URL ??
+  'https://raw.githubusercontent.com/Digital-Back-Office/dataflow-website/pricing_branch/src/data/pricing2.json'
+
+const providerLogos = {
+  aws: '/assets/images/pricing/AWS.png',
+  gcp: '/assets/images/pricing/GCP.png',
+  azure: '/assets/images/pricing/Azure.png',
+  ionos: '/assets/images/pricing/IONOS.png'
+}
+---
+
+<section class="instance-pricing-section py-24 max-sm:py-14 w-full flex flex-col items-center bg-white">
+  <span
+    class="inline-block px-5 py-1.5 rounded-full border border-primary text-primary text-sm font-semibold tracking-widest uppercase mb-6"
+    >Compute Pricing</span
+  >
+  <h2 class="text-4xl max-sm:text-2xl font-bold text-textblack text-center px-3 leading-tight mb-4">
+    Instance pricing across clouds
+  </h2>
+  <p class="text-xl max-sm:text-sm text-gray-500 text-center max-w-2xl mb-12 px-4">
+    Transparent hourly compute rates on every supported cloud provider. Pick the
+    instance that fits your workload — pay only while it runs.
+  </p>
+
+  <div class="w-full max-w-5xl px-4">
+    <!-- Provider tabs (populated from API) -->
+    <div id="instance-pricing-tabs" class="flex flex-wrap justify-center gap-3 mb-8" role="tablist"></div>
+
+    <!-- Loading state -->
+    <div id="instance-pricing-loading" class="text-center text-gray-500 py-12">
+      Loading pricing…
+    </div>
+
+    <!-- Error state -->
+    <div id="instance-pricing-error" class="hidden text-center text-gray-500 py-12">
+      Pricing is temporarily unavailable. Please
+      <a href="/contact-us" class="text-primary underline">contact us</a> for current rates.
+    </div>
+
+    <!-- Table -->
+    <div id="instance-pricing-table-wrap" class="hidden overflow-x-auto rounded-2xl border border-gray-200 shadow-sm">
+      <table class="instance-pricing-table w-full min-w-[560px] text-left">
+        <thead>
+          <tr class="bg-gray-50 text-gray-600 text-sm uppercase tracking-wider">
+            <th class="px-6 py-4 font-semibold">Instance</th>
+            <th class="px-6 py-4 font-semibold">Type</th>
+            <th class="px-6 py-4 font-semibold text-right">vCPU</th>
+            <th class="px-6 py-4 font-semibold text-right">Memory</th>
+            <th class="px-6 py-4 font-semibold text-right">GPU</th>
+            <th class="px-6 py-4 font-semibold text-right">Price / hour</th>
+          </tr>
+        </thead>
+        <tbody id="instance-pricing-rows"></tbody>
+      </table>
+    </div>
+
+    <p id="instance-pricing-note" class="hidden text-gray-400 text-sm text-center mt-4"></p>
+  </div>
+</section>
+
+<script is:inline define:vars={{ pricingApiUrl, providerLogos }}>
+  (function () {
+    const tabsEl = document.getElementById('instance-pricing-tabs')
+    const loadingEl = document.getElementById('instance-pricing-loading')
+    const errorEl = document.getElementById('instance-pricing-error')
+    const tableWrapEl = document.getElementById('instance-pricing-table-wrap')
+    const rowsEl = document.getElementById('instance-pricing-rows')
+    const noteEl = document.getElementById('instance-pricing-note')
+
+    let pricingData = null
+    let activeProvider = null
+
+    function formatPrice(value, currency) {
+      const symbol = currency === 'USD' ? '$' : currency + ' '
+      return symbol + value.toFixed(4).replace(/0+$/, '').replace(/\.$/, '.00')
+    }
+
+    function renderTabs() {
+      tabsEl.innerHTML = ''
+      pricingData.providers.forEach((provider) => {
+        const btn = document.createElement('button')
+        btn.type = 'button'
+        btn.setAttribute('role', 'tab')
+        btn.dataset.provider = provider.id
+        btn.className = 'instance-pricing-tab'
+        const logo = providerLogos[provider.id]
+        btn.innerHTML =
+          (logo ? '<img src="' + logo + '" alt="" class="h-5 object-contain" />' : '') +
+          '<span>' + provider.name + '</span>'
+        btn.addEventListener('click', () => selectProvider(provider.id))
+        tabsEl.appendChild(btn)
+      })
+    }
+
+    function selectProvider(providerId) {
+      activeProvider = providerId
+      tabsEl.querySelectorAll('.instance-pricing-tab').forEach((tab) => {
+        const isActive = tab.dataset.provider === providerId
+        tab.classList.toggle('active', isActive)
+        tab.setAttribute('aria-selected', String(isActive))
+      })
+      renderRows()
+    }
+
+    function renderRows() {
+      const provider = pricingData.providers.find((p) => p.id === activeProvider)
+      if (!provider) return
+      rowsEl.innerHTML = ''
+      provider.instances.forEach((instance, index) => {
+        const tr = document.createElement('tr')
+        tr.className = (index % 2 === 1 ? 'bg-gray-50/60 ' : '') + 'border-t border-gray-100'
+        tr.innerHTML =
+          '<td class="px-6 py-4 font-mono text-sm text-textblack">' + instance.instance_type + '</td>' +
+          '<td class="px-6 py-4 text-gray-600">' + instance.display_name + '</td>' +
+          '<td class="px-6 py-4 text-right text-gray-600">' + instance.vcpu + '</td>' +
+          '<td class="px-6 py-4 text-right text-gray-600">' + instance.memory_gb + ' GB</td>' +
+          '<td class="px-6 py-4 text-right text-gray-600">' + (instance.gpu > 0 ? instance.gpu : '—') + '</td>' +
+          '<td class="px-6 py-4 text-right font-semibold text-textblack">' + formatPrice(instance.price_per_hour, pricingData.currency) + '</td>'
+        rowsEl.appendChild(tr)
+      })
+    }
+
+    fetch(pricingApiUrl)
+      .then((response) => {
+        if (!response.ok) throw new Error('Pricing request failed: ' + response.status)
+        return response.json()
+      })
+      .then((data) => {
+        if (!data || !Array.isArray(data.providers) || data.providers.length === 0) {
+          throw new Error('Empty pricing response')
+        }
+        // // AWS/Azure are temporarily hidden (flagged in the feed, not deleted) while
+        // // only GCP/IONOS pricing is kept current — filter them out of the tabs.
+        // data = { ...data, providers: data.providers.filter((provider) => !provider.hidden) }
+        // if (data.providers.length === 0) {
+        //   throw new Error('No visible providers in pricing response')
+        // }
+        pricingData = data
+        loadingEl.classList.add('hidden')
+        tableWrapEl.classList.remove('hidden')
+        renderTabs()
+        selectProvider(data.providers[0].id)
+        if (data.last_updated) {
+          noteEl.textContent = 'All prices in ' + data.currency + ' per hour. Last updated ' + data.last_updated + '.'
+          noteEl.classList.remove('hidden')
+        }
+      })
+      .catch((error) => {
+        console.error('Failed to load instance pricing', error)
+        loadingEl.classList.add('hidden')
+        errorEl.classList.remove('hidden')
+      })
+  })()
+</script>
+
+<style is:global>
+  .instance-pricing-tab {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1.25rem;
+    border: 1px solid #e5e7eb;
+    border-radius: 9999px;
+    background: #fff;
+    color: #4b5563;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.15s ease;
+  }
+  .instance-pricing-tab:hover {
+    border-color: #30baba;
+    color: #30baba;
+  }
+  .instance-pricing-tab.active {
+    border-color: #30baba;
+    background: rgba(48, 186, 186, 0.08);
+    color: #30baba;
+  }
+  @media (max-width: 640px) {
+    .instance-pricing-tab {
+      padding: 0.45rem 0.9rem;
+      font-size: 0.8rem;
+    }
+    /* Rows are built as HTML strings in JS, so the mobile density is applied
+       here rather than by adding responsive classes to every cell. */
+    .instance-pricing-table th,
+    .instance-pricing-table td {
+      padding-left: 0.85rem;
+      padding-right: 0.85rem;
+      padding-top: 0.75rem;
+      padding-bottom: 0.75rem;
+      font-size: 0.8rem;
+    }
+  }
+</style>

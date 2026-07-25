@@ -1,0 +1,39 @@
+name: Update cloud pricing
+
+on:
+  schedule:
+    - cron: '30 3 * * *' # daily ~03:30 UTC
+  workflow_dispatch: {}
+
+permissions:
+  contents: write # lets the default GITHUB_TOKEN push to pricing_branch
+
+jobs:
+  update-pricing:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout pricing_branch
+        uses: actions/checkout@v4
+        with:
+          ref: pricing_branch # the branch the live site reads pricing2.json from at runtime
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: pip install requests
+
+      - name: Fetch & recalculate pricing
+        env:
+          GCP_PRICING_API_KEY: ${{ secrets.GCP_PRICING_API_KEY }}
+        run: python .github/workflows/fetch_pricing.py
+
+      - name: Commit and push updated pricing
+        run: |
+          git config user.name "pricing-bot"
+          git config user.email "pricing-bot@dataflow.zone"
+          git add src/data/pricing2.json
+          git diff --staged --quiet || git commit -m "chore: daily pricing refresh"
+          git push origin HEAD:pricing_branch

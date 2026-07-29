@@ -208,6 +208,8 @@ footer:
           href: "/press"
         - label: "Privacy Policy"
           href: "/privacy-policy"
+        - label: "EULA"
+          href: "/eula"
 
 
   bottom_bar:
@@ -216,6 +218,8 @@ footer:
         href: "/privacy-policy"
       - label: "Terms and Conditions"
         href: "/legal/terms-and-conditions"
+      - label: "EULA"
+        href: "/eula"
 
         
   social_links:

@@ -1,7 +1,7 @@
 {
     "currency": "USD",
     "unit": "per_hour",
-    "last_updated": "2026-08-03",
+    "last_updated": "2026-08-04",
     "clouds": [
         {
             "id": "gcp",

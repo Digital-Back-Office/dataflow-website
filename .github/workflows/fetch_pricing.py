@@ -37,6 +37,11 @@ PRICE_DECIMALS = 3  # round every price_per_hour to 3 decimal places (0.001 max 
 
 GCP_HOURS_PER_MONTH = 730  # GCP's own hours-per-month convention for monthly SKUs
 IONOS_HOURS_PER_CYCLE = 30 * 24  # IONOS bills storage per 30-day cycle
+# IONOS block storage tier the instance data disk is priced at. IONOS used to
+# list one row per disk type ("SSD Premium"); the page now lists the tiers as
+# columns of a comparison matrix, and "Performance" is the SSD tier that
+# carries the rate this script has always used.
+IONOS_STORAGE_TIER = "Performance"
 
 GCP_COMPUTE_SERVICE_ID = "6F81-5844-456A"  # Compute Engine, stable across all projects
 GCP_SKUS_URL = f"https://cloudbilling.googleapis.com/v1/services/{GCP_COMPUTE_SERVICE_ID}/skus"
@@ -226,16 +231,49 @@ def _find_table_section(colpos0: list, headline: str) -> dict:
     )
 
 
-def _row_price(table: dict, row_label_substring: str) -> float:
+def _find_row(table: dict, row_label_substring: str) -> list:
     for row in table["tbody"]:
         cells = row["cells"]
         if row_label_substring.lower() in _cell_text(cells[0]).lower():
-            match = _PRICE_RE.search(_cell_text(cells[-1]))
-            if match:
-                return float(match.group(1))
+            return cells
     raise RuntimeError(
         f"No row matching {row_label_substring!r} found in an IONOS pricing table -- "
         "update the row label lookup in fetch_ionos()."
+    )
+
+
+def _cell_price(cells: list, index: int, row_label_substring: str) -> float:
+    text = _cell_text(cells[index]) if -len(cells) <= index < len(cells) else ""
+    match = _PRICE_RE.search(text)
+    if not match:
+        raise RuntimeError(
+            f"No price found in the {row_label_substring!r} row of an IONOS pricing "
+            f"table (cell {index} reads {text!r}) -- update the lookup in fetch_ionos()."
+        )
+    return float(match.group(1))
+
+
+def _row_price(table: dict, row_label_substring: str) -> float:
+    """Price from a two-column label/price table (e.g. the vCPU servers table)."""
+    return _cell_price(_find_row(table, row_label_substring), -1, row_label_substring)
+
+
+def _column_index(table: dict, column_label: str) -> int:
+    for row in table.get("thead") or []:
+        for index, cell in enumerate(row["cells"]):
+            if column_label.lower() in _cell_text(cell).lower():
+                return index
+    raise RuntimeError(
+        f"No column headed {column_label!r} found in an IONOS pricing table -- "
+        "IONOS may have renamed the tier; update the column lookup in fetch_ionos()."
+    )
+
+
+def _matrix_price(table: dict, row_label_substring: str, column_label: str) -> float:
+    """Price from a matrix table whose columns are tiers and whose rows are
+    attributes (e.g. the Block Storage table)."""
+    return _cell_price(
+        _find_row(table, row_label_substring), _column_index(table, column_label), row_label_substring
     )
 
 
@@ -248,7 +286,7 @@ class IonosRates:
         self.ram_hr = _row_price(vcpu_table, "RAM")
 
         storage_table = _find_table_section(colpos0, "Block Storage")["items"][0]["table"][0]
-        self.ssd_per_gb_cycle = _row_price(storage_table, "SSD Premium")
+        self.ssd_per_gb_cycle = _matrix_price(storage_table, "Price per GB", IONOS_STORAGE_TIER)
 
     @property
     def disk_hourly(self) -> float:

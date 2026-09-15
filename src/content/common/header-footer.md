@@ -105,6 +105,10 @@ header:
                 icon-id: "youtube"
                 description: "Video tutorials"
                 href: "https://www.youtube.com/@DataFlowZone"
+              - title: "Projects"
+                icon-id: "workspace"
+                description: "Explore community projects"
+                href: "/community/projects"
           - heading: "Connect"
             span: 2
             items:

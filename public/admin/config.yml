@@ -1,0 +1,2097 @@
+# Decap CMS configuration. GENERATED -- do not hand-edit; regenerate from the content (see CLAUDE.md, "Content editing").
+backend:
+  name: github
+  repo: Digital-Back-Office/dataflow-website
+  branch: master
+  # base_url: https://YOUR-DECAP-OAUTH-PROXY.example.workers.dev   # REQUIRED for GitHub login on a static host; see CLAUDE.md
+  # auth_endpoint: auth
+local_backend: true
+publish_mode: editorial_workflow
+media_folder: public/assets/images
+public_folder: /assets/images
+site_url: https://dataflow.zone
+display_url: https://dataflow.zone
+collections:
+  - name: blogs
+    label: "Blog posts"
+    label_singular: "Blog post"
+    folder: src/content/blogs
+    create: true
+    delete: false
+    extension: md
+    format: frontmatter
+    identifier_field: title
+    slug: "{{slug}}"
+    summary: "{{title}}"
+    media_folder: public/assets/images/blog
+    public_folder: /assets/images/blog
+    fields:
+      - { name: "title", label: "Title", widget: "string" }
+      - { name: "description", label: "Description", widget: "text" }
+      - { name: "tags", label: "Tags", widget: "list" }
+      - { name: "date", label: "Date", widget: "string" }
+      - { name: "image", label: "Image", required: false, widget: "image" }
+      - { name: "category", label: "Category", required: false, widget: "list" }
+      - { name: "seo_title", label: "Seo title", required: false, widget: "string" }
+      - { name: "seo_description", label: "Seo description", required: false, widget: "text" }
+      - { name: "author_id", label: "Author id", required: false, widget: "string" }
+      - { name: "body", label: "Body", widget: "markdown" }
+  - name: press
+    label: "Press releases"
+    label_singular: "Press release"
+    folder: src/content/press
+    create: true
+    delete: false
+    extension: md
+    format: frontmatter
+    identifier_field: title
+    slug: "{{slug}}"
+    summary: "{{title}}"
+    media_folder: public/assets/images/press
+    public_folder: /assets/images/press
+    fields:
+      - { name: "title", label: "Title", widget: "text" }
+      - { name: "seo_title", label: "Seo title", required: false, widget: "string" }
+      - { name: "seo_description", label: "Seo description", required: false, widget: "text" }
+      - { name: "description", label: "Description", widget: "text" }
+      - { name: "tags", label: "Tags", required: false, widget: "list" }
+      - { name: "date", label: "Date", widget: "string" }
+      - { name: "location", label: "Location", widget: "string" }
+      - { name: "image", label: "Image", required: false, widget: "image" }
+      - { name: "body", label: "Body", widget: "markdown" }
+  - name: comparisons
+    label: "Comparison pages"
+    label_singular: "Comparison page"
+    folder: src/content/comparisons
+    create: true
+    delete: false
+    extension: md
+    format: frontmatter
+    identifier_field: title
+    slug: "{{slug}}"
+    summary: "{{title}}"
+    media_folder: public/assets/images/comparisons
+    public_folder: /assets/images/comparisons
+    fields:
+      - { name: "title", label: "Title", widget: "string" }
+      - { name: "description", label: "Description", widget: "text" }
+      - { name: "app_name", label: "App name", widget: "string" }
+      - { name: "app_logo", label: "App logo", required: false, widget: "image" }
+      - { name: "app_website", label: "App website", required: false, widget: "string" }
+      - name: "faqs"
+        label: "Faqs"
+        required: false
+        widget: "list"
+        summary: "{{fields.question}}"
+        fields:
+          - { name: "question", label: "Question", widget: "string" }
+          - { name: "answer", label: "Answer", widget: "text" }
+      - { name: "body", label: "Body", widget: "markdown" }
+  - name: pages
+    label: "Main pages"
+    delete: false
+    files:
+      - name: home
+        label: "Home"
+        file: src/content/home/home.md
+        media_folder: public/assets/icons
+        public_folder: /assets/icons
+        fields:
+          - name: "seo"
+            label: "Seo"
+            required: false
+            widget: "object"
+            fields:
+              - { name: "title", label: "Title", widget: "text" }
+              - { name: "description", label: "Description", widget: "text" }
+          - name: "hero"
+            label: "Hero"
+            widget: "object"
+            fields:
+              - { name: "title", label: "Title", widget: "string" }
+              - { name: "description", label: "Description", widget: "text" }
+              - name: "primary_cta"
+                label: "Primary cta"
+                widget: "object"
+                fields:
+                  - { name: "text", label: "Text", widget: "string" }
+                  - { name: "href", label: "Href", widget: "string" }
+                  - { name: "target", label: "Target", widget: "string" }
+              - name: "secondary_cta"
+                label: "Secondary cta"
+                widget: "object"
+                fields:
+                  - { name: "text", label: "Text", widget: "string" }
+                  - { name: "href", label: "Href", widget: "string" }
+              - { name: "cta_button", label: "Cta button", widget: "string" }
+              - { name: "badges", label: "Badges", widget: "list" }
+              - name: "supported_by"
+                label: "Supported by"
+                widget: "list"
+                summary: "{{fields.name}}"
+                fields:
+                  - { name: "name", label: "Name", widget: "string" }
+                  - { name: "logo", label: "Logo", widget: "image" }
+          - name: "tools"
+            label: "Tools"
+            widget: "object"
+            fields:
+              - { name: "title", label: "Title", widget: "string" }
+              - name: "tool_items"
+                label: "Tool items"
+                widget: "list"
+                summary: "{{fields.name}}"
+                fields:
+                  - { name: "name", label: "Name", widget: "string" }
+                  - { name: "src", label: "Src", widget: "image" }
+          - name: "how_it_works"
+            label: "How it works"
+            widget: "object"
+            fields:
+              - { name: "title", label: "Title", widget: "string" }
+              - name: "steps"
+                label: "Steps"
+                widget: "list"
+                summary: "{{fields.title}}"
+                fields:
+                  - { name: "title", label: "Title", widget: "string" }
+                  - { name: "description_1", label: "Description 1", widget: "text" }
+                  - { name: "description_2", label: "Description 2", widget: "text" }
+                  - { name: "image", label: "Image", widget: "image" }
+          - name: "features"
+            label: "Features"
+            widget: "object"
+            fields:
+              - { name: "title", label: "Title", widget: "string" }
+              - { name: "subtitle", label: "Subtitle", widget: "string" }
+              - name: "features"
+                label: "Features"
+                widget: "list"
+                summary: "{{fields.title}}"
+                fields:
+                  - { name: "title", label: "Title", widget: "string" }
+                  - { name: "description", label: "Description", widget: "text" }
+                  - { name: "cta_text", label: "Cta text", required: false, widget: "string" }
+                  - { name: "icon", label: "Icon", widget: "image" }
+                  - { name: "image", label: "Image", required: false, widget: "image" }
+                  - { name: "href", label: "Href", widget: "string" }
+                  - name: "color"
+                    label: "Color"
+                    required: false
+                    widget: "object"
+                    fields:
+                      - { name: "normal", label: "Normal", widget: "string" }
+                      - { name: "hover", label: "Hover", widget: "string" }
+          - name: "use_cases"
+            label: "Use cases"
+            widget: "object"
+            fields:
+              - { name: "title", label: "Title", widget: "string" }
+              - name: "use_cases"
+                label: "Use cases"
+                widget: "list"
+                summary: "{{fields.title}}"
+                fields:
+                  - { name: "id", label: "Id", widget: "string" }
+                  - { name: "title", label: "Title", widget: "string" }
+                  - { name: "heading", label: "Heading", widget: "string" }
+                  - { name: "description", label: "Description", widget: "text" }
+                  - { name: "features", label: "Features", widget: "list" }
+                  - { name: "link", label: "Link", widget: "string" }
+                  - { name: "cta_text", label: "Cta text", widget: "string" }
+                  - { name: "image", label: "Image", widget: "image" }
+                  - { name: "video", label: "Video", widget: "string" }
+                  - { name: "imageAlt", label: "Image Alt", widget: "string" }
+          - name: "ship_apps_faster"
+            label: "Ship apps faster"
+            widget: "object"
+            fields:
+              - { name: "title", label: "Title", widget: "string" }
+              - { name: "subtitle", label: "Subtitle", widget: "string" }
+              - name: "steps"
+                label: "Steps"
+                widget: "list"
+                summary: "{{fields.title}}"
+                fields:
+                  - { name: "number", label: "Number", widget: "number", value_type: "int" }
+                  - { name: "title", label: "Title", widget: "string" }
+                  - { name: "description", label: "Description", widget: "string" }
+                  - { name: "bullets", label: "Bullets", widget: "list" }
+                  - { name: "icon", label: "Icon", widget: "image" }
+                  - { name: "image", label: "Image", widget: "image" }
+              - name: "cta_button"
+                label: "Cta button"
+                required: false
+                widget: "object"
+                fields:
+                  - { name: "label", label: "Label", required: false, widget: "string" }
+                  - { name: "href", label: "Href", required: false, widget: "string" }
+          - name: "enterprise"
+            label: "Enterprise"
+            widget: "object"
+            fields:
+              - { name: "title", label: "Title", widget: "string" }
+              - { name: "description", label: "Description", widget: "text" }
+              - name: "cards"
+                label: "Cards"
+                widget: "list"
+                summary: "{{fields.title}}"
+                fields:
+                  - { name: "title", label: "Title", widget: "string" }
+                  - { name: "description", label: "Description", widget: "text" }
+                  - { name: "icon", label: "Icon", widget: "image" }
+              - name: "cta"
+                label: "Cta"
+                required: false
+                widget: "object"
+                fields:
+                  - name: "primary"
+                    label: "Primary"
+                    required: false
+                    widget: "object"
+                    fields:
+                      - { name: "label", label: "Label", required: false, widget: "string" }
+                      - { name: "href", label: "Href", required: false, widget: "string" }
+                  - name: "secondary"
+                    label: "Secondary"
+                    required: false
+                    widget: "object"
+                    fields:
+                      - { name: "label", label: "Label", required: false, widget: "string" }
+                      - { name: "href", label: "Href", required: false, widget: "string" }
+          - name: "support_section"
+            label: "Support section"
+            widget: "object"
+            fields:
+              - { name: "title", label: "Title", widget: "string" }
+              - { name: "subtitle", label: "Subtitle", widget: "text" }
+              - name: "items"
+                label: "Items"
+                widget: "list"
+                summary: "{{fields.title}}"
+                fields:
+                  - { name: "title", label: "Title", widget: "string" }
+                  - { name: "description", label: "Description", widget: "text" }
+                  - { name: "bullets", label: "Bullets", widget: "list" }
+          - name: "gpu_compute"
+            label: "Gpu compute"
+            widget: "object"
+            fields:
+              - { name: "title", label: "Title", widget: "string" }
+              - { name: "lines", label: "Lines", widget: "list" }
+              - name: "primary_cta"
+                label: "Primary cta"
+                widget: "object"
+                fields:
+                  - { name: "text", label: "Text", widget: "string" }
+                  - { name: "href", label: "Href", widget: "string" }
+              - name: "secondary_cta"
+                label: "Secondary cta"
+                widget: "object"
+                fields:
+                  - { name: "text", label: "Text", widget: "string" }
+                  - { name: "href", label: "Href", widget: "string" }
+          - name: "developers_love"
+            label: "Developers love"
+            widget: "object"
+            fields:
+              - { name: "title", label: "Title", widget: "string" }
+              - { name: "subtitle", label: "Subtitle", widget: "string" }
+              - name: "cards"
+                label: "Cards"
+                widget: "list"
+                summary: "{{fields.title}}"
+                fields:
+                  - { name: "title", label: "Title", widget: "string" }
+                  - { name: "description", label: "Description", widget: "string" }
+                  - name: "actions"
+                    label: "Actions"
+                    required: false
+                    widget: "list"
+                    summary: "{{fields.text}}"
+                    fields:
+                      - { name: "text", label: "Text", widget: "string" }
+                      - { name: "onclick", label: "Onclick", required: false, widget: "string" }
+                      - { name: "href", label: "Href", required: false, widget: "string" }
+                  - name: "links"
+                    label: "Links"
+                    required: false
+                    widget: "list"
+                    summary: "{{fields.text}}"
+                    fields:
+                      - { name: "text", label: "Text", widget: "string" }
+                      - { name: "href", label: "Href", widget: "string" }
+                      - { name: "target", label: "Target", required: false, widget: "string" }
+                      - { name: "platform", label: "Platform", required: false, widget: "string" }
+          - name: "cta"
+            label: "Cta"
+            widget: "object"
+            fields:
+              - { name: "title", label: "Title", widget: "string" }
+              - { name: "description", label: "Description", widget: "text" }
+              - { name: "cta_button_1", label: "Cta button 1", widget: "string" }
+              - { name: "cta_button_2", label: "Cta button 2", widget: "string" }
+          - { name: "LearnMoreBtn", label: "Learn More Btn", widget: "string" }
+          - { name: "ViewMoreButton", label: "View More Button", widget: "string" }
+      - name: company
+        label: "Company"
+        file: src/content/company/company.md
+        media_folder: public/assets/images/company
+        public_folder: /assets/images/company
+        fields:
+          - name: "seo"
+            label: "Seo"
+            required: false
+            widget: "object"
+            fields:
+              - { name: "title", label: "Title", widget: "string" }
+              - { name: "description", label: "Description", widget: "text" }
+          - name: "top_section"
+            label: "Top section"
+            widget: "object"
+            fields:
+              - { name: "title", label: "Title", widget: "string" }
+              - { name: "description", label: "Description", widget: "text" }
+              - name: "tagline"
+                label: "Tagline"
+                widget: "list"
+                summary: "{{fields.text}}"
+                fields:
+                  - { name: "text", label: "Text", widget: "string" }
+                  - { name: "isHighlighted", label: "Is Highlighted", widget: "boolean", default: false }
+          - name: "journey"
+            label: "Journey"
+            widget: "object"
+            fields:
+              - { name: "title", label: "Title", widget: "string" }
+              - { name: "description", label: "Description", widget: "text" }
+          - name: "team_members"
+            label: "Team members"
+            widget: "object"
+            fields:
+              - { name: "title", label: "Title", widget: "string" }
+              - { name: "button", label: "Button", widget: "string" }
+              - name: "members"
+                label: "Members"
+                widget: "list"
+                summary: "{{fields.name}}"
+                fields:
+                  - { name: "name", label: "Name", widget: "string" }
+                  - { name: "position", label: "Position", widget: "string" }
+                  - { name: "photo", label: "Photo", widget: "image" }
+          - name: "join_our_team"
+            label: "Join our team"
+            widget: "object"
+            fields:
+              - { name: "title", label: "Title", widget: "string" }
+              - { name: "subtitle", label: "Subtitle", widget: "string" }
+              - { name: "heading", label: "Heading", widget: "string" }
+              - { name: "description", label: "Description", widget: "text" }
+              - name: "button"
+                label: "Button"
+                widget: "object"
+                fields:
+                  - { name: "label", label: "Label", widget: "string" }
+                  - { name: "href", label: "Href", widget: "string" }
+                  - { name: "hrefTarget", label: "Href Target", widget: "string" }
+          - name: "empower_your_journey"
+            label: "Empower your journey"
+            widget: "object"
+            fields:
+              - { name: "title", label: "Title", widget: "string" }
+              - name: "features"
+                label: "Features"
+                widget: "list"
+                summary: "{{fields.title}}"
+                fields:
+                  - { name: "title", label: "Title", widget: "string" }
+                  - { name: "description", label: "Description", widget: "text" }
+                  - { name: "image", label: "Image", widget: "image" }
+      - name: apps
+        label: "Apps"
+        file: src/content/apps/apps.md
+        media_folder: public/assets/images
+        public_folder: /assets/images
+        fields:
+          - { name: "toptitle", label: "Toptitle", required: false, widget: "string" }
+          - { name: "topdescription", label: "Topdescription", required: false, widget: "string" }
+          - { name: "button", label: "Button", required: false, widget: "string" }
+          - name: "section1"
+            label: "Section1"
+            required: false
+            widget: "object"
+            fields:
+              - { name: "title", label: "Title", required: false, widget: "string" }
+          - name: "section2"
+            label: "Section2"
+            required: false
+            widget: "object"
+            fields:
+              - { name: "title", label: "Title", required: false, widget: "string" }
+          - name: "section3"
+            label: "Section3"
+            required: false
+            widget: "object"
+            fields:
+              - { name: "title", label: "Title", required: false, widget: "string" }
+          - name: "section4"
+            label: "Section4"
+            required: false
+            widget: "object"
+            fields:
+              - { name: "title", label: "Title", required: false, widget: "string" }
+          - name: "section5"
+            label: "Section5"
+            required: false
+            widget: "object"
+            fields:
+              - { name: "title", label: "Title", required: false, widget: "string" }
+          - name: "section6"
+            label: "Section6"
+            required: false
+            widget: "object"
+            fields:
+              - { name: "title", label: "Title", required: false, widget: "string" }
+          - name: "section7"
+            label: "Section7"
+            required: false
+            widget: "object"
+            fields:
+              - { name: "title", label: "Title", required: false, widget: "string" }
+          - name: "section8"
+            label: "Section8"
+            required: false
+            widget: "object"
+            fields:
+              - { name: "title", label: "Title", required: false, widget: "string" }
+      - name: promotion
+        label: "Promotion"
+        file: src/content/promotion/promotion.md
+        media_folder: public/assets/images
+        public_folder: /assets/images
+        fields:
+          - name: "meta"
+            label: "Meta"
+            widget: "object"
+            fields:
+              - { name: "title", label: "Title", widget: "string" }
+          - name: "hero"
+            label: "Hero"
+            widget: "object"
+            fields:
+              - { name: "badge", label: "Badge", widget: "string" }
+              - { name: "title", label: "Title", widget: "string" }
+              - { name: "subtitle", label: "Subtitle", widget: "string" }
+              - { name: "description", label: "Description", widget: "string" }
+              - name: "primary_cta"
+                label: "Primary cta"
+                widget: "object"
+                fields:
+                  - { name: "label", label: "Label", widget: "string" }
+                  - { name: "href", label: "Href", widget: "string" }
+              - { name: "pill_badges", label: "Pill badges", widget: "list" }
+              - name: "card"
+                label: "Card"
+                widget: "object"
+                fields:
+                  - { name: "label", label: "Label", widget: "string" }
+                  - { name: "value", label: "Value", widget: "string" }
+                  - { name: "description", label: "Description", widget: "string" }
+              - name: "mini_left"
+                label: "Mini left"
+                widget: "object"
+                fields:
+                  - { name: "title", label: "Title", widget: "string" }
+                  - { name: "subtitle", label: "Subtitle", widget: "string" }
+              - name: "mini_right"
+                label: "Mini right"
+                widget: "object"
+                fields:
+                  - { name: "title", label: "Title", widget: "string" }
+              - name: "review_time"
+                label: "Review time"
+                widget: "object"
+                fields:
+                  - { name: "title", label: "Title", widget: "string" }
+                  - { name: "subtitle", label: "Subtitle", widget: "string" }
+              - name: "limited_time"
+                label: "Limited time"
+                widget: "object"
+                fields:
+                  - { name: "title", label: "Title", widget: "string" }
+                  - { name: "subtitle", label: "Subtitle", widget: "string" }
+          - name: "stats"
+            label: "Stats"
+            widget: "list"
+            summary: "{{fields.label}}"
+            fields:
+              - { name: "label", label: "Label", widget: "string" }
+              - { name: "value", label: "Value", widget: "string" }
+          - { name: "who_for", label: "Who for", widget: "list" }
+          - name: "what_is_it"
+            label: "What is it"
+            widget: "object"
+            fields:
+              - { name: "eyebrow", label: "Eyebrow", widget: "string" }
+              - { name: "title", label: "Title", widget: "string" }
+              - { name: "description", label: "Description", widget: "text" }
+          - name: "benefits"
+            label: "Benefits"
+            widget: "object"
+            fields:
+              - { name: "eyebrow", label: "Eyebrow", widget: "string" }
+              - { name: "title", label: "Title", widget: "string" }
+              - { name: "description", label: "Description", widget: "string" }
+              - { name: "items", label: "Items", widget: "list" }
+          - name: "application"
+            label: "Application"
+            widget: "object"
+            fields:
+              - { name: "eyebrow", label: "Eyebrow", widget: "string" }
+              - { name: "title", label: "Title", widget: "string" }
+              - { name: "description", label: "Description", widget: "string" }
+          - name: "referral"
+            label: "Referral"
+            widget: "object"
+            fields:
+              - { name: "eyebrow", label: "Eyebrow", widget: "string" }
+              - { name: "title", label: "Title", widget: "string" }
+              - { name: "description", label: "Description", widget: "string" }
+              - name: "cta"
+                label: "Cta"
+                widget: "object"
+                fields:
+                  - { name: "label", label: "Label", widget: "string" }
+                  - { name: "href", label: "Href", widget: "string" }
+              - { name: "steps", label: "Steps", widget: "list" }
+              - { name: "how_it_works_title", label: "How it works title", widget: "string" }
+              - name: "how_it_works"
+                label: "How it works"
+                widget: "list"
+                summary: "{{fields.title}}"
+                fields:
+                  - { name: "title", label: "Title", widget: "string" }
+                  - { name: "description", label: "Description", widget: "string" }
+          - name: "faq"
+            label: "Faq"
+            widget: "object"
+            fields:
+              - { name: "eyebrow", label: "Eyebrow", widget: "string" }
+              - { name: "title", label: "Title", widget: "string" }
+              - { name: "description", label: "Description", widget: "string" }
+              - name: "items"
+                label: "Items"
+                widget: "list"
+                summary: "{{fields.q}}"
+                fields:
+                  - { name: "q", label: "Q", widget: "string" }
+                  - { name: "a", label: "A", widget: "string" }
+          - name: "final_cta"
+            label: "Final cta"
+            widget: "object"
+            fields:
+              - { name: "kicker", label: "Kicker", widget: "string" }
+              - { name: "title", label: "Title", widget: "string" }
+              - { name: "description", label: "Description", widget: "string" }
+              - name: "primary_cta"
+                label: "Primary cta"
+                widget: "object"
+                fields:
+                  - { name: "label", label: "Label", widget: "string" }
+                  - { name: "href", label: "Href", widget: "string" }
+  - name: solutions
+    label: "Solution pages"
+    delete: false
+    files:
+      - name: enterprise
+        label: "Enterprise"
+        file: src/content/enterprise/enterprise.md
+        media_folder: public/assets/images/enterprise
+        public_folder: /assets/images/enterprise
+        fields:
+          - name: "seo"
+            label: "Seo"
+            required: false
+            widget: "object"
+            fields:
+              - { name: "title", label: "Title", widget: "string" }
+              - { name: "description", label: "Description", widget: "text" }
+          - name: "top_section"
+            label: "Top section"
+            widget: "object"
+            fields:
+              - { name: "title", label: "Title", widget: "string" }
+              - { name: "description", label: "Description", widget: "text" }
+              - name: "button"
+                label: "Button"
+                required: false
+                widget: "object"
+                fields:
+                  - { name: "label", label: "Label", widget: "string" }
+                  - { name: "href", label: "Href", widget: "string" }
+              - { name: "hero_image", label: "Hero image", required: false, widget: "image" }
+          - name: "sections"
+            label: "Sections"
+            widget: "list"
+            summary: "{{fields.title}}"
+            fields:
+              - { name: "title", label: "Title", widget: "string" }
+              - { name: "description", label: "Description", widget: "text" }
+              - { name: "image", label: "Image", widget: "image" }
+              - { name: "imageSide", label: "Image Side", required: false, widget: "string" }
+          - name: "section_cta"
+            label: "Section cta"
+            required: false
+            widget: "object"
+            fields:
+              - { name: "label", label: "Label", required: false, widget: "string" }
+              - { name: "href", label: "Href", required: false, widget: "string" }
+          - name: "cta_section"
+            label: "Cta section"
+            required: false
+            widget: "object"
+            fields:
+              - { name: "title", label: "Title", widget: "string" }
+              - { name: "description", label: "Description", widget: "string" }
+              - name: "button"
+                label: "Button"
+                widget: "object"
+                fields:
+                  - { name: "text", label: "Text", widget: "string" }
+      - name: personal
+        label: "Personal"
+        file: src/content/personal/personal.md
+        media_folder: public/assets/images/personal
+        public_folder: /assets/images/personal
+        fields:
+          - name: "seo"
+            label: "Seo"
+            required: false
+            widget: "object"
+            fields:
+              - { name: "title", label: "Title", widget: "string" }
+              - { name: "description", label: "Description", widget: "text" }
+          - name: "top_section"
+            label: "Top section"
+            widget: "object"
+            fields:
+              - { name: "title", label: "Title", widget: "string" }
+              - { name: "description", label: "Description", widget: "text" }
+              - name: "button"
+                label: "Button"
+                required: false
+                widget: "object"
+                fields:
+                  - { name: "label", label: "Label", widget: "string" }
+                  - { name: "href", label: "Href", widget: "string" }
+              - { name: "hero_image", label: "Hero image", required: false, widget: "image" }
+          - name: "sections"
+            label: "Sections"
+            widget: "list"
+            summary: "{{fields.title}}"
+            fields:
+              - { name: "title", label: "Title", widget: "string" }
+              - { name: "description", label: "Description", widget: "text" }
+              - { name: "image", label: "Image", widget: "image" }
+              - { name: "imageSide", label: "Image Side", required: false, widget: "string" }
+          - name: "cta_section"
+            label: "Cta section"
+            required: false
+            widget: "object"
+            fields:
+              - { name: "title", label: "Title", widget: "string" }
+              - { name: "description", label: "Description", widget: "text" }
+              - name: "button"
+                label: "Button"
+                widget: "object"
+                fields:
+                  - { name: "text", label: "Text", widget: "string" }
+              - { name: "note", label: "Note", required: false, widget: "string" }
+      - name: startups-smes
+        label: "Startups smes"
+        file: src/content/startups-smes/startups-smes.md
+        media_folder: public/assets/images/startups
+        public_folder: /assets/images/startups
+        fields:
+          - name: "seo"
+            label: "Seo"
+            required: false
+            widget: "object"
+            fields:
+              - { name: "title", label: "Title", widget: "string" }
+              - { name: "description", label: "Description", widget: "text" }
+          - name: "top_section"
+            label: "Top section"
+            widget: "object"
+            fields:
+              - { name: "title", label: "Title", widget: "string" }
+              - { name: "description", label: "Description", widget: "text" }
+              - name: "button"
+                label: "Button"
+                required: false
+                widget: "object"
+                fields:
+                  - { name: "label", label: "Label", widget: "string" }
+                  - { name: "href", label: "Href", widget: "string" }
+              - { name: "hero_image", label: "Hero image", required: false, widget: "image" }
+          - name: "sections"
+            label: "Sections"
+            widget: "list"
+            summary: "{{fields.title}}"
+            fields:
+              - { name: "title", label: "Title", widget: "string" }
+              - { name: "description", label: "Description", widget: "text" }
+              - { name: "image", label: "Image", widget: "image" }
+              - { name: "imageSide", label: "Image Side", required: false, widget: "string" }
+          - name: "cta_section"
+            label: "Cta section"
+            required: false
+            widget: "object"
+            fields:
+              - { name: "title", label: "Title", widget: "string" }
+              - { name: "description", label: "Description", widget: "text" }
+              - name: "button"
+                label: "Button"
+                widget: "object"
+                fields:
+                  - { name: "text", label: "Text", widget: "string" }
+              - { name: "note", label: "Note", required: false, widget: "list" }
+  - name: features
+    label: "Product feature pages"
+    delete: false
+    files:
+      - name: deploy-to-production
+        label: "Deploy to production"
+        file: src/content/features/deploy-to-production.md
+        media_folder: public/assets/icons
+        public_folder: /assets/icons
+        fields:
+          - name: "seo"
+            label: "Seo"
+            required: false
+            widget: "object"
+            fields:
+              - { name: "title", label: "Title", widget: "string" }
+              - { name: "description", label: "Description", widget: "text" }
+          - name: "top_section"
+            label: "Top section"
+            widget: "object"
+            fields:
+              - { name: "title", label: "Title", widget: "string" }
+              - { name: "description", label: "Description", widget: "text" }
+              - name: "button"
+                label: "Button"
+                widget: "object"
+                fields:
+                  - { name: "label", label: "Label", widget: "string" }
+                  - { name: "href", label: "Href", widget: "string" }
+              - { name: "hero_image", label: "Hero image", widget: "image" }
+          - name: "seamless_deployment"
+            label: "Seamless deployment"
+            required: false
+            widget: "object"
+            fields:
+              - { name: "title", label: "Title", required: false, widget: "string" }
+              - { name: "description", label: "Description", required: false, widget: "text" }
+              - name: "button"
+                label: "Button"
+                required: false
+                widget: "object"
+                fields:
+                  - { name: "label", label: "Label", required: false, widget: "string" }
+                  - { name: "href", label: "Href", required: false, widget: "string" }
+                  - { name: "target", label: "Target", required: false, widget: "string" }
+              - name: "features"
+                label: "Features"
+                required: false
+                widget: "list"
+                summary: "{{fields.title}}"
+                fields:
+                  - { name: "title", label: "Title", required: false, widget: "string" }
+                  - { name: "description", label: "Description", required: false, widget: "text" }
+                  - { name: "image", label: "Image", required: false, widget: "image" }
+          - name: "production_parity"
+            label: "Production parity"
+            required: false
+            widget: "object"
+            fields:
+              - { name: "title", label: "Title", required: false, widget: "string" }
+              - { name: "description", label: "Description", required: false, widget: "text" }
+              - { name: "image", label: "Image", required: false, widget: "image" }
+              - { name: "imageSide", label: "Image Side", required: false, widget: "string" }
+              - { name: "callout", label: "Callout", required: false, widget: "text" }
+          - name: "managed_secrets_in_production"
+            label: "Managed secrets in production"
+            required: false
+            widget: "object"
+            fields:
+              - { name: "title", label: "Title", required: false, widget: "string" }
+              - { name: "description", label: "Description", required: false, widget: "text" }
+              - name: "features"
+                label: "Features"
+                required: false
+                widget: "list"
+                summary: "{{fields.title}}"
+                fields:
+                  - { name: "title", label: "Title", required: false, widget: "string" }
+                  - { name: "description", label: "Description", required: false, widget: "text" }
+                  - { name: "image", label: "Image", required: false, widget: "image" }
+          - name: "comparison"
+            label: "Comparison"
+            required: false
+            widget: "object"
+            fields:
+              - { name: "heading", label: "Heading", widget: "string" }
+              - { name: "leftHeading", label: "Left Heading", widget: "string" }
+              - { name: "rightHeading", label: "Right Heading", widget: "string" }
+              - name: "rows"
+                label: "Rows"
+                widget: "list"
+                fields:
+                  - { name: "leftTitle", label: "Left Title", widget: "string" }
+                  - { name: "leftText", label: "Left Text", widget: "string" }
+                  - { name: "rightTitle", label: "Right Title", widget: "string" }
+                  - { name: "rightText", label: "Right Text", widget: "string" }
+          - name: "deployment_without_tooling"
+            label: "Deployment without tooling"
+            required: false
+            widget: "object"
+            fields:
+              - { name: "title", label: "Title", required: false, widget: "string" }
+              - { name: "description", label: "Description", required: false, widget: "text" }
+          - name: "confidence_in_shipping"
+            label: "Confidence in shipping"
+            required: false
+            widget: "object"
+            fields:
+              - { name: "title", label: "Title", required: false, widget: "string" }
+              - { name: "description", label: "Description", required: false, widget: "text" }
+              - name: "features"
+                label: "Features"
+                required: false
+                widget: "list"
+                summary: "{{fields.title}}"
+                fields:
+                  - { name: "title", label: "Title", required: false, widget: "string" }
+                  - { name: "description", label: "Description", required: false, widget: "text" }
+                  - { name: "image", label: "Image", required: false, widget: "image" }
+          - name: "auto_scaling_support"
+            label: "Auto scaling support"
+            required: false
+            widget: "object"
+            fields:
+              - { name: "title", label: "Title", required: false, widget: "string" }
+              - { name: "description", label: "Description", required: false, widget: "text" }
+              - name: "features"
+                label: "Features"
+                required: false
+                widget: "list"
+                summary: "{{fields.title}}"
+                fields:
+                  - { name: "title", label: "Title", required: false, widget: "string" }
+                  - { name: "description", label: "Description", required: false, widget: "text" }
+                  - { name: "image", label: "Image", required: false, widget: "image" }
+          - name: "deployment_workflow_example"
+            label: "Deployment workflow example"
+            required: false
+            widget: "object"
+            fields:
+              - { name: "title", label: "Title", required: false, widget: "string" }
+              - name: "steps"
+                label: "Steps"
+                required: false
+                widget: "list"
+                fields:
+                  - { name: "step", label: "Step", required: false, widget: "string" }
+                  - { name: "description", label: "Description", required: false, widget: "text" }
+      - name: development-ready-workspace
+        label: "Development ready workspace"
+        file: src/content/features/development-ready-workspace.md
+        media_folder: public/assets/icons
+        public_folder: /assets/icons
+        fields:
+          - name: "seo"
+            label: "Seo"
+            required: false
+            widget: "object"
+            fields:
+              - { name: "title", label: "Title", widget: "string" }
+              - { name: "description", label: "Description", widget: "text" }
+          - name: "top_section"
+            label: "Top section"
+            widget: "object"
+            fields:
+              - { name: "title", label: "Title", widget: "string" }
+              - { name: "description", label: "Description", widget: "text" }
+              - name: "button"
+                label: "Button"
+                widget: "object"
+                fields:
+                  - { name: "label", label: "Label", widget: "string" }
+                  - { name: "href", label: "Href", widget: "string" }
+              - { name: "hero_image", label: "Hero image", widget: "image" }
+          - name: "what_you_get"
+            label: "What you get"
+            required: false
+            widget: "object"
+            fields:
+              - { name: "title", label: "Title", required: false, widget: "string" }
+              - { name: "description", label: "Description", required: false, widget: "text" }
+              - name: "button"
+                label: "Button"
+                required: false
+                widget: "object"
+                fields:
+                  - { name: "label", label: "Label", required: false, widget: "string" }
+                  - { name: "href", label: "Href", required: false, widget: "string" }
+                  - { name: "target", label: "Target", required: false, widget: "string" }
+              - name: "features"
+                label: "Features"
+                required: false
+                widget: "list"
+                summary: "{{fields.title}}"
+                fields:
+                  - { name: "title", label: "Title", required: false, widget: "string" }
+                  - { name: "description", label: "Description", required: false, widget: "text" }
+                  - { name: "image", label: "Image", required: false, widget: "image" }
+          - name: "instant_onboarding"
+            label: "Instant onboarding"
+            required: false
+            widget: "object"
+            fields:
+              - { name: "title", label: "Title", required: false, widget: "string" }
+              - { name: "description", label: "Description", required: false, widget: "text" }
+              - { name: "image", label: "Image", required: false, widget: "image" }
+              - name: "button"
+                label: "Button"
+                required: false
+                widget: "object"
+                fields:
+                  - { name: "label", label: "Label", required: false, widget: "string" }
+                  - { name: "href", label: "Href", required: false, widget: "string" }
+                  - { name: "target", label: "Target", required: false, widget: "string" }
+              - { name: "imageSide", label: "Image Side", required: false, widget: "string" }
+          - name: "colab_comparison"
+            label: "Colab comparison"
+            required: false
+            widget: "object"
+            fields:
+              - { name: "title", label: "Title", widget: "string" }
+              - name: "bullets"
+                label: "Bullets"
+                widget: "list"
+                summary: "{{fields.title}}"
+                fields:
+                  - { name: "title", label: "Title", widget: "string" }
+                  - { name: "text", label: "Text", widget: "text" }
+              - { name: "paragraphs", label: "Paragraphs", required: false, widget: "list" }
+              - name: "cta"
+                label: "Cta"
+                required: false
+                widget: "object"
+                fields:
+                  - { name: "label", label: "Label", widget: "string" }
+                  - { name: "href", label: "Href", widget: "string" }
+                  - { name: "target", label: "Target", required: false, widget: "string" }
+              - { name: "bg", label: "Bg", required: false, widget: "select", options: ["white", "F8FAFC"] }
+          - name: "why_it_matters"
+            label: "Why it matters"
+            required: false
+            widget: "object"
+            fields:
+              - { name: "title", label: "Title", required: false, widget: "string" }
+              - { name: "description", label: "Description", required: false, widget: "text" }
+              - name: "features"
+                label: "Features"
+                required: false
+                widget: "list"
+                summary: "{{fields.title}}"
+                fields:
+                  - { name: "title", label: "Title", required: false, widget: "string" }
+                  - { name: "description", label: "Description", required: false, widget: "text" }
+                  - { name: "image", label: "Image", required: false, widget: "image" }
+          - name: "compute_flexibility"
+            label: "Compute flexibility"
+            required: false
+            widget: "object"
+            fields:
+              - { name: "title", label: "Title", required: false, widget: "string" }
+              - { name: "description", label: "Description", required: false, widget: "text" }
+              - name: "features"
+                label: "Features"
+                required: false
+                widget: "list"
+                summary: "{{fields.title}}"
+                fields:
+                  - { name: "title", label: "Title", required: false, widget: "string" }
+                  - { name: "description", label: "Description", required: false, widget: "string" }
+                  - { name: "image", label: "Image", required: false, widget: "image" }
+      - name: manage-your-data-connections
+        label: "Manage your data connections"
+        file: src/content/features/manage-your-data-connections.md
+        media_folder: public/assets/icons
+        public_folder: /assets/icons
+        fields:
+          - name: "top_section"
+            label: "Top section"
+            widget: "object"
+            fields:
+              - { name: "title", label: "Title", widget: "string" }
+              - { name: "description", label: "Description", widget: "text" }
+              - name: "button"
+                label: "Button"
+                widget: "object"
+                fields:
+                  - { name: "label", label: "Label", widget: "string" }
+                  - { name: "href", label: "Href", widget: "string" }
+              - { name: "hero_image", label: "Hero image", widget: "image" }
+          - name: "comparison"
+            label: "Comparison"
+            required: false
+            widget: "object"
+            fields:
+              - { name: "heading", label: "Heading", widget: "string" }
+              - { name: "leftHeading", label: "Left Heading", widget: "string" }
+              - { name: "rightHeading", label: "Right Heading", widget: "string" }
+              - name: "rows"
+                label: "Rows"
+                widget: "list"
+                fields:
+                  - { name: "leftTitle", label: "Left Title", widget: "string" }
+                  - { name: "leftText", label: "Left Text", widget: "string" }
+                  - { name: "rightTitle", label: "Right Title", widget: "string" }
+                  - { name: "rightText", label: "Right Text", widget: "string" }
+          - name: "why_data_connection_matters"
+            label: "Why data connection matters"
+            required: false
+            widget: "object"
+            fields:
+              - { name: "title", label: "Title", widget: "string" }
+              - { name: "description", label: "Description", widget: "text" }
+              - name: "features"
+                label: "Features"
+                widget: "list"
+                summary: "{{fields.title}}"
+                fields:
+                  - { name: "title", label: "Title", widget: "string" }
+                  - { name: "description", label: "Description", widget: "string" }
+                  - { name: "image", label: "Image", widget: "image" }
+          - name: "grow_together_managing_connections"
+            label: "Grow together managing connections"
+            required: false
+            widget: "object"
+            fields:
+              - { name: "title", label: "Title", widget: "string" }
+              - { name: "description", label: "Description", widget: "text" }
+              - { name: "image", label: "Image", required: false, widget: "image" }
+              - name: "button"
+                label: "Button"
+                widget: "object"
+                fields:
+                  - { name: "label", label: "Label", widget: "string" }
+                  - { name: "href", label: "Href", widget: "string" }
+                  - { name: "target", label: "Target", required: false, widget: "string" }
+          - name: "core_features"
+            label: "Core features"
+            required: false
+            widget: "object"
+            fields:
+              - { name: "title", label: "Title", widget: "string" }
+              - { name: "description", label: "Description", widget: "text" }
+              - name: "button"
+                label: "Button"
+                widget: "object"
+                fields:
+                  - { name: "label", label: "Label", widget: "string" }
+                  - { name: "href", label: "Href", widget: "string" }
+                  - { name: "target", label: "Target", required: false, widget: "string" }
+              - name: "features"
+                label: "Features"
+                widget: "list"
+                summary: "{{fields.title}}"
+                fields:
+                  - { name: "title", label: "Title", widget: "string" }
+                  - { name: "description", label: "Description", widget: "text" }
+                  - { name: "image", label: "Image", widget: "image" }
+      - name: managed-dependencies
+        label: "Managed dependencies"
+        file: src/content/features/managed-dependencies.md
+        media_folder: public/assets/icons
+        public_folder: /assets/icons
+        fields:
+          - name: "seo"
+            label: "Seo"
+            required: false
+            widget: "object"
+            fields:
+              - { name: "title", label: "Title", widget: "string" }
+              - { name: "description", label: "Description", widget: "text" }
+          - name: "top_section"
+            label: "Top section"
+            widget: "object"
+            fields:
+              - { name: "title", label: "Title", widget: "string" }
+              - { name: "description", label: "Description", widget: "text" }
+              - name: "button"
+                label: "Button"
+                widget: "object"
+                fields:
+                  - { name: "label", label: "Label", widget: "string" }
+                  - { name: "href", label: "Href", widget: "string" }
+              - { name: "hero_image", label: "Hero image", widget: "image" }
+          - name: "problem_section"
+            label: "Problem section"
+            required: false
+            widget: "object"
+            fields:
+              - { name: "title", label: "Title", required: false, widget: "string" }
+              - { name: "description", label: "Description", required: false, widget: "text" }
+              - name: "problems"
+                label: "Problems"
+                required: false
+                widget: "list"
+                summary: "{{fields.title}}"
+                fields:
+                  - { name: "title", label: "Title", required: false, widget: "string" }
+                  - { name: "description", label: "Description", required: false, widget: "text" }
+                  - { name: "image", label: "Image", required: false, widget: "image" }
+          - name: "solution_section"
+            label: "Solution section"
+            required: false
+            widget: "object"
+            fields:
+              - { name: "title", label: "Title", required: false, widget: "string" }
+              - { name: "description", label: "Description", required: false, widget: "text" }
+              - { name: "image", label: "Image", required: false, widget: "image" }
+              - name: "button"
+                label: "Button"
+                required: false
+                widget: "object"
+                fields:
+                  - { name: "label", label: "Label", required: false, widget: "string" }
+                  - { name: "href", label: "Href", required: false, widget: "string" }
+                  - { name: "target", label: "Target", required: false, widget: "string" }
+              - { name: "imageSide", label: "Image Side", required: false, widget: "string" }
+          - name: "how_it_works"
+            label: "How it works"
+            required: false
+            widget: "object"
+            fields:
+              - { name: "title", label: "Title", required: false, widget: "string" }
+              - { name: "description", label: "Description", required: false, widget: "text" }
+              - name: "features"
+                label: "Features"
+                required: false
+                widget: "list"
+                fields:
+                  - { name: "step", label: "Step", required: false, widget: "string" }
+                  - { name: "description", label: "Description", required: false, widget: "text" }
+          - name: "key_benefits"
+            label: "Key benefits"
+            required: false
+            widget: "object"
+            fields:
+              - { name: "title", label: "Title", required: false, widget: "string" }
+              - { name: "description", label: "Description", required: false, widget: "text" }
+              - name: "button"
+                label: "Button"
+                required: false
+                widget: "object"
+                fields:
+                  - { name: "label", label: "Label", required: false, widget: "string" }
+                  - { name: "href", label: "Href", required: false, widget: "string" }
+                  - { name: "target", label: "Target", required: false, widget: "string" }
+              - name: "features"
+                label: "Features"
+                required: false
+                widget: "list"
+                summary: "{{fields.title}}"
+                fields:
+                  - { name: "title", label: "Title", required: false, widget: "string" }
+                  - { name: "description", label: "Description", required: false, widget: "text" }
+                  - { name: "image", label: "Image", required: false, widget: "image" }
+      - name: python-dependency-hell
+        label: "Python dependency hell"
+        file: src/content/features/python-dependency-hell.md
+        media_folder: public/assets/icons
+        public_folder: /assets/icons
+        fields:
+          - name: "top_section"
+            label: "Top section"
+            widget: "object"
+            fields:
+              - { name: "title", label: "Title", widget: "string" }
+              - { name: "description", label: "Description", widget: "text" }
+              - name: "button"
+                label: "Button"
+                widget: "object"
+                fields:
+                  - { name: "label", label: "Label", widget: "string" }
+                  - { name: "href", label: "Href", widget: "string" }
+              - { name: "hero_image", label: "Hero image", widget: "image" }
+          - name: "section"
+            label: "Section"
+            required: false
+            widget: "object"
+            fields:
+              - { name: "title", label: "Title", widget: "string" }
+              - { name: "description", label: "Description", widget: "text" }
+              - { name: "image", label: "Image", widget: "image" }
+              - name: "button"
+                label: "Button"
+                widget: "object"
+                fields:
+                  - { name: "label", label: "Label", widget: "string" }
+                  - { name: "href", label: "Href", widget: "string" }
+                  - { name: "target", label: "Target", required: false, widget: "string" }
+              - { name: "imageSide", label: "Image Side", widget: "string" }
+          - name: "simplify_dependency_management"
+            label: "Simplify dependency management"
+            required: false
+            widget: "object"
+            fields:
+              - { name: "title", label: "Title", widget: "string" }
+              - { name: "description", label: "Description", widget: "text" }
+              - name: "button"
+                label: "Button"
+                widget: "object"
+                fields:
+                  - { name: "label", label: "Label", widget: "string" }
+                  - { name: "href", label: "Href", widget: "string" }
+                  - { name: "target", label: "Target", required: false, widget: "string" }
+              - name: "features"
+                label: "Features"
+                widget: "list"
+                summary: "{{fields.title}}"
+                fields:
+                  - { name: "title", label: "Title", widget: "string" }
+                  - { name: "description", label: "Description", widget: "text" }
+                  - { name: "image", label: "Image", widget: "image" }
+      - name: run-data-on-any-cloud
+        label: "Run data on any cloud"
+        file: src/content/features/run-data-on-any-cloud.md
+        media_folder: public/assets/images
+        public_folder: /assets/images
+        fields:
+          - name: "seo"
+            label: "Seo"
+            required: false
+            widget: "object"
+            fields:
+              - { name: "title", label: "Title", widget: "string" }
+              - { name: "description", label: "Description", widget: "text" }
+          - name: "top_section"
+            label: "Top section"
+            widget: "object"
+            fields:
+              - { name: "title", label: "Title", widget: "string" }
+              - { name: "description", label: "Description", widget: "text" }
+              - name: "button"
+                label: "Button"
+                widget: "object"
+                fields:
+                  - { name: "label", label: "Label", widget: "string" }
+                  - { name: "href", label: "Href", widget: "string" }
+              - { name: "hero_image", label: "Hero image", widget: "image" }
+              - name: "company_logos"
+                label: "Company logos"
+                required: false
+                widget: "object"
+                fields:
+                  - { name: "title", label: "Title", widget: "string" }
+                  - name: "logos"
+                    label: "Logos"
+                    widget: "list"
+                    fields:
+                      - { name: "image", label: "Image", widget: "image" }
+                      - { name: "alt", label: "Alt", widget: "string" }
+          - name: "benefits"
+            label: "Benefits"
+            required: false
+            widget: "object"
+            fields:
+              - { name: "title", label: "Title", widget: "string" }
+              - { name: "description", label: "Description", widget: "text" }
+              - name: "features"
+                label: "Features"
+                widget: "list"
+                summary: "{{fields.title}}"
+                fields:
+                  - { name: "title", label: "Title", widget: "string" }
+                  - { name: "description", label: "Description", widget: "text" }
+                  - { name: "image", label: "Image", widget: "image" }
+          - name: "core_capabilities"
+            label: "Core capabilities"
+            required: false
+            widget: "object"
+            fields:
+              - { name: "title", label: "Title", widget: "string" }
+              - { name: "description", label: "Description", widget: "text" }
+              - name: "button"
+                label: "Button"
+                widget: "object"
+                fields:
+                  - { name: "label", label: "Label", widget: "string" }
+                  - { name: "href", label: "Href", widget: "string" }
+                  - { name: "target", label: "Target", required: false, widget: "string" }
+              - name: "features"
+                label: "Features"
+                widget: "list"
+                summary: "{{fields.title}}"
+                fields:
+                  - { name: "title", label: "Title", widget: "string" }
+                  - { name: "description", label: "Description", widget: "text" }
+                  - { name: "image", label: "Image", widget: "image" }
+          - name: "cloud_providers"
+            label: "Cloud providers"
+            required: false
+            widget: "object"
+            fields:
+              - { name: "title", label: "Title", widget: "string" }
+              - name: "cloud_providers"
+                label: "Cloud providers"
+                widget: "list"
+                fields:
+                  - { name: "description", label: "Description", required: false, widget: "text" }
+                  - { name: "logo", label: "Logo", widget: "image" }
+                  - { name: "link", label: "Link", widget: "string" }
+                  - { name: "image", label: "Image", widget: "image" }
+          - name: "private_cloud"
+            label: "Private cloud"
+            required: false
+            widget: "object"
+            fields:
+              - { name: "title", label: "Title", widget: "string" }
+              - { name: "description", label: "Description", widget: "text" }
+              - name: "features"
+                label: "Features"
+                widget: "list"
+                summary: "{{fields.title}}"
+                fields:
+                  - { name: "title", label: "Title", widget: "string" }
+                  - { name: "description", label: "Description", widget: "text" }
+                  - { name: "image", label: "Image", widget: "image" }
+              - name: "feature1"
+                label: "Feature1"
+                required: false
+                widget: "object"
+                fields:
+                  - { name: "title", label: "Title", widget: "string" }
+                  - { name: "description", label: "Description", widget: "text" }
+              - name: "feature2"
+                label: "Feature2"
+                required: false
+                widget: "object"
+                fields:
+                  - { name: "title", label: "Title", widget: "string" }
+                  - { name: "description", label: "Description", widget: "text" }
+      - name: shared-foundation
+        label: "Shared foundation"
+        file: src/content/features/shared-foundation.md
+        media_folder: public/assets/icons
+        public_folder: /assets/icons
+        fields:
+          - name: "seo"
+            label: "Seo"
+            required: false
+            widget: "object"
+            fields:
+              - { name: "title", label: "Title", widget: "string" }
+              - { name: "description", label: "Description", widget: "text" }
+          - name: "top_section"
+            label: "Top section"
+            widget: "object"
+            fields:
+              - { name: "title", label: "Title", widget: "string" }
+              - { name: "description", label: "Description", widget: "text" }
+              - name: "button"
+                label: "Button"
+                widget: "object"
+                fields:
+                  - { name: "label", label: "Label", widget: "string" }
+                  - { name: "href", label: "Href", widget: "string" }
+              - { name: "hero_image", label: "Hero image", widget: "image" }
+          - name: "shared_platform_layer"
+            label: "Shared platform layer"
+            required: false
+            widget: "object"
+            fields:
+              - { name: "title", label: "Title", required: false, widget: "string" }
+              - { name: "description", label: "Description", required: false, widget: "text" }
+              - name: "button"
+                label: "Button"
+                required: false
+                widget: "object"
+                fields:
+                  - { name: "label", label: "Label", required: false, widget: "string" }
+                  - { name: "href", label: "Href", required: false, widget: "string" }
+                  - { name: "target", label: "Target", required: false, widget: "string" }
+              - name: "features"
+                label: "Features"
+                required: false
+                widget: "list"
+                summary: "{{fields.title}}"
+                fields:
+                  - { name: "title", label: "Title", required: false, widget: "string" }
+                  - { name: "description", label: "Description", required: false, widget: "text" }
+                  - { name: "image", label: "Image", required: false, widget: "image" }
+                  - { name: "link", label: "Link", required: false, widget: "string" }
+                  - { name: "linkText", label: "Link Text", required: false, widget: "string" }
+          - name: "built_on_managed_dependencies"
+            label: "Built on managed dependencies"
+            required: false
+            widget: "object"
+            fields:
+              - { name: "title", label: "Title", required: false, widget: "string" }
+              - { name: "description", label: "Description", required: false, widget: "text" }
+              - { name: "image", label: "Image", required: false, widget: "image" }
+              - { name: "link", label: "Link", required: false, widget: "string" }
+              - { name: "linkText", label: "Link Text", required: false, widget: "string" }
+              - { name: "imageSide", label: "Image Side", required: false, widget: "string" }
+              - { name: "callout", label: "Callout", required: false, widget: "text" }
+          - name: "comparison"
+            label: "Comparison"
+            required: false
+            widget: "object"
+            fields:
+              - { name: "heading", label: "Heading", widget: "string" }
+              - { name: "leftHeading", label: "Left Heading", widget: "string" }
+              - { name: "rightHeading", label: "Right Heading", widget: "string" }
+              - name: "rows"
+                label: "Rows"
+                widget: "list"
+                fields:
+                  - { name: "leftTitle", label: "Left Title", widget: "string" }
+                  - { name: "leftText", label: "Left Text", widget: "text" }
+                  - { name: "rightTitle", label: "Right Title", widget: "string" }
+                  - { name: "rightText", label: "Right Text", widget: "string" }
+          - name: "why_shared_foundation_matters"
+            label: "Why shared foundation matters"
+            required: false
+            widget: "object"
+            fields:
+              - { name: "title", label: "Title", required: false, widget: "string" }
+              - { name: "description", label: "Description", required: false, widget: "text" }
+          - name: "key_benefits"
+            label: "Key benefits"
+            required: false
+            widget: "object"
+            fields:
+              - { name: "title", label: "Title", required: false, widget: "string" }
+              - { name: "description", label: "Description", required: false, widget: "text" }
+              - name: "features"
+                label: "Features"
+                required: false
+                widget: "list"
+                summary: "{{fields.title}}"
+                fields:
+                  - { name: "title", label: "Title", required: false, widget: "string" }
+                  - { name: "description", label: "Description", required: false, widget: "text" }
+                  - { name: "image", label: "Image", required: false, widget: "image" }
+  - name: pricing
+    label: "Pricing page sections"
+    delete: false
+    files:
+      - name: 24-7-help
+        label: "24 7 help"
+        file: src/content/pricing/24-7-help.md
+        media_folder: public/assets/images
+        public_folder: /assets/images
+        fields:
+          - { name: "title", label: "Title", required: false, widget: "string" }
+          - { name: "button", label: "Button", required: false, widget: "string" }
+          - { name: "href", label: "Href", required: false, widget: "string" }
+          - { name: "support", label: "Support", required: false, widget: "list" }
+      - name: all-in-one-solution
+        label: "All in one solution"
+        file: src/content/pricing/all-in-one-solution.md
+        media_folder: public/assets/images
+        public_folder: /assets/images
+        fields:
+          - { name: "heading", label: "Heading", required: false, widget: "string" }
+          - { name: "title", label: "Title", required: false, widget: "string" }
+          - { name: "button", label: "Button", required: false, widget: "string" }
+          - { name: "href", label: "Href", required: false, widget: "string" }
+          - { name: "support", label: "Support", required: false, widget: "list" }
+      - name: consultation
+        label: "Consultation"
+        file: src/content/pricing/consultation.md
+        media_folder: public/assets/images
+        public_folder: /assets/images
+        fields:
+          - { name: "title_1", label: "Title 1", required: false, widget: "string" }
+          - { name: "title_2", label: "Title 2", required: false, widget: "string" }
+          - { name: "description", label: "Description", required: false, widget: "string" }
+          - name: "button"
+            label: "Button"
+            required: false
+            widget: "object"
+            fields:
+              - { name: "text", label: "Text", required: false, widget: "string" }
+              - { name: "href", label: "Href", required: false, widget: "string" }
+      - name: plancost
+        label: "Plancost"
+        file: src/content/pricing/plancost.md
+        media_folder: public/assets/images
+        public_folder: /assets/images
+        fields:
+          - name: "pricing"
+            label: "Pricing"
+            required: false
+            widget: "object"
+            fields:
+              - name: "UK"
+                label: "UK"
+                required: false
+                widget: "object"
+                fields:
+                  - { name: "basic", label: "Basic", required: false, widget: "number", value_type: "int" }
+                  - { name: "standard", label: "Standard", required: false, widget: "number", value_type: "int" }
+                  - { name: "premium", label: "Premium", required: false, widget: "number", value_type: "int" }
+              - name: "EU"
+                label: "EU"
+                required: false
+                widget: "object"
+                fields:
+                  - { name: "basic", label: "Basic", required: false, widget: "number", value_type: "int" }
+                  - { name: "standard", label: "Standard", required: false, widget: "number", value_type: "int" }
+                  - { name: "premium", label: "Premium", required: false, widget: "number", value_type: "int" }
+              - name: "US"
+                label: "US"
+                required: false
+                widget: "object"
+                fields:
+                  - { name: "basic", label: "Basic", required: false, widget: "number", value_type: "int" }
+                  - { name: "standard", label: "Standard", required: false, widget: "number", value_type: "int" }
+                  - { name: "premium", label: "Premium", required: false, widget: "number", value_type: "int" }
+      - name: pricing-plans
+        label: "Pricing plans"
+        file: src/content/pricing/pricing-plans.md
+        media_folder: public/assets/images
+        public_folder: /assets/images
+        fields:
+          - { name: "title", label: "Title", required: false, widget: "string" }
+          - { name: "description", label: "Description", required: false, widget: "string" }
+          - { name: "hostown", label: "Hostown", required: false, widget: "string" }
+          - { name: "hostdata", label: "Hostdata", required: false, widget: "string" }
+          - name: "own_cloud_plan"
+            label: "Own cloud plan"
+            required: false
+            widget: "object"
+            fields:
+              - name: "plan_1"
+                label: "Plan 1"
+                required: false
+                widget: "object"
+                fields:
+                  - { name: "planname", label: "Planname", required: false, widget: "string" }
+                  - { name: "slogan", label: "Slogan", required: false, widget: "string" }
+                  - { name: "cost", label: "Cost", required: false, widget: "number", value_type: "int" }
+                  - { name: "duration", label: "Duration", required: false, widget: "string" }
+                  - { name: "button", label: "Button", required: false, widget: "string" }
+                  - { name: "apps", label: "Apps", required: false, widget: "list" }
+                  - { name: "features", label: "Features", required: false, widget: "list" }
+              - name: "plan_2"
+                label: "Plan 2"
+                required: false
+                widget: "object"
+                fields:
+                  - { name: "suggestion", label: "Suggestion", required: false, widget: "string" }
+                  - { name: "planname", label: "Planname", required: false, widget: "string" }
+                  - { name: "slogan", label: "Slogan", required: false, widget: "string" }
+                  - { name: "cost", label: "Cost", required: false, widget: "number", value_type: "int" }
+                  - { name: "duration", label: "Duration", required: false, widget: "string" }
+                  - { name: "button", label: "Button", required: false, widget: "string" }
+                  - { name: "apps", label: "Apps", required: false, widget: "list" }
+                  - { name: "features", label: "Features", required: false, widget: "list" }
+              - name: "plan_3"
+                label: "Plan 3"
+                required: false
+                widget: "object"
+                fields:
+                  - { name: "suggestion", label: "Suggestion", required: false, widget: "string" }
+                  - { name: "planname", label: "Planname", required: false, widget: "string" }
+                  - { name: "slogan", label: "Slogan", required: false, widget: "string" }
+                  - { name: "cost", label: "Cost", required: false, widget: "number", value_type: "int" }
+                  - { name: "duration", label: "Duration", required: false, widget: "string" }
+                  - { name: "button", label: "Button", required: false, widget: "string" }
+                  - { name: "apps", label: "Apps", required: false, widget: "list" }
+                  - { name: "features", label: "Features", required: false, widget: "list" }
+          - { name: "heading", label: "Heading", required: false, widget: "string" }
+          - name: "dataflow_cloud_plan"
+            label: "Dataflow cloud plan"
+            required: false
+            widget: "object"
+            fields:
+              - name: "plan_1"
+                label: "Plan 1"
+                required: false
+                widget: "object"
+                fields:
+                  - { name: "plan_name", label: "Plan name", required: false, widget: "string" }
+                  - { name: "infra", label: "Infra", required: false, widget: "string" }
+                  - { name: "cost", label: "Cost", required: false, widget: "number", value_type: "int" }
+                  - { name: "button", label: "Button", required: false, widget: "string" }
+                  - name: "instance_1"
+                    label: "Instance 1"
+                    required: false
+                    widget: "object"
+                    fields:
+                      - { name: "cost", label: "Cost", required: false, widget: "number", value_type: "float" }
+                      - { name: "duration", label: "Duration", required: false, widget: "string" }
+                      - { name: "size", label: "Size", required: false, widget: "string" }
+                      - { name: "cpu", label: "Cpu", required: false, widget: "string" }
+                      - { name: "ram", label: "Ram", required: false, widget: "string" }
+                  - name: "instance_2"
+                    label: "Instance 2"
+                    required: false
+                    widget: "object"
+                    fields:
+                      - { name: "cost", label: "Cost", required: false, widget: "number", value_type: "float" }
+                      - { name: "duration", label: "Duration", required: false, widget: "string" }
+                      - { name: "size", label: "Size", required: false, widget: "string" }
+                      - { name: "cpu", label: "Cpu", required: false, widget: "string" }
+                      - { name: "ram", label: "Ram", required: false, widget: "string" }
+                  - name: "instance_3"
+                    label: "Instance 3"
+                    required: false
+                    widget: "object"
+                    fields:
+                      - { name: "cost", label: "Cost", required: false, widget: "number", value_type: "float" }
+                      - { name: "duration", label: "Duration", required: false, widget: "string" }
+                      - { name: "size", label: "Size", required: false, widget: "string" }
+                      - { name: "cpu", label: "Cpu", required: false, widget: "string" }
+                      - { name: "ram", label: "Ram", required: false, widget: "string" }
+              - name: "plan_2"
+                label: "Plan 2"
+                required: false
+                widget: "object"
+                fields:
+                  - { name: "plan_name", label: "Plan name", required: false, widget: "string" }
+                  - { name: "infra", label: "Infra", required: false, widget: "string" }
+                  - { name: "cost", label: "Cost", required: false, widget: "number", value_type: "int" }
+                  - { name: "button", label: "Button", required: false, widget: "string" }
+                  - name: "instance_1"
+                    label: "Instance 1"
+                    required: false
+                    widget: "object"
+                    fields:
+                      - { name: "cost", label: "Cost", required: false, widget: "number", value_type: "float" }
+                      - { name: "duration", label: "Duration", required: false, widget: "string" }
+                      - { name: "size", label: "Size", required: false, widget: "string" }
+                      - { name: "cpu", label: "Cpu", required: false, widget: "string" }
+                      - { name: "ram", label: "Ram", required: false, widget: "string" }
+                  - name: "instance_2"
+                    label: "Instance 2"
+                    required: false
+                    widget: "object"
+                    fields:
+                      - { name: "cost", label: "Cost", required: false, widget: "number", value_type: "float" }
+                      - { name: "duration", label: "Duration", required: false, widget: "string" }
+                      - { name: "size", label: "Size", required: false, widget: "string" }
+                      - { name: "cpu", label: "Cpu", required: false, widget: "string" }
+                      - { name: "ram", label: "Ram", required: false, widget: "string" }
+                  - name: "instance_3"
+                    label: "Instance 3"
+                    required: false
+                    widget: "object"
+                    fields:
+                      - { name: "cost", label: "Cost", required: false, widget: "number", value_type: "float" }
+                      - { name: "duration", label: "Duration", required: false, widget: "string" }
+                      - { name: "size", label: "Size", required: false, widget: "string" }
+                      - { name: "cpu", label: "Cpu", required: false, widget: "string" }
+                      - { name: "ram", label: "Ram", required: false, widget: "string" }
+              - name: "custom_setup"
+                label: "Custom setup"
+                required: false
+                widget: "object"
+                fields:
+                  - { name: "plan_name", label: "Plan name", required: false, widget: "string" }
+                  - { name: "features", label: "Features", required: false, widget: "list" }
+                  - { name: "button", label: "Button", required: false, widget: "string" }
+          - name: "table1"
+            label: "Table1"
+            required: false
+            widget: "object"
+            fields:
+              - name: "tablehead1"
+                label: "Tablehead1"
+                required: false
+                widget: "object"
+                fields:
+                  - { name: "title", label: "Title", required: false, widget: "string" }
+                  - { name: "description", label: "Description", required: false, widget: "string" }
+              - name: "tablehead2"
+                label: "Tablehead2"
+                required: false
+                widget: "object"
+                fields:
+                  - { name: "cost", label: "Cost", required: false, widget: "string" }
+                  - { name: "button", label: "Button", required: false, widget: "string" }
+              - name: "tablehead3"
+                label: "Tablehead3"
+                required: false
+                widget: "object"
+                fields:
+                  - { name: "cost", label: "Cost", required: false, widget: "number", value_type: "int" }
+                  - { name: "duration", label: "Duration", required: false, widget: "string" }
+                  - { name: "button", label: "Button", required: false, widget: "string" }
+              - name: "tablehead4"
+                label: "Tablehead4"
+                required: false
+                widget: "object"
+                fields:
+                  - { name: "cost", label: "Cost", required: false, widget: "number", value_type: "int" }
+                  - { name: "duration", label: "Duration", required: false, widget: "string" }
+                  - { name: "button", label: "Button", required: false, widget: "string" }
+              - name: "features"
+                label: "Features"
+                required: false
+                widget: "list"
+                summary: "{{fields.name}}"
+                fields:
+                  - { name: "name", label: "Name", required: false, widget: "string" }
+          - name: "table2"
+            label: "Table2"
+            required: false
+            widget: "object"
+            fields:
+              - name: "tablehead1"
+                label: "Tablehead1"
+                required: false
+                widget: "object"
+                fields:
+                  - { name: "title", label: "Title", required: false, widget: "string" }
+                  - { name: "description", label: "Description", required: false, widget: "string" }
+              - name: "tablehead2"
+                label: "Tablehead2"
+                required: false
+                widget: "object"
+                fields:
+                  - { name: "cost", label: "Cost", required: false, widget: "string" }
+                  - { name: "button", label: "Button", required: false, widget: "string" }
+              - name: "tablehead3"
+                label: "Tablehead3"
+                required: false
+                widget: "object"
+                fields:
+                  - { name: "cost", label: "Cost", required: false, widget: "string" }
+                  - { name: "button", label: "Button", required: false, widget: "string" }
+              - { name: "feature1", label: "Feature1", required: false, widget: "string" }
+              - { name: "feature2", label: "Feature2", required: false, widget: "string" }
+              - { name: "feature3", label: "Feature3", required: false, widget: "string" }
+              - { name: "feature4", label: "Feature4", required: false, widget: "string" }
+              - { name: "feature5", label: "Feature5", required: false, widget: "string" }
+              - { name: "feature6", label: "Feature6", required: false, widget: "string" }
+      - name: pricing
+        label: "Pricing"
+        file: src/content/pricing/pricing.md
+        media_folder: public/assets/icons
+        public_folder: /assets/icons
+        fields:
+          - name: "additional_support"
+            label: "Additional support"
+            required: false
+            widget: "object"
+            fields:
+              - { name: "section_title", label: "Section title", required: false, widget: "string" }
+              - { name: "heading", label: "Heading", required: false, widget: "string" }
+              - { name: "descriptions", label: "Descriptions", required: false, widget: "string" }
+              - name: "button"
+                label: "Button"
+                required: false
+                widget: "object"
+                fields:
+                  - { name: "label", label: "Label", required: false, widget: "string" }
+                  - { name: "href", label: "Href", required: false, widget: "string" }
+                  - { name: "hrefTarget", label: "Href Target", required: false, widget: "string" }
+              - name: "cards"
+                label: "Cards"
+                required: false
+                widget: "list"
+                summary: "{{fields.title}}"
+                fields:
+                  - { name: "image", label: "Image", required: false, widget: "image" }
+                  - { name: "title", label: "Title", required: false, widget: "string" }
+                  - { name: "description", label: "Description", required: false, widget: "text" }
+                  - { name: "href", label: "Href", required: false, widget: "string" }
+                  - { name: "label", label: "Label", required: false, widget: "string" }
+                  - { name: "target", label: "Target", required: false, widget: "string" }
+                  - { name: "width", label: "Width", required: false, widget: "string" }
+      - name: security-complaince
+        label: "Security complaince"
+        file: src/content/pricing/security-complaince.md
+        media_folder: public/assets/images
+        public_folder: /assets/images
+        fields:
+          - { name: "title", label: "Title", required: false, widget: "string" }
+          - { name: "description", label: "Description", required: false, widget: "text" }
+  - name: common
+    label: "Shared content (header, footer, forms)"
+    delete: false
+    files:
+      - name: book-demo
+        label: "Book demo"
+        file: src/content/common/book-demo.md
+        media_folder: public/assets/images
+        public_folder: /assets/images
+        fields:
+          - name: "hero"
+            label: "Hero"
+            required: false
+            widget: "object"
+            fields:
+              - { name: "title", label: "Title", widget: "string" }
+              - { name: "subtitle", label: "Subtitle", required: false, widget: "string" }
+          - name: "highlights"
+            label: "Highlights"
+            required: false
+            widget: "list"
+            summary: "{{fields.title}}"
+            fields:
+              - { name: "image", label: "Image", widget: "image" }
+              - { name: "title", label: "Title", widget: "string" }
+              - { name: "description", label: "Description", widget: "string" }
+          - name: "form"
+            label: "Form"
+            required: false
+            widget: "object"
+            fields:
+              - name: "fields"
+                label: "Fields"
+                required: false
+                widget: "list"
+                summary: "{{fields.label}}"
+                fields:
+                  - { name: "name_attr", label: "Name attr", widget: "string" }
+                  - { name: "label", label: "Label", widget: "string" }
+                  - { name: "placeholder", label: "Placeholder", widget: "string" }
+                  - { name: "type", label: "Type", widget: "string" }
+                  - { name: "id", label: "Id", required: false, widget: "string" }
+                  - name: "options"
+                    label: "Options"
+                    required: false
+                    widget: "list"
+                    summary: "{{fields.label}}"
+                    fields:
+                      - { name: "label", label: "Label", widget: "string" }
+                      - { name: "value", label: "Value", widget: "string" }
+              - { name: "terms_text", label: "Terms text", required: false, widget: "string" }
+              - { name: "terms_link_text", label: "Terms link text", required: false, widget: "string" }
+              - { name: "button_text", label: "Button text", required: false, widget: "string" }
+              - { name: "hidden_action_value", label: "Hidden action value", required: false, widget: "string" }
+      - name: common
+        label: "Common"
+        file: src/content/common/common.md
+        media_folder: public/assets/images
+        public_folder: /assets/images
+        fields:
+          - name: "testimonials"
+            label: "Testimonials"
+            required: false
+            widget: "object"
+            fields:
+              - { name: "title", label: "Title", widget: "string" }
+              - { name: "subtitle", label: "Subtitle", widget: "string" }
+              - name: "testimonials"
+                label: "Testimonials"
+                widget: "list"
+                summary: "{{fields.name}}"
+                fields:
+                  - { name: "name", label: "Name", widget: "string" }
+                  - { name: "role", label: "Role", widget: "string" }
+                  - { name: "company", label: "Company", widget: "string" }
+                  - { name: "text", label: "Text", widget: "text" }
+          - name: "supported_by"
+            label: "Supported by"
+            required: false
+            widget: "object"
+            fields:
+              - { name: "title", label: "Title", widget: "string" }
+              - name: "incubators"
+                label: "Incubators"
+                widget: "list"
+                summary: "{{fields.name}}"
+                fields:
+                  - { name: "name", label: "Name", widget: "string" }
+                  - { name: "logo", label: "Logo", widget: "image" }
+      - name: contact
+        label: "Contact"
+        file: src/content/common/contact.md
+        media_folder: public/assets/images
+        public_folder: /assets/images
+        fields:
+          - { name: "title", label: "Title", required: false, widget: "string" }
+          - { name: "description", label: "Description", required: false, widget: "string" }
+          - name: "form"
+            label: "Form"
+            required: false
+            widget: "object"
+            fields:
+              - { name: "label1", label: "Label1", required: false, widget: "string" }
+              - { name: "placeholder1", label: "Placeholder1", required: false, widget: "string" }
+              - { name: "label2", label: "Label2", required: false, widget: "string" }
+              - { name: "placeholder2", label: "Placeholder2", required: false, widget: "string" }
+              - { name: "label3", label: "Label3", required: false, widget: "string" }
+              - { name: "placeholder3", label: "Placeholder3", required: false, widget: "string" }
+              - { name: "label4", label: "Label4", required: false, widget: "string" }
+              - { name: "placeholder4", label: "Placeholder4", required: false, widget: "string" }
+              - { name: "label5", label: "Label5", required: false, widget: "string" }
+              - { name: "placeholder5", label: "Placeholder5", required: false, widget: "string" }
+              - { name: "terms", label: "Terms", required: false, widget: "string" }
+              - { name: "link", label: "Link", required: false, widget: "string" }
+              - { name: "button", label: "Button", required: false, widget: "string" }
+      - name: header-footer
+        label: "Header footer"
+        file: src/content/common/header-footer.md
+        media_folder: public/assets/icons
+        public_folder: /assets/icons
+        fields:
+          - name: "header"
+            label: "Header"
+            required: false
+            widget: "object"
+            fields:
+              - name: "logo"
+                label: "Logo"
+                widget: "object"
+                fields:
+                  - { name: "href", label: "Href", widget: "string" }
+                  - { name: "image", label: "Image", widget: "image" }
+                  - { name: "alt", label: "Alt", widget: "string" }
+              - name: "nav"
+                label: "Nav"
+                widget: "object"
+                fields:
+                  - name: "desktop"
+                    label: "Desktop"
+                    widget: "list"
+                    summary: "{{fields.label}}"
+                    fields:
+                      - { name: "label", label: "Label", widget: "string" }
+                      - { name: "type", label: "Type", widget: "string" }
+                      - { name: "width", label: "Width", required: false, widget: "string" }
+                      - name: "columns"
+                        label: "Columns"
+                        required: false
+                        widget: "list"
+                        summary: "{{fields.heading}}"
+                        fields:
+                          - { name: "heading", label: "Heading", widget: "string" }
+                          - { name: "span", label: "Span", required: false, widget: "number", value_type: "int" }
+                          - name: "items"
+                            label: "Items"
+                            widget: "list"
+                            summary: "{{fields.title}}"
+                            fields:
+                              - { name: "title", label: "Title", widget: "string" }
+                              - { name: "icon-id", label: "Icon id", required: false, widget: "string" }
+                              - { name: "description", label: "Description", widget: "string" }
+                              - { name: "href", label: "Href", required: false, widget: "string" }
+                              - { name: "action", label: "Action", required: false, widget: "string" }
+                      - { name: "href", label: "Href", required: false, widget: "string" }
+              - name: "ctas"
+                label: "Ctas"
+                widget: "object"
+                fields:
+                  - name: "primary"
+                    label: "Primary"
+                    widget: "object"
+                    fields:
+                      - { name: "label", label: "Label", widget: "string" }
+                      - { name: "href", label: "Href", widget: "string" }
+                  - name: "secondary"
+                    label: "Secondary"
+                    widget: "object"
+                    fields:
+                      - { name: "label", label: "Label", widget: "string" }
+                      - { name: "href", label: "Href", widget: "string" }
+                      - { name: "target", label: "Target", required: false, widget: "string" }
+          - name: "footer"
+            label: "Footer"
+            required: false
+            widget: "object"
+            fields:
+              - { name: "finance", label: "Finance", widget: "string" }
+              - { name: "finance_underline", label: "Finance underline", widget: "string" }
+              - { name: "description", label: "Description", widget: "text" }
+              - { name: "copyrights", label: "Copyrights", widget: "string" }
+              - name: "sections"
+                label: "Sections"
+                widget: "list"
+                summary: "{{fields.heading}}"
+                fields:
+                  - { name: "heading", label: "Heading", widget: "string" }
+                  - name: "links"
+                    label: "Links"
+                    widget: "list"
+                    summary: "{{fields.label}}"
+                    fields:
+                      - { name: "label", label: "Label", widget: "string" }
+                      - { name: "href", label: "Href", widget: "string" }
+              - name: "bottom_bar"
+                label: "Bottom bar"
+                widget: "object"
+                fields:
+                  - name: "links"
+                    label: "Links"
+                    widget: "list"
+                    summary: "{{fields.label}}"
+                    fields:
+                      - { name: "label", label: "Label", widget: "string" }
+                      - { name: "href", label: "Href", widget: "string" }
+              - name: "social_links"
+                label: "Social links"
+                widget: "list"
+                summary: "{{fields.platform}}"
+                fields:
+                  - { name: "platform", label: "Platform", widget: "string" }
+                  - { name: "url", label: "Url", widget: "string" }
+                  - { name: "icon", label: "Icon", widget: "image" }
+      - name: start-free-trail
+        label: "Start free trail"
+        file: src/content/common/start-free-trail.md
+        media_folder: public/assets/images
+        public_folder: /assets/images
+        fields:
+          - { name: "title1", label: "Title1", required: false, widget: "string" }
+          - { name: "title2", label: "Title2", required: false, widget: "string" }
+          - { name: "description", label: "Description", required: false, widget: "list" }
+          - name: "form"
+            label: "Form"
+            required: false
+            widget: "object"
+            fields:
+              - { name: "label1", label: "Label1", required: false, widget: "string" }
+              - { name: "placeholder1", label: "Placeholder1", required: false, widget: "string" }
+              - { name: "label2", label: "Label2", required: false, widget: "string" }
+              - { name: "placeholder2", label: "Placeholder2", required: false, widget: "string" }
+              - { name: "label3", label: "Label3", required: false, widget: "string" }
+              - { name: "placeholder3", label: "Placeholder3", required: false, widget: "string" }
+              - { name: "label4", label: "Label4", required: false, widget: "string" }
+              - { name: "placeholder4", label: "Placeholder4", required: false, widget: "string" }
+              - { name: "label5", label: "Label5", required: false, widget: "string" }
+              - { name: "placeholder5", label: "Placeholder5", required: false, widget: "string" }
+              - { name: "label6", label: "Label6", required: false, widget: "string" }
+              - { name: "placeholder6", label: "Placeholder6", required: false, widget: "string" }
+              - { name: "button", label: "Button", required: false, widget: "string" }
+  - name: legal
+    label: "Legal pages"
+    delete: false
+    files:
+      - name: eula
+        label: "EULA"
+        file: src/pages/_eula.md
+        media_folder: public/assets/images
+        public_folder: /assets/images
+        fields:
+          - { name: "lastUpdated", label: "Last Updated", required: false, widget: "string" }
+          - { name: "body", label: "Body", widget: "markdown" }
+      - name: privacy-policy
+        label: "Privacy policy"
+        file: src/pages/_privacy-policy.md
+        media_folder: public/assets/images
+        public_folder: /assets/images
+        fields:
+          - { name: "lastUpdated", label: "Last Updated", required: false, widget: "string" }
+          - { name: "body", label: "Body", widget: "markdown" }

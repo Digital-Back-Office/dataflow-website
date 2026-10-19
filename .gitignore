@@ -28,3 +28,5 @@ pnpm-debug.log*
 # python (fetch_pricing.py)
 __pycache__/
 *.pyc
+
+CLAUDE.md

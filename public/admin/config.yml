@@ -3,8 +3,7 @@ backend:
   name: github
   repo: Digital-Back-Office/dataflow-website
   branch: master
-  # base_url: https://YOUR-DECAP-OAUTH-PROXY.example.workers.dev   # REQUIRED for GitHub login on a static host; see CLAUDE.md
-  # auth_endpoint: auth
+  auth_endpoint: admin/auth.html
 local_backend: true
 publish_mode: editorial_workflow
 media_folder: public/assets/images

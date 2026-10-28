@@ -590,16 +590,77 @@ window.__DATAFLOW_PREVIEW_CSS__ = "@font-face{font-family:Plus Jakarta Sans Vari
         );
       case 'plancost':
         return h('div', {},
-          Fallback('This entry is runtime pricing config (per-currency plan costs), consumed by src/components/pricing/TopSection.astro, which itself is NOT imported by src/pages/pricing.astro (that page instead renders DeploymentToggle.astro/InstancePricing.astro, which fetch pricing2.json from pricing_branch at runtime — see CLAUDE.md "Pricing pipeline"). Showing a raw field dump.'),
+          Fallback('No live page/component renders "plancost" directly. It is read by src/components/pricing/TopSection.astro (as per-currency instance pricing, via a JSON blob passed to a client script), but that component itself is not imported by any page — src/pages/pricing.astro instead uses DeploymentToggle.astro/InstancePricing.astro, which fetch pricing2.json from pricing_branch at runtime (see CLAUDE.md "Pricing pipeline"). Showing a raw field dump since there is no rendered layout to reproduce faithfully for this entry alone.'),
           RawFieldDump(data, 'plancost')
         );
       case 'pricing-plans':
+        return renderPricingPlans(data);
       case '24-7-help':
       case 'all-in-one-solution':
-        return RawFieldDump(data, 'pricing/' + fileName);
+        return h('div', {},
+          Fallback('No live page/component on dataflow.zone reads "' + fileName + '" (verified by searching src/pages and src/components for getEntry/getCollection calls referencing it). Showing a raw field dump.'),
+          RawFieldDump(data, 'pricing/' + fileName)
+        );
       default:
         return RawFieldDump(data, 'pricing/' + fileName);
     }
+  }
+
+  // src/components/pricing/TopSection.astro (read by that component, which
+  // is itself NOT imported by src/pages/pricing.astro -- see the "plancost"
+  // note above). Reproduces that component's own-cloud/dataflow-cloud plan
+  // cards and comparison tables from this entry's fields. Not imported by
+  // any live page, so this is "as it would render if TopSection.astro were
+  // used," not a page you can currently visit.
+  function PlanCard(plan, opts) {
+    opts = opts || {};
+    if (!plan) return null;
+    return h('div', { className: 'w-[260px] rounded-3xl border border-gray-200 p-5 ' + (opts.highlight ? 'bg-primary text-white' : 'bg-white') },
+      plan.suggestion ? h('p', { className: 'text-xs font-semibold uppercase tracking-wide mb-2 ' + (opts.highlight ? 'text-white' : 'text-primary') }, plan.suggestion) : null,
+      h('p', { className: 'text-xl font-bold mb-1' }, plan.planname || plan.plan_name || ''),
+      plan.slogan ? h('p', { className: 'text-sm mb-3 opacity-80' }, plan.slogan) : null,
+      (plan.cost !== undefined) ? h('p', { className: 'text-3xl font-bold mb-1' }, '$' + plan.cost + (plan.duration ? ' ' : '')) : null,
+      plan.duration ? h('p', { className: 'text-sm mb-4 opacity-70' }, plan.duration) : null,
+      plan.button ? CtaButton({ label: plan.button, href: '#' }) : null,
+      list(plan, 'features').length ? h('ul', { className: 'mt-4 space-y-1 text-sm' },
+        list(plan, 'features').map(function (f, i) { return h('li', { key: i }, '✓ ' + f); })
+      ) : null
+    );
+  }
+
+  function tableRowOption(v) {
+    if (Array.isArray(v)) return v.join(', ');
+    return v === undefined || v === null ? '' : String(v);
+  }
+
+  function renderPricingPlans(data) {
+    var own1 = get(data, 'own_cloud_plan.plan_1', {});
+    var own2 = get(data, 'own_cloud_plan.plan_2', {});
+    var own3 = get(data, 'own_cloud_plan.plan_3', {});
+    var cloud1 = get(data, 'dataflow_cloud_plan.plan_1', {});
+    var cloud2 = get(data, 'dataflow_cloud_plan.plan_2', {});
+    var custom = get(data, 'dataflow_cloud_plan.custom_setup', {});
+    var table1 = get(data, 'table1', {});
+    var table1Columns = [get(table1, 'tablehead1.title', 'Feature'), 'Free', 'Standard', 'Enterprise'];
+    var table1Rows = list(table1, 'features').map(function (f) {
+      return { label: f.name, values: [tableRowOption(f.option_1), tableRowOption(f.option_2), tableRowOption(f.option_3)] };
+    });
+    return h('div', {},
+      Fallback('No live page/component on dataflow.zone currently renders this entry. It is read by src/components/pricing/TopSection.astro, but that component is not imported by any page (src/pages/pricing.astro uses DeploymentToggle.astro/InstancePricing.astro instead, which fetch pricing2.json at runtime). This preview reproduces TopSection.astro\'s own layout and classes so it is faithful to what WOULD render if that component were wired up.'),
+      h('section', { className: 'py-10 text-center' },
+        h('h1', { className: 'text-5xl font-bold text-textblack mb-3' }, data.title || ''),
+        h('p', { className: 'text-xl text-textblack mb-6' }, data.description || ''),
+        h('p', { className: 'text-sm text-gray-500 mb-6' }, (data.hostown || 'Host on your own cloud') + '  /  ' + (data.hostdata || 'Host on dataflow cloud'))
+      ),
+      h('section', { className: 'flex flex-wrap justify-center gap-6 py-10' },
+        PlanCard(own1), PlanCard(own2, { highlight: true }), PlanCard(own3)
+      ),
+      h('section', { className: 'flex flex-wrap justify-center gap-6 py-10 border-t' },
+        PlanCard(cloud1), PlanCard(cloud2), PlanCard(custom)
+      ),
+      data.heading ? h('h2', { className: 'text-3xl font-bold text-center py-6' }, data.heading) : null,
+      table1Rows.length ? h('section', { className: 'px-[5%] pb-10' }, DataTable(table1Columns, table1Rows)) : null
+    );
   }
 
   // --- common collection (dispatcher target B) ---

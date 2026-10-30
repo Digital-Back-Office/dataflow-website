@@ -1,0 +1,611 @@
+---
+import Layout from "../../layouts/Layout.astro";
+
+const COMMUNITY_PROJECTS_API =
+  import.meta.env.PUBLIC_COMMUNITY_PROJECTS_API ??
+  "https://app.dataflow.zone/hub/ui/api/public/community-projects";
+
+const siteOrigin = (Astro.site?.toString() ?? "https://dataflow.zone").replace(/\/$/, "");
+const normalizedPath = Astro.url.pathname === "/" ? "/" : `${Astro.url.pathname.replace(/\/+$/, "")}/`;
+const pageUrl = new URL(normalizedPath, `${siteOrigin}/`).toString();
+
+const pageSchema = [
+  {
+    "@type": "WebPage",
+    "@id": `${pageUrl}#webpage`,
+    url: pageUrl,
+    name: "Dataflow Community Projects",
+    description: "Explore public projects built and shared by the Dataflow community.",
+    isPartOf: {
+      "@id": `${siteOrigin}#website`,
+    },
+    about: {
+      "@id": `${siteOrigin}#organization`,
+    },
+  },
+  {
+    "@type": "CollectionPage",
+    "@id": `${pageUrl}#collectionpage`,
+    url: pageUrl,
+    name: "Dataflow Community Projects",
+    description: "Explore public Streamlit, Dash App, and Web App projects built on Dataflow.",
+  },
+];
+
+const projectTabsConfig = [
+  { label: "All", key: "all" },
+  { label: "Streamlit", key: "streamlit" },
+  { label: "Dash Apps", key: "dash-app" },
+  { label: "Web Apps", key: "web-app" },
+];
+---
+
+<Layout
+  title="Community Projects | Public Dataflow Projects"
+  meta_description="Explore public Streamlit, Dash App, and Web App projects built by the Dataflow community."
+  pageSchema={pageSchema}
+>
+  <main class="mt-20">
+    <!-- Hero -->
+    <section class="relative overflow-hidden border-b border-gray-100 bg-gradient-to-b from-white via-white to-primary/5">
+      <div class="absolute left-0 top-20 h-48 w-72 rounded-r-full bg-primary/10 blur-3xl"></div>
+      <div class="absolute right-0 top-28 h-56 w-80 rounded-l-full bg-primary/10 blur-3xl"></div>
+
+      <div class="relative px-[10%] max-sm:px-[20px] pt-16 pb-12 text-center">
+        <p class="text-primary font-semibold text-sm mb-3" data-aos="fade-up">
+          Community
+        </p>
+
+        <h1
+          class="text-5xl max-md:text-4xl max-sm:text-3xl font-bold leading-tight text-textblack mb-4"
+          data-aos="fade-up"
+          data-aos-delay="50"
+        >
+          Explore <span class="text-primary">Public Projects</span>
+        </h1>
+
+        <p
+          class="max-w-2xl mx-auto text-gray-600 text-lg max-sm:text-base leading-relaxed mb-8"
+          data-aos="fade-up"
+          data-aos-delay="100"
+        >
+          Discover applications built with Dataflow. Browse, explore, and get inspired by the community.
+        </p>
+
+        <div
+          class="max-w-2xl mx-auto"
+          data-aos="fade-up"
+          data-aos-delay="150"
+        >
+          <div class="relative">
+            <svg
+              class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 w-5 h-5 pointer-events-none"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              stroke-width="2.5"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+              ></path>
+            </svg>
+            <input
+              id="project-search-input"
+              type="text"
+              placeholder="Search projects, apps, tools..."
+              class="w-full pl-12 pr-5 py-4 bg-white border border-gray-200 rounded-2xl focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all shadow-sm text-base"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Content -->
+    <section class="px-[10%] max-sm:px-[20px] pt-8 pb-24 max-sm:pb-16">
+      <div
+        class="flex justify-between items-center mb-8 max-sm:flex-col max-sm:items-start max-sm:gap-5"
+        data-aos="fade-up"
+      >
+        <nav
+          id="project-type-tabs"
+          class="flex items-center gap-4 overflow-x-auto max-w-full scrollbar-hide scrolling-touch"
+          aria-label="Project types"
+        >
+          {
+            projectTabsConfig.map((tab) => (
+              <button
+                class="project-tab text-nowrap min-w-[110px] px-6 py-3 rounded-xl border border-gray-200 text-sm font-semibold text-textblack bg-white hover:border-primary hover:text-primary transition-all"
+                data-type={tab.key}
+                aria-pressed="false"
+              >
+                {tab.label}
+              </button>
+            ))
+          }
+        </nav>
+
+        <p id="project-count" class="text-sm text-gray-500">
+          Loading projects...
+        </p>
+      </div>
+
+      <!-- Loading State -->
+      <div id="projects-loading" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {Array.from({ length: 6 }).map(() => (
+          <article class="bg-white rounded-2xl overflow-hidden border border-gray-100 animate-pulse">
+            <div class="h-56 bg-primary/10"></div>
+            <div class="p-6">
+              <div class="h-4 bg-gray-100 rounded w-24 mb-4"></div>
+              <div class="h-6 bg-gray-100 rounded w-3/4 mb-3"></div>
+              <div class="h-4 bg-gray-100 rounded w-full mb-2"></div>
+              <div class="h-4 bg-gray-100 rounded w-2/3 mb-6"></div>
+              <div class="h-10 bg-gray-100 rounded-xl w-36"></div>
+            </div>
+          </article>
+        ))}
+      </div>
+
+      <!-- Project Grid -->
+      <div
+        id="projects-container"
+        class="hidden grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+      >
+      </div>
+
+      <!-- Empty State -->
+      <div id="projects-empty" class="hidden text-center py-20">
+        <div class="w-16 h-16 mx-auto mb-4 rounded-2xl bg-primary/10 flex items-center justify-center">
+          <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-2.372 1.485l-.443 1.772A1.25 1.25 0 004.447 20h15.106a1.25 1.25 0 001.212-1.553l-.443-1.772a2 2 0 00-.894-1.247zM8 7a4 4 0 118 0 4 4 0 01-8 0z"
+            ></path>
+          </svg>
+        </div>
+        <h2 class="text-xl font-semibold text-gray-700 mb-2">No projects found</h2>
+        <p class="text-gray-500">Try adjusting your search or project type.</p>
+      </div>
+
+      <!-- Error State -->
+      <div id="projects-error" class="hidden text-center py-20">
+        <div class="w-16 h-16 mx-auto mb-4 rounded-2xl bg-red-50 flex items-center justify-center">
+          <svg class="w-8 h-8 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M12 8v4m0 4h.01M21 12A9 9 0 113 12a9 9 0 0118 0z"
+            ></path>
+          </svg>
+        </div>
+        <h2 class="text-xl font-semibold text-gray-700 mb-2">Unable to load projects</h2>
+        <p class="text-gray-500">Please refresh the page and try again.</p>
+      </div>
+    </section>
+  </main>
+</Layout>
+
+<style>
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  .project-tab.active {
+    border-color: rgb(var(--color-primary, 0 188 188));
+    color: rgb(var(--color-primary, 0 188 188));
+    background: rgba(0, 188, 188, 0.08);
+  }
+
+  .project-card.hidden {
+    display: none !important;
+  }
+
+  .share-btn {
+    transition: all 0.2s ease;
+  }
+
+  .share-btn:hover {
+    transform: scale(1.05);
+  }
+
+  .share-btn.copied {
+    background: #10b981;
+    color: white;
+    border-color: #10b981;
+  }
+
+  .share-btn.copied svg {
+    stroke: white;
+  }
+
+  .action-btn {
+    transition: all 0.2s ease;
+  }
+
+  .action-btn:hover {
+    transform: scale(1.05);
+    border-color: rgb(var(--color-primary, 0 188 188));
+    color: rgb(var(--color-primary, 0 188 188));
+  }
+</style>
+
+<script is:inline define:vars={{ COMMUNITY_PROJECTS_API }}>
+  window.COMMUNITY_PROJECTS_API = COMMUNITY_PROJECTS_API;
+</script>
+
+<script is:inline>
+  (function() {
+    const projectTypeTabs = document.querySelectorAll(".project-tab");
+    const searchInput = document.getElementById("project-search-input");
+    const projectsContainer = document.getElementById("projects-container");
+    const loadingState = document.getElementById("projects-loading");
+    const emptyState = document.getElementById("projects-empty");
+    const errorState = document.getElementById("projects-error");
+    const projectCount = document.getElementById("project-count");
+
+    let allProjects = [];
+    let activeType = "all";
+
+    const typeLabelMap = {
+      streamlit: "Streamlit",
+      "dash-app": "Dash App",
+      dashapp: "Dash App",
+      dash: "Dash App",
+      "web-app": "Web App",
+      webapp: "Web App",
+      web: "Web App",
+    };
+
+    const typeIconMap = {
+      streamlit: "▾",
+      "dash-app": "▣",
+      "web-app": "◎",
+    };
+
+    function normalizeType(type = "") {
+      const value = String(type).toLowerCase().replace(/_/g, "-").replace(/\s+/g, "-");
+
+      if (value.includes("streamlit")) return "streamlit";
+      if (value.includes("dash")) return "dash-app";
+      if (value.includes("web")) return "web-app";
+
+      return value || "web-app";
+    }
+
+    function getProjectName(project) {
+      return project.project_name || project.name || project.title || "Untitled Project";
+    }
+
+    function getProjectDescription(project) {
+      return (
+        project.description ||
+        project.short_description ||
+        project.project_description ||
+        "Explore this public project built and deployed on Dataflow."
+      );
+    }
+
+    function getProjectCreator(project) {
+      return (
+        project.created_by ||
+        project.creator ||
+        project.user_name ||
+        project.owner ||
+        project.author ||
+        "Dataflow user"
+      );
+    }
+
+    function getProjectOrg(project) {
+      return (
+        project.organization ||
+        project.organization_name ||
+        project.org_name ||
+        project.org ||
+        "Dataflow community"
+      );
+    }
+
+    function getProjectImage(project) {
+      if (project.preview_image) {
+        return `data:image/webp;base64,${project.preview_image}`;
+      }
+
+      return (
+        project.preview_image_url ||
+        project.previewImage ||
+        project.image ||
+        project.image_url ||
+        ""
+      );
+    }
+
+    function getProjectLaunchUrl(project) {
+      const url =
+        project.launch_url ||
+        project.url ||
+        project.project_url ||
+        project.app_url ||
+        project.public_url;
+
+      if (!url) return "#";
+
+      if (url.startsWith("http://") || url.startsWith("https://")) {
+        return url;
+      }
+
+      return `https://${url}`;
+    }
+
+    function getCreatorAvatar(project) {
+      return project.creator_avatar || project.user_avatar || project.avatar || "";
+    }
+
+    function getOrgLogo(project) {
+      return project.organization_logo || project.org_logo || project.org_avatar || "";
+    }
+
+    function escapeHtml(value = "") {
+      return String(value)
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+    }
+
+    function buildFallbackPreview(project) {
+      const type = normalizeType(project.type);
+      const label = typeLabelMap[type] || "Project";
+      const name = getProjectName(project);
+
+      return `
+        <div class="h-56 bg-gradient-to-br from-primary/90 via-primary/75 to-cyan-300 flex items-center justify-center relative overflow-hidden">
+          <div class="absolute -left-10 -bottom-10 w-40 h-40 rounded-full bg-white/15"></div>
+          <div class="absolute -right-12 -top-12 w-44 h-44 rounded-full bg-white/15"></div>
+          <div class="relative text-center px-8">
+            <div class="mx-auto mb-4 w-14 h-14 rounded-2xl bg-white/20 backdrop-blur-sm flex items-center justify-center text-white text-2xl font-bold">
+              ${escapeHtml(typeIconMap[type] || "◇")}
+            </div>
+            <h3 class="text-white text-xl font-bold line-clamp-2">${escapeHtml(name)}</h3>
+            <p class="text-white/80 text-sm mt-2">${escapeHtml(label)}</p>
+          </div>
+        </div>
+      `;
+    }
+
+    function copyToClipboard(url, button) {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(url).then(() => {
+          const originalHTML = button.innerHTML;
+          button.innerHTML = `
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+            </svg>
+          `;
+          button.classList.add("copied");
+          
+          setTimeout(() => {
+            button.innerHTML = originalHTML;
+            button.classList.remove("copied");
+          }, 2000);
+        }).catch(() => {
+          fallbackCopy(url);
+        });
+      } else {
+        fallbackCopy(url);
+      }
+    }
+
+    function fallbackCopy(text) {
+      const textArea = document.createElement("textarea");
+      textArea.value = text;
+      textArea.style.position = "fixed";
+      textArea.style.left = "-9999px";
+      textArea.style.top = "-9999px";
+      document.body.appendChild(textArea);
+      textArea.focus();
+      textArea.select();
+      try {
+        document.execCommand('copy');
+        alert('URL copied to clipboard!');
+      } catch (err) {
+        alert('Failed to copy URL. Please copy it manually: ' + text);
+      }
+      document.body.removeChild(textArea);
+    }
+
+    function createProjectCard(project, index) {
+      const type = normalizeType(project.type);
+      const typeLabel = typeLabelMap[type] || project.type || "Project";
+      const name = getProjectName(project);
+      const description = getProjectDescription(project);
+      const creator = getProjectCreator(project);
+      const organization = getProjectOrg(project);
+      const image = getProjectImage(project);
+      const launchUrl = getProjectLaunchUrl(project);
+      const creatorAvatar = getCreatorAvatar(project);
+      const orgLogo = getOrgLogo(project);
+
+      const imageMarkup = image
+        ? `<img src="${escapeHtml(image)}" alt="${escapeHtml(name)}" loading="lazy" class="w-full h-56 object-cover group-hover:scale-[1.015] transition-transform duration-300" />`
+        : buildFallbackPreview(project);
+
+      const targetAttrs = launchUrl && launchUrl !== "#" ? `target="_blank" rel="noopener noreferrer"` : "";
+
+      // Creator avatar markup - larger size
+      const creatorMarkup = creatorAvatar
+        ? `<img src="${escapeHtml(creatorAvatar)}" alt="${escapeHtml(creator)}" class="w-10 h-10 rounded-full object-cover border-2 border-white shadow-sm" />`
+        : `<div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary text-base font-bold border-2 border-white shadow-sm">${escapeHtml(creator.charAt(0).toUpperCase())}</div>`;
+
+      // Organization logo - larger size
+      const orgMarkup = orgLogo
+        ? `<img src="${escapeHtml(orgLogo)}" alt="${escapeHtml(organization)}" class="w-6 h-6 rounded object-cover border border-gray-200" />`
+        : ``;
+
+      return `
+        <article
+          class="project-card group bg-white rounded-2xl overflow-hidden border border-gray-100 hover:border-primary/30 hover:shadow-xl transition-all duration-300"
+          data-type="${escapeHtml(type)}"
+          data-search="${escapeHtml(`${name} ${description} ${creator} ${organization} ${typeLabel}`.toLowerCase())}"
+        >
+          <a href="${escapeHtml(launchUrl)}" ${targetAttrs} class="block overflow-hidden" title="Open ${escapeHtml(name)}">
+            ${imageMarkup}
+          </a>
+
+          <div class="p-6">
+            <div class="flex items-center justify-between mb-4">
+              <span class="px-2 py-1 bg-primary/10 text-primary rounded-md text-xs font-medium">
+                ${escapeHtml(typeLabel)}
+              </span>
+              <button 
+                class="share-btn p-2 rounded-full border border-gray-200 text-gray-500 hover:border-primary hover:text-primary transition-all flex-shrink-0"
+                onclick="window.shareProject('${escapeHtml(launchUrl)}', this)"
+                title="Share this project"
+              >
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"></path>
+                </svg>
+              </button>
+            </div>
+
+            <h2 class="text-xl font-bold text-textblack mb-3 line-clamp-2 group-hover:text-primary transition-colors">
+              <a href="${escapeHtml(launchUrl)}" ${targetAttrs} title="Open ${escapeHtml(name)}">
+                ${escapeHtml(name)}
+              </a>
+            </h2>
+
+            <p class="text-gray-600 text-sm line-clamp-3 mb-5 min-h-[3.5rem]">
+              ${escapeHtml(description)}
+            </p>
+
+            <div class="flex items-center justify-between pt-3 border-t border-gray-100">
+              <div class="flex items-center gap-3">
+                ${creatorMarkup}
+                <div class="text-sm">
+                  <span class="block font-semibold text-textblack">${escapeHtml(creator)}</span>
+                  <span class="block text-gray-500 text-xs">${escapeHtml(organization)}</span>
+                </div>
+                ${orgMarkup ? `<div class="ml-1">${orgMarkup}</div>` : ''}
+              </div>
+              <a
+                href="${escapeHtml(launchUrl)}"
+                ${targetAttrs}
+                class="action-btn inline-flex items-center justify-center w-10 h-10 rounded-full bg-primary/5 border border-primary/20 text-primary hover:bg-primary hover:text-white transition-all group/link"
+                title="Open Project"
+              >
+                <svg
+                  class="w-5 h-5 group-hover/link:translate-x-0.5 transition-transform"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  stroke-width="2.5"
+                >
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </article>
+      `;
+    }
+
+    function renderProjects(projects) {
+      projectsContainer.innerHTML = projects.map((project, index) => createProjectCard(project, index)).join("");
+      filterProjects();
+    }
+
+    function filterProjects() {
+      const query = searchInput.value.trim().toLowerCase();
+      const cards = document.querySelectorAll(".project-card");
+      let visibleCount = 0;
+
+      cards.forEach((card) => {
+        const typeMatches = activeType === "all" || card.dataset.type === activeType;
+        const searchMatches = !query || card.dataset.search.includes(query);
+        const shouldShow = typeMatches && searchMatches;
+
+        card.classList.toggle("hidden", !shouldShow);
+
+        if (shouldShow) visibleCount += 1;
+      });
+
+      emptyState.classList.toggle("hidden", visibleCount !== 0);
+      projectsContainer.classList.toggle("hidden", visibleCount === 0);
+      projectCount.textContent = `${visibleCount} project${visibleCount === 1 ? "" : "s"} found`;
+    }
+
+    function setActiveTab(tab) {
+      activeType = tab.dataset.type;
+
+      projectTypeTabs.forEach((button) => {
+        const isActive = button === tab;
+        button.classList.toggle("active", isActive);
+        button.setAttribute("aria-pressed", String(isActive));
+      });
+
+      filterProjects();
+    }
+
+    async function loadProjects() {
+      try {
+        loadingState.classList.remove("hidden");
+        errorState.classList.add("hidden");
+        emptyState.classList.add("hidden");
+        projectsContainer.classList.add("hidden");
+
+        const response = await fetch(window.COMMUNITY_PROJECTS_API);
+
+        if (!response.ok) {
+          throw new Error(`Failed to load projects: ${response.status}`);
+        }
+
+        const data = await response.json();
+        allProjects = Array.isArray(data) ? data : data.projects || data.data || [];
+        console.log("Projects API Response", allProjects);
+
+        loadingState.classList.add("hidden");
+
+        if (!allProjects.length) {
+          projectCount.textContent = "0 projects found";
+          emptyState.classList.remove("hidden");
+          return;
+        }
+
+        renderProjects(allProjects);
+      } catch (error) {
+        console.error(error);
+        loadingState.classList.add("hidden");
+        projectCount.textContent = "Unable to load projects";
+        errorState.classList.remove("hidden");
+      }
+    }
+
+    // Initialize tabs
+    projectTypeTabs.forEach((tab, index) => {
+      tab.addEventListener("click", () => setActiveTab(tab));
+
+      if (index === 0) {
+        setActiveTab(tab);
+      }
+    });
+
+    searchInput.addEventListener("input", filterProjects);
+
+    // Expose share function globally
+    window.shareProject = function(url, button) {
+      copyToClipboard(url, button);
+    };
+
+    loadProjects();
+  })();
+</script>
